@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="GameAssetFactory.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="GraphicsEngine.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="lodepng.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MathLibrary.cpp" />
+    <ClCompile Include="MultiTexture.cpp" />
+    <ClCompile Include="ScriptingEngine.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="CAABBCollider.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="CCameraComponent.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="CCharacterComponent.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="CGridComponent.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="CScript.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="CStateMachineAI.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="CStaticMesh.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="CTerrain.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="CUserInterface.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="DeltaTime.cpp" />
+    <ClCompile Include="CSpotlight.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+    <ClCompile Include="LightFactory.cpp" />
+    <ClCompile Include="CWater.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AHeightMap.h" />
+    <ClInclude Include="AScript.h" />
+    <ClInclude Include="Asset.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="GameAssetFactory.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="AModel.h" />
+    <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="GraphicsEngine.h" />
+    <ClInclude Include="GraphicsLibraryEnum.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="lodepng.h" />
+    <ClInclude Include="MathLibrary.h" />
+    <ClInclude Include="MultiTexture.h" />
+    <ClInclude Include="ScriptingEngine.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="CAABBCollider.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="CCameraComponent.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="CCharacterComponent.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="CGridComponent.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="CScript.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="CStateMachineAI.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="CStaticMesh.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="CTerrain.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="CUserInterface.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyboxVerts.h" />
+    <ClInclude Include="DeltaTime.h" />
+    <ClInclude Include="CSpotlight.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="LightFactory.h" />
+    <ClInclude Include="CWater.h">
+      <Filter>components</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Assets\Scripts\displayAtQuit.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\init.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\playerController.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\rotate.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\terrainWireframe.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\roverAI.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\help.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\startButton.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\quitButton.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\easyButton.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\hardButton.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\mediumButton.lua">
+      <Filter>scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\waterInteraction.lua" />
+    <None Include="..\Assets\Scripts\acidInteract.lua" />
+    <None Include="..\Assets\Scripts\loadButton.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="scripts">
+      <UniqueIdentifier>{91dcc06c-d47e-45be-b08d-a99026b045d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="components">
+      <UniqueIdentifier>{0a17ef3c-b26a-4c84-8208-89f05973ab79}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
