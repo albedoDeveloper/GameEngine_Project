@@ -98,7 +98,7 @@ private:
 	*/
 	std::map<std::string, Asset*> m_assets;
 	//std::map <std::string, Amodel*> m_assets;
-	Shader* shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
+	
 
 	bool oneTimeShader = false;
 };

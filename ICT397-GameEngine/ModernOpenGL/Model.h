@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include "../Asset.h"
 #include <string>
 #include <vector> 
 #include "Mesh.h"
@@ -12,23 +13,19 @@
 struct modelInfo
 {
     std::string path;
-    glm::vec3 translation;
-    float size;
+    glm::vec3 translation = glm::vec3(0, 0, 0);
+    float size = 1;
 };
 
 
-class Model
+class Model : public Asset
 {
 public:
-    Model(std::string path, modelInfo infoTemp)
+    Model(std::string path, std::string keyTemp) :Asset{ keyTemp }
     {
-        info.path = infoTemp.path;
-        info.size = infoTemp.size;
-        info.translation.x = infoTemp.translation.x;
-        info.translation.y = infoTemp.translation.y;
-        info.translation.z = infoTemp.translation.z;
+        info.path = path;
+        key = keyTemp;
         loadModel(path);
-
     }
     void Draw(Shader& shader);
 private:
@@ -37,7 +34,7 @@ private:
     std::string directory;
     std::vector<Texture> textures_loaded;
     modelInfo info;
-
+    std::string key;
 
     void loadModel(std::string path);
     void processNode(aiNode* node, const aiScene* scene);

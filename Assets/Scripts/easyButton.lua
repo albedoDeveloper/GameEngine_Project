@@ -11,17 +11,6 @@ function Update(gameObject, deltaTime, inputManager)
 		GetGameObject("help"):SetActive(true)
 		GetGameObject("healthBar"):SetActive(true)
 
-		GetGameObject("startMenu"):SetActive(false)
-		GetGameObject("easyButton"):SetActive(false)
-		GetGameObject("mediumButton"):SetActive(false)
-		GetGameObject("hardButton"):SetActive(false)
-		GetGameObject("quitButton"):SetActive(false)
-		GetGameObject("loadButton"):SetActive(false)
-		for i=1,20,1 do
-			roverName = "rover " .. i
-			GetGameObject(roverName):SetActive(true)
-			GetGameObject(roverName):SetDifficulty("easy")
-		end
 		inputManager:LockCursor(true)
 	end
 end

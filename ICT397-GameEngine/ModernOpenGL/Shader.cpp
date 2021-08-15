@@ -5,6 +5,11 @@
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 {
     GLenum err = glewInit();
+    if (GLEW_OK != err)
+    {
+        std::cerr << "Error: " << glewGetErrorString(err) << std::endl;
+    }
+    std::cerr << "Status: Using GLEW " << glewGetString(GLEW_VERSION) << std::endl;
     //Variables to open the shader file
     std::string vertexShaderCode;
     std::string fragmentShaderCode;

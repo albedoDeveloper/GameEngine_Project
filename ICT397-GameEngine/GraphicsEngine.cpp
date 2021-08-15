@@ -158,14 +158,16 @@ void GraphicsEngine::DeleteTexture(std::string key)
 	glDeleteTextures(1, texId);
 }
 
-void GraphicsEngine::DrawModel(const AModel* model, const Transform& worldTrans) const // NOTE keep these commented out statements, we will need them for texturing
+void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const // NOTE keep these commented out statements, we will need them for texturing
 {
 	if (!model)
 	{
 		return;
 	}
 
-	glPushMatrix();
+	model->Draw(*shader);
+
+	/*glPushMatrix();
 	OpenGLTransformation(worldTrans);
 	if (model->TextureKey != "NULL")
 	{
@@ -199,16 +201,16 @@ void GraphicsEngine::DrawModel(const AModel* model, const Transform& worldTrans)
 		);
 	}
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 
-void GraphicsEngine::DrawModelMovingTexture(const AModel* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
+void GraphicsEngine::DrawModelMovingTexture(const Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
 {
 	if (!model)
 	{
 		return;
 	}
-
+	/*
 	glPushMatrix();
 	OpenGLTransformation(worldTrans);
 	if (model->TextureKey != "NULL")
@@ -244,7 +246,7 @@ void GraphicsEngine::DrawModelMovingTexture(const AModel* model, const Transform
 		);
 	}
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 
 void GraphicsEngine::DrawTerrain()
@@ -486,6 +488,7 @@ void GraphicsEngine::RenderSkybox()
 
 bool GraphicsEngine::InitOpenGL()
 {
+	
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		std::cout << "SDL could not initialize! SDL Error: " << SDL_GetError() << std::endl;
@@ -535,6 +538,7 @@ bool GraphicsEngine::InitOpenGL()
 		return false;
 	}
 
+	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
 #if _DEBUG
 	std::cout << "GL_ARB_multitexture: " << (bool)(std::string((char*)glGetString(GL_EXTENSIONS)).find("GL_ARB_multitexture") != std::string::npos) << std::endl;
 #endif

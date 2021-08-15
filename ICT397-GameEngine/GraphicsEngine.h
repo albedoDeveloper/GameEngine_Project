@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Camera.h"
+#include "ModernOpenGL/Model.h"
 #include "AModel.h"
 #include "Color.h"
 #include "CSpotlight.h"
@@ -68,6 +69,8 @@ private:
 	 * @brief if the skybox has been initialised
 	*/
 	bool m_skyboxInitialized;
+
+	
 
 public:
 	/**
@@ -149,9 +152,9 @@ public:
 	 * @param model The model to draw
 	 * @param trans Transform of the model
 	*/
-	void DrawModel(const AModel* model, const Transform& trans) const;
+	void DrawModel(Model* model, const Transform& trans) const;
 
-	void DrawModelMovingTexture(const AModel* model, const Transform& trans, const float texOffset) const;
+	void DrawModelMovingTexture(const Model* model, const Transform& trans, const float texOffset) const;
 	/**
 	 * @brief Draws a model asset on the screen with lighting
 	 * @param model The model to draw
@@ -216,6 +219,8 @@ public:
 
 	void RenderSkybox();
 
+	Shader* shader = nullptr;
+
 private:
 	/**
 	 * @brief initialises openGL
@@ -245,6 +250,8 @@ private:
 	 * @param t the transformation to use
 	*/
 	void OpenGLTransformation(const Transform& t) const;
+
+	
 };
 
 #define GRAPHICS GraphicsEngine::instance()

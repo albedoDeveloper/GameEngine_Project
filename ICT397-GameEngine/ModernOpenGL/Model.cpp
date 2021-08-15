@@ -25,6 +25,7 @@ void Model::loadModel(std::string path)
 
         // process ASSIMP's root node recursively
         processNode(scene->mRootNode, scene);
+
 }
 
 void  Model::processNode(aiNode* node, const aiScene* scene)
@@ -77,7 +78,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
             vec.x = mesh->mTextureCoords[0][i].x;
             vec.y = mesh->mTextureCoords[0][i].y;
             vertex.TexCoords = vec;
-            // tangent
+            /*// tangent
             vector.x = mesh->mTangents[i].x;
             vector.y = mesh->mTangents[i].y;
             vector.z = mesh->mTangents[i].z;
@@ -86,7 +87,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
             vector.x = mesh->mBitangents[i].x;
             vector.y = mesh->mBitangents[i].y;
             vector.z = mesh->mBitangents[i].z;
-            vertex.Bitangent = vector;
+            vertex.Bitangent = vector;*/
         }
         else
             vertex.TexCoords = glm::vec2(0.0f, 0.0f);
