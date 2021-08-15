@@ -154,7 +154,7 @@ public:
 	*/
 	void DrawModel(Model* model, const Transform& trans) const;
 
-	void DrawModelMovingTexture(const Model* model, const Transform& trans, const float texOffset) const;
+	void DrawModelMovingTexture(Model* model, const Transform& trans, const float texOffset) const;
 	/**
 	 * @brief Draws a model asset on the screen with lighting
 	 * @param model The model to draw
