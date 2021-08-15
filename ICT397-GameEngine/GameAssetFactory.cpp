@@ -1,14 +1,5 @@
 #include "GameAssetFactory.h"
-#include "AModel.h"
-#include <fstream>
-#include <sstream>
-#include <cstdlib>
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include "CTerrain.h"
-#include "lodepng.h"
-#include "GraphicsEngine.h"
+
 
 #if _DEBUG
 #include <iostream>
@@ -32,7 +23,8 @@ void GameAssetFactory::LoadModel(std::string key, std::string filePath)
 
     AModel* model = new AModel(key);
 
-    if (LoadOBJFile(filePath, model))
+
+    /*if (LoadOBJFile(filePath, model))
     {
         m_assets.emplace(key, model);
 #if _DEBUG
@@ -45,7 +37,7 @@ void GameAssetFactory::LoadModel(std::string key, std::string filePath)
         std::cout << "Error: there was an error loading model:" << filePath << std::endl;
 #endif
         delete(model);
-    }
+    }*/
 }
 
 void GameAssetFactory::LoadScript(std::string key, std::string filePath)
@@ -161,6 +153,7 @@ bool GameAssetFactory::CheckName(std::string name)
 	return !( m_assets.find(name) == m_assets.end() );
 }
 
+//Model* GameAssetFactory::GetAsset(std::string key)
 Asset* GameAssetFactory::GetAsset(std::string key)
 {
 #if _DEBUG
@@ -346,5 +339,6 @@ bool GameAssetFactory::LoadLuaFile(std::string path, AScript* script)
 
 void GameAssetFactory::Close()
 {
+    //m_assets = *new std::map<std::string, Model*>();
     m_assets = *new std::map<std::string, Asset*>();
 }

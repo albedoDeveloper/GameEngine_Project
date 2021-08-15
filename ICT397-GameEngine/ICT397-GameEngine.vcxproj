@@ -46,6 +46,9 @@
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathLibrary.cpp" />
+    <ClCompile Include="ModernOpenGL\Mesh.cpp" />
+    <ClCompile Include="ModernOpenGL\Model.cpp" />
+    <ClCompile Include="ModernOpenGL\Shader.cpp" />
     <ClCompile Include="MultiTexture.cpp" />
     <ClCompile Include="ScriptingEngine.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -81,6 +84,9 @@
     <ClInclude Include="LightFactory.h" />
     <ClInclude Include="lodepng.h" />
     <ClInclude Include="MathLibrary.h" />
+    <ClInclude Include="ModernOpenGL\Mesh.h" />
+    <ClInclude Include="ModernOpenGL\Model.h" />
+    <ClInclude Include="ModernOpenGL\Shader.h" />
     <ClInclude Include="MultiTexture.h" />
     <ClInclude Include="ScriptingEngine.h" />
     <ClInclude Include="SkyboxVerts.h" />
@@ -102,6 +108,8 @@
     <None Include="..\Assets\Scripts\startButton.lua" />
     <None Include="..\Assets\Scripts\terrainWireframe.lua" />
     <None Include="..\Assets\Scripts\waterInteraction.lua" />
+    <None Include="ModernOpenGL\colourShader.fs" />
+    <None Include="ModernOpenGL\vertexShader.vs" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -185,7 +193,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc142-mtd.lib;IrrXMLd.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -212,11 +220,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc142-mtd.lib;zlibd.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
