@@ -27,6 +27,10 @@ void GameAssetFactory::LoadModel(std::string key, std::string filePath)
      Model* model = new Model(filePath,key);
      m_assets.emplace(key, model);
 
+#if _DEBUG
+
+#endif
+
     /*if (LoadOBJFile(filePath, model))
     {
         m_assets.emplace(key, model);
@@ -38,9 +42,9 @@ void GameAssetFactory::LoadModel(std::string key, std::string filePath)
     {
 #if _DEBUG
         std::cout << "Error: there was an error loading model:" << filePath << std::endl;
-#endif
-        delete(model);
-    }*/
+#endif*/
+        //delete(model);
+   
 }
 
 void GameAssetFactory::LoadScript(std::string key, std::string filePath)

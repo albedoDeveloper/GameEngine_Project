@@ -169,8 +169,6 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 
 	glm::mat4 view = glm::lookAt(glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()), glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()) + glm::vec3(worldTrans.GetForward().GetX(), worldTrans.GetForward().GetY(), worldTrans.GetForward().GetZ()), glm::vec3(worldTrans.GetUp().GetX(), worldTrans.GetUp().GetY(), worldTrans.GetUp().GetZ()));
 	shader->setMat4("view", view);
-
-	std::cout << worldTrans.GetPosition().GetX() << std::endl;
 	
 	glm::mat4 trans = glm::mat4(1.0f);
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));

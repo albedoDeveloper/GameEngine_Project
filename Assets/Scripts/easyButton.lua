@@ -7,7 +7,8 @@ end
 function Update(gameObject, deltaTime, inputManager)
 	if GUI:MouseClicked() then
 		GetGameObject("player"):SetActive(true)
-
+		GetGameObject("healthBar"):SetActive(true)
+		
 
 		GetGameObject("startMenu"):SetActive(false)
 		GetGameObject("easyButton"):SetActive(false)

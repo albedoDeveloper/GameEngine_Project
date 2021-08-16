@@ -28,19 +28,25 @@ public:
         loadModel(path);
     }
     void Draw(Shader& shader);
+    std::string key;
+    void AssignTextureKey(std::string)
+    {
+
+    };
+
 private:
     // model data
     std::vector<Mesh> meshes;
     std::string directory;
     std::vector<Texture> textures_loaded;
     modelInfo info;
-    std::string key;
 
     void loadModel(std::string path);
     void processNode(aiNode* node, const aiScene* scene);
     Mesh processMesh(aiMesh* mesh, const aiScene* scene);
     std::vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName);
     unsigned int TextureFromFile(const char* path, const std::string& directory, bool gamma);
+
 };
 
 #endif

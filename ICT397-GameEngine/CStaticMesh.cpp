@@ -16,7 +16,7 @@ void CStaticMesh::AssignModel(Model* model)
 	m_model = model;
 
 #if _DEBUG
-	std::cout << "Model assigned to mesh. Model:" << model << std::endl;
+	std::cout << "Model assigned to mesh. Model:" << model->key << std::endl;
 #endif
 }
 
