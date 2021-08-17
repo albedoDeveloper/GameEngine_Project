@@ -12,7 +12,7 @@ void Model::loadModel(std::string path)
 {
         // read file via ASSIMP
         Assimp::Importer importer;
-        const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate |aiProcess_CalcTangentSpace);
+        const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate |aiProcess_CalcTangentSpace |aiProcess_EmbedTextures | aiProcess_FindInvalidData | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph);
       
         if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
         {
@@ -78,16 +78,21 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
             vec.x = mesh->mTextureCoords[0][i].x;
             vec.y = mesh->mTextureCoords[0][i].y;
             vertex.TexCoords = vec;
-            /*// tangent
-            vector.x = mesh->mTangents[i].x;
-            vector.y = mesh->mTangents[i].y;
-            vector.z = mesh->mTangents[i].z;
-            vertex.Tangent = vector;
-            // bitangent
-            vector.x = mesh->mBitangents[i].x;
-            vector.y = mesh->mBitangents[i].y;
-            vector.z = mesh->mBitangents[i].z;
-            vertex.Bitangent = vector;*/
+            
+
+            if (mesh->mTangents != NULL)
+            {
+                // tangent
+                vector.x = mesh->mTangents[i].x;
+                vector.y = mesh->mTangents[i].y;
+                vector.z = mesh->mTangents[i].z;
+                vertex.Tangent = vector;
+                // bitangent
+                vector.x = mesh->mBitangents[i].x;
+                vector.y = mesh->mBitangents[i].y;
+                vector.z = mesh->mBitangents[i].z;
+                vertex.Bitangent = vector;
+            }
         }
         else
             vertex.TexCoords = glm::vec2(0.0f, 0.0f);
