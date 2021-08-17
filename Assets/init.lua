@@ -434,49 +434,8 @@ GetGameObject("help"):AddCUserInterface():AssignTexture("help_image")
 GetGameObject("help"):GetCUserInterface():SetSize(300, 300)
 GetGameObject("help"):AddCScript():AssignScript("help_lua")
 
---GetGameObject("Water1"):AddCWaterComponent():AssignModel("water_plane"):AssignTexture("water_texture")
-
---spawn Water Circle
-SpawnGameObject("Water2")
-GetGameObject("Water2"):GetTransform():SetPosition(621, 108, 412)
-GetGameObject("Water2"):GetTransform():Scale(40, 1, 40)
-GetGameObject("Water2"):AddCWaterComponent():AssignModel("water_plane"):AssignTexture("acid_texture")
-GetGameObject("Water2"):AddCScript():AssignScript("acid_interact")
-GetGameObject("Water2"):AddCSpotlight():GetTransform():SetPosition(0, 30, 0)
-GetGameObject("Water2"):GetCSpotlight():GetTransform():RotateLocal(90, 0, 0, 1)
-
-SpawnGameObject("Water3")
-GetGameObject("Water3"):GetTransform():SetPosition(905, 88, 920)
-GetGameObject("Water3"):GetTransform():Scale(55, 1, 55)
-GetGameObject("Water3"):AddCWaterComponent():AssignModel("water_circle"):AssignTexture("water_texture")
-GetGameObject("Water3"):AddCScript():AssignScript("water_interact")
-
-SpawnGameObject("Water4")
-GetGameObject("Water4"):GetTransform():SetPosition(849, 106, 352)
-GetGameObject("Water4"):GetTransform():Scale(55, 1, 55)
-GetGameObject("Water4"):AddCWaterComponent():AssignModel("water_circle"):AssignTexture("water_texture")
-GetGameObject("Water4"):AddCScript():AssignScript("water_interact")
-
-SpawnGameObject("Water5")
-GetGameObject("Water5"):GetTransform():SetPosition(240, 183, 111)
-GetGameObject("Water5"):GetTransform():Scale(25, 1, 25)
-GetGameObject("Water5"):AddCWaterComponent():AssignModel("water_circle"):AssignTexture("water_texture")
-GetGameObject("Water5"):AddCScript():AssignScript("water_interact")
-
-SpawnGameObject("Water6")
-GetGameObject("Water6"):GetTransform():SetPosition(106, 190, 673)
-GetGameObject("Water6"):GetTransform():Scale(25, 1, 25)
-GetGameObject("Water6"):AddCWaterComponent():AssignModel("water_circle"):AssignTexture("water_texture")
-GetGameObject("Water6"):AddCScript():AssignScript("water_interact")
-
-SpawnGameObject("Water7")
-GetGameObject("Water7"):GetTransform():SetPosition(215, 120, 960)
-GetGameObject("Water7"):GetTransform():Scale(35, 1, 35)
-GetGameObject("Water7"):AddCWaterComponent():AssignModel("water_circle"):AssignTexture("water_texture")
-GetGameObject("Water7"):AddCScript():AssignScript("water_interact")
 
 
---spawn rovers
 roverXcoords = {517, 931, 478, 615, 008, 572, 525, 382, 697, 151, 399, 502, 503, 112, 802, 301, 130, 623, 203, 978}
 roverZcoords = {337, 266, 901, 130, 776, 757, 815, 615, 355, 609, 024, 860, 907, 756, 289, 541, 949, 839, 307, 665}
 for i=1,20,1 do
@@ -504,3 +463,6 @@ for i=1,5,1 do
     GetGameObject(rockName):AddCStaticMesh():AssignModel("rock_outcrop"):AssignTexture("rock_texture")
     GetGameObject(rockName):AddCAABBCollider():SetCollider(1.6,1.2,1.2,-1.1,-3,-1.8)
 end
+
+GetGameObject("player"):SetActive(true)
+GetGameObject("healthBar"):SetActive(true)

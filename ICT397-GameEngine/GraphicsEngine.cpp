@@ -38,24 +38,24 @@ bool GraphicsEngine::initialise(GraphicsLibrary renderer)
 
 bool GraphicsEngine::initLighting()
 {
-	//glDisable(GL_LIGHTING);
-	//return true;
-	return InitOpenGLlighting();
+	glDisable(GL_LIGHTING);
+	return true;
+	//return InitOpenGLlighting();
 }
 
 void GraphicsEngine::GenMultiTexture(std::string tex1Key, std::string tex2Key)
 {
-	m_glActiveTextureARB(GL_TEXTURE0_ARB);
+	/*m_glActiveTextureARB(GL_TEXTURE0_ARB);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(tex1Key));
 	m_glActiveTextureARB(GL_TEXTURE1_ARB);
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(tex2Key));
+	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(tex2Key));*/
 }
 
 void GraphicsEngine::UpdateSpotlight(const CSpotlight * light)
 {
-	glEnable(GL_LIGHT1);
+	/*glEnable(GL_LIGHT1);
 
 	GLfloat lightPosition[] = { light->GetTransformConst().GetPosition().GetX() ,
 								light->GetTransformConst().GetPosition().GetY() ,
@@ -69,7 +69,7 @@ void GraphicsEngine::UpdateSpotlight(const CSpotlight * light)
 	GLfloat lightDiffuse[] = { (*light->GetColour())[0] ,
 								(*light->GetColour())[1] ,
 								(*light->GetColour())[2] };
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse);*/
 	
 
 
@@ -81,7 +81,7 @@ void GraphicsEngine::newFrame()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
-	if (m_camera != nullptr) 
+	/*if (m_camera != nullptr) 
 	{
 		gluLookAt(
 			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), 
@@ -98,7 +98,7 @@ void GraphicsEngine::newFrame()
 	else 
 	{
 		gluLookAt(0, 0, 5, 0, 0, -1, 0, 1, 0); // DEBUG
-	}
+	}*/
 
 	// world axis debug
 	//glPushMatrix();
@@ -164,10 +164,17 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 	{
 		return;
 	}
+	
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	OpenGLTransformation(worldTrans);
+	shader->useShaderForLoop();
 	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, 1.0f, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
 	shader->setMat4("projection", projection);
 
-	glm::mat4 view = glm::lookAt(glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()), glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()) + glm::vec3(worldTrans.GetForward().GetX(), worldTrans.GetForward().GetY(), worldTrans.GetForward().GetZ()), glm::vec3(worldTrans.GetUp().GetX(), worldTrans.GetUp().GetY(), worldTrans.GetUp().GetZ()));
+	glm::mat4 view = glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()), 
+	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) + glm::vec3(m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()), 
+	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()));
+	
 	shader->setMat4("view", view);
 	
 	glm::mat4 trans = glm::mat4(1.0f);
@@ -220,13 +227,18 @@ void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& world
 	{
 		return;
 	}
+	OpenGLTransformation(worldTrans);
+	shader->useShaderForLoop();
+	glm::mat4 trans = glm::mat4(1.0f);
 	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, 1.0f, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
 	shader->setMat4("projection", projection);
 
-	glm::mat4 view = glm::lookAt(glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()), glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()) + glm::vec3(worldTrans.GetForward().GetX(), worldTrans.GetForward().GetY(), worldTrans.GetForward().GetZ()), glm::vec3(worldTrans.GetUp().GetX(), worldTrans.GetUp().GetY(), worldTrans.GetUp().GetZ()));
-	shader->setMat4("view", view);
 
-	glm::mat4 trans = glm::mat4(1.0f);
+	glm::mat4 view = glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()),
+		glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) + glm::vec3(m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()),
+		glm::vec3(m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()));
+
+	trans = glm::mat4(1.0f);
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
 	//trans = glm::rotate(trans, glm::qua(worldTrans.GetRotation().GetW(), glm::vec3( worldTrans.GetRotation().GetX(), worldTrans.GetRotation().GetY(), worldTrans.GetRotation().GetZ())), glm::vec3(0.0, 1.0f, 0.0));
 	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
@@ -280,7 +292,7 @@ void GraphicsEngine::DrawTerrain()
 
 void GraphicsEngine::GenDisplayListTerrain(CBaseTerrain* terrain, bool withTexture, bool asWireframe)
 {
-	const unsigned DETAIL_MAP_REPEAT = 256;
+	/*const unsigned DETAIL_MAP_REPEAT = 256;
 	const unsigned TERRAIN_REPEAT = 1;
 
 	if (!terrain->HasTerrainData())
@@ -300,7 +312,7 @@ void GraphicsEngine::GenDisplayListTerrain(CBaseTerrain* terrain, bool withTextu
 	glEnable(GL_TEXTURE_2D);
 	glDisable(GL_BLEND);
 	m_glActiveTextureARB(GL_TEXTURE0_ARB);
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(terrain->GetTextureKey()));
+	//glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(terrain->GetTextureKey()));
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	m_glActiveTextureARB(GL_TEXTURE1_ARB);
@@ -352,7 +364,7 @@ void GraphicsEngine::GenDisplayListTerrain(CBaseTerrain* terrain, bool withTextu
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	glPopMatrix();
-	glEndList();
+	glEndList();*/
 }
 
 void GraphicsEngine::DrawGrid(float gridHeight, float lineThickness, float gridWidth, float cellWidth)
@@ -536,7 +548,7 @@ bool GraphicsEngine::InitOpenGL()
 	}
 
 	SDL_GL_SetSwapInterval(1);
-	glMatrixMode(GL_PROJECTION);
+	/*glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	if(m_camera != nullptr)
 		gluPerspective(m_camera->GetCamera().FOV, 1, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip); // TODO make aspect ratio match window
@@ -560,18 +572,18 @@ bool GraphicsEngine::InitOpenGL()
 	{
 		printf("Error initializing OpenGL! %s\n", gluErrorString(error));
 		return false;
-	}
+	}*/
 
 	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
 #if _DEBUG
 	std::cout << "GL_ARB_multitexture: " << (bool)(std::string((char*)glGetString(GL_EXTENSIONS)).find("GL_ARB_multitexture") != std::string::npos) << std::endl;
 #endif
 
-	if (!initMultiTextures())
+	/*if (!initMultiTextures())
 	{
 		std::cout << "Error initialising multi texturing, closing program..." << std::endl;
 		exit(-1);
-	}
+	}*/
 
 	initLighting();
 
@@ -581,7 +593,7 @@ bool GraphicsEngine::InitOpenGL()
 bool GraphicsEngine::InitOpenGLlighting()
 {
 
-	// fog
+	/*// fog
 	glEnable(GL_FOG);
 	glFogf(GL_FOG_MODE, GL_EXP);
 	glFogf(GL_FOG_DENSITY, 0.01f);
@@ -655,7 +667,7 @@ bool GraphicsEngine::InitOpenGLlighting()
 	//glLightf(GL_LIGHT1, GL_QUADRATIC_ATTENUATION, quadraticAttenuation);
 	glLightfv(GL_LIGHT1, GL_POSITION, spotlightPosition1);
 
-	//end spotlight
+	//end spotlight*/
 	
 	return true;
 }

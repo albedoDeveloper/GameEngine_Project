@@ -23,8 +23,8 @@ void GameAssetFactory::LoadModel(std::string key, std::string filePath)
 
     //AModel* model = new AModel(key);
 
-
      Model* model = new Model(filePath,key);
+    
      m_assets.emplace(key, model);
 
 #if _DEBUG
