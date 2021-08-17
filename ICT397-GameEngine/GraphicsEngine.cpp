@@ -166,7 +166,6 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 	}
 	
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-	OpenGLTransformation(worldTrans);
 	shader->useShaderForLoop();
 	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, 1.0f, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
 	shader->setMat4("projection", projection);
@@ -178,14 +177,17 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 	shader->setMat4("view", view);
 	
 	glm::mat4 trans = glm::mat4(1.0f);
-	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
+	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
 
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
+	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
+	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
+	glm::mat4 rotZ = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
 	
-	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+
+	glm::mat4 scale = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
 	
+	trans = translation * (rotX * rotY * rotZ) * scale;
+
 	shader->setMat4("transform", trans);
 	model->Draw(*shader);
 	
@@ -243,17 +245,19 @@ void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& world
 	shader->setMat4("view", view);
 
 	glm::mat4 trans = glm::mat4(1.0f);
-	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
+	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
 
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
+	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
+	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
+	glm::mat4 rotZ = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
 
-	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+
+	glm::mat4 scale = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+
+	trans = translation * (rotX * rotY * rotZ) * scale;
 
 	shader->setMat4("transform", trans);
 	model->Draw(*shader);
-	
 	/*
 	glPushMatrix();
 	OpenGLTransformation(worldTrans);
