@@ -33,6 +33,7 @@ LoadModel("fault_crack_model", "FaultCrack.obj")
 LoadModel("rock_outcrop", "outcrop.obj")
 LoadModel("water_plane", "waterplane.obj")
 LoadModel("water_circle", "watercircle.obj")
+LoadModel("toyota", "scene.fbx")
 LoadTexture("healthBar_image", "healthBar.png")
 LoadTexture("test_tex", "maxresdefault.png")
 LoadScript("water_interact", "waterInteraction.lua")
@@ -443,9 +444,10 @@ for i=1,20,1 do
     roverName = "rover " .. i
     SpawnGameObject(roverName)
     GetGameObject(roverName):SetActive(false)
-    GetGameObject(roverName):GetTransform():Scale(3,3,3)
+    GetGameObject(roverName):GetTransform():Scale(1,1,1)
     GetGameObject(roverName):GetTransform():SetPosition(roverXcoords[i],20,roverZcoords[i])
-    GetGameObject(roverName):AddCStaticMesh():AssignModel("rover_model"):AssignTexture("brick_texture")
+    GetGameObject(roverName):GetTransform():RotateLocal(90, 1, 0, 0)
+    GetGameObject(roverName):AddCStaticMesh():AssignModel("toyota"):AssignTexture("brick_texture")
     GetGameObject(roverName):AddCStateMachineAI():AssignScript("rover_ai")
 
 end

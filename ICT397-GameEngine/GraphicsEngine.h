@@ -70,6 +70,7 @@ private:
 	*/
 	bool m_skyboxInitialized;
 
+
 	
 
 public:
@@ -220,6 +221,7 @@ public:
 	void RenderSkybox();
 
 	Shader* shader = nullptr;
+
 
 private:
 	/**

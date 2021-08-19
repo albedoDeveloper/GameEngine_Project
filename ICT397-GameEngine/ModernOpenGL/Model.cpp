@@ -141,7 +141,7 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType 
             if (std::strcmp(textures_loaded[j].path.data(), str.C_Str()) == 0)
             {
                 textures.push_back(textures_loaded[j]);
-                skip = true; // a texture with the same filepath has already been loaded, continue to next one. (optimization)
+                skip = true; // a texture with the same filepath has already been loaded, continue to next one.
                 break;
             }
         }
@@ -162,7 +162,7 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType 
 unsigned int Model::TextureFromFile(const char* path, const std::string& directory, bool gamma)
 {
     std::string filename = std::string(path);
-    filename = directory + '/' + filename;
+    filename = directory + '/' + "texture.png";
 
     unsigned int textureID;
     glGenTextures(1, &textureID);
