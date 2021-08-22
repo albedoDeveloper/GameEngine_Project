@@ -86,7 +86,7 @@ struct AHeightMap : public Asset
 	void AssignTextureKey(std::string key, int minRange, int maxRange)
 	{
 		m_textures.emplace(key, TerrainTextureRange(minRange, maxRange));
-		//GenerateCombinedTexture();
+		GenerateCombinedTexture();
 	}
 
 	/**
@@ -96,7 +96,7 @@ struct AHeightMap : public Asset
 	void AssignDetailMapKey(std::string key)
 	{
 		detailMapKey = key;
-		//GRAPHICS->GenMultiTexture(combinedTextureKey, key);
+		GRAPHICS->GenMultiTexture(combinedTextureKey, key);
 	}
 
 	/**
@@ -133,7 +133,7 @@ private:
 	*/
 	void GenerateCombinedTexture()
 	{
-		/*const int PIXEL_DEPTH = 4; //RGBA
+		const int PIXEL_DEPTH = 4; //RGBA
 		unsigned char* newImage = new unsigned char[size * size * PIXEL_DEPTH];
 
 		for (std::map<std::string, TerrainTextureRange>::iterator it = m_textures.begin(); it != m_textures.end(); it++)
@@ -166,6 +166,6 @@ private:
 		//register new texture to opengl
 		GRAPHICS->DeleteTexture(combinedTextureKey); // delete old combined texture from renderer
 		GRAPHICS->GenerateTexture(combinedTextureKey, newImage, size, size);
-		delete[] newImage;*/
+		delete[] newImage;
 	}
 };
