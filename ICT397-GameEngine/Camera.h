@@ -1,7 +1,6 @@
 #pragma once
-
+#include "ModernOpenGL/Shader.h"
 #include "Transform.h"
-
 /**
  * @brief Defines whether the camera is operating in perspective or orthographic mode
 */

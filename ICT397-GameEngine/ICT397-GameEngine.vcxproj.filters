@@ -55,6 +55,15 @@
     <ClCompile Include="CWater.cpp">
       <Filter>components</Filter>
     </ClCompile>
+    <ClCompile Include="ModernOpenGL\Mesh.cpp">
+      <Filter>ModernOpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="ModernOpenGL\Model.cpp">
+      <Filter>ModernOpenGl</Filter>
+    </ClCompile>
+    <ClCompile Include="ModernOpenGL\Shader.cpp">
+      <Filter>ModernOpenGl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AHeightMap.h" />
@@ -115,6 +124,15 @@
     <ClInclude Include="CWater.h">
       <Filter>components</Filter>
     </ClInclude>
+    <ClInclude Include="ModernOpenGL\Mesh.h">
+      <Filter>ModernOpenGl</Filter>
+    </ClInclude>
+    <ClInclude Include="ModernOpenGL\Model.h">
+      <Filter>ModernOpenGl</Filter>
+    </ClInclude>
+    <ClInclude Include="ModernOpenGL\Shader.h">
+      <Filter>ModernOpenGl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\Scripts\displayAtQuit.lua">
@@ -156,6 +174,12 @@
     <None Include="..\Assets\Scripts\waterInteraction.lua" />
     <None Include="..\Assets\Scripts\acidInteract.lua" />
     <None Include="..\Assets\Scripts\loadButton.lua" />
+    <None Include="ModernOpenGL\colourShader.fs">
+      <Filter>ModernOpenGl</Filter>
+    </None>
+    <None Include="ModernOpenGL\vertexShader.vs">
+      <Filter>ModernOpenGl</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="scripts">
@@ -163,6 +187,9 @@
     </Filter>
     <Filter Include="components">
       <UniqueIdentifier>{0a17ef3c-b26a-4c84-8208-89f05973ab79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ModernOpenGl">
+      <UniqueIdentifier>{14ef92f4-47d4-49e3-bdc3-5216b15a7948}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

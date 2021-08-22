@@ -38,24 +38,24 @@ bool GraphicsEngine::initialise(GraphicsLibrary renderer)
 
 bool GraphicsEngine::initLighting()
 {
-	//glDisable(GL_LIGHTING);
-	//return true;
-	return InitOpenGLlighting();
+	glDisable(GL_LIGHTING);
+	return true;
+	//return InitOpenGLlighting();
 }
 
 void GraphicsEngine::GenMultiTexture(std::string tex1Key, std::string tex2Key)
 {
-	m_glActiveTextureARB(GL_TEXTURE0_ARB);
+	/*m_glActiveTextureARB(GL_TEXTURE0_ARB);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(tex1Key));
 	m_glActiveTextureARB(GL_TEXTURE1_ARB);
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(tex2Key));
+	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(tex2Key));*/
 }
 
 void GraphicsEngine::UpdateSpotlight(const CSpotlight * light)
 {
-	glEnable(GL_LIGHT1);
+	/*glEnable(GL_LIGHT1);
 
 	GLfloat lightPosition[] = { light->GetTransformConst().GetPosition().GetX() ,
 								light->GetTransformConst().GetPosition().GetY() ,
@@ -69,7 +69,7 @@ void GraphicsEngine::UpdateSpotlight(const CSpotlight * light)
 	GLfloat lightDiffuse[] = { (*light->GetColour())[0] ,
 								(*light->GetColour())[1] ,
 								(*light->GetColour())[2] };
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse);*/
 	
 
 
@@ -81,7 +81,7 @@ void GraphicsEngine::newFrame()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
-	if (m_camera != nullptr) 
+	/*if (m_camera != nullptr) 
 	{
 		gluLookAt(
 			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), 
@@ -98,7 +98,7 @@ void GraphicsEngine::newFrame()
 	else 
 	{
 		gluLookAt(0, 0, 5, 0, 0, -1, 0, 1, 0); // DEBUG
-	}
+	}*/
 
 	// world axis debug
 	//glPushMatrix();
@@ -158,14 +158,41 @@ void GraphicsEngine::DeleteTexture(std::string key)
 	glDeleteTextures(1, texId);
 }
 
-void GraphicsEngine::DrawModel(const AModel* model, const Transform& worldTrans) const // NOTE keep these commented out statements, we will need them for texturing
+void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const // NOTE keep these commented out statements, we will need them for texturing
 {
 	if (!model)
 	{
 		return;
 	}
+	
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	shader->useShaderForLoop();
+	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, 1.0f, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
+	shader->setMat4("projection", projection);
 
-	glPushMatrix();
+	glm::mat4 view = glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()), 
+	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) + glm::vec3(m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()), 
+	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()));
+	
+	shader->setMat4("view", view);
+	
+	glm::mat4 trans = glm::mat4(1.0f);
+	
+	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
+
+	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
+	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
+	glm::mat4 rotZ = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
+	
+
+	glm::mat4 scale = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+	
+	trans = translation * (rotX * rotY * rotZ) * scale;
+
+	shader->setMat4("transform", trans);
+	model->Draw(*shader);
+	
+	/*glPushMatrix();
 	OpenGLTransformation(worldTrans);
 	if (model->TextureKey != "NULL")
 	{
@@ -199,16 +226,40 @@ void GraphicsEngine::DrawModel(const AModel* model, const Transform& worldTrans)
 		);
 	}
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 
-void GraphicsEngine::DrawModelMovingTexture(const AModel* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
+void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
 {
 	if (!model)
 	{
 		return;
 	}
+	shader->useShaderForLoop();
+	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, 1.0f, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
+	shader->setMat4("projection", projection);
 
+	glm::mat4 view = glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()),
+	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) + glm::vec3(m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()),
+	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()));
+
+	shader->setMat4("view", view);
+
+	glm::mat4 trans = glm::mat4(1.0f);
+	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
+
+	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
+	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
+	glm::mat4 rotZ = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
+
+
+	glm::mat4 scale = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+
+	trans = translation * (rotX * rotY * rotZ) * scale;
+
+	shader->setMat4("transform", trans);
+	model->Draw(*shader);
+	/*
 	glPushMatrix();
 	OpenGLTransformation(worldTrans);
 	if (model->TextureKey != "NULL")
@@ -244,7 +295,7 @@ void GraphicsEngine::DrawModelMovingTexture(const AModel* model, const Transform
 		);
 	}
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }
 
 void GraphicsEngine::DrawTerrain()
@@ -254,7 +305,7 @@ void GraphicsEngine::DrawTerrain()
 
 void GraphicsEngine::GenDisplayListTerrain(CBaseTerrain* terrain, bool withTexture, bool asWireframe)
 {
-	const unsigned DETAIL_MAP_REPEAT = 256;
+	/*const unsigned DETAIL_MAP_REPEAT = 256;
 	const unsigned TERRAIN_REPEAT = 1;
 
 	if (!terrain->HasTerrainData())
@@ -274,7 +325,7 @@ void GraphicsEngine::GenDisplayListTerrain(CBaseTerrain* terrain, bool withTextu
 	glEnable(GL_TEXTURE_2D);
 	glDisable(GL_BLEND);
 	m_glActiveTextureARB(GL_TEXTURE0_ARB);
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(terrain->GetTextureKey()));
+	//glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(terrain->GetTextureKey()));
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 	m_glActiveTextureARB(GL_TEXTURE1_ARB);
@@ -326,7 +377,7 @@ void GraphicsEngine::GenDisplayListTerrain(CBaseTerrain* terrain, bool withTextu
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	glPopMatrix();
-	glEndList();
+	glEndList();*/
 }
 
 void GraphicsEngine::DrawGrid(float gridHeight, float lineThickness, float gridWidth, float cellWidth)
@@ -350,7 +401,7 @@ void GraphicsEngine::DrawGrid(float gridHeight, float lineThickness, float gridW
 
 void GraphicsEngine::DrawImage(std::string key, int width, int height, int posX, int posY)
 {
-	int w, h;
+	/*int w, h;
 	SDL_GetWindowSize(m_window, &w, &h);
 
 	// TODO take params to set position. atm assume centre screen
@@ -384,7 +435,7 @@ void GraphicsEngine::DrawImage(std::string key, int width, int height, int posX,
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
 	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
+	glPopMatrix();*/
 }
 
 unsigned GraphicsEngine::GetTexID(std::string key) const
@@ -392,15 +443,6 @@ unsigned GraphicsEngine::GetTexID(std::string key) const
 	return m_textureIDs.at(key);
 }
 
-unsigned char* GraphicsEngine::GetTextureArray(std::string key, int& w, int& h)
-{
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(key));
-	glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &w);
-	glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &h);
-	unsigned char* data = new unsigned char[w * h * 4];
-	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-	return data;
-}
 
 void GraphicsEngine::GetScreenSize(int& w, int& h)
 {
@@ -412,26 +454,12 @@ void GraphicsEngine::GetScreenSize(int& w, int& h)
 
 void GraphicsEngine::InitSkybox(std::string negx, std::string negy, std::string negz, std::string posx, std::string posy, std::string posz)
 {
-	ASSET->LoadTexture(negx, negx);
-	ASSET->LoadTexture(negy, negy);
-	ASSET->LoadTexture(negz, negz);
-	ASSET->LoadTexture(posx, posx);
-	ASSET->LoadTexture(posy, posy);
-	ASSET->LoadTexture(posz, posz);
 
-	m_skyboxTextures[0] = negx;
-	m_skyboxTextures[1] = negy;
-	m_skyboxTextures[2] = negz;
-	m_skyboxTextures[3] = posx;
-	m_skyboxTextures[4] = posy;
-	m_skyboxTextures[5] = posz;
-
-	m_skyboxInitialized = true;
 }
 
 void GraphicsEngine::RenderSkybox()
 {
-	const float SCALE = 20000;
+	/*const float SCALE = 20000;
 	glColor3f(0, 1, 0);
 	glDisable(GL_FOG);
 	glEnable(GL_TEXTURE_2D);
@@ -481,20 +509,21 @@ void GraphicsEngine::RenderSkybox()
 
 	glPopMatrix();
 
-	glEnable(GL_FOG);
+	glEnable(GL_FOG);*/
 }
 
 bool GraphicsEngine::InitOpenGL()
 {
+	
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		std::cout << "SDL could not initialize! SDL Error: " << SDL_GetError() << std::endl;
 		return false;
 	}
 
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 	if ((m_window = SDL_CreateWindow("ICT397 - Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 900, 700, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
 	{
@@ -508,44 +537,10 @@ bool GraphicsEngine::InitOpenGL()
 		return false;
 	}
 
-	SDL_GL_SetSwapInterval(1);
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	if(m_camera != nullptr)
-		gluPerspective(m_camera->GetCamera().FOV, 1, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip); // TODO make aspect ratio match window
-	else
-		gluPerspective(90, 1, 0.01f, 99999); // TODO make aspect ratio match window;
-	GLenum error = glGetError();
-	if (error != GL_NO_ERROR)
-	{
-		printf("Error initializing OpenGL! %s\n", gluErrorString(error));
-		return false;
-	}
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	//glClearColor(Colour::black[0], Colour::black[1], Colour::black[2], 1);
-	//glShadeModel(GL_FLAT);
-	glEnable(GL_TEXTURE_2D);
+	SDL_GL_SetSwapInterval(0);
 	glEnable(GL_DEPTH_TEST);
 
-	error = glGetError();
-	if (error != GL_NO_ERROR)
-	{
-		printf("Error initializing OpenGL! %s\n", gluErrorString(error));
-		return false;
-	}
-
-#if _DEBUG
-	std::cout << "GL_ARB_multitexture: " << (bool)(std::string((char*)glGetString(GL_EXTENSIONS)).find("GL_ARB_multitexture") != std::string::npos) << std::endl;
-#endif
-
-	if (!initMultiTextures())
-	{
-		std::cout << "Error initialising multi texturing, closing program..." << std::endl;
-		exit(-1);
-	}
-
-	initLighting();
+	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
 
 	return true;
 }
@@ -553,7 +548,7 @@ bool GraphicsEngine::InitOpenGL()
 bool GraphicsEngine::InitOpenGLlighting()
 {
 
-	// fog
+	/*// fog
 	glEnable(GL_FOG);
 	glFogf(GL_FOG_MODE, GL_EXP);
 	glFogf(GL_FOG_DENSITY, 0.01f);
@@ -627,7 +622,7 @@ bool GraphicsEngine::InitOpenGLlighting()
 	//glLightf(GL_LIGHT1, GL_QUADRATIC_ATTENUATION, quadraticAttenuation);
 	glLightfv(GL_LIGHT1, GL_POSITION, spotlightPosition1);
 
-	//end spotlight
+	//end spotlight*/
 	
 	return true;
 }
@@ -642,7 +637,7 @@ bool GraphicsEngine::InitDirectX()
 
 void GraphicsEngine::GenOpenGLTexture(unsigned char* image, int width, int height, std::string key)
 {
-	unsigned texID;
+	/*unsigned texID;
 	glGenTextures(1, &texID);
 	glBindTexture(GL_TEXTURE_2D, texID);
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
@@ -666,7 +661,7 @@ void GraphicsEngine::GenOpenGLTexture(unsigned char* image, int width, int heigh
 		throw "gluBuild2DMipmaps error";
 	}
 
-	m_textureIDs.emplace(key, texID);
+	m_textureIDs.emplace(key, texID);*/
 }
 
 void GraphicsEngine::OpenGLTransformation(const Transform& t) const
@@ -680,7 +675,7 @@ void GraphicsEngine::OpenGLTransformation(const Transform& t) const
 
 void GraphicsEngine::DrawCollider(float maxX, float maxY, float maxZ, float minX, float minY, float minZ, const Transform& worldT)
 {
-	glPushMatrix();
+	/*glPushMatrix();
 	glTranslatef(worldT.GetPosition().GetX(), worldT.GetPosition().GetY(), worldT.GetPosition().GetZ());
 	glScalef(worldT.GetScale().GetX(), worldT.GetScale().GetY(), worldT.GetScale().GetZ());
 	glDisable(GL_TEXTURE_2D);
@@ -713,5 +708,5 @@ void GraphicsEngine::DrawCollider(float maxX, float maxY, float maxZ, float minX
 	glVertex3f(maxX, minY, maxZ);
 	glVertex3f(minX, minY, maxZ);
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }

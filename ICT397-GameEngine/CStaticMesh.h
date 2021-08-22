@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Component.h"
-#include "AModel.h"
+#include "ModernOpenGL/Model.h"
 #include <string>
 
 /**
@@ -20,20 +20,20 @@ public:
 	 * @brief model mutator
 	 * @param model the asset model to assign
 	*/
-	void AssignModel(AModel* model);
+	void AssignModel(Model* model);
 
 	/**
 	 * @brief constructor taking parent as argument
 	 * @param parent pointer to parent transform for this component's transform
 	 * @param parentObj pointer to parent object of this component
 	*/
-	AModel* GetModel();
+	Model* GetModel();
 
 	/**
 	 * @brief model mutator taking factory key
 	 * @param modelKey the asset factory key of the model to assign
 	*/
-	AModel* AssignModelByKey(std::string modelKey);
+	Model* AssignModelByKey(std::string modelKey);
 
 	/**
 	 * @brief initialises the mesh at program start
@@ -57,5 +57,5 @@ protected:
 	/**
 	 * @brief the model this mesh is storing
 	*/
-	AModel* m_model;
+	Model* m_model;
 };

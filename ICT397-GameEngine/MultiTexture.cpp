@@ -7,7 +7,7 @@ PFNGLCLIENTACTIVETEXTUREARBPROC m_glClientActiveTextureARB = NULL;
 
 bool initMultiTextures(void)
 {
-	// Initialize the multitexturing functions
+	/*// Initialize the multitexturing functions
 	m_glActiveTextureARB = (PFNGLACTIVETEXTUREARBPROC)
 		wglGetProcAddress("glActiveTextureARB");
 	m_glMultiTexCoord2fARB = (PFNGLMULTITEXCOORD2FARBPROC)
@@ -16,8 +16,6 @@ bool initMultiTextures(void)
 		wglGetProcAddress("glClientActiveTextureARB");
 	// Make sure that an appropriate version of OpenGL is installed.
 	// If the extension functions could not be found then the function pointers will be NULL
-	if (!m_glActiveTextureARB || !m_glMultiTexCoord2fARB)
-		return false;
-	else
+	if (!m_glActiveTextureARB || !m_glMultiTexCoord2fARB)*/
 		return true;
 }

@@ -1,5 +1,17 @@
 #pragma once
+#include "ModernOpenGL/Model.h"
+#include "AModel.h"
+#include <fstream>
+#include <sstream>
+#include <cstdlib>
+#include <vector>
+#include <fstream>
+#include <sstream>
 
+
+#include "CTerrain.h"
+#include "lodepng.h"
+#include "GraphicsEngine.h"
 #include "AModel.h"
 #include <map>
 #include <string>
@@ -58,12 +70,14 @@ public:
 	 * @param key the key at which the asset is stored
 	 * @return pointer to the asset
 	*/
+	//Model* GetAsset(std::string key);
 	Asset* GetAsset(std::string key);
 	/**
 	 * @brief closes the factory
 	*/
 	void Close();
 
+	//Shader shader
 private:
 	/**
 	 * @brief loads in an object file
@@ -83,6 +97,10 @@ private:
 	 * @brief map of assets, stored by string key
 	*/
 	std::map<std::string, Asset*> m_assets;
+	//std::map <std::string, Amodel*> m_assets;
+	
+
+	bool oneTimeShader = false;
 };
 
 #define ASSET GameAssetFactory::Instance()

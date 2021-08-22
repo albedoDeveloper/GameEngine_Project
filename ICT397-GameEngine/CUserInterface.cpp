@@ -17,12 +17,12 @@ CUserInterface::CUserInterface(Transform* parent, GameObject* parentObj)
 
 void CUserInterface::AssignTexture(std::string key)
 {
-	textureKey = key;
+	//textureKey = key;
 }
 
 void CUserInterface::SetVisibility(bool visibility)
 {
-	isVisible = visibility;
+	//isVisible = visibility;
 }
 
 void CUserInterface::SetSize(unsigned width, unsigned height)
@@ -54,7 +54,7 @@ void CUserInterface::Start()
 
 void CUserInterface::Update()
 {
-	m_mouseDown = false;
+	/*m_mouseDown = false;
 	int xPos = INPUT->GetMouseXPos();
 	int yPos = INPUT->GetMouseYPos();
 	if (xPos >= m_xPos && xPos <= m_xPos+m_width
@@ -64,7 +64,7 @@ void CUserInterface::Update()
 		{
 			m_mouseDown = true;
 		}
-	}
+	}*/
 }
 
 void CUserInterface::Render()
@@ -73,12 +73,12 @@ void CUserInterface::Render()
 
 void CUserInterface::LateRender()
 {
-	if (isVisible)
-		GRAPHICS->DrawImage(textureKey, m_width, m_height, m_xPos, m_yPos);
+	/*if (isVisible)
+		GRAPHICS->DrawImage(textureKey, m_width, m_height, m_xPos, m_yPos);*/
 }
 
 void CUserInterface::Restart()
 {
-	isVisible = m_initialVisibility;
-	Component::Restart();
+	/*isVisible = m_initialVisibility;
+	Component::Restart();*/
 }

@@ -78,6 +78,7 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer)
 {
+	
 	if (!GRAPHICS->initialise(renderer)) {
 		return false;
 	}
