@@ -523,7 +523,7 @@ bool GraphicsEngine::InitOpenGL()
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 	if ((m_window = SDL_CreateWindow("ICT397 - Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 900, 700, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
 	{
@@ -537,46 +537,10 @@ bool GraphicsEngine::InitOpenGL()
 		return false;
 	}
 
-	SDL_GL_SetSwapInterval(1);
+	SDL_GL_SetSwapInterval(0);
 	glEnable(GL_DEPTH_TEST);
-	/*glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	if(m_camera != nullptr)
-		gluPerspective(m_camera->GetCamera().FOV, 1, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip); // TODO make aspect ratio match window
-	else
-		gluPerspective(90, 1, 0.01f, 99999); // TODO make aspect ratio match window;
-	GLenum error = glGetError();
-	if (error != GL_NO_ERROR)
-	{
-		printf("Error initializing OpenGL! %s\n", gluErrorString(error));
-		return false;
-	}
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	//glClearColor(Colour::black[0], Colour::black[1], Colour::black[2], 1);
-	//glShadeModel(GL_FLAT);
-	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_DEPTH_TEST);
-
-	error = glGetError();
-	if (error != GL_NO_ERROR)
-	{
-		printf("Error initializing OpenGL! %s\n", gluErrorString(error));
-		return false;
-	}*/
 
 	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
-#if _DEBUG
-	std::cout << "GL_ARB_multitexture: " << (bool)(std::string((char*)glGetString(GL_EXTENSIONS)).find("GL_ARB_multitexture") != std::string::npos) << std::endl;
-#endif
-
-	/*if (!initMultiTextures())
-	{
-		std::cout << "Error initialising multi texturing, closing program..." << std::endl;
-		exit(-1);
-	}*/
-
-	initLighting();
 
 	return true;
 }
