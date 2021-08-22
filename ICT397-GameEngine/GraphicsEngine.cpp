@@ -179,10 +179,10 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 	
 	glm::mat4 trans = glm::mat4(1.0f);
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
-
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
+	
+	trans = glm::rotate(trans, glm::radians(worldTrans.GetRotation().GetX()), glm::vec3(1.0f, 0.0f, 0.0));
+	trans = glm::rotate(trans, glm::radians(worldTrans.GetRotation().GetY()), glm::vec3(0.0, 1.0f, 0.0));
+	trans = glm::rotate(trans, glm::radians(worldTrans.GetRotation().GetZ()), glm::vec3(0.0, 0.0f, 1.0f));
 	
 	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
 	
@@ -232,27 +232,24 @@ void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& world
 	{
 		return;
 	}
+	OpenGLTransformation(worldTrans);
 	shader->useShaderForLoop();
+	glm::mat4 trans = glm::mat4(1.0f);
 	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, 1.0f, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
 	shader->setMat4("projection", projection);
+
 
 	glm::mat4 view = glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()),
 		glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) + glm::vec3(m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()),
 		glm::vec3(m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()));
 
-	shader->setMat4("view", view);
-
-	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::mat4(1.0f);
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
-
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
-
+	//trans = glm::rotate(trans, glm::qua(worldTrans.GetRotation().GetW(), glm::vec3( worldTrans.GetRotation().GetX(), worldTrans.GetRotation().GetY(), worldTrans.GetRotation().GetZ())), glm::vec3(0.0, 1.0f, 0.0));
 	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
-
 	shader->setMat4("transform", trans);
 	model->Draw(*shader);
+
 	
 	/*
 	glPushMatrix();

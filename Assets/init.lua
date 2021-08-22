@@ -466,8 +466,3 @@ end
 
 GetGameObject("player"):SetActive(true)
 GetGameObject("healthBar"):SetActive(true)
-for i=1,20,1 do
-    roverName = "rover " .. i
-    GetGameObject(roverName):SetActive(true)
-    GetGameObject(roverName):SetDifficulty("easy")
-end
