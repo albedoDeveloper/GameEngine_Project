@@ -436,18 +436,18 @@ GetGameObject("help"):AddCScript():AssignScript("help_lua")
 
 
 
---spawn rovers
 roverXcoords = {517, 931, 478, 615, 008, 572, 525, 382, 697, 151, 399, 502, 503, 112, 802, 301, 130, 623, 203, 978}
 roverZcoords = {337, 266, 901, 130, 776, 757, 815, 615, 355, 609, 024, 860, 907, 756, 289, 541, 949, 839, 307, 665}
 for i=1,20,1 do
     roverName = "rover " .. i
     SpawnGameObject(roverName)
     GetGameObject(roverName):SetActive(false)
-    GetGameObject(roverName):GetTransform():SetPosition(roverXcoords[i],20,roverZcoords[i])
+    GetGameObject(roverName):GetTransform():SetPosition(roverXcoords[i],200,roverZcoords[i])
     GetGameObject(roverName):AddCStaticMesh():AssignModel("rover_model"):AssignTexture("brick_texture")
     GetGameObject(roverName):AddCStateMachineAI():AssignScript("rover_ai")
 
 end
+
 
 
 --spawn rocks

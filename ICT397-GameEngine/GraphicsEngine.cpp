@@ -179,13 +179,8 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 	
 	glm::mat4 trans = glm::mat4(1.0f);
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
-	
-	trans = glm::rotate(trans, glm::radians(worldTrans.GetRotation().GetX()), glm::vec3(1.0f, 0.0f, 0.0));
-	trans = glm::rotate(trans, glm::radians(worldTrans.GetRotation().GetY()), glm::vec3(0.0, 1.0f, 0.0));
-	trans = glm::rotate(trans, glm::radians(worldTrans.GetRotation().GetZ()), glm::vec3(0.0, 0.0f, 1.0f));
-	
+	//trans = glm::rotate(trans, glm::qua(worldTrans.GetRotation().GetW(), glm::vec3( worldTrans.GetRotation().GetX(), worldTrans.GetRotation().GetY(), worldTrans.GetRotation().GetZ())), glm::vec3(0.0, 1.0f, 0.0));
 	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
-	
 	shader->setMat4("transform", trans);
 	model->Draw(*shader);
 	
@@ -393,7 +388,7 @@ void GraphicsEngine::DrawGrid(float gridHeight, float lineThickness, float gridW
 
 void GraphicsEngine::DrawImage(std::string key, int width, int height, int posX, int posY)
 {
-	/*int w, h;
+	int w, h;
 	SDL_GetWindowSize(m_window, &w, &h);
 
 	// TODO take params to set position. atm assume centre screen
@@ -427,7 +422,7 @@ void GraphicsEngine::DrawImage(std::string key, int width, int height, int posX,
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
 	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();*/
+	glPopMatrix();
 }
 
 unsigned GraphicsEngine::GetTexID(std::string key) const
@@ -474,7 +469,7 @@ void GraphicsEngine::InitSkybox(std::string negx, std::string negy, std::string 
 
 void GraphicsEngine::RenderSkybox()
 {
-	/*const float SCALE = 20000;
+	const float SCALE = 20000;
 	glColor3f(0, 1, 0);
 	glDisable(GL_FOG);
 	glEnable(GL_TEXTURE_2D);
@@ -524,7 +519,7 @@ void GraphicsEngine::RenderSkybox()
 
 	glPopMatrix();
 
-	glEnable(GL_FOG);*/
+	glEnable(GL_FOG);
 }
 
 bool GraphicsEngine::InitOpenGL()
@@ -553,7 +548,6 @@ bool GraphicsEngine::InitOpenGL()
 	}
 
 	SDL_GL_SetSwapInterval(1);
-	glEnable(GL_DEPTH_TEST);
 	/*glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	if(m_camera != nullptr)
