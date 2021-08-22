@@ -35,6 +35,11 @@ void CCharacter::Jump(float x, float y, float z)
 		m_velocity = Vector3f(x, y, z);
 		m_onGround = false;
 	}
+
+	/*if (m_velocity.GetY() == 0)
+	{
+		m_onGround = true;
+	}*/
 }
 
 Vector3f CCharacter::GetVelocity()
@@ -65,10 +70,12 @@ void CCharacter::Start()
 
 void CCharacter::Update()
 {
+	//std::cout << "X: " << m_transform.GetWorldTransform().GetPosition().GetX() << " Y: " << m_transform.GetWorldTransform().GetPosition().GetY() << " Z: " << m_transform.GetWorldTransform().GetPosition().GetZ() << std::endl;
+
 	m_currentTime += TIME->GetDeltaTime();
 	while (m_currentTime - m_lastTime >= m_updateInterval) {
 
-		const float GRAVITY = -0.f;
+		const float GRAVITY = -9.81f;
 
 		//newtonian calculations
 		m_velocity = m_velocity * 0.8f;
