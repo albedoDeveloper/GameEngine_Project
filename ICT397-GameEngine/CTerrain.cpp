@@ -151,7 +151,7 @@ void CTerrainBruteForce::Update()
 
 void CTerrainBruteForce::Render()
 {
-	GRAPHICS->DrawTerrain();
+	//GRAPHICS->DrawTerrain();
 }
 
 void CTerrainBruteForce::LateRender()

@@ -31,7 +31,7 @@ void Mesh::setupMesh()
     glBindVertexArray(0);
 }
 
-void Mesh::Draw(Shader& shader)
+void Mesh::Draw(Shader& shader, int text)
 {
     // bind appropriate textures
     unsigned int diffuseNr = 1;
@@ -64,4 +64,6 @@ void Mesh::Draw(Shader& shader)
     glBindVertexArray(0);
 
     glActiveTexture(GL_TEXTURE0);
+
+    glDisable(GL_TEXTURE_2D);
 }

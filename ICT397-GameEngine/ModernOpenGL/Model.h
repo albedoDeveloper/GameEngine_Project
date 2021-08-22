@@ -41,6 +41,7 @@ private:
     std::vector<Texture> textures_loaded;
     modelInfo info;
 
+    int text;
     void loadModel(std::string path);
     void processNode(aiNode* node, const aiScene* scene);
     Mesh processMesh(aiMesh* mesh, const aiScene* scene);

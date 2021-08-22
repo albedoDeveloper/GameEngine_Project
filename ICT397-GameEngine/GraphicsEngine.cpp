@@ -443,15 +443,6 @@ unsigned GraphicsEngine::GetTexID(std::string key) const
 	return m_textureIDs.at(key);
 }
 
-unsigned char* GraphicsEngine::GetTextureArray(std::string key, int& w, int& h)
-{
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(key));
-	glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &w);
-	glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &h);
-	unsigned char* data = new unsigned char[w * h * 4];
-	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-	return data;
-}
 
 void GraphicsEngine::GetScreenSize(int& w, int& h)
 {
@@ -463,21 +454,7 @@ void GraphicsEngine::GetScreenSize(int& w, int& h)
 
 void GraphicsEngine::InitSkybox(std::string negx, std::string negy, std::string negz, std::string posx, std::string posy, std::string posz)
 {
-	ASSET->LoadTexture(negx, negx);
-	ASSET->LoadTexture(negy, negy);
-	ASSET->LoadTexture(negz, negz);
-	ASSET->LoadTexture(posx, posx);
-	ASSET->LoadTexture(posy, posy);
-	ASSET->LoadTexture(posz, posz);
 
-	m_skyboxTextures[0] = negx;
-	m_skyboxTextures[1] = negy;
-	m_skyboxTextures[2] = negz;
-	m_skyboxTextures[3] = posx;
-	m_skyboxTextures[4] = posy;
-	m_skyboxTextures[5] = posz;
-
-	m_skyboxInitialized = true;
 }
 
 void GraphicsEngine::RenderSkybox()
@@ -544,8 +521,8 @@ bool GraphicsEngine::InitOpenGL()
 		return false;
 	}
 
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
 
 	if ((m_window = SDL_CreateWindow("ICT397 - Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 900, 700, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
@@ -696,7 +673,7 @@ bool GraphicsEngine::InitDirectX()
 
 void GraphicsEngine::GenOpenGLTexture(unsigned char* image, int width, int height, std::string key)
 {
-	unsigned texID;
+	/*unsigned texID;
 	glGenTextures(1, &texID);
 	glBindTexture(GL_TEXTURE_2D, texID);
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
@@ -720,7 +697,7 @@ void GraphicsEngine::GenOpenGLTexture(unsigned char* image, int width, int heigh
 		throw "gluBuild2DMipmaps error";
 	}
 
-	m_textureIDs.emplace(key, texID);
+	m_textureIDs.emplace(key, texID);*/
 }
 
 void GraphicsEngine::OpenGLTransformation(const Transform& t) const
@@ -734,7 +711,7 @@ void GraphicsEngine::OpenGLTransformation(const Transform& t) const
 
 void GraphicsEngine::DrawCollider(float maxX, float maxY, float maxZ, float minX, float minY, float minZ, const Transform& worldT)
 {
-	glPushMatrix();
+	/*glPushMatrix();
 	glTranslatef(worldT.GetPosition().GetX(), worldT.GetPosition().GetY(), worldT.GetPosition().GetZ());
 	glScalef(worldT.GetScale().GetX(), worldT.GetScale().GetY(), worldT.GetScale().GetZ());
 	glDisable(GL_TEXTURE_2D);
@@ -767,5 +744,5 @@ void GraphicsEngine::DrawCollider(float maxX, float maxY, float maxZ, float minX
 	glVertex3f(maxX, minY, maxZ);
 	glVertex3f(minX, minY, maxZ);
 	glEnd();
-	glPopMatrix();
+	glPopMatrix();*/
 }

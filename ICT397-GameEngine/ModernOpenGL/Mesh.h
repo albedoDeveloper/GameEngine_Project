@@ -38,7 +38,7 @@ class Mesh
         setupMesh();
     };
     
-    void Draw(Shader& shader);
+    void Draw(Shader& shader, int text);
     private:
     
         //  render data

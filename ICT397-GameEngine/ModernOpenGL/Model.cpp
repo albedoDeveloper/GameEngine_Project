@@ -5,14 +5,16 @@
 void Model::Draw(Shader& shader)
 {
     for (unsigned int i = 0; i < meshes.size(); i++)
-        meshes[i].Draw(shader);
+        meshes[i].Draw(shader,text);
 }
 
 void Model::loadModel(std::string path)
 {
-        // read file via ASSIMP
+
+        stbi_set_flip_vertically_on_load(true);
+    // read file via ASSIMP
         Assimp::Importer importer;
-        const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate |aiProcess_CalcTangentSpace |aiProcess_EmbedTextures | aiProcess_FindInvalidData | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph);
+        const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate |aiProcess_CalcTangentSpace | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph | aiProcess_GenNormals );
       
         if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
         {
@@ -71,13 +73,13 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
             vertex.Normal = vector;
         }
         // texture coordinates
-        if (mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
-        {
+
             glm::vec2 vec;
 
             vec.x = mesh->mTextureCoords[0][i].x;
             vec.y = mesh->mTextureCoords[0][i].y;
             vertex.TexCoords = vec;
+
             
 
             if (mesh->mTangents != NULL)
@@ -93,9 +95,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
                 vector.z = mesh->mBitangents[i].z;
                 vertex.Bitangent = vector;
             }
-        }
-        else
-            vertex.TexCoords = glm::vec2(0.0f, 0.0f);
+
 
         vertices.push_back(vertex);
     }
@@ -162,7 +162,7 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType 
 unsigned int Model::TextureFromFile(const char* path, const std::string& directory, bool gamma)
 {
     std::string filename = std::string(path);
-    filename = directory + '/' + "texture.png";
+    filename = directory + '/' + "diffuse.jpg";
 
     unsigned int textureID;
     glGenTextures(1, &textureID);
@@ -180,6 +180,7 @@ unsigned int Model::TextureFromFile(const char* path, const std::string& directo
             format = GL_RGBA;
 
         glBindTexture(GL_TEXTURE_2D, textureID);
+        text = textureID;
         glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
 
