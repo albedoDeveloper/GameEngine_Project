@@ -443,7 +443,6 @@ for i=1,20,1 do
     roverName = "rover " .. i
     SpawnGameObject(roverName)
     GetGameObject(roverName):SetActive(false)
-    GetGameObject(roverName):GetTransform():Scale(3,3,3)
     GetGameObject(roverName):GetTransform():SetPosition(roverXcoords[i],20,roverZcoords[i])
     GetGameObject(roverName):AddCStaticMesh():AssignModel("rover_model"):AssignTexture("brick_texture")
     GetGameObject(roverName):AddCStateMachineAI():AssignScript("rover_ai")
