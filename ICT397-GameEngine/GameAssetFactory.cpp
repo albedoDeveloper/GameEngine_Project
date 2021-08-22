@@ -78,7 +78,7 @@ void GameAssetFactory::LoadScript(std::string key, std::string filePath)
 
 bool GameAssetFactory::LoadTexture(std::string key, std::string fileName)
 {
-    if (CheckName(key))
+    /*if (CheckName(key))
     {
         return false;
     }
@@ -91,7 +91,7 @@ bool GameAssetFactory::LoadTexture(std::string key, std::string fileName)
 
     GRAPHICS->GenerateTexture(key, image, width, height);
 
-    free(image);
+    free(image);*/
 
 #if _DEBUG
     std::cout << "Texture loaded in. key:" << key << std::endl;
