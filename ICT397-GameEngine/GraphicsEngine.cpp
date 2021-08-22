@@ -231,7 +231,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 
 void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
 {
-	if (!model)
+	/*if (!model)
 	{
 		return;
 	}
@@ -258,7 +258,7 @@ void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& world
 	trans = translation * (rotX * rotY * rotZ) * scale;
 
 	shader->setMat4("transform", trans);
-	model->Draw(*shader);
+	model->Draw(*shader);*/
 	/*
 	glPushMatrix();
 	OpenGLTransformation(worldTrans);
@@ -382,7 +382,7 @@ void GraphicsEngine::GenDisplayListTerrain(CBaseTerrain* terrain, bool withTextu
 
 void GraphicsEngine::DrawGrid(float gridHeight, float lineThickness, float gridWidth, float cellWidth)
 {
-	glDisable(GL_TEXTURE_2D);
+	/*glDisable(GL_TEXTURE_2D);
 	glColor3dv(Colour::purple);
 
 	for (float i = -gridWidth * 0.5f; i < gridWidth; i += cellWidth * 0.5f)
@@ -396,7 +396,7 @@ void GraphicsEngine::DrawGrid(float gridHeight, float lineThickness, float gridW
 			glVertex3f(i, gridHeight, j - 1);
 			glEnd();
 		}
-	}
+	}*/
 }
 
 void GraphicsEngine::DrawImage(std::string key, int width, int height, int posX, int posY)
