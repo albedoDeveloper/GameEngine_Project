@@ -73,29 +73,16 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
             vertex.Normal = vector;
         }
         // texture coordinates
-
+        if (mesh->mTextureCoords[0]) {
             glm::vec2 vec;
 
             vec.x = mesh->mTextureCoords[0][i].x;
-            vec.y = mesh->mTextureCoords[0][i].y;
+            vec.y = 1 - mesh->mTextureCoords[0][i].y;
             vertex.TexCoords = vec;
-
+        }
+        else
+            vertex.TexCoords = glm::vec2(0.0f, 0.0f);
             
-
-            if (mesh->mTangents != NULL)
-            {
-                // tangent
-                vector.x = mesh->mTangents[i].x;
-                vector.y = mesh->mTangents[i].y;
-                vector.z = mesh->mTangents[i].z;
-                vertex.Tangent = vector;
-                // bitangent
-                vector.x = mesh->mBitangents[i].x;
-                vector.y = mesh->mBitangents[i].y;
-                vector.z = mesh->mBitangents[i].z;
-                vertex.Bitangent = vector;
-            }
-
 
         vertices.push_back(vertex);
     }
@@ -162,16 +149,18 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType 
 unsigned int Model::TextureFromFile(const char* path, const std::string& directory, bool gamma)
 {
     std::string filename = std::string(path);
-    filename = directory + '/' + "diffuse.jpg";
+    filename = "../Assets/Models/" + filename;
 
     unsigned int textureID;
     glGenTextures(1, &textureID);
 
     int width, height, nrComponents;
     unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
+    
     if (data)
     {
         GLenum format = GL_RED;
+       
         if (nrComponents == 1)
             format = GL_RED;
         else if (nrComponents == 3)

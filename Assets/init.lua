@@ -2,7 +2,7 @@
 LoadScript("player_script", "playerController.lua")
 
 LoadModel("rock_outcrop", "outcrop.obj")
-LoadModel("toyota", "backpack.obj")
+LoadModel("toyota", "house uv unwraped.fbx")
 
 --spawn player
 SpawnGameObject("player")
@@ -10,7 +10,7 @@ GetGameObject("player"):AddCCharacter():SetHitpoints(5)
 GetGameObject("player"):SetActive(true)
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera()
 GetGameObject("player"):AddCScript():AssignScript("player_script")
-GetGameObject("player"):GetTransform():SetPosition(512,250,512)
+GetGameObject("player"):GetTransform():SetPosition(512,50,512)
 
 
 --spawn rovers
