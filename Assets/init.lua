@@ -2,7 +2,7 @@
 LoadScript("player_script", "playerController.lua")
 
 LoadModel("rock_outcrop", "outcrop.obj")
-LoadModel("toyota", "house uv unwraped.fbx")
+LoadModel("toyota", "goblin.fbx")
 
 --spawn player
 SpawnGameObject("player")
@@ -20,6 +20,7 @@ for i=1,20,1 do
     roverName = "rover " .. i
     SpawnGameObject(roverName)
     GetGameObject(roverName):SetActive(true)
+    GetGameObject(roverName):GetTransform():RotateLocal(-60, 1, 0, 0)
     GetGameObject(roverName):GetTransform():Scale(3,3,3)
     GetGameObject(roverName):GetTransform():SetPosition(roverXcoords[i],20,roverZcoords[i])
     GetGameObject(roverName):AddCStaticMesh():AssignModel("toyota"):AssignTexture("brick_texture")
