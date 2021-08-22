@@ -12,21 +12,6 @@ function Start(gameObject)
 end
 
 function Update(gameObject, deltaTime, inputManager)
-    GetGameObject("healthBar"):GetCUserInterface():SetSize(gameObject:GetCCharacter():GetHitpoints()*40,50)
-    if gameObject:GetCCharacter():GetHitpoints() <= 0 then
-        for i=1,20,1 do
-			roverName = "rover " .. i
-			GetGameObject(roverName):SetActive(false)
-		end
-		GetGameObject("player"):SetActive(false)
-        
-        GetGameObject("endScreen"):GetCUserInterface():SetVisibility(true)
-	    inputManager:LockCursor(false)
-
-	    if inputManager:GetMouseButton(0) and not inputManager:CheckCursorLock() then
-		    inputManager:RestartGame()
-	    end
-    end
     
     currentTime = currentTime + deltaTime
     --print(currentTime)
