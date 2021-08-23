@@ -3,7 +3,7 @@
 CollisionManager::CollisionManager()
     :m_heightMap{ nullptr }
 {
-
+    physicsWorld = physicsCommon->createPhysicsWorld();
 }
 
 CollisionManager* CollisionManager::Instance()
@@ -27,8 +27,15 @@ void CollisionManager::AddColliderToArray(CAABBCollider *collider)
 
 bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform& worldT)
 {
-    AABB a = AABBToWorldSpace(myCollider, worldT);
+    //AABB a = AABBToWorldSpace(myCollider, worldT);
     bool collision = false;
+
+    myCollider.UpdateCollider(worldT);
+
+
+    physicsWorld->testCollision(myCollider.colBody,*COLLISION);
+   /* reactphysics3d::PhysicsCommon i;
+
 
     for (unsigned i = 0; i < m_colliderArray.size(); i++)
     {
@@ -46,7 +53,7 @@ bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform
         {
             collision = true;
         }
-    }
+    }*/
     return collision;
 }
 
@@ -116,10 +123,27 @@ AABB CollisionManager::AABBToWorldSpace(const CAABBCollider& col) const
 
 bool CollisionManager::TestAABBAABB(AABB& a, AABB& b) const
 {
-    // Exit with no intersection if separated along an axis
+    /*// Exit with no intersection if separated along an axis
     if (a.max.GetX() < b.min.GetX() || a.min.GetX() > b.max.GetX()) return false;
     if (a.max.GetY() < b.min.GetY() || a.min.GetY() > b.max.GetY()) return false;
     if (a.max.GetZ() < b.min.GetZ() || a.min.GetZ() > b.max.GetZ()) return false;
-    // Overlapping on all axes means AABBs are intersecting
+    // Overlapping on all axes means AABBs are intersecting*/
     return true;
+}
+
+
+void CollisionManager::CreatePhysicsWorld()
+{
+    
+}
+
+
+void CollisionManager::onContact(const CallbackData& callbackData)
+{
+    //std::cout << "hello" << std::endl;
+    
+    reactphysics3d::Vector3 points(callbackData.getContactPair(0).getContactPoint(0).getLocalPointOnCollider1());
+   
+    std::cout << "Contact Points: " << points.x << " " << points.y << " "<< points.z << std::endl;
+
 }

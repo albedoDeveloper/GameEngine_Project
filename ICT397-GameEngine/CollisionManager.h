@@ -3,10 +3,11 @@
 #include "CTerrain.h"
 #include <vector>
 
+
 /**
  * @brief A singleton that manages collisions between objects
 */
-class CollisionManager
+class CollisionManager : reactphysics3d::CollisionCallback
 {
 private:
 	/**
@@ -28,6 +29,15 @@ private:
 	 * @brief height map in level. currently only supports one heightmap at a time
 	*/
 	CBaseTerrain* m_heightMap;
+
+
+public:
+	/*
+@brief Physics World that allows collisions to occur between collision bodies
+*/
+	reactphysics3d::PhysicsWorld* physicsWorld = nullptr;
+
+	reactphysics3d::PhysicsCommon* physicsCommon = new reactphysics3d::PhysicsCommon;
 
 public:
 	/**
@@ -80,6 +90,17 @@ public:
 	 * @brief check if a AABB is colliding with any other AABB's
 	*/
 	bool CheckCollision(CAABBCollider& myCollider, const Transform& worldT);
+
+	/**
+	 * @brief Initialises the physics world
+	*/
+	void CreatePhysicsWorld();
+	
+	void onContact(const CallbackData& callbackData);
+	/**
+	 * @Get the static collision world, to either add collisonbody or test for colliders
+	*/
+	reactphysics3d::PhysicsWorld* GetPhysicsWorld() { return physicsWorld; };
 
 private:
 	/**
