@@ -141,9 +141,12 @@ void CollisionManager::CreatePhysicsWorld()
 void CollisionManager::onContact(const CallbackData& callbackData)
 {
     //std::cout << "hello" << std::endl;
-    
-    reactphysics3d::Vector3 points(callbackData.getContactPair(0).getContactPoint(0).getLocalPointOnCollider1());
-   
-    std::cout << "Contact Points: " << points.x << " " << points.y << " "<< points.z << std::endl;
+    for (int i = 0; i < callbackData.getContactPair(0).getNbContactPoints(); i++)
+    {
+        reactphysics3d::Vector3 points(callbackData.getContactPair(0).getContactPoint(i).getLocalPointOnCollider1());
 
+        std::cout << "Contact Points: " << points.x << " " << points.y << " " << points.z << std::endl;
+    }
+
+    std::cout << "--------------------------" << std::endl;
 }
