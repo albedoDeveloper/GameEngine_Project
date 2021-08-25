@@ -23,12 +23,15 @@ GraphicsEngine* GraphicsEngine::instance()
 	return engine;
 }
 
-bool GraphicsEngine::initialise(GraphicsLibrary renderer) 
+bool GraphicsEngine::initialise(GraphicsLibrary renderer, int windowWidth, int windowHeight) 
 {
+	m_windowWidth = windowWidth;
+	m_windowHeight = windowHeight;
+
 	switch (renderer)
 	{
 	case GraphicsLibrary::OPENGL:
-		return InitOpenGL();
+		return InitOpenGL(windowWidth, windowHeight);
 	case GraphicsLibrary::DIRECTX:
 		return InitDirectX();
 	default:
@@ -41,16 +44,6 @@ bool GraphicsEngine::initLighting()
 	glDisable(GL_LIGHTING);
 	return true;
 	//return InitOpenGLlighting();
-}
-
-void GraphicsEngine::GenMultiTexture(std::string tex1Key, std::string tex2Key)
-{
-	/*m_glActiveTextureARB(GL_TEXTURE0_ARB);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(tex1Key));
-	m_glActiveTextureARB(GL_TEXTURE1_ARB);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(tex2Key));*/
 }
 
 void GraphicsEngine::UpdateSpotlight(const CSpotlight * light)
@@ -85,7 +78,7 @@ void GraphicsEngine::newFrame()
 
 void GraphicsEngine::renderObjects() 
 {
-	GameObjectFactory::instance()->render();
+	GAMEOBJECT->render();
 }
 
 void GraphicsEngine::endFrame() 
@@ -135,7 +128,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 	}
 	
 	shader->useShaderForLoop();
-	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, 1.0f, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
+	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, ((float)GRAPHICS->m_windowHeight/GRAPHICS->m_windowWidth), m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
 	shader->setMat4("projection", projection);
 
 	glm::mat4 view = glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()), 
@@ -480,9 +473,8 @@ void GraphicsEngine::RenderSkybox()
 	glEnable(GL_FOG);*/
 }
 
-bool GraphicsEngine::InitOpenGL()
+bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 {
-	
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		std::cout << "SDL could not initialize! SDL Error: " << SDL_GetError() << std::endl;
@@ -493,7 +485,7 @@ bool GraphicsEngine::InitOpenGL()
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
-	if ((m_window = SDL_CreateWindow("ICT397 - Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 900, 700, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
+	if ((m_window = SDL_CreateWindow("ICT398 - Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
 	{
 		std::cout << "Window could not be created! SDL Error: " << SDL_GetError() << std::endl;
 		return false;

@@ -36,11 +36,11 @@ struct Camera
 	 * @brief default constructor
 	*/
 	Camera()
-		:FOV{90},
-		NearClip{0.1f},
+		:
+		FOV{90},
+		NearClip{0.01f},
 		FarClip{3000},
 		Projection{ CameraProjection::PERSPECTIVE }
 	{
 	}
 };
-

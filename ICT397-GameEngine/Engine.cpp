@@ -12,9 +12,9 @@ Engine::Engine()
 {
 }
 
-int Engine::OnExecute(GraphicsLibrary renderer)
+int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	if (OnInit(renderer) == false)
+	if (OnInit(renderer, windowWidth, windowHeight) == false)
 	{
 		return -1;
 	}
@@ -38,7 +38,7 @@ int Engine::OnExecute(GraphicsLibrary renderer)
 		if (m_restart)
 		{
 			OnCleanup();
-			OnInit(renderer);
+			OnInit(renderer, windowWidth, windowHeight);
 			m_restart = false;
 		}
 	}
@@ -76,10 +76,10 @@ bool Engine::CheckSaveState()
 	return m_saveState;
 }
 
-bool Engine::OnInit(GraphicsLibrary renderer)
+bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
 	
-	if (!GRAPHICS->initialise(renderer)) {
+	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) {
 		return false;
 	}
 	SCRIPT->Initialise(*this);
@@ -93,6 +93,7 @@ bool Engine::OnInit(GraphicsLibrary renderer)
 
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
+	INPUT->LockCursor(true);
 
 	return true;
 }
