@@ -48,9 +48,14 @@ void Transform::SetRotation(Quaternion newRotation)
 	m_rotation = newRotation;
 }
 
-Quaternion Transform::GetRotation() const
+Quaternion &Transform::GetRotation()
 {
 	return m_rotation;
+}
+
+Quaternion Transform::GetRotation() const
+{
+    return m_rotation;
 }
 
 Transform Transform::GetWorldTransform() const
