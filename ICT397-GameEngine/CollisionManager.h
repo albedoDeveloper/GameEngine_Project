@@ -2,6 +2,7 @@
 #include "CAABBCollider.h"
 #include "CTerrain.h"
 #include <vector>
+#include "DeltaTime.h"
 
 
 /**
@@ -38,6 +39,8 @@ public:
 	reactphysics3d::PhysicsWorld* physicsWorld;
 
 	reactphysics3d::PhysicsCommon* physicsCommon = new reactphysics3d::PhysicsCommon;
+
+	reactphysics3d::DebugRenderer* debugRender;
 
 public:
 	/**

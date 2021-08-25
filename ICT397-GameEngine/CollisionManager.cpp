@@ -4,7 +4,12 @@ CollisionManager::CollisionManager()
     :m_heightMap{ nullptr }
 {
     physicsWorld = physicsCommon->createPhysicsWorld();
-}
+    physicsWorld->setIsDebugRenderingEnabled(true);
+    debugRender = &physicsWorld->getDebugRenderer();
+    debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::COLLISION_SHAPE, true);
+    debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::CONTACT_POINT, true);
+
+;}
 
 CollisionManager* CollisionManager::Instance()
 {
@@ -34,6 +39,34 @@ bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform
     myCollider.UpdateCollider(myCollider.GetTransform().GetWorldTransform());
     
     physicsWorld->testCollision(myCollider.colBody,*COLLISION);
+
+    physicsWorld->update(TIME->GetDeltaTime());
+
+    glPushMatrix();
+    glBegin(GL_TRIANGLES);
+    for (size_t i = 0; i < COLLISION->debugRender->getNbTriangles(); i++)
+    {
+        glColor3f(1.0f, 0, 0);
+        glVertex3f(
+            COLLISION->debugRender->getTriangles()[i].point1.x,
+            COLLISION->debugRender->getTriangles()[i].point1.y,
+            COLLISION->debugRender->getTriangles()[i].point1.z
+        );
+        glColor3f(1.0f, 0, 0);
+        glVertex3f(
+            COLLISION->debugRender->getTriangles()[i].point2.x,
+            COLLISION->debugRender->getTriangles()[i].point2.y,
+            COLLISION->debugRender->getTriangles()[i].point2.z
+        );
+        glColor3f(1.0f, 0, 0);
+        glVertex3f(
+            COLLISION->debugRender->getTriangles()[i].point3.x,
+            COLLISION->debugRender->getTriangles()[i].point3.y,
+            COLLISION->debugRender->getTriangles()[i].point3.z
+        );
+    }
+    glEnd();
+    glPopMatrix();
    /* reactphysics3d::PhysicsCommon i;
 
 
@@ -140,7 +173,7 @@ void CollisionManager::CreatePhysicsWorld()
 void CollisionManager::onContact(const CallbackData& callbackData)
 {
     //std::cout << "hello" << std::endl;
-    for (int i = 0; i < callbackData.getContactPair(0).getNbContactPoints(); i++)
+    /*for (int i = 0; i < callbackData.getContactPair(0).getNbContactPoints(); i++)
     {
         reactphysics3d::Vector3 points(callbackData.getContactPair(0).getContactPoint(i).getLocalPointOnCollider1());
 
@@ -148,5 +181,5 @@ void CollisionManager::onContact(const CallbackData& callbackData)
     }
     
 
-    std::cout << "--------------------------" << std::endl;
+    std::cout << "--------------------------" << std::endl;*/
 }

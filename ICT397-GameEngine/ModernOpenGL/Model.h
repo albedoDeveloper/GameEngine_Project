@@ -27,6 +27,9 @@ public:
         key = keyTemp;
         loadModel(path);
     }
+
+    //Model()
+
     void Draw(Shader& shader);
     std::string key;
     void AssignTextureKey(std::string)

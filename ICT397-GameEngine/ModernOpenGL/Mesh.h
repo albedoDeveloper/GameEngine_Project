@@ -29,20 +29,29 @@ class Mesh
         std::vector<unsigned int> indices;
         std::vector<Texture>      textures;
 
-    Mesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices, const std::vector<Texture>& textures)
-    {
-        this->vertices = vertices;
-        this->indices = indices;
-        this->textures = textures;
+        Mesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices, const std::vector<Texture>& textures)
+        {
+            this->vertices = vertices;
+            this->indices = indices;
+            this->textures = textures;
 
-        setupMesh();
-    };
+            SetupMesh();
+        };
     
-    void Draw(Shader& shader, int text);
+        Mesh(const std::vector<Vertex>& vertices)
+        {
+
+
+        }
+
+        void Draw(Shader& shader, int text);
+    
     private:
     
-        //  render data
+    //  render data
         unsigned int VAO, VBO, EBO;
 
-        void setupMesh();
+        void SetupMesh();
+
+        void SetupMeshVertexOnly();
 };
