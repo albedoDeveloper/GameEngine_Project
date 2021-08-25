@@ -35,7 +35,7 @@ public:
 	/*
 @brief Physics World that allows collisions to occur between collision bodies
 */
-	reactphysics3d::PhysicsWorld* physicsWorld = nullptr;
+	reactphysics3d::PhysicsWorld* physicsWorld;
 
 	reactphysics3d::PhysicsCommon* physicsCommon = new reactphysics3d::PhysicsCommon;
 

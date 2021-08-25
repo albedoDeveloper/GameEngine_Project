@@ -6,11 +6,13 @@ LoadModel("toyota", "goblin.fbx")
 
 --spawn player
 SpawnGameObject("player")
+GetGameObject("player"):GetTransform():SetPosition(512,20,512)
+GetGameObject("player"):AddCAABBCollider()
 GetGameObject("player"):AddCCharacter():SetHitpoints(5)
 GetGameObject("player"):SetActive(true)
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera()
 GetGameObject("player"):AddCScript():AssignScript("player_script")
-GetGameObject("player"):GetTransform():SetPosition(512,20,512)
+
 
 
 --spawn rovers
@@ -40,7 +42,7 @@ GetGameObject(rockName):AddCAABBCollider():SetCollider(1.6,1.2,1.2,-1.1,-3,-1.8)
 rockName = "rock2"
 SpawnGameObject(rockName)
 GetGameObject(rockName):GetTransform():Scale(5,5,5)
-GetGameObject(rockName):GetTransform():SetPosition(520,20,500)
+GetGameObject(rockName):GetTransform():SetPosition(700,20,500)
 GetGameObject(rockName):AddCStaticMesh():AssignModel("rock_outcrop"):AssignTexture("rock_texture")
 GetGameObject(rockName):AddCAABBCollider():SetCollider(1.6,1.2,1.2,-1.1,-3,-1.8)
 

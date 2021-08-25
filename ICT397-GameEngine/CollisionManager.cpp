@@ -30,9 +30,9 @@ bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform
     //AABB a = AABBToWorldSpace(myCollider, worldT);
     bool collision = false;
 
-    myCollider.UpdateCollider(worldT);
 
-
+    myCollider.UpdateCollider(myCollider.GetTransform().GetWorldTransform());
+    
     physicsWorld->testCollision(myCollider.colBody,*COLLISION);
    /* reactphysics3d::PhysicsCommon i;
 
@@ -137,7 +137,6 @@ void CollisionManager::CreatePhysicsWorld()
     
 }
 
-
 void CollisionManager::onContact(const CallbackData& callbackData)
 {
     //std::cout << "hello" << std::endl;
@@ -147,6 +146,7 @@ void CollisionManager::onContact(const CallbackData& callbackData)
 
         std::cout << "Contact Points: " << points.x << " " << points.y << " " << points.z << std::endl;
     }
+    
 
     std::cout << "--------------------------" << std::endl;
 }

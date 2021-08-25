@@ -89,7 +89,7 @@ void CCharacter::Update()
 		Transform futureWorldT;
 
 		// x axis
-		futureWorldT = m_transform.GetWorldTransform();
+		/*futureWorldT = m_transform.GetWorldTransform();
 		futureWorldT.Translate(worldVel.GetX(), 0, 0);
 		if (!COLLISION->CheckCollision(*m_characterCollider, futureWorldT))
 		{
@@ -109,12 +109,24 @@ void CCharacter::Update()
 		if (!COLLISION->CheckCollision(*m_characterCollider, futureWorldT))
 		{
 			newPos.SetZ(newPos.GetZ() + worldVel.GetZ());
-		}
+		}*/
 
+
+		futureWorldT = m_transform.GetWorldTransform();
+		futureWorldT.Translate(worldVel.GetX(), worldVel.GetY(), worldVel.GetZ());
+		
+		newPos.SetX(newPos.GetX() + worldVel.GetX());
+		newPos.SetY(newPos.GetY() + worldVel.GetY());
+		newPos.SetZ(newPos.GetZ() + worldVel.GetZ());
+		
 		m_parent->GetTransform()->SetPositionV(newPos);
 
+		COLLISION->CheckCollision(*m_characterCollider, m_parent->GetTransform());
+
+	
+
 		//apply ground height
-		double groundHeight = COLLISION->CheckCameraTerrainCollisionBilinear(m_parent->GetTransform()->GetPosition());
+		//double groundHeight = COLLISION->CheckCameraTerrainCollisionBilinear(m_parent->GetTransform()->GetPosition());
 
 		//Bilinear interpolation collision
 		//COLLISION->CheckCameraTerrainCollisionBilinear(m_parent->GetTransform()->GetPosition());
@@ -125,7 +137,7 @@ void CCharacter::Update()
 
 		//m_parent->GetTransform()->GetPosition().SetY(m_parent->GetTransform()->GetPosition().GetY() - groundHeight);
 
-		if (m_parent->GetTransform()->GetPosition().GetY() < groundHeight + 4)
+		/*if (m_parent->GetTransform()->GetPosition().GetY() < groundHeight + 4)
 		{
 			m_parent->GetTransform()->SetPosition(
 				m_parent->GetTransform()->GetPosition().GetX(),
@@ -133,7 +145,7 @@ void CCharacter::Update()
 				m_parent->GetTransform()->GetPosition().GetZ()
 			);
 			m_onGround = true;
-		}
+		}*/
 
 		m_lastTime += m_updateInterval;
 	}
