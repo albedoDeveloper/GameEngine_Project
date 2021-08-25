@@ -19,6 +19,7 @@ InputManager* InputManager::Instance()
 void InputManager::Initialise(Engine* e)
 {
     m_engine = e;
+    SDL_ShowCursor(false);
 }
 
 void InputManager::CheckKey(SDL_Event* e)

@@ -80,47 +80,16 @@ void GraphicsEngine::newFrame()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-
-	/*if (m_camera != nullptr) 
-	{
-		gluLookAt(
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), 
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), 
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetPosition().GetX() + m_camera->GetTransform().GetWorldTransform().GetForward().GetX(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetPosition().GetY() + m_camera->GetTransform().GetWorldTransform().GetForward().GetY(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ() + m_camera->GetTransform().GetWorldTransform().GetForward().GetZ(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetUp().GetX(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetUp().GetY(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()
-		);
-	}
-	else 
-	{
-		gluLookAt(0, 0, 5, 0, 0, -1, 0, 1, 0); // DEBUG
-	}*/
-
-	// world axis debug
-	//glPushMatrix();
-	//glTranslatef(512, 250, 512);
-	//glColor3f(1, 0, 0);
-	//glBegin(GL_LINES);
-	//glVertex3f(0, 0, 0);
-	//glVertex3f(1000,0,0);
-	//glColor3f(0, 0, 1);
-	//glVertex3f(0, 0, 0);
-	//glVertex3f(0, 0, 1000);
-	//glEnd();
-	//glPopMatrix();
-
-	RenderSkybox();
+	//RenderSkybox();
 }
 
-void GraphicsEngine::renderObjects() {
+void GraphicsEngine::renderObjects() 
+{
 	GameObjectFactory::instance()->render();
 }
 
-void GraphicsEngine::endFrame() {
+void GraphicsEngine::endFrame() 
+{
 	SDL_GL_SwapWindow(m_window);
 }
 
@@ -165,7 +134,6 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 		return;
 	}
 	
-	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	shader->useShaderForLoop();
 	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, 1.0f, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
 	shader->setMat4("projection", projection);
@@ -539,6 +507,7 @@ bool GraphicsEngine::InitOpenGL()
 
 	SDL_GL_SetSwapInterval(0);
 	glEnable(GL_DEPTH_TEST);
+	glClearColor(0, 1, 0, 1);
 
 	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
 

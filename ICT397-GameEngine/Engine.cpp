@@ -84,6 +84,13 @@ bool Engine::OnInit(GraphicsLibrary renderer)
 	}
 	SCRIPT->Initialise(*this);
 	SCRIPT->RunInitScript();
+
+	// temporarily creating player controller here
+	// TODO move to level loader class
+	GAMEOBJECT->SpawnGameObject("player");
+	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
+	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
+
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
 

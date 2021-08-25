@@ -10,7 +10,7 @@ GameObjectFactory* GameObjectFactory::instance() {
 	return factory;
 }
 
-GameObject* GameObjectFactory::getObject(std::string key) {
+GameObject* GameObjectFactory::GetGameObject(std::string key) {
 #if _DEBUG
 	if (objectList.find(key) == objectList.end()) {
 		std::cout << "GameObject (Key:" << key << ") not found\n";
