@@ -160,10 +160,6 @@ void CCharacter::Update()
 			newPos.SetZ(newPos.GetZ() + worldVel.GetZ());
 		//}
 		}*/
-
-
-		futureWorldT = m_transform.GetWorldTransform();
-		futureWorldT.Translate(worldVel.GetX(), worldVel.GetY(), worldVel.GetZ());
 		
 		newPos.SetX(newPos.GetX() + worldVel.GetX());
 		newPos.SetY(newPos.GetY() + worldVel.GetY());
