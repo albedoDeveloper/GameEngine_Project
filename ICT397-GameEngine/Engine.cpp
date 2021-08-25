@@ -8,7 +8,7 @@
 #include "DeltaTime.h"
 
 Engine::Engine()
-	:m_isRunning{ true }, m_restart{ false }, m_saveState{ false }
+	:m_isRunning{ true }, m_restart{ false }, m_saveState{ false }, levelLoader{ LevelLoader()}
 {
 }
 
@@ -86,6 +86,8 @@ bool Engine::OnInit(GraphicsLibrary renderer)
 	SCRIPT->RunInitScript();
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
+
+	levelLoader.Test();
 
 	return true;
 }

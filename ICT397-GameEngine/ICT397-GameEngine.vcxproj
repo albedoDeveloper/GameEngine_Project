@@ -42,6 +42,7 @@
     <ClCompile Include="GraphicsEngine.cpp" />
     <ClCompile Include="CGridComponent.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="LightFactory.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
@@ -81,6 +82,7 @@
     <ClInclude Include="CGridComponent.h" />
     <ClInclude Include="GraphicsLibraryEnum.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="LightFactory.h" />
     <ClInclude Include="lodepng.h" />
     <ClInclude Include="MathLibrary.h" />

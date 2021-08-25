@@ -2,6 +2,7 @@
 
 #include <SDL2/SDL.h>
 #include "GraphicsLibraryEnum.h"
+#include "LevelLoader.h"
 
 /**
  * @brief A game engine that handles all the backend of a video game and allows for creation of video games with a client program
@@ -21,6 +22,11 @@ private:
 	 * @brief whether the game has been saved
 	*/
 	bool m_saveState;
+	/**
+	 * @brief the level loader class
+	*/
+	LevelLoader levelLoader;
+
 public:
 	/**
 	 * @brief default constructor

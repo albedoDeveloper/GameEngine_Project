@@ -64,6 +64,7 @@
     <ClCompile Include="ModernOpenGL\Shader.cpp">
       <Filter>ModernOpenGl</Filter>
     </ClCompile>
+    <ClCompile Include="LevelLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AHeightMap.h" />
@@ -133,6 +134,7 @@
     <ClInclude Include="ModernOpenGL\Shader.h">
       <Filter>ModernOpenGl</Filter>
     </ClInclude>
+    <ClInclude Include="LevelLoader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\Scripts\displayAtQuit.lua">
