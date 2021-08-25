@@ -82,8 +82,8 @@ bool Engine::OnInit(GraphicsLibrary renderer)
 	if (!GRAPHICS->initialise(renderer)) {
 		return false;
 	}
-	SCRIPT->Initialise(*this);
-	SCRIPT->RunInitScript();
+	// TODO create game objects
+	// TODO load json and move game objects
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
 
@@ -118,5 +118,4 @@ void Engine::OnRender()
 void Engine::OnCleanup()
 {
 	SDL_Quit();
-	SCRIPT->Close();
 }
