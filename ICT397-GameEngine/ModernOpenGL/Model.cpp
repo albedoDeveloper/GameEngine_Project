@@ -8,6 +8,7 @@ void Model::Draw(Shader& shader)
         meshes[i].Draw(shader,text);
 }
 
+
 void Model::loadModel(std::string path)
 {
 
