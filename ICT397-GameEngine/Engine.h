@@ -38,7 +38,7 @@ public:
 	 * @param renderer - which graphics library you want to be used to render
 	 * @return An integer representing program completion status
 	*/
-	int OnExecute(GraphicsLibrary renderer);
+	int OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeight);
 	/**
 	 * @brief ends the game
 	*/
@@ -67,7 +67,7 @@ private:
 	 * @param renderer - which graphics api you want to be used to render
 	 * @return Whether intialisation succeeded
 	*/
-	bool OnInit(GraphicsLibrary renderer);
+	bool OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight);
 
 	/**
 	 * @brief Event handler to be called when an SDL event occurs

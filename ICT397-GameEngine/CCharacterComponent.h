@@ -55,6 +55,8 @@ public:
 	*/
 	void SetHitpoints(int hp);
 
+	void SetPlayerControlled(bool playerControlled);
+
 	/**
 	 * @brief Initialises the component at program start
 	*/
@@ -135,4 +137,6 @@ private:
 	 * @brief The character's collision data for checking collision with other objects
 	*/
 	CAABBCollider *m_characterCollider;
+
+	bool m_playerControlled;
 };

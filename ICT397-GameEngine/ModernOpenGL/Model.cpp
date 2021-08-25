@@ -11,24 +11,22 @@ void Model::Draw(Shader& shader)
 
 void Model::loadModel(std::string path)
 {
-
-        stbi_set_flip_vertically_on_load(true);
+    stbi_set_flip_vertically_on_load(true);
     // read file via ASSIMP
-        Assimp::Importer importer;
-        const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate |aiProcess_CalcTangentSpace | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph | aiProcess_GenNormals );
+    Assimp::Importer importer;
+    const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate |aiProcess_CalcTangentSpace | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph | aiProcess_GenNormals );
       
-        if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
-        {
-            std::cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
-            return;
-        }
+    if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
+    {
+        std::cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
+        return;
+    }
         
-        // retrieve the directory path of the filepath
-        directory = path.substr(0, path.find_last_of('/'));
+    // retrieve the directory path of the filepath
+    directory = path.substr(0, path.find_last_of('/'));
 
-        // process ASSIMP's root node recursively
-        processNode(scene->mRootNode, scene);
-
+    // process ASSIMP's root node recursively
+    processNode(scene->mRootNode, scene);
 }
 
 void  Model::processNode(aiNode* node, const aiScene* scene)
@@ -45,7 +43,6 @@ void  Model::processNode(aiNode* node, const aiScene* scene)
     {
         processNode(node->mChildren[i], scene);
     }
-
 }
 
 Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
