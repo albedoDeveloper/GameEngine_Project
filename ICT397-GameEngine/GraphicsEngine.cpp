@@ -153,41 +153,11 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 	shader->setMat4("transform", trans);
 	model->Draw(*shader);
 	
-	/*glPushMatrix();
-	OpenGLTransformation(worldTrans);
-	if (model->TextureKey != "NULL")
-	{
-		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(model->TextureKey));
-	}
-	else
-	{
-		glDisable(GL_TEXTURE_2D);
-	}
-	glBegin(GL_TRIANGLES);
-	for (size_t i = 0; i < model->NumFaces; i++)
-	{
-		glTexCoord2f(model->texverts[model->texfaces[i].GetX()].GetX(), model->texverts[model->texfaces[i].GetX()].GetY());
-		glVertex3f(
-			model->verts[model->faces[i].GetX()].GetX(),
-			model->verts[model->faces[i].GetX()].GetY(),
-			model->verts[model->faces[i].GetX()].GetZ()
-		);
-		glTexCoord2f(model->texverts[model->texfaces[i].GetY()].GetX(), model->texverts[model->texfaces[i].GetY()].GetY());
-		glVertex3f(
-			model->verts[model->faces[i].GetY()].GetX(),
-			model->verts[model->faces[i].GetY()].GetY(),
-			model->verts[model->faces[i].GetY()].GetZ()
-		);
-		glTexCoord2f(model->texverts[model->texfaces[i].GetZ()].GetX(), model->texverts[model->texfaces[i].GetZ()].GetY());
-		glVertex3f(
-			model->verts[model->faces[i].GetZ()].GetX(),
-			model->verts[model->faces[i].GetZ()].GetY(),
-			model->verts[model->faces[i].GetZ()].GetZ()
-		);
-	}
-	glEnd();
-	glPopMatrix();*/
+	/* draw debug */
+	//COLLISION->debugRender->getLinesArray()[0].point1.z;
+	
+
+
 }
 
 void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
@@ -483,7 +453,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
 
 	if ((m_window = SDL_CreateWindow("ICT398 - Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
 	{

@@ -8,6 +8,7 @@ void Model::Draw(Shader& shader)
         meshes[i].Draw(shader,text);
 }
 
+
 void Model::loadModel(std::string path)
 {
     stbi_set_flip_vertically_on_load(true);

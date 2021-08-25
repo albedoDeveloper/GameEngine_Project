@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
-
+#include <reactphysics3d/reactphysics3d.h>
+#include <memory>
 /**
  * @brief An axis-aligned bounding box for checking collision between objects
 */
@@ -79,7 +80,10 @@ public:
 	*/
 	void RegisterCollider();
 
-private:
+
+
+
+public:
 	/**
 	 * @brief AABB storing data on the bounding box's dimensions
 	*/
@@ -88,5 +92,18 @@ private:
 	 * @brief whether the collider is registered with the collider manager
 	*/
 	bool m_isRegistered = false;
+
+	reactphysics3d::Vector3 tempVec;
+
+	reactphysics3d::Quaternion tempQuat;
+
+	reactphysics3d::CollisionBody* colBody = nullptr;
+
+	reactphysics3d::SphereShape* boxCollider = nullptr;
+
+	reactphysics3d::Collider* col;
+
+	void UpdateCollider(const Transform& transform);
+
 };
 

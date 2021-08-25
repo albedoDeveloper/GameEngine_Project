@@ -7,6 +7,7 @@
 #include "GameObjectFactory.h"
 #include "DeltaTime.h"
 
+
 Engine::Engine()
 	:m_isRunning{ true }, m_restart{ false }, m_saveState{ false }
 {
@@ -82,6 +83,7 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) {
 		return false;
 	}
+	
 	SCRIPT->Initialise(*this);
 	SCRIPT->RunInitScript();
 
@@ -94,6 +96,7 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
 	INPUT->LockCursor(true);
+
 
 	return true;
 }
@@ -128,3 +131,4 @@ void Engine::OnCleanup()
 	SDL_Quit();
 	SCRIPT->Close();
 }
+

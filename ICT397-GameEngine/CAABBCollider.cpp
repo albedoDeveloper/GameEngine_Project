@@ -1,4 +1,4 @@
-#include "CAABBCollider.h"
+#include "CAABBCollider.h"->GetWorldTransform()
 #include "CollisionManager.h"
 
 //DEBUG
@@ -7,9 +7,17 @@
 CAABBCollider::CAABBCollider(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }
 {
-	COLLISION->AddColliderToArray(this);
-	
+	//COLLISION->AddColliderToArray(this);
+
 	m_isRegistered = true;
+
+
+	tempVec = reactphysics3d::Vector3(parent->GetPosition().GetX(), parent->GetPosition().GetY(), parent->GetPosition().GetZ());
+	tempQuat = reactphysics3d::Quaternion(parent->GetRotation().GetX(), parent->GetRotation().GetY(), parent->GetRotation().GetZ(), parent->GetRotation().GetW());
+
+
+
+
 }
 
 void CAABBCollider::SetCollider(float gMaxX, float gMaxY, float gMaxZ, float gMinX, float gMinY, float gMinZ)
@@ -56,5 +64,23 @@ void CAABBCollider::LateRender()
 }
 
 void CAABBCollider::Start()
+{	
+	reactphysics3d::Transform tempTransfrom(tempVec, tempQuat);
+
+	boxCollider = COLLISION->physicsCommon->createSphereShape(2);
+	colBody = COLLISION->GetPhysicsWorld()->createCollisionBody(tempTransfrom);
+	col = colBody->addCollider(boxCollider, tempTransfrom);
+	std::cout << col->getBody()->getTransform().getPosition().x << std::endl;
+	
+}
+
+void CAABBCollider::UpdateCollider(const Transform& transform)
 {
+	reactphysics3d::Vector3 tempVec = reactphysics3d::Vector3(transform.GetPosition().GetX(), transform.GetPosition().GetY(), transform.GetPosition().GetZ());
+	reactphysics3d::Quaternion tempQuat = reactphysics3d::Quaternion::identity();
+
+	reactphysics3d::Transform tempTransfrom(tempVec, tempQuat);
+
+	colBody->setTransform(tempTransfrom);
+
 }
