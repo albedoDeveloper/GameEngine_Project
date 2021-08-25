@@ -102,6 +102,15 @@ void CCharacter::Update()
 			moveVector.SetX(1 * deltaTime);
 		}
 
+		if (INPUT->GetKey(' '))
+		{
+			moveVector.SetY(1 * deltaTime);
+		}
+		else if (INPUT->GetKey('c'))
+		{
+			moveVector.SetY(-1 * deltaTime);
+		}
+
 		GetParentObject()->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * deltaTime * mouseSens);
 		GetParentObject()->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
 

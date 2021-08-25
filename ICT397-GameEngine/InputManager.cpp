@@ -117,8 +117,15 @@ void InputManager::CheckKeyDown(SDL_Event* e)
         if(debugKeyPresses)
             std::cout << "k Down: " << " down = " << x_Key.down << ": held = " << x_Key.held << ": up = " << x_Key.up << std::endl;
         break;
+    case SDLK_c:
+        c_Key.held = true;
+        if (!e->key.repeat)
+        {
+            c_Key.held = true;
+            c_Key.down = true;
+        }
     case SDLK_k:
-        m_Key.held = true;
+        k_Key.held = true;
         if (!e->key.repeat)
         {
             k_Key.held = true;
@@ -202,6 +209,11 @@ void InputManager::CheckKeyUp(SDL_Event* e)
         m_Key.up = true;
         m_Key.held = false;
         m_Key.down = false;
+        break;
+    case SDLK_c:
+        c_Key.up = true;
+        c_Key.held = false;
+        c_Key.down = false;
         break;
     case SDLK_SPACE:
         space_Key.up = true;
@@ -332,6 +344,9 @@ void InputManager::ResetKeyValues()
     //k_Key.held = false;
     m_Key.up = false;
 
+    c_Key.down = false;
+    c_Key.up = false;
+
     space_Key.down = false;
     space_Key.up = false;
 }
@@ -438,6 +453,10 @@ bool InputManager::GetKey(char c)
     case  'm':
     case  'M':
         return  m_Key.held || m_Key.down;
+        break;
+    case  'c':
+    case  'C':
+        return  c_Key.held || c_Key.down;
         break;
     case  ' ':
         return space_Key.held || space_Key.down;
