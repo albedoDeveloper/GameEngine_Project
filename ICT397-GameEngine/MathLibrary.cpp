@@ -105,3 +105,13 @@ float BiLerp(float a, float b, float c, float d, float x, float z)
 	float dcx = Lerp(d, c, x);
 	return Lerp(abx, dcx, z);
 }
+
+float RadToDegrees(float rads)
+{
+	return glm::degrees(rads);
+}
+
+float DegreesToRad(float degrees)
+{
+	return glm::radians(degrees);
+}

@@ -122,6 +122,7 @@ public:
 	 * @brief rotation accessor
 	 * @return the transform's rotation
 	*/
+	Quaternion &GetRotation();
 	Quaternion GetRotation() const;
 	/**
 	 * @brief Retrieves the forward direction of this vector

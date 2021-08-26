@@ -116,6 +116,7 @@ private:
     */
     Key t_Key;
     Key m_Key;
+    Key c_Key;
     Key space_Key;
 
     /**
