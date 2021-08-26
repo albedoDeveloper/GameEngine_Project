@@ -14,9 +14,8 @@ CAABBCollider::CAABBCollider(Transform* parent, GameObject* parentObj)
 
 	tempVec = reactphysics3d::Vector3(parent->GetPosition().GetX(), parent->GetPosition().GetY(), parent->GetPosition().GetZ());
 	tempQuat = reactphysics3d::Quaternion(parent->GetRotation().GetX(), parent->GetRotation().GetY(), parent->GetRotation().GetZ(), parent->GetRotation().GetW());
-
-
-
+	
+	tempQuat = tempQuat.getInverse();
 
 }
 
@@ -78,9 +77,11 @@ void CAABBCollider::UpdateCollider(const Transform& transform)
 {
 	reactphysics3d::Vector3 tempVec = reactphysics3d::Vector3(transform.GetPosition().GetX(), transform.GetPosition().GetY(), transform.GetPosition().GetZ());
 	reactphysics3d::Quaternion tempQuat = reactphysics3d::Quaternion(transform.GetRotation().GetX(), transform.GetRotation().GetY(), transform.GetRotation().GetZ(), transform.GetRotation().GetW());
+	tempQuat = tempQuat.getInverse();
 
 	reactphysics3d::Transform tempTransform(tempVec, tempQuat);
 
 	colBody->setTransform(tempTransform);
+	
 
 }
