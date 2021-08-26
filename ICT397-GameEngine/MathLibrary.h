@@ -397,6 +397,22 @@ public:
 		);
 	}
 
+	Vector3f GetEulerAngles() const
+	{
+		glm::vec3 axis = glm::eulerAngles(m_quat);
+		return Vector3f(
+			axis.x,
+			axis.y,
+			axis.z
+		);
+	}
+
+	// x,y,z in rads
+	void SetEulerAngles(float x, float y, float z)
+	{
+		m_quat = glm::quat(glm::vec3(x, y, z));
+	}
+
 	/**
 	 * @brief x value accessor
 	 * @return the value of X
@@ -751,3 +767,7 @@ float Lerp(float start, float end, float time);
 	 * Then the results of the lerps are compared to the z value
 */
 float BiLerp(float a, float b, float c, float d, float x, float z);
+
+float RadToDegrees(float rads);
+
+float DegreesToRad(float degrees);

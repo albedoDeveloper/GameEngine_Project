@@ -102,8 +102,39 @@ void CCharacter::Update()
 			moveVector.SetX(1 * deltaTime);
 		}
 
-		GetParentObject()->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * deltaTime * mouseSens);
-		GetParentObject()->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
+		if (INPUT->GetKey(' '))
+		{
+			moveVector.SetY(1 * deltaTime);
+		}
+		else if (INPUT->GetKey('c'))
+		{
+			moveVector.SetY(-1 * deltaTime);
+		}
+
+		GameObject *parentObj = GetParentObject();
+		
+		parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
+		parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * deltaTime * mouseSens);
+
+		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f ||
+			RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) < -90.f)
+		{
+
+			Vector3f eulersInRads(
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX(),
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetY(),
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetZ()
+			);
+
+			if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f)
+			{
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().SetEulerAngles(DegreesToRad(90.f), eulersInRads.GetY(), eulersInRads.GetZ());
+			}
+			else
+			{
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().SetEulerAngles(DegreesToRad(-90.f), eulersInRads.GetY(), eulersInRads.GetZ());
+			}
+		}
 
 		Move(moveVector.GetX(), moveVector.GetY(), moveVector.GetZ());
 	}
