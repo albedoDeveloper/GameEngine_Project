@@ -153,7 +153,7 @@ public:
 	 * @param model The model to draw
 	 * @param trans Transform of the model
 	*/
-	void DrawModel(Model* model, const Transform& trans) const;
+	void DrawModel(Model* model, const Transform& trans);
 
 	void DrawModelMovingTexture(Model* model, const Transform& trans, const float texOffset) const;
 	/**
@@ -221,7 +221,12 @@ public:
 	void RenderSkybox();
 
 	Shader* shader = nullptr;
+	
+	Shader* debugShader = nullptr;
 
+	bool firstFrameDebug = false;
+
+	bool drawDebug = false;
 
 private:
 	/**
@@ -253,7 +258,7 @@ private:
 	*/
 	void OpenGLTransformation(const Transform& t) const;
 
-	
+
 };
 
 #define GRAPHICS GraphicsEngine::instance()

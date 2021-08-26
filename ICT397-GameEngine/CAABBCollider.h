@@ -99,7 +99,7 @@ public:
 
 	reactphysics3d::CollisionBody* colBody = nullptr;
 
-	reactphysics3d::SphereShape* boxCollider = nullptr;
+	reactphysics3d::BoxShape* boxCollider = nullptr;
 
 	reactphysics3d::Collider* col;
 
