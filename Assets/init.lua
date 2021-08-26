@@ -9,7 +9,6 @@ for i=1,5,1 do
     goblinMesh = "goblinMesh " .. i
     SpawnGameObject(goblinName)
     GetGameObject(goblinName):GetTransform():SetPosition(xpos,0,zpos)
-    GetGameObject(goblinName):GetTransform():RotateLocal(70, 0, 1, 0)
     GetGameObject(goblinName):AddCAABBCollider()
     GetGameObject(goblinName):AddCStaticMesh(goblinMesh):AssignModel("goblinModel")
     xpos = xpos + 0.5
