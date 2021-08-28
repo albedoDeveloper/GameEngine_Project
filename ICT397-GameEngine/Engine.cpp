@@ -85,6 +85,8 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
+	COLLISION;
+
 	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
 	{
 		return false;

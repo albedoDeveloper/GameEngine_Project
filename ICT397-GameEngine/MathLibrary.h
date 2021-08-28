@@ -377,7 +377,7 @@ public:
 	*/
 	void Rotate(float degrees, const Vector3f& axis)
 	{
-		m_quat = glm::rotate(m_quat, degrees, glm::vec3(axis.GetX(), axis.GetY(), axis.GetZ()));
+		m_quat = glm::rotate(m_quat, glm::radians(degrees), glm::vec3(axis.GetX(), axis.GetY(), axis.GetZ()));
 	}
 	
 	//float GetAngleDegrees() const

@@ -41,7 +41,9 @@ bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform
 
     physicsWorld->update(TIME->GetDeltaTime());
 
-
+    if (hasCollided)
+    {
+    }
     
    /* reactphysics3d::PhysicsCommon i;
 
@@ -157,5 +159,7 @@ void CollisionManager::onContact(const CallbackData& callbackData)
     }
 
     std::cout << "--------------------------" << std::endl;
+
+    hasCollided = true;
 
 }

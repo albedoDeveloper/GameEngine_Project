@@ -158,11 +158,10 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	
 	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() * 2, worldTrans.GetPosition().GetY() * 2, worldTrans.GetPosition().GetZ()*2));
 
-	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
-	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
-	glm::mat4 rotZ = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
+	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
+	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetY(), glm::vec3(0.0, 1.0f, 0.0));
+	glm::mat4 rotZ = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
 	
-
 	glm::mat4 scale = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
 
 	trans = translation * (rotX * rotY * rotZ) * scale;
