@@ -98,12 +98,6 @@ void GraphicsEngine::endFrame(bool debugMenu)
 	{
 		ImGui::Render();
 		glViewport(0, 0, (int)m_imgui_io.DisplaySize.x, (int)m_imgui_io.DisplaySize.y);
-		glClearColor(
-			m_clear_color.x * 
-			m_clear_color.w, m_clear_color.y * 
-			m_clear_color.w, m_clear_color.z * 
-			m_clear_color.w, m_clear_color.w
-		);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 	SDL_GL_SwapWindow(m_window);

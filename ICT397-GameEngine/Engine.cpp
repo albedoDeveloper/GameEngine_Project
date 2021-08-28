@@ -27,7 +27,6 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 
 	while (m_isRunning)
 	{
-		//std::cout << delta.GetDeltaTime() << std::endl;
 		//must reset inputs before polling next event, otherwise previous events are retained
 		INPUT->ResetInputValues();
 
@@ -85,8 +84,8 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	
-	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) {
+	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
+	{
 		return false;
 	}
 	
@@ -103,7 +102,6 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
 	INPUT->LockCursor(true);
-
 
 	return true;
 }
@@ -124,6 +122,20 @@ void Engine::OnLoop()
 {
 	TIME->UpdateDeltaTime();
 	GAMEOBJECT->Update();
+	if (INPUT->GetKeyDown('`'))
+	{
+		m_debugMenu = !m_debugMenu;
+		if (m_debugMenu)
+		{
+			INPUT->LockCursor(false);
+			GAMEOBJECT->GetGameObject("player")->GetComponent<CCharacter>()->SetMouseEnabled(false);
+		}
+		else
+		{
+			INPUT->LockCursor(true);
+			GAMEOBJECT->GetGameObject("player")->GetComponent<CCharacter>()->SetMouseEnabled(true);
+		}
+	}
 }
 
 void Engine::OnRender()
@@ -131,7 +143,7 @@ void Engine::OnRender()
 	GRAPHICS->newFrame(m_debugMenu);
 	GRAPHICS->renderObjects();
 
-	if (m_debugMenu)
+	if (m_debugMenu) // TEST WINDOW
 	{
 		static float f = 0.0f;
 		static int counter = 0;
@@ -164,4 +176,3 @@ void Engine::OnCleanup()
 	SCRIPT->Close();
 	GRAPHICS->Close();
 }
-

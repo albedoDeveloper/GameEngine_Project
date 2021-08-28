@@ -86,6 +86,8 @@ public:
 	*/
 	void Load();
 
+	void SetMouseEnabled(bool isEnabled);
+
 private:
 	/**
 	 * @brief The character's velocity, how much and in what direction its position changes over time
@@ -139,4 +141,6 @@ private:
 	CAABBCollider *m_characterCollider;
 
 	bool m_playerControlled;
+
+	bool m_mouseEnabled;
 };
