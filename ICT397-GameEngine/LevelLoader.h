@@ -1,9 +1,14 @@
 #pragma once
 #include <map>
 #include "GameObject.h"
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
+
 
 class LevelLoader
 {
+
 	//Member variables
 	private:
 		
@@ -13,6 +18,9 @@ class LevelLoader
 		std::map<std::string, GameObject*>* objectList;
 
 	public:
+
+
+		void ToJson(json& j, GameObject* g);
 
 		/**
 		* @brief default constructor
