@@ -1,10 +1,9 @@
 
 LoadModel("goblinModel", "goblin/goblin.fbx")
 
-
 xpos = 0
 zpos = 0
-for i=1,5,1 do
+for i=1,60,1 do
     goblinName = "goblin " .. i
     goblinMesh = "goblinMesh " .. i
     SpawnGameObject(goblinName)
