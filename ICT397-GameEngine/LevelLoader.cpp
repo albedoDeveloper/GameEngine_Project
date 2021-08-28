@@ -22,10 +22,28 @@ struct testGameObject
 
 void LevelLoader::ToJson(json& j, GameObject* g) 
 {
-	j[g->getFactoryKey()] = json({ { "key",g->getFactoryKey() },
-										{"position x",g->GetTransform()->GetPosition().GetX()},
-										{"position y",g->GetTransform()->GetPosition().GetY()},
-										{"position z",g->GetTransform()->GetPosition().GetZ()}, });
+	j[g->getFactoryKey()]["key"] = g->getFactoryKey();
+	
+	j[g->getFactoryKey()]["Position"] =
+	{
+		{"x",g->GetTransform()->GetPosition().GetX()},
+		{"y",g->GetTransform()->GetPosition().GetY()},
+		{"z",g->GetTransform()->GetPosition().GetZ()},
+	};
+}
+
+void LevelLoader::FromJson(json& j, GameObject* g) 
+{
+
+	std::cout << "TEST KEY" << j.at(g->getFactoryKey()).at("key") << std::endl;
+	std::cout << "TEST X" << j.at(g->getFactoryKey()).at("Position").at("x") << std::endl;
+	g->GetTransform()->SetPosition(j.at(g->getFactoryKey()).at("Position").at("x"), j.at(g->getFactoryKey()).at("Position").at("y"), j.at(g->getFactoryKey()).at("Position").at("z"));
+	std::cout << "TEST Y" << j.at(g->getFactoryKey()).at("Position").at("y") << std::endl;
+	std::cout << "TEST Z" << j.at(g->getFactoryKey()).at("Position").at("z") << std::endl;
+	
+	
+	//g->GetTransform()->GetPosition().SetZ(j.at(g->getFactoryKey()).at("Position").at("z"));
+	
 }
 
 LevelLoader::LevelLoader() 
@@ -33,8 +51,39 @@ LevelLoader::LevelLoader()
 	objectList = GAMEOBJECT->GetObjectMap();
 }
 
+void LevelLoader::LoadTest() 
+{
+	std::ifstream ifs("../Assets/SaveFiles/tavern.json");
+	json j = json::parse(ifs);
 
-void LevelLoader::Test() 
+	std::cout << j << std::endl;
+
+	// retrieve and populate map
+	std::map<std::string, GameObject*>::iterator it;
+
+	int i = 0;
+
+	for (it = objectList->begin(); it != objectList->end(); it++)
+	{
+		/*std::cout << "Object " << i << " Of " << objectList->size() << "\n" <<
+			"	 has Key " << it->second->getFactoryKey() << "\n" <<
+			"	 Is at position x=" << it->second->GetTransform()->GetPosition().GetX() << "\n" <<
+			"	 Is at position y=" << it->second->GetTransform()->GetPosition().GetY() << "\n" <<
+			"	 Is at position z=" << it->second->GetTransform()->GetPosition().GetZ() << "\n" <<
+			": " << std::endl;*/
+
+		//we read each gameobject from JSON
+		FromJson(j, it->second);
+
+		i++;
+	}
+
+
+	
+
+}
+
+void LevelLoader::SaveTest() 
 {
 	// Step 1 make json
 	json j;
@@ -95,10 +144,4 @@ void LevelLoader::Test()
 	//Step 5 save json to file
 	o << std::setw(4) << j << std::endl;
 	
-
-	
-	
-
-	
-
 }

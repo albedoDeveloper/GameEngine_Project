@@ -24,6 +24,10 @@ private:
 	*/
 	bool m_saveState;
 	/**
+	 * @brief whether the game needs to be laoded
+	*/
+	bool m_loadState;
+	/**
 	 * @brief the level loader class
 	*/
 	LevelLoader levelLoader;

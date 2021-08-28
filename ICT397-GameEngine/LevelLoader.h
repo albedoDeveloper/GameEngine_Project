@@ -22,16 +22,22 @@ class LevelLoader
 
 		void ToJson(json& j, GameObject* g);
 
+		void FromJson(json& j, GameObject* g);
+
 		/**
 		* @brief default constructor
 		*/
 		LevelLoader();
 
+		/**
+		* @brief loading test
+		*/
+		void LoadTest();
 
 		/**
 		* @brief test function
 		*/
-		void Test();
+		void SaveTest();
 
 };
 

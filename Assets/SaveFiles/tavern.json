@@ -1,38 +1,50 @@
 {
     "goblin 1": {
-        "key": "goblin 1",
-        "position x": 0.0,
-        "position y": 0.0,
-        "position z": 0.0
+        "Position": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0
+        },
+        "key": "goblin 1"
     },
     "goblin 2": {
-        "key": "goblin 2",
-        "position x": 0.5,
-        "position y": 0.0,
-        "position z": 0.0
+        "Position": {
+            "x": 0.5,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "key": "goblin 2"
     },
     "goblin 3": {
-        "key": "goblin 3",
-        "position x": 1.0,
-        "position y": 0.0,
-        "position z": 0.0
+        "Position": {
+            "x": 1.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "key": "goblin 3"
     },
     "goblin 4": {
-        "key": "goblin 4",
-        "position x": 1.5,
-        "position y": 0.0,
-        "position z": 0.0
+        "Position": {
+            "x": 1.5,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "key": "goblin 4"
     },
     "goblin 5": {
-        "key": "goblin 5",
-        "position x": 2.0,
-        "position y": 0.0,
-        "position z": 0.0
+        "Position": {
+            "x": 2.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "key": "goblin 5"
     },
     "player": {
-        "key": "player",
-        "position x": 0.0,
-        "position y": 0.0,
-        "position z": 0.0
+        "Position": {
+            "x": 2.054595947265625,
+            "y": 0.0,
+            "z": 2.7815608978271484
+        },
+        "key": "player"
     }
 }

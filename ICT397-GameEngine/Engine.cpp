@@ -10,7 +10,7 @@
 #include "imgui/imgui_impl_opengl3.h"
 
 Engine::Engine()
-	:m_isRunning{ true }, m_restart{ false }, m_saveState{ false }, levelLoader{ LevelLoader()},
+	:m_isRunning{ true }, m_restart{ false }, m_saveState{ false }, m_loadState{false}, levelLoader{ LevelLoader() },
 	m_debugMenu{ false }, m_drawColliders{ false }
 {
 }
@@ -67,14 +67,16 @@ void Engine::RestartGame()
 
 void Engine::SaveGame()
 {
-	GAMEOBJECT->Save();
-	m_saveState = true;
+	//GAMEOBJECT->Save();
+	levelLoader.SaveTest();
+	//m_saveState = true;
 }
 
 void Engine::LoadGame()
 {
-	GAMEOBJECT->Load();
-	INPUT->Initialise(this);
+	//GAMEOBJECT->Load();
+	//INPUT->Initialise(this);
+	levelLoader.LoadTest();
 }
 
 bool Engine::CheckSaveState()
@@ -104,7 +106,7 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	INPUT->LockCursor(true);
 
 
-	levelLoader.Test();
+	//levelLoader.SaveTest();
 
 	return true;
 }
@@ -139,6 +141,13 @@ void Engine::OnLoop()
 			GAMEOBJECT->GetGameObject("player")->GetComponent<CCharacter>()->SetMouseEnabled(true);
 		}
 	}
+
+	if (m_saveState)
+		levelLoader.SaveTest();
+
+	if (m_loadState)
+		levelLoader.LoadTest();
+
 }
 
 void Engine::OnRender()
@@ -160,6 +169,11 @@ void Engine::OnRender()
 		//ImGui::Text("counter = %d", counter);
 
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+		m_saveState = ImGui::Button("Save", ImVec2(100,30));
+		m_loadState = ImGui::Button("Load", ImVec2(100,30));
+
+
 		ImGui::End();
 	}
 
