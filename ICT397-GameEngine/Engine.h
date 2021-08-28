@@ -23,9 +23,7 @@ private:
 	*/
 	bool m_saveState;
 
-
-	
-
+	bool m_debugMenu;
 
 public:
 	/**
