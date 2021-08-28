@@ -11,6 +11,7 @@
 #include <string>
 #include <map>
 #include "MultiTexture.h"
+#include "imgui/imgui.h"
 
 class CCamera;
 class CBaseTerrain;
@@ -74,6 +75,9 @@ private:
 
 	int m_windowHeight;
 
+	ImGuiIO m_imgui_io;
+
+	ImVec4 m_clear_color;
 
 public:
 	/**
@@ -111,7 +115,7 @@ public:
 	/**
 	 * @brief Function to be called at the start of every frame for rendering
 	*/
-	void newFrame();
+	void newFrame(bool debugMenu);
 	/**
 	 * @brief Renders all visible objects
 	*/
@@ -119,7 +123,7 @@ public:
 	/**
 	 * @brief Function to be called at the end of every frame for rendering
 	*/
-	void endFrame();
+	void endFrame(bool debugMenu);
 	/**
 	 * @brief generates a texture for the graphics library
 	 * @param key the texture key
@@ -220,13 +224,15 @@ public:
 
 	void RenderSkybox();
 
+	void Close();
+
 	Shader* shader = nullptr;
 	
 	Shader* debugShader = nullptr;
 
-	bool firstFrameDebug = false;
+	bool m_firstFrameDebug = false;
 
-	bool drawDebug = false;
+	bool m_drawDebug = false;
 
 private:
 	/**
@@ -234,6 +240,9 @@ private:
 	 * @return whether operation succeeded
 	*/
 	bool InitOpenGL(int windowWidth, int windowHeight);
+
+	void InitImGui();
+
 	/**
 	 * @brief initialises lighting for openGL
 	 * @return whether operation succeeded

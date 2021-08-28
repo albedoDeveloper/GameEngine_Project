@@ -18,7 +18,8 @@ CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	m_lastTime{ 0 }, 
 	m_currentTime{ 0 }, 
 	m_updateInterval{1.f/60},
-	m_playerControlled{ false }
+	m_playerControlled{ false },
+	m_mouseEnabled{ true }
 {
 	m_characterCollider = m_parent->GetComponent<CAABBCollider>();
 
@@ -113,8 +114,11 @@ void CCharacter::Update()
 
 		GameObject *parentObj = GetParentObject();
 		
-		parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
-		parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * deltaTime * mouseSens);
+		if (m_mouseEnabled)
+		{
+			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
+			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * deltaTime * mouseSens);
+		}
 
 		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f ||
 			RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) < -90.f)
@@ -138,7 +142,6 @@ void CCharacter::Update()
 
 		Move(moveVector.GetX(), moveVector.GetY(), moveVector.GetZ());
 	}
-
 
 	//m_currentTime += deltaTime;
 	//while (m_currentTime - m_lastTime >= m_updateInterval) {
@@ -224,4 +227,9 @@ void CCharacter::Load()
 {
 	m_hitpoints = m_savedHitpoints;
 	Component::Load();
+}
+
+void CCharacter::SetMouseEnabled(bool isEnabled)
+{
+	m_mouseEnabled = isEnabled;
 }

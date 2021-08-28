@@ -5,6 +5,10 @@
 #include "CCameraComponent.h"
 #include "SkyboxVerts.h"
 #include "InputManager.h"
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_sdl.h"
+#include "imgui/imgui_impl_opengl3.h"
+
 
 GraphicsEngine::GraphicsEngine()
 	:m_window{ nullptr },
@@ -14,7 +18,9 @@ GraphicsEngine::GraphicsEngine()
 	m_graphLib{ GraphicsLibrary::OPENGL },
 	m_textureIDs{},
 	m_skyboxInitialized{ false },
-	m_skyboxTextures{}
+	m_skyboxTextures{},
+	m_clear_color{ 0.45f, 0.55f, 0.60f, 1.00f },
+	m_imgui_io{}
 {
 }
 
@@ -64,38 +70,37 @@ void GraphicsEngine::UpdateSpotlight(const CSpotlight * light)
 								(*light->GetColour())[1] ,
 								(*light->GetColour())[2] };
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse);*/
-	
-
-
 }
 
 
-void GraphicsEngine::newFrame() 
+void GraphicsEngine::newFrame(bool debugMenu) 
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	firstFrameDebug = true;
+	m_firstFrameDebug = true;
 
-	//RenderSkybox();
+	if (debugMenu)
+	{
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplSDL2_NewFrame();
+		ImGui::NewFrame();
+	}
 }
 
 void GraphicsEngine::renderObjects() 
 {
 	GAMEOBJECT->render();
-
 }
 
-void GraphicsEngine::endFrame() 
+void GraphicsEngine::endFrame(bool debugMenu) 
 {
-
+	if (debugMenu)
+	{
+		ImGui::Render();
+		glViewport(0, 0, (int)m_imgui_io.DisplaySize.x, (int)m_imgui_io.DisplaySize.y);
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+	}
 	SDL_GL_SwapWindow(m_window);
-
-
-	if (INPUT->GetKeyDown('m') && !drawDebug)
-		drawDebug = true;
-
-	else if (INPUT->GetKeyDown('m') && drawDebug)
-		drawDebug = false;
 }
 
 void GraphicsEngine::SetDisplayCamera(CCamera* camera) 
@@ -166,7 +171,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	model->Draw(*shader);
 
 
-	if (firstFrameDebug && drawDebug)
+	if (m_firstFrameDebug && m_drawDebug)
 	{
 
 		for (int i = 0; i < COLLISION->physicsWorld->getDebugRenderer().getNbTriangles(); i++)
@@ -220,7 +225,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 
 			glPolygonMode(GL_FRONT, GL_FILL);
 			glPolygonMode(GL_BACK, GL_FILL);
-			firstFrameDebug = false;
+			m_firstFrameDebug = false;
 		}
 
 		/*tempVector.emplace_back(glm::vec3(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z));
@@ -553,6 +558,17 @@ void GraphicsEngine::RenderSkybox()
 	glEnable(GL_FOG);*/
 }
 
+void GraphicsEngine::Close()
+{
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplSDL2_Shutdown();
+	ImGui::DestroyContext();
+
+	SDL_GL_DeleteContext(m_glContext);
+	SDL_DestroyWindow(m_window);
+	SDL_Quit();
+}
+
 bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -577,7 +593,12 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 		return false;
 	}
 
+	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
+
+	// init imgui
+	InitImGui();
+
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.4, 0.2, 0.7, 1);
 
@@ -585,6 +606,17 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/debugColourShader.fs");
 
 	return true;
+}
+
+void GraphicsEngine::InitImGui()
+{
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	m_imgui_io = ImGui::GetIO(); 
+	(void)m_imgui_io;
+	ImGui::StyleColorsDark();
+	ImGui_ImplSDL2_InitForOpenGL(m_window, m_glContext);
+	ImGui_ImplOpenGL3_Init("#version 330 core");
 }
 
 bool GraphicsEngine::InitOpenGLlighting()

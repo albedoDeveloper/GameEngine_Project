@@ -23,9 +23,9 @@ private:
 	*/
 	bool m_saveState;
 
+	bool m_debugMenu;
 
-	
-
+	bool m_drawColliders;
 
 public:
 	/**
