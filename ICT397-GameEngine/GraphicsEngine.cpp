@@ -101,12 +101,6 @@ void GraphicsEngine::endFrame(bool debugMenu)
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 	SDL_GL_SwapWindow(m_window);
-
-	if (INPUT->GetKeyDown('m') && !m_drawDebug)
-		m_drawDebug = true;
-
-	else if (INPUT->GetKeyDown('m') && m_drawDebug)
-		m_drawDebug = false;
 }
 
 void GraphicsEngine::SetDisplayCamera(CCamera* camera) 
