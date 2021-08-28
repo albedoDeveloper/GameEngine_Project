@@ -170,7 +170,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	shader->setMat4("transform", trans);
 	model->Draw(*shader);
 
-	if (firstFrameDebug && drawDebug)
+	if (m_firstFrameDebug && m_drawDebug)
 		DrawDebug(projection, view, trans);
 
 	
@@ -476,6 +476,6 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
 	glEnable(GL_CULL_FACE);
-	firstFrameDebug = false;
+	m_firstFrameDebug = false;
 		
 }
