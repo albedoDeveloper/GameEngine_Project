@@ -70,8 +70,10 @@ private:
 	*/
 	bool m_skyboxInitialized;
 
+	int m_windowWidth;
 
-	
+	int m_windowHeight;
+
 
 public:
 	/**
@@ -89,7 +91,7 @@ public:
 	 * @param renderer - which graphics api to use
 	 * @return Whether initialisation succeeded
 	*/
-	bool initialise(GraphicsLibrary renderer);
+	bool initialise(GraphicsLibrary renderer, int windowWidth, int windowHeight);
 	/**
 	 * @brief initialises lighting
 	 * @return whether operation succeeded
@@ -105,8 +107,6 @@ public:
 	 * @return the camera in use
 	*/
 	//Camera GetCamera();
-
-	void GenMultiTexture(std::string tex1Key, std::string tex2Key);
 
 	/**
 	 * @brief Function to be called at the start of every frame for rendering
@@ -153,7 +153,7 @@ public:
 	 * @param model The model to draw
 	 * @param trans Transform of the model
 	*/
-	void DrawModel(Model* model, const Transform& trans) const;
+	void DrawModel(Model* model, const Transform& trans);
 
 	void DrawModelMovingTexture(Model* model, const Transform& trans, const float texOffset) const;
 	/**
@@ -221,14 +221,19 @@ public:
 	void RenderSkybox();
 
 	Shader* shader = nullptr;
+	
+	Shader* debugShader = nullptr;
 
+	bool firstFrameDebug = false;
+
+	bool drawDebug = false;
 
 private:
 	/**
 	 * @brief initialises openGL
 	 * @return whether operation succeeded
 	*/
-	bool InitOpenGL();
+	bool InitOpenGL(int windowWidth, int windowHeight);
 	/**
 	 * @brief initialises lighting for openGL
 	 * @return whether operation succeeded
@@ -253,7 +258,7 @@ private:
 	*/
 	void OpenGLTransformation(const Transform& t) const;
 
-	
+
 };
 
 #define GRAPHICS GraphicsEngine::instance()

@@ -297,7 +297,7 @@ void ScriptingEngine::SpawnGameObject(std::string key)
 
 GameObject* ScriptingEngine::GetGameObject(std::string objectKey)
 {
-    return GAMEOBJECT->getObject(objectKey);
+    return GAMEOBJECT->GetGameObject(objectKey);
 }
 
 void ScriptingEngine::QuitGame()

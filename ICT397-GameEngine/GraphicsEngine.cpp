@@ -4,6 +4,7 @@
 #include "Color.h"
 #include "CCameraComponent.h"
 #include "SkyboxVerts.h"
+#include "InputManager.h"
 
 GraphicsEngine::GraphicsEngine()
 	:m_window{ nullptr },
@@ -23,12 +24,15 @@ GraphicsEngine* GraphicsEngine::instance()
 	return engine;
 }
 
-bool GraphicsEngine::initialise(GraphicsLibrary renderer) 
+bool GraphicsEngine::initialise(GraphicsLibrary renderer, int windowWidth, int windowHeight) 
 {
+	m_windowWidth = windowWidth;
+	m_windowHeight = windowHeight;
+
 	switch (renderer)
 	{
 	case GraphicsLibrary::OPENGL:
-		return InitOpenGL();
+		return InitOpenGL(windowWidth, windowHeight);
 	case GraphicsLibrary::DIRECTX:
 		return InitDirectX();
 	default:
@@ -41,16 +45,6 @@ bool GraphicsEngine::initLighting()
 	glDisable(GL_LIGHTING);
 	return true;
 	//return InitOpenGLlighting();
-}
-
-void GraphicsEngine::GenMultiTexture(std::string tex1Key, std::string tex2Key)
-{
-	/*m_glActiveTextureARB(GL_TEXTURE0_ARB);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(tex1Key));
-	m_glActiveTextureARB(GL_TEXTURE1_ARB);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(tex2Key));*/
 }
 
 void GraphicsEngine::UpdateSpotlight(const CSpotlight * light)
@@ -80,48 +74,28 @@ void GraphicsEngine::newFrame()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+	firstFrameDebug = true;
 
-	/*if (m_camera != nullptr) 
-	{
-		gluLookAt(
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), 
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), 
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetPosition().GetX() + m_camera->GetTransform().GetWorldTransform().GetForward().GetX(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetPosition().GetY() + m_camera->GetTransform().GetWorldTransform().GetForward().GetY(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ() + m_camera->GetTransform().GetWorldTransform().GetForward().GetZ(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetUp().GetX(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetUp().GetY(),
-			(double)m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()
-		);
-	}
-	else 
-	{
-		gluLookAt(0, 0, 5, 0, 0, -1, 0, 1, 0); // DEBUG
-	}*/
-
-	// world axis debug
-	//glPushMatrix();
-	//glTranslatef(512, 250, 512);
-	//glColor3f(1, 0, 0);
-	//glBegin(GL_LINES);
-	//glVertex3f(0, 0, 0);
-	//glVertex3f(1000,0,0);
-	//glColor3f(0, 0, 1);
-	//glVertex3f(0, 0, 0);
-	//glVertex3f(0, 0, 1000);
-	//glEnd();
-	//glPopMatrix();
-
-	RenderSkybox();
+	//RenderSkybox();
 }
 
-void GraphicsEngine::renderObjects() {
-	GameObjectFactory::instance()->render();
+void GraphicsEngine::renderObjects() 
+{
+	GAMEOBJECT->render();
+
 }
 
-void GraphicsEngine::endFrame() {
+void GraphicsEngine::endFrame() 
+{
+
 	SDL_GL_SwapWindow(m_window);
+
+
+	if (INPUT->GetKeyDown('m') && !drawDebug)
+		drawDebug = true;
+
+	else if (INPUT->GetKeyDown('m') && drawDebug)
+		drawDebug = false;
 }
 
 void GraphicsEngine::SetDisplayCamera(CCamera* camera) 
@@ -158,16 +132,15 @@ void GraphicsEngine::DeleteTexture(std::string key)
 	glDeleteTextures(1, texId);
 }
 
-void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const // NOTE keep these commented out statements, we will need them for texturing
+void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOTE keep these commented out statements, we will need them for texturing
 {
 	if (!model)
 	{
 		return;
 	}
 	
-	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	shader->useShaderForLoop();
-	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, 1.0f, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
+	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, ((float)GRAPHICS->m_windowHeight/GRAPHICS->m_windowWidth), m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
 	shader->setMat4("projection", projection);
 
 	glm::mat4 view = glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()), 
@@ -178,7 +151,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 	
 	glm::mat4 trans = glm::mat4(1.0f);
 	
-	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
+	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX()*2, worldTrans.GetPosition().GetY()*2, worldTrans.GetPosition().GetZ()*2));
 
 	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
 	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
@@ -191,42 +164,110 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) const 
 
 	shader->setMat4("transform", trans);
 	model->Draw(*shader);
+
+
+	if (firstFrameDebug && drawDebug)
+	{
+
+		for (int i = 0; i < COLLISION->physicsWorld->getDebugRenderer().getNbTriangles(); i++)
+		{
+
+			std::vector <float> tempVector;
+			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x);
+			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y);
+			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z);
+
+			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.x);
+			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.y);
+			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.z);
+
+			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.x);
+			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.y);
+			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.z);
+
+			glPolygonMode(GL_FRONT, GL_LINE);
+			glPolygonMode(GL_BACK, GL_LINE);
+
+			debugShader->useShaderForLoop();
+
+			debugShader->setMat4("projection", projection);
+
+			debugShader->setMat4("view", view);
+
+			glm::mat4 trans2 = glm::translate(trans, glm::vec3(0, 0, 0));
+
+
+			shader->setMat4("transform", trans2);
+			debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
+
+			unsigned int VAO, VBO;
+			// create buffers/arrays
+			glGenVertexArrays(1, &VAO);
+			glGenBuffers(1, &VBO);
+			glBindVertexArray(VAO);
+			// load data into vertex buffers
+			glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+			glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()) * tempVector.size(), tempVector.data(), GL_STATIC_DRAW);
+
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+			glEnableVertexAttribArray(0);
+			glBindVertexArray(0);
+
+			glBindVertexArray(VAO);
+			glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
+			glBindVertexArray(0);
+
+			glPolygonMode(GL_FRONT, GL_FILL);
+			glPolygonMode(GL_BACK, GL_FILL);
+			firstFrameDebug = false;
+		}
+
+		/*tempVector.emplace_back(glm::vec3(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z));
+		tempVector.emplace_back(glm::vec3(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.x, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.y, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.z));
+		tempVector.emplace_back(glm::vec3(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.x, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.y, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.z));*/
+		
+		//tempVector.emplace_back(glm::vec3(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].color1, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z));
+		
+		//COLLISION->debugRender->getTrianglesArray;
+	}
+
 	
-	/*glPushMatrix();
-	OpenGLTransformation(worldTrans);
-	if (model->TextureKey != "NULL")
+	/*glColor3f(0.0f, 1.0, 0);
+	gluLookAt(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ(),
+		m_camera->GetTransform().GetWorldTransform().GetPosition().GetX() + m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY() + m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ() + m_camera->GetTransform().GetWorldTransform().GetForward().GetZ(),
+		m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ());
+
+	glPushMatrix();
+	glBegin(GL_TRIANGLE_FAN);
+	for (size_t i = 0; i < COLLISION->physicsWorld->getDebugRenderer().getNbTriangles(); i++)
 	{
-		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(model->TextureKey));
-	}
-	else
-	{
-		glDisable(GL_TEXTURE_2D);
-	}
-	glBegin(GL_TRIANGLES);
-	for (size_t i = 0; i < model->NumFaces; i++)
-	{
-		glTexCoord2f(model->texverts[model->texfaces[i].GetX()].GetX(), model->texverts[model->texfaces[i].GetX()].GetY());
+		//std::cout << COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x << std::endl;
+
 		glVertex3f(
-			model->verts[model->faces[i].GetX()].GetX(),
-			model->verts[model->faces[i].GetX()].GetY(),
-			model->verts[model->faces[i].GetX()].GetZ()
+			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x,
+			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y,
+			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z
 		);
-		glTexCoord2f(model->texverts[model->texfaces[i].GetY()].GetX(), model->texverts[model->texfaces[i].GetY()].GetY());
 		glVertex3f(
-			model->verts[model->faces[i].GetY()].GetX(),
-			model->verts[model->faces[i].GetY()].GetY(),
-			model->verts[model->faces[i].GetY()].GetZ()
+			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.x,
+			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.y,
+			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.z
 		);
-		glTexCoord2f(model->texverts[model->texfaces[i].GetZ()].GetX(), model->texverts[model->texfaces[i].GetZ()].GetY());
 		glVertex3f(
-			model->verts[model->faces[i].GetZ()].GetX(),
-			model->verts[model->faces[i].GetZ()].GetY(),
-			model->verts[model->faces[i].GetZ()].GetZ()
+			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.x,
+			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.y,
+			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.z
 		);
 	}
 	glEnd();
 	glPopMatrix();*/
+
+	/* draw debug */
+	//COLLISION->debugRender->getLinesArray()[0].point1.z;
+	
+
+
 }
 
 void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
@@ -512,9 +553,8 @@ void GraphicsEngine::RenderSkybox()
 	glEnable(GL_FOG);*/
 }
 
-bool GraphicsEngine::InitOpenGL()
+bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 {
-	
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		std::cout << "SDL could not initialize! SDL Error: " << SDL_GetError() << std::endl;
@@ -523,9 +563,9 @@ bool GraphicsEngine::InitOpenGL()
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
 
-	if ((m_window = SDL_CreateWindow("ICT397 - Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 900, 700, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
+	if ((m_window = SDL_CreateWindow("ICT398 - Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
 	{
 		std::cout << "Window could not be created! SDL Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -539,8 +579,10 @@ bool GraphicsEngine::InitOpenGL()
 
 	SDL_GL_SetSwapInterval(0);
 	glEnable(GL_DEPTH_TEST);
+	glClearColor(0.4, 0.2, 0.7, 1);
 
 	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
+	debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/debugColourShader.fs");
 
 	return true;
 }

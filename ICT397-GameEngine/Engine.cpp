@@ -7,14 +7,15 @@
 #include "GameObjectFactory.h"
 #include "DeltaTime.h"
 
+
 Engine::Engine()
 	:m_isRunning{ true }, m_restart{ false }, m_saveState{ false }, levelLoader{ LevelLoader()}
 {
 }
 
-int Engine::OnExecute(GraphicsLibrary renderer)
+int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	if (OnInit(renderer) == false)
+	if (OnInit(renderer, windowWidth, windowHeight) == false)
 	{
 		return -1;
 	}
@@ -38,7 +39,7 @@ int Engine::OnExecute(GraphicsLibrary renderer)
 		if (m_restart)
 		{
 			OnCleanup();
-			OnInit(renderer);
+			OnInit(renderer, windowWidth, windowHeight);
 			m_restart = false;
 		}
 	}
@@ -76,16 +77,27 @@ bool Engine::CheckSaveState()
 	return m_saveState;
 }
 
-bool Engine::OnInit(GraphicsLibrary renderer)
+bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
 	
-	if (!GRAPHICS->initialise(renderer)) {
+	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) {
 		return false;
 	}
+	
 	SCRIPT->Initialise(*this);
 	SCRIPT->RunInitScript();
+
+	// temporarily creating player controller here
+	// TODO move to level loader class
+	GAMEOBJECT->SpawnGameObject("player");
+	GAMEOBJECT->GetGameObject("player")->GetTransform();
+	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
+	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
+
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
+	INPUT->LockCursor(true);
+
 
 	levelLoader.Test();
 
@@ -122,3 +134,4 @@ void Engine::OnCleanup()
 	SDL_Quit();
 	SCRIPT->Close();
 }
+
