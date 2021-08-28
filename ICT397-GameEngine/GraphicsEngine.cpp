@@ -162,7 +162,6 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
 	glm::mat4 rotZ = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
 	
-
 	glm::mat4 scale = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
 	
 	trans = translation * (rotX * rotY * rotZ) * scale;
@@ -170,13 +169,10 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	shader->setMat4("transform", trans);
 	model->Draw(*shader);
 
-
 	if (m_firstFrameDebug && m_drawDebug)
 	{
-
 		for (int i = 0; i < COLLISION->physicsWorld->getDebugRenderer().getNbTriangles(); i++)
 		{
-
 			std::vector <float> tempVector;
 			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x);
 			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y);
@@ -270,9 +266,6 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 
 	/* draw debug */
 	//COLLISION->debugRender->getLinesArray()[0].point1.z;
-	
-
-
 }
 
 void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
