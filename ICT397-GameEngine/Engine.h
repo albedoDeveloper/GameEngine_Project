@@ -29,6 +29,10 @@ private:
 	LevelLoader levelLoader;
 
 
+	bool m_debugMenu;
+
+	bool m_drawColliders;
+
 public:
 	/**
 	 * @brief default constructor

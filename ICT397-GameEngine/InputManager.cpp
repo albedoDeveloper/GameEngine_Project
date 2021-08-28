@@ -142,6 +142,14 @@ void InputManager::CheckKeyDown(SDL_Event* e)
             space_Key.down = true;
         }
         break;
+    case SDLK_BACKQUOTE:
+        tilde_Key.held = true;
+        if (!e->key.repeat)
+        {
+            tilde_Key.held = true;
+            tilde_Key.down = true;
+        }
+        break;
     default:
         break;
     }
@@ -219,6 +227,11 @@ void InputManager::CheckKeyUp(SDL_Event* e)
         space_Key.up = true;
         space_Key.held = false;
         space_Key.down = false;
+        break;
+    case SDLK_BACKQUOTE:
+        tilde_Key.up = true;
+        tilde_Key.held = false;
+        tilde_Key.down = false;
         break;
     }
 }
@@ -349,6 +362,9 @@ void InputManager::ResetKeyValues()
 
     space_Key.down = false;
     space_Key.up = false;
+
+    tilde_Key.down = false;
+    tilde_Key.up = false;
 }
 
 void InputManager::ResetMouseButtonValues()
@@ -461,6 +477,9 @@ bool InputManager::GetKey(char c)
     case  ' ':
         return space_Key.held || space_Key.down;
         break;
+    case  '`':
+        return tilde_Key.held || tilde_Key.down;
+        break;
     default:
         break;
     }
@@ -554,6 +573,9 @@ bool InputManager::GetKeyDown(char c)
         break;
     case ' ':
         return space_Key.down;
+        break;
+    case '`':
+        return tilde_Key.down;
         break;
     default:
         break;
