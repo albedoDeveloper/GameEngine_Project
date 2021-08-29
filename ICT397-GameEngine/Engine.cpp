@@ -69,7 +69,7 @@ void Engine::RestartGame()
 void Engine::SaveGame()
 {
 	//GAMEOBJECT->Save();
-	levelLoader.SaveTest();
+	levelLoader.SaveLevel();
 	//m_saveState = true;
 }
 
@@ -77,7 +77,7 @@ void Engine::LoadGame()
 {
 	//GAMEOBJECT->Load();
 	//INPUT->Initialise(this);
-	levelLoader.LoadTest();
+	levelLoader.LoadLevel();
 }
 
 bool Engine::CheckSaveState()
@@ -153,10 +153,10 @@ void Engine::OnLoop()
 	}
 
 	if (m_saveState)
-		levelLoader.SaveTest();
+		levelLoader.SaveLevel();
 
 	if (m_loadState)
-		levelLoader.LoadTest();
+		levelLoader.LoadLevel();
 
 }
 

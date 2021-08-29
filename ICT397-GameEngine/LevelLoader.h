@@ -19,25 +19,28 @@ class LevelLoader
 
 	public:
 
-
-		void ToJson(json& j, GameObject* g);
-
-		void FromJson(json& j, GameObject* g);
-
 		/**
 		* @brief default constructor
 		*/
 		LevelLoader();
 
+		void JsonFilepath();
+
+		void ToJson(json& j, GameObject* g);
+
+		void FromJson(json& j, GameObject* g);
+
+		
+
 		/**
 		* @brief loading test
 		*/
-		void LoadTest();
+		void LoadLevel();
 
 		/**
 		* @brief test function
 		*/
-		void SaveTest();
+		void SaveLevel();
 
 };
 
