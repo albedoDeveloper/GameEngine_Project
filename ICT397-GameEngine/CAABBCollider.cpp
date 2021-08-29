@@ -70,7 +70,6 @@ void CAABBCollider::Start()
 	colBody = COLLISION->GetPhysicsWorld()->createCollisionBody(tempTransfrom);
 	col = colBody->addCollider(boxCollider, tempTransfrom);
 	std::cout << col->getBody()->getTransform().getPosition().x << std::endl;
-	
 }
 
 void CAABBCollider::UpdateCollider(const Transform& transform)

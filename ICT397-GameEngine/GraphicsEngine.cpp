@@ -145,6 +145,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	}
 	
 	shader->useShaderForLoop();
+	shader->setVec3("ambientLightColor", glm::vec3(0.5, 0.5, 0.5));
 	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, ((float)GRAPHICS->m_windowHeight/GRAPHICS->m_windowWidth), m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
 	shader->setMat4("projection", projection);
 
@@ -196,7 +197,6 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 			debugShader->setMat4("view", view);
 
 			glm::mat4 trans2 = glm::translate(trans, glm::vec3(0, 0, 0));
-
 
 			shader->setMat4("transform", trans2);
 			debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));

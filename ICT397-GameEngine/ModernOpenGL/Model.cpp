@@ -8,7 +8,6 @@ void Model::Draw(Shader& shader)
         meshes[i].Draw(shader,text);
 }
 
-
 void Model::loadModel(std::string path)
 {
     stbi_set_flip_vertically_on_load(true);
@@ -79,9 +78,10 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
             vertex.TexCoords = vec;
         }
         else
+        {
             vertex.TexCoords = glm::vec2(0.0f, 0.0f);
+        }
             
-
         vertices.push_back(vertex);
     }
     //Each face of the mesh
@@ -95,7 +95,6 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
     
     // process materials
     aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
-
 
     // 1. diffuse maps
     std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
