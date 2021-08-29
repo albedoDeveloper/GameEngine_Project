@@ -125,6 +125,7 @@
     <None Include="..\Assets\Scripts\terrainWireframe.lua" />
     <None Include="..\Assets\Scripts\waterInteraction.lua" />
     <None Include="ModernOpenGL\colourShader.fs" />
+    <None Include="ModernOpenGL\debugColourShader.fs" />
     <None Include="ModernOpenGL\vertexShader.vs" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

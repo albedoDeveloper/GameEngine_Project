@@ -228,6 +228,9 @@
     <None Include="ModernOpenGL\vertexShader.vs">
       <Filter>ModernOpenGl</Filter>
     </None>
+    <None Include="ModernOpenGL\debugColourShader.fs">
+      <Filter>ModernOpenGl</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="scripts">

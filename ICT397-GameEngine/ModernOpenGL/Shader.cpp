@@ -107,8 +107,6 @@ bool Shader::useShaderForLoop()
         glUseProgram(ID);
         return true;
     }
-
-
 }
 
 
