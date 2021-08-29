@@ -74,7 +74,6 @@ void CAABBCollider::AddSquareCollider(float x, float y, float z, bool autoSize)
 		auto tempVec = reactphysics3d::Vector3(colBody->getTransform().getPosition().x - xMov, colBody->getTransform().getPosition().y - yMov, colBody->getTransform().getPosition().z - zMov);
 		auto tempQuat = colBody->getTransform().getOrientation();
 
-
 		reactphysics3d::Transform tempTransform(tempVec, tempQuat);
 		colBody->setTransform(tempTransform);
 

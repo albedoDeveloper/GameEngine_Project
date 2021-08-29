@@ -244,11 +244,6 @@ private:
 	void InitImGui();
 
 	/**
-	 * @brief initialises lighting for openGL
-	 * @return whether operation succeeded
-	*/
-	bool InitOpenGLlighting();
-	/**
 	 * @brief initialises directX
 	 * @return whether operation succeeded
 	*/

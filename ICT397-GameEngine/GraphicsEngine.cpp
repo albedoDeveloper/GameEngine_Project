@@ -171,7 +171,9 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	model->Draw(*shader);
 
 	if (m_firstFrameDebug && m_drawDebug)
+	{
 		DrawDebug(projection, view, trans);
+	}
 }
 
 void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
@@ -367,15 +369,6 @@ void GraphicsEngine::InitImGui()
 	ImGui_ImplOpenGL3_Init("#version 330 core");
 }
 
-bool GraphicsEngine::InitOpenGLlighting()
-{
-
-	
-	return true;
-}
-
-
-
 bool GraphicsEngine::InitDirectX()
 {
 	// out of scope for ICT397
@@ -442,11 +435,11 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 	}
 
 	if (initDebug)
+	{
 		InitDebug(tempVector);
-
+	}
 	else
 	{
-		//glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
 	}
 
@@ -462,7 +455,6 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 	glm::mat4 trans2 = glm::mat4(1.0f);
 	trans2 = glm::translate(trans2, glm::vec3(0, 0, 0));
 
-
 	debugShader->setMat4("transform", trans2);
 	debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
 		
@@ -476,5 +468,4 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 	glPolygonMode(GL_BACK, GL_FILL);
 	glEnable(GL_CULL_FACE);
 	m_firstFrameDebug = false;
-		
 }

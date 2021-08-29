@@ -11,7 +11,6 @@ uniform vec3 ambientLightColor;
 void main()
 {    
     vec3 texColor = texture(texture_diffuse1, TexCoords).xyz;
-    //FragColor = vec4(ambientLightColor * texColor, 1.0);
     vec3 lightpos = vec3(-20,0,0); //temp
     vec3 lightColor = vec3(1,1,1); //temp
     vec3 norm = normalize(Normal);
