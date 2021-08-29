@@ -11,8 +11,6 @@ CAABBCollider::CAABBCollider(Transform* parent, GameObject* parentObj)
 
 	m_isRegistered = true;
 
-	
-
 	std::cout << "Collider created" << std::endl;
 }
 
@@ -32,28 +30,20 @@ void CAABBCollider::LateRender()
 void CAABBCollider::Start()
 {	
 	auto parent = this->GetParentObject()->GetTransform();
-	
 
 	auto tempVec = reactphysics3d::Vector3(parent->GetPosition().GetX(), parent->GetPosition().GetY(), parent->GetPosition().GetZ());
 	auto tempQuat = reactphysics3d::Quaternion(parent->GetRotation().GetX(), parent->GetRotation().GetY(), parent->GetRotation().GetZ(), parent->GetRotation().GetW());
 
-
 	reactphysics3d::Transform tempTransform(tempVec,tempQuat);
-
 	colBody = COLLISION->GetPhysicsWorld()->createCollisionBody(tempTransform);
-	
-	/*boxCollider = COLLISION->physicsCommon->createBoxShape(reactphysics3d::Vector3(0.2,0.2,0.2));
-	col = colBody->addCollider(boxCollider, reactphysics3d::Transform::identity());*/
 	AddSquareCollider(0.2,0.2,0.2,true);
-
-
-	std::cout << glm::degrees(col->getBody()->getTransform().getOrientation().y) << std::endl;	
 }
 
 void CAABBCollider::UpdateCollider(const Transform& transform)
 {
 	reactphysics3d::Vector3 tempVec = reactphysics3d::Vector3(transform.GetPosition().GetX(), transform.GetPosition().GetY(), transform.GetPosition().GetZ());
 	reactphysics3d::Quaternion tempQuat = reactphysics3d::Quaternion(transform.GetRotation().GetX(), transform.GetRotation().GetY(), transform.GetRotation().GetZ(), transform.GetRotation().GetW());
+	tempQuat.inverse();
 
 	reactphysics3d::Transform tempTransform(tempVec, tempQuat);
 	col->getBody()->setTransform(tempTransform);
@@ -81,14 +71,11 @@ void CAABBCollider::AddSquareCollider(float x, float y, float z, bool autoSize)
 		auto tempVec = reactphysics3d::Vector3(colBody->getTransform().getPosition().x - xMov, colBody->getTransform().getPosition().y - yMov, colBody->getTransform().getPosition().z - zMov);
 		auto tempQuat = colBody->getTransform().getOrientation();
 
-
 		reactphysics3d::Transform tempTransform(tempVec, tempQuat);
 		colBody->setTransform(tempTransform);
 
 		boxCollider = COLLISION->physicsCommon->createBoxShape(reactphysics3d::Vector3(xSize/2, ySize/2, zSize/2));
 		col = colBody->addCollider(boxCollider, reactphysics3d::Transform::identity());
-
-		
 	}
 
 	else if (!autoSize || this->GetParentObject()->GetComponent<CStaticMesh>() == nullptr)
