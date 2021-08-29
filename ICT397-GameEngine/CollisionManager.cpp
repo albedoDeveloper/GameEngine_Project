@@ -35,15 +35,15 @@ bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform
     //AABB a = AABBToWorldSpace(myCollider, worldT);
     bool collision = false;
 
-
-    
     myCollider.UpdateCollider(myCollider.GetTransform().GetWorldTransform());
     
     physicsWorld->testCollision(myCollider.colBody,*COLLISION);
 
-
     physicsWorld->update(TIME->GetDeltaTime());
 
+    if (hasCollided)
+    {
+    }
     
    /* reactphysics3d::PhysicsCommon i;
 
@@ -159,5 +159,7 @@ void CollisionManager::onContact(const CallbackData& callbackData)
     }
 
     std::cout << "--------------------------" << std::endl;
+
+    hasCollided = true;
 
 }

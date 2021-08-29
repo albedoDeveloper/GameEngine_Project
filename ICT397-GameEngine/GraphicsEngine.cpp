@@ -157,184 +157,25 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	
 	glm::mat4 trans = glm::mat4(1.0f);
 	
-	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX()*2, worldTrans.GetPosition().GetY()*2, worldTrans.GetPosition().GetZ()*2));
+	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() , worldTrans.GetPosition().GetY() , worldTrans.GetPosition().GetZ()));
 
-	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
-	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
-	glm::mat4 rotZ = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
+	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
+	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetY(), glm::vec3(0.0, 1.0f, 0.0));
+	glm::mat4 rotZ = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
 	
 	glm::mat4 scale = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
-	
+
 	trans = translation * (rotX * rotY * rotZ) * scale;
 
 	shader->setMat4("model", trans);
 	model->Draw(*shader);
 
 	if (m_firstFrameDebug && m_drawDebug)
-	{
-		for (int i = 0; i < COLLISION->physicsWorld->getDebugRenderer().getNbTriangles(); i++)
-		{
-			std::vector <float> tempVector;
-			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x);
-			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y);
-			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z);
-
-			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.x);
-			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.y);
-			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.z);
-
-			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.x);
-			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.y);
-			tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.z);
-
-			glPolygonMode(GL_FRONT, GL_LINE);
-			glPolygonMode(GL_BACK, GL_LINE);
-
-			debugShader->useShaderForLoop();
-
-			debugShader->setMat4("projection", projection);
-
-			debugShader->setMat4("view", view);
-
-			glm::mat4 trans2 = glm::translate(trans, glm::vec3(0, 0, 0));
-
-			shader->setMat4("model", trans2);
-			debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
-
-			unsigned int VAO, VBO;
-			// create buffers/arrays
-			glGenVertexArrays(1, &VAO);
-			glGenBuffers(1, &VBO);
-			glBindVertexArray(VAO);
-			// load data into vertex buffers
-			glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-			glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()) * tempVector.size(), tempVector.data(), GL_STATIC_DRAW);
-
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-			glEnableVertexAttribArray(0);
-			glBindVertexArray(0);
-
-			glBindVertexArray(VAO);
-			glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
-			glBindVertexArray(0);
-
-			glPolygonMode(GL_FRONT, GL_FILL);
-			glPolygonMode(GL_BACK, GL_FILL);
-			m_firstFrameDebug = false;
-		}
-
-		/*tempVector.emplace_back(glm::vec3(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z));
-		tempVector.emplace_back(glm::vec3(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.x, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.y, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.z));
-		tempVector.emplace_back(glm::vec3(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.x, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.y, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.z));*/
-		
-		//tempVector.emplace_back(glm::vec3(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].color1, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y, COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z));
-		
-		//COLLISION->debugRender->getTrianglesArray;
-	}
-
-	
-	/*glColor3f(0.0f, 1.0, 0);
-	gluLookAt(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ(),
-		m_camera->GetTransform().GetWorldTransform().GetPosition().GetX() + m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY() + m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ() + m_camera->GetTransform().GetWorldTransform().GetForward().GetZ(),
-		m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ());
-
-	glPushMatrix();
-	glBegin(GL_TRIANGLE_FAN);
-	for (size_t i = 0; i < COLLISION->physicsWorld->getDebugRenderer().getNbTriangles(); i++)
-	{
-		//std::cout << COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x << std::endl;
-
-		glVertex3f(
-			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x,
-			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y,
-			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z
-		);
-		glVertex3f(
-			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.x,
-			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.y,
-			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.z
-		);
-		glVertex3f(
-			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.x,
-			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.y,
-			COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.z
-		);
-	}
-	glEnd();
-	glPopMatrix();*/
-
-	/* draw debug */
-	//COLLISION->debugRender->getLinesArray()[0].point1.z;
+		DrawDebug(projection, view, trans);
 }
 
 void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
 {
-	/*if (!model)
-	{
-		return;
-	}
-	shader->useShaderForLoop();
-	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, 1.0f, m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
-	shader->setMat4("projection", projection);
-
-	glm::mat4 view = glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()),
-	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) + glm::vec3(m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()),
-	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()));
-
-	shader->setMat4("view", view);
-
-	glm::mat4 trans = glm::mat4(1.0f);
-	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
-
-	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
-	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetY(), glm::vec3(0.0, 1.0f, 0.0));
-	glm::mat4 rotZ = glm::rotate(trans, worldTrans.GetRotation().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
-
-
-	glm::mat4 scale = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
-
-	trans = translation * (rotX * rotY * rotZ) * scale;
-
-	shader->setMat4("transform", trans);
-	model->Draw(*shader);*/
-	/*
-	glPushMatrix();
-	OpenGLTransformation(worldTrans);
-	if (model->TextureKey != "NULL")
-	{
-		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(model->TextureKey));
-	}
-	else
-	{
-		glDisable(GL_TEXTURE_2D);
-	}
-	glBegin(GL_TRIANGLES);
-	for (size_t i = 0; i < model->NumFaces; i++)
-	{
-		glTexCoord2f(model->texverts[model->texfaces[i].GetX()].GetX(), model->texverts[model->texfaces[i].GetX()].GetY());
-		glVertex3f(
-			model->verts[model->faces[i].GetX()].GetX() + texOffset,
-			model->verts[model->faces[i].GetX()].GetY(),
-			model->verts[model->faces[i].GetX()].GetZ()
-
-		);
-		glTexCoord2f(model->texverts[model->texfaces[i].GetY()].GetX(), model->texverts[model->texfaces[i].GetY()].GetY());
-		glVertex3f(
-			model->verts[model->faces[i].GetY()].GetX() + texOffset,
-			model->verts[model->faces[i].GetY()].GetY(),
-			model->verts[model->faces[i].GetY()].GetZ()
-		);
-		glTexCoord2f(model->texverts[model->texfaces[i].GetZ()].GetX(), model->texverts[model->texfaces[i].GetZ()].GetY());
-		glVertex3f(
-			model->verts[model->faces[i].GetZ()].GetX() + texOffset,
-			model->verts[model->faces[i].GetZ()].GetY(),
-			model->verts[model->faces[i].GetZ()].GetZ()
-		);
-	}
-	glEnd();
-	glPopMatrix();*/
 }
 
 void GraphicsEngine::DrawTerrain()
@@ -344,98 +185,11 @@ void GraphicsEngine::DrawTerrain()
 
 void GraphicsEngine::GenDisplayListTerrain(CBaseTerrain* terrain, bool withTexture, bool asWireframe)
 {
-	/*const unsigned DETAIL_MAP_REPEAT = 256;
-	const unsigned TERRAIN_REPEAT = 1;
-
-	if (!terrain->HasTerrainData())
-	{
-		return;
-	}
-
-	glNewList(1, GL_COMPILE);
-	unsigned char hcolour; // colour of the height
-	float texLeft, texBottom, texTop;
-
-	if (asWireframe)
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	}
-	
-	glEnable(GL_TEXTURE_2D);
-	glDisable(GL_BLEND);
-	m_glActiveTextureARB(GL_TEXTURE0_ARB);
-	//glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(terrain->GetTextureKey()));
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	m_glActiveTextureARB(GL_TEXTURE1_ARB);
-	if (!terrain->GetDetailMapKey().empty())
-	{
-		glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(terrain->GetDetailMapKey()));
-	}
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE_ARB);
-	glTexEnvi(GL_TEXTURE_ENV, GL_RGB_SCALE_ARB, 2);
-
-	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_COMBINE_ARB);
-	glPushMatrix();
-	// looping though the z axis
-	for (unsigned int z = 0; z < terrain->GetSize() - 1; z++)
-	{
-		glBegin(GL_TRIANGLE_STRIP);
-		for (unsigned int x = 0; x < terrain->GetSize(); x++)
-		{
-			texLeft = (float)x / terrain->GetSize();
-			texBottom = (float)z / terrain->GetSize();
-			texTop = (float)(z + 1) / terrain->GetSize();
-
-			// create the first point in the triangle strip
-			hcolour = terrain->GetUnscaledHeightColour(x, z);
-			glColor3ub(hcolour, hcolour, hcolour);
-			m_glMultiTexCoord2fARB(GL_TEXTURE0_ARB, texLeft * TERRAIN_REPEAT, texBottom * TERRAIN_REPEAT);
-			m_glMultiTexCoord2fARB(GL_TEXTURE1_ARB, texLeft * DETAIL_MAP_REPEAT, texBottom * DETAIL_MAP_REPEAT);
-			glVertex3f(
-				x * terrain->GetTransform().GetScale().GetX(),
-				(int)terrain->GetUnscaledHeightColour(x, z) * terrain->GetTransform().GetScale().GetY(),
-				z * terrain->GetTransform().GetScale().GetZ()
-			);
-			hcolour = terrain->GetUnscaledHeightColour(x, z + 1);
-			glColor3ub(hcolour, hcolour, hcolour);
-			m_glMultiTexCoord2fARB(GL_TEXTURE0_ARB, texLeft * TERRAIN_REPEAT, texTop * TERRAIN_REPEAT);
-			m_glMultiTexCoord2fARB(GL_TEXTURE1_ARB, texLeft * DETAIL_MAP_REPEAT, texTop * DETAIL_MAP_REPEAT);
-			glVertex3f(
-				x * terrain->GetTransform().GetScale().GetX(),
-				(int)terrain->GetUnscaledHeightColour(x, z + 1) * terrain->GetTransform().GetScale().GetY(),
-				(z + 1) * terrain->GetTransform().GetScale().GetZ()
-			);
-		}
-		glEnd();
-	}
-
-	m_glActiveTextureARB(GL_TEXTURE0_ARB);
-	glDisable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, 0);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-	glPopMatrix();
-	glEndList();*/
 }
 
 void GraphicsEngine::DrawGrid(float gridHeight, float lineThickness, float gridWidth, float cellWidth)
 {
-	/*glDisable(GL_TEXTURE_2D);
-	glColor3dv(Colour::purple);
 
-	for (float i = -gridWidth * 0.5f; i < gridWidth; i += cellWidth * 0.5f)
-	{
-		for (float j = -gridWidth * 0.5f; j < gridWidth; j += cellWidth * 0.5f)
-		{
-			glBegin(GL_LINE_LOOP);
-			glVertex3f(i - 1, gridHeight, j - 1);
-			glVertex3f(i - 1, gridHeight, j);
-			glVertex3f(i, gridHeight, j);
-			glVertex3f(i, gridHeight, j - 1);
-			glEnd();
-		}
-	}*/
 }
 
 void GraphicsEngine::DrawImage(std::string key, int width, int height, int posX, int posY)
@@ -593,6 +347,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	InitImGui();
 
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
 	glClearColor(0.4, 0.2, 0.7, 1);
 
 	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
@@ -615,81 +370,6 @@ void GraphicsEngine::InitImGui()
 bool GraphicsEngine::InitOpenGLlighting()
 {
 
-	/*// fog
-	glEnable(GL_FOG);
-	glFogf(GL_FOG_MODE, GL_EXP);
-	glFogf(GL_FOG_DENSITY, 0.01f);
-	glFogf(GL_FOG_START, 100);
-	glFogf(GL_FOG_END, 300);
-	glFogf(GL_FOG_INDEX, 0);
-	glFogfv(GL_FOG_COLOR, new GLfloat[4]{ 0.1f, 0.1f, 0.1f, 0.1f });
-
-
-	//this material makes everythign too bright???
-	////start material
-	//glColorMaterial(GL_FRONT_AND_BACK, GL_EMISSION);
-	//GLfloat mat_specular[] = { 0.05f, 0.05f, 0.05f, 1 };
-	//glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-	//GLfloat mat_emission[] = { 0.01f, 0.01f, 0.01f, 1 };
-	//glMaterialfv(GL_FRONT_AND_BACK, GL_EMISSION, mat_emission);
-	//GLfloat mat_shininess[] = { 128 };
-	//glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-	////end material
-
-
-
-	GLfloat globalAmbient[] = { 0.01f, 0.01f, 0.01f, 0.1f };
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbient);
-
-	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_COLOR_MATERIAL);
-
-	
-	//Start Ambient
-	GLfloat ambientLight[] = { 0.6f, 0.5f, 0.4f, 1.5f };
-	GLfloat diffuseLight[] = {0.01f, 0.01f, 0.01f, 0.01f };
-	GLfloat specularLight[] = { 0.05f, 0.01f, 0.01f, 0.01f };
-	glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
-
-	//set ambient light position
-	GLfloat lightPosition[] = { 550, 250, 550, 1.0 };
-	glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
-
-	//set Ambient light intensity & colour
-	glEnable(GL_LIGHT0);
-
-	/////End Ambient
-
-	//this spotlight shit needs to be moved
-	//start spotlight
-	//glEnable(GL_LIGHT1);
-
-	GLfloat spotlightPosition1[] = { 560, 140, 510, 1.0 };
-	GLfloat spotAmbientLight[] = { 1, 1, 1, 1.0 };
-	GLfloat spotDiffuseLight[] = { 1, 1, 1, 1.0 };
-	GLfloat spotSpecularLight[] = { 0.75, 0.75, 0.75, 1.0 };
-	GLfloat spotDirection[] = { 1,-1,0 };
-	GLfloat spotExponent = .1f;
-	GLfloat spotCutoff = 30;
-	GLfloat constantAttenuation = 0.01f;
-	GLfloat linearAttenuation = 0.005f;
-	GLfloat quadraticAttenuation = 0.001f;
-
-	glLightfv(GL_LIGHT1, GL_AMBIENT, spotAmbientLight);
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, spotDiffuseLight);
-	glLightfv(GL_LIGHT1, GL_SPECULAR, spotSpecularLight);
-	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, spotDirection);
-	glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, spotExponent);
-	glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, spotCutoff);
-	glLightf(GL_LIGHT1, GL_CONSTANT_ATTENUATION, constantAttenuation);
-	//glLightf(GL_LIGHT1, GL_LINEAR_ATTENUATION, linearAttenuation);
-	//glLightf(GL_LIGHT1, GL_QUADRATIC_ATTENUATION, quadraticAttenuation);
-	glLightfv(GL_LIGHT1, GL_POSITION, spotlightPosition1);
-
-	//end spotlight*/
 	
 	return true;
 }
@@ -704,31 +384,6 @@ bool GraphicsEngine::InitDirectX()
 
 void GraphicsEngine::GenOpenGLTexture(unsigned char* image, int width, int height, std::string key)
 {
-	/*unsigned texID;
-	glGenTextures(1, &texID);
-	glBindTexture(GL_TEXTURE_2D, texID);
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-	//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-	int mipMapError =	gluBuild2DMipmaps(
-							GL_TEXTURE_2D, 
-							GL_RGBA,     
-							width,
-							height,       
-							GL_RGBA,     
-							GL_UNSIGNED_BYTE,
-							image
-						);
-	if (mipMapError != 0)
-	{
-		throw "gluBuild2DMipmaps error";
-	}
-
-	m_textureIDs.emplace(key, texID);*/
 }
 
 void GraphicsEngine::OpenGLTransformation(const Transform& t) const
@@ -742,38 +397,84 @@ void GraphicsEngine::OpenGLTransformation(const Transform& t) const
 
 void GraphicsEngine::DrawCollider(float maxX, float maxY, float maxZ, float minX, float minY, float minZ, const Transform& worldT)
 {
-	/*glPushMatrix();
-	glTranslatef(worldT.GetPosition().GetX(), worldT.GetPosition().GetY(), worldT.GetPosition().GetZ());
-	glScalef(worldT.GetScale().GetX(), worldT.GetScale().GetY(), worldT.GetScale().GetZ());
-	glDisable(GL_TEXTURE_2D);
-	glColor3dv(Colour::green);
-	glColor3dv(Colour::lightgreen);
-	glLineWidth(4);
 
-	glBegin(GL_LINE_LOOP);
-	glVertex3f(minX, minY, minZ);
-	glVertex3f(minX, minY, maxZ);
-	glVertex3f(minX, maxY, maxZ);
-	glVertex3f(minX, maxY, minZ);
-	glEnd();
-	glBegin(GL_LINE_LOOP);
-	glVertex3f(maxX, maxY, maxZ);
-	glVertex3f(maxX, maxY, minZ);
-	glVertex3f(maxX, minY, minZ);
-	glVertex3f(maxX, minY, maxZ);
-	glEnd();
-	glBegin(GL_LINES);
-	glVertex3f(maxX, maxY, maxZ);
-	glVertex3f(minX, maxY, maxZ);
+}
 
-	glVertex3f(minX, minY, minZ);
-	glVertex3f(maxX, minY, minZ);
+void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
+{
+	// create buffers/arrays
+	glGenVertexArrays(1, &VAODebug);
+	glGenBuffers(1, &VBODebug);
+	glBindVertexArray(VAODebug);
+	// load data into vertex buffers
+	glBindBuffer(GL_ARRAY_BUFFER, VBODebug);
 
-	glVertex3f(minX, maxY, minZ);
-	glVertex3f(maxX, maxY, minZ);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
 
-	glVertex3f(maxX, minY, maxZ);
-	glVertex3f(minX, minY, maxZ);
-	glEnd();
-	glPopMatrix();*/
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	glBindVertexArray(0);
+
+	initDebug = false;
+
+}
+
+void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 trans)
+{
+	glDisable(GL_CULL_FACE);
+
+	std::vector <float> tempVector;
+	
+	for (int i = 0; i < COLLISION->physicsWorld->getDebugRenderer().getNbTriangles(); i++)
+	{
+
+		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x);
+		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y);
+		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z);
+
+		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.x);
+		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.y);
+		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.z);
+
+		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.x);
+		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.y);
+		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.z);
+	}
+
+	if (initDebug)
+		InitDebug(tempVector);
+
+	else
+	{
+		//glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
+	}
+
+	glPolygonMode(GL_FRONT, GL_LINE);
+	glPolygonMode(GL_BACK, GL_LINE);
+
+	debugShader->useShaderForLoop();
+
+	debugShader->setMat4("projection", projection);
+
+	debugShader->setMat4("view", view);
+	
+	glm::mat4 trans2 = glm::mat4(1.0f);
+	trans2 = glm::translate(trans2, glm::vec3(0, 0, 0));
+
+
+	debugShader->setMat4("transform", trans2);
+	debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
+		
+	glBindVertexArray(0);
+
+	glBindVertexArray(VAODebug);
+	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles()*3);
+	glBindVertexArray(0);
+
+	glPolygonMode(GL_FRONT, GL_FILL);
+	glPolygonMode(GL_BACK, GL_FILL);
+	glEnable(GL_CULL_FACE);
+	m_firstFrameDebug = false;
+		
 }

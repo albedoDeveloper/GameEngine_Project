@@ -116,6 +116,8 @@ private:
 	 * @brief check if two aabb's are intersecting. They must both be in the same relative space
 	*/
 	bool TestAABBAABB(AABB& a, AABB& b) const;
+
+	bool hasCollided = false;
 };
 
 #define COLLISION CollisionManager::Instance()
