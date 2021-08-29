@@ -77,10 +77,10 @@ void LevelLoader::ToJson(json& j, GameObject* g)
 void LevelLoader::FromJson(json& j, GameObject* g) 
 {
 	//debug to console
-	std::cout << "load object" << j.at(g->getFactoryKey()).at("key") << std::endl;
+	/*std::cout << "load object" << j.at(g->getFactoryKey()).at("key") << std::endl;
 	std::cout << " X = " << j.at(g->getFactoryKey()).at("Position").at("x") << std::endl;
 	std::cout << " Y = " << j.at(g->getFactoryKey()).at("Position").at("y") << std::endl;
-	std::cout << " Z = " << j.at(g->getFactoryKey()).at("Position").at("z") << std::endl;
+	std::cout << " Z = " << j.at(g->getFactoryKey()).at("Position").at("z") << std::endl;*/
 	
 	//NEED HERE instantiate the object (or at least in the load statement right before calling this method )
 
@@ -88,27 +88,38 @@ void LevelLoader::FromJson(json& j, GameObject* g)
 	//////Need to figure out a way to check if the field in json is filled or not before calling from
 
 	//move to position
-	g->GetTransform()->SetPosition(j.at(g->getFactoryKey()).at("Position").at("x"),
-						j.at(g->getFactoryKey()).at("Position").at("y"), 
-						j.at(g->getFactoryKey()).at("Position").at("z"));
-
+	if (j.at(g->getFactoryKey()).contains("Position"))
+	{
+		g->GetTransform()->SetPosition(j.at(g->getFactoryKey()).at("Position").at("x"),
+			j.at(g->getFactoryKey()).at("Position").at("y"),
+			j.at(g->getFactoryKey()).at("Position").at("z"));
+	}
+	
 	//set rotation, might need new keyword here i don't like declaring this temporary value
-	Quaternion q;
+	if (j.at(g->getFactoryKey()).contains("Rotation"))
+	{
+		Quaternion q;
 
-	q.SetX(j.at(g->getFactoryKey()).at("Rotation").at("x"));
-	q.SetY(j.at(g->getFactoryKey()).at("Rotation").at("y"));
-	q.SetZ(j.at(g->getFactoryKey()).at("Rotation").at("z"));
-	q.SetW(j.at(g->getFactoryKey()).at("Rotation").at("w"));
+		q.SetX(j.at(g->getFactoryKey()).at("Rotation").at("x"));
+		q.SetY(j.at(g->getFactoryKey()).at("Rotation").at("y"));
+		q.SetZ(j.at(g->getFactoryKey()).at("Rotation").at("z"));
+		q.SetW(j.at(g->getFactoryKey()).at("Rotation").at("w"));
 
-	g->GetTransform()->SetRotation (q);
+		g->GetTransform()->SetRotation(q);
+	}
+	
 
 	//change scale
-	Vector3f v;
-	v.SetX(j.at(g->getFactoryKey()).at("Scale").at("x"));
-	v.SetY(j.at(g->getFactoryKey()).at("Scale").at("y"));
-	v.SetZ(j.at(g->getFactoryKey()).at("Scale").at("z"));
+	if (j.at(g->getFactoryKey()).contains("Scale") )
+	{
+		Vector3f v;
+		v.SetX(j.at(g->getFactoryKey()).at("Scale").at("x"));
+		v.SetY(j.at(g->getFactoryKey()).at("Scale").at("y"));
+		v.SetZ(j.at(g->getFactoryKey()).at("Scale").at("z"));
 
-	g->GetTransform()->SetScale(v);
+		g->GetTransform()->SetScale(v);
+	}
+	
 	
 	//here is where we add in the componenets from the json, each comp will need it's own fromJson method
 	
@@ -123,7 +134,7 @@ void LevelLoader::LoadLevel()
 	std::ifstream ifs("../Assets/SaveFiles/tavern.json");
 	json j = json::parse(ifs);
 
-	std::cout << j << std::endl;
+	//std::cout << j << std::endl;
 
 	//Step 2 retrieve and populate map
 	std::map<std::string, GameObject*>::iterator it;
