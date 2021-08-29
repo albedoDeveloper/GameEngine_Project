@@ -145,7 +145,12 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	}
 	
 	shader->useShaderForLoop();
+	
+	// temp lighting stuff. update these values with light objects/components
 	shader->setVec3("ambientLightColor", glm::vec3(0.5, 0.5, 0.5));
+	shader->setVec3("lightPos", glm::vec3(-20, 0, 0));
+	shader->setVec3("lightColor", glm::vec3(1, 1, 1));
+
 	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, ((float)GRAPHICS->m_windowHeight/GRAPHICS->m_windowWidth), m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
 	shader->setMat4("projection", projection);
 

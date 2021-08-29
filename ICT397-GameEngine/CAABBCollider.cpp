@@ -11,8 +11,6 @@ CAABBCollider::CAABBCollider(Transform* parent, GameObject* parentObj)
 
 	m_isRegistered = true;
 
-	
-
 	std::cout << "Collider created" << std::endl;
 }
 
@@ -32,11 +30,9 @@ void CAABBCollider::LateRender()
 void CAABBCollider::Start()
 {	
 	auto parent = this->GetParentObject()->GetTransform();
-	
 
 	auto tempVec = reactphysics3d::Vector3(parent->GetPosition().GetX(), parent->GetPosition().GetY(), parent->GetPosition().GetZ());
 	auto tempQuat = reactphysics3d::Quaternion(parent->GetRotation().GetX(), parent->GetRotation().GetY(), parent->GetRotation().GetZ(), parent->GetRotation().GetW());
-
 
 	reactphysics3d::Transform tempTransform(tempVec,tempQuat);
 	colBody = COLLISION->GetPhysicsWorld()->createCollisionBody(tempTransform);
