@@ -157,7 +157,7 @@ void Engine::OnRender()
 
 		ImGui::Checkbox("Draw Colliders", &m_drawColliders);      // Edit bools storing our window open/close state
 		GRAPHICS->m_drawDebug = m_drawColliders;
-		
+
 
 		//if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
 		//	counter++;

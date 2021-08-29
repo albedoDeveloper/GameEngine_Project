@@ -61,20 +61,27 @@ void CAABBCollider::LateRender()
 
 void CAABBCollider::Start()
 {	
-	auto parent = this->GetParentObject();
-
-	tempVec = reactphysics3d::Vector3(parent->GetTransform()->GetPosition().GetX(), parent->GetTransform()->GetPosition().GetY(), parent->GetTransform()->GetPosition().GetZ());
-	tempQuat = reactphysics3d::Quaternion(parent->GetTransform()->GetRotation().GetX(), parent->GetTransform()->GetRotation().GetY(), parent->GetTransform()->GetRotation().GetZ(), parent->GetTransform()->GetRotation().GetW());
+	auto parent = this->GetParentObject()->GetTransform();
 	
 
-	reactphysics3d::Transform tempTransform(tempVec, tempQuat);
-	
-	
+	auto tempVec = reactphysics3d::Vector3(parent->GetPosition().GetX(), parent->GetPosition().GetY(), parent->GetPosition().GetZ());
+	auto tempQuat = reactphysics3d::Quaternion(0,0,0,1);
 
-	boxCollider = COLLISION->physicsCommon->createBoxShape(reactphysics3d::Vector3(0.2,0.2,0.2));
+	//tempQuat = reactphysics3d::Quaternion::fromEulerAngles(parent->GetRotation().GetEulerAngles().GetX(), parent->GetRotation().GetEulerAngles().GetY(), parent->GetRotation().GetEulerAngles().GetZ());
+	//tempQuat.setAllValues (parent->GetRotation().GetX(), parent->GetRotation().GetY(), parent->GetRotation().GetZ(), parent->GetRotation().GetW());
+
+	//glm::mat3 trans = glm::mat3(1.0f);
+
+	reactphysics3d::Transform tempTransform;
+
+
+	tempTransform.setPosition(tempVec);
+	tempTransform.setOrientation(tempQuat);
+
 	colBody = COLLISION->GetPhysicsWorld()->createCollisionBody(tempTransform);
-	col = colBody->addCollider(boxCollider, tempTransform);
-
+	
+	boxCollider = COLLISION->physicsCommon->createBoxShape(reactphysics3d::Vector3(0.4,0.2,0.2));
+	col = colBody->addCollider(boxCollider, reactphysics3d::Transform::identity());
 
 	std::cout << glm::degrees(col->getBody()->getTransform().getOrientation().y) << std::endl;	
 }
@@ -82,7 +89,8 @@ void CAABBCollider::Start()
 void CAABBCollider::UpdateCollider(const Transform& transform)
 {
 	reactphysics3d::Vector3 tempVec = reactphysics3d::Vector3(transform.GetPosition().GetX(), transform.GetPosition().GetY(), transform.GetPosition().GetZ());
-	reactphysics3d::Quaternion tempQuat = reactphysics3d::Quaternion(transform.GetWorldTransform().GetRotation().GetX(), transform.GetWorldTransform().GetRotation().GetY(), transform.GetWorldTransform().GetRotation().GetZ(), transform.GetWorldTransform().GetRotation().GetW());
+	reactphysics3d::Quaternion tempQuat = reactphysics3d::Quaternion(transform.GetRotation().GetX(), transform.GetRotation().GetY(), transform.GetRotation().GetZ(), transform.GetRotation().GetW());
+
 	reactphysics3d::Transform tempTransform(tempVec, tempQuat);
 	col->getBody()->setTransform(tempTransform);
 }

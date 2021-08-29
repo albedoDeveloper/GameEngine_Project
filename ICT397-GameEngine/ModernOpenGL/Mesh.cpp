@@ -65,6 +65,7 @@ void Mesh::Draw(Shader& shader, int text)
     unsigned int specularNr = 1;
     unsigned int normalNr = 1;
     unsigned int heightNr = 1;
+   
     for (unsigned int i = 0; i < textures.size(); i++)
     {
         glActiveTexture(GL_TEXTURE0 + i); 
@@ -81,6 +82,7 @@ void Mesh::Draw(Shader& shader, int text)
 
         // set the sampler to the correct texture unit
         glUniform1i(glGetUniformLocation(shader.ID, (name + number).c_str()), i);
+        
         //  bind the texture
         glBindTexture(GL_TEXTURE_2D, textures[i].id);
     }
