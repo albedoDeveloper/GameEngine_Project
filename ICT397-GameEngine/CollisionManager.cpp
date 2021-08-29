@@ -35,7 +35,7 @@ bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform
     //AABB a = AABBToWorldSpace(myCollider, worldT);
     bool collision = false;
 
-    myCollider.UpdateCollider(myCollider.GetTransform().GetWorldTransform());
+   // myCollider.UpdateCollider(myCollider.GetTransform().GetWorldTransform());
     
     physicsWorld->testCollision(myCollider.colBody,*COLLISION);
 

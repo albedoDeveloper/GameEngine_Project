@@ -80,8 +80,7 @@ public:
 	*/
 	void RegisterCollider();
 
-
-
+	glm::vec3 offset;
 
 public:
 	/**
