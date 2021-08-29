@@ -25,6 +25,7 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 	SDL_Event event;
 	DeltaTime delta;
 
+
 	while (m_isRunning)
 	{
 		//must reset inputs before polling next event, otherwise previous events are retained
@@ -86,28 +87,37 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
+
+
 	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
 	{
 		return false;
 	}
 	
+
+	auto gL_version = glGetString(GL_VERSION);
+
+	std::cout << gL_version << std::endl;
+
 	SCRIPT->Initialise(*this);
 	SCRIPT->RunInitScript();
 
 	// temporarily creating player controller here
 	// TODO move to level loader class
 	GAMEOBJECT->SpawnGameObject("player");
-	GAMEOBJECT->GetGameObject("player")->GetTransform();
+	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 0, 0);
 	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
 	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
+
+
 
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
 	INPUT->LockCursor(true);
 
-
 	//levelLoader.SaveTest();
 
+	COLLISION;
 	return true;
 }
 
@@ -161,7 +171,7 @@ void Engine::OnRender()
 
 		ImGui::Checkbox("Draw Colliders", &m_drawColliders);      // Edit bools storing our window open/close state
 		GRAPHICS->m_drawDebug = m_drawColliders;
-		
+
 
 		//if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
 		//	counter++;

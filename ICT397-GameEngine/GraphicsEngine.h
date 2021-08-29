@@ -267,6 +267,20 @@ private:
 	*/
 	void OpenGLTransformation(const Transform& t) const;
 
+	
+	/**
+	 * @brief Setups the debug rendering of collider boxes
+	*/
+	void InitDebug(std::vector <float>& tempVector);
+	
+	/**
+	 * @brief Renders debug colliders
+	*/
+	void DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 trans);
+
+	unsigned int VAODebug = 0;
+	unsigned int VBODebug = 0;
+	bool initDebug = true;
 
 };
 

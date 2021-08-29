@@ -53,9 +53,11 @@ public:
 	*/
 	virtual void LateRender();
 
-protected:
 	/**
-	 * @brief the model this mesh is storing
-	*/
+ * @brief the model this mesh is storing
+*/
 	Model* m_model;
+
+protected:
+
 };
