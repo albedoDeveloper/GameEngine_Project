@@ -85,7 +85,7 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	COLLISION;
+
 
 	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
 	{
@@ -107,10 +107,12 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
 	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
 
+
+
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
 	INPUT->LockCursor(true);
-
+	COLLISION;
 	return true;
 }
 

@@ -93,10 +93,6 @@ public:
 	*/
 	bool m_isRegistered = false;
 
-	reactphysics3d::Vector3 tempVec;
-
-	reactphysics3d::Quaternion tempQuat;
-
 	reactphysics3d::CollisionBody* colBody = nullptr;
 
 	reactphysics3d::BoxShape* boxCollider = nullptr;
@@ -104,6 +100,7 @@ public:
 	reactphysics3d::Collider* col;
 
 	void UpdateCollider(const Transform& transform);
+	void AddSquareCollider(float x = 0.2, float y = 0.2, float z = 0.2 , bool autoSize = false);
 
 };
 

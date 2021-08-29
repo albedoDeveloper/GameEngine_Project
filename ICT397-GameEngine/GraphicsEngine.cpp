@@ -156,7 +156,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	
 	glm::mat4 trans = glm::mat4(1.0f);
 	
-	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() * 2, worldTrans.GetPosition().GetY() * 2, worldTrans.GetPosition().GetZ()*2));
+	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() , worldTrans.GetPosition().GetY() , worldTrans.GetPosition().GetZ()));
 
 	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
 	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetY(), glm::vec3(0.0, 1.0f, 0.0));
@@ -441,7 +441,7 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.y);
 		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.z);
 	}
-		
+
 	if (initDebug)
 		InitDebug(tempVector);
 
@@ -459,17 +459,18 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 	debugShader->setMat4("projection", projection);
 
 	debugShader->setMat4("view", view);
+	
+	glm::mat4 trans2 = glm::mat4(1.0f);
+	trans2 = glm::translate(trans2, glm::vec3(0, 0, 0));
 
-	glm::mat4 trans2 = glm::translate(trans, glm::vec3(0, 0, 0));
 
-
-	shader->setMat4("transform", trans2);
+	debugShader->setMat4("transform", trans2);
 	debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
 		
 	glBindVertexArray(0);
 
 	glBindVertexArray(VAODebug);
-	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3);
+	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles()*3);
 	glBindVertexArray(0);
 
 	glPolygonMode(GL_FRONT, GL_FILL);
