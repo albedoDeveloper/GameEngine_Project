@@ -2,6 +2,7 @@
 
 #include <SDL2/SDL.h>
 #include "GraphicsLibraryEnum.h"
+#include "LevelLoader.h"
 #include <reactphysics3d/reactphysics3d.h>
 
 /**
@@ -22,6 +23,15 @@ private:
 	 * @brief whether the game has been saved
 	*/
 	bool m_saveState;
+	/**
+	 * @brief whether the game needs to be laoded
+	*/
+	bool m_loadState;
+	/**
+	 * @brief the level loader class
+	*/
+	LevelLoader levelLoader;
+
 
 	bool m_debugMenu;
 

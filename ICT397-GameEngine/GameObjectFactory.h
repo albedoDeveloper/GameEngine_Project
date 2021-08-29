@@ -32,6 +32,13 @@ public:
 	 * @brief closes the factory
 	*/
 	void Close();
+
+	/**
+	 * @brief Accessor for the map of objects created by the factory
+	 * @return A pointer to the object Map
+	*/
+	std::map<std::string, GameObject*>* GetObjectMap();
+
 	/**
 	 * @brief Accessor for objects created by the factory
 	 * @param key String holding the object's place in the storage map
