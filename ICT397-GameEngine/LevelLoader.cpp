@@ -198,7 +198,11 @@ void LevelLoader::SaveLevel()
 			"	 Is at rotation y = "<< it->second->GetTransform()->GetRotation().GetY() << "\n" <<
 			"	 Is at rotation z = "<< it->second->GetTransform()->GetRotation().GetZ() << "\n" <<
 			"	 Is at rotation w = "<< it->second->GetTransform()->GetRotation().GetW() << "\n" <<
-			": "<< std::endl;
+			": "
+			"	 has scale x=" << it->second->GetTransform()->GetScale().GetX() << "\n" <<
+			"	 has scale y=" << it->second->GetTransform()->GetScale().GetY() << "\n" <<
+			"	 has scale z=" << it->second->GetTransform()->GetScale().GetZ() << "\n" <<
+			": " << std::endl;
 
 		//Step 5 write each gameobject to JSON
 		ToJson(j, it->second);
