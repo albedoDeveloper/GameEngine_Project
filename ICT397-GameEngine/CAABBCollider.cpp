@@ -47,6 +47,7 @@ void CAABBCollider::UpdateCollider(const Transform& transform)
 {
 	reactphysics3d::Vector3 tempVec = reactphysics3d::Vector3(transform.GetPosition().GetX(), transform.GetPosition().GetY(), transform.GetPosition().GetZ());
 	reactphysics3d::Quaternion tempQuat = reactphysics3d::Quaternion(transform.GetRotation().GetX(), transform.GetRotation().GetY(), transform.GetRotation().GetZ(), transform.GetRotation().GetW());
+	tempQuat.inverse();
 
 	reactphysics3d::Transform tempTransform(tempVec, tempQuat);
 	col->getBody()->setTransform(tempTransform);
