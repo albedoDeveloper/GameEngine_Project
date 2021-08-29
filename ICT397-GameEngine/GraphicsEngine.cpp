@@ -167,7 +167,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	
 	trans = translation * (rotX * rotY * rotZ) * scale;
 
-	shader->setMat4("transform", trans);
+	shader->setMat4("model", trans);
 	model->Draw(*shader);
 
 	if (m_firstFrameDebug && m_drawDebug)
@@ -198,7 +198,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 
 			glm::mat4 trans2 = glm::translate(trans, glm::vec3(0, 0, 0));
 
-			shader->setMat4("transform", trans2);
+			shader->setMat4("model", trans2);
 			debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
 
 			unsigned int VAO, VBO;
