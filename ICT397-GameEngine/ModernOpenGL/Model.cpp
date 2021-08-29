@@ -27,15 +27,28 @@ void Model::loadModel(std::string path)
 
     // process ASSIMP's root node recursively
     processNode(scene->mRootNode, scene);
+
 }
 
 void  Model::processNode(aiNode* node, const aiScene* scene)
 {
+
     for (unsigned int i = 0; i < node->mNumMeshes; i++)
     {
         // the node object only contains indices to index the actual objects in the scene. 
         // the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
+
+        if (minMax.empty())
+        {
+            minMax.emplace_back((mesh->mVertices[i].x * info.size) + info.translation.x);
+            minMax.emplace_back((mesh->mVertices[i].x * info.size) + info.translation.x);
+            minMax.emplace_back((mesh->mVertices[i].y * info.size) + info.translation.y);
+            minMax.emplace_back((mesh->mVertices[i].y * info.size) + info.translation.y);
+            minMax.emplace_back((mesh->mVertices[i].z * info.size) + info.translation.z);
+            minMax.emplace_back((mesh->mVertices[i].z * info.size) + info.translation.z);
+        }
+
         meshes.push_back(processMesh(mesh, scene));
     }
     // after we've processed all of the meshes (if any) we then recursively process each of the children nodes
@@ -52,6 +65,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
     std::vector<unsigned int> indices;
     std::vector<Texture> textures;
 
+
     // walk through each of the mesh's vertices
     for (unsigned int i = 0; i < mesh->mNumVertices; i++)
     {
@@ -59,8 +73,27 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
         glm::vec3 vector;
         // positions
         vector.x = (mesh->mVertices[i].x * info.size) + info.translation.x;
+        
+        if (vector.x < minMax[0])
+            minMax[0] = vector.x;
+        else  if (vector.x > minMax[1])
+            minMax[1] = vector.x;
+
+
         vector.y = (mesh->mVertices[i].y * info.size) + info.translation.y;
+
+        if (vector.y < minMax[2])
+            minMax[2] = vector.y;
+        else  if (vector.y > minMax[3])
+            minMax[3] = vector.y;
+        
         vector.z = (mesh->mVertices[i].z * info.size) + info.translation.z;
+
+        if (vector.z < minMax[4])
+            minMax[4] = vector.z;
+        else  if (vector.z > minMax[5])
+            minMax[5] = vector.z;
+        
         vertex.Position = vector;
         // normals
         if (mesh->HasNormals())
@@ -175,3 +208,4 @@ unsigned int Model::TextureFromFile(const char* path, const std::string& directo
 
     return textureID;
 }
+
