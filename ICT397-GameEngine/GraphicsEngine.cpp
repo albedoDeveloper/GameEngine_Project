@@ -455,7 +455,7 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 	glm::mat4 trans2 = glm::mat4(1.0f);
 	trans2 = glm::translate(trans2, glm::vec3(0, 0, 0));
 
-	debugShader->setMat4("transform", trans2);
+	debugShader->setMat4("model", trans2);
 	debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
 		
 	glBindVertexArray(0);
