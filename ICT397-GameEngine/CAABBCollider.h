@@ -99,7 +99,7 @@ public:
 	reactphysics3d::Collider* col;
 
 	void UpdateCollider(const Transform& transform);
-	void AddSquareCollider(float x = 0.2, float y = 0.2, float z = 0.2 , bool autoSize = false);
+	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2 , bool autoSize = false);
 
 };
 

@@ -209,6 +209,7 @@ lua_State* ScriptingEngine::NewState()
         .deriveClass<CAABBCollider, Component>("CAABBCollider")
             .addFunction("GetCollider", &CAABBCollider::GetCollider)
             .addFunction("SetCollider", &CAABBCollider::SetCollider)
+            .addFunction("AddBoxCollider", &CAABBCollider::AddBoxCollider)
         .endClass();
 
     getGlobalNamespace(Lbuff)
