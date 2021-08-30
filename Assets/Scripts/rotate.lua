@@ -4,7 +4,7 @@ function Start(gameObject)
 end
 
 function Update(gameObject, deltaTime, inputManager)
-    gameObject:GetTransform():RotateLocal(0.05,0,1,0)
+    gameObject:GetTransform():RotateLocal(0.05,0,0,1)
 
     -- run time texture loading, deleting
     if inputManager:GetKeyDown('t') then

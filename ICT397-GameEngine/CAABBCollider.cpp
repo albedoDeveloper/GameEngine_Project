@@ -38,13 +38,16 @@ void CAABBCollider::Start()
 
 	reactphysics3d::Transform tempTransform(tempVec,tempQuat);
 	colBody = COLLISION->GetPhysicsWorld()->createCollisionBody(tempTransform);
+
+	//std::cout(colBody->getTransform->get)
+	
 	AddSquareCollider(0.2,0.2,0.2,true);
 }
 
 void CAABBCollider::UpdateCollider(const Transform& transform)
 {
 
-	auto tempVec = reactphysics3d::Vector3(transform.GetPosition().GetX() - offset.x, transform.GetPosition().GetY() - offset.y, transform.GetPosition().GetZ() - offset.z);
+	auto tempVec = reactphysics3d::Vector3(transform.GetPosition().GetX(), transform.GetPosition().GetY(), transform.GetPosition().GetZ());
 	auto tempQuat = reactphysics3d::Quaternion(transform.GetRotation().GetX(), transform.GetRotation().GetY(), transform.GetRotation().GetZ(), transform.GetRotation().GetW());
 	//tempQuat.inverse();
 
@@ -55,6 +58,7 @@ void CAABBCollider::UpdateCollider(const Transform& transform)
 void CAABBCollider::AddSquareCollider(float x, float y, float z, bool autoSize)
 {
 
+	//glm::fvec3 size (x, y, z) 
 	auto resize = 1;
 
 	if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() != nullptr)

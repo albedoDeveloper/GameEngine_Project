@@ -11,7 +11,7 @@ for i=1,2,1 do
     GetGameObject(goblinName):AddCAABBCollider()
     GetGameObject(goblinName):AddCScript():AssignScript("rotate")
     GetGameObject(goblinName):GetTransform():SetPosition(xpos,0,zpos)
-    GetGameObject(goblinName):GetTransform():RotateLocal(70, 0, 1, 0)
+    GetGameObject(goblinName):GetTransform():RotateLocal(140,1,0, 1)
 
     GetGameObject(goblinName):AddCStaticMesh(goblinMesh):AssignModel("goblinModel")
     xpos = xpos + 2.0

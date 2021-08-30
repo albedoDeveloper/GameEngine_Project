@@ -162,15 +162,14 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	
 	glm::mat4 trans = glm::mat4(1.0f);
 	
-	glm::mat4 translation = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() , worldTrans.GetPosition().GetY() , worldTrans.GetPosition().GetZ()));
+	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() , worldTrans.GetPosition().GetY() , worldTrans.GetPosition().GetZ()));
 
-	glm::mat4 rotX = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
-	glm::mat4 rotY = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetY(), glm::vec3(0.0, 1.0f, 0.0));
-	glm::mat4 rotZ = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
+	trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
+	trans =  glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetY(), glm::vec3(0.0, 1.0f, 0.0));
+	trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
 	
-	glm::mat4 scale = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
 
-	trans = translation * (rotX * rotY * rotZ) * scale;
 
 	shader->setMat4("model", trans);
 	model->Draw(*shader);
@@ -459,6 +458,7 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 	
 	glm::mat4 trans2 = glm::mat4(1.0f);
 	trans2 = glm::translate(trans2, glm::vec3(0, 0, 0));
+	//trans2 = glm::rotate(trans2, 0.0f, glm::vec3(0, 0, 0));
 
 	debugShader->setMat4("model", trans2);
 	debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
