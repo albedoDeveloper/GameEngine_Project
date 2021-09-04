@@ -134,19 +134,19 @@ void GameObjectFactory::Restart()
 	}
 }
 
-void GameObjectFactory::Save()
+void GameObjectFactory::Save(nlohmann::json& j)
 {
 	std::map<std::string, GameObject*>::iterator it;
 	for (it = objectList.begin(); it != objectList.end(); it++) {
-		it->second->Save();
+		it->second->Save(j);
 	}
 }
 
-void GameObjectFactory::Load()
+void GameObjectFactory::Load(nlohmann::json& j)
 {
 	std::map<std::string, GameObject*>::iterator it;
 	for (it = objectList.begin(); it != objectList.end(); it++) {
-		it->second->Load();
+		it->second->Load(j);
 	}
 }
 

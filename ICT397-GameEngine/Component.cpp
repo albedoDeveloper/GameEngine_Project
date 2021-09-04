@@ -1,4 +1,6 @@
 #include "Component.h"
+#include "GameObject.h"
+
 #include <iostream>
 
 Component::Component() 
@@ -40,17 +42,16 @@ void Component::Restart()
 	Start();
 }
 
-void Component::Save()
+void Component::Save(nlohmann::json& j)
 {
-	m_initTransform = new Transform();
-	m_savedTransform.SetPositionV(m_transform.GetPosition());
-	m_savedTransform.SetRotation(m_transform.GetRotation());
-	m_savedTransform.SetScale(m_transform.GetScale());
+	GameObject* g = GetParentObject();
+	j[g->getFactoryKey()]["Components"]["Component"] = "Component";
+ 
+	//m_transform.ToJson(j, g->getFactoryKey());
 }
 
-void Component::Load()
+void Component::Load(nlohmann::json& j)
 {
-	m_transform.SetPositionV(m_savedTransform.GetPosition());
-	m_transform.SetRotation(m_savedTransform.GetRotation());
-	m_transform.SetScale(m_savedTransform.GetScale());
+	GameObject* g = GetParentObject();
+	//m_transform.FromJson(j, g->getFactoryKey());
 }

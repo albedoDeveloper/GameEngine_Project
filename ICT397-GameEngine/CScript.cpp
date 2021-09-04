@@ -41,6 +41,20 @@ void CScript::Restart()
 	Component::Restart();
 }
 
+void CScript::Save(nlohmann::json& j)
+{
+	GameObject* g = GetParentObject();
+	j[g->getFactoryKey()]["Components"]["ScriptComponent"]["Script"] = m_script->key;
+
+	//m_transform.ToJson(j, g->getFactoryKey());
+}
+
+void CScript::Load(nlohmann::json& j)
+{
+	GameObject* g = GetParentObject();
+	//m_transform.FromJson(j, g->getFactoryKey());
+}
+
 void CScript::AssignScript(AScript* script)
 {
 	m_script = script;
