@@ -40,6 +40,22 @@ public:
 	 * @param parentObj pointer to parent object of this component
 	*/
 	CAABBCollider(Transform* parent, GameObject* parentObj);
+	~CAABBCollider()
+	{
+		colBody = nullptr;
+		delete colBody;
+		
+		boxCollider = nullptr;
+
+		colBody = nullptr;
+		delete colBody;
+
+		triangleMesh = nullptr;
+		delete triangleMesh;
+
+		concaveMesh = nullptr;
+	}
+
 
 	/**
 	 * @brief mutator for the boundix box data

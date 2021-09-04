@@ -401,21 +401,24 @@ void GraphicsEngine::DrawCollider(float maxX, float maxY, float maxZ, float minX
 
 void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 {
-	// create buffers/arrays
-	glGenVertexArrays(1, &VAODebug);
-	glGenBuffers(1, &VBODebug);
-	glBindVertexArray(VAODebug);
-	// load data into vertex buffers
-	glBindBuffer(GL_ARRAY_BUFFER, VBODebug);
+	if (!tempVector.empty())
+	{
+		// create buffers/arrays
+		glGenVertexArrays(1, &VAODebug);
+		if(VBODebug == 0)
+			glGenBuffers(1, &VBODebug);
+		glBindVertexArray(VAODebug);
+		// load data into vertex buffers
+		glBindBuffer(GL_ARRAY_BUFFER, VBODebug);
 
-	glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-	glBindVertexArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+		glEnableVertexAttribArray(0);
+		glBindVertexArray(0);
 
-	initDebug = false;
-
+		initDebug = false;
+	}
 }
 
 void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 trans)
@@ -446,7 +449,7 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 	}
 	else
 	{
-		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
 	}
 
 	glPolygonMode(GL_FRONT, GL_LINE);
