@@ -13,7 +13,7 @@ void Model::loadModel(std::string path)
     stbi_set_flip_vertically_on_load(true);
     // read file via ASSIMP
     Assimp::Importer importer;
-    const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate |aiProcess_CalcTangentSpace | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph | aiProcess_GenNormals );
+    const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate |aiProcess_CalcTangentSpace | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph | aiProcess_GenNormals| aiProcess_JoinIdenticalVertices  );
       
     if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
     {
@@ -117,6 +117,9 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
             
         vertices.push_back(vertex);
     }
+    
+    numberOfFaces = mesh->mNumFaces;
+    
     //Each face of the mesh
     for (unsigned int i = 0; i < mesh->mNumFaces; i++)
     {

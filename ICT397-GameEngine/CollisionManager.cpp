@@ -7,7 +7,6 @@ CollisionManager::CollisionManager()
     physicsWorld->setIsDebugRenderingEnabled(true);
     debugRender = &physicsWorld->getDebugRenderer();
     debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::COLLISION_SHAPE, true);
-    //debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::CONTACT_POINT, true);
 
 ;}
 
@@ -43,20 +42,22 @@ bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform
 
     if (hasCollided)
     {
+    
     }
     
    /* reactphysics3d::PhysicsCommon i;
 
 
-    for (unsigned i = 0; i < m_colliderArray.size(); i++)
-    {
+   for (unsigned i = 0; i < m_colliderArray.size(); i++)
+   {
         if (m_colliderArray[i] == &myCollider)
         {
-            continue; // dont check collision with self
+               continue; // dont check collision with self
         }
 
-        if (worldT.GetDistance(m_colliderArray[i]->GetTransformConst()) > 5000) {
-            continue;
+        if (worldT.GetDistance(m_colliderArray[i]->GetTransformConst()) > 5000) 
+        {
+              continue;
         }
 
         AABB b = AABBToWorldSpace(*m_colliderArray[i]);

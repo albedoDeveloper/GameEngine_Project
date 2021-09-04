@@ -110,7 +110,6 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
 	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
 
-
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
 	INPUT->LockCursor(true);

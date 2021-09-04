@@ -95,11 +95,20 @@ public:
 	reactphysics3d::CollisionBody* colBody = nullptr;
 
 	reactphysics3d::BoxShape* boxCollider = nullptr;
+	
+	reactphysics3d::TriangleMesh* triangleMesh = nullptr;
+	reactphysics3d::ConcaveMeshShape* concaveMesh = nullptr;
+	std::vector<float> concaveVertices;
+	std::vector<int> concaveIndices;
 
+	reactphysics3d::ConvexMeshShape* convexCollider = nullptr;
 	reactphysics3d::Collider* col;
+	reactphysics3d::PolygonVertexArray::PolygonFace* polyFace;
 
 	void UpdateCollider(const Transform& transform);
 	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2 , bool autoSize = false);
+	void AddConvexCollider();
+	void AddConcaveCollider();
 
 };
 
