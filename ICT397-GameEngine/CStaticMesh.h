@@ -54,6 +54,16 @@ public:
 	virtual void LateRender();
 
 	/**
+	 * @brief saves the component
+	*/
+	virtual void Save(nlohmann::json& j);
+
+	/**
+	 * @brief loads the component from saved state
+	*/
+	virtual void Load(nlohmann::json& j);
+
+	/**
  * @brief the model this mesh is storing
 */
 	Model* m_model;

@@ -47,7 +47,9 @@ void LevelLoader::ToJson(json& j, GameObject* g)
 	
 	//this transofrm stuff can be moved to the transform componenet instead
 
-	j[g->getFactoryKey()]["Position"] =
+	g->GetTransform()->ToJson(j, g->getFactoryKey());
+
+	/*j[g->getFactoryKey()]["Position"] =
 	{
 		{"x",g->GetTransform()->GetPosition().GetX()},
 		{"y",g->GetTransform()->GetPosition().GetY()},
@@ -67,7 +69,7 @@ void LevelLoader::ToJson(json& j, GameObject* g)
 		{"x",g->GetTransform()->GetScale().GetX()},
 		{"y",g->GetTransform()->GetScale().GetY()},
 		{"z",g->GetTransform()->GetScale().GetZ()},
-	};
+	};*/
 
 	//here is where we should get the componenet map and save to colliders, this will require each comp to have a tojson method
 
@@ -87,38 +89,40 @@ void LevelLoader::FromJson(json& j, GameObject* g)
 		//////ERROR HANDLING///////
 	//////Need to figure out a way to check if the field in json is filled or not before calling from
 
-	//move to position
-	if (j.at(g->getFactoryKey()).contains("Position"))
-	{
-		g->GetTransform()->SetPosition(j.at(g->getFactoryKey()).at("Position").at("x"),
-			j.at(g->getFactoryKey()).at("Position").at("y"),
-			j.at(g->getFactoryKey()).at("Position").at("z"));
-	}
-	
-	//set rotation, might need new keyword here i don't like declaring this temporary value
-	if (j.at(g->getFactoryKey()).contains("Rotation"))
-	{
-		Quaternion q;
+	g->GetTransform()->FromJson(j, g->getFactoryKey());
 
-		q.SetX(j.at(g->getFactoryKey()).at("Rotation").at("x"));
-		q.SetY(j.at(g->getFactoryKey()).at("Rotation").at("y"));
-		q.SetZ(j.at(g->getFactoryKey()).at("Rotation").at("z"));
-		q.SetW(j.at(g->getFactoryKey()).at("Rotation").at("w"));
+	////move to position
+	//if (j.at(g->getFactoryKey()).contains("Position"))
+	//{
+	//	g->GetTransform()->SetPosition(j.at(g->getFactoryKey()).at("Position").at("x"),
+	//		j.at(g->getFactoryKey()).at("Position").at("y"),
+	//		j.at(g->getFactoryKey()).at("Position").at("z"));
+	//}
+	//
+	////set rotation, might need new keyword here i don't like declaring this temporary value
+	//if (j.at(g->getFactoryKey()).contains("Rotation"))
+	//{
+	//	Quaternion q;
 
-		g->GetTransform()->SetRotation(q);
-	}
-	
+	//	q.SetX(j.at(g->getFactoryKey()).at("Rotation").at("x"));
+	//	q.SetY(j.at(g->getFactoryKey()).at("Rotation").at("y"));
+	//	q.SetZ(j.at(g->getFactoryKey()).at("Rotation").at("z"));
+	//	q.SetW(j.at(g->getFactoryKey()).at("Rotation").at("w"));
 
-	//change scale
-	if (j.at(g->getFactoryKey()).contains("Scale") )
-	{
-		Vector3f v;
-		v.SetX(j.at(g->getFactoryKey()).at("Scale").at("x"));
-		v.SetY(j.at(g->getFactoryKey()).at("Scale").at("y"));
-		v.SetZ(j.at(g->getFactoryKey()).at("Scale").at("z"));
+	//	g->GetTransform()->SetRotation(q);
+	//}
+	//
 
-		g->GetTransform()->SetScale(v);
-	}
+	////change scale
+	//if (j.at(g->getFactoryKey()).contains("Scale") )
+	//{
+	//	Vector3f v;
+	//	v.SetX(j.at(g->getFactoryKey()).at("Scale").at("x"));
+	//	v.SetY(j.at(g->getFactoryKey()).at("Scale").at("y"));
+	//	v.SetZ(j.at(g->getFactoryKey()).at("Scale").at("z"));
+
+	//	g->GetTransform()->SetScale(v);
+	//}
 	
 	
 	//here is where we add in the componenets from the json, each comp will need it's own fromJson method
@@ -142,26 +146,41 @@ void LevelLoader::LoadLevel()
 	int i = 0;
 
 
-	//this iterator only works if we already have all objects in GO factory
-		//need a more robust method
-	for (it = objectList->begin(); it != objectList->end(); it++)
-	{
-		
-		//we read each gameobject from JSON
-		FromJson(j, it->second);
 
-	}
+	std::cout << "TEST" << j.json::object() << std::endl;
+
+	
 
 	//Step 3
 	//This is the more robust method
 	//We test for how many objects there are 
-	//int numOfObjects = j.size();
-	//std::cout << "NUM OF OBJECT == " << numOfObjects << std::endl;
+	int numOfObjects = j.size();
+	std::cout << "NUM OF OBJECT == " << numOfObjects << std::endl;
 
-	/*for (auto el : j.items())
+	for (auto it : j.items())
 	{
-		std::cout << "TEST " << j.at(el.key()).at("Position") << std::endl;
-	}*/
+		//std::cout << "TEST " << j.at(el.key()).at("key") << std::endl;
+		//std::cout << "TEST " << j.at(el.key()).at("Position").at("x") << std::endl;
+
+		GAMEOBJECT->SpawnGameObject(j.at(it.key()).at("key"));
+
+
+		
+
+
+
+		//g->Load(j);
+	}
+
+	//this iterator only works if we already have all objects in GO factory
+		//need a more robust method
+	for (it = objectList->begin(); it != objectList->end(); it++)
+	{
+		//we read each gameobject from JSON
+		it->second->Load(j);
+		//FromJson(j, it->second);
+
+	}
 
 	
 
@@ -180,35 +199,39 @@ void LevelLoader::SaveLevel()
 	//we need to make this universally accessible
 	std::ofstream o("../Assets/SaveFiles/tavern.json");
 	
+
+	//STEP 4 CHANGE
+	GAMEOBJECT->Save(j);
+
 	//Step 4 retrieve and populate Gameobject data
-	std::map<std::string, GameObject*>::iterator it;
+	//std::map<std::string, GameObject*>::iterator it;
 
-	int i = 0;
+	//int i = 0;
 
-	for (it = objectList->begin(); it != objectList->end(); it++)
-	{
-		//console logs, can delete later but useful for now
-		std::cout << "Object " << i << " Of " << objectList->size() << "\n" <<
-			"	 has Key " << it->second->getFactoryKey() << "\n" <<
-			"	 Is at position x=" << it->second->GetTransform()->GetPosition().GetX() << "\n" <<
-			"	 Is at position y=" << it->second->GetTransform()->GetPosition().GetY() << "\n" <<
-			"	 Is at position z=" << it->second->GetTransform()->GetPosition().GetZ() << "\n" <<
-			": " <<
-			"	 Is at rotation x = "<< it->second->GetTransform()->GetRotation().GetX() << "\n" <<
-			"	 Is at rotation y = "<< it->second->GetTransform()->GetRotation().GetY() << "\n" <<
-			"	 Is at rotation z = "<< it->second->GetTransform()->GetRotation().GetZ() << "\n" <<
-			"	 Is at rotation w = "<< it->second->GetTransform()->GetRotation().GetW() << "\n" <<
-			": "
-			"	 has scale x=" << it->second->GetTransform()->GetScale().GetX() << "\n" <<
-			"	 has scale y=" << it->second->GetTransform()->GetScale().GetY() << "\n" <<
-			"	 has scale z=" << it->second->GetTransform()->GetScale().GetZ() << "\n" <<
-			": " << std::endl;
+	//for (it = objectList->begin(); it != objectList->end(); it++)
+	//{
+	//	//console logs, can delete later but useful for now
+	//	std::cout << "Object " << i << " Of " << objectList->size() << "\n" <<
+	//		"	 has Key " << it->second->getFactoryKey() << "\n" <<
+	//		"	 Is at position x=" << it->second->GetTransform()->GetPosition().GetX() << "\n" <<
+	//		"	 Is at position y=" << it->second->GetTransform()->GetPosition().GetY() << "\n" <<
+	//		"	 Is at position z=" << it->second->GetTransform()->GetPosition().GetZ() << "\n" <<
+	//		": " <<
+	//		"	 Is at rotation x = "<< it->second->GetTransform()->GetRotation().GetX() << "\n" <<
+	//		"	 Is at rotation y = "<< it->second->GetTransform()->GetRotation().GetY() << "\n" <<
+	//		"	 Is at rotation z = "<< it->second->GetTransform()->GetRotation().GetZ() << "\n" <<
+	//		"	 Is at rotation w = "<< it->second->GetTransform()->GetRotation().GetW() << "\n" <<
+	//		": "
+	//		"	 has scale x=" << it->second->GetTransform()->GetScale().GetX() << "\n" <<
+	//		"	 has scale y=" << it->second->GetTransform()->GetScale().GetY() << "\n" <<
+	//		"	 has scale z=" << it->second->GetTransform()->GetScale().GetZ() << "\n" <<
+	//		": " << std::endl;
 
-		//Step 5 write each gameobject to JSON
-		ToJson(j, it->second);
+	//	//Step 5 write each gameobject to JSON
+	//	ToJson(j, it->second);
 
-		i++;
-	}
+	//	i++;
+	//}
 
 	//Step 6 save json to file
 	o << std::setw(4) << j << std::endl;

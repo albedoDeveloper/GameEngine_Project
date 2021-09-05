@@ -229,14 +229,13 @@ void GameObject::Restart()
 	}
 }
 
-void GameObject::Save()
+void GameObject::Save(nlohmann::json& j)
 {
-	m_savedActivation = m_isActive;
+	j[getFactoryKey()]["key"] = getFactoryKey();
 
-	m_savedTransform = new Transform();
-	m_savedTransform.SetPositionV(m_transform.GetPosition());
-	m_savedTransform.SetRotation(m_transform.GetRotation());
-	m_savedTransform.SetScale(m_transform.GetScale());
+	GetTransform()->ToJson(j, getFactoryKey());
+
+	std::cout << "SAVED" << std::endl;
 
 	// iterate through all component lists
 	for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
@@ -244,26 +243,42 @@ void GameObject::Save()
 		// iterate through all components in list
 		for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 		{
-			(*listIterator)->Save();
+			(*listIterator)->Save(j);
 		}
 	}
 }
 
-void GameObject::Load()
+void GameObject::Load(nlohmann::json& j)
 {
-	m_isActive = m_savedActivation;
+	std::cout << getFactoryKey() << std::endl;
+	GetTransform()->FromJson(j, getFactoryKey());
 
-	m_transform.SetPositionV(m_savedTransform.GetPosition());
-	m_transform.SetRotation(m_savedTransform.GetRotation());
-	m_transform.SetScale(m_savedTransform.GetScale());
+	std::cout << j.at(getFactoryKey()).at("Components").size() << std::endl;
 
-	// iterate through all component lists
-	for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+	for (auto it : j.at(getFactoryKey()).at("Components").items())
 	{
-		// iterate through all components in list
-		for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+		std::cout << "GO TEST" << it.key() << " | " << it.value() << std::endl;
+
+		
+
+		if (it.key() == "ScriptComponent")
 		{
-			(*listIterator)->Load();
+			AddCScript()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
 		}
+
+		if (it.key() == "StaticMeshComponent")
+		{
+			
+			AddCStaticMesh()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("Model"));
+		}
+
+		if (it.key() == "AABBComponent")
+		{
+			CAABBCollider* col = AddCAABBCollider();
+			col->Load(j);
+		}
+
+
+
 	}
 }

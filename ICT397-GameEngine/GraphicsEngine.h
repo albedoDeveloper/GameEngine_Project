@@ -268,7 +268,7 @@ private:
 	*/
 	void InitDebug(std::vector <float>& tempVector);
 	
-	/**
+	/*
 	 * @brief Renders debug colliders
 	*/
 	void DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 trans);
