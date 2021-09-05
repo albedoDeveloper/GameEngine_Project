@@ -54,7 +54,7 @@ bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform
     if (waitTime > 0)
     {
         waitTime++;
-        if (waitTime > 20)
+        if (waitTime > 10)
         {
             waitTime = 0;
             hasCollided = false;
