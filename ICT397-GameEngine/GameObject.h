@@ -16,6 +16,7 @@
 #include "CAABBCollider.h"
 #include "CSpotlight.h"
 #include "CWater.h"
+#include <nlohmann/json.hpp>
 
 #if _DEBUG
 #include <iostream>
@@ -191,11 +192,11 @@ public:
 	/**
 	 * @brief saves the object
 	*/
-	void Save();
+	void Save(nlohmann::json& j);
 	/**
 	 * @brief loads the object from saved state
 	*/
-	void Load();
+	void Load(nlohmann::json& j);
 
 private:
 	/**

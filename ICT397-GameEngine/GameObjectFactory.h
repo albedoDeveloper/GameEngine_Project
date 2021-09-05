@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include <map>
 #include <string>
+#include <nlohmann/json.hpp>
+
 
 /**
  * @brief A singleton factory class to produce all GameObjects, store them in memory, and allow access to them
@@ -89,11 +91,11 @@ public:
 	/**
 	 * @brief saves the game
 	*/
-	void Save();
+	void Save(nlohmann::json& j);
 	/**
 	 * @brief loads the game from saved state
 	*/
-	void Load();
+	void Load(nlohmann::json& j);
 };
 
 #define GAMEOBJECT GameObjectFactory::instance()

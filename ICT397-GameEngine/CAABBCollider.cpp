@@ -37,6 +37,22 @@ void CAABBCollider::LateRender()
 {
 }
 
+void CAABBCollider::Save(nlohmann::json& j)
+{
+	GameObject* g = GetParentObject();
+	j[g->getFactoryKey()]["Components"]["AABBComponent"] = "AABBComponent";
+
+	//m_transform.ToJson(j, g->getFactoryKey());
+}
+
+void CAABBCollider::Load(nlohmann::json& j)
+{
+	GameObject* g = GetParentObject();
+
+
+	//m_transform.FromJson(j, g->getFactoryKey());
+}
+
 void CAABBCollider::Start()
 {	
 

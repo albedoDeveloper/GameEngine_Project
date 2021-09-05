@@ -1,5 +1,6 @@
 #pragma once
 #include "Transform.h"
+#include <nlohmann/json.hpp>
 
 class GameObject;
 
@@ -53,12 +54,12 @@ public:
 	/**
 	 * @brief saves the component
 	*/
-	virtual void Save();
+	virtual void Save(nlohmann::json& j);
 
 	/**
 	 * @brief loads the component from saved state
 	*/
-	virtual void Load();
+	virtual void Load(nlohmann::json& j);
 
 	/**
 	 * @brief transform accessor

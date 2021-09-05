@@ -77,14 +77,15 @@ public:
 	 * @brief restarts component to initial state
 	*/
 	void Restart();
+
 	/**
 	 * @brief saves the component
 	*/
-	void Save();
+	void Save(nlohmann::json& j);
 	/**
 	 * @brief loads the component from saved state
 	*/
-	void Load();
+	void Load(nlohmann::json& j);
 
 	void SetMouseEnabled(bool isEnabled);
 

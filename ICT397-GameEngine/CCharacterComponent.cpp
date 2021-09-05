@@ -217,16 +217,16 @@ void CCharacter::Restart()
 	Component::Restart();
 }
 
-void CCharacter::Save()
+void CCharacter::Save(nlohmann::json& j)
 {
 	m_savedHitpoints = m_hitpoints;
-	Component::Save();
+	Component::Save(j);
 }
 
-void CCharacter::Load()
+void CCharacter::Load(nlohmann::json& j)
 {
 	m_hitpoints = m_savedHitpoints;
-	Component::Load();
+	Component::Load(j);
 }
 
 void CCharacter::SetMouseEnabled(bool isEnabled)

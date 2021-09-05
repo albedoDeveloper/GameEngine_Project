@@ -90,6 +90,15 @@ public:
 	 * @brief a second render called after the first
 	*/
 	void LateRender();
+
+	/**
+	 * @brief saves the component
+	*/
+	void Save(nlohmann::json& j);
+	/**
+	 * @brief loads the component from saved state
+	*/
+	void Load(nlohmann::json& j);
 	
 	/**
 	 * @brief registers the collider with the collider manager

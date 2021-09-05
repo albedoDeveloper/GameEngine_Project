@@ -16,6 +16,79 @@ Transform::Transform(Transform* parent)
     m_parent = parent;
 }
 
+/**
+     * @brief Saves the transform to JSON
+    */
+void Transform::ToJson(nlohmann::json& j, std::string key)
+{
+    j[key]["Transform"]["Position"] =
+    {
+        {"x",GetPosition().GetX()},
+        {"y",GetPosition().GetY()},
+        {"z",GetPosition().GetZ()},
+    };
+
+    j[key]["Transform"]["Rotation"] =
+    {
+        {"x",GetRotation().GetX()},
+        {"y",GetRotation().GetY()},
+        {"z",GetRotation().GetZ()},
+        {"w",GetRotation().GetW()},
+    };
+
+    j[key]["Transform"]["Scale"] =
+    {
+        {"x",GetScale().GetX()},
+        {"y",GetScale().GetY()},
+        {"z",GetScale().GetZ()},
+    };
+}
+
+/**
+ * @brief loads the transform from JSON
+*/
+void Transform::FromJson(nlohmann::json& j, std::string key)
+{
+
+    if (j.at(key).contains("Transform")) 
+    {
+        //move to position
+        if (j.at(key).at("Transform").contains("Position"))
+        {
+            SetPosition(j.at(key).at("Transform").at("Position").at("x"),
+                j.at(key).at("Transform").at("Position").at("y"),
+                j.at(key).at("Transform").at("Position").at("z"));
+        }
+
+        //set rotation, might need new keyword here i don't like declaring this temporary value
+        if (j.at(key).at("Transform").contains("Rotation"))
+        {
+            Quaternion q;
+
+            q.SetX(j.at(key).at("Transform").at("Rotation").at("x"));
+            q.SetY(j.at(key).at("Transform").at("Rotation").at("y"));
+            q.SetZ(j.at(key).at("Transform").at("Rotation").at("z"));
+            q.SetW(j.at(key).at("Transform").at("Rotation").at("w"));
+
+            SetRotation(q);
+        }
+
+
+        //change scale
+        if (j.at(key).at("Transform").contains("Scale"))
+        {
+            Vector3f v;
+            v.SetX(j.at(key).at("Transform").at("Scale").at("x"));
+            v.SetY(j.at(key).at("Transform").at("Scale").at("y"));
+            v.SetZ(j.at(key).at("Transform").at("Scale").at("z"));
+
+            SetScale(v);
+        }
+    }
+    
+
+}
+
 void Transform::SetPositionV(Vector3f newPosition)
 {
 	m_position = newPosition;

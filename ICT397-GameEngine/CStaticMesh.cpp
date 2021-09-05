@@ -1,6 +1,9 @@
 #include "CStaticMesh.h"
 #include "GraphicsEngine.h"
 #include "GameAssetFactory.h"
+#include "GameObject.h"
+
+
 
 #if _DEBUG
 #include <iostream>
@@ -47,3 +50,17 @@ void CStaticMesh::Render()
 
 void CStaticMesh::LateRender()
 {}
+
+void CStaticMesh::Save(nlohmann::json& j)
+{
+	GameObject* g = GetParentObject();
+	j[g->getFactoryKey()]["Components"]["StaticMeshComponent"]["Model"] = m_model->key;
+
+	//m_transform.ToJson(j, g->getFactoryKey());
+}
+
+void CStaticMesh::Load(nlohmann::json& j)
+{
+	GameObject* g = GetParentObject();
+	//m_transform.FromJson(j, g->getFactoryKey());
+}
