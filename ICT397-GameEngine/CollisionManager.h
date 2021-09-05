@@ -42,6 +42,9 @@ public:
 
 	reactphysics3d::DebugRenderer* debugRender;
 
+	bool hasCollided = false;
+	int waitTime = 0;
+
 public:
 	/**
 	 * @brief default constructor
@@ -117,7 +120,7 @@ private:
 	*/
 	bool TestAABBAABB(AABB& a, AABB& b) const;
 
-	bool hasCollided = false;
+
 };
 
 #define COLLISION CollisionManager::Instance()

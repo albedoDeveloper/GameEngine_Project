@@ -28,23 +28,26 @@ public:
         key = keyTemp;
         loadModel(path);
     }
-
-    //Model()
-
-    void Draw(Shader& shader);
-    std::string key;
     void AssignTextureKey(std::string)
     {
 
     };
+    //Model()
+
+    void Draw(Shader& shader);
+    std::string key;
+    std::vector<Mesh>& GetMesh() { return meshes; }
 
     std::vector<float> minMax;
+    int numberOfFaces = 0;
 private:
     // model data
     std::vector<Mesh> meshes;
     std::string directory;
     std::vector<Texture> textures_loaded;
     modelInfo info;
+
+
 
     int text;
     std::string texturePath;

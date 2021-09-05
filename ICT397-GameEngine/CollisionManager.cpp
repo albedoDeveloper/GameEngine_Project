@@ -1,4 +1,5 @@
 #include "CollisionManager.h"
+#include "GameObject.h"
 
 CollisionManager::CollisionManager()
     :m_heightMap{ nullptr }
@@ -7,7 +8,7 @@ CollisionManager::CollisionManager()
     physicsWorld->setIsDebugRenderingEnabled(true);
     debugRender = &physicsWorld->getDebugRenderer();
     debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::COLLISION_SHAPE, true);
-    //debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::CONTACT_POINT, true);
+    debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::CONTACT_POINT, true);
 
 ;}
 
@@ -35,36 +36,31 @@ bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform
     //AABB a = AABBToWorldSpace(myCollider, worldT);
     bool collision = false;
 
-    myCollider.UpdateCollider(myCollider.GetTransform().GetWorldTransform());
+   // myCollider.UpdateCollider(myCollider.GetTransform().GetWorldTransform());
     
     physicsWorld->testCollision(myCollider.colBody,*COLLISION);
 
     physicsWorld->update(TIME->GetDeltaTime());
 
-    if (hasCollided)
+    if (hasCollided && waitTime == 0)
     {
+        Vector3f tempTransform = myCollider.GetParentObject()->GetCCharacter()->GetVelocity();
+
+       // myCollider.GetParentObject()->GetTransform()->SetPosition(tempTransform.GetX() - 0.01f, tempTransform.GetY(), tempTransform.GetZ() + 0.01f);
+        myCollider.GetParentObject()->GetCCharacter()->SetVelocity(Vector3f(tempTransform.GetX() * -1, tempTransform.GetY() * -1, tempTransform.GetZ() * -1));
+        waitTime = 1;
     }
     
-   /* reactphysics3d::PhysicsCommon i;
-
-
-    for (unsigned i = 0; i < m_colliderArray.size(); i++)
+    if (waitTime > 0)
     {
-        if (m_colliderArray[i] == &myCollider)
+        waitTime++;
+        if (waitTime > 10)
         {
-            continue; // dont check collision with self
-        }
+            waitTime = 0;
+            hasCollided = false;
 
-        if (worldT.GetDistance(m_colliderArray[i]->GetTransformConst()) > 5000) {
-            continue;
         }
-
-        AABB b = AABBToWorldSpace(*m_colliderArray[i]);
-        if (TestAABBAABB(a, b))
-        {
-            collision = true;
-        }
-    }*/
+    }
     return collision;
 }
 
@@ -150,15 +146,15 @@ void CollisionManager::CreatePhysicsWorld()
 
 void CollisionManager::onContact(const CallbackData& callbackData)
 {
-    //std::cout << "hello" << std::endl;
     for (int i = 0; i < callbackData.getContactPair(0).getNbContactPoints(); i++)
     {
         reactphysics3d::Vector3 points(callbackData.getContactPair(0).getContactPoint(i).getLocalPointOnCollider1());
 
-        std::cout << "Contact Points: " << points.x << " " << points.y << " " << points.z << std::endl;
+        std::cout << "Contact Points: " << points.x << " " << points.y << " " << points.z << '\n';
     }
 
-    std::cout << "--------------------------" << std::endl;
+    std::cout << "--------------------------" << '\n';
+
 
     hasCollided = true;
 

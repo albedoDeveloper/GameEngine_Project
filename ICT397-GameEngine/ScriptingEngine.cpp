@@ -203,13 +203,16 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("GetDisplayWireframe", &CTerrainBruteForce::GetDisplayWireframe)
         .endClass();
 
-    getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
-        .endClass()
-        .deriveClass<CAABBCollider, Component>("CAABBCollider")
-            .addFunction("GetCollider", &CAABBCollider::GetCollider)
-            .addFunction("SetCollider", &CAABBCollider::SetCollider)
-        .endClass();
+   getGlobalNamespace(Lbuff)
+       .beginClass<Component>("Component")
+       .endClass()
+       .deriveClass<CAABBCollider, Component>("CAABBCollider")
+       .addFunction("GetCollider", &CAABBCollider::GetCollider)
+       .addFunction("SetCollider", &CAABBCollider::SetCollider)
+       .addFunction("AddConvexCollider", &CAABBCollider::AddConvexCollider)
+       .addFunction("AddBoxCollider", &CAABBCollider::AddBoxCollider)
+       .addFunction("AddConcaveCollider", &CAABBCollider::AddConcaveCollider)
+       .endClass();
 
     getGlobalNamespace(Lbuff)
         .beginClass<Component>("Component")

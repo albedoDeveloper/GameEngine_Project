@@ -40,6 +40,22 @@ public:
 	 * @param parentObj pointer to parent object of this component
 	*/
 	CAABBCollider(Transform* parent, GameObject* parentObj);
+	~CAABBCollider()
+	{
+		colBody = nullptr;
+		delete colBody;
+		
+		boxCollider = nullptr;
+
+		colBody = nullptr;
+		delete colBody;
+
+		triangleMesh = nullptr;
+		delete triangleMesh;
+
+		concaveMesh = nullptr;
+	}
+
 
 	/**
 	 * @brief mutator for the boundix box data
@@ -89,8 +105,7 @@ public:
 	*/
 	void RegisterCollider();
 
-
-
+	glm::vec3 offset;
 
 public:
 	/**
@@ -105,11 +120,20 @@ public:
 	reactphysics3d::CollisionBody* colBody = nullptr;
 
 	reactphysics3d::BoxShape* boxCollider = nullptr;
+	
+	reactphysics3d::TriangleMesh* triangleMesh = nullptr;
+	reactphysics3d::ConcaveMeshShape* concaveMesh = nullptr;
+	std::vector<float> concaveVertices;
+	std::vector<int> concaveIndices;
 
+	reactphysics3d::ConvexMeshShape* convexCollider = nullptr;
 	reactphysics3d::Collider* col;
+	reactphysics3d::PolygonVertexArray::PolygonFace* polyFace;
 
 	void UpdateCollider(const Transform& transform);
-	void AddSquareCollider(float x = 0.2, float y = 0.2, float z = 0.2 , bool autoSize = false);
+	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2 , bool autoSize = false);
+	void AddConvexCollider();
+	void AddConcaveCollider();
 
 };
 

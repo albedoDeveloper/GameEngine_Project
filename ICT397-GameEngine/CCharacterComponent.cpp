@@ -83,7 +83,7 @@ void CCharacter::Update()
 	float mouseSens = 60;
 	Vector3f moveVector(0, 0, 0);
 
-	if (m_playerControlled)
+	if (m_playerControlled && !COLLISION->hasCollided)
 	{
 		if (INPUT->GetKey('s'))
 		{
