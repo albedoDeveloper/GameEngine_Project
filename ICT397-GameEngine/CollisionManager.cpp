@@ -1,4 +1,5 @@
 #include "CollisionManager.h"
+#include "GameObject.h"
 
 CollisionManager::CollisionManager()
     :m_heightMap{ nullptr }
@@ -7,6 +8,7 @@ CollisionManager::CollisionManager()
     physicsWorld->setIsDebugRenderingEnabled(true);
     debugRender = &physicsWorld->getDebugRenderer();
     debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::COLLISION_SHAPE, true);
+    debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::CONTACT_POINT, true);
 
 ;}
 
@@ -40,32 +42,25 @@ bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform
 
     physicsWorld->update(TIME->GetDeltaTime());
 
-    if (hasCollided)
+    if (hasCollided && waitTime == 0)
     {
-    
+        Vector3f tempTransform = myCollider.GetParentObject()->GetCCharacter()->GetVelocity();
+
+       // myCollider.GetParentObject()->GetTransform()->SetPosition(tempTransform.GetX() - 0.01f, tempTransform.GetY(), tempTransform.GetZ() + 0.01f);
+        myCollider.GetParentObject()->GetCCharacter()->SetVelocity(Vector3f(tempTransform.GetX() * -1, tempTransform.GetY() * -1, tempTransform.GetZ() * -1));
+        waitTime = 1;
     }
     
-   /* reactphysics3d::PhysicsCommon i;
-
-
-   for (unsigned i = 0; i < m_colliderArray.size(); i++)
-   {
-        if (m_colliderArray[i] == &myCollider)
+    if (waitTime > 0)
+    {
+        waitTime++;
+        if (waitTime > 20)
         {
-               continue; // dont check collision with self
-        }
+            waitTime = 0;
+            hasCollided = false;
 
-        if (worldT.GetDistance(m_colliderArray[i]->GetTransformConst()) > 5000) 
-        {
-              continue;
         }
-
-        AABB b = AABBToWorldSpace(*m_colliderArray[i]);
-        if (TestAABBAABB(a, b))
-        {
-            collision = true;
-        }
-    }*/
+    }
     return collision;
 }
 
@@ -159,6 +154,7 @@ void CollisionManager::onContact(const CallbackData& callbackData)
     }
 
     std::cout << "--------------------------" << '\n';
+
 
     hasCollided = true;
 
