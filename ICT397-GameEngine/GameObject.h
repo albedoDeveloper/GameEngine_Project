@@ -97,7 +97,7 @@ public:
 	 * @brief Adds a collider component
 	 * @return the created collider
 	*/
-	CAABBCollider* AddCAABBCollider();
+	CAABBCollider* AddCCollider();
 	/**
 	 * @brief Adds a spotlight component
 	 * @return the created spotlight

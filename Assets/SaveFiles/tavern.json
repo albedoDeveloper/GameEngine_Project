@@ -1,77 +1,14 @@
 {
-    "goblin 1": {
+    "bar_floor_rod": {
         "Components": {
             "AABBComponent": "AABBComponent",
-            "ScriptComponent": {
-                "Script": "rotate"
-            },
             "StaticMeshComponent": {
-                "Model": "goblinModel"
+                "Model": "bar_floor_rod"
             }
         },
         "Transform": {
             "Position": {
-                "x": -0.24500000476837158,
-                "y": 0.29499998688697815,
-                "z": 0.46000000834465027
-            },
-            "Rotation": {
-                "w": 0.9803749322891235,
-                "x": 0.04451397806406021,
-                "y": -0.16937559843063354,
-                "z": -0.09052857011556625
-            },
-            "Scale": {
-                "x": 1.1749999523162842,
-                "y": 0.875,
-                "z": 1.375
-            }
-        },
-        "key": "goblin 1"
-    },
-    "goblin 2": {
-        "Components": {
-            "AABBComponent": "AABBComponent",
-            "ScriptComponent": {
-                "Script": "rotate"
-            },
-            "StaticMeshComponent": {
-                "Model": "goblinModel"
-            }
-        },
-        "Transform": {
-            "Position": {
-                "x": 1.8200000524520874,
-                "y": 0.4399999976158142,
-                "z": 0.7350000143051147
-            },
-            "Rotation": {
-                "w": 0.13537940382957458,
-                "x": 0.9907938241958618,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Scale": {
-                "x": 1.0,
-                "y": 3.7100000381469727,
-                "z": 1.0
-            }
-        },
-        "key": "goblin 2"
-    },
-    "goblin 3": {
-        "Components": {
-            "AABBComponent": "AABBComponent",
-            "ScriptComponent": {
-                "Script": "rotate"
-            },
-            "StaticMeshComponent": {
-                "Model": "goblinModel"
-            }
-        },
-        "Transform": {
-            "Position": {
-                "x": 4.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
             },
@@ -87,21 +24,18 @@
                 "z": 1.0
             }
         },
-        "key": "goblin 3"
+        "key": "bar_floor_rod"
     },
-    "goblin 4": {
+    "graffiti_block": {
         "Components": {
             "AABBComponent": "AABBComponent",
-            "ScriptComponent": {
-                "Script": "rotate"
-            },
             "StaticMeshComponent": {
-                "Model": "goblinModel"
+                "Model": "graffiti_block"
             }
         },
         "Transform": {
             "Position": {
-                "x": 6.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
             },
@@ -117,21 +51,18 @@
                 "z": 1.0
             }
         },
-        "key": "goblin 4"
+        "key": "graffiti_block"
     },
-    "goblin 5": {
+    "main_bar_bench": {
         "Components": {
             "AABBComponent": "AABBComponent",
-            "ScriptComponent": {
-                "Script": "rotate"
-            },
             "StaticMeshComponent": {
-                "Model": "goblinModel"
+                "Model": "main_bar_bench"
             }
         },
         "Transform": {
             "Position": {
-                "x": 8.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
             },
@@ -147,7 +78,7 @@
                 "z": 1.0
             }
         },
-        "key": "goblin 5"
+        "key": "main_bar_bench"
     },
     "player": {
         "Components": {
@@ -156,14 +87,14 @@
         },
         "Transform": {
             "Position": {
-                "x": -1.6326314210891724,
-                "y": 0.0,
-                "z": 1.770712971687317
+                "x": 4.256585121154785,
+                "y": 1.7000000476837158,
+                "z": -1.955728530883789
             },
             "Rotation": {
-                "w": 0.8782290816307068,
+                "w": 0.18529658019542694,
                 "x": 0.0,
-                "y": 0.4782400131225586,
+                "y": 0.9826816916465759,
                 "z": 0.0
             },
             "Scale": {
@@ -173,5 +104,113 @@
             }
         },
         "key": "player"
+    },
+    "south_bar_barrier": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "Model": "south_bar_barrier"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "south_bar_barrier"
+    },
+    "tavern_floor": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "Model": "tavern_floor"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "tavern_floor"
+    },
+    "tavern_glass_door_wall": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "Model": "tavern_glass_door_wall"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "tavern_glass_door_wall"
+    },
+    "tavern_glass_door_wall_long": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "Model": "tavern_glass_door_wall_long"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "tavern_glass_door_wall_long"
     }
 }

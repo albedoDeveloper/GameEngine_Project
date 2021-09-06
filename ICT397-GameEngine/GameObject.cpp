@@ -88,7 +88,7 @@ GameObject* GameObject::GetClosestObject(std::string partialKey)
 	return GAMEOBJECT->getClosestObject(&m_transform, partialKey);
 }
 
-CAABBCollider* GameObject::AddCAABBCollider()
+CAABBCollider* GameObject::AddCCollider()
 {
 	return AddComponent<CAABBCollider>();
 }
@@ -276,7 +276,7 @@ void GameObject::Load(nlohmann::json& j)
 		{
 			if (GetComponent<CAABBCollider>() == nullptr) 
 			{
-				CAABBCollider* col = AddCAABBCollider();
+				CAABBCollider* col = AddCCollider();
 				col->Load(j);
 			}
 			

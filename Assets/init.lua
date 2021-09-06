@@ -10,30 +10,29 @@ LoadModel("axis", "axis/axis.fbx")
 LoadScript("rotate", "rotate.lua")
 
 SpawnGameObject("tavern_glass_door_wall")
-GetGameObject("tavern_glass_door_wall"):AddCAABBCollider()
 GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_glass_door_wall")
+GetGameObject("tavern_glass_door_wall"):AddCCollider():AddBoxCollider(0,0,0,true)
 
 SpawnGameObject("tavern_glass_door_wall_long")
-GetGameObject("tavern_glass_door_wall_long"):AddCAABBCollider()
-GetGameObject("tavern_glass_door_wall_long"):GetTransform()
 GetGameObject("tavern_glass_door_wall_long"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long")
+GetGameObject("tavern_glass_door_wall_long"):AddCCollider():AddBoxCollider(0,0,0,true)
 
 SpawnGameObject("graffiti_block")
-GetGameObject("graffiti_block"):AddCAABBCollider()
 GetGameObject("graffiti_block"):AddCStaticMesh():AssignModel("graffiti_block")
+GetGameObject("graffiti_block"):AddCCollider():AddBoxCollider(0,0,0,true)
 
 SpawnGameObject("south_bar_barrier")
-GetGameObject("south_bar_barrier"):AddCAABBCollider()
 GetGameObject("south_bar_barrier"):AddCStaticMesh():AssignModel("south_bar_barrier")
+GetGameObject("south_bar_barrier"):AddCCollider():AddBoxCollider(0,0,0,true)
 
 SpawnGameObject("tavern_floor")
-GetGameObject("tavern_floor"):AddCAABBCollider()
 GetGameObject("tavern_floor"):AddCStaticMesh():AssignModel("tavern_floor")
+GetGameObject("tavern_floor"):AddCCollider():AddBoxCollider(0,0,0,true)
 
 SpawnGameObject("main_bar_bench")
-GetGameObject("main_bar_bench"):AddCAABBCollider()
 GetGameObject("main_bar_bench"):AddCStaticMesh():AssignModel("main_bar_bench")
+GetGameObject("main_bar_bench"):AddCCollider():AddBoxCollider(0,0,0,true)
 
 SpawnGameObject("bar_floor_rod")
-GetGameObject("bar_floor_rod"):AddCAABBCollider()
 GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
+GetGameObject("bar_floor_rod"):AddCCollider():AddBoxCollider(0,0,0,true)

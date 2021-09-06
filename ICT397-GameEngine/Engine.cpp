@@ -104,7 +104,7 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	// TODO move to level loader class
 	GAMEOBJECT->SpawnGameObject("player");
 	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 1.7f, 0);
-	GAMEOBJECT->GetGameObject("player")->AddCAABBCollider()->AddBoxCollider(0.2, 0.2, 0.2, false);
+	GAMEOBJECT->GetGameObject("player")->AddCCollider()->AddBoxCollider(0.2, 0.2, 0.2, false);
 	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
 	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
 
