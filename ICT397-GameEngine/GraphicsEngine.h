@@ -12,6 +12,7 @@
 #include <map>
 #include "MultiTexture.h"
 #include "imgui/imgui.h"
+#include "SkyBox.h"
 
 class CCamera;
 class CBaseTerrain;
@@ -78,6 +79,12 @@ private:
 	ImGuiIO m_imgui_io;
 
 	ImVec4 m_clear_color;
+
+	unsigned int VAODebug = 0;
+	unsigned int VBODebug = 0;
+	bool initDebug = true;
+
+	SkyBox skybox;
 
 public:
 	/**
@@ -273,9 +280,7 @@ private:
 	*/
 	void DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 trans);
 
-	unsigned int VAODebug = 0;
-	unsigned int VBODebug = 0;
-	bool initDebug = true;
+
 
 };
 

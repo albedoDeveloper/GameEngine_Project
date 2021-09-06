@@ -157,9 +157,10 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	glm::mat4 view = glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()), 
 	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) + glm::vec3(m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()), 
 	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()));
-	
 	shader->setMat4("view", view);
-	
+	skybox.DrawSkybox(projection, view);
+	shader->useShaderForLoop();
+
 	glm::mat4 trans = glm::mat4(1.0f);
 	
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() , worldTrans.GetPosition().GetY() , worldTrans.GetPosition().GetZ()));
@@ -173,6 +174,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 
 	shader->setMat4("model", trans);
 	model->Draw(*shader);
+
 
 	if (m_firstFrameDebug && m_drawDebug)
 	{
@@ -258,57 +260,6 @@ void GraphicsEngine::InitSkybox(std::string negx, std::string negy, std::string 
 
 void GraphicsEngine::RenderSkybox()
 {
-	/*const float SCALE = 20000;
-	glColor3f(0, 1, 0);
-	glDisable(GL_FOG);
-	glEnable(GL_TEXTURE_2D);
-
-	glPushMatrix();
-	glTranslatef(
-		m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(),
-		m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(),
-		m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()
-	);
-
-	int i = 0;
-	int j = 0;
-	do
-	{
-		glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(m_skyboxTextures[j++]));
-		glBegin(GL_QUADS);
-			glTexCoord2i(0, 0);
-			glVertex3f(
-				skyboxVertices[i++] * SCALE, 
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE
-			);
-
-			glTexCoord2i(1, 0);
-			glVertex3f(
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE
-			);
-
-			glTexCoord2i(1, 1);
-			glVertex3f(
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE
-			);
-
-			glTexCoord2i(0, 1);
-			glVertex3f(
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE
-			);
-		glEnd();
-	} 	while (i < 3 * 4 * 6);
-
-	glPopMatrix();
-
-	glEnable(GL_FOG);*/
 }
 
 void GraphicsEngine::Close()
@@ -346,8 +297,10 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 		return false;
 	}
 
+	SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
+
 
 	// init imgui
 	InitImGui();
@@ -360,6 +313,16 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 
 	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
 	debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/debugColourShader.fs");
+	
+	
+	skybox.CreateSkybox(std::vector<std::string>{
+		"../Assets/skybox/right.jpg",
+		"../Assets/skybox/left.jpg",
+		"../Assets/skybox/top.jpg",
+		"../Assets/skybox/bottom.jpg",
+		"../Assets/skybox/front.jpg",
+		"../Assets/skybox/back.jpg"});
+
 
 	return true;
 }
@@ -463,7 +426,6 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 	
 	glm::mat4 trans2 = glm::mat4(1.0f);
 	trans2 = glm::translate(trans2, glm::vec3(0, 0, 0));
-	//trans2 = glm::rotate(trans2, 0.0f, glm::vec3(0, 0, 0));
 
 	debugShader->setMat4("model", trans2);
 	debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));

@@ -59,6 +59,7 @@
     <ClCompile Include="ModernOpenGL\Shader.cpp" />
     <ClCompile Include="MultiTexture.cpp" />
     <ClCompile Include="ScriptingEngine.cpp" />
+    <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +108,7 @@
     <ClInclude Include="ModernOpenGL\Shader.h" />
     <ClInclude Include="MultiTexture.h" />
     <ClInclude Include="ScriptingEngine.h" />
+    <ClInclude Include="SkyBox.h" />
     <ClInclude Include="SkyboxVerts.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
