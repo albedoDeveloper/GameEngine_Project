@@ -4,6 +4,8 @@ LoadModel("tavern_glass_door_wall_long", "tavern_glass_door_wall_long/tavern_gla
 LoadModel("graffiti_block", "graffiti_block/graffiti_block.fbx")
 LoadModel("tavern_floor", "tavern_floor/tavern_floor.fbx")
 LoadModel("south_bar_barrier", "south_bar_barrier/south_bar_barrier.fbx")
+LoadModel("main_bar_bench", "main_bar_bench/main_bar_bench.fbx")
+LoadModel("bar_floor_rod", "bar_floor_rod/bar_floor_rod.fbx")
 LoadModel("axis", "axis/axis.fbx")
 LoadScript("rotate", "rotate.lua")
 
@@ -27,3 +29,11 @@ GetGameObject("south_bar_barrier"):AddCStaticMesh():AssignModel("south_bar_barri
 SpawnGameObject("tavern_floor")
 GetGameObject("tavern_floor"):AddCAABBCollider()
 GetGameObject("tavern_floor"):AddCStaticMesh():AssignModel("tavern_floor")
+
+SpawnGameObject("main_bar_bench")
+GetGameObject("main_bar_bench"):AddCAABBCollider()
+GetGameObject("main_bar_bench"):AddCStaticMesh():AssignModel("main_bar_bench")
+
+SpawnGameObject("bar_floor_rod")
+GetGameObject("bar_floor_rod"):AddCAABBCollider()
+GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
