@@ -87,13 +87,11 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-
 	COLLISION;
 	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
 	{
 		return false;
 	}
-	
 
 	auto gL_version = glGetString(GL_VERSION);
 
@@ -105,7 +103,7 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	// temporarily creating player controller here
 	// TODO move to level loader class
 	GAMEOBJECT->SpawnGameObject("player");
-	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 0, 1);
+	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 0, 0);
 	GAMEOBJECT->GetGameObject("player")->AddCAABBCollider()->AddBoxCollider(0.2, 0.2, 0.2, false);
 	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
 	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);

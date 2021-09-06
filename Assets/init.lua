@@ -1,25 +1,18 @@
 
-LoadModel("goblinModel", "goblin/goblin.fbx")
+LoadModel("tavern_glass_door_wall", "tavern_glass_door_wall/tavern_glass_door_wall.fbx")
+LoadModel("tavern_glass_door_wall_long", "tavern_glass_door_wall_long/tavern_glass_door_wall_long.fbx")
+LoadModel("axis", "axis/axis.fbx")
 LoadScript("rotate", "rotate.lua")
 
-xpos = 0
-zpos = 0
-for i=1,1,1 do
-    goblinName = "goblin " .. i
-    goblinMesh = "goblinMesh " .. i
-    SpawnGameObject(goblinName)
-    GetGameObject(goblinName):AddCStaticMesh(goblinMesh):AssignModel("goblinModel")
+SpawnGameObject("axis")
+GetGameObject("axis"):AddCStaticMesh():AssignModel("axis")
 
-    GetGameObject(goblinName):AddCScript():AssignScript("rotate")
-    GetGameObject(goblinName):GetTransform():SetPosition(xpos,0,zpos)
-    GetGameObject(goblinName):AddCAABBCollider():AddConcaveCollider()
-    --GetGameObject(goblinName):GetTransform():RotateLocal(140,1,0, 1)
+SpawnGameObject("tavern_glass_door_wall")
+GetGameObject("tavern_glass_door_wall"):AddCAABBCollider()
+GetGameObject("tavern_glass_door_wall"):GetTransform()
+GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_glass_door_wall")
 
-    xpos = xpos + 2
-
-    if (i % 10 == 0) then
-        zpos = zpos + 1.0
-        xpos = 0
-    end
-
-end
+SpawnGameObject("tavern_glass_door_wall_long")
+GetGameObject("tavern_glass_door_wall_long"):AddCAABBCollider()
+GetGameObject("tavern_glass_door_wall_long"):GetTransform()
+GetGameObject("tavern_glass_door_wall_long"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long")

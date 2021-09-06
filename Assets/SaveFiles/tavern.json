@@ -1,12 +1,8 @@
 {
-    "goblin 1": {
+    "axis": {
         "Components": {
-            "AABBComponent": "AABBComponent",
-            "ScriptComponent": {
-                "Script": "rotate"
-            },
             "StaticMeshComponent": {
-                "Model": "goblinModel"
+                "Model": "axis"
             }
         },
         "Transform": {
@@ -27,7 +23,7 @@
                 "z": 1.0
             }
         },
-        "key": "goblin 1"
+        "key": "axis"
     },
     "player": {
         "Components": {
@@ -36,14 +32,14 @@
         },
         "Transform": {
             "Position": {
-                "x": -1.727955937385559,
+                "x": 2.6207282543182373,
                 "y": 0.0,
-                "z": 0.24746489524841309
+                "z": 10.9509859085083
             },
             "Rotation": {
-                "w": 0.8010343909263611,
+                "w": 0.9875336289405823,
                 "x": 0.0,
-                "y": 0.5986183285713196,
+                "y": -0.1573912501335144,
                 "z": 0.0
             },
             "Scale": {
@@ -53,5 +49,59 @@
             }
         },
         "key": "player"
+    },
+    "tavern_glass_door_wall": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "Model": "tavern_glass_door_wall"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "tavern_glass_door_wall"
+    },
+    "tavern_glass_door_wall_long": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "Model": "tavern_glass_door_wall_long"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "tavern_glass_door_wall_long"
     }
 }
