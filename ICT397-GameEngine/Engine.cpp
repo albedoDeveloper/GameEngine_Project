@@ -10,8 +10,8 @@
 #include "imgui/imgui_impl_opengl3.h"
 
 Engine::Engine()
-	:m_isRunning{ true }, m_restart{ false }, m_saveState{ false }, m_loadState{false}, levelLoader{ LevelLoader() },
-	m_debugMenu{ false }, m_drawColliders{ false }
+	:m_isRunning{ true }, m_restart{ false }, m_saveState{ false }, m_loadState{ false }, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
+	m_debugMenu{ false }, m_editMenu{true}, m_drawColliders{ false }
 {
 }
 
@@ -159,11 +159,22 @@ void Engine::OnLoop()
 
 void Engine::OnRender()
 {
+	/*GRAPHICS->newFrame(m_editMenu);
+	
+	levelEditor.DrawInspector();
+
+	GRAPHICS->endFrame(m_editMenu);*/
+
 	GRAPHICS->newFrame(m_debugMenu);
 	GRAPHICS->renderObjects();
 
 	if (m_debugMenu) // TEST WINDOW
 	{
+		//ImGui::ShowDemoWindow();
+
+		levelEditor.DrawEditor();
+
+
 		ImGui::Begin("Debug Menu");                          // Create a window called "Hello, world!" and append into it.
 
 		ImGui::Checkbox("Draw Colliders", &m_drawColliders);      // Edit bools storing our window open/close state
