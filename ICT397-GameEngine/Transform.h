@@ -41,6 +41,8 @@ public:
 	*/
 	Transform(Transform* parent);
 
+	void SetParent(Transform* newParent);
+
 	/**
 	 * @brief Saves the transform to JSON
 	*/

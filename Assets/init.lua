@@ -8,12 +8,12 @@ for i=1,10,1 do
     goblinName = "goblin " .. i
     goblinMesh = "goblinMesh " .. i
     SpawnGameObject(goblinName)
-    GetGameObject(goblinName):AddCStaticMesh(goblinMesh):AssignModel("goblinModel")
+    GetGameObject(goblinName):AddCStaticMesh():AssignModel("goblinModel")
 
     GetGameObject(goblinName):AddCScript():AssignScript("rotate")
-    GetGameObject(goblinName):GetTransform():SetPosition(xpos,0,zpos)
    -- GetGameObject(goblinName):AddCAABBCollider():AddConcaveCollider()
     GetGameObject(goblinName):AddCAABBCollider():AddBoxCollider(1,1,1,0,-0.7,0,true)
+    GetGameObject(goblinName):GetTransform():SetPosition(xpos,0,zpos)
    --GetGameObject(goblinName):GetTransform():RotateLocal(140,1,0, 1)
 
     xpos = xpos + 2

@@ -14,15 +14,6 @@ CStaticMesh::CStaticMesh(Transform* parent, GameObject* parentObj)
 {
 }
 
-void CStaticMesh::AssignModel(Model* model)
-{
-	//m_model = model;
-
-#if _DEBUG
-	std::cout << "Model assigned to mesh. Model:" << model->key << std::endl;
-#endif
-}
-
 Model* CStaticMesh::GetModel()
 {
 	return m_model;
@@ -30,8 +21,13 @@ Model* CStaticMesh::GetModel()
 
 Model* CStaticMesh::AssignModelByKey(std::string modelKey)
 {
-	m_model = static_cast<Model*>(ASSET->GetAsset(modelKey));
-	AssignModel(m_model);
+	Model* model = static_cast<Model*>(ASSET->GetAsset(modelKey));
+	if (model == nullptr)
+	{
+		std::cout << "ERROR ASSIGNING MODEL BY KEY : " << modelKey << std::endl;
+		exit(-23);
+	}
+	m_model = model;
 	return m_model;
 }
 

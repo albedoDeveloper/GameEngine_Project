@@ -7,6 +7,14 @@
 CAABBCollider::CAABBCollider(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }
 {
+	CStaticMesh* meshComp = m_parent->GetComponent<CStaticMesh>();
+	Transform* meshTrans = nullptr;
+	if (meshComp != nullptr)
+	{
+		meshTrans = &meshComp->GetTransform();
+		m_transform.SetParent(meshTrans);
+	}
+
 	auto worldPosition = reactphysics3d::Vector3(
 		m_transform.GetWorldTransform().GetPosition().GetX(), 
 		m_transform.GetWorldTransform().GetPosition().GetY(), 

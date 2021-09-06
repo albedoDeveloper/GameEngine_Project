@@ -16,6 +16,11 @@ Transform::Transform(Transform* parent)
     m_parent = parent;
 }
 
+void Transform::SetParent(Transform* newParent)
+{
+    m_parent = newParent;
+}
+
 /**
      * @brief Saves the transform to JSON
     */
