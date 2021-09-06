@@ -98,13 +98,17 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 {
 	//auto resize = 1;
 
+	m_offset.x = offsetX;
+	m_offset.y = offsetY;
+	m_offset.z = offsetZ;
+
 	if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() != nullptr)
 	{
 		auto minMax = this->GetParentObject()->GetCStaticMesh()->m_model->minMax;
 
-		x = minMax[1] - minMax[0];
-		y = minMax[3] - minMax[2];
-		z = minMax[5] - minMax[4];
+		x = (minMax[1] - minMax[0]) / 2.0f;
+		y = (minMax[3] - minMax[2]) / 2.0f;
+		z = (minMax[5] - minMax[4]) / 2.0f;
 
 		auto xAvg = (glm::abs<float>(minMax[1]) + glm::abs<float>(minMax[0])) / 2;
 		m_offset.x = xAvg - glm::abs<float>(minMax[1]);
@@ -115,7 +119,6 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 		auto zAvg = (glm::abs<float>(minMax[5]) + glm::abs<float>(minMax[4])) / 2;
 		m_offset.z = zAvg - glm::abs<float>(minMax[5]);
 
-		m_transform.SetPosition(-m_offset.x/2, -m_offset.y/2, -m_offset.z/2);
 		//resize = 2;
 	}
 	else if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() == nullptr)
@@ -130,6 +133,8 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 
 	//reactphysics3d::Transform tempTransform(tempVec, tempQuat);
 	//colBody->setTransform(tempTransform);
+
+	m_transform.SetPosition(-m_offset.x, -m_offset.y, -m_offset.z);
 
 	reactphysics3d::BoxShape* boxCollider = COLLISION->physicsCommon.createBoxShape(reactphysics3d::Vector3(x /*/ resize*/, y /*/ resize*/, z /*/ resize*/));
 

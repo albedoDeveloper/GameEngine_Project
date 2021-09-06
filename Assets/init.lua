@@ -3,11 +3,11 @@ LoadModel("goblinModel", "goblin/goblin.fbx")
 LoadScript("rotate", "rotate.lua")
 
 xpos = 0
-for i=1,2,1 do
+for i=1,3,1 do
     goblinName = "goblin " .. i
     SpawnGameObject(goblinName)
     GetGameObject(goblinName):AddCStaticMesh():AssignModel("goblinModel")
-    GetGameObject(goblinName):AddCCollider():AddBoxCollider(0.5,1,1,0,0,0,false)
+    GetGameObject(goblinName):AddCCollider():AddBoxCollider(1,1,1,0,0,0,true)
 
     
    -- GetGameObject(goblinName):AddCCollider():AddConcaveCollider()
@@ -26,4 +26,4 @@ end
         
 
 GetGameObject("goblin 1"):AddCScript():AssignScript("rotate")
---GetGameObject("goblin 2"):SetParentObject("goblin 1")
+GetGameObject("goblin 2"):SetParentObject("goblin 1")

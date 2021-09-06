@@ -91,7 +91,7 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	// TODO move to level loader class
 	GAMEOBJECT->SpawnGameObject("player");
 	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 0, 2);
-	GAMEOBJECT->GetGameObject("player")->AddCCollider()->AddBoxCollider(1, 1, 1, 0 ,0, 0, false);
+	GAMEOBJECT->GetGameObject("player")->AddCCollider()->AddBoxCollider(0.5, 0.5, 0.5, 0 ,0, 0, false);
 	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
 	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
 
@@ -145,7 +145,7 @@ void Engine::OnLoop()
 	if (m_drawColliders)
 	{
 		// only used to update collider triangles/lines for debugging
-		COLLISION->physicsWorld->update(TIME->GetDeltaTime());
+		COLLISION->physicsWorld->update(1);
 	}
 }
 
