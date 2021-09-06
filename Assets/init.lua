@@ -4,7 +4,7 @@ LoadScript("rotate", "rotate.lua")
 
 xpos = 0
 zpos = 0
-for i=1,1,1 do
+for i=1,10,1 do
     goblinName = "goblin " .. i
     goblinMesh = "goblinMesh " .. i
     SpawnGameObject(goblinName)

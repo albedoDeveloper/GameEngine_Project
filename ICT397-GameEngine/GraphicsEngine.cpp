@@ -298,6 +298,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	}
 
 	SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
+	SDL_SetWindowGrab(m_window, SDL_TRUE);
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
 
