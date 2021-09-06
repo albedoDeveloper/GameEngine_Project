@@ -255,19 +255,6 @@ private:
 	 * @return whether operation succeeded
 	*/
 	bool InitDirectX();
-	/**
-	 * @brief generates an opengl texture
-	 * @param image the image data to send in
-	 * @param width width of the image in pixels
-	 * @param height height of the image in pixels
-	 * @param key key at which the texture should be stored
-	*/
-	void GenOpenGLTexture(unsigned char* image, int width, int height, std::string key);
-	/**
-	 * @brief Sends a transformation to openGL
-	 * @param t the transformation to use
-	*/
-	void OpenGLTransformation(const Transform& t) const;
 
 	
 	/**

@@ -773,14 +773,10 @@ int InputManager::GetMouseYPos() const
 {
     return mouseYAbsolute;
 }
+
 void InputManager::QuitGame()
 {
     m_engine->QuitGame();
-}
-
-void InputManager::RestartGame()
-{
-    m_engine->RestartGame();
 }
 
 void InputManager::SaveGame()

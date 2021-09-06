@@ -2,7 +2,7 @@
 
 #include "Component.h"
 #include "CollisionManager.h"
-#include "CAABBCollider.h"
+#include "CCollider.h"
 //Debug
 //#include "GameObject.h"
 
@@ -73,10 +73,6 @@ public:
 	 * @brief displays the component after other components are displayed
 	*/
 	virtual void LateRender();
-	/**
-	 * @brief restarts component to initial state
-	*/
-	void Restart();
 
 	/**
 	 * @brief saves the component
@@ -139,7 +135,7 @@ private:
 	/**
 	 * @brief The character's collision data for checking collision with other objects
 	*/
-	CAABBCollider *m_characterCollider;
+	CCollider *m_characterCollider;
 
 	bool m_playerControlled;
 

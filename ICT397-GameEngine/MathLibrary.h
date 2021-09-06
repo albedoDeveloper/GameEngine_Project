@@ -397,6 +397,11 @@ public:
 		);
 	}
 
+	float GetAxisAngleRadians() const
+	{
+		return glm::angle(m_quat);
+	}
+
 	Vector3f GetEulerAngles() const
 	{
 		glm::vec3 axis = glm::eulerAngles(m_quat);

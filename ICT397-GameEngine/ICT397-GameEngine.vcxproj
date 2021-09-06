@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
-    <ClCompile Include="CAABBCollider.cpp" />
+    <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CCameraComponent.cpp" />
     <ClCompile Include="CCharacterComponent.cpp" />
@@ -66,7 +66,7 @@
     <ClInclude Include="AHeightMap.h" />
     <ClInclude Include="AScript.h" />
     <ClInclude Include="Asset.h" />
-    <ClInclude Include="CAABBCollider.h" />
+    <ClInclude Include="CCollider.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CCameraComponent.h" />
     <ClInclude Include="CCharacterComponent.h" />

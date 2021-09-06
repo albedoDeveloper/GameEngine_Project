@@ -11,7 +11,6 @@ function Update(gameObject, deltaTime, inputManager)
 	end
 
 	if inputManager:GetMouseButton(0) and not inputManager:CheckCursorLock() then
-		inputManager:RestartGame()
 		inputManager:LockCursor(false)
 	end
 

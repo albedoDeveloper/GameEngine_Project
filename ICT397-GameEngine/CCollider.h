@@ -31,7 +31,7 @@ struct AABB
 /**
  * @brief 
 */
-class CAABBCollider : public Component 
+class CCollider : public Component 
 {
 public:
 	/**
@@ -39,8 +39,8 @@ public:
 	 * @param parent pointer to parent transform for this component's transform
 	 * @param parentObj pointer to parent object of this component
 	*/
-	CAABBCollider(Transform* parent, GameObject* parentObj);
-	~CAABBCollider()
+	CCollider(Transform* parent, GameObject* parentObj);
+	~CCollider()
 	{
 		colBody = nullptr;
 		delete colBody;
@@ -99,11 +99,6 @@ public:
 	 * @brief loads the component from saved state
 	*/
 	void Load(nlohmann::json& j);
-	
-	/**
-	 * @brief registers the collider with the collider manager
-	*/
-	void RegisterCollider();
 
 	glm::vec3 m_offset;
 

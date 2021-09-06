@@ -11,9 +11,8 @@ Transform::Transform()
 }
 
 Transform::Transform(Transform* parent)
-    : Transform{}
+    : m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_rotation{}, m_parent{ parent }
 {
-    m_parent = parent;
 }
 
 void Transform::SetParent(Transform* newParent)
@@ -21,7 +20,7 @@ void Transform::SetParent(Transform* newParent)
     m_parent = newParent;
 }
 
-/**
+    /**
      * @brief Saves the transform to JSON
     */
 void Transform::ToJson(nlohmann::json& j, std::string key)
@@ -138,7 +137,7 @@ Quaternion Transform::GetRotation() const
 
 Transform Transform::GetWorldTransform() const
 {
-    std::stack<const Transform*> stack;
+    std::stack<const Transform *> stack;
     stack.push(this);
     while (stack.top()->m_parent != nullptr)
     {
@@ -149,14 +148,14 @@ Transform Transform::GetWorldTransform() const
     while (!stack.empty())
     {
         worldMat.Translate(stack.top()->m_position);
-        worldMat = worldMat * Matrix4f::Cast(stack.top()->m_rotation);
+        worldMat = worldMat * Matrix4f::Cast(stack.top()->m_rotation.Conjugate());
         worldMat.Scale(stack.top()->m_scale);
         stack.pop();
     }
 
     Transform t;
     Decompose(worldMat, t.m_scale, t.m_rotation, t.m_position);
-    t.m_rotation = t.m_rotation;
+    t.m_rotation = t.m_rotation.Conjugate();
 
     return t;
 }

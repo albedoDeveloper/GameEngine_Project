@@ -1,10 +1,10 @@
-#include "CAABBCollider.h"
+#include "CCollider.h"
 #include "CollisionManager.h"
 #include "GameObject.h"
 //DEBUG
 #include <iostream>
 
-CAABBCollider::CAABBCollider(Transform* parent, GameObject* parentObj)
+CCollider::CCollider(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }
 {
 	CStaticMesh* meshComp = m_parent->GetComponent<CStaticMesh>();
@@ -34,21 +34,21 @@ CAABBCollider::CAABBCollider(Transform* parent, GameObject* parentObj)
 	m_isRegistered = true;
 }
 
-void CAABBCollider::Update()
+void CCollider::Update()
 {
 	UpdateCollider();
 }
 
-void CAABBCollider::Render()
+void CCollider::Render()
 {
 
 }
 
-void CAABBCollider::LateRender()
+void CCollider::LateRender()
 {
 }
 
-void CAABBCollider::Save(nlohmann::json& j)
+void CCollider::Save(nlohmann::json& j)
 {
 	GameObject* g = GetParentObject();
 	j[g->getFactoryKey()]["Components"]["AABBComponent"] = "AABBComponent";
@@ -56,7 +56,7 @@ void CAABBCollider::Save(nlohmann::json& j)
 	//m_transform.ToJson(j, g->getFactoryKey());
 }
 
-void CAABBCollider::Load(nlohmann::json& j)
+void CCollider::Load(nlohmann::json& j)
 {
 	GameObject* g = GetParentObject();
 
@@ -64,12 +64,12 @@ void CAABBCollider::Load(nlohmann::json& j)
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
 
-void CAABBCollider::Start()
+void CCollider::Start()
 {	
 	UpdateCollider();
 }
 
-void CAABBCollider::UpdateCollider()
+void CCollider::UpdateCollider()
 {
 	if (colBody->getNbColliders() != 0)
 	{
@@ -94,7 +94,7 @@ void CAABBCollider::UpdateCollider()
 	}
 }
 
-void CAABBCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize)
+void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize)
 {
 	auto resize = 1;
 
@@ -120,7 +120,7 @@ void CAABBCollider::AddBoxCollider(float x, float y, float z, float offsetX, flo
 	}
 	else if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() == nullptr)
 	{
-		std::cout << "CAABBCollider::AddBoxCollider function. Cannot autosize because GameObject doesn not have a CstaticMesh!\n";
+		std::cout << "CCollider::AddBoxCollider function. Cannot autosize because GameObject doesn not have a CstaticMesh!\n";
 		exit(-24);
 	}
 	//m_offset = glm::vec3(offsetX, offsetY, offsetZ);
@@ -135,7 +135,7 @@ void CAABBCollider::AddBoxCollider(float x, float y, float z, float offsetX, flo
 	col = colBody->addCollider(boxCollider, reactphysics3d::Transform::identity());
 }
 
-void CAABBCollider::AddConvexCollider()
+void CCollider::AddConvexCollider()
 {
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
 	auto totalFaces = model->numberOfFaces;
@@ -186,7 +186,7 @@ void CAABBCollider::AddConvexCollider()
 	col = colBody->addCollider(convexCollider, reactphysics3d::Transform::identity());
 }
 
-void CAABBCollider::AddConcaveCollider()
+void CCollider::AddConcaveCollider()
 {
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
 	auto totalFaces = model->numberOfFaces;
@@ -215,7 +215,7 @@ void CAABBCollider::AddConcaveCollider()
 	col = colBody->addCollider(concaveMesh, reactphysics3d::Transform::identity());
 }
 	
-void CAABBCollider::SetCollider(float gMaxX, float gMaxY, float gMaxZ, float gMinX, float gMinY, float gMinZ)
+void CCollider::SetCollider(float gMaxX, float gMaxY, float gMaxZ, float gMinX, float gMinY, float gMinZ)
 {
 	m_collider.max.SetX(gMaxX);
 	m_collider.max.SetY(gMaxY);
@@ -226,15 +226,7 @@ void CAABBCollider::SetCollider(float gMaxX, float gMaxY, float gMaxZ, float gMi
 	m_collider.min.SetZ(gMinZ);
 }
 
-AABB CAABBCollider::GetCollider() const
+AABB CCollider::GetCollider() const
 {
 	return m_collider;
 }
-
-void CAABBCollider::RegisterCollider()
-{
-	COLLISION->AddColliderToArray(this);
-	m_isRegistered = true;
-}
-
-

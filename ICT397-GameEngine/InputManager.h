@@ -289,10 +289,6 @@ public:
     */
     void QuitGame();
     /**
-     * @brief restarts the game
-    */
-    void RestartGame();
-    /**
      * @brief saves the game
     */
     void SaveGame();

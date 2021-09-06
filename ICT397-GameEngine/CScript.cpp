@@ -35,12 +35,6 @@ void CScript::LateRender()
 {
 }
 
-void CScript::Restart()
-{
-	//m_L = SCRIPT->NewState();
-	Component::Restart();
-}
-
 void CScript::Save(nlohmann::json& j)
 {
 	GameObject* g = GetParentObject();

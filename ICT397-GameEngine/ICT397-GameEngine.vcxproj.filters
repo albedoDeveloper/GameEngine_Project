@@ -17,7 +17,7 @@
     <ClCompile Include="MultiTexture.cpp" />
     <ClCompile Include="ScriptingEngine.cpp" />
     <ClCompile Include="Transform.cpp" />
-    <ClCompile Include="CAABBCollider.cpp">
+    <ClCompile Include="CCollider.cpp">
       <Filter>components</Filter>
     </ClCompile>
     <ClCompile Include="CCameraComponent.cpp">
@@ -108,7 +108,7 @@
     <ClInclude Include="MultiTexture.h" />
     <ClInclude Include="ScriptingEngine.h" />
     <ClInclude Include="Transform.h" />
-    <ClInclude Include="CAABBCollider.h">
+    <ClInclude Include="CCollider.h">
       <Filter>components</Filter>
     </ClInclude>
     <ClInclude Include="CCameraComponent.h">

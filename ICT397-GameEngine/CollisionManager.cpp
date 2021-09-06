@@ -9,7 +9,6 @@ CollisionManager::CollisionManager()
     debugRender = &physicsWorld->getDebugRenderer();
     debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::COLLISION_SHAPE, true);
     debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::CONTACT_POINT, true);
-
 ;}
 
 CollisionManager* CollisionManager::Instance()
@@ -18,12 +17,12 @@ CollisionManager* CollisionManager::Instance()
     return &instance;
 }
 
-void CollisionManager::SetColliderAtIndex(CAABBCollider *collider, int index)
+void CollisionManager::SetColliderAtIndex(CCollider *collider, int index)
 {
     m_colliderArray[index] = collider;
 }
 
-void CollisionManager::AddColliderToArray(CAABBCollider *collider)
+void CollisionManager::AddColliderToArray(CCollider *collider)
 {
     m_colliderArray.push_back(collider);
     m_fill++;
@@ -31,7 +30,7 @@ void CollisionManager::AddColliderToArray(CAABBCollider *collider)
     printf("Collider Added\n");
 }
 
-bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform& worldT)
+bool CollisionManager::CheckCollision(CCollider& myCollider, const Transform& worldT)
 {
     //AABB a = AABBToWorldSpace(myCollider, worldT);
     bool collision = false;
@@ -39,8 +38,6 @@ bool CollisionManager::CheckCollision(CAABBCollider& myCollider, const Transform
    // myCollider.UpdateCollider(myCollider.GetTransform().GetWorldTransform());
     
     physicsWorld->testCollision(myCollider.colBody,*COLLISION);
-
-    physicsWorld->update(TIME->GetDeltaTime());
 
     if (hasCollided && waitTime == 0)
     {
@@ -99,49 +96,6 @@ double CollisionManager::CheckCameraTerrainCollisionBilinear(Vector3f worldPos)
     //std::cout << "The Bilinear Height == " << height << std::endl;
 
     return height;
-}
-
-AABB CollisionManager::AABBToWorldSpace(const CAABBCollider& col, const Transform& worldT) const
-{
-    AABB c = col.GetCollider();
-    return {
-        c.max.GetX() + worldT.GetPosition().GetX(),
-        c.max.GetY() + worldT.GetPosition().GetY(),
-        c.max.GetZ() + worldT.GetPosition().GetZ(),
-        c.min.GetX() + worldT.GetPosition().GetX(),
-        c.min.GetY() + worldT.GetPosition().GetY(),
-        c.min.GetZ() + worldT.GetPosition().GetZ()
-    };
-}
-
-AABB CollisionManager::AABBToWorldSpace(const CAABBCollider& col) const
-{
-    AABB c = col.GetCollider();
-    Transform worldT = col.GetTransformConst().GetWorldTransform();
-    return {
-        c.max.GetX() * worldT.GetScale().GetX() + worldT.GetPosition().GetX(),
-        c.max.GetY() * worldT.GetScale().GetY() + worldT.GetPosition().GetY(),
-        c.max.GetZ() * worldT.GetScale().GetZ() + worldT.GetPosition().GetZ(),
-        c.min.GetX() * worldT.GetScale().GetX() + worldT.GetPosition().GetX(),
-        c.min.GetY() * worldT.GetScale().GetY() + worldT.GetPosition().GetY(),
-        c.min.GetZ() * worldT.GetScale().GetZ() + worldT.GetPosition().GetZ()
-    };
-}
-
-bool CollisionManager::TestAABBAABB(AABB& a, AABB& b) const
-{
-    /*// Exit with no intersection if separated along an axis
-    if (a.max.GetX() < b.min.GetX() || a.min.GetX() > b.max.GetX()) return false;
-    if (a.max.GetY() < b.min.GetY() || a.min.GetY() > b.max.GetY()) return false;
-    if (a.max.GetZ() < b.min.GetZ() || a.min.GetZ() > b.max.GetZ()) return false;
-    // Overlapping on all axes means AABBs are intersecting*/
-    return true;
-}
-
-
-void CollisionManager::CreatePhysicsWorld()
-{
-    
 }
 
 void CollisionManager::onContact(const CallbackData& callbackData)

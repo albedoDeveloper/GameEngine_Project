@@ -13,7 +13,7 @@
 #include "CCameraComponent.h"
 #include "CGridComponent.h"
 #include "CTerrain.h"
-#include "CAABBCollider.h"
+#include "CCollider.h"
 #include "CSpotlight.h"
 #include "CWater.h"
 #include <nlohmann/json.hpp>
@@ -97,7 +97,7 @@ public:
 	 * @brief Adds a collider component
 	 * @return the created collider
 	*/
-	CAABBCollider* AddCAABBCollider();
+	CCollider* AddCCollider();
 	/**
 	 * @brief Adds a spotlight component
 	 * @return the created spotlight
@@ -187,10 +187,6 @@ public:
 	 * @brief Calls the render function of every component after others
 	*/
 	void LateRender();
-	/**
-	 * @brief Calls the restart function of every component
-	*/
-	void Restart();
 	/**
 	 * @brief saves the object
 	*/

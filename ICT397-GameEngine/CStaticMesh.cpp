@@ -37,6 +37,34 @@ void CStaticMesh::Start()
 
 void CStaticMesh::Update()
 {
+	//if (m_parent->getFactoryKey().compare("goblin 1") == 0)
+	{
+	//std::cout << m_parent->getFactoryKey() << ": ";
+	//std::cout << RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetX()) << " " <<
+	//	RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetY()) << " " <<
+	//		RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
+
+		std::cout << m_parent->getFactoryKey() << ": ";
+		std::cout << m_parent->GetTransform()->GetPosition().GetX() << " " <<
+			m_parent->GetTransform()->GetPosition().GetY() << " " <<
+			m_parent->GetTransform()->GetPosition().GetZ() << " " << std::endl;
+
+		//std::cout << m_parent->getFactoryKey() << ": ";
+		//std::cout << m_transform.GetPosition().GetX() << " " <<
+		//	m_transform.GetPosition().GetY() << " " <<
+		//	m_transform.GetPosition().GetZ() << " " << std::endl;
+
+//		std::cout << m_parent->getFactoryKey() << ": ";
+//std::cout << RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetX()) << " " <<
+//	RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetY()) << " " <<
+//		RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
+
+	//		std::cout << m_parent->getFactoryKey() << ": ";
+	//std::cout << RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetX()) << " " <<
+	//	RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetY()) << " " <<
+	//		RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
+
+	}
 }
 
 void CStaticMesh::Render()

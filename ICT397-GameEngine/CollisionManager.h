@@ -1,5 +1,5 @@
 #pragma once
-#include "CAABBCollider.h"
+#include "CCollider.h"
 #include "CTerrain.h"
 #include <vector>
 #include "DeltaTime.h"
@@ -24,7 +24,7 @@ private:
 	/**
 	 * @brief Vector containing all of the colliders in the game
 	*/
-	std::vector<CAABBCollider*> m_colliderArray;
+	std::vector<CCollider*> m_colliderArray;
 
 	/**
 	 * @brief height map in level. currently only supports one heightmap at a time
@@ -61,13 +61,13 @@ public:
 	 * @param collider The collider to put in the array
 	 * @param index The index of the collider to set
 	*/
-	void SetColliderAtIndex(CAABBCollider* collider, int index);
+	void SetColliderAtIndex(CCollider* collider, int index);
 
 	/**
 	 * @brief Adds a collider to the array at the current filled index
 	 * @param collider The collider to add
 	*/
-	void AddColliderToArray(CAABBCollider* collider);
+	void AddColliderToArray(CCollider* collider);
 
 	/**
 	 * @brief Returns the pointer to the terrain heightMap
@@ -95,12 +95,7 @@ public:
 	/**
 	 * @brief check if a AABB is colliding with any other AABB's
 	*/
-	bool CheckCollision(CAABBCollider& myCollider, const Transform& worldT);
-
-	/**
-	 * @brief Initialises the physics world
-	*/
-	void CreatePhysicsWorld();
+	bool CheckCollision(CCollider& myCollider, const Transform& worldT);
 	
 	void onContact(const CallbackData& callbackData);
 	/**
@@ -109,17 +104,6 @@ public:
 	reactphysics3d::PhysicsWorld* GetPhysicsWorld() { return physicsWorld; };
 
 private:
-	/**
-	 * @brief convert an AABB to world space
-	*/
-	AABB AABBToWorldSpace(const CAABBCollider& col) const;
-	AABB AABBToWorldSpace(const CAABBCollider& col, const Transform& worldT) const;
-
-	/**
-	 * @brief check if two aabb's are intersecting. They must both be in the same relative space
-	*/
-	bool TestAABBAABB(AABB& a, AABB& b) const;
-
 
 };
 

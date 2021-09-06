@@ -126,14 +126,6 @@ void GameObjectFactory::render() {
 	}
 }
 
-void GameObjectFactory::Restart()
-{
-	std::map<std::string, GameObject*>::iterator it;
-	for (it = objectList.begin(); it != objectList.end(); it++) {
-		it->second->Restart();
-	}
-}
-
 void GameObjectFactory::Save(nlohmann::json& j)
 {
 	std::map<std::string, GameObject*>::iterator it;

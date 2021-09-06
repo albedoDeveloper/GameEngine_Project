@@ -21,14 +21,14 @@ CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	m_playerControlled{ false },
 	m_mouseEnabled{ true }
 {
-	m_characterCollider = m_parent->GetComponent<CAABBCollider>();
+	m_characterCollider = m_parent->GetComponent<CCollider>();
 
 	m_hitpoints = 1;
 
 	if (m_characterCollider == NULL)
 	{
-		m_characterCollider = m_parent->AddComponent<CAABBCollider>();
-		m_parent->GetComponent<CAABBCollider>()->SetCollider(0.5f, 1, 0.5f, -0.5f, -1, -0.5f);
+		m_characterCollider = m_parent->AddComponent<CCollider>();
+		m_parent->GetComponent<CCollider>()->SetCollider(0.5f, 1, 0.5f, -0.5f, -1, -0.5f);
 	}
 }
 
@@ -116,14 +116,17 @@ void CCharacter::Update()
 		
 		if (m_mouseEnabled)
 		{
-			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
 			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * deltaTime * mouseSens);
+			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
+
+			//std::cout << parentObj->getFactoryKey() << ": " << RadToDegrees(parentObj->GetTransform()->GetWorldTransform().GetRotation().GetEulerAngles().GetX()) << " " <<
+			//	RadToDegrees(parentObj->GetTransform()->GetWorldTransform().GetRotation().GetEulerAngles().GetY()) << " " <<
+			//	RadToDegrees(parentObj->GetTransform()->GetWorldTransform().GetRotation().GetEulerAngles().GetZ()) << std::endl;
 		}
 
 		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f ||
 			RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) < -90.f)
 		{
-
 			Vector3f eulersInRads(
 				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX(),
 				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetY(),
@@ -210,12 +213,6 @@ void CCharacter::Render()
 
 void CCharacter::LateRender()
 {}
-
-void CCharacter::Restart()
-{
-	m_hitpoints = m_initialHitpoints;
-	Component::Restart();
-}
 
 void CCharacter::Save(nlohmann::json& j)
 {

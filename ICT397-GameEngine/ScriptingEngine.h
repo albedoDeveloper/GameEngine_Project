@@ -105,10 +105,6 @@ private:
 	*/
 	static void QuitGame();
 	/**
-	 * @brief restarts the game
-	*/
-	static void RestartGame();
-	/**
 	 * @brief saves the game
 	*/
 	static void SaveGame();
