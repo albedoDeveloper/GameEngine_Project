@@ -55,21 +55,6 @@ bool GraphicsEngine::initLighting()
 
 void GraphicsEngine::UpdateSpotlight(const CSpotlight * light)
 {
-	/*glEnable(GL_LIGHT1);
-
-	GLfloat lightPosition[] = { light->GetTransformConst().GetPosition().GetX() ,
-								light->GetTransformConst().GetPosition().GetY() ,
-								light->GetTransformConst().GetPosition().GetZ() };
-	glLightfv(GL_LIGHT1, GL_POSITION, lightPosition);
-	GLfloat lightDirection[] = { light->GetTransformConst().GetRotation().GetX() ,
-								light->GetTransformConst().GetRotation().GetY() ,
-								light->GetTransformConst().GetRotation().GetZ() };
-	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, lightDirection);
-	float f = (*light->GetColour())[0];
-	GLfloat lightDiffuse[] = { (*light->GetColour())[0] ,
-								(*light->GetColour())[1] ,
-								(*light->GetColour())[2] };
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse);*/
 }
 
 
@@ -90,6 +75,12 @@ void GraphicsEngine::newFrame(bool debugMenu)
 void GraphicsEngine::renderObjects() 
 {
 	GAMEOBJECT->render();
+	skybox.DrawSkybox(GetProjection(), GetView());
+
+	if (m_drawDebug)
+	{
+		DrawDebug(GetProjection(), GetView());
+	}
 }
 
 void GraphicsEngine::endFrame(bool debugMenu) 
@@ -151,14 +142,16 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	shader->setVec3("lightPos", glm::vec3(-20, 0, 0));
 	shader->setVec3("lightColor", glm::vec3(1, 1, 1));
 
-	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, ((float)GRAPHICS->m_windowHeight/GRAPHICS->m_windowWidth), m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
-	shader->setMat4("projection", projection);
+	
+	shader->setMat4("projection", GetProjection());
 
-	glm::mat4 view = glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()), 
-	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) + glm::vec3(m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()), 
-	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()));
-	shader->setMat4("view", view);
+<<<<<<< Updated upstream
+=======
+	
+	shader->setMat4("view", GetView());
 
+
+>>>>>>> Stashed changes
 	glm::mat4 trans = glm::mat4(1.0f);
 	
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() , worldTrans.GetPosition().GetY() , worldTrans.GetPosition().GetZ()));
@@ -172,12 +165,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	shader->setMat4("model", trans);
 
 	model->Draw(*shader);
-	skybox.DrawSkybox(projection, view);
 
-	if (m_firstFrameDebug && m_drawDebug)
-	{
-		DrawDebug(projection, view, trans);
-	}
 }
 
 void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
@@ -200,41 +188,7 @@ void GraphicsEngine::DrawGrid(float gridHeight, float lineThickness, float gridW
 
 void GraphicsEngine::DrawImage(std::string key, int width, int height, int posX, int posY)
 {
-	/*int w, h;
-	SDL_GetWindowSize(m_window, &w, &h);
 
-	// TODO take params to set position. atm assume centre screen
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-
-	gluOrtho2D(-(w/2), w/2, -(h / 2), h / 2);
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadIdentity();
-
-	int topLeftX = -(w / 2);
-	int topLeftY = (h / 2);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(key));
-	glBegin(GL_QUADS);
-		glTexCoord2i(1, 0);
-		glVertex2f(topLeftX + posX, topLeftY - posY);
-
-		glTexCoord2i(1, 1);
-		glVertex2f(topLeftX + posX, topLeftY - height - posY);
-
-		glTexCoord2i(0, 1);
-		glVertex2f(topLeftX + width + posX, topLeftY - height - posY);
-
-		glTexCoord2i(0, 0);
-		glVertex2f(topLeftX + width + posX, topLeftY - posY);
-	glEnd();
-
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();*/
 }
 
 unsigned GraphicsEngine::GetTexID(std::string key) const
@@ -383,7 +337,7 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 	}
 }
 
-void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 trans)
+void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view)
 {
 	glDisable(GL_CULL_FACE);
 
@@ -438,4 +392,16 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 	glPolygonMode(GL_BACK, GL_FILL);
 	glEnable(GL_CULL_FACE);
 	m_firstFrameDebug = false;
+}
+
+glm::mat4 GraphicsEngine::GetProjection()
+{
+	return glm::perspective(m_camera->GetCamera().FOV, ((float)GRAPHICS->m_windowHeight / GRAPHICS->m_windowWidth), m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
+}
+
+glm::mat4 GraphicsEngine::GetView()
+{
+		return glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()),
+		glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) + glm::vec3(m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()),
+		glm::vec3(m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()));
 }

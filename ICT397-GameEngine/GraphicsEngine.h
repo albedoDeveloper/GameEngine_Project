@@ -278,9 +278,13 @@ private:
 	/*
 	 * @brief Renders debug colliders
 	*/
-	void DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 trans);
+	void DrawDebug(glm::mat4 projection, glm::mat4 view);
 
 
+	glm::mat4 GetProjection();
+
+
+	glm::mat4 GetView();
 
 };
 
