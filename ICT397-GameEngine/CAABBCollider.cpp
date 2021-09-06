@@ -62,7 +62,7 @@ void CAABBCollider::UpdateCollider(const Transform& transform)
 {
 	if (colBody->getNbColliders() != 0)
 	{
-		auto tempVec = reactphysics3d::Vector3(transform.GetPosition().GetX(), transform.GetPosition().GetY(), transform.GetPosition().GetZ());
+		auto tempVec = reactphysics3d::Vector3(transform.GetPosition().GetX() + offset.x, transform.GetPosition().GetY() + offset.y, transform.GetPosition().GetZ() + offset.z);
 		auto tempQuat = reactphysics3d::Quaternion(transform.GetRotation().GetX(), transform.GetRotation().GetY(), transform.GetRotation().GetZ(), transform.GetRotation().GetW());
 		
 		if(this->GetParentObject()->GetComponent<CCamera>() != nullptr)
@@ -73,8 +73,9 @@ void CAABBCollider::UpdateCollider(const Transform& transform)
 	}
 }
 
-void CAABBCollider::AddBoxCollider(float x, float y, float z, bool autoSize)
+void CAABBCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize)
 {
+
 
 	//glm::fvec3 size (x, y, z) 
 	auto resize = 1;
@@ -98,9 +99,9 @@ void CAABBCollider::AddBoxCollider(float x, float y, float z, bool autoSize)
 
 		resize = 2;
 	}
+	offset = glm::vec3(offsetX, offsetY, offsetZ);
 
-
-	auto tempVec = reactphysics3d::Vector3(colBody->getTransform().getPosition().x , colBody->getTransform().getPosition().y , colBody->getTransform().getPosition().z);
+	auto tempVec = reactphysics3d::Vector3(colBody->getTransform().getPosition().x + offsetX , colBody->getTransform().getPosition().y + offsetY, colBody->getTransform().getPosition().z + offsetZ);
 	auto tempQuat = colBody->getTransform().getOrientation();
 
 	reactphysics3d::Transform tempTransform(tempVec, tempQuat);
