@@ -7,25 +7,28 @@
 CAABBCollider::CAABBCollider(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }
 {
-	auto parentTwo = this->GetParentObject()->GetTransform();
+	auto worldPosition = reactphysics3d::Vector3(
+		m_transform.GetWorldTransform().GetPosition().GetX(), 
+		m_transform.GetWorldTransform().GetPosition().GetY(), 
+		m_transform.GetWorldTransform().GetPosition().GetZ()
+	);
 
-	auto tempVec = reactphysics3d::Vector3(parentTwo->GetPosition().GetX(), parentTwo->GetPosition().GetY(), parentTwo->GetPosition().GetZ());
-	auto tempQuat = reactphysics3d::Quaternion(parentTwo->GetRotation().GetX(), parentTwo->GetRotation().GetY(), parentTwo->GetRotation().GetZ(), parentTwo->GetRotation().GetW());
+	auto worldOrientation = reactphysics3d::Quaternion(
+		m_transform.GetWorldTransform().GetRotation().GetX(), 
+		m_transform.GetWorldTransform().GetRotation().GetY(), 
+		m_transform.GetWorldTransform().GetRotation().GetZ(), 
+		m_transform.GetWorldTransform().GetRotation().GetW()
+	);
 
-	reactphysics3d::Transform tempTransform(tempVec, tempQuat);
-	colBody = COLLISION->GetPhysicsWorld()->createCollisionBody(tempTransform);
-
-
+	reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
+	colBody = COLLISION->GetPhysicsWorld()->createCollisionBody(worldTransform);
 
 	m_isRegistered = true;
-
-	std::cout << "CollisionBody created" << std::endl;
 }
 
 void CAABBCollider::Update()
 {
-	UpdateCollider(this->GetTransform().GetWorldTransform());
-
+	UpdateCollider();
 }
 
 void CAABBCollider::Render()
@@ -58,26 +61,33 @@ void CAABBCollider::Start()
 
 }
 
-void CAABBCollider::UpdateCollider(const Transform& transform)
+void CAABBCollider::UpdateCollider()
 {
 	if (colBody->getNbColliders() != 0)
 	{
-		auto tempVec = reactphysics3d::Vector3(transform.GetPosition().GetX() + offset.x, transform.GetPosition().GetY() + offset.y, transform.GetPosition().GetZ() + offset.z);
-		auto tempQuat = reactphysics3d::Quaternion(transform.GetRotation().GetX(), transform.GetRotation().GetY(), transform.GetRotation().GetZ(), transform.GetRotation().GetW());
-		
-		if(this->GetParentObject()->GetComponent<CCamera>() != nullptr)
-			tempQuat.inverse();
+		auto worldPosition = reactphysics3d::Vector3(
+			m_transform.GetWorldTransform().GetPosition().GetX(), 
+			m_transform.GetWorldTransform().GetPosition().GetY(), 
+			m_transform.GetWorldTransform().GetPosition().GetZ()
+		);
 
-		reactphysics3d::Transform tempTransform(tempVec, tempQuat);
-		col->getBody()->setTransform(tempTransform);
+		auto worldOrientation = reactphysics3d::Quaternion(
+			m_transform.GetWorldTransform().GetRotation().GetX(),
+			m_transform.GetWorldTransform().GetRotation().GetY(), 
+			m_transform.GetWorldTransform().GetRotation().GetZ(), 
+			m_transform.GetWorldTransform().GetRotation().GetW()
+		);
+		
+		//if(this->GetParentObject()->GetComponent<CCamera>() != nullptr)
+		//	tempQuat.inverse();
+
+		reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
+		col->getBody()->setTransform(worldTransform);
 	}
 }
 
 void CAABBCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize)
 {
-
-
-	//glm::fvec3 size (x, y, z) 
 	auto resize = 1;
 
 	if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() != nullptr)
@@ -89,30 +99,27 @@ void CAABBCollider::AddBoxCollider(float x, float y, float z, float offsetX, flo
 		z = minMax[5] - minMax[4];
 
 		auto xAvg = (glm::abs<float>(minMax[1]) + glm::abs<float>(minMax[0])) / 2;
-		offset.x = xAvg - glm::abs<float>(minMax[1]);
+		m_offset.x = xAvg - glm::abs<float>(minMax[1]);
 
 		auto yAvg = (glm::abs<float>(minMax[3]) + glm::abs<float>(minMax[2])) / 2;
-		offset.y = yAvg - glm::abs<float>(minMax[3]);
+		m_offset.y = yAvg - glm::abs<float>(minMax[3]);
 
 		auto zAvg = (glm::abs<float>(minMax[5]) + glm::abs<float>(minMax[4])) / 2;
-		offset.z = zAvg - glm::abs<float>(minMax[5]);
+		m_offset.z = zAvg - glm::abs<float>(minMax[5]);
 
+		m_transform.SetPosition(m_offset.x, m_offset.y, m_offset.z);
 		resize = 2;
 	}
-	offset = glm::vec3(offsetX, offsetY, offsetZ);
+	//m_offset = glm::vec3(offsetX, offsetY, offsetZ);
 
-	auto tempVec = reactphysics3d::Vector3(colBody->getTransform().getPosition().x + offsetX , colBody->getTransform().getPosition().y + offsetY, colBody->getTransform().getPosition().z + offsetZ);
-	auto tempQuat = colBody->getTransform().getOrientation();
+	//auto tempVec = reactphysics3d::Vector3(colBody->getTransform().getPosition().x , colBody->getTransform().getPosition().y + offsetY, colBody->getTransform().getPosition().z + offsetZ);
+	//auto tempQuat = colBody->getTransform().getOrientation();
 
-	reactphysics3d::Transform tempTransform(tempVec, tempQuat);
-	colBody->setTransform(tempTransform);
+	//reactphysics3d::Transform tempTransform(tempVec, tempQuat);
+	//colBody->setTransform(tempTransform);
 
-	
 	reactphysics3d::BoxShape* boxCollider = COLLISION->physicsCommon->createBoxShape(reactphysics3d::Vector3(x / resize, y / resize, z / resize));
 	col = colBody->addCollider(boxCollider, reactphysics3d::Transform::identity());
-
-	std::cout << "BoxCollider created" << std::endl;
-	
 }
 
 void CAABBCollider::AddConvexCollider()
