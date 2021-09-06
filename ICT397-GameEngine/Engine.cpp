@@ -103,7 +103,7 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	// temporarily creating player controller here
 	// TODO move to level loader class
 	GAMEOBJECT->SpawnGameObject("player");
-	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 0, 0);
+	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 1.7f, 0);
 	GAMEOBJECT->GetGameObject("player")->AddCAABBCollider()->AddBoxCollider(0.2, 0.2, 0.2, false);
 	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
 	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
@@ -179,7 +179,6 @@ void Engine::OnRender()
 
 		m_saveState = ImGui::Button("Save", ImVec2(100,30));
 		m_loadState = ImGui::Button("Load", ImVec2(100,30));
-
 
 		ImGui::End();
 	}

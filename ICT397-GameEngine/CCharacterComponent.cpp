@@ -12,7 +12,7 @@
 CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }, 
 	m_velocity{ 0,0,0 }, 
-	m_maxSpeed{ 50 }, 
+	m_maxSpeed{ 10 }, 
 	m_acceleration{ 0,0,0 }, 
 	m_characterCollider{ nullptr }, 
 	m_lastTime{ 0 }, 
