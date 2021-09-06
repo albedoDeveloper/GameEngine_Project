@@ -1,10 +1,6 @@
 #include "LevelEditor.h"
 #include "GameObjectFactory.h"
 
-
-
-
-
 LevelEditor::LevelEditor() 
 {
 
@@ -12,7 +8,6 @@ LevelEditor::LevelEditor()
 
 void LevelEditor::DrawEditor()
 {
-
 	std::map<std::string, GameObject*>* objectList;
 
 	objectList = GAMEOBJECT->GetObjectMap();
@@ -37,10 +32,8 @@ void LevelEditor::DrawEditor()
 
 void LevelEditor::ObjectHeader(GameObject* g)
 {
-
 	ImGui::AlignTextToFramePadding();
 
-	
 	std::string s{ "foo" };
 
 	if (ImGui::TreeNode((char*)g->getFactoryKey().c_str()))
@@ -51,7 +44,6 @@ void LevelEditor::ObjectHeader(GameObject* g)
 
 		ImGui::TreePop();
 	}
-	
 }
 
 void LevelEditor::TransformHeader(GameObject* g)
