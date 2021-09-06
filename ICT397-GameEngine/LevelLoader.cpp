@@ -147,7 +147,7 @@ void LevelLoader::LoadLevel()
 
 
 
-	std::cout << "TEST" << j.json::object() << std::endl;
+	std::cout << "Loading level" << std::endl;
 
 	
 

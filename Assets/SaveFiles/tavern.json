@@ -11,7 +11,67 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
+                "x": -0.24500000476837158,
+                "y": 0.29499998688697815,
+                "z": 0.46000000834465027
+            },
+            "Rotation": {
+                "w": 0.9803749322891235,
+                "x": 0.04451397806406021,
+                "y": -0.16937559843063354,
+                "z": -0.09052857011556625
+            },
+            "Scale": {
+                "x": 1.1749999523162842,
+                "y": 0.875,
+                "z": 1.375
+            }
+        },
+        "key": "goblin 1"
+    },
+    "goblin 2": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "ScriptComponent": {
+                "Script": "rotate"
+            },
+            "StaticMeshComponent": {
+                "Model": "goblinModel"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 1.8200000524520874,
+                "y": 0.4399999976158142,
+                "z": 0.7350000143051147
+            },
+            "Rotation": {
+                "w": 0.13537940382957458,
+                "x": 0.9907938241958618,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 3.7100000381469727,
+                "z": 1.0
+            }
+        },
+        "key": "goblin 2"
+    },
+    "goblin 3": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "ScriptComponent": {
+                "Script": "rotate"
+            },
+            "StaticMeshComponent": {
+                "Model": "goblinModel"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 4.0,
                 "y": 0.0,
                 "z": 0.0
             },
@@ -27,7 +87,67 @@
                 "z": 1.0
             }
         },
-        "key": "goblin 1"
+        "key": "goblin 3"
+    },
+    "goblin 4": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "ScriptComponent": {
+                "Script": "rotate"
+            },
+            "StaticMeshComponent": {
+                "Model": "goblinModel"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 6.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "goblin 4"
+    },
+    "goblin 5": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "ScriptComponent": {
+                "Script": "rotate"
+            },
+            "StaticMeshComponent": {
+                "Model": "goblinModel"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 8.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "goblin 5"
     },
     "player": {
         "Components": {
@@ -36,14 +156,14 @@
         },
         "Transform": {
             "Position": {
-                "x": -1.727955937385559,
+                "x": -1.6326314210891724,
                 "y": 0.0,
-                "z": 0.24746489524841309
+                "z": 1.770712971687317
             },
             "Rotation": {
-                "w": 0.8010343909263611,
+                "w": 0.8782290816307068,
                 "x": 0.0,
-                "y": 0.5986183285713196,
+                "y": 0.4782400131225586,
                 "z": 0.0
             },
             "Scale": {
