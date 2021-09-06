@@ -2,7 +2,7 @@
 #include "GameObjectFactory.h"
 
 GameObject::GameObject()
-	:m_components{}, m_factoryKey{}, m_isActive{ true }
+	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ }
 {
 }
 
@@ -88,9 +88,9 @@ GameObject* GameObject::GetClosestObject(std::string partialKey)
 	return GAMEOBJECT->getClosestObject(&m_transform, partialKey);
 }
 
-CAABBCollider* GameObject::AddCCollider()
+CCollider* GameObject::AddCCollider()
 {
-	return AddComponent<CAABBCollider>();
+	return AddComponent<CCollider>();
 }
 
 CSpotlight* GameObject::AddCSpotlight()
@@ -101,6 +101,17 @@ CSpotlight* GameObject::AddCSpotlight()
 CSpotlight* GameObject::GetCSpotlight()
 {
 	return GetComponent<CSpotlight>();
+}
+
+void GameObject::SetParentObject(std::string newParent)
+{
+	GameObject* otherObject = GAMEOBJECT->GetGameObject(newParent);
+	if (otherObject == nullptr)
+	{
+		std::cout << "ERROR SetParentObject(). Cannot find object by ID: " << newParent << std::endl;
+		exit(-25);
+	}
+	m_transform.SetParent(otherObject->GetTransform());
 }
 
 CWater* GameObject::AddCWaterComponent()
@@ -210,25 +221,6 @@ void GameObject::LateRender()
 	}
 }
 
-void GameObject::Restart()
-{
-	m_isActive = m_initialActivation;
-
-	m_transform.SetPositionV(m_initTransform.GetPosition());
-	m_transform.SetRotation(m_initTransform.GetRotation());
-	m_transform.SetScale(m_initTransform.GetScale());
-
-	// iterate through all component lists
-	for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
-	{
-		// iterate through all components in list
-		for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
-		{
-			(*listIterator)->Restart();
-		}
-	}
-}
-
 void GameObject::Save(nlohmann::json& j)
 {
 	j[getFactoryKey()]["key"] = getFactoryKey();
@@ -274,12 +266,11 @@ void GameObject::Load(nlohmann::json& j)
 
 		if (it.key() == "AABBComponent")
 		{
-			if (GetComponent<CAABBCollider>() == nullptr) 
+			if (GetComponent<CCollider>() == nullptr) 
 			{
-				CAABBCollider* col = AddCCollider();
+				CCollider* col = AddCCollider();
 				col->Load(j);
 			}
-			
 		}
 
 

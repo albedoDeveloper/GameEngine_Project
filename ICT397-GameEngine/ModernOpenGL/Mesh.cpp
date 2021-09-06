@@ -31,7 +31,7 @@ void Mesh::SetupMesh()
     glBindVertexArray(0);
 }
 
-void Mesh::SetupMeshVertexOnly()
+/*void Mesh::SetupMeshVertexOnly()
 {
     // create buffers/arrays
     glGenVertexArrays(1, &VAO);
@@ -56,7 +56,7 @@ void Mesh::SetupMeshVertexOnly()
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
 
     glBindVertexArray(0);
-}
+}*/
 
 void Mesh::Draw(Shader& shader, int text)
 {

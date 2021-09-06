@@ -94,7 +94,7 @@ GameObject* GameObjectFactory::SpawnGameObject(std::string key) {
 	object->setFactoryKey(key);
 
 #if _DEBUG
-	std::cout << "Game Object Created. Key = " << key << "\n";
+	//std::cout << "Game Object Created. Key = " << key << "\n";
 #endif
 
 	return object;
@@ -123,14 +123,6 @@ void GameObjectFactory::render() {
 	}
 	for (it = objectList.begin(); it != objectList.end(); it++) {
 		it->second->LateRender();
-	}
-}
-
-void GameObjectFactory::Restart()
-{
-	std::map<std::string, GameObject*>::iterator it;
-	for (it = objectList.begin(); it != objectList.end(); it++) {
-		it->second->Restart();
 	}
 }
 

@@ -15,7 +15,6 @@ private:
     */
     Camera m_camera;
 
-
 public:
     /**
      * @brief constructor

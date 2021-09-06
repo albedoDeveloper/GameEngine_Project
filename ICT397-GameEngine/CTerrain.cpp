@@ -141,7 +141,6 @@ CTerrainBruteForce::CTerrainBruteForce(Transform* parentTrans, GameObject* paren
 
 void CTerrainBruteForce::Start()
 {
-	COLLISION->SetTerrainHeightMap(this);
 	GRAPHICS->GenDisplayListTerrain(this, true, displayWireframe);
 }
 

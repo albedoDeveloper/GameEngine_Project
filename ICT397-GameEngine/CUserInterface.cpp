@@ -76,9 +76,3 @@ void CUserInterface::LateRender()
 	/*if (isVisible)
 		GRAPHICS->DrawImage(textureKey, m_width, m_height, m_xPos, m_yPos);*/
 }
-
-void CUserInterface::Restart()
-{
-	/*isVisible = m_initialVisibility;
-	Component::Restart();*/
-}

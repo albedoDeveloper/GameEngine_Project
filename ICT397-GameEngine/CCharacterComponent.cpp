@@ -14,22 +14,12 @@ CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	m_velocity{ 0,0,0 }, 
 	m_maxSpeed{ 10 }, 
 	m_acceleration{ 0,0,0 }, 
-	m_characterCollider{ nullptr }, 
 	m_lastTime{ 0 }, 
 	m_currentTime{ 0 }, 
 	m_updateInterval{1.f/60},
 	m_playerControlled{ false },
 	m_mouseEnabled{ true }
 {
-	m_characterCollider = m_parent->GetComponent<CAABBCollider>();
-
-	m_hitpoints = 1;
-
-	if (m_characterCollider == NULL)
-	{
-		m_characterCollider = m_parent->AddComponent<CAABBCollider>();
-		m_parent->GetComponent<CAABBCollider>()->SetCollider(0.5f, 1, 0.5f, -0.5f, -1, -0.5f);
-	}
 }
 
 void CCharacter::Move(float x, float y, float z)
@@ -83,7 +73,7 @@ void CCharacter::Update()
 	float mouseSens = 60;
 	Vector3f moveVector(0, 0, 0);
 
-	if (m_playerControlled && !COLLISION->hasCollided)
+	if (m_playerControlled)
 	{
 		if (INPUT->GetKey('s'))
 		{
@@ -116,14 +106,17 @@ void CCharacter::Update()
 		
 		if (m_mouseEnabled)
 		{
-			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
 			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * deltaTime * mouseSens);
+			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
+
+			//std::cout << parentObj->getFactoryKey() << ": " << RadToDegrees(parentObj->GetTransform()->GetWorldTransform().GetRotation().GetEulerAngles().GetX()) << " " <<
+			//	RadToDegrees(parentObj->GetTransform()->GetWorldTransform().GetRotation().GetEulerAngles().GetY()) << " " <<
+			//	RadToDegrees(parentObj->GetTransform()->GetWorldTransform().GetRotation().GetEulerAngles().GetZ()) << std::endl;
 		}
 
 		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f ||
 			RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) < -90.f)
 		{
-
 			Vector3f eulersInRads(
 				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX(),
 				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetY(),
@@ -200,8 +193,6 @@ void CCharacter::Update()
 		newPos.SetZ(newPos.GetZ() + worldVel.GetZ());
 		
 		m_parent->GetTransform()->SetPositionV(newPos);
-
-		COLLISION->CheckCollision(*m_characterCollider, m_parent->GetTransform());
 }
 
 void CCharacter::Render()
@@ -210,12 +201,6 @@ void CCharacter::Render()
 
 void CCharacter::LateRender()
 {}
-
-void CCharacter::Restart()
-{
-	m_hitpoints = m_initialHitpoints;
-	Component::Restart();
-}
 
 void CCharacter::Save(nlohmann::json& j)
 {

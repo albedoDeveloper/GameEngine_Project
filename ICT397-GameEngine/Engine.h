@@ -17,10 +17,6 @@ private:
 	*/
 	bool m_isRunning;
 	/**
-	 * @brief whether the engine is currently restarting
-	*/
-	bool m_restart;
-	/**
 	 * @brief whether the game has been saved
 	*/
 	bool m_saveState;
@@ -60,10 +56,6 @@ public:
 	 * @brief ends the game
 	*/
 	void QuitGame();
-	/**
-	 * @brief starts the game over
-	*/
-	void RestartGame();
 	/**
 	 * @brief saves the game
 	*/

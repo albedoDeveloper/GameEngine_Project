@@ -12,10 +12,6 @@ Component::Component()
 Component::Component(Transform* parentTrans, GameObject* parentObject)
 	:m_transform{ parentTrans }, m_parent{ parentObject }
 {
-	m_initTransform = new Transform();
-	m_initTransform.SetPositionV(m_transform.GetPosition());
-	m_initTransform.SetRotation(m_transform.GetRotation());
-	m_initTransform.SetScale(m_transform.GetScale());
 }
 
 Transform& Component::GetTransform()
@@ -31,15 +27,6 @@ const Transform& Component::GetTransformConst() const
 GameObject* Component::GetParentObject()
 {
 	return m_parent;
-}
-
-void Component::Restart()
-{
-	m_transform.SetPositionV(m_initTransform.GetPosition());
-	m_transform.SetRotation(m_initTransform.GetRotation());
-	m_transform.SetScale(m_initTransform.GetScale());
-
-	Start();
 }
 
 void Component::Save(nlohmann::json& j)
