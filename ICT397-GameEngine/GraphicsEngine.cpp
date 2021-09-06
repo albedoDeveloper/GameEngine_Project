@@ -332,19 +332,19 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view)
 
 	std::vector <float> tempVector;
 	
-	for (int i = 0; i < COLLISION->physicsWorld->getDebugRenderer().getNbTriangles(); i++)
+	for (int i = 0; i < COLLISION->debugRender->getNbTriangles(); i++)
 	{
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point1.x);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point1.y);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point1.z);
 
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.x);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.y);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.z);
-
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.x);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.y);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.z);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.x);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.y);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.z);
+					
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.x);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.y);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.z);
 	}
 
 	if (initDebug)

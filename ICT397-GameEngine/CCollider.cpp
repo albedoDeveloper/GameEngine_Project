@@ -29,7 +29,7 @@ CCollider::CCollider(Transform* parent, GameObject* parentObj)
 	);
 
 	reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
-	colBody = COLLISION->GetPhysicsWorld()->createCollisionBody(worldTransform);
+	colBody = COLLISION->GetPhysicsWorld()->createCollisionBody(reactphysics3d::Transform::identity());
 
 	m_isRegistered = true;
 }
@@ -87,7 +87,7 @@ void CCollider::UpdateCollider()
 		);
 		
 		//if(this->GetParentObject()->GetComponent<CCamera>() != nullptr)
-		//	worldOrientation.inverse();
+			worldOrientation.inverse();
 
 		reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
 		col->getBody()->setTransform(worldTransform);
@@ -96,7 +96,7 @@ void CCollider::UpdateCollider()
 
 void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize)
 {
-	auto resize = 1;
+	//auto resize = 1;
 
 	if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() != nullptr)
 	{
@@ -115,8 +115,8 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 		auto zAvg = (glm::abs<float>(minMax[5]) + glm::abs<float>(minMax[4])) / 2;
 		m_offset.z = zAvg - glm::abs<float>(minMax[5]);
 
-		m_transform.SetPosition(-m_offset.x, -m_offset.y, -m_offset.z);
-		resize = 2;
+		m_transform.SetPosition(-m_offset.x/2, -m_offset.y/2, -m_offset.z/2);
+		//resize = 2;
 	}
 	else if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() == nullptr)
 	{
@@ -131,7 +131,8 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	//reactphysics3d::Transform tempTransform(tempVec, tempQuat);
 	//colBody->setTransform(tempTransform);
 
-	reactphysics3d::BoxShape* boxCollider = COLLISION->physicsCommon->createBoxShape(reactphysics3d::Vector3(x / resize, y / resize, z / resize));
+	reactphysics3d::BoxShape* boxCollider = COLLISION->physicsCommon.createBoxShape(reactphysics3d::Vector3(x /*/ resize*/, y /*/ resize*/, z /*/ resize*/));
+
 	col = colBody->addCollider(boxCollider, reactphysics3d::Transform::identity());
 }
 
@@ -180,9 +181,9 @@ void CCollider::AddConvexCollider()
 	reactphysics3d::PolygonVertexArray* polyVertexes = new reactphysics3d::PolygonVertexArray(vertices.size(), vertices.data(), 3 * sizeof(float), indices.data(),
 	sizeof(int), totalFaces, polyFace, reactphysics3d::PolygonVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::PolygonVertexArray::IndexDataType::INDEX_INTEGER_TYPE);
 
-	reactphysics3d::PolyhedronMesh* polyMesh2 = COLLISION->physicsCommon->createPolyhedronMesh(polyVertexes);
+	reactphysics3d::PolyhedronMesh* polyMesh2 = COLLISION->physicsCommon.createPolyhedronMesh(polyVertexes);
 
-	convexCollider = COLLISION->physicsCommon->createConvexMeshShape(polyMesh2);
+	convexCollider = COLLISION->physicsCommon.createConvexMeshShape(polyMesh2);
 	col = colBody->addCollider(convexCollider, reactphysics3d::Transform::identity());
 }
 
@@ -206,27 +207,11 @@ void CCollider::AddConcaveCollider()
 	reactphysics3d::TriangleVertexArray* triangleArray = new reactphysics3d::TriangleVertexArray(concaveVertices.size(), concaveVertices.data(), 3*sizeof(float), totalFaces, concaveIndices.data(),
 		3*sizeof(int), reactphysics3d::TriangleVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::TriangleVertexArray::IndexDataType::INDEX_INTEGER_TYPE);
 	
-	triangleMesh = COLLISION->physicsCommon->createTriangleMesh();
+	triangleMesh = COLLISION->physicsCommon.createTriangleMesh();
 
 	triangleMesh->addSubpart(triangleArray);
 
-	concaveMesh = COLLISION->physicsCommon->createConcaveMeshShape(triangleMesh);
+	concaveMesh = COLLISION->physicsCommon.createConcaveMeshShape(triangleMesh);
 
 	col = colBody->addCollider(concaveMesh, reactphysics3d::Transform::identity());
-}
-	
-void CCollider::SetCollider(float gMaxX, float gMaxY, float gMaxZ, float gMinX, float gMinY, float gMinZ)
-{
-	m_collider.max.SetX(gMaxX);
-	m_collider.max.SetY(gMaxY);
-	m_collider.max.SetZ(gMaxZ);
-
-	m_collider.min.SetX(gMinX);
-	m_collider.min.SetY(gMinY);
-	m_collider.min.SetZ(gMinZ);
-}
-
-AABB CCollider::GetCollider() const
-{
-	return m_collider;
 }

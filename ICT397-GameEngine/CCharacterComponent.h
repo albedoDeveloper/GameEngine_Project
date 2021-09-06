@@ -132,11 +132,6 @@ private:
 	*/
 	Vector3f m_acceleration;
 
-	/**
-	 * @brief The character's collision data for checking collision with other objects
-	*/
-	CCollider *m_characterCollider;
-
 	bool m_playerControlled;
 
 	bool m_mouseEnabled;

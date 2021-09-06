@@ -38,11 +38,10 @@ public:
 */
 	reactphysics3d::PhysicsWorld* physicsWorld;
 
-	reactphysics3d::PhysicsCommon* physicsCommon = new reactphysics3d::PhysicsCommon;
+	reactphysics3d::PhysicsCommon physicsCommon;
 
 	reactphysics3d::DebugRenderer* debugRender;
 
-	bool hasCollided = false;
 	int waitTime = 0;
 
 public:
@@ -56,31 +55,6 @@ public:
 	*/
 	static CollisionManager* Instance();
 
-	/**
-	 * @brief Assigns a collider in the array
-	 * @param collider The collider to put in the array
-	 * @param index The index of the collider to set
-	*/
-	void SetColliderAtIndex(CCollider* collider, int index);
-
-	/**
-	 * @brief Adds a collider to the array at the current filled index
-	 * @param collider The collider to add
-	*/
-	void AddColliderToArray(CCollider* collider);
-
-	/**
-	 * @brief Returns the pointer to the terrain heightMap
-	 * @return Return the HeightMap pointer member variable
-	*/
-	CBaseTerrain* GetTerrainHeightMap();
-
-	/**
-	 * @brief Sets the HeigthMap in the Terrain Constructor
-	 * @param AHeigthMap passed from the Terrain collider
-	 * @return after the member variable has been assigned
-	*/
-	void SetTerrainHeightMap(CBaseTerrain* aHeightMap);
 
 	/**
 	 * @brief check if the camera is colliding with the terrain. Brute force method

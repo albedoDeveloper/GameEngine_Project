@@ -14,22 +14,12 @@ CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	m_velocity{ 0,0,0 }, 
 	m_maxSpeed{ 50 }, 
 	m_acceleration{ 0,0,0 }, 
-	m_characterCollider{ nullptr }, 
 	m_lastTime{ 0 }, 
 	m_currentTime{ 0 }, 
 	m_updateInterval{1.f/60},
 	m_playerControlled{ false },
 	m_mouseEnabled{ true }
 {
-	m_characterCollider = m_parent->GetComponent<CCollider>();
-
-	m_hitpoints = 1;
-
-	if (m_characterCollider == NULL)
-	{
-		m_characterCollider = m_parent->AddComponent<CCollider>();
-		m_parent->GetComponent<CCollider>()->SetCollider(0.5f, 1, 0.5f, -0.5f, -1, -0.5f);
-	}
 }
 
 void CCharacter::Move(float x, float y, float z)
@@ -83,7 +73,7 @@ void CCharacter::Update()
 	float mouseSens = 60;
 	Vector3f moveVector(0, 0, 0);
 
-	if (m_playerControlled && !COLLISION->hasCollided)
+	if (m_playerControlled)
 	{
 		if (INPUT->GetKey('s'))
 		{
@@ -203,8 +193,6 @@ void CCharacter::Update()
 		newPos.SetZ(newPos.GetZ() + worldVel.GetZ());
 		
 		m_parent->GetTransform()->SetPositionV(newPos);
-
-		COLLISION->CheckCollision(*m_characterCollider, m_parent->GetTransform());
 }
 
 void CCharacter::Render()

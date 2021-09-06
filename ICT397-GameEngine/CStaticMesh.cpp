@@ -44,10 +44,10 @@ void CStaticMesh::Update()
 	//	RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetY()) << " " <<
 	//		RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
 
-		std::cout << m_parent->getFactoryKey() << ": ";
-		std::cout << m_parent->GetTransform()->GetPosition().GetX() << " " <<
-			m_parent->GetTransform()->GetPosition().GetY() << " " <<
-			m_parent->GetTransform()->GetPosition().GetZ() << " " << std::endl;
+		//std::cout << m_parent->getFactoryKey() << ": ";
+		//std::cout << m_parent->GetTransform()->GetPosition().GetX() << " " <<
+		//	m_parent->GetTransform()->GetPosition().GetY() << " " <<
+		//	m_parent->GetTransform()->GetPosition().GetZ() << " " << std::endl;
 
 		//std::cout << m_parent->getFactoryKey() << ": ";
 		//std::cout << m_transform.GetPosition().GetX() << " " <<
