@@ -160,7 +160,6 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	shader->setMat4("model", trans);
 
 	model->Draw(*shader);
-
 }
 
 void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing

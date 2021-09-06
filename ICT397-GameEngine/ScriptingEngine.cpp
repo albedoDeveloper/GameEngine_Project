@@ -126,6 +126,7 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("SetActive", &GameObject::SetActive)
             .addFunction("SetDifficulty", &GameObject::SetDifficulty)
             .addFunction("GetDifficulty", &GameObject::GetDifficulty)
+            .addFunction("SetParentObject", &GameObject::SetParentObject)
         .addFunction("GetCTerrainBruteForce", &GameObject::GetCTerrainBruteForce)
         .endClass();
 

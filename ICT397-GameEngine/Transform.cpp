@@ -149,14 +149,14 @@ Transform Transform::GetWorldTransform() const
     while (!stack.empty())
     {
         worldMat.Translate(stack.top()->m_position);
-        worldMat = worldMat * Matrix4f::Cast(stack.top()->m_rotation.Conjugate());
+        worldMat = worldMat * Matrix4f::Cast(stack.top()->m_rotation);
         worldMat.Scale(stack.top()->m_scale);
         stack.pop();
     }
 
     Transform t;
     Decompose(worldMat, t.m_scale, t.m_rotation, t.m_position);
-    t.m_rotation = t.m_rotation.Conjugate();
+    t.m_rotation = t.m_rotation;
 
     return t;
 }

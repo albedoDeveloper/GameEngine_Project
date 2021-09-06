@@ -2,7 +2,7 @@
 #include "GameObjectFactory.h"
 
 GameObject::GameObject()
-	:m_components{}, m_factoryKey{}, m_isActive{ true }
+	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ }
 {
 }
 
@@ -101,6 +101,17 @@ CSpotlight* GameObject::AddCSpotlight()
 CSpotlight* GameObject::GetCSpotlight()
 {
 	return GetComponent<CSpotlight>();
+}
+
+void GameObject::SetParentObject(std::string newParent)
+{
+	GameObject* go = GAMEOBJECT->GetGameObject(newParent);
+	if (go == nullptr)
+	{
+		std::cout << "ERROR SetParentObject(). Cannot find object by ID: " << newParent << std::endl;
+		exit(-25);
+	}
+	m_transform.SetParent(go->GetTransform());
 }
 
 CWater* GameObject::AddCWaterComponent()

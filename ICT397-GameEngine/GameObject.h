@@ -125,6 +125,8 @@ public:
 	*/
 	CSpotlight* GetCSpotlight();
 
+	void SetParentObject(std::string newParent);
+
 	/**
 	 * @brief component accessor
 	 * @tparam T The class of the component
@@ -251,10 +253,6 @@ inline T* GameObject::AddComponent(Targs&&... args)
 		}
 
 		m_components.at(std::type_index(typeid(T)))->push_back(obj);
-
-#if _DEBUG
-		std::cout << "Component of type " << typeid(T).name() << " added to GameObject (key=" << m_factoryKey << ")\n";
-#endif
 		
 		return obj;
 	}

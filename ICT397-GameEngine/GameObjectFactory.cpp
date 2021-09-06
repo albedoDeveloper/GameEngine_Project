@@ -94,7 +94,7 @@ GameObject* GameObjectFactory::SpawnGameObject(std::string key) {
 	object->setFactoryKey(key);
 
 #if _DEBUG
-	std::cout << "Game Object Created. Key = " << key << "\n";
+	//std::cout << "Game Object Created. Key = " << key << "\n";
 #endif
 
 	return object;

@@ -4,16 +4,17 @@ LoadScript("rotate", "rotate.lua")
 
 xpos = 0
 zpos = 0
-for i=1,10,1 do
+for i=1,2,1 do
     goblinName = "goblin " .. i
-    goblinMesh = "goblinMesh " .. i
     SpawnGameObject(goblinName)
     GetGameObject(goblinName):AddCStaticMesh():AssignModel("goblinModel")
 
-    GetGameObject(goblinName):AddCScript():AssignScript("rotate")
+    
    -- GetGameObject(goblinName):AddCAABBCollider():AddConcaveCollider()
     GetGameObject(goblinName):AddCAABBCollider():AddBoxCollider(1,1,1,0,-0.7,0,true)
     GetGameObject(goblinName):GetTransform():SetPosition(xpos,0,zpos)
+    
+
    --GetGameObject(goblinName):GetTransform():RotateLocal(140,1,0, 1)
 
     xpos = xpos + 2
@@ -24,3 +25,5 @@ for i=1,10,1 do
     end
 
 end
+        GetGameObject("goblin 1"):AddCScript():AssignScript("rotate")
+        GetGameObject("goblin 2"):SetParentObject("goblin 1")

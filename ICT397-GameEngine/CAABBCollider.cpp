@@ -1,4 +1,4 @@
-#include "CAABBCollider.h"->GetWorldTransform()
+#include "CAABBCollider.h"
 #include "CollisionManager.h"
 #include "GameObject.h"
 //DEBUG
@@ -66,7 +66,7 @@ void CAABBCollider::Load(nlohmann::json& j)
 
 void CAABBCollider::Start()
 {	
-
+	UpdateCollider();
 }
 
 void CAABBCollider::UpdateCollider()
@@ -87,7 +87,7 @@ void CAABBCollider::UpdateCollider()
 		);
 		
 		//if(this->GetParentObject()->GetComponent<CCamera>() != nullptr)
-		//	tempQuat.inverse();
+		//	worldOrientation.inverse();
 
 		reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
 		col->getBody()->setTransform(worldTransform);
@@ -115,8 +115,13 @@ void CAABBCollider::AddBoxCollider(float x, float y, float z, float offsetX, flo
 		auto zAvg = (glm::abs<float>(minMax[5]) + glm::abs<float>(minMax[4])) / 2;
 		m_offset.z = zAvg - glm::abs<float>(minMax[5]);
 
-		m_transform.SetPosition(m_offset.x, m_offset.y, m_offset.z);
+		m_transform.SetPosition(-m_offset.x, -m_offset.y, -m_offset.z);
 		resize = 2;
+	}
+	else if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() == nullptr)
+	{
+		std::cout << "CAABBCollider::AddBoxCollider function. Cannot autosize because GameObject doesn not have a CstaticMesh!\n";
+		exit(-24);
 	}
 	//m_offset = glm::vec3(offsetX, offsetY, offsetZ);
 
