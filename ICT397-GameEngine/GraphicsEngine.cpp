@@ -145,13 +145,8 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	
 	shader->setMat4("projection", GetProjection());
 
-<<<<<<< Updated upstream
-=======
 	
 	shader->setMat4("view", GetView());
-
-
->>>>>>> Stashed changes
 	glm::mat4 trans = glm::mat4(1.0f);
 	
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() , worldTrans.GetPosition().GetY() , worldTrans.GetPosition().GetZ()));
