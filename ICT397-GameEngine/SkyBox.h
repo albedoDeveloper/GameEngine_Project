@@ -7,7 +7,7 @@ class SkyBox
 
 	public:
 		void CreateSkybox(std::vector<std::string> skyBoxFaces);
-		void DrawSkybox(glm::mat4 persepective, glm::mat4 view);
+		void DrawSkybox(const glm::mat4& persepective, const glm::mat4& view);
 		void CreateVAOandVBO();
 
 	private:

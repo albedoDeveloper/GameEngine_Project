@@ -158,8 +158,8 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) + glm::vec3(m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()), 
 	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()));
 	shader->setMat4("view", view);
-	skybox.DrawSkybox(projection, view);
-	shader->useShaderForLoop();
+
+
 
 	glm::mat4 trans = glm::mat4(1.0f);
 	
@@ -173,8 +173,9 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 
 
 	shader->setMat4("model", trans);
-	model->Draw(*shader);
 
+	model->Draw(*shader);
+	skybox.DrawSkybox(projection, view);
 
 	if (m_firstFrameDebug && m_drawDebug)
 	{

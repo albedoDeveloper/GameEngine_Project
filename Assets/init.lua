@@ -12,7 +12,8 @@ for i=1,10,1 do
 
     GetGameObject(goblinName):AddCScript():AssignScript("rotate")
     GetGameObject(goblinName):GetTransform():SetPosition(xpos,0,zpos)
-    GetGameObject(goblinName):AddCAABBCollider():AddConcaveCollider()
+    --GetGameObject(goblinName):AddCAABBCollider():AddConcaveCollider()
+    GetGameObject(goblinName):AddCAABBCollider():AddBoxCollider(1,1,1,true)
     --GetGameObject(goblinName):GetTransform():RotateLocal(140,1,0, 1)
 
     xpos = xpos + 2

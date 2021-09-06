@@ -35,7 +35,7 @@ void SkyBox::CreateSkybox(std::vector<std::string> skyBoxFaces)
 	CreateVAOandVBO();
 }
 
-void SkyBox::DrawSkybox(glm::mat4 persepective, glm::mat4 view)
+void SkyBox::DrawSkybox(const glm::mat4& persepective, const glm::mat4& view)
 {
 	glDepthMask(GL_FALSE);
 	skyBoxShader->useShaderForLoop();

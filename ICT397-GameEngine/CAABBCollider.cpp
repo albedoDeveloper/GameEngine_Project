@@ -106,7 +106,8 @@ void CAABBCollider::AddBoxCollider(float x, float y, float z, bool autoSize)
 	reactphysics3d::Transform tempTransform(tempVec, tempQuat);
 	colBody->setTransform(tempTransform);
 
-	boxCollider = COLLISION->physicsCommon->createBoxShape(reactphysics3d::Vector3(x / resize, y / resize, z / resize));
+	
+	reactphysics3d::BoxShape* boxCollider = COLLISION->physicsCommon->createBoxShape(reactphysics3d::Vector3(x / resize, y / resize, z / resize));
 	col = colBody->addCollider(boxCollider, reactphysics3d::Transform::identity());
 
 	std::cout << "BoxCollider created" << std::endl;
