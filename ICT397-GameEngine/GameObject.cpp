@@ -266,8 +266,11 @@ void GameObject::Load(nlohmann::json& j)
 
 		if (it.key() == "AABBComponent")
 		{
-			CCollider* col = AddCCollider();
-			col->Load(j);
+			if (GetComponent<CCollider>() == nullptr) 
+			{
+				CCollider* col = AddCCollider();
+				col->Load(j);
+			}
 		}
 
 

@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include "GraphicsLibraryEnum.h"
 #include "LevelLoader.h"
+#include "LevelEditor.h"
 #include <reactphysics3d/reactphysics3d.h>
 
 /**
@@ -27,9 +28,15 @@ private:
 	 * @brief the level loader class
 	*/
 	LevelLoader levelLoader;
+	/**
+	 * @brief the level editor class
+	*/
+	LevelEditor levelEditor;
 
 
 	bool m_debugMenu;
+
+	bool m_editMenu;
 
 	bool m_drawColliders;
 
