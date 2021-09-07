@@ -118,6 +118,8 @@ public:
 
 	CCamera* GetCCamera();
 
+	bool IsStatic() const;
+
 	CCharacter* GetCCharacter();
 	/**
 	 * @brief gets the first spotlight component
@@ -238,6 +240,8 @@ private:
 	 * @brief the difficulty of the game for this object
 	*/
 	std::string m_difficulty;
+
+	bool m_static;
 };
 
 template<class T, class... Targs>

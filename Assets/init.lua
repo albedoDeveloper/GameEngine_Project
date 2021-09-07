@@ -42,7 +42,7 @@ GetGameObject("island"):AddCStaticMesh():AssignModel("island")
 
 SpawnGameObject("toilet_block")
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
-GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
+GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,"static")
 
 SpawnGameObject("spiked_door_toilet")
 GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_toilet")

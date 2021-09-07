@@ -85,7 +85,7 @@ public:
 	reactphysics3d::PolygonVertexArray::PolygonFace* polyFace;
 
 	void UpdateCollider();
-	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2 , float offsetX = 0, float offsetY = 0, float offsetZ = 0, bool autoSize = false);
+	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2 , float offsetX = 0, float offsetY = 0, float offsetZ = 0, bool autoSize = false, std::string layer = "default");
 	void AddConvexCollider();
 	void AddConcaveCollider();
 

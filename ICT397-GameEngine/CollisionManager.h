@@ -4,7 +4,6 @@
 #include <vector>
 #include "DeltaTime.h"
 
-
 /**
  * @brief A singleton that manages collisions between objects
 */

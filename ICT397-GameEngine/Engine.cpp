@@ -144,7 +144,7 @@ void Engine::OnLoop()
 
 	if (m_drawColliders)
 	{
-		// only used to update collider triangles/lines for debugging
+		// only used to update collider triangles/lines for debugging. deltaTime irrelevant
 		COLLISION->physicsWorld->update(1);
 	}
 }

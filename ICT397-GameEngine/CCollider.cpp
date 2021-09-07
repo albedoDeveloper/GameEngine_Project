@@ -36,7 +36,10 @@ CCollider::CCollider(Transform* parent, GameObject* parentObj)
 
 void CCollider::Update()
 {
-	UpdateCollider();
+	if (!m_parent->IsStatic())
+	{
+		UpdateCollider();
+	}
 }
 
 void CCollider::Render()
@@ -105,10 +108,8 @@ void CCollider::UpdateCollider()
 	}
 }
 
-void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize)
+void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize, std::string layer)
 {
-	//auto resize = 1;
-
 	m_offset.x = offsetX;
 	m_offset.y = offsetY;
 	m_offset.z = offsetZ;
@@ -124,35 +125,20 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 		auto xAvg = ((minMax[1]) + (minMax[0])) / 2;
 		auto yAvg = ((minMax[3]) + (minMax[2])) / 2;
 		auto zAvg = ((minMax[5]) + (minMax[4])) / 2;
-		//m_offset.x = xAvg - glm::abs<float>(minMax[1]);
-
-		//auto yAvg = (glm::abs<float>(minMax[3]) + glm::abs<float>(minMax[2])) / 2;
-		//m_offset.y = yAvg - glm::abs<float>(minMax[3]);
-
-		//auto zAvg = (glm::abs<float>(minMax[5]) + glm::abs<float>(minMax[4])) / 2;
-		//m_offset.z = zAvg - glm::abs<float>(minMax[5]);
 
 		m_transform.SetPosition(xAvg, yAvg, zAvg);
-		//resize = 2;
 	}
 	else if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() == nullptr)
 	{
 		std::cout << "CCollider::AddBoxCollider function. Cannot autosize because GameObject doesn not have a CstaticMesh!\n";
 		exit(-24);
 	}
-	//m_offset = glm::vec3(offsetX, offsetY, offsetZ);
 
-	//auto tempVec = reactphysics3d::Vector3(colBody->getTransform().getPosition().x , colBody->getTransform().getPosition().y + offsetY, colBody->getTransform().getPosition().z + offsetZ);
-	//auto tempQuat = colBody->getTransform().getOrientation();
-
-	//reactphysics3d::Transform tempTransform(tempVec, tempQuat);
-	//colBody->setTransform(tempTransform);
-
-	//m_transform.SetPosition(-m_offset.x, -m_offset.y, -m_offset.z);
-
-	reactphysics3d::BoxShape* boxCollider = COLLISION->physicsCommon.createBoxShape(reactphysics3d::Vector3(x /*/ resize*/, y /*/ resize*/, z /*/ resize*/));
+	reactphysics3d::BoxShape* boxCollider = COLLISION->physicsCommon.createBoxShape(reactphysics3d::Vector3(x, y, z));
 
 	col = colBody->addCollider(boxCollider, reactphysics3d::Transform::identity());
+
+	col->setCollisionCategoryBits(1);
 }
 
 void CCollider::AddConvexCollider()

@@ -2,7 +2,7 @@
 #include "GameObjectFactory.h"
 
 GameObject::GameObject()
-	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ }
+	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ }, m_static{ true }
 {
 }
 
@@ -71,6 +71,11 @@ CTerrainBruteForce* GameObject::GetCTerrainBruteForce()
 CCamera* GameObject::GetCCamera()
 {
 	return GetComponent<CCamera>();
+}
+
+bool GameObject::IsStatic() const
+{
+	return m_static;
 }
 
 CCharacter* GameObject::GetCCharacter()
