@@ -88,3 +88,14 @@ void CStaticMesh::Load(nlohmann::json& j)
 	GameObject* g = GetParentObject();
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
+
+void CStaticMesh::DrawToImGui()
+{
+	//ImGui::Text("staticMesh TREE");
+	if (ImGui::TreeNode("StaticMesh Component"))
+	{
+		ImGui::Text("Model Name : "); ImGui::SameLine(); ImGui::Text(m_model->key.c_str());
+		ImGui::TreePop();
+
+	}
+}

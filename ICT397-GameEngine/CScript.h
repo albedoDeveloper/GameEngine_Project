@@ -47,6 +47,11 @@ public:
 	*/
 	virtual void Load(nlohmann::json& j);
 
+	/**
+	 * @brief Draws to imgui
+	*/
+	virtual void DrawToImGui();
+
 	void AssignScript(AScript* script);
 	/**
 	 * @brief script mutator using factory key

@@ -202,6 +202,11 @@ public:
 	*/
 	void Load(nlohmann::json& j);
 
+	/**
+	 * @brief retrieves component map
+	*/
+	std::unordered_map<std::type_index, std::list<Component*>*> GetComponentMap();
+
 private:
 	/**
 	 * @brief All of this object's components, stored in a map of lists, organised by type

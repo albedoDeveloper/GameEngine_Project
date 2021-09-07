@@ -57,6 +57,11 @@ public:
 	virtual void Load(nlohmann::json& j);
 
 	/**
+	 * @brief Draws to imgui
+	*/
+	virtual void DrawToImGui();
+
+	/**
 	 * @brief transform accessor
 	 * @return pointer to this component's transform
 	*/
@@ -73,6 +78,8 @@ public:
 	 * @return pointer to the object to which this component belongs
 	*/
 	GameObject* GetParentObject();
+
+	
 
 protected:
 	/**

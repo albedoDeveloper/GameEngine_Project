@@ -23,37 +23,44 @@ LoadScript("rotate", "rotate.lua")
 
 SpawnGameObject("roof_interior")
 GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
-GetGameObject("roof_interior"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
 
 SpawnGameObject("goblin1")
 GetGameObject("goblin1"):AddCStaticMesh():AssignModel("goblin")
+
 GetGameObject("goblin1"):AddCSound():LoadSound("CantinaBand60.wav")
 GetGameObject("goblin1"):GetCSound():PlaySound("CantinaBand60.wav", 2)
-
+GetGameObject("goblin1"):AddCScript():AssignScript("rotate")
 
 SpawnGameObject("tavern_glass_door_wall_long_2")
 GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
+GetGameObject("tavern_glass_door_wall_long_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
 
 SpawnGameObject("back_wall")
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
+GetGameObject("back_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
 
 SpawnGameObject("island")
 GetGameObject("island"):AddCStaticMesh():AssignModel("island")
 
 SpawnGameObject("toilet_block")
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
+GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
 
 SpawnGameObject("spiked_door_toilet")
 GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_toilet")
+GetGameObject("spiked_door_toilet"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
 
 SpawnGameObject("spiked_door_bar")
 GetGameObject("spiked_door_bar"):AddCStaticMesh():AssignModel("spiked_door_bar")
+GetGameObject("spiked_door_bar"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
 
 SpawnGameObject("south_bar_wall")
 GetGameObject("south_bar_wall"):AddCStaticMesh():AssignModel("south_bar_wall")
+GetGameObject("south_bar_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
 
 SpawnGameObject("behind_bar_block")
 GetGameObject("behind_bar_block"):AddCStaticMesh():AssignModel("behind_bar_block")
+GetGameObject("behind_bar_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
 
 SpawnGameObject("tavern_glass_door_wall")
 GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_glass_door_wall")

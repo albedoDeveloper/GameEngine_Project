@@ -83,6 +83,11 @@ public:
 	*/
 	void Load(nlohmann::json& j);
 
+	/**
+	 * @brief Draws to imgui
+	*/
+	virtual void DrawToImGui();
+
 	void SetMouseEnabled(bool isEnabled);
 
 private:
