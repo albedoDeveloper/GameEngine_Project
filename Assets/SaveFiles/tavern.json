@@ -26,6 +26,33 @@
         },
         "key": "bar_floor_rod"
     },
+    "goblin1": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "Model": "goblin"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "goblin1"
+    },
     "graffiti_block": {
         "Components": {
             "AABBComponent": "AABBComponent",
@@ -87,14 +114,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 4.256585121154785,
-                "y": 1.7000000476837158,
-                "z": -1.955728530883789
+                "x": -2.3995072841644287,
+                "y": 1.7863123416900635,
+                "z": 3.7100369930267334
             },
             "Rotation": {
-                "w": 0.18529658019542694,
+                "w": 0.9193317890167236,
                 "x": 0.0,
-                "y": 0.9826816916465759,
+                "y": 0.393481582403183,
                 "z": 0.0
             },
             "Scale": {
