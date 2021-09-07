@@ -59,6 +59,11 @@ public:
 	virtual void Load(nlohmann::json& j);
 
 	/**
+	 * @brief Draws to imgui
+	*/
+	virtual void DrawToImGui();
+
+	/**
  * @brief the model this mesh is storing
 */
 	Model* m_model;

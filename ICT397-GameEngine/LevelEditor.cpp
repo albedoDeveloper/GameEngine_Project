@@ -8,39 +8,47 @@ LevelEditor::LevelEditor()
 
 void LevelEditor::DrawEditor()
 {
+	
+
+	ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
+	
+	if (ImGui::CollapsingHeader("Level Editor"))
+	{
+		ObjectList();
+
+		
+	}
+
+	//ImGui::End();
+}
+
+void LevelEditor::ObjectList() 
+{
+	//retrieval
 	std::map<std::string, GameObject*>* objectList;
 
 	objectList = GAMEOBJECT->GetObjectMap();
 
-	ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
-	
-	ImGui::Begin("TEST");
-
-	if (ImGui::CollapsingHeader("Window options"))
+	//iteration
+	std::map<std::string, GameObject*>::iterator it;
+	for (it = objectList->begin(); it != objectList->end(); it++)
 	{
-		
-
-		std::map<std::string, GameObject*>::iterator it;
-		for (it = objectList->begin(); it != objectList->end(); it++)
-		{
-			ObjectHeader(it->second);
-		}
+		//population
+		ObjectHeader(it->second);
 	}
-
-	ImGui::End();
 }
 
 void LevelEditor::ObjectHeader(GameObject* g)
 {
 	ImGui::AlignTextToFramePadding();
 
-	std::string s{ "foo" };
-
 	if (ImGui::TreeNode((char*)g->getFactoryKey().c_str()))
 	{
 		ImGui::AlignTextToFramePadding();
 
 		TransformHeader(g);
+
+		ComponentTree(g);
 
 		ImGui::TreePop();
 	}
@@ -50,93 +58,117 @@ void LevelEditor::TransformHeader(GameObject* g)
 {
 	if (ImGui::CollapsingHeader("Transform") )
 	{
-
-		if (ImGui::TreeNode("Position"))
-		{
-			ImGuiSliderFlags flagx = ImGuiSliderFlags_None;
-			ImGuiSliderFlags flagy = ImGuiSliderFlags_None;
-			ImGuiSliderFlags flagz = ImGuiSliderFlags_None;
-			// Drags
-			float drag_x = g->GetTransform()->GetPosition().GetX();
-			float drag_y = g->GetTransform()->GetPosition().GetY();
-			float drag_z = g->GetTransform()->GetPosition().GetZ();
-
-			ImGui::Text("X"); ImGui::SameLine(); ImGui::SameLine();
-			ImGui::DragFloat("Drag X Pos", &drag_x, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f",flagx);
-
-			ImGui::Text("Y"); ImGui::SameLine(); ImGui::SameLine();
-			ImGui::DragFloat("Drag Y Pos", &drag_y, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagy);
-
-			ImGui::Text("Z"); ImGui::SameLine(); ImGui::SameLine();
-			ImGui::DragFloat("Drag Z Pos", &drag_z, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagz);
-
-			g->GetTransform()->SetPosition(drag_x, drag_y, drag_z);
-
-
-			//ImGui::LabelText("label", "Value");
-			ImGui::TreePop();
-
-			
-		}
 		
+		ImGui::Indent(); ImGui::Indent(); ImGui::Indent();
+		ImGui::Text("X"); ImGui::SameLine(150); ImGui::Text("Y"); ImGui::SameLine(210); ImGui::Text("Z");
+		ImGui::Unindent(); ImGui::Unindent(); ImGui::Unindent();
 
-		if (ImGui::TreeNode("Rotate"))
+		//<<<<<<<<<<<<<<<<<<POSITION>>>>>>>>>>>>>>>>>>>//
+		
+		PositionManipulators(g);
+			
+		//<<<<<<<<<<<<<<<<<<ROTATION>>>>>>>>>>>>>>>>>>>//
+		RotationManipulators(g);
+
+		//<<<<<<<<<<<<<<<<<<SCALE>>>>>>>>>>>>>>>>>>>//
+		ScaleManipulators(g);
+
+	}
+
+	
+}
+
+void LevelEditor::PositionManipulators(GameObject* g)
+{
+	ImGuiSliderFlags flagPosX = ImGuiSliderFlags_None;
+	ImGuiSliderFlags flagPosY = ImGuiSliderFlags_None;
+	ImGuiSliderFlags flagPosZ = ImGuiSliderFlags_None;
+	// Drags
+	float drag_x_pos = g->GetTransform()->GetPosition().GetX();
+	float drag_y_pos = g->GetTransform()->GetPosition().GetY();
+	float drag_z_pos = g->GetTransform()->GetPosition().GetZ();
+
+	ImGui::PushItemWidth(50);
+
+	ImGui::Text("Pos  "); ImGui::SameLine();
+	ImGui::DragFloat("##PosX", &drag_x_pos, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagPosX);
+
+	ImGui::SameLine();
+	ImGui::DragFloat("##PosY", &drag_y_pos, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagPosY);
+
+	ImGui::SameLine();
+	ImGui::DragFloat("##PosZ", &drag_z_pos, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagPosZ);
+
+	g->GetTransform()->SetPosition(drag_x_pos, drag_y_pos, drag_z_pos);
+}
+
+void LevelEditor::RotationManipulators(GameObject* g)
+{
+
+	ImGuiSliderFlags flagRotX = ImGuiSliderFlags_None;
+	ImGuiSliderFlags flagRotY = ImGuiSliderFlags_None;
+	ImGuiSliderFlags flagRotZ = ImGuiSliderFlags_None;
+	// Drags
+	Vector3f eulerRot = g->GetTransform()->GetRotation().GetEulerAngles();
+	float drag_x_rot = eulerRot.GetX();
+	float drag_y_rot = eulerRot.GetY();
+	float drag_z_rot = eulerRot.GetZ();
+
+	ImGui::Text("Rot  "); ImGui::SameLine();
+	ImGui::DragFloat("##RotX", &drag_x_rot, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagRotX);
+
+	ImGui::SameLine();
+	ImGui::DragFloat("##RotY", &drag_y_rot, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagRotY);
+
+	ImGui::SameLine();
+	ImGui::DragFloat("##RotZ", &drag_z_rot, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagRotZ);
+
+	Quaternion newQuat;
+	newQuat.SetEulerAngles(drag_x_rot, drag_y_rot, drag_z_rot);
+
+	g->GetTransform()->SetRotation(newQuat);
+}
+
+void LevelEditor::ScaleManipulators(GameObject* g)
+{
+
+	ImGuiSliderFlags flagScaleX = ImGuiSliderFlags_None;
+	ImGuiSliderFlags flagScaleY = ImGuiSliderFlags_None;
+	ImGuiSliderFlags flagScaleZ = ImGuiSliderFlags_None;
+	// Drags
+	float drag_x_scale = g->GetTransform()->GetScale().GetX();
+	float drag_y_scale = g->GetTransform()->GetScale().GetY();
+	float drag_z_scale = g->GetTransform()->GetScale().GetZ();
+
+	ImGui::Text("Scale"); ImGui::SameLine(); ImGui::SameLine();
+	ImGui::DragFloat("##ScaleX", &drag_x_scale, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagScaleX);
+
+	ImGui::SameLine();
+	ImGui::DragFloat("##ScaleY", &drag_y_scale, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagScaleY);
+
+	ImGui::SameLine();
+	ImGui::DragFloat("##ScaleZ", &drag_z_scale, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagScaleZ);
+
+	Vector3f newVec(drag_x_scale, drag_y_scale, drag_z_scale);
+
+	g->GetTransform()->SetScale(newVec);
+
+}
+
+void LevelEditor::ComponentTree(GameObject* g) 
+{
+	if (ImGui::CollapsingHeader("Components"))
+	{
+		std::unordered_map<std::type_index, std::list<Component*>*> compMap = g->GetComponentMap();
+
+		// iterate through all component lists
+		for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = compMap.begin(); mapIterator != compMap.end(); ++mapIterator)
 		{
-
-			ImGuiSliderFlags flagx = ImGuiSliderFlags_None;
-			ImGuiSliderFlags flagy = ImGuiSliderFlags_None;
-			ImGuiSliderFlags flagz = ImGuiSliderFlags_None;
-			// Drags
-			Vector3f eulerRot = g->GetTransform()->GetRotation().GetEulerAngles();
-			float drag_x = eulerRot.GetX();
-			float drag_y = eulerRot.GetY();
-			float drag_z = eulerRot.GetZ();
-
-			ImGui::Text("X"); ImGui::SameLine(); ImGui::SameLine();
-			ImGui::DragFloat("Drag X Rot", &drag_x, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagx);
-
-			ImGui::Text("Y"); ImGui::SameLine(); ImGui::SameLine();
-			ImGui::DragFloat("Drag Y Rot", &drag_y, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagy);
-
-			ImGui::Text("Z"); ImGui::SameLine(); ImGui::SameLine();
-			ImGui::DragFloat("Drag Z Rot", &drag_z, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagz);
-
-			Quaternion newQuat;
-			newQuat.SetEulerAngles(drag_x, drag_y, drag_z);
-
-			g->GetTransform()->SetRotation(newQuat);
-
-			ImGui::TreePop();
+			// iterate through all components in list
+			for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			{
+				(*listIterator)->DrawToImGui();
+			}
 		}
-
-		if (ImGui::TreeNode("Scale"))
-		{
-
-			ImGuiSliderFlags flagx = ImGuiSliderFlags_None;
-			ImGuiSliderFlags flagy = ImGuiSliderFlags_None;
-			ImGuiSliderFlags flagz = ImGuiSliderFlags_None;
-			// Drags
-			float drag_x = g->GetTransform()->GetScale().GetX();
-			float drag_y = g->GetTransform()->GetScale().GetY();
-			float drag_z = g->GetTransform()->GetScale().GetZ();
-
-			ImGui::Text("X"); ImGui::SameLine(); ImGui::SameLine();
-			ImGui::DragFloat("Drag X Scale", &drag_x, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagx);
-
-			ImGui::Text("Y"); ImGui::SameLine(); ImGui::SameLine();
-			ImGui::DragFloat("Drag Y Scale", &drag_y, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagy);
-
-			ImGui::Text("Z"); ImGui::SameLine(); ImGui::SameLine();
-			ImGui::DragFloat("Drag Z Scale", &drag_z, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagz);
-
-			Vector3f newVec(drag_x,drag_y,drag_z);
-
-			g->GetTransform()->SetScale(newVec);
-
-			ImGui::TreePop();
-		}
-
-
-		//ImGui::TreePop();
 	}
 }

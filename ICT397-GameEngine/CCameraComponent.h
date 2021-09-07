@@ -39,6 +39,10 @@ public:
      * @brief renders the component after others have been rendered
     */
     virtual void LateRender();
+    /**
+     * @brief Draws to imgui
+    */
+    virtual void DrawToImGui();
 
     /**
      * @brief camera mutator
