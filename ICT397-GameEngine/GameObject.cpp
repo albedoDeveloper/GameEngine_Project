@@ -41,6 +41,17 @@ CStaticMesh* GameObject::GetCStaticMesh()
 	return GetComponent<CStaticMesh>();
 }
 
+CSound* GameObject::AddCSound()
+{
+	return AddComponent<CSound>();
+}
+
+CSound* GameObject::GetCSound()
+{
+	return GetComponent<CSound>();
+}
+
+
 CCharacter* GameObject::AddCCharacter()
 {
 	return AddComponent<CCharacter>();
