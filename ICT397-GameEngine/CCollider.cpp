@@ -105,20 +105,23 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() != nullptr)
 	{
 		auto minMax = this->GetParentObject()->GetCStaticMesh()->m_model->minMax;
-
+		
 		x = (minMax[1] - minMax[0]) / 2.0f;
 		y = (minMax[3] - minMax[2]) / 2.0f;
 		z = (minMax[5] - minMax[4]) / 2.0f;
 
-		auto xAvg = (glm::abs<float>(minMax[1]) + glm::abs<float>(minMax[0])) / 2;
-		m_offset.x = xAvg - glm::abs<float>(minMax[1]);
+		auto xAvg = ((minMax[1]) + (minMax[0])) / 2;
+		auto yAvg = ((minMax[3]) + (minMax[2])) / 2;
+		auto zAvg = ((minMax[5]) + (minMax[4])) / 2;
+		//m_offset.x = xAvg - glm::abs<float>(minMax[1]);
 
-		auto yAvg = (glm::abs<float>(minMax[3]) + glm::abs<float>(minMax[2])) / 2;
-		m_offset.y = yAvg - glm::abs<float>(minMax[3]);
+		//auto yAvg = (glm::abs<float>(minMax[3]) + glm::abs<float>(minMax[2])) / 2;
+		//m_offset.y = yAvg - glm::abs<float>(minMax[3]);
 
-		auto zAvg = (glm::abs<float>(minMax[5]) + glm::abs<float>(minMax[4])) / 2;
-		m_offset.z = zAvg - glm::abs<float>(minMax[5]);
+		//auto zAvg = (glm::abs<float>(minMax[5]) + glm::abs<float>(minMax[4])) / 2;
+		//m_offset.z = zAvg - glm::abs<float>(minMax[5]);
 
+		m_transform.SetPosition(xAvg, yAvg, zAvg);
 		//resize = 2;
 	}
 	else if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() == nullptr)
@@ -134,7 +137,7 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	//reactphysics3d::Transform tempTransform(tempVec, tempQuat);
 	//colBody->setTransform(tempTransform);
 
-	m_transform.SetPosition(-m_offset.x, -m_offset.y, -m_offset.z);
+	//m_transform.SetPosition(-m_offset.x, -m_offset.y, -m_offset.z);
 
 	reactphysics3d::BoxShape* boxCollider = COLLISION->physicsCommon.createBoxShape(reactphysics3d::Vector3(x /*/ resize*/, y /*/ resize*/, z /*/ resize*/));
 
