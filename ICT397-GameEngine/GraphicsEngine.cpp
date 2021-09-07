@@ -74,8 +74,8 @@ void GraphicsEngine::newFrame(bool debugMenu)
 
 void GraphicsEngine::renderObjects() 
 {
-	GAMEOBJECT->render();
 	skybox.DrawSkybox(GetProjection(), GetView());
+	GAMEOBJECT->render();
 
 	if (m_drawDebug)
 	{
