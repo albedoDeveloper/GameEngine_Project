@@ -91,11 +91,14 @@ void CStaticMesh::Load(nlohmann::json& j)
 
 void CStaticMesh::DrawToImGui()
 {
-	//if (ImGui::CollapsingHeader("CStaticMesh"))
+	//ImGui::Text("staticMesh TREE");
+	if (ImGui::TreeNode("StaticMesh TREE"))
 	{
-		ImGui::Text("OOh ladeeda");
+		ImGui::Text("Model Name : "); ImGui::SameLine(); ImGui::Text(m_model->key.c_str());
+		ImGui::TreePop();
 
-		//ImGui::TreePop();
 	}
+	
+
 
 }

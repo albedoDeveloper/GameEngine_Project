@@ -45,7 +45,7 @@ void Component::Load(nlohmann::json& j)
 
 void Component::DrawToImGui()
 {
-	ImGui::Indent();
+	//ImGui::Indent();
 	ImGui::Text("Default Component");
 
 

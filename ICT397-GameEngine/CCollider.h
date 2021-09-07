@@ -58,6 +58,8 @@ public:
 	*/
 	void Load(nlohmann::json& j);
 
+
+
 	glm::vec3 m_offset;
 
 public:

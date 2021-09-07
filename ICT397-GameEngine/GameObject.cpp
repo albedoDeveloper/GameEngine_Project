@@ -255,18 +255,35 @@ void GameObject::Load(nlohmann::json& j)
 
 		if (it.key() == "ScriptComponent")
 		{
-			AddCScript()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
+			if (GetComponent<CScript>()) 
+			{
+				GetComponent<CScript>()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
+			}
+			else 
+			{
+				AddCScript()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
+			}
 		}
 
 		if (it.key() == "StaticMeshComponent")
 		{
-			
-			AddCStaticMesh()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("Model"));
+			if (GetComponent<CStaticMesh>())
+			{
+				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("Model"));
+			}
+			else 
+			{
+				AddCStaticMesh()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("Model"));
+			}
 		}
 
 		if (it.key() == "AABBComponent")
 		{
-			if (GetComponent<CCollider>() == nullptr) 
+			if (GetComponent<CCollider>()) 
+			{
+				std::cout << "collider already exists" << std::endl;
+			}
+			else
 			{
 				CCollider* col = AddCCollider();
 				col->Load(j);
