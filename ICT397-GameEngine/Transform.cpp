@@ -11,12 +11,16 @@ Transform::Transform()
 }
 
 Transform::Transform(Transform* parent)
-    : Transform{}
+    : m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_rotation{}, m_parent{ parent }
 {
-    m_parent = parent;
 }
 
-/**
+void Transform::SetParent(Transform* newParent)
+{
+    m_parent = newParent;
+}
+
+    /**
      * @brief Saves the transform to JSON
     */
 void Transform::ToJson(nlohmann::json& j, std::string key)
@@ -133,7 +137,7 @@ Quaternion Transform::GetRotation() const
 
 Transform Transform::GetWorldTransform() const
 {
-    std::stack<const Transform*> stack;
+    std::stack<const Transform *> stack;
     stack.push(this);
     while (stack.top()->m_parent != nullptr)
     {

@@ -85,10 +85,6 @@ public:
 	*/
 	void render();
 	/**
-	 * @brief resets all objects to initial state
-	*/
-	void Restart();
-	/**
 	 * @brief saves the game
 	*/
 	void Save(nlohmann::json& j);

@@ -16,11 +16,6 @@ public:
 	 * @param parentObj The object to which this component belongs
 	*/
 	CStaticMesh(Transform* parent, GameObject* parentObj);
-	/**
-	 * @brief model mutator
-	 * @param model the asset model to assign
-	*/
-	void AssignModel(Model* model);
 
 	/**
 	 * @brief constructor taking parent as argument

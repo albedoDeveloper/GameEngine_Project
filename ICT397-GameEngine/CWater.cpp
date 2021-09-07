@@ -15,7 +15,6 @@ void CWater::Start()
 
 void CWater::Update()
 {
-
 	if (directionForward) 
 	{
 		texOffset = texOffset + 0.05 * TIME->GetDeltaTime() ;
@@ -28,7 +27,6 @@ void CWater::Update()
 		if (texOffset < 0.0)
 			directionForward = !directionForward;
 	}
-
 }
 
 void CWater::Render()

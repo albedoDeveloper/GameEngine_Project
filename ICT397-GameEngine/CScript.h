@@ -31,10 +31,7 @@ public:
 	 * @brief Renders the component after others are rendered
 	*/
 	virtual void LateRender();
-	/**
-	 * @brief Rsets the component to its initial state
-	*/
-	void Restart();
+
 	/**
 	 * @brief script mutator
 	 * @param script pointer to the script for this component to use

@@ -8,7 +8,7 @@
 #include "CCharacterComponent.h"
 #include "CGridComponent.h"
 #include "InputManager.h"
-#include "CAABBCollider.h"
+#include "CCollider.h"
 #include "CWater.h"
 #include "Engine.h"
 #include "CSpotlight.h"
@@ -52,7 +52,6 @@ lua_State* ScriptingEngine::NewState()
     getGlobalNamespace(Lbuff).addFunction("SpawnGameObject", SpawnGameObject);
     getGlobalNamespace(Lbuff).addFunction("GetGameObject", GetGameObject);
     getGlobalNamespace(Lbuff).addFunction("QuitGame", QuitGame);
-    getGlobalNamespace(Lbuff).addFunction("RestartGame", RestartGame);
     getGlobalNamespace(Lbuff).addFunction("SaveGame", SaveGame);
     getGlobalNamespace(Lbuff).addFunction("LoadGame", LoadGame);
     getGlobalNamespace(Lbuff).addFunction("CheckSaveState", CheckSaveState);
@@ -94,7 +93,6 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("LockCursor", &InputManager::LockCursor)
             .addFunction("CheckCursorLock", &InputManager::CheckCursorLock)
             .addFunction("QuitGame", &InputManager::QuitGame)
-            .addFunction("RestartGame", &InputManager::RestartGame)
             .addFunction("SaveGame", &InputManager::SaveGame)
             .addFunction("LoadGame", &InputManager::LoadGame)
         .endClass();
@@ -119,13 +117,14 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("GetClosestObject", &GameObject::GetClosestObject)
             .addFunction("GetCCamera", &GameObject::GetCCamera)
             .addFunction("GetCCharacter", &GameObject::GetCCharacter)
-            .addFunction("AddCAABBCollider", &GameObject::AddCAABBCollider)
+            .addFunction("AddCCollider", &GameObject::AddCCollider)
             .addFunction("AddCSpotlight", &GameObject::AddCSpotlight)
             .addFunction("GetCSpotlight", &GameObject::GetCSpotlight)
             .addFunction("AddCWaterComponent", &GameObject::AddCWaterComponent)
             .addFunction("SetActive", &GameObject::SetActive)
             .addFunction("SetDifficulty", &GameObject::SetDifficulty)
             .addFunction("GetDifficulty", &GameObject::GetDifficulty)
+            .addFunction("SetParentObject", &GameObject::SetParentObject)
         .addFunction("GetCTerrainBruteForce", &GameObject::GetCTerrainBruteForce)
         .endClass();
 
@@ -206,12 +205,10 @@ lua_State* ScriptingEngine::NewState()
    getGlobalNamespace(Lbuff)
        .beginClass<Component>("Component")
        .endClass()
-       .deriveClass<CAABBCollider, Component>("CAABBCollider")
-       .addFunction("GetCollider", &CAABBCollider::GetCollider)
-       .addFunction("SetCollider", &CAABBCollider::SetCollider)
-       .addFunction("AddConvexCollider", &CAABBCollider::AddConvexCollider)
-       .addFunction("AddBoxCollider", &CAABBCollider::AddBoxCollider)
-       .addFunction("AddConcaveCollider", &CAABBCollider::AddConcaveCollider)
+       .deriveClass<CCollider, Component>("CCollider")
+       .addFunction("AddConvexCollider", &CCollider::AddConvexCollider)
+       .addFunction("AddBoxCollider", &CCollider::AddBoxCollider)
+       .addFunction("AddConcaveCollider", &CCollider::AddConcaveCollider)
        .endClass();
 
     getGlobalNamespace(Lbuff)
@@ -306,11 +303,6 @@ GameObject* ScriptingEngine::GetGameObject(std::string objectKey)
 void ScriptingEngine::QuitGame()
 {
     m_engine->QuitGame();
-}
-
-void ScriptingEngine::RestartGame()
-{
-    m_engine->RestartGame();
 }
 
 void ScriptingEngine::SaveGame()

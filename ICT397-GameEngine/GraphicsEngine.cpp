@@ -55,21 +55,6 @@ bool GraphicsEngine::initLighting()
 
 void GraphicsEngine::UpdateSpotlight(const CSpotlight * light)
 {
-	/*glEnable(GL_LIGHT1);
-
-	GLfloat lightPosition[] = { light->GetTransformConst().GetPosition().GetX() ,
-								light->GetTransformConst().GetPosition().GetY() ,
-								light->GetTransformConst().GetPosition().GetZ() };
-	glLightfv(GL_LIGHT1, GL_POSITION, lightPosition);
-	GLfloat lightDirection[] = { light->GetTransformConst().GetRotation().GetX() ,
-								light->GetTransformConst().GetRotation().GetY() ,
-								light->GetTransformConst().GetRotation().GetZ() };
-	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, lightDirection);
-	float f = (*light->GetColour())[0];
-	GLfloat lightDiffuse[] = { (*light->GetColour())[0] ,
-								(*light->GetColour())[1] ,
-								(*light->GetColour())[2] };
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightDiffuse);*/
 }
 
 
@@ -90,6 +75,12 @@ void GraphicsEngine::newFrame(bool debugMenu)
 void GraphicsEngine::renderObjects() 
 {
 	GAMEOBJECT->render();
+	skybox.DrawSkybox(GetProjection(), GetView());
+
+	if (m_drawDebug)
+	{
+		DrawDebug(GetProjection(), GetView());
+	}
 }
 
 void GraphicsEngine::endFrame(bool debugMenu) 
@@ -118,7 +109,6 @@ void GraphicsEngine::GenerateTexture(std::string key, unsigned char* image, int 
 	switch (m_graphLib)
 	{
 	case GraphicsLibrary::OPENGL:
-		GenOpenGLTexture(image, width, height, key);
 		break;
 	case GraphicsLibrary::DIRECTX:
 		// out of scope for ICT397
@@ -150,34 +140,36 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	shader->setVec3("ambientLightColor", glm::vec3(0.5, 0.5, 0.5));
 	shader->setVec3("lightPos", glm::vec3(-20, 0, 0));
 	shader->setVec3("lightColor", glm::vec3(1, 1, 1));
-
-	glm::mat4 projection = glm::perspective(m_camera->GetCamera().FOV, ((float)GRAPHICS->m_windowHeight/GRAPHICS->m_windowWidth), m_camera->GetCamera().NearClip, m_camera->GetCamera().FarClip);
-	shader->setMat4("projection", projection);
-
-	glm::mat4 view = glm::lookAt(glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()), 
-	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) + glm::vec3(m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()), 
-	glm::vec3(m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()));
 	
-	shader->setMat4("view", view);
+	shader->setMat4("projection", GetProjection());
 	
+	shader->setMat4("view", GetView());
 	glm::mat4 trans = glm::mat4(1.0f);
 	
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() , worldTrans.GetPosition().GetY() , worldTrans.GetPosition().GetZ()));
 
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
-	trans =  glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetY(), glm::vec3(0.0, 1.0f, 0.0));
-	trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
+	//trans = glm::rotate(
+	//	trans, worldTrans.GetRotation().GetAxisAngleRadians(), 
+	//	glm::vec3(
+	//		worldTrans.GetRotation().GetAxis().GetX(), 
+	//		worldTrans.GetRotation().GetAxis().GetY(),
+	//		worldTrans.GetRotation().GetAxis().GetZ()
+	//	)
+	//);
+
+	//trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
+	//trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetY(), glm::vec3(0.0, 1.0f, 0.0));
+	//trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
+
+	trans = trans * glm::mat4_cast(glm::conjugate(
+		glm::quat(worldTrans.GetRotation().GetW(), worldTrans.GetRotation().GetX(), worldTrans.GetRotation().GetY(), worldTrans.GetRotation().GetZ())
+		));
 	
 	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
 
-
 	shader->setMat4("model", trans);
-	model->Draw(*shader);
 
-	if (m_firstFrameDebug && m_drawDebug)
-	{
-		DrawDebug(projection, view, trans);
-	}
+	model->Draw(*shader);
 }
 
 void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
@@ -200,41 +192,7 @@ void GraphicsEngine::DrawGrid(float gridHeight, float lineThickness, float gridW
 
 void GraphicsEngine::DrawImage(std::string key, int width, int height, int posX, int posY)
 {
-	/*int w, h;
-	SDL_GetWindowSize(m_window, &w, &h);
 
-	// TODO take params to set position. atm assume centre screen
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-
-	gluOrtho2D(-(w/2), w/2, -(h / 2), h / 2);
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadIdentity();
-
-	int topLeftX = -(w / 2);
-	int topLeftY = (h / 2);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(key));
-	glBegin(GL_QUADS);
-		glTexCoord2i(1, 0);
-		glVertex2f(topLeftX + posX, topLeftY - posY);
-
-		glTexCoord2i(1, 1);
-		glVertex2f(topLeftX + posX, topLeftY - height - posY);
-
-		glTexCoord2i(0, 1);
-		glVertex2f(topLeftX + width + posX, topLeftY - height - posY);
-
-		glTexCoord2i(0, 0);
-		glVertex2f(topLeftX + width + posX, topLeftY - posY);
-	glEnd();
-
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();*/
 }
 
 unsigned GraphicsEngine::GetTexID(std::string key) const
@@ -258,57 +216,6 @@ void GraphicsEngine::InitSkybox(std::string negx, std::string negy, std::string 
 
 void GraphicsEngine::RenderSkybox()
 {
-	/*const float SCALE = 20000;
-	glColor3f(0, 1, 0);
-	glDisable(GL_FOG);
-	glEnable(GL_TEXTURE_2D);
-
-	glPushMatrix();
-	glTranslatef(
-		m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(),
-		m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(),
-		m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()
-	);
-
-	int i = 0;
-	int j = 0;
-	do
-	{
-		glBindTexture(GL_TEXTURE_2D, m_textureIDs.at(m_skyboxTextures[j++]));
-		glBegin(GL_QUADS);
-			glTexCoord2i(0, 0);
-			glVertex3f(
-				skyboxVertices[i++] * SCALE, 
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE
-			);
-
-			glTexCoord2i(1, 0);
-			glVertex3f(
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE
-			);
-
-			glTexCoord2i(1, 1);
-			glVertex3f(
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE
-			);
-
-			glTexCoord2i(0, 1);
-			glVertex3f(
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE,
-				skyboxVertices[i++] * SCALE
-			);
-		glEnd();
-	} 	while (i < 3 * 4 * 6);
-
-	glPopMatrix();
-
-	glEnable(GL_FOG);*/
 }
 
 void GraphicsEngine::Close()
@@ -346,6 +253,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 		return false;
 	}
 
+	SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
+	//SDL_SetWindowGrab(m_window, SDL_TRUE);
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
 
@@ -360,6 +269,15 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 
 	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
 	debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/debugColourShader.fs");
+	
+	skybox.CreateSkybox(std::vector<std::string>{
+		"../Assets/skybox/right.jpg",
+		"../Assets/skybox/left.jpg",
+		"../Assets/skybox/top.jpg",
+		"../Assets/skybox/bottom.jpg",
+		"../Assets/skybox/front.jpg",
+		"../Assets/skybox/back.jpg"}
+	);
 
 	return true;
 }
@@ -379,19 +297,6 @@ bool GraphicsEngine::InitDirectX()
 {
 	// out of scope for ICT397
 	return false;
-}
-
-void GraphicsEngine::GenOpenGLTexture(unsigned char* image, int width, int height, std::string key)
-{
-}
-
-void GraphicsEngine::OpenGLTransformation(const Transform& t) const
-{
-	Vector3f euler = t.GetRotation().GetAxis();
-	glTranslatef(t.GetPosition().GetX(), t.GetPosition().GetY(), t.GetPosition().GetZ());
-	//glRotatef(t.GetRotation().GetAngleDegrees(), euler.GetX(), euler.GetY(), euler.GetZ());
-	glMultMatrixf((Matrix4f::Cast(t.GetRotation().Conjugate())).GetTypePtr());
-	glScalef(t.GetScale().GetX(), t.GetScale().GetY(), t.GetScale().GetZ());
 }
 
 void GraphicsEngine::DrawCollider(float maxX, float maxY, float maxZ, float minX, float minY, float minZ, const Transform& worldT)
@@ -421,26 +326,25 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 	}
 }
 
-void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 trans)
+void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view)
 {
 	glDisable(GL_CULL_FACE);
 
 	std::vector <float> tempVector;
 	
-	for (int i = 0; i < COLLISION->physicsWorld->getDebugRenderer().getNbTriangles(); i++)
+	for (int i = 0; i < COLLISION->debugRender->getNbTriangles(); i++)
 	{
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point1.x);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point1.y);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point1.z);
 
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.x);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.y);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point1.z);
-
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.x);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.y);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point2.z);
-
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.x);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.y);
-		tempVector.emplace_back(COLLISION->physicsWorld->getDebugRenderer().getTrianglesArray()[i].point3.z);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.x);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.y);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.z);
+					
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.x);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.y);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.z);
 	}
 
 	if (initDebug)
@@ -461,11 +365,7 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 
 	debugShader->setMat4("view", view);
 	
-	glm::mat4 trans2 = glm::mat4(1.0f);
-	trans2 = glm::translate(trans2, glm::vec3(0, 0, 0));
-	//trans2 = glm::rotate(trans2, 0.0f, glm::vec3(0, 0, 0));
-
-	debugShader->setMat4("model", trans2);
+	debugShader->setMat4("model", glm::mat4(1.0f));
 	debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
 		
 	glBindVertexArray(0);
@@ -478,4 +378,39 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view, glm::mat4 t
 	glPolygonMode(GL_BACK, GL_FILL);
 	glEnable(GL_CULL_FACE);
 	m_firstFrameDebug = false;
+}
+
+glm::mat4 GraphicsEngine::GetProjection()
+{
+	return glm::perspective(
+		m_camera->GetCamera().FOV, 
+		((float)GRAPHICS->m_windowHeight / GRAPHICS->m_windowWidth), 
+		m_camera->GetCamera().NearClip, 
+		m_camera->GetCamera().FarClip
+	);
+}
+
+glm::mat4 GraphicsEngine::GetView()
+{
+	return glm::lookAt(
+		glm::vec3(
+			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), 
+			m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), 
+			m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()
+		),
+		glm::vec3(
+			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), 
+			m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), 
+			m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) +
+				glm::vec3(
+					m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), 
+					m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), 
+					m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()
+				),
+		glm::vec3(
+			m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), 
+			m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), 
+			m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()
+		)
+	);
 }

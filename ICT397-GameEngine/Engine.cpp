@@ -10,7 +10,7 @@
 #include "imgui/imgui_impl_opengl3.h"
 
 Engine::Engine()
-	:m_isRunning{ true }, m_restart{ false }, m_saveState{ false }, m_loadState{ false }, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
+	:m_isRunning{ true }, m_saveState{ false }, m_loadState{false}, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
 	m_debugMenu{ false }, m_editMenu{true}, m_drawColliders{ false }
 {
 }
@@ -24,7 +24,6 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 
 	SDL_Event event;
 	DeltaTime delta;
-
 
 	while (m_isRunning)
 	{
@@ -42,12 +41,6 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 
 		OnLoop();
 		OnRender();
-		if (m_restart)
-		{
-			OnCleanup();
-			OnInit(renderer, windowWidth, windowHeight);
-			m_restart = false;
-		}
 	}
 
 	OnCleanup();
@@ -58,12 +51,6 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 void Engine::QuitGame()
 {
 	m_isRunning = false;
-}
-
-void Engine::RestartGame()
-{
-	GAMEOBJECT->Restart();
-	INPUT->Initialise(this);
 }
 
 void Engine::SaveGame()
@@ -87,13 +74,11 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-
 	COLLISION;
 	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
 	{
 		return false;
 	}
-	
 
 	auto gL_version = glGetString(GL_VERSION);
 
@@ -105,10 +90,10 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	// temporarily creating player controller here
 	// TODO move to level loader class
 	GAMEOBJECT->SpawnGameObject("player");
-	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 0, 1);
-	GAMEOBJECT->GetGameObject("player")->AddCAABBCollider()->AddBoxCollider(0.2, 0.2, 0.2, false);
-	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
+	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 0, 2);
+	GAMEOBJECT->GetGameObject("player")->AddCCollider()->AddBoxCollider(0.5, 0.5, 0.5, 0 ,0, 0, false);
 	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
+	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
 
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
@@ -157,6 +142,11 @@ void Engine::OnLoop()
 	if (m_loadState)
 		levelLoader.LoadLevel();
 
+	if (m_drawColliders)
+	{
+		// only used to update collider triangles/lines for debugging
+		COLLISION->physicsWorld->update(1);
+	}
 }
 
 void Engine::OnRender()
@@ -193,13 +183,7 @@ void Engine::OnRender()
 		m_saveState = ImGui::Button("Save", ImVec2(100,30));
 		m_loadState = ImGui::Button("Load", ImVec2(100,30));
 
-		
-
-
 		ImGui::End();
-
-		
-
 	}
 
 	GRAPHICS->endFrame(m_debugMenu);

@@ -5,7 +5,7 @@ int main(int argc, char* args[])
 {
 	Engine engine;
 	int windowWidth = 1000;
-	int windowHeight = 700;
+	int windowHeight = 1000;
 
 	return engine.OnExecute(GraphicsLibrary::OPENGL, windowWidth, windowHeight);
 }

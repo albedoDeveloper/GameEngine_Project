@@ -13,7 +13,7 @@
 #include "CCameraComponent.h"
 #include "CGridComponent.h"
 #include "CTerrain.h"
-#include "CAABBCollider.h"
+#include "CCollider.h"
 #include "CSpotlight.h"
 #include "CWater.h"
 #include <nlohmann/json.hpp>
@@ -97,7 +97,7 @@ public:
 	 * @brief Adds a collider component
 	 * @return the created collider
 	*/
-	CAABBCollider* AddCAABBCollider();
+	CCollider* AddCCollider();
 	/**
 	 * @brief Adds a spotlight component
 	 * @return the created spotlight
@@ -124,6 +124,8 @@ public:
 	 * @return spotlight component
 	*/
 	CSpotlight* GetCSpotlight();
+
+	void SetParentObject(std::string newParent);
 
 	/**
 	 * @brief component accessor
@@ -186,10 +188,6 @@ public:
 	*/
 	void LateRender();
 	/**
-	 * @brief Calls the restart function of every component
-	*/
-	void Restart();
-	/**
 	 * @brief saves the object
 	*/
 	void Save(nlohmann::json& j);
@@ -251,10 +249,6 @@ inline T* GameObject::AddComponent(Targs&&... args)
 		}
 
 		m_components.at(std::type_index(typeid(T)))->push_back(obj);
-
-#if _DEBUG
-		std::cout << "Component of type " << typeid(T).name() << " added to GameObject (key=" << m_factoryKey << ")\n";
-#endif
 		
 		return obj;
 	}
