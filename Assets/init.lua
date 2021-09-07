@@ -1,19 +1,56 @@
 
-LoadModel("tavern_glass_door_wall", "tavern_glass_door_wall/tavern_glass_door_wall.fbx")
-LoadModel("tavern_glass_door_wall_long", "tavern_glass_door_wall_long/tavern_glass_door_wall_long.fbx")
-LoadModel("graffiti_block", "graffiti_block/graffiti_block.fbx")
-LoadModel("tavern_floor", "tavern_floor/tavern_floor.fbx")
-LoadModel("south_bar_barrier", "south_bar_barrier/south_bar_barrier.fbx")
-LoadModel("main_bar_bench", "main_bar_bench/main_bar_bench.fbx")
-LoadModel("bar_floor_rod", "bar_floor_rod/bar_floor_rod.fbx")
+LoadModel("tavern_glass_door_wall", "tavern_glass_door_wall.fbx")
+LoadModel("tavern_glass_door_wall_long", "tavern_glass_door_wall_long.fbx")
+LoadModel("tavern_glass_door_wall_long_2", "tavern_glass_door_wall_long_2.fbx")
+LoadModel("back_wall", "back_wall.fbx")
+LoadModel("graffiti_block", "graffiti_block.fbx")
+LoadModel("tavern_floor", "tavern_floor.fbx")
+LoadModel("south_bar_barrier", "south_bar_barrier.fbx")
+LoadModel("south_bar_barrier_2", "south_bar_barrier_2.fbx")
+LoadModel("main_bar_bench", "main_bar_bench.fbx")
+LoadModel("behind_bar_block", "behind_bar_block.fbx")
+LoadModel("bar_floor_rod", "bar_floor_rod.fbx")
+LoadModel("island", "island.fbx")
+LoadModel("spiked_door_toilet", "spiked_door_toilet.fbx")
+LoadModel("spiked_door_bar", "spiked_door_bar.fbx")
+LoadModel("south_bar_wall", "south_bar_wall.fbx")
 LoadModel("axis", "axis/axis.fbx")
 LoadModel("goblin", "goblin/goblin.fbx")
+LoadModel("roof_interior", "roof_interior.fbx")
+LoadModel("toilet_block", "toilet_block.fbx")
 
 LoadScript("rotate", "rotate.lua")
 
+SpawnGameObject("roof_interior")
+GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
+GetGameObject("roof_interior"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
+
 SpawnGameObject("goblin1")
 GetGameObject("goblin1"):AddCStaticMesh():AssignModel("goblin")
-GetGameObject("goblin1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
+
+SpawnGameObject("tavern_glass_door_wall_long_2")
+GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
+
+SpawnGameObject("back_wall")
+GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
+
+SpawnGameObject("island")
+GetGameObject("island"):AddCStaticMesh():AssignModel("island")
+
+SpawnGameObject("toilet_block")
+GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
+
+SpawnGameObject("spiked_door_toilet")
+GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_toilet")
+
+SpawnGameObject("spiked_door_bar")
+GetGameObject("spiked_door_bar"):AddCStaticMesh():AssignModel("spiked_door_bar")
+
+SpawnGameObject("south_bar_wall")
+GetGameObject("south_bar_wall"):AddCStaticMesh():AssignModel("south_bar_wall")
+
+SpawnGameObject("behind_bar_block")
+GetGameObject("behind_bar_block"):AddCStaticMesh():AssignModel("behind_bar_block")
 
 SpawnGameObject("tavern_glass_door_wall")
 GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_glass_door_wall")

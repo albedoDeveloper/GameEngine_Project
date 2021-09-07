@@ -1,4 +1,30 @@
 {
+    "back_wall": {
+        "Components": {
+            "StaticMeshComponent": {
+                "Model": "back_wall"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "back_wall"
+    },
     "bar_floor_rod": {
         "Components": {
             "AABBComponent": "AABBComponent",
@@ -26,11 +52,10 @@
         },
         "key": "bar_floor_rod"
     },
-    "goblin1": {
+    "behind_bar_block": {
         "Components": {
-            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
-                "Model": "goblin"
+                "Model": "behind_bar_block"
             }
         },
         "Transform": {
@@ -44,6 +69,32 @@
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "behind_bar_block"
+    },
+    "goblin1": {
+        "Components": {
+            "StaticMeshComponent": {
+                "Model": "goblin"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 2.184999942779541,
+                "y": 1.875,
+                "z": 5.144999980926514
+            },
+            "Rotation": {
+                "w": 0.0014999201521277428,
+                "x": -7.538457680311694e-08,
+                "y": 0.9999988675117493,
+                "z": -7.538457680311694e-08
             },
             "Scale": {
                 "x": 1.0,
@@ -80,6 +131,32 @@
         },
         "key": "graffiti_block"
     },
+    "island": {
+        "Components": {
+            "StaticMeshComponent": {
+                "Model": "island"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "island"
+    },
     "main_bar_bench": {
         "Components": {
             "AABBComponent": "AABBComponent",
@@ -114,14 +191,14 @@
         },
         "Transform": {
             "Position": {
-                "x": -2.3995072841644287,
-                "y": 1.7863123416900635,
-                "z": 3.7100369930267334
+                "x": 2.4840404987335205,
+                "y": 1.519670009613037,
+                "z": 2.9089033603668213
             },
             "Rotation": {
-                "w": 0.9193317890167236,
+                "w": 0.06168901175260544,
                 "x": 0.0,
-                "y": 0.393481582403183,
+                "y": 0.9980956315994263,
                 "z": 0.0
             },
             "Scale": {
@@ -131,6 +208,33 @@
             }
         },
         "key": "player"
+    },
+    "roof_interior": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "Model": "roof_interior"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "roof_interior"
     },
     "south_bar_barrier": {
         "Components": {
@@ -158,6 +262,84 @@
             }
         },
         "key": "south_bar_barrier"
+    },
+    "south_bar_wall": {
+        "Components": {
+            "StaticMeshComponent": {
+                "Model": "south_bar_wall"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "south_bar_wall"
+    },
+    "spiked_door_bar": {
+        "Components": {
+            "StaticMeshComponent": {
+                "Model": "spiked_door_bar"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "spiked_door_bar"
+    },
+    "spiked_door_toilet": {
+        "Components": {
+            "StaticMeshComponent": {
+                "Model": "spiked_door_toilet"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "spiked_door_toilet"
     },
     "tavern_floor": {
         "Components": {
@@ -239,5 +421,57 @@
             }
         },
         "key": "tavern_glass_door_wall_long"
+    },
+    "tavern_glass_door_wall_long_2": {
+        "Components": {
+            "StaticMeshComponent": {
+                "Model": "tavern_glass_door_wall_long_2"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "tavern_glass_door_wall_long_2"
+    },
+    "toilet_block": {
+        "Components": {
+            "StaticMeshComponent": {
+                "Model": "toilet_block"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "toilet_block"
     }
 }
