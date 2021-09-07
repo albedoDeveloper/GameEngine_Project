@@ -68,6 +68,10 @@ SpawnGameObject("south_bar_barrier")
 GetGameObject("south_bar_barrier"):AddCStaticMesh():AssignModel("south_bar_barrier")
 GetGameObject("south_bar_barrier"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
 
+SpawnGameObject("south_bar_barrier_2")
+GetGameObject("south_bar_barrier_2"):AddCStaticMesh():AssignModel("south_bar_barrier_2")
+GetGameObject("south_bar_barrier_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
+
 SpawnGameObject("tavern_floor")
 GetGameObject("tavern_floor"):AddCStaticMesh():AssignModel("tavern_floor")
 GetGameObject("tavern_floor"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
