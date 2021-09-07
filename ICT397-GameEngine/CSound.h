@@ -5,13 +5,34 @@
 #include <SDL2/SDL.h>
 #include <unordered_map>
 #include <memory>
-class CSound
+#include "Component.h"
+
+class CSound : public Component
 {
 public:
+	CSound(Transform* parent, GameObject* parentObj);
 	void LoadSound(std::string soundName);
-	void PlaySound();
+	void PlaySound(std::string soundName, int length);
+
+    /**
+    * @brief initialises component at program start
+   */
+    virtual void Start();
+    /**
+     * @brief updates ongoing behaviour each frame
+    */
+    virtual void Update();
+    /**
+     * @brief renders the component to the screen if visible
+    */
+    virtual void Render();
+    /**
+     * @brief renders the component after others have been rendered
+    */
+    virtual void LateRender();
+
 
 private:
-	std::unordered_map<std::string, std::unique_ptr<Mix_Chunk>> soundList;
+	std::unordered_map<std::string, Mix_Chunk*> soundList;
 };
 

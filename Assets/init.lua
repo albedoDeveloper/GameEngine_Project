@@ -27,6 +27,9 @@ GetGameObject("roof_interior"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true)
 
 SpawnGameObject("goblin1")
 GetGameObject("goblin1"):AddCStaticMesh():AssignModel("goblin")
+GetGameObject("goblin1"):AddCSound():LoadSound("CantinaBand60.wav")
+GetGameObject("goblin1"):GetCSound():PlaySound("CantinaBand60.wav", 2)
+
 
 SpawnGameObject("tavern_glass_door_wall_long_2")
 GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")

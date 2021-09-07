@@ -16,6 +16,7 @@
 #include "CCollider.h"
 #include "CSpotlight.h"
 #include "CWater.h"
+#include "CSound.h"
 #include <nlohmann/json.hpp>
 
 #if _DEBUG
@@ -117,6 +118,11 @@ public:
 	CTerrainBruteForce* GetCTerrainBruteForce();
 
 	CCamera* GetCCamera();
+
+
+	CSound* AddCSound();
+
+	CSound* GetCSound();
 
 	CCharacter* GetCCharacter();
 	/**

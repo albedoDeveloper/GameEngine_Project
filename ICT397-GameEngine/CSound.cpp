@@ -1,6 +1,7 @@
 #include "CSound.h"
 
-CSound::CSound()
+CSound::CSound(Transform* parent, GameObject* parentObj)
+	:Component{ parent, parentObj }
 {
 	int flags = MIX_INIT_MP3;
 	int initted = Mix_Init(flags);
@@ -19,13 +20,43 @@ CSound::CSound()
 		printf("Mix_OpenAudio: %s\n", Mix_GetError());
 		exit(2);
 	}
-
 }
 
 void CSound::LoadSound(std::string soundName)
 {
-	soundList.insert(std::make_pair(soundName, std::unique_ptr<Mix_Chunk>(new Mix_Chunk)));
+	auto soundNameFull = "../Assets/Sounds/" + soundName;
 
+	Mix_Chunk* temp = Mix_LoadWAV(soundNameFull.data());
+	
+	if (!temp) 
+		std::cout << "ERROR Mix_LoadWAV: "<<  Mix_GetError() << std::endl;
+	
+	soundList.insert(std::make_pair(soundName, temp));
+}
 
+void CSound::PlaySound(std::string soundName, int length)
+{
+	int channel = 0;
+	if (soundList.find(soundName) != soundList.end())
+		channel = Mix_PlayChannel(-1, soundList.find(soundName)->second, length);
+	else
+		std::cout << soundName << " sound is not loaded!" << std::endl;
 
+	Mix_Volume(channel, MIX_MAX_VOLUME);
+}
+
+void CSound::Start()
+{
+}
+
+void CSound::Update()
+{
+}
+
+void CSound::Render()
+{
+}
+
+void CSound::LateRender()
+{
 }
