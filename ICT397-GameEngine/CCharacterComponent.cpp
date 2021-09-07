@@ -214,6 +214,34 @@ void CCharacter::Load(nlohmann::json& j)
 	Component::Load(j);
 }
 
+void CCharacter::DrawToImGui()
+{
+	//ImGui::Text("staticMesh TREE");
+	if (ImGui::TreeNode("Character Component"))
+	{
+		ImGui::Text("Character info : ");
+		ImGui::Text("Velocity : x = "); ImGui::SameLine(); ImGui::Text(std::to_string(m_velocity.GetX()).c_str());
+		ImGui::SameLine();
+		ImGui::Text("y = "); ImGui::SameLine(); ImGui::Text(std::to_string(m_velocity.GetY()).c_str());
+		ImGui::SameLine();
+		ImGui::Text("z = "); ImGui::SameLine(); ImGui::Text(std::to_string(m_velocity.GetZ()).c_str());
+
+		//flags
+		ImGuiSliderFlags maxSpeedFlag = ImGuiSliderFlags_None;
+		// Drags
+		float drag_max_speed = m_maxSpeed;
+
+
+		ImGui::PushItemWidth(50);
+
+		ImGui::Text("Max Speed "); ImGui::SameLine();
+		ImGui::DragFloat("##maxSpeed", &m_maxSpeed, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", maxSpeedFlag);
+
+		ImGui::TreePop();
+
+	}
+}
+
 void CCharacter::SetMouseEnabled(bool isEnabled)
 {
 	m_mouseEnabled = isEnabled;

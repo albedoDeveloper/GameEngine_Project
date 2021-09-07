@@ -64,6 +64,17 @@ void CCollider::Load(nlohmann::json& j)
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
 
+void CCollider::DrawToImGui()
+{
+	//ImGui::Text("staticMesh TREE");
+	if (ImGui::TreeNode("Collider Component"))
+	{
+		ImGui::Text("Collider Info : ");
+		ImGui::TreePop();
+
+	}
+}
+
 void CCollider::Start()
 {	
 	UpdateCollider();
