@@ -277,3 +277,8 @@ void GameObject::Load(nlohmann::json& j)
 
 	}
 }
+
+std::unordered_map<std::type_index, std::list<Component*>*> GameObject::GetComponentMap() 
+{
+	return m_components;
+}

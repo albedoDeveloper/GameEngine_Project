@@ -42,3 +42,11 @@ void Component::Load(nlohmann::json& j)
 	GameObject* g = GetParentObject();
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
+
+void Component::DrawToImGui()
+{
+	ImGui::Indent();
+	ImGui::Text("Default Component");
+
+
+}

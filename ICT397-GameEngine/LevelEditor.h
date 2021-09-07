@@ -18,9 +18,19 @@ class LevelEditor
 
 		void DrawEditor();
 
+		void ObjectList();
+
 		void ObjectHeader(GameObject* g);
 
 		void TransformHeader(GameObject* g);
+
+		void PositionManipulators(GameObject* g);
+
+		void RotationManipulators(GameObject* g);
+
+		void ScaleManipulators(GameObject* g);
+
+		void ComponentTree(GameObject* g);
 
 
 

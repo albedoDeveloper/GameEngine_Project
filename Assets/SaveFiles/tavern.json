@@ -1,111 +1,138 @@
 {
-    "goblin 1": {
-        "Components": {
-            "AABBComponent": "AABBComponent",
-            "ScriptComponent": {
-                "Script": "rotate"
-            },
-            "StaticMeshComponent": {
-                "Model": "goblinModel"
-            }
-        },
-        "Transform": {
-            "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Rotation": {
-                "w": 0.615869402885437,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.7877861261367798
-            },
-            "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        "key": "goblin 1"
+  "goblin 1": {
+    "Components": {
+      "AABBComponent": "AABBComponent",
+      "ScriptComponent": {
+        "Script": "rotate"
+      },
+      "StaticMeshComponent": {
+        "Model": "goblinModel"
+      }
     },
-    "goblin 2": {
-        "Components": {
-            "AABBComponent": "AABBComponent",
-            "StaticMeshComponent": {
-                "Model": "goblinModel"
-            }
-        },
-        "Transform": {
-            "Position": {
-                "x": 1.5,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        "key": "goblin 2"
+    "Transform": {
+      "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "w": 0.9724348783493042,
+        "x": 4.721732693724334e-06,
+        "y": 0.16487905383110046,
+        "z": 0.16487912833690643
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      }
     },
-    "goblin 3": {
-        "Components": {
-            "AABBComponent": "AABBComponent",
-            "StaticMeshComponent": {
-                "Model": "goblinModel"
-            }
-        },
-        "Transform": {
-            "Position": {
-                "x": 3.984999895095825,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        "key": "goblin 3"
+    "key": "goblin 1"
+  },
+  "goblin 2": {
+    "Components": {
+      "AABBComponent": "AABBComponent",
+      "StaticMeshComponent": {
+        "Model": "goblinModel"
+      }
     },
-    "player": {
-        "Components": {
-            "AABBComponent": "AABBComponent",
-            "Component": "Component"
-        },
-        "Transform": {
-            "Position": {
-                "x": 4.067605495452881,
-                "y": 0.0,
-                "z": 2.391244888305664
-            },
-            "Rotation": {
-                "w": -0.9648940563201904,
-                "x": 0.0,
-                "y": 0.26262393593788147,
-                "z": 0.0
-            },
-            "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        "key": "player"
-    }
+    "Transform": {
+      "Position": {
+        "x": 1.5,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "w": 1.0,
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      }
+    },
+    "key": "goblin 2"
+  },
+  "goblin 3": {
+    "Components": {
+      "AABBComponent": "AABBComponent",
+      "StaticMeshComponent": {
+        "Model": "goblinModel"
+      }
+    },
+    "Transform": {
+      "Position": {
+        "x": 3.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "w": 1.0,
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      }
+    },
+    "key": "goblin 3"
+  },
+  "goblin 4": {
+    "Components": {
+      "AABBComponent": "AABBComponent",
+      "StaticMeshComponent": {
+        "Model": "goblinModel"
+      }
+    },
+    "Transform": {
+      "Position": {
+        "x": 4.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Rotation": {
+        "w": 1.0,
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 10.0,
+        "z": 1.0
+      }
+    },
+    "key": "goblin 4"
+  },
+  "player": {
+    "Components": {
+      "AABBComponent": "AABBComponent",
+      "Component": "Component"
+    },
+    "Transform": {
+      "Position": {
+        "x": 2.1294572353363037,
+        "y": 0.0,
+        "z": 2.0
+      },
+      "Rotation": {
+        "w": 1.0,
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      }
+    },
+    "key": "player"
+  }
 }

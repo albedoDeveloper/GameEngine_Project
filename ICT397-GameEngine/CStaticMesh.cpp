@@ -88,3 +88,14 @@ void CStaticMesh::Load(nlohmann::json& j)
 	GameObject* g = GetParentObject();
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
+
+void CStaticMesh::DrawToImGui()
+{
+	//if (ImGui::CollapsingHeader("CStaticMesh"))
+	{
+		ImGui::Text("OOh ladeeda");
+
+		//ImGui::TreePop();
+	}
+
+}
