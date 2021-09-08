@@ -388,7 +388,7 @@ glm::mat4 GraphicsEngine::GetProjection()
 {
 	return glm::perspective(
 		m_camera->GetCamera().FOV, 
-		((float)GRAPHICS->m_windowHeight / GRAPHICS->m_windowWidth), 
+		((float)GRAPHICS->m_windowWidth / GRAPHICS->m_windowHeight), 
 		m_camera->GetCamera().NearClip, 
 		m_camera->GetCamera().FarClip
 	);
