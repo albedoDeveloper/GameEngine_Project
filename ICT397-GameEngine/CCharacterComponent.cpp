@@ -11,6 +11,7 @@
 
 CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }, 
+	m_parentTransform{m_parent->GetTransform()},
 	m_velocity{ 0,0,0 }, 
 	m_maxSpeed{ 10 }, 
 	m_acceleration{ 0,0,0 }, 
@@ -138,7 +139,7 @@ void CCharacter::Update()
 		Move(moveVector.GetX(), moveVector.GetY(), moveVector.GetZ());
 	}
 
-	static const float GRAVITY = 0;
+	static const float GRAVITY = -9.81f;
 
 	//newtonian calculations
 	m_velocity = m_velocity * 0.8f; // apply damping factor
@@ -153,14 +154,30 @@ void CCharacter::Update()
 	//convert to world space
 	Vector3f newPos = m_transform.GetWorldTransform().GetPosition();
 	Vector3f worldVel = m_velocity * m_parent->GetTransform()->GetRotation();
-		
-	COLLISION->CheckCollision(*m_collider);
 
-	newPos.SetX(newPos.GetX() + worldVel.GetX());
-	newPos.SetY(newPos.GetY() + worldVel.GetY());
-	newPos.SetZ(newPos.GetZ() + worldVel.GetZ());
-		
-	m_parent->GetTransform()->SetPositionV(newPos);
+	m_parentTransform->Translate(worldVel.GetX(), 0, 0);
+	m_collider->UpdateCollider();
+	if (COLLISION->CheckCollision(*m_collider))
+	{
+		m_parentTransform->Translate((-worldVel.GetX()), 0, 0);
+		m_collider->UpdateCollider();
+	}
+
+	m_parentTransform->Translate(0, worldVel.GetY(), 0);
+	m_collider->UpdateCollider();
+	if (COLLISION->CheckCollision(*m_collider))
+	{
+		m_parentTransform->Translate(0, -worldVel.GetY(), 0);
+		m_collider->UpdateCollider();
+	}
+
+	m_parentTransform->Translate(0, 0, worldVel.GetZ());
+	m_collider->UpdateCollider();
+	if (COLLISION->CheckCollision(*m_collider))
+	{
+		m_parentTransform->Translate(0, 0, -worldVel.GetZ());
+		m_collider->UpdateCollider();
+	}
 }
 
 void CCharacter::Render()

@@ -30,6 +30,7 @@ private:
 	*/
 	CBaseTerrain* m_heightMap;
 
+	bool m_collision;
 
 public:
 	/*

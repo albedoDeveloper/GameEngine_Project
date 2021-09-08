@@ -19,15 +19,16 @@ CollisionManager* CollisionManager::Instance()
 
 bool CollisionManager::CheckCollision(CCollider& myCollider)
 {
-    bool collision = false;
+    m_collision = false;
 
     physicsWorld->testCollision(myCollider.colBody,*COLLISION);
 
-    return collision;
+    return m_collision;
 }
 
 void CollisionManager::onContact(const CallbackData& callbackData)
 {
+    m_collision = true;
     for (int i = 0; i < callbackData.getContactPair(0).getNbContactPoints(); i++)
     {
         reactphysics3d::Vector3 points(callbackData.getContactPair(0).getContactPoint(i).getLocalPointOnCollider1());

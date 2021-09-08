@@ -92,7 +92,6 @@ void CCollider::UpdateCollider()
 		);
 
 		reactphysics3d::Quaternion worldOrientation(reactphysics3d::Quaternion::identity());
-
 		if (m_allowRotation)
 		{
 			worldOrientation = reactphysics3d::Quaternion(

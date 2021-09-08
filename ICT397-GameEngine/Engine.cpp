@@ -90,8 +90,8 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	// temporarily creating player controller here
 	// TODO move to level loader class
 	GAMEOBJECT->SpawnGameObject("player");
-	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 0, 2);
-	GAMEOBJECT->GetGameObject("player")->AddCCollider()->AddBoxCollider(0.5, 0.5, 0.5, 0 ,0, 0, false, 2, false);
+	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 2, 0);
+	GAMEOBJECT->GetGameObject("player")->AddCCollider()->AddBoxCollider(0.5, 1.4, 0.5, 0 ,0, 0, false, 2, false);
 	GAMEOBJECT->GetGameObject("player")->GetCCollider()->CollideWith(1);
 	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
 	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
