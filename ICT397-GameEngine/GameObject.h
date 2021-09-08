@@ -16,6 +16,7 @@
 #include "CCollider.h"
 #include "CSpotlight.h"
 #include "CWater.h"
+#include "CSound.h"
 #include <nlohmann/json.hpp>
 
 #if _DEBUG
@@ -119,6 +120,10 @@ public:
 	CCamera* GetCCamera();
 
 	bool IsStatic() const;
+
+	CSound* AddCSound();
+
+	CSound* GetCSound();
 
 	CCharacter* GetCCharacter();
 	/**

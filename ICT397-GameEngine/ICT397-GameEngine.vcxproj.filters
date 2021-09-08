@@ -87,6 +87,10 @@
     </ClCompile>
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="SkyBox.cpp" />
+    <ClCompile Include="LevelEditor.cpp" />
+    <ClCompile Include="CSound.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AHeightMap.h" />
@@ -185,6 +189,10 @@
     </ClInclude>
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="SkyBox.h" />
+    <ClInclude Include="LevelEditor.h" />
+    <ClInclude Include="CSound.h">
+      <Filter>components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\Scripts\displayAtQuit.lua">

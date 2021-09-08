@@ -125,6 +125,8 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("SetDifficulty", &GameObject::SetDifficulty)
             .addFunction("GetDifficulty", &GameObject::GetDifficulty)
             .addFunction("SetParentObject", &GameObject::SetParentObject)
+            .addFunction("AddCSound", &GameObject::AddCSound)
+            .addFunction("GetCSound", &GameObject::GetCSound)
         .addFunction("GetCTerrainBruteForce", &GameObject::GetCTerrainBruteForce)
         .endClass();
 
@@ -174,6 +176,14 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("SetCurrentState", &CStateMachineAI::SetCurrentState)
             .addFunction("GetCurrentState", &CStateMachineAI::GetCurrentState)
             .addFunction("RunCurrentState", &CStateMachineAI::RunCurrentState)
+        .endClass();
+
+    getGlobalNamespace(Lbuff)
+        .beginClass<Component>("Component")
+        .endClass()
+        .deriveClass<CSound, Component>("CSound")
+        .addFunction("LoadSound", &CSound::LoadSound)
+        .addFunction("PlaySound", &CSound::PlaySound)
         .endClass();
 
     getGlobalNamespace(Lbuff)

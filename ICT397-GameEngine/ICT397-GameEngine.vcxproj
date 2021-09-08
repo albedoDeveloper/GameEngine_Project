@@ -28,6 +28,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="CScript.cpp" />
+    <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSpotlight.cpp" />
     <ClCompile Include="CStateMachineAI.cpp" />
     <ClCompile Include="CStaticMesh.cpp" />
@@ -75,6 +76,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="CScript.h" />
+    <ClInclude Include="CSound.h" />
     <ClInclude Include="CSpotlight.h" />
     <ClInclude Include="CStateMachineAI.h" />
     <ClInclude Include="CStaticMesh.h" />
@@ -249,7 +251,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc142-mtd.lib;zlibd.lib;glew32.lib;reactphysics3d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc142-mtd.lib;zlibd.lib;glew32.lib;reactphysics3d.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
