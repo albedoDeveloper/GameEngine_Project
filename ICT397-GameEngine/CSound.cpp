@@ -48,7 +48,6 @@ void CSound::PlaySound(std::string soundName, int length, bool positional)
 	}
 	else
 		std::cout << soundName << " sound is not loaded!" << std::endl;
-
 }
 
 void CSound::Start()
@@ -63,14 +62,16 @@ void CSound::Update()
 		auto playerTransform = GAMEOBJECT->GetGameObject("player")->GetTransform();
 		auto thisTransform = this->GetParentObject()->GetTransform();
 
-		int distance = (glm::distance(playerTransform->GetPosition().GetZ(), thisTransform->GetPosition().GetZ()) + glm::distance(playerTransform->GetPosition().GetY(), thisTransform->GetPosition().GetY()) + glm::distance(playerTransform->GetPosition().GetX(), thisTransform->GetPosition().GetX()))/3 * 50;
-		
+		int distance = (glm::abs(thisTransform->GetPosition().GetZ() - playerTransform->GetPosition().GetZ())) +
+			glm::abs((thisTransform->GetPosition().GetX() - playerTransform->GetPosition().GetX())) / 2 * 60;
+
 		if (distance < 1)
 			distance = 1;
 		else if (distance > 255)
 			distance = 255;
 		
-		glm::vec3 checkPos = glm::vec3(playerTransform->GetPosition().GetX(), playerTransform->GetPosition().GetY(), playerTransform->GetPosition().GetZ()) - glm::vec3(thisTransform->GetPosition().GetX(), thisTransform->GetPosition().GetY(), thisTransform->GetPosition().GetZ());
+		//std::cout << distance << std::endl;
+		/*glm::vec3 checkPos = glm::vec3(playerTransform->GetPosition().GetX(), playerTransform->GetPosition().GetY(), playerTransform->GetPosition().GetZ()) - glm::vec3(thisTransform->GetPosition().GetX(), thisTransform->GetPosition().GetY(), thisTransform->GetPosition().GetZ());
 
 		Quaternion rawRotation;
 		rawRotation = playerTransform->GetRotation().GetInverse();
@@ -81,7 +82,7 @@ void CSound::Update()
 		int rotation = glm::degrees(rawRotation.GetEulerAngles().GetY());
 		
 		if (rotation < 0)
-			rotation += 360.0;
+			rotation += 360.0;*/
 
 		if (!Mix_SetPosition(soundinfo[i].channel,0, distance))
 		{

@@ -95,6 +95,8 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	GAMEOBJECT->GetGameObject("player")->GetCCollider()->CollideWith(1);
 	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
 	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
+	GAMEOBJECT->GetGameObject("player")->AddCSound()->LoadSound("milkyway.wav");
+	GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav",-1,false);
 
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
