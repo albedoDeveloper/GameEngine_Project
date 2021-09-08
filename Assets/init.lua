@@ -128,9 +128,17 @@ SpawnGameObject("beer_tap1"):SetStatic(true)
 GetGameObject("beer_tap1"):AddCStaticMesh():AssignModel("beer_tap")
 GetGameObject("beer_tap1"):GetTransform():SetPosition(1,1,0)
 
+SpawnGameObject("beer_tap2"):SetStatic(true)
+GetGameObject("beer_tap2"):AddCStaticMesh():AssignModel("beer_tap")
+GetGameObject("beer_tap2"):GetTransform():SetPosition(1,1,0)
+
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
-GetGameObject("waitress"):GetTransform():SetPosition(2,0,0)
+GetGameObject("waitress"):GetTransform():SetPosition(3.3,0.3,4.7)
+GetGameObject("waitress"):GetTransform():RotateLocalX(1)
+GetGameObject("waitress"):GetTransform():RotateLocalY(1)
+GetGameObject("waitress"):GetTransform():RotateLocalZ(1)
+GetGameObject("waitress"):GetTransform():ScaleLocal(1.25,1.25,1.25)
 
 SpawnGameObject("cola_fridge"):SetStatic(true)
 GetGameObject("cola_fridge"):AddCStaticMesh():AssignModel("cola_fridge")
