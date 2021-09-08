@@ -114,7 +114,7 @@ GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
 
 SpawnGameObject("beer_tap1"):SetStatic(true)
 GetGameObject("beer_tap1"):AddCStaticMesh():AssignModel("beer_tap")
-GetGameObject("beer_tap1"):GetTransform():SetPosition(1,0,0)
+GetGameObject("beer_tap1"):GetTransform():SetPosition(1,1,0)
 
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
