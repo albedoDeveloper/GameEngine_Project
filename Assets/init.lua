@@ -50,6 +50,10 @@ GetGameObject("light2"):AddCPointLight():AssignColour(0,0.6,0)
 GetGameObject("light2"):SetParentObject("lightAnchor")
 GetGameObject("light2"):GetTransform():Translate(-4,0,0)
 
+SpawnGameObject("whitelight"):SetStatic(true)
+GetGameObject("whitelight"):AddCPointLight():AssignColour(0.8,0.8,0.8)
+GetGameObject("whitelight"):GetTransform():Translate(3.3,1,4.7)
+
 SpawnGameObject("barrel"):SetStatic(true)
 GetGameObject("barrel"):AddCStaticMesh():AssignModel("barrel")
 GetGameObject("barrel"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
