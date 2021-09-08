@@ -140,4 +140,8 @@ private:
 	bool m_playerControlled;
 
 	bool m_mouseEnabled;
+
+	CCollider* m_collider;
+
+	Transform* m_parentTransform;
 };

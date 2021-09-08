@@ -20,6 +20,8 @@ public:
 	*/
 	double GetDeltaTime();
 
+	float GetTimeElapsed() const;
+
 
 	/**
 	 * @brief default constructor
