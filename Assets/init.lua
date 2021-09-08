@@ -106,7 +106,7 @@ GetGameObject("tavern_floor"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("main_bar_bench"):SetStatic(true)
 GetGameObject("main_bar_bench"):AddCStaticMesh():AssignModel("main_bar_bench")
-GetGameObject("main_bar_bench"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("main_bar_bench"):AddCCollider():AddConcaveCollider()
 GetGameObject("main_bar_bench"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("bar_floor_rod"):SetStatic(true)
