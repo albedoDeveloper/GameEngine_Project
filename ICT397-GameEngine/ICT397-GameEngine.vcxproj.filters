@@ -91,6 +91,9 @@
     <ClCompile Include="CSound.cpp">
       <Filter>components</Filter>
     </ClCompile>
+    <ClCompile Include="CPointLight.cpp">
+      <Filter>components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AHeightMap.h" />
@@ -191,6 +194,9 @@
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="CSound.h">
+      <Filter>components</Filter>
+    </ClInclude>
+    <ClInclude Include="CPointLight.h">
       <Filter>components</Filter>
     </ClInclude>
   </ItemGroup>

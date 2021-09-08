@@ -27,6 +27,7 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="CPointLight.cpp" />
     <ClCompile Include="CScript.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSpotlight.cpp" />
@@ -75,6 +76,7 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="CPointLight.h" />
     <ClInclude Include="CScript.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CSpotlight.h" />

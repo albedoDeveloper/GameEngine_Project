@@ -122,6 +122,8 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("AddCCollider", &GameObject::AddCCollider)
             .addFunction("AddCSpotlight", &GameObject::AddCSpotlight)
             .addFunction("GetCSpotlight", &GameObject::GetCSpotlight)
+            .addFunction("AddCPointLight", &GameObject::AddCPointLight)
+            .addFunction("GetCPointLight", &GameObject::GetCPointLight)
             .addFunction("AddCWaterComponent", &GameObject::AddCWaterComponent)
             .addFunction("SetActive", &GameObject::SetActive)
             .addFunction("SetDifficulty", &GameObject::SetDifficulty)
@@ -152,6 +154,7 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("SetAsCurrentCamera", &CCamera::SetAsCurrentCamera)
         .endClass();
 
+
     getGlobalNamespace(Lbuff)
         .beginClass<Component>("Component")
         .endClass()
@@ -169,6 +172,13 @@ lua_State* ScriptingEngine::NewState()
         .endClass()
         .deriveClass<CScript, Component>("CScript")
             .addFunction("AssignScript", &CScript::AssignScriptByKey)
+        .endClass();
+
+    getGlobalNamespace(Lbuff)
+        .beginClass<Component>("Component")
+        .endClass()
+        .deriveClass<CPointLight, Component>("CPointLight")
+            .addFunction("AssignColour", &CPointLight::AssignColour)
         .endClass();
 
     getGlobalNamespace(Lbuff)

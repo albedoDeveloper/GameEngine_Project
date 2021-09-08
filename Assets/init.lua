@@ -31,8 +31,24 @@ LoadModel("tv", "tv-screen/tv.fbx")
 
 LoadScript("rotate", "rotate.lua")
 
+
+
 SpawnGameObject("roof_interior"):SetStatic(true)
 GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
+
+SpawnGameObject("lightAnchor"):SetStatic(false)
+GetGameObject("lightAnchor"):GetTransform():Translate(0,2,0)
+GetGameObject("lightAnchor"):AddCScript():AssignScript("rotate")
+
+SpawnGameObject("light1"):SetStatic(false)
+GetGameObject("light1"):AddCPointLight():AssignColour(0,0,0.6)
+GetGameObject("light1"):SetParentObject("lightAnchor")
+GetGameObject("light1"):GetTransform():Translate(4,0,0)
+
+SpawnGameObject("light2"):SetStatic(false)
+GetGameObject("light2"):AddCPointLight():AssignColour(0,0.6,0)
+GetGameObject("light2"):SetParentObject("lightAnchor")
+GetGameObject("light2"):GetTransform():Translate(-4,0,0)
 
 SpawnGameObject("barrel"):SetStatic(true)
 GetGameObject("barrel"):AddCStaticMesh():AssignModel("barrel")
