@@ -2,7 +2,7 @@
 #include "GameObjectFactory.h"
 
 GameObject::GameObject()
-	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ }
+	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ }, m_static{ false }
 {
 }
 
@@ -51,6 +51,10 @@ CSound* GameObject::GetCSound()
 	return GetComponent<CSound>();
 }
 
+void GameObject::SetStatic(bool isStatic)
+{
+	m_static = isStatic;
+}
 
 CCharacter* GameObject::AddCCharacter()
 {
@@ -84,9 +88,19 @@ CCamera* GameObject::GetCCamera()
 	return GetComponent<CCamera>();
 }
 
+bool GameObject::IsStatic() const
+{
+	return m_static;
+}
+
 CCharacter* GameObject::GetCCharacter()
 {
 	return GetComponent<CCharacter>();
+}
+
+CCollider* GameObject::GetCCollider()
+{
+	return GetComponent<CCollider>();
 }
 
 Transform* GameObject::GetTransform()
@@ -300,9 +314,6 @@ void GameObject::Load(nlohmann::json& j)
 				col->Load(j);
 			}
 		}
-
-
-
 	}
 }
 

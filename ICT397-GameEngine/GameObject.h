@@ -119,12 +119,18 @@ public:
 
 	CCamera* GetCCamera();
 
+	bool IsStatic() const;
 
 	CSound* AddCSound();
 
 	CSound* GetCSound();
 
+	void SetStatic(bool isStatic);
+
 	CCharacter* GetCCharacter();
+
+	CCollider* GetCCollider();
+
 	/**
 	 * @brief gets the first spotlight component
 	 * @return spotlight component
@@ -244,6 +250,8 @@ private:
 	 * @brief the difficulty of the game for this object
 	*/
 	std::string m_difficulty;
+
+	bool m_static;
 };
 
 template<class T, class... Targs>
