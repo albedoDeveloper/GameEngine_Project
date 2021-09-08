@@ -48,7 +48,6 @@ void CSound::PlaySound(std::string soundName, int length, bool positional)
 	}
 	else
 		std::cout << soundName << " sound is not loaded!" << std::endl;
-
 }
 
 void CSound::Start()
