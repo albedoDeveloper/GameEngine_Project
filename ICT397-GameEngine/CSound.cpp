@@ -1,5 +1,5 @@
 #include "CSound.h"
-
+#include "GameObjectFactory.h"
 CSound::CSound(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }
 {
@@ -22,8 +22,9 @@ CSound::CSound(Transform* parent, GameObject* parentObj)
 	}
 }
 
-void CSound::LoadSound(std::string soundName)
+void CSound::LoadSound(std::string soundName, bool positional)
 {
+	isPositional = positional;
 	auto soundNameFull = "../Assets/Sounds/" + soundName;
 
 	Mix_Chunk* temp = Mix_LoadWAV(soundNameFull.data());
@@ -36,13 +37,11 @@ void CSound::LoadSound(std::string soundName)
 
 void CSound::PlaySound(std::string soundName, int length)
 {
-	int channel = 0;
 	if (soundList.find(soundName) != soundList.end())
 		channel = Mix_PlayChannel(-1, soundList.find(soundName)->second, length);
 	else
 		std::cout << soundName << " sound is not loaded!" << std::endl;
 
-	Mix_Volume(channel, MIX_MAX_VOLUME);
 }
 
 void CSound::Start()
@@ -51,6 +50,29 @@ void CSound::Start()
 
 void CSound::Update()
 {
+	auto playerTransform = GAMEOBJECT->GetGameObject("player")->GetTransform();
+	auto thisTransform = this->GetParentObject()->GetTransform();
+
+	int distance = (glm::distance(playerTransform->GetPosition().GetZ(), thisTransform->GetPosition().GetZ()) + glm::distance(playerTransform->GetPosition().GetX(), thisTransform->GetPosition().GetX()))/2 * 40;
+	if (distance < 1)
+		distance = 1;
+	else if (distance > 235)
+		distance = 235;
+
+	if (isPositional && channel != -1)
+	{
+		auto rawRotation = playerTransform->GetRotation().GetInverse();
+		
+		int rotation = glm::degrees(rawRotation.GetEulerAngles().GetY());
+		if (rotation < 0)
+			rotation += 360.0;
+
+		if (!Mix_SetPosition(channel,rotation, distance))
+		{
+			std::cout << "ERROR Mix_SetPosition: " << Mix_GetError() << std::endl;
+		}
+	}
+
 }
 
 void CSound::Render()

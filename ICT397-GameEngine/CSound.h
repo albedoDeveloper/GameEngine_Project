@@ -7,11 +7,13 @@
 #include <memory>
 #include "Component.h"
 
+
+
 class CSound : public Component
 {
 public:
 	CSound(Transform* parent, GameObject* parentObj);
-	void LoadSound(std::string soundName);
+	void LoadSound(std::string soundName,bool positional);
 	void PlaySound(std::string soundName, int length);
 
     /**
@@ -34,5 +36,7 @@ public:
 
 private:
 	std::unordered_map<std::string, Mix_Chunk*> soundList;
+    bool isPositional = false;
+    int channel = -1;
 };
 

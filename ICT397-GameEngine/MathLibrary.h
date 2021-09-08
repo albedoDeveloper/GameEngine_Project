@@ -483,6 +483,11 @@ public:
 	{
 		m_quat.w = w;
 	}
+
+	Quaternion GetInverse()
+	{
+		return glm::inverse(m_quat);
+	}
 };
 
 /**
