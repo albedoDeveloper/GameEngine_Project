@@ -27,3 +27,8 @@ double DeltaTime::GetDeltaTime()
 {
     return deltaTime;
 }
+
+float DeltaTime::GetTimeElapsed() const
+{
+    return SDL_GetPerformanceCounter();
+}
