@@ -119,6 +119,8 @@ GetGameObject("beer_tap1"):GetTransform():SetPosition(1,0,0)
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
 GetGameObject("waitress"):GetTransform():SetPosition(2,0,0)
+GetGameObject("waitress"):AddCSound():LoadSound("humming.wav")
+GetGameObject("waitress"):GetCSound():PlaySound("humming.wav", -1,true)
 
 SpawnGameObject("cola_fridge"):SetStatic(true)
 GetGameObject("cola_fridge"):AddCStaticMesh():AssignModel("cola_fridge")
