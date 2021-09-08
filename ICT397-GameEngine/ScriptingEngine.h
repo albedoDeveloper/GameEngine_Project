@@ -84,7 +84,7 @@ private:
 	 * @brief Creates a game object using the game object factory
 	 * @param key The key for storing the object. Can be any typed string
 	*/
-	static void SpawnGameObject(std::string key);
+	static GameObject* SpawnGameObject(std::string key);
 
 	/**
 	 * @brief Loads a lua script into the engine
