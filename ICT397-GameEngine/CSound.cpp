@@ -70,7 +70,7 @@ void CSound::Update()
 		else if (distance > 255)
 			distance = 255;
 		
-		std::cout << distance << std::endl;
+		//std::cout << distance << std::endl;
 		/*glm::vec3 checkPos = glm::vec3(playerTransform->GetPosition().GetX(), playerTransform->GetPosition().GetY(), playerTransform->GetPosition().GetZ()) - glm::vec3(thisTransform->GetPosition().GetX(), thisTransform->GetPosition().GetY(), thisTransform->GetPosition().GetZ());
 
 		Quaternion rawRotation;

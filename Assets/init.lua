@@ -151,7 +151,9 @@ GetGameObject("beer_tap2"):GetTransform():SetPosition(6.55,1.36,3.69)
 
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
-GetGameObject("waitress"):GetTransform():SetPosition(2,0,0)
+GetGameObject("waitress"):GetTransform():SetPosition(3.3,0.3,4.7)
+GetGameObject("waitress"):GetTransform():RotateLocal(180,0,180,1)
+GetGameObject("waitress"):GetTransform():ScaleLocal(1.25,1.25,1.25)
 GetGameObject("waitress"):AddCSound():LoadSound("humming.wav")
 GetGameObject("waitress"):GetCSound():PlaySound("humming.wav", -1,true)
 

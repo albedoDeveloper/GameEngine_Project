@@ -187,6 +187,7 @@
     },
     "chair1": {
         "Components": {
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "Model": "chair"
             }
@@ -213,6 +214,7 @@
     },
     "chair2": {
         "Components": {
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "Model": "chair"
             }
@@ -239,13 +241,14 @@
     },
     "chair3": {
         "Components": {
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "Model": "chair"
             }
         },
         "Transform": {
             "Position": {
-                "x": -0.6899999976158142,
+                "x": -0.15000000596046448,
                 "y": 0.1599999964237213,
                 "z": -1.784999966621399
             },
@@ -265,6 +268,7 @@
     },
     "chair4": {
         "Components": {
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "Model": "chair"
             }
@@ -317,6 +321,7 @@
     },
     "cola_fridge2": {
         "Components": {
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "Model": "cola_fridge"
             }
@@ -343,7 +348,6 @@
     },
     "goblin1": {
         "Components": {
-            "Component": "Component",
             "ScriptComponent": {
                 "Script": "rotate"
             },
@@ -358,10 +362,10 @@
                 "z": -1.0
             },
             "Rotation": {
-                "w": -0.5167884230613708,
+                "w": -0.08153054118156433,
                 "x": 0.0,
-                "y": -0.6053640842437744,
-                "z": -0.6053640842437744
+                "y": 0.9966697096824646,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -424,6 +428,80 @@
         },
         "key": "island"
     },
+    "light1": {
+        "Components": {
+            "Component": "Component"
+        },
+        "Transform": {
+            "Position": {
+                "x": 4.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "light1"
+    },
+    "light2": {
+        "Components": {
+            "Component": "Component"
+        },
+        "Transform": {
+            "Position": {
+                "x": -4.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "light2"
+    },
+    "lightAnchor": {
+        "Components": {
+            "ScriptComponent": {
+                "Script": "rotate"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 2.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": -0.08153054118156433,
+                "x": 0.0,
+                "y": 0.9966697096824646,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "lightAnchor"
+    },
     "main_bar_bench": {
         "Components": {
             "AABBComponent": "AABBComponent",
@@ -458,14 +536,14 @@
         },
         "Transform": {
             "Position": {
-                "x": -1.0814998149871826,
-                "y": 1.8194687366485596,
-                "z": 0.61650550365448
+                "x": 1.1808325052261353,
+                "y": 1.7957026958465576,
+                "z": 3.6165904998779297
             },
             "Rotation": {
-                "w": -0.6371378898620605,
+                "w": -0.2904719412326813,
                 "x": 0.0,
-                "y": -0.7707498073577881,
+                "y": -0.9568837881088257,
                 "z": 0.0
             },
             "Scale": {
@@ -826,6 +904,7 @@
     },
     "waitress": {
         "Components": {
+            "Component": "Component",
             "StaticMeshComponent": {
                 "Model": "waitress"
             }
