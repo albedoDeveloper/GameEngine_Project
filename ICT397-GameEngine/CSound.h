@@ -5,14 +5,17 @@
 #include <SDL2/SDL.h>
 #include <unordered_map>
 #include <memory>
+#include <vector>
 #include "Component.h"
+
+
 
 class CSound : public Component
 {
 public:
 	CSound(Transform* parent, GameObject* parentObj);
 	void LoadSound(std::string soundName);
-	void PlaySound(std::string soundName, int length);
+	void PlaySound(std::string soundName, int length,bool positional);
 
     /**
     * @brief initialises component at program start
@@ -33,6 +36,16 @@ public:
 
 
 private:
-	std::unordered_map<std::string, Mix_Chunk*> soundList;
+    struct SoundInfo
+    {
+        std::string soundName;
+        bool isPositional = false;
+        int channel = -1;
+    };
+
+    std::unordered_map<std::string, Mix_Chunk*> soundList;
+    std::vector<SoundInfo> soundinfo;
+
+
 };
 
