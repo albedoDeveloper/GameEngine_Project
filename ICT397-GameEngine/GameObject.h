@@ -18,6 +18,7 @@
 #include "CWater.h"
 #include "CSound.h"
 #include <nlohmann/json.hpp>
+#include "CPointLight.h"
 
 #if _DEBUG
 #include <iostream>
@@ -84,6 +85,11 @@ public:
 	 * @return the created camera
 	*/
 	CCamera* AddCCameraComponent();
+
+	CPointLight* AddCPointLight();
+
+	CPointLight* GetCPointLight();
+
 	/**
 	 * @brief Adds a grid component
 	 * @return the created grid

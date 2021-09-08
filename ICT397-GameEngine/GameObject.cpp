@@ -66,6 +66,16 @@ CCamera* GameObject::AddCCameraComponent()
 	return AddComponent<CCamera>();
 }
 
+CPointLight* GameObject::AddCPointLight()
+{
+	return AddComponent<CPointLight>();
+}
+
+CPointLight* GameObject::GetCPointLight()
+{
+	return GetComponent<CPointLight>();
+}
+
 CGridComponent* GameObject::AddCGridComponent() 
 {
 	return AddComponent<CGridComponent>();
@@ -307,10 +317,12 @@ void GameObject::Load(nlohmann::json& j)
 			if (GetComponent<CCollider>()) 
 			{
 				std::cout << "collider already exists" << std::endl;
+				GetComponent<CCollider>()->UpdateCollider();
 			}
 			else
 			{
 				CCollider* col = AddCCollider();
+				
 				col->Load(j);
 			}
 		}
