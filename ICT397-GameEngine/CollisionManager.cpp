@@ -33,6 +33,6 @@ void CollisionManager::onContact(const CallbackData& callbackData)
     {
         reactphysics3d::Vector3 points(callbackData.getContactPair(0).getContactPoint(i).getLocalPointOnCollider1());
 
-        std::cout << "Contact Points: " << points.x << " " << points.y << " " << points.z << '\n';
+        //std::cout << "Contact Points: " << points.x << " " << points.y << " " << points.z << '\n';
     }
 }
