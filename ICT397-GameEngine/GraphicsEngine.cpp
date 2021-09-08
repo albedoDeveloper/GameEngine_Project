@@ -136,10 +136,14 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	
 	shader->useShaderForLoop();
 	
+	Vector3f light1pos = GAMEOBJECT->GetGameObject("light1")->GetTransform()->GetWorldTransform().GetPosition();
+	Vector3f light2pos = GAMEOBJECT->GetGameObject("light2")->GetTransform()->GetWorldTransform().GetPosition();
 	// temp lighting stuff. update these values with light objects/components
-	shader->setVec3("ambientLightColor", glm::vec3(0.5, 0.5, 0.5));
-	shader->setVec3("lightPos", glm::vec3(-20, 0, 0));
-	shader->setVec3("lightColor", glm::vec3(1, 1, 1));
+	shader->setVec3("ambientLightColor", glm::vec3(0.1, 0.1, 0.1));
+	shader->setVec3("lightPos1", glm::vec3(light1pos.GetX(), light1pos.GetY(), light1pos.GetZ()));
+	shader->setVec3("lightPos2", glm::vec3(light2pos.GetX(), light2pos.GetY(), light2pos.GetZ()));
+	shader->setVec3("lightColor1", glm::vec3(0, 0.1, 0.7));
+	shader->setVec3("lightColor2", glm::vec3(0, 0.4, 0));
 	
 	shader->setMat4("projection", GetProjection());
 	
