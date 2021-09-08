@@ -35,7 +35,7 @@ GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
 SpawnGameObject("goblin1")
 GetGameObject("goblin1"):AddCStaticMesh():AssignModel("goblin")
 GetGameObject("goblin1"):AddCSound():LoadSound("CantinaBand60.wav")
-GetGameObject("goblin1"):GetCSound():PlaySound("CantinaBand60.wav", 2)
+GetGameObject("goblin1"):GetCSound():PlaySound("CantinaBand60.wav", 2,true)
 GetGameObject("goblin1"):AddCScript():AssignScript("rotate")
 
 SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
@@ -68,8 +68,6 @@ GetGameObject("spiked_door_bar"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("south_bar_wall"):SetStatic(true)
 GetGameObject("south_bar_wall"):AddCStaticMesh():AssignModel("south_bar_wall")
-GetGameObject("south_bar_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
-GetGameObject("south_bar_wall"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("behind_bar_block"):SetStatic(true)
 GetGameObject("behind_bar_block"):AddCStaticMesh():AssignModel("behind_bar_block")

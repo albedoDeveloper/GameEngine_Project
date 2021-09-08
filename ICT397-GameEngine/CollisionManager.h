@@ -30,6 +30,7 @@ private:
 	*/
 	CBaseTerrain* m_heightMap;
 
+	bool m_collision;
 
 public:
 	/*
@@ -68,9 +69,10 @@ public:
 	/**
 	 * @brief check if a AABB is colliding with any other AABB's
 	*/
-	bool CheckCollision(CCollider& myCollider, const Transform& worldT);
+	bool CheckCollision(CCollider& myCollider);
 	
 	void onContact(const CallbackData& callbackData);
+
 	/**
 	 * @Get the static collision world, to either add collisonbody or test for colliders
 	*/
