@@ -1,5 +1,7 @@
 #include "CSound.h"
 #include "GameObjectFactory.h"
+#include "GraphicsEngine.h"
+#include <glm/glm/gtx/vector_angle.hpp>
 CSound::CSound(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }
 {
@@ -50,24 +52,54 @@ void CSound::Start()
 
 void CSound::Update()
 {
-	auto playerTransform = GAMEOBJECT->GetGameObject("player")->GetTransform();
-	auto thisTransform = this->GetParentObject()->GetTransform();
-
-	int distance = (glm::distance(playerTransform->GetPosition().GetZ(), thisTransform->GetPosition().GetZ()) + glm::distance(playerTransform->GetPosition().GetY(), thisTransform->GetPosition().GetY()) + glm::distance(playerTransform->GetPosition().GetX(), thisTransform->GetPosition().GetX()))/3 * 40;
-	if (distance < 1)
-		distance = 1;
-	else if (distance > 235)
-		distance = 235;
-
 	if (isPositional && channel != -1)
 	{
-		auto rawRotation = playerTransform->GetRotation().GetInverse();
+		auto playerTransform = GAMEOBJECT->GetGameObject("player")->GetTransform();
+		auto thisTransform = this->GetParentObject()->GetTransform();
+
+		int distance = (glm::distance(playerTransform->GetPosition().GetZ(), thisTransform->GetPosition().GetZ()) + glm::distance(playerTransform->GetPosition().GetY(), thisTransform->GetPosition().GetY()) + glm::distance(playerTransform->GetPosition().GetX(), thisTransform->GetPosition().GetX()))/3 * 40;
 		
+		if (distance < 1)
+			distance = 1;
+		else if (distance > 235)
+			distance = 235;
+		
+		glm::vec3 checkPos = glm::vec3(playerTransform->GetPosition().GetX(), playerTransform->GetPosition().GetY(), playerTransform->GetPosition().GetZ()) - glm::vec3(thisTransform->GetPosition().GetX(), thisTransform->GetPosition().GetY(), thisTransform->GetPosition().GetZ());
+
+		Quaternion rawRotation;
+		
+		if (checkPos.z < -1)
+			rawRotation = playerTransform->GetRotation();
+		else if (checkPos.z > 1)
+			rawRotation = playerTransform->GetRotation().GetInverse();
+		else
+		{
+			rawRotation = playerTransform->GetRotation().GetInverse();
+			rawRotation.Rotate(90, Vector3f(0, 1, 0));
+		}
+			
+		if (checkPos.x < -1)
+		{
+			rawRotation = playerTransform->GetRotation().GetInverse();
+			rawRotation.Rotate(90, Vector3f(0, 1, 0));
+		}
+		else if (checkPos.x > 1)
+		{
+			rawRotation = playerTransform->GetRotation().GetInverse();
+			rawRotation.Rotate(270, Vector3f(0, 1, 0));
+		}
+		else
+		{
+			rawRotation = playerTransform->GetRotation().GetInverse();
+		}
+
 		int rotation = glm::degrees(rawRotation.GetEulerAngles().GetY());
+		
 		if (rotation < 0)
 			rotation += 360.0;
+
 		
-		std::cout << distance << std::endl;
+		std::cout << checkPos.z << std::endl;
 		if (!Mix_SetPosition(channel,rotation, distance))
 		{
 			std::cout << "ERROR Mix_SetPosition: " << Mix_GetError() << std::endl;

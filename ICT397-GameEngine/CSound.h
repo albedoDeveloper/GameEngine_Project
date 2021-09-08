@@ -35,7 +35,13 @@ public:
 
 
 private:
-	std::unordered_map<std::string, Mix_Chunk*> soundList;
+    struct SoundInfo
+    {
+        bool isPositional = false;
+        int channel = -1;
+    };
+
+    std::unordered_map<std::string, Mix_Chunk*> soundList;
     bool isPositional = false;
     int channel = -1;
 };
