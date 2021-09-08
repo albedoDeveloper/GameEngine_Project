@@ -18,6 +18,14 @@ LoadModel("axis", "axis/axis.fbx")
 LoadModel("goblin", "goblin/goblin.fbx")
 LoadModel("roof_interior", "roof_interior.fbx")
 LoadModel("toilet_block", "toilet_block.fbx")
+LoadModel("beer_tap", "beer-tap/beertap.fbx")
+LoadModel("waitress", "waitress/waitress.fbx")
+LoadModel("cola_fridge", "cola_fridge/cola_fridge.fbx")
+LoadModel("pool-table", "pool-table/pool-table.fbx")
+LoadModel("table", "table_chair/table.fbx")
+LoadModel("chair", "table_chair/chair.fbx")
+LoadModel("tv", "tv-screen/tv.fbx")
+
 
 LoadScript("rotate", "rotate.lua")
 
@@ -105,3 +113,32 @@ GetGameObject("main_bar_bench"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("bar_floor_rod"):SetStatic(true)
 GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
+
+SpawnGameObject("beer_tap1"):SetStatic(true)
+GetGameObject("beer_tap1"):AddCStaticMesh():AssignModel("beer_tap")
+GetGameObject("beer_tap1"):GetTransform():SetPosition(1,0,0)
+
+SpawnGameObject("waitress"):SetStatic(true)
+GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
+GetGameObject("waitress"):GetTransform():SetPosition(2,0,0)
+
+SpawnGameObject("cola_fridge"):SetStatic(true)
+GetGameObject("cola_fridge"):AddCStaticMesh():AssignModel("cola_fridge")
+GetGameObject("cola_fridge"):GetTransform():SetPosition(3,0,0)
+
+SpawnGameObject("pool-table"):SetStatic(true)
+GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
+GetGameObject("pool-table"):GetTransform():SetPosition(5,0,0)
+
+SpawnGameObject("table"):SetStatic(true)
+GetGameObject("table"):AddCStaticMesh():AssignModel("table")
+GetGameObject("table"):GetTransform():SetPosition(6,0,0)
+
+SpawnGameObject("chair"):SetStatic(true)
+GetGameObject("chair"):AddCStaticMesh():AssignModel("chair")
+GetGameObject("chair"):GetTransform():SetPosition(7,0,0)
+
+SpawnGameObject("tv"):SetStatic(true)
+GetGameObject("tv"):AddCStaticMesh():AssignModel("tv")
+GetGameObject("tv"):GetTransform():SetPosition(8,1,0)
+
