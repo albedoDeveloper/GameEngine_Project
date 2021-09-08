@@ -18,11 +18,23 @@ LoadModel("axis", "axis/axis.fbx")
 LoadModel("goblin", "goblin/goblin.fbx")
 LoadModel("roof_interior", "roof_interior.fbx")
 LoadModel("toilet_block", "toilet_block.fbx")
+LoadModel("barrel", "barrel.fbx")
+LoadModel("barrel2", "barrel2.fbx")
 
 LoadScript("rotate", "rotate.lua")
 
 SpawnGameObject("roof_interior"):SetStatic(true)
 GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
+
+SpawnGameObject("barrel"):SetStatic(true)
+GetGameObject("barrel"):AddCStaticMesh():AssignModel("barrel")
+GetGameObject("barrel"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("barrel"):GetCCollider():CollideWith(2)
+
+SpawnGameObject("barrel2"):SetStatic(true)
+GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
+GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("barrel2"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("goblin1")
 GetGameObject("goblin1"):AddCStaticMesh():AssignModel("goblin")

@@ -62,7 +62,6 @@ void CCollider::Load(nlohmann::json& j)
 {
 	GameObject* g = GetParentObject();
 
-
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
 
