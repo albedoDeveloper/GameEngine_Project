@@ -125,6 +125,8 @@ public:
 
 	CSound* GetCSound();
 
+	void SetStatic(bool isStatic);
+
 	CCharacter* GetCCharacter();
 	/**
 	 * @brief gets the first spotlight component

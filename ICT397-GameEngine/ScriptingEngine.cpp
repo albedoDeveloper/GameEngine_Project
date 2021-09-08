@@ -127,6 +127,7 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("SetParentObject", &GameObject::SetParentObject)
             .addFunction("AddCSound", &GameObject::AddCSound)
             .addFunction("GetCSound", &GameObject::GetCSound)
+            .addFunction("SetStatic", &GameObject::SetStatic)
         .addFunction("GetCTerrainBruteForce", &GameObject::GetCTerrainBruteForce)
         .endClass();
 
@@ -300,9 +301,9 @@ void ScriptingEngine::LoadHeightMap(std::string key, std::string filePath)
     ASSET->LoadHeightMap(key, "../Assets/HeightMaps/" + filePath);
 }
 
-void ScriptingEngine::SpawnGameObject(std::string key)
+GameObject* ScriptingEngine::SpawnGameObject(std::string key)
 {
-    GAMEOBJECT->SpawnGameObject(key);
+    return GAMEOBJECT->SpawnGameObject(key);
 }
 
 GameObject* ScriptingEngine::GetGameObject(std::string objectKey)

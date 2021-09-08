@@ -2,7 +2,7 @@
 #include "GameObjectFactory.h"
 
 GameObject::GameObject()
-	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ }, m_static{ true }
+	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ }, m_static{ false }
 {
 }
 
@@ -51,6 +51,10 @@ CSound* GameObject::GetCSound()
 	return GetComponent<CSound>();
 }
 
+void GameObject::SetStatic(bool isStatic)
+{
+	m_static = isStatic;
+}
 
 CCharacter* GameObject::AddCCharacter()
 {
