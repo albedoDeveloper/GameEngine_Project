@@ -4,7 +4,7 @@
 #include <iostream>
 
 CCollider::CCollider(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj }
+	:Component{ parent, parentObj }, m_allowRotation{ true }
 {
 	CStaticMesh* meshComp = m_parent->GetComponent<CStaticMesh>();
 	Transform* meshTrans = nullptr;
@@ -91,22 +91,28 @@ void CCollider::UpdateCollider()
 			m_transform.GetWorldTransform().GetPosition().GetZ()
 		);
 
-		auto worldOrientation = reactphysics3d::Quaternion(
-			m_transform.GetWorldTransform().GetRotation().GetX(),
-			m_transform.GetWorldTransform().GetRotation().GetY(), 
-			m_transform.GetWorldTransform().GetRotation().GetZ(), 
-			m_transform.GetWorldTransform().GetRotation().GetW()
-		);
-		
-		worldOrientation.inverse();
+		reactphysics3d::Quaternion worldOrientation(reactphysics3d::Quaternion::identity());
+
+		if (m_allowRotation)
+		{
+			worldOrientation = reactphysics3d::Quaternion(
+				m_transform.GetWorldTransform().GetRotation().GetX(),
+				m_transform.GetWorldTransform().GetRotation().GetY(), 
+				m_transform.GetWorldTransform().GetRotation().GetZ(), 
+				m_transform.GetWorldTransform().GetRotation().GetW()
+			);
+			worldOrientation.inverse();
+		}
 
 		reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
 		col->getBody()->setTransform(worldTransform);
 	}
 }
 
-void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize, int layer)
+void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize, int layer, bool allowRotation)
 {
+	m_allowRotation = allowRotation;
+
 	m_offset.x = offsetX;
 	m_offset.y = offsetY;
 	m_offset.z = offsetZ;
