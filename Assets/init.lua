@@ -60,8 +60,6 @@ GetGameObject("spiked_door_bar"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("south_bar_wall"):SetStatic(true)
 GetGameObject("south_bar_wall"):AddCStaticMesh():AssignModel("south_bar_wall")
-GetGameObject("south_bar_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
-GetGameObject("south_bar_wall"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("behind_bar_block"):SetStatic(true)
 GetGameObject("behind_bar_block"):AddCStaticMesh():AssignModel("behind_bar_block")

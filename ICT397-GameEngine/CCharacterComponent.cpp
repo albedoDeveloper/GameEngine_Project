@@ -65,6 +65,12 @@ void CCharacter::SetPlayerControlled(bool playerControlled)
 void CCharacter::Start() 
 {
 	m_initialHitpoints = m_hitpoints;
+	m_collider = m_parent->GetComponent<CCollider>();
+	if (!m_collider)
+	{
+		std::cout << "ERROR: CCharacter cannot find collider on parent object\n";
+		exit(34);
+	}
 }
 
 void CCharacter::Update()
@@ -108,10 +114,6 @@ void CCharacter::Update()
 		{
 			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * deltaTime * mouseSens);
 			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
-
-			//std::cout << parentObj->getFactoryKey() << ": " << RadToDegrees(parentObj->GetTransform()->GetWorldTransform().GetRotation().GetEulerAngles().GetX()) << " " <<
-			//	RadToDegrees(parentObj->GetTransform()->GetWorldTransform().GetRotation().GetEulerAngles().GetY()) << " " <<
-			//	RadToDegrees(parentObj->GetTransform()->GetWorldTransform().GetRotation().GetEulerAngles().GetZ()) << std::endl;
 		}
 
 		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f ||
@@ -136,63 +138,29 @@ void CCharacter::Update()
 		Move(moveVector.GetX(), moveVector.GetY(), moveVector.GetZ());
 	}
 
-	//m_currentTime += deltaTime;
-	//while (m_currentTime - m_lastTime >= m_updateInterval) {
+	static const float GRAVITY = 0;
 
-		const float GRAVITY = 0;
+	//newtonian calculations
+	m_velocity = m_velocity * 0.8f; // apply damping factor
+	m_velocity = m_velocity + Vector3f(0, GRAVITY * deltaTime, 0); // gravity
+	m_velocity = m_velocity + m_acceleration;
+	m_acceleration = Vector3f(0, 0, 0);
+	if (m_velocity.Magnitude() > m_maxSpeed)
+	{
+		m_velocity.SetMagnitude(m_maxSpeed);
+	}
 
-		//newtonian calculations
-		m_velocity = m_velocity * 0.8f;
-		m_velocity = m_velocity + Vector3f(0, GRAVITY * deltaTime, 0); // gravity
-		m_velocity = m_velocity + m_acceleration;
-		m_acceleration = Vector3f(0, 0, 0);
-		if (m_velocity.Magnitude() > m_maxSpeed)
-		{
-			m_velocity.SetMagnitude(m_maxSpeed);
-		}
-
-		//convert to world space
-		Vector3f newPos = m_transform.GetWorldTransform().GetPosition();
-		Vector3f worldVel = m_velocity * m_parent->GetTransform()->GetRotation();
-
-		//// calculate next frames transform to check if will collide
-		//// one axis at a time
-		//Transform futureWorldT;
-
-		//// x axis
-		//futureWorldT = m_transform.GetWorldTransform();
-		//futureWorldT.Translate(worldVel.GetX(), 0, 0);
-		//if (!COLLISION->CheckCollision(*m_characterCollider, futureWorldT))
-		//{
-		// x axis
-		/*futureWorldT = m_transform.GetWorldTransform();
-		futureWorldT.Translate(worldVel.GetX(), 0, 0);
-		if (!COLLISION->CheckCollision(*m_characterCollider, futureWorldT))
-		{
-			newPos.SetX(newPos.GetX() + worldVel.GetX());
-		//}
-
-		//futureWorldT = m_transform.GetWorldTransform();
-		//futureWorldT.Translate(0, worldVel.GetY(), 0);
-		//if (!COLLISION->CheckCollision(*m_characterCollider, futureWorldT))
-		//{
-			newPos.SetY(newPos.GetY() + worldVel.GetY());
-		//}
-
-		//// z axis
-		//futureWorldT = m_transform.GetWorldTransform();
-		//futureWorldT.Translate(0, 0, worldVel.GetZ());
-		//if (!COLLISION->CheckCollision(*m_characterCollider, futureWorldT))
-		//{
-			newPos.SetZ(newPos.GetZ() + worldVel.GetZ());
-		//}
-		}*/
+	//convert to world space
+	Vector3f newPos = m_transform.GetWorldTransform().GetPosition();
+	Vector3f worldVel = m_velocity * m_parent->GetTransform()->GetRotation();
 		
-		newPos.SetX(newPos.GetX() + worldVel.GetX());
-		newPos.SetY(newPos.GetY() + worldVel.GetY());
-		newPos.SetZ(newPos.GetZ() + worldVel.GetZ());
+	COLLISION->CheckCollision(*m_collider);
+
+	newPos.SetX(newPos.GetX() + worldVel.GetX());
+	newPos.SetY(newPos.GetY() + worldVel.GetY());
+	newPos.SetZ(newPos.GetZ() + worldVel.GetZ());
 		
-		m_parent->GetTransform()->SetPositionV(newPos);
+	m_parent->GetTransform()->SetPositionV(newPos);
 }
 
 void CCharacter::Render()
