@@ -53,7 +53,7 @@ void CSound::Update()
 	auto playerTransform = GAMEOBJECT->GetGameObject("player")->GetTransform();
 	auto thisTransform = this->GetParentObject()->GetTransform();
 
-	int distance = (glm::distance(playerTransform->GetPosition().GetZ(), thisTransform->GetPosition().GetZ()) + glm::distance(playerTransform->GetPosition().GetX(), thisTransform->GetPosition().GetX()))/2 * 40;
+	int distance = (glm::distance(playerTransform->GetPosition().GetZ(), thisTransform->GetPosition().GetZ()) + glm::distance(playerTransform->GetPosition().GetY(), thisTransform->GetPosition().GetY()) + glm::distance(playerTransform->GetPosition().GetX(), thisTransform->GetPosition().GetX()))/3 * 40;
 	if (distance < 1)
 		distance = 1;
 	else if (distance > 235)
@@ -66,7 +66,8 @@ void CSound::Update()
 		int rotation = glm::degrees(rawRotation.GetEulerAngles().GetY());
 		if (rotation < 0)
 			rotation += 360.0;
-
+		
+		std::cout << distance << std::endl;
 		if (!Mix_SetPosition(channel,rotation, distance))
 		{
 			std::cout << "ERROR Mix_SetPosition: " << Mix_GetError() << std::endl;
