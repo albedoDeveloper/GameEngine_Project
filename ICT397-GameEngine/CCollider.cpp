@@ -1,7 +1,6 @@
 #include "CCollider.h"
 #include "CollisionManager.h"
 #include "GameObject.h"
-//DEBUG
 #include <iostream>
 
 CCollider::CCollider(Transform* parent, GameObject* parentObj)
@@ -74,7 +73,6 @@ void CCollider::DrawToImGui()
 	{
 		ImGui::Text("Collider Info : ");
 		ImGui::TreePop();
-
 	}
 }
 
@@ -100,15 +98,14 @@ void CCollider::UpdateCollider()
 			m_transform.GetWorldTransform().GetRotation().GetW()
 		);
 		
-		//if(this->GetParentObject()->GetComponent<CCamera>() != nullptr)
-			worldOrientation.inverse();
+		worldOrientation.inverse();
 
 		reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
 		col->getBody()->setTransform(worldTransform);
 	}
 }
 
-void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize, std::string layer)
+void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize, int layer)
 {
 	m_offset.x = offsetX;
 	m_offset.y = offsetY;
@@ -138,7 +135,8 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 
 	col = colBody->addCollider(boxCollider, reactphysics3d::Transform::identity());
 
-	col->setCollisionCategoryBits(1);
+	col->setCollisionCategoryBits(layer);
+	col->setCollideWithMaskBits(0);
 }
 
 void CCollider::AddConvexCollider()
@@ -219,4 +217,9 @@ void CCollider::AddConcaveCollider()
 	concaveMesh = COLLISION->physicsCommon.createConcaveMeshShape(triangleMesh);
 
 	col = colBody->addCollider(concaveMesh, reactphysics3d::Transform::identity());
+}
+
+void CCollider::CollideWith(int layerToCollideWith)
+{
+	col->setCollideWithMaskBits(layerToCollideWith);
 }

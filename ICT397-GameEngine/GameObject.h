@@ -128,6 +128,9 @@ public:
 	void SetStatic(bool isStatic);
 
 	CCharacter* GetCCharacter();
+
+	CCollider* GetCCollider();
+
 	/**
 	 * @brief gets the first spotlight component
 	 * @return spotlight component

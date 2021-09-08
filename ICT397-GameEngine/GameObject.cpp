@@ -98,6 +98,11 @@ CCharacter* GameObject::GetCCharacter()
 	return GetComponent<CCharacter>();
 }
 
+CCollider* GameObject::GetCCollider()
+{
+	return GetComponent<CCollider>();
+}
+
 Transform* GameObject::GetTransform()
 {
 	return &m_transform;
@@ -309,9 +314,6 @@ void GameObject::Load(nlohmann::json& j)
 				col->Load(j);
 			}
 		}
-
-
-
 	}
 }
 

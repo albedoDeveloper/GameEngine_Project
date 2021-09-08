@@ -128,7 +128,7 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("AddCSound", &GameObject::AddCSound)
             .addFunction("GetCSound", &GameObject::GetCSound)
             .addFunction("SetStatic", &GameObject::SetStatic)
-        .addFunction("GetCTerrainBruteForce", &GameObject::GetCTerrainBruteForce)
+            .addFunction("GetCCollider", &GameObject::GetCCollider)
         .endClass();
 
     getGlobalNamespace(Lbuff)
@@ -220,6 +220,7 @@ lua_State* ScriptingEngine::NewState()
        .addFunction("AddConvexCollider", &CCollider::AddConvexCollider)
        .addFunction("AddBoxCollider", &CCollider::AddBoxCollider)
        .addFunction("AddConcaveCollider", &CCollider::AddConcaveCollider)
+       .addFunction("CollideWith", &CCollider::CollideWith)
        .endClass();
 
     getGlobalNamespace(Lbuff)
