@@ -2,9 +2,8 @@
 #include "GameObjectFactory.h"
 #include <nlohmann/json.hpp>
 #include <filesystem>
-
-#if _DEBUG
 #include <iostream>
+#if _DEBUG
 #include "Transform.h"
 #endif
 
