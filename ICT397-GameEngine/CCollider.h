@@ -89,7 +89,7 @@ public:
 	void UpdateCollider();
 	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2 , float offsetX = 0, float offsetY = 0, float offsetZ = 0, bool autoSize = false, int layer = 1, bool allowRotation = true);
 	void AddConvexCollider();
-	void AddConcaveCollider();
+	void AddConcaveCollider(int layer);
 	void CollideWith(int layerToCollideWith);
 
 };

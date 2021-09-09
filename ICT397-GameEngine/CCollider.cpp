@@ -194,7 +194,7 @@ void CCollider::AddConvexCollider()
 	col = colBody->addCollider(convexCollider, reactphysics3d::Transform::identity());
 }
 
-void CCollider::AddConcaveCollider()
+void CCollider::AddConcaveCollider(int layer)
 {
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
 	auto totalFaces = model->numberOfFaces;
@@ -221,6 +221,10 @@ void CCollider::AddConcaveCollider()
 	concaveMesh = COLLISION->physicsCommon.createConcaveMeshShape(triangleMesh);
 
 	col = colBody->addCollider(concaveMesh, reactphysics3d::Transform::identity());
+
+	col->setCollisionCategoryBits(layer);
+	col->setCollideWithMaskBits(0);
+
 }
 
 void CCollider::CollideWith(int layerToCollideWith)

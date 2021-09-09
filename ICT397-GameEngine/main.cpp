@@ -4,8 +4,8 @@
 int main(int argc, char* args[])
 {
 	Engine engine;
-	int windowWidth = 1700;
-	int windowHeight = 900;
+	int windowWidth = 700;
+	int windowHeight = 700;
 
 	return engine.OnExecute(GraphicsLibrary::OPENGL, windowWidth, windowHeight);
 }
