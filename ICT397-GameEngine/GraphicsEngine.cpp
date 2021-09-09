@@ -138,12 +138,15 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	
 	Vector3f light1pos = GAMEOBJECT->GetGameObject("light1")->GetTransform()->GetWorldTransform().GetPosition();
 	Vector3f light2pos = GAMEOBJECT->GetGameObject("light2")->GetTransform()->GetWorldTransform().GetPosition();
+	Vector3f whitelightpos = GAMEOBJECT->GetGameObject("whitelight")->GetTransform()->GetWorldTransform().GetPosition();
 	// temp lighting stuff. update these values with light objects/components
 	shader->setVec3("ambientLightColor", glm::vec3(0.1, 0.1, 0.1));
 	shader->setVec3("lightPos1", glm::vec3(light1pos.GetX(), light1pos.GetY(), light1pos.GetZ()));
 	shader->setVec3("lightPos2", glm::vec3(light2pos.GetX(), light2pos.GetY(), light2pos.GetZ()));
+	shader->setVec3("whitelightpos", glm::vec3(whitelightpos.GetX(), whitelightpos.GetY(), whitelightpos.GetZ()));
 	shader->setVec3("lightColor1", glm::vec3(0, 0.1, 0.7));
 	shader->setVec3("lightColor2", glm::vec3(0, 0.4, 0));
+	shader->setVec3("whitelightColor", glm::vec3(1, 1, 1));
 	
 	shader->setMat4("projection", GetProjection());
 	
@@ -388,7 +391,7 @@ glm::mat4 GraphicsEngine::GetProjection()
 {
 	return glm::perspective(
 		m_camera->GetCamera().FOV, 
-		((float)GRAPHICS->m_windowHeight / GRAPHICS->m_windowWidth), 
+		((float)GRAPHICS->m_windowWidth / GRAPHICS->m_windowHeight), 
 		m_camera->GetCamera().NearClip, 
 		m_camera->GetCamera().FarClip
 	);
