@@ -61,7 +61,7 @@ GetGameObject("barrel"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("barrel2"):SetStatic(true)
 GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
-GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,2)
+GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("barrel2"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("goblin1")
@@ -110,7 +110,7 @@ GetGameObject("toilet_block"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("spiked_door_toilet"):SetStatic(true)
 GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_toilet")
-GetGameObject("spiked_door_toilet"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("spiked_door_toilet"):AddCCollider():AddConcaveCollider(2)
 GetGameObject("spiked_door_toilet"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("spiked_door_bar"):SetStatic(true)
