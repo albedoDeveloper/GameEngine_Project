@@ -20,7 +20,8 @@ void DeltaTime::UpdateDeltaTime()
     LAST = NOW;
     NOW = SDL_GetPerformanceCounter();
 
-    deltaTime = ((double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency()));
+    deltaTime = std::min<double>((double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency()),0.29);
+    
 }
 
 double DeltaTime::GetDeltaTime()
