@@ -160,13 +160,13 @@ void Engine::OnRender()
 	GRAPHICS->shader->setShaderInt("material.texture_specular1", 1);
 	Vector3f whitelightpos = GAMEOBJECT->GetGameObject("whitelight")->GetTransform()->GetWorldTransform().GetPosition();
 	// temp lighting stuff. update these values with light objects/components
-	GRAPHICS->shader->setVec3("light.position", glm::vec3(whitelightpos.GetX(), whitelightpos.GetY(), whitelightpos.GetZ()));
-	GRAPHICS->shader->setVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
-	GRAPHICS->shader->setVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f)); // darken diffuse light a bit
-	GRAPHICS->shader->setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-	GRAPHICS->shader->SetFloat("light.constant", 1.0f);
-	GRAPHICS->shader->SetFloat("light.linear", 0.09f);
-	GRAPHICS->shader->SetFloat("light.quadratic", 0.032f);
+	GRAPHICS->shader->setVec3("pointLights[0].position", glm::vec3(whitelightpos.GetX(), whitelightpos.GetY(), whitelightpos.GetZ()));
+	GRAPHICS->shader->setVec3("pointLights[0].ambient", glm::vec3(0.2f, 0.2f, 0.2f));
+	GRAPHICS->shader->setVec3("pointLights[0].diffuse", glm::vec3(0.5f, 0.5f, 0.5f)); // darken diffuse light a bit
+	GRAPHICS->shader->setVec3("pointLights[0].specular", glm::vec3(1.0f, 1.0f, 1.0f));
+	GRAPHICS->shader->SetFloat("pointLights[0].constant", 1.0f);
+	GRAPHICS->shader->SetFloat("pointLights[0].linear", 0.09f);
+	GRAPHICS->shader->SetFloat("pointLights[0].quadratic", 0.032f);
 
 	GRAPHICS->shader->SetFloat("material.shininess", 16);
 
