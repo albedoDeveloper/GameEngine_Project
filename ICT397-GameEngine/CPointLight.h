@@ -4,7 +4,7 @@
 
 struct PointLight
 {
-	float ambient;
+	float ambientStrength;
 	Vector3f diffuseColour;
 	Vector3f specularColour;
 

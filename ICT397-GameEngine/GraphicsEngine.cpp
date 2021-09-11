@@ -86,7 +86,7 @@ int GraphicsEngine::AddPointLight(CPointLight* light)
 
 	shader->useShaderForLoop();
 	shader->setShaderInt("numOfPointLights", numpointLights);
-	GRAPHICS->shader->setShaderFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambient", light->LightInfo.ambient);
+	GRAPHICS->shader->setShaderFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
 	GRAPHICS->shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].diffuse", glm::vec3(
 		light->LightInfo.diffuseColour.GetX(),
 		light->LightInfo.diffuseColour.GetY(),
