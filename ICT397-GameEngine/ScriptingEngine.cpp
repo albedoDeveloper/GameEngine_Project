@@ -162,6 +162,8 @@ lua_State* ScriptingEngine::NewState()
         .beginClass<Component>("Component")
         .endClass()
         .deriveClass<CPointLight, Component>("CPointLight")
+            .addFunction("AssignColour", &CPointLight::AssignColour)
+            .addFunction("AssignAmbientStrength", &CPointLight::AssignAmbientStrength)
         .endClass();
 
     getGlobalNamespace(Lbuff)

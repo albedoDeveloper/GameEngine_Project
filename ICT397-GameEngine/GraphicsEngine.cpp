@@ -83,14 +83,10 @@ void GraphicsEngine::UpdateViewPos() const
 int GraphicsEngine::AddPointLight(CPointLight* light)
 {
 	int numpointLights = m_lightManager.AddPointLight(light);
+
 	shader->useShaderForLoop();
 	shader->setShaderInt("numOfPointLights", numpointLights);
-
-	GRAPHICS->shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].ambient", glm::vec3(
-		light->LightInfo.ambientColour.GetX(),
-		light->LightInfo.ambientColour.GetY(),
-		light->LightInfo.ambientColour.GetZ()
-	));
+	GRAPHICS->shader->setShaderFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambient", light->LightInfo.ambient);
 	GRAPHICS->shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].diffuse", glm::vec3(
 		light->LightInfo.diffuseColour.GetX(),
 		light->LightInfo.diffuseColour.GetY(),

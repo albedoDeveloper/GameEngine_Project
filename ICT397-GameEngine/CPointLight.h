@@ -4,7 +4,7 @@
 
 struct PointLight
 {
-	Vector3f ambientColour;
+	float ambient;
 	Vector3f diffuseColour;
 	Vector3f specularColour;
 
@@ -20,6 +20,11 @@ public:
 	CPointLight(Transform* parent, GameObject* parentObj);
 
 	void Update();
+
+	void AssignColour(float r, float g, float b);
+
+	// 0 to 1
+	void AssignAmbientStrength(float strength);
 
 	PointLight LightInfo;
 
