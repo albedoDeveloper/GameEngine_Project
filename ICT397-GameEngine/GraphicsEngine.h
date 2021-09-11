@@ -233,6 +233,10 @@ public:
 
 	void Close();
 
+	glm::mat4 GetProjection();
+
+	glm::mat4 GetView();
+
 	Shader* shader = nullptr;
 	
 	Shader* debugShader = nullptr;
@@ -266,13 +270,6 @@ private:
 	 * @brief Renders debug colliders
 	*/
 	void DrawDebug(glm::mat4 projection, glm::mat4 view);
-
-
-	glm::mat4 GetProjection();
-
-
-	glm::mat4 GetView();
-
 };
 
 #define GRAPHICS GraphicsEngine::instance()
