@@ -117,7 +117,7 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 
 	if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() != nullptr)
 	{
-		auto minMax = this->GetParentObject()->GetCStaticMesh()->m_model->minMax;
+		auto minMax = this->GetParentObject()->GetCStaticMesh()->m_model->m_minMax;
 		
 		x = (minMax[1] - minMax[0]) / 2.0f;
 		y = (minMax[3] - minMax[2]) / 2.0f;
@@ -146,8 +146,8 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 void CCollider::AddConvexCollider()
 {
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
-	auto totalFaces = model->numberOfFaces;
-	polyFace = new reactphysics3d::PolygonVertexArray::PolygonFace[model->numberOfFaces];
+	auto totalFaces = model->m_numberOfFaces;
+	polyFace = new reactphysics3d::PolygonVertexArray::PolygonFace[model->m_numberOfFaces];
 	reactphysics3d::PolygonVertexArray::PolygonFace* faces = polyFace;
 	std::vector<float> vertices;
 	std::vector<int> indices;
@@ -155,14 +155,6 @@ void CCollider::AddConvexCollider()
 
 	for (int i = 0; i < model->GetMesh()[0].vertices.size(); i++)
 	{
-		/*for (int j = 1; j < model->GetMesh()[0].vertices.size() - 1; j++)
-		{
-			if (model->GetMesh()[0].vertices[j].Position.x == model->GetMesh()[0].vertices[i].Position.x && model->GetMesh()[0].vertices[j].Position.y == model->GetMesh()[0].vertices[i].Position.y && model->GetMesh()[0].vertices[j].Position.z == model->GetMesh()[0].vertices[i].Position.z)
-			{
-				breaktime = true;
-			}
-		}*/
-
 		if (!breaktime)
 		{
 			vertices.emplace_back(model->GetMesh()[0].vertices[i].Position.x);
@@ -178,7 +170,7 @@ void CCollider::AddConvexCollider()
 		indices.emplace_back(model->GetMesh()[0].indices[i]);
 	}
 
-	for (unsigned int i = 0; i < model->numberOfFaces; i++)
+	for (unsigned int i = 0; i < model->m_numberOfFaces; i++)
 	{
 		faces->indexBase = i * 3;
 		faces->nbVertices = 4;
@@ -197,7 +189,7 @@ void CCollider::AddConvexCollider()
 void CCollider::AddConcaveCollider(int layer)
 {
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
-	auto totalFaces = model->numberOfFaces;
+	auto totalFaces = model->m_numberOfFaces;
 
 	for (int i = 0; i < model->GetMesh()[0].vertices.size(); i++)
 	{
