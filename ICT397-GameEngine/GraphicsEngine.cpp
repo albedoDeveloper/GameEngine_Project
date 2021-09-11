@@ -147,6 +147,15 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	shader->setVec3("lightColor1", glm::vec3(0, 0.1, 0.7));
 	shader->setVec3("lightColor2", glm::vec3(0, 0.4, 0));
 	shader->setVec3("whitelightColor", glm::vec3(1, 1, 1));
+	Vector3f viewPostVec = GAMEOBJECT->GetGameObject("player")->GetComponent<CCamera>()->GetTransform().GetPosition();
+	shader->setVec3(
+		"viewPos",
+		glm::vec3(
+			viewPostVec.GetX(),
+			viewPostVec.GetY(),
+			viewPostVec.GetZ()
+		)
+	);
 	
 	shader->setMat4("projection", GetProjection());
 	
@@ -274,8 +283,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glClearColor(0.4, 0.2, 0.7, 1);
 
-	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
-	debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/debugColourShader.fs");
+	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/lit.frag");
+	debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/unlit.frag");
 	
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.jpg",

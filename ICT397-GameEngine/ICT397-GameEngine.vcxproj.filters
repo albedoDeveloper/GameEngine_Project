@@ -240,13 +240,13 @@
     <None Include="..\Assets\Scripts\waterInteraction.lua" />
     <None Include="..\Assets\Scripts\acidInteract.lua" />
     <None Include="..\Assets\Scripts\loadButton.lua" />
-    <None Include="ModernOpenGL\colourShader.fs">
+    <None Include="ModernOpenGL\lit.frag">
       <Filter>ModernOpenGl</Filter>
     </None>
-    <None Include="ModernOpenGL\vertexShader.vs">
+    <None Include="ModernOpenGL\vertexShader.vert">
       <Filter>ModernOpenGl</Filter>
     </None>
-    <None Include="ModernOpenGL\debugColourShader.fs">
+    <None Include="ModernOpenGL\unlit.frag">
       <Filter>ModernOpenGl</Filter>
     </None>
   </ItemGroup>
