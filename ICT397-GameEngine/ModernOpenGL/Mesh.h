@@ -22,7 +22,6 @@ struct Texture
     std::string path;  // we store the path of the texture to compare with other textures
 };
 
-
 class Mesh
 {
 public:
@@ -31,14 +30,7 @@ public:
     std::vector<unsigned int> indices;
     std::vector<Texture>      textures;
 
-    Mesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices, const std::vector<Texture>& textures)
-    {
-        this->vertices = vertices;
-        this->indices = indices;
-        this->textures = textures;
-
-        SetupMesh();
-    };
+    Mesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices, const std::vector<Texture>& textures);
 
     void Draw(Shader& shader, int text);
     
