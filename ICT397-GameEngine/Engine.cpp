@@ -167,6 +167,7 @@ void Engine::OnRender()
 	GRAPHICS->shader->SetFloat("pointLights[0].constant", 1.0f);
 	GRAPHICS->shader->SetFloat("pointLights[0].linear", 0.09f);
 	GRAPHICS->shader->SetFloat("pointLights[0].quadratic", 0.032f);
+	GRAPHICS->shader->setShaderInt("numOfPointLights", 1);
 
 	GRAPHICS->shader->SetFloat("material.shininess", 16);
 

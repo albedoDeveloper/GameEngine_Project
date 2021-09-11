@@ -23,7 +23,7 @@ struct PointLight
 
 vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
 
-#define NR_POINT_LIGHTS 4  
+#define NR_POINT_LIGHTS 3 
 uniform PointLight pointLights[NR_POINT_LIGHTS];
 
 layout(location = 0) out vec4 FragColor;
@@ -35,6 +35,7 @@ in vec3 FragPos;
 uniform Material material;
 uniform vec3 ambientLightColor;
 uniform vec3 viewPos;
+uniform int numOfPointLights;
 
 void main()
 {
@@ -43,7 +44,7 @@ void main()
     vec3 viewDir = normalize(viewPos - FragPos);
     vec3 result;
 
-//    for(int i = 0; i < NR_POINT_LIGHTS; i++)
+    for(int i = 0; i < numOfPointLights; i++)
         result += CalcPointLight(pointLights[0], norm, FragPos, viewDir); 
     
     FragColor = vec4(result, texture(material.texture_diffuse1, TexCoords).w);
