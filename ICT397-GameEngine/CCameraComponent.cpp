@@ -18,21 +18,6 @@ void CCamera::Start()
     //SetAsCurrentCamera();
 }
 
-void CCamera::Update()
-{
-
-    //m_camera.Transf.SetPositionV( m_parent->GetTransform()->GetPosition());
-    //m_camera.Transf.SetRotation(m_parent->GetTransform()->GetRotation());
-}
-
-void CCamera::Render()
-{
-}
-
-void CCamera::LateRender()
-{
-}
-
 void CCamera::DrawToImGui()
 {
     //ImGui::Text("staticMesh TREE");

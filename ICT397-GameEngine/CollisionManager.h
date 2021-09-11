@@ -1,6 +1,5 @@
 #pragma once
 #include "CCollider.h"
-#include "CTerrain.h"
 #include <vector>
 #include "DeltaTime.h"
 

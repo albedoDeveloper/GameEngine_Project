@@ -47,6 +47,4 @@ void Component::DrawToImGui()
 {
 	//ImGui::Indent();
 	ImGui::Text("Default Component");
-
-
 }

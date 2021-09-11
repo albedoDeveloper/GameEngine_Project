@@ -4,18 +4,13 @@
 #include "CStaticMesh.h"
 #include "CUserInterface.h"
 #include "CScript.h"
-#include "CStateMachineAI.h"
 #include "CCharacterComponent.h"
 #include "CGridComponent.h"
 #include "InputManager.h"
 #include "CCollider.h"
-#include "CWater.h"
 #include "Engine.h"
-#include "CSpotlight.h"
-
-#if _DEBUG
 #include <iostream>
-#endif
+
 
 Engine* ScriptingEngine::m_engine = nullptr;
 
@@ -106,25 +101,18 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("AddCStaticMesh", &GameObject::AddCStaticMesh)
             .addFunction("GetCStaticMesh", &GameObject::GetCStaticMesh)
             .addFunction("AddCScript", &GameObject::AddCScript)
-            .addFunction("AddCStateMachineAI", &GameObject::AddCStateMachineAI)
-            .addFunction("GetCStateMachineAI", &GameObject::GetCStateMachineAI)
             .addFunction("AddCUserInterface", &GameObject::AddCUserInterface)
             .addFunction("GetCUserInterface", &GameObject::GetCUserInterface)
             .addFunction("AddCCharacter", &GameObject::AddCCharacter)
             .addFunction("AddCCameraComponent", &GameObject::AddCCameraComponent)
-            .addFunction("AddCTerrainBruteForce", &GameObject::AddCTerrainBruteForce)
-            .addFunction("GetCTerrainBruteForce", &GameObject::GetCTerrainBruteForce)
             .addFunction("AddCGridComponent", &GameObject::AddCGridComponent)
             .addFunction("GetTransform", &GameObject::GetTransform)
             .addFunction("GetClosestObject", &GameObject::GetClosestObject)
             .addFunction("GetCCamera", &GameObject::GetCCamera)
             .addFunction("GetCCharacter", &GameObject::GetCCharacter)
             .addFunction("AddCCollider", &GameObject::AddCCollider)
-            .addFunction("AddCSpotlight", &GameObject::AddCSpotlight)
-            .addFunction("GetCSpotlight", &GameObject::GetCSpotlight)
             .addFunction("AddCPointLight", &GameObject::AddCPointLight)
             .addFunction("GetCPointLight", &GameObject::GetCPointLight)
-            .addFunction("AddCWaterComponent", &GameObject::AddCWaterComponent)
             .addFunction("SetActive", &GameObject::SetActive)
             .addFunction("SetDifficulty", &GameObject::SetDifficulty)
             .addFunction("GetDifficulty", &GameObject::GetDifficulty)
@@ -161,10 +149,6 @@ lua_State* ScriptingEngine::NewState()
         .deriveClass<CStaticMesh,Component>("CStaticMesh")
             .addFunction("AssignModel", &CStaticMesh::AssignModelByKey)
             .addFunction("GetModel", &CStaticMesh::GetModel)
-        .endClass()
-        .deriveClass<CWater, Component>("CWater")
-            .addFunction("AssignModel", &CStaticMesh::AssignModelByKey)
-            .addFunction("GetModel", &CStaticMesh::GetModel)
         .endClass();
 
     getGlobalNamespace(Lbuff)
@@ -183,16 +167,6 @@ lua_State* ScriptingEngine::NewState()
     getGlobalNamespace(Lbuff)
         .beginClass<Component>("Component")
         .endClass()
-        .deriveClass<CStateMachineAI, Component>("CStateMachineAI")
-            .addFunction("AssignScript", &CStateMachineAI::AssignScriptByKey)
-            .addFunction("SetCurrentState", &CStateMachineAI::SetCurrentState)
-            .addFunction("GetCurrentState", &CStateMachineAI::GetCurrentState)
-            .addFunction("RunCurrentState", &CStateMachineAI::RunCurrentState)
-        .endClass();
-
-    getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
-        .endClass()
         .deriveClass<CSound, Component>("CSound")
         .addFunction("LoadSound", &CSound::LoadSound)
         .addFunction("PlaySound", &CSound::PlaySound)
@@ -202,26 +176,10 @@ lua_State* ScriptingEngine::NewState()
         .beginClass<Component>("Component")
         .endClass()
         .deriveClass<CUserInterface, Component>("CUserInterface")
-        .addFunction("SetVisibility", &CUserInterface::SetVisibility)
-        .addFunction("AssignTexture", &CUserInterface::AssignTexture)
         .addFunction("SetSize", &CUserInterface::SetSize)
         .addFunction("SetFullscreen", &CUserInterface::SetFullscreen)
         .addFunction("MouseClicked", &CUserInterface::MouseClicked)
         .addFunction("SetPosition", &CUserInterface::SetPosition)
-        .endClass();
-
-   getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
-        .endClass()
-        .deriveClass<CBaseTerrain, Component>("CTerrain")
-            .addFunction("GetHeightAtPosition", &CBaseTerrain::GetHeightAtPosition)
-            .addFunction("GetHeightBilinear", &CBaseTerrain::GetHeightBilinear)
-        .endClass()
-        .deriveClass<CTerrainBruteForce, CBaseTerrain>("CTerrainBruteForce")
-            .addFunction("AssignHeightMap", &CTerrainBruteForce::AssignHeightMapByKey)
-            .addFunction("GetHeightMap", &CTerrainBruteForce::GetHeightMap)
-            .addFunction("SetDisplayMode", &CTerrainBruteForce::SetDisplayMode)
-            .addFunction("GetDisplayWireframe", &CTerrainBruteForce::GetDisplayWireframe)
         .endClass();
 
    getGlobalNamespace(Lbuff)
@@ -237,12 +195,6 @@ lua_State* ScriptingEngine::NewState()
     getGlobalNamespace(Lbuff)
         .beginClass<Component>("Component")
         .endClass()
-        .deriveClass<CSpotlight, Component>("CSpotlight")
-        .endClass();
-
-    getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
-        .endClass()
         .deriveClass<CGridComponent, Component>("CGridComponent")
         .endClass();
 
@@ -250,14 +202,6 @@ lua_State* ScriptingEngine::NewState()
         .beginClass<Asset>("Asset")
         .endClass()
         .deriveClass<Model, Component>("AModel")
-        .endClass();
-
-	getGlobalNamespace(Lbuff)
-        .beginClass<Asset>("Asset")
-        .endClass()
-        .deriveClass<AHeightMap, Component>("AHeightMap")
-            .addFunction("AssignTexture", &AHeightMap::AssignTextureKey)
-            .addFunction("AssignDetailMap", &AHeightMap::AssignDetailMapKey)
         .endClass();
 
     return Lbuff;

@@ -53,11 +53,6 @@ bool GraphicsEngine::initLighting()
 	//return InitOpenGLlighting();
 }
 
-void GraphicsEngine::UpdateSpotlight(const CSpotlight * light)
-{
-}
-
-
 void GraphicsEngine::newFrame(bool debugMenu) 
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

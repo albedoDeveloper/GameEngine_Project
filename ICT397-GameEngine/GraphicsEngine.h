@@ -4,7 +4,6 @@
 #include "ModernOpenGL/Model.h"
 #include "AModel.h"
 #include "Color.h"
-#include "CSpotlight.h"
 
 #include <SDL2/SDL.h>
 #include "GraphicsLibraryEnum.h"
@@ -159,11 +158,6 @@ public:
 	 * @return the camerca currently in use
 	*/
 	CCamera* GetDisplayCamera();
-	/**
-	 * @brief sets up a spotlight within the scene
-	 * @param light the spotlight to set up
-	*/
-	void UpdateSpotlight(const CSpotlight* light);
 	/**
 	 * @brief Draws a model asset on the screen
 	 * @param model The model to draw

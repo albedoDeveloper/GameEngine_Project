@@ -3,8 +3,6 @@
 #include "Component.h"
 #include "CollisionManager.h"
 #include "CCollider.h"
-//Debug
-//#include "GameObject.h"
 
 /**
  * @brief A component representing a character capable of moving
@@ -65,14 +63,6 @@ public:
 	 * @brief updates ongoing behaviour for the component
 	*/
 	void Update();
-	/**
-	 * @brief displays the component on the screen, if visible
-	*/
-	void Render();
-	/**
-	 * @brief displays the component after other components are displayed
-	*/
-	virtual void LateRender();
 
 	/**
 	 * @brief saves the component

@@ -13,20 +13,3 @@ CPointLight::CPointLight(Transform* parent, GameObject* parentObj)
 	LightInfo.quadratic = 0.032f;
 	GRAPHICS->AddPointLight(this);
 }
-
-void CPointLight::Start()
-{
-}
-
-void CPointLight::Update()
-{
-	
-}
-
-void CPointLight::Render()
-{
-}
-
-void CPointLight::LateRender()
-{
-}

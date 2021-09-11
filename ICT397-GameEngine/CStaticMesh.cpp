@@ -2,12 +2,7 @@
 #include "GraphicsEngine.h"
 #include "GameAssetFactory.h"
 #include "GameObject.h"
-
-
-
-#if _DEBUG
 #include <iostream>
-#endif
 
 CStaticMesh::CStaticMesh(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj}, m_model{ nullptr }
@@ -31,49 +26,10 @@ Model* CStaticMesh::AssignModelByKey(std::string modelKey)
 	return m_model;
 }
 
-void CStaticMesh::Start()
-{
-}
-
-void CStaticMesh::Update()
-{
-	//if (m_parent->getFactoryKey().compare("goblin 1") == 0)
-	{
-	//std::cout << m_parent->getFactoryKey() << ": ";
-	//std::cout << RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetX()) << " " <<
-	//	RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetY()) << " " <<
-	//		RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
-
-		//std::cout << m_parent->getFactoryKey() << ": ";
-		//std::cout << m_parent->GetTransform()->GetPosition().GetX() << " " <<
-		//	m_parent->GetTransform()->GetPosition().GetY() << " " <<
-		//	m_parent->GetTransform()->GetPosition().GetZ() << " " << std::endl;
-
-		//std::cout << m_parent->getFactoryKey() << ": ";
-		//std::cout << m_transform.GetPosition().GetX() << " " <<
-		//	m_transform.GetPosition().GetY() << " " <<
-		//	m_transform.GetPosition().GetZ() << " " << std::endl;
-
-//		std::cout << m_parent->getFactoryKey() << ": ";
-//std::cout << RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetX()) << " " <<
-//	RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetY()) << " " <<
-//		RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
-
-	//		std::cout << m_parent->getFactoryKey() << ": ";
-	//std::cout << RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetX()) << " " <<
-	//	RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetY()) << " " <<
-	//		RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
-
-	}
-}
-
 void CStaticMesh::Render()
 {
 	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform());
 }
-
-void CStaticMesh::LateRender()
-{}
 
 void CStaticMesh::Save(nlohmann::json& j)
 {
@@ -96,6 +52,5 @@ void CStaticMesh::DrawToImGui()
 	{
 		ImGui::Text("Model Name : "); ImGui::SameLine(); ImGui::Text(m_model->key.c_str());
 		ImGui::TreePop();
-
 	}
 }

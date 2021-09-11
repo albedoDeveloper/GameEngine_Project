@@ -19,20 +19,10 @@ void CScript::Start()
 
 void CScript::Update()
 {
-	// TODO real delta time
-	float fakeDeltaTime = 0.5f;
 	double deltaTime = TIME->GetDeltaTime();
 
 	LuaRef update = getGlobal(m_L, "Update");
 	update(m_parent, deltaTime, INPUT);
-}
-
-void CScript::Render()
-{
-}
-
-void CScript::LateRender()
-{
 }
 
 void CScript::Save(nlohmann::json& j)

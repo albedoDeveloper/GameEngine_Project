@@ -1,13 +1,10 @@
 #include "CCharacterComponent.h"
 #include "GameObject.h"
-//debug
 #include "GraphicsEngine.h"
 #include "InputManager.h"
 #include "DeltaTime.h"
-
-#if _DEBUG
 #include <iostream>
-#endif
+
 
 CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }, 
@@ -180,13 +177,6 @@ void CCharacter::Update()
 	}
 }
 
-void CCharacter::Render()
-{
-}
-
-void CCharacter::LateRender()
-{}
-
 void CCharacter::Save(nlohmann::json& j)
 {
 	m_savedHitpoints = m_hitpoints;
@@ -216,14 +206,12 @@ void CCharacter::DrawToImGui()
 		// Drags
 		float drag_max_speed = m_maxSpeed;
 
-
 		ImGui::PushItemWidth(50);
 
 		ImGui::Text("Max Speed "); ImGui::SameLine();
 		ImGui::DragFloat("##maxSpeed", &m_maxSpeed, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", maxSpeedFlag);
 
 		ImGui::TreePop();
-
 	}
 }
 

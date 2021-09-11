@@ -50,10 +50,6 @@ void CSound::PlaySound(std::string soundName, int length, bool positional)
 		std::cout << soundName << " sound is not loaded!" << std::endl;
 }
 
-void CSound::Start()
-{
-}
-
 void CSound::Update()
 {
 	for(int i = 0; i < soundinfo.size(); i++)
@@ -89,13 +85,4 @@ void CSound::Update()
 			std::cout << "ERROR Mix_SetPosition: " << Mix_GetError() << std::endl;
 		}
 	}
-
-}
-
-void CSound::Render()
-{
-}
-
-void CSound::LateRender()
-{
 }

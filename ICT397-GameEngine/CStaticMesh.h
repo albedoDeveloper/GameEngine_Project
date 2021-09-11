@@ -31,22 +31,9 @@ public:
 	Model* AssignModelByKey(std::string modelKey);
 
 	/**
-	 * @brief initialises the mesh at program start
-	*/
-	virtual void Start();
-	/**
-	 * @brief updates ongoing behaviour for the mesh each frame
-	*/
-	virtual void Update();
-	/**
 	 * @brief displays the mesh's model on the screen
 	*/
 	virtual void Render();
-
-	/**
-	 * @brief render called after the first render
-	*/
-	virtual void LateRender();
 
 	/**
 	 * @brief saves the component
@@ -67,7 +54,4 @@ public:
  * @brief the model this mesh is storing
 */
 	Model* m_model;
-
-protected:
-
 };

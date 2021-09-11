@@ -89,7 +89,7 @@ SpawnGameObject("back_wall"):SetStatic(true)
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
 
 SpawnGameObject("whitelight"):SetStatic(true)
-GetGameObject("whitelight"):AddCPointLight():AssignColour(0.8,0.8,0.8)
+GetGameObject("whitelight"):AddCPointLight()
 GetGameObject("whitelight"):GetTransform():Translate(-1,2,1)
 GetGameObject("whitelight"):AddCStaticMesh():AssignModel("axis")
 

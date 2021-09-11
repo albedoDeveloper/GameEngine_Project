@@ -3,7 +3,6 @@
 #include "Component.h"
 #include "CStaticMesh.h"
 #include "CScript.h"
-#include "CStateMachineAI.h"
 #include "CUserInterface.h"
 #include <unordered_map>
 #include <typeindex>
@@ -12,17 +11,11 @@
 #include "CCharacterComponent.h"
 #include "CCameraComponent.h"
 #include "CGridComponent.h"
-#include "CTerrain.h"
 #include "CCollider.h"
-#include "CSpotlight.h"
-#include "CWater.h"
 #include "CSound.h"
 #include <nlohmann/json.hpp>
 #include "CPointLight.h"
-
-#if _DEBUG
 #include <iostream>
-#endif
 
 /**
  * @brief An object as represented in the game world containing all information on the object itself and its components
@@ -52,16 +45,7 @@ public:
 	 * @return the created script
 	*/
 	CScript* AddCScript();
-	/**
-	 * @brief Adds a state machine AI component
-	 * @return the created AI
-	*/
-	CStateMachineAI* AddCStateMachineAI();
-	/**
-	 * @brief state machine AI accessor
-	 * @return a pointer to the first AI
-	*/
-	CStateMachineAI* GetCStateMachineAI();
+
 	/**
 	 * @brief Adds a user interface component
 	 * @return the created UI
@@ -96,32 +80,10 @@ public:
 	*/
 	CGridComponent* AddCGridComponent();
 	/**
-	 * @brief Adds a bruteforce terrain component
-	 * @return the created terrain
-	*/
-	CTerrainBruteForce* AddCTerrainBruteForce(float xScale, float yScale, float zScale);
-	/**
 	 * @brief Adds a collider component
 	 * @return the created collider
 	*/
 	CCollider* AddCCollider();
-	/**
-	 * @brief Adds a spotlight component
-	 * @return the created spotlight
-	*/
-	CSpotlight* AddCSpotlight();
-
-	/**
-	 * @brief Adds a Water component
-	 * @return the created water component
-	*/
-	CWater* AddCWaterComponent();
-
-	/**
-	 * @brief bruteforce terrain accessor
-	 * @return a pointer to the first bruteforce
-	*/
-	CTerrainBruteForce* GetCTerrainBruteForce();
 
 	CCamera* GetCCamera();
 
@@ -136,12 +98,6 @@ public:
 	CCharacter* GetCCharacter();
 
 	CCollider* GetCCollider();
-
-	/**
-	 * @brief gets the first spotlight component
-	 * @return spotlight component
-	*/
-	CSpotlight* GetCSpotlight();
 
 	void SetParentObject(std::string newParent);
 
@@ -279,9 +235,7 @@ inline T* GameObject::AddComponent(Targs&&... args)
 	}
 	else
 	{
-#if _DEBUG
 		std::cout << "Error: Non component type passed into AddComponent<T>()\n";
-#endif
 
 		return nullptr;
 	}

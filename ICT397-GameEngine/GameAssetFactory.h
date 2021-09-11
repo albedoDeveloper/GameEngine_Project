@@ -7,9 +7,6 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
-
-
-#include "CTerrain.h"
 #include "lodepng.h"
 #include "GraphicsEngine.h"
 #include "AModel.h"

@@ -16,15 +16,6 @@ CScript* GameObject::AddCScript()
 	return AddComponent<CScript>();
 }
 
-CStateMachineAI* GameObject::AddCStateMachineAI()
-{
-	return AddComponent<CStateMachineAI>();
-}
-
-CStateMachineAI* GameObject::GetCStateMachineAI()
-{
-	return GetComponent<CStateMachineAI>();
-}
 
 CUserInterface* GameObject::AddCUserInterface()
 {
@@ -81,18 +72,6 @@ CGridComponent* GameObject::AddCGridComponent()
 	return AddComponent<CGridComponent>();
 }
 
-CTerrainBruteForce* GameObject::AddCTerrainBruteForce(float xScale, float yScale, float zScale)
-{
-	CTerrainBruteForce* t = AddComponent<CTerrainBruteForce>();
-	t->GetTransform().SetScale(Vector3f(xScale, yScale, zScale));
-	return t;
-}
-
-CTerrainBruteForce* GameObject::GetCTerrainBruteForce()
-{
-	return GetComponent<CTerrainBruteForce>();
-}
-
 CCamera* GameObject::GetCCamera()
 {
 	return GetComponent<CCamera>();
@@ -128,16 +107,6 @@ CCollider* GameObject::AddCCollider()
 	return AddComponent<CCollider>();
 }
 
-CSpotlight* GameObject::AddCSpotlight()
-{
-	return AddComponent<CSpotlight>();
-}
-
-CSpotlight* GameObject::GetCSpotlight()
-{
-	return GetComponent<CSpotlight>();
-}
-
 void GameObject::SetParentObject(std::string newParent)
 {
 	GameObject* otherObject = GAMEOBJECT->GetGameObject(newParent);
@@ -147,11 +116,6 @@ void GameObject::SetParentObject(std::string newParent)
 		exit(-25);
 	}
 	m_transform.SetParent(otherObject->GetTransform());
-}
-
-CWater* GameObject::AddCWaterComponent()
-{
-	return AddComponent<CWater>();
 }
 
 std::string GameObject::getFactoryKey() {

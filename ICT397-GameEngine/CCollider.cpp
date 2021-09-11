@@ -41,15 +41,6 @@ void CCollider::Update()
 	}
 }
 
-void CCollider::Render()
-{
-
-}
-
-void CCollider::LateRender()
-{
-}
-
 void CCollider::Save(nlohmann::json& j)
 {
 	GameObject* g = GetParentObject();

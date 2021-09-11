@@ -33,21 +33,8 @@ class CGridComponent : public Component
          * @param parentObj The parent object for this component
         */
         CGridComponent(Transform* parent, GameObject* parentObj);
-
-        /**
-          * @brief Initialises the component at program start
-         */
-        void Start();
-        /**
-         * @brief updates ongoing behaviour for the component
-        */
-        void Update();
         /**
          * @brief displays the component on the screen, if visible
         */
         void Render();
-        /**
-         * @brief displays the component after other components are displayed
-        */
-        virtual void LateRender();
 };
