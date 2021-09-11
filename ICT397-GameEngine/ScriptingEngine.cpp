@@ -251,7 +251,6 @@ lua_State* ScriptingEngine::NewState()
         .beginClass<Asset>("Asset")
         .endClass()
         .deriveClass<Model, Component>("AModel")
-            .addFunction("AssignTexture", &Model::AssignTextureKey)
         .endClass();
 
 	getGlobalNamespace(Lbuff)

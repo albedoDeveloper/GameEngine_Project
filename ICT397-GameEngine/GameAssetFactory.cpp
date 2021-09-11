@@ -1,9 +1,5 @@
 #include "GameAssetFactory.h"
-
-
-#if _DEBUG
 #include <iostream>
-#endif
 
 GameAssetFactory* GameAssetFactory::Instance()
 {
@@ -15,13 +11,9 @@ void GameAssetFactory::LoadModel(std::string key, std::string filePath)
 {
     if (CheckName(key))
     {
-#if _DEBUG
         std::cout << "Error: Cannot load model, model name already exists\n";
-#endif
         return;
     }
-
-    //AModel* model = new AModel(key);
 
      Model* model = new Model(filePath,key);
     

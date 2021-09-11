@@ -2,6 +2,13 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stbi_image/stb_image.h>
+Model::Model(std::string path, std::string keyTemp)
+    :Asset{ keyTemp }, key{ keyTemp }
+{
+    info.path = path;
+    loadModel(path);
+}
+
 void Model::Draw(Shader& shader)
 {
     for (unsigned int i = 0; i < meshes.size(); i++)

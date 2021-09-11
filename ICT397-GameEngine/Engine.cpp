@@ -74,14 +74,14 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	COLLISION;
+	COLLISION; //init collision manager
+
 	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
 	{
 		return false;
 	}
 
 	auto gL_version = glGetString(GL_VERSION);
-
 	std::cout << gL_version << std::endl;
 
 	SCRIPT->Initialise(*this);

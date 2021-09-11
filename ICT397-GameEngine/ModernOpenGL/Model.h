@@ -22,17 +22,7 @@ struct modelInfo
 class Model : public Asset
 {
 public:
-    Model(std::string path, std::string keyTemp) :Asset{ keyTemp }
-    {
-        info.path = path;
-        key = keyTemp;
-        loadModel(path);
-    }
-    void AssignTextureKey(std::string)
-    {
-
-    };
-    //Model()
+    Model(std::string path, std::string keyTemp);
 
     void Draw(Shader& shader);
     std::string key;
@@ -47,8 +37,6 @@ private:
     std::vector<Texture> textures_loaded;
     modelInfo info;
 
-
-
     int text;
     std::string texturePath;
 
@@ -57,7 +45,6 @@ private:
     Mesh processMesh(aiMesh* mesh, const aiScene* scene);
     std::vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName);
     unsigned int TextureFromFile(const char* path, const std::string& directory, bool gamma);
-    void calculateMinMax();
 };
 
 #endif

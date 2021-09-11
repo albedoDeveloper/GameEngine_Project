@@ -1,8 +1,8 @@
 
+LoadModel("crate", "crate/crate.fbx")
 LoadModel("tavern_floor", "tavern_floor/tavern_floor.fbx")
 LoadModel("axis", "axis/axis.fbx")
 LoadModel("behind_bar_block", "behind_bar_block/behind_bar_block.fbx")
-LoadModel("crate", "crate/crate.fbx")
 LoadModel("behind_bar_block", "behind_bar_block/behind_bar_block.fbx")
 LoadModel("back_wall", "back_wall/back_wall.fbx")
 LoadModel("bar_floor_rod", "bar_floor_rod/bar_floor_rod.fbx")
@@ -20,8 +20,12 @@ LoadModel("tavern_glass_door_wall", "tavern_glass_door_wall/tavern_glass_door_wa
 LoadModel("tavern_glass_door_wall_long", "tavern_glass_door_wall_long/tavern_glass_door_wall_long.fbx")
 LoadModel("tavern_glass_door_wall_long_2", "tavern_glass_door_wall_long_2/tavern_glass_door_wall_long_2.fbx")
 LoadModel("toilet_block", "toilet_block/toilet_block.fbx")
+LoadModel("waitress", "waitress/waitress.fbx")
 
 LoadScript("rotate", "rotate.lua")
+
+SpawnGameObject("waitress"):SetStatic(true)
+GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
