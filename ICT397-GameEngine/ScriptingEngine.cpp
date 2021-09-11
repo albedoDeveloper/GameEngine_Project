@@ -90,8 +90,6 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("LockCursor", &InputManager::LockCursor)
             .addFunction("CheckCursorLock", &InputManager::CheckCursorLock)
             .addFunction("QuitGame", &InputManager::QuitGame)
-            .addFunction("SaveGame", &InputManager::SaveGame)
-            .addFunction("LoadGame", &InputManager::LoadGame)
         .endClass();
 
     getGlobalNamespace(Lbuff)

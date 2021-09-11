@@ -82,9 +82,6 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 		return false;
 	}
 
-	auto gL_version = glGetString(GL_VERSION);
-	std::cout << gL_version << std::endl;
-
 	SCRIPT->Initialise(*this);
 	SCRIPT->RunInitScript();
 
@@ -102,9 +99,6 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
 	INPUT->LockCursor(true);
-
-	//levelLoader.SaveTest();
-
 
 	return true;
 }
@@ -173,7 +167,6 @@ void Engine::OnRender()
 		//ImGui::ShowDemoWindow();
 
 		levelEditor.DrawEditor();
-
 
 		ImGui::Begin("Debug Menu");                          // Create a window called "Hello, world!" and append into it.
 

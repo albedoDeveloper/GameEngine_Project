@@ -211,6 +211,13 @@ public:
 
 	void Close();
 
+	void GoFullscreen() const
+	{
+		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
+		SDL_Surface* surface = SDL_GetWindowSurface(m_window);
+		SDL_UpdateWindowSurface(m_window);
+	}
+
 	glm::mat4 GetProjection();
 
 	glm::mat4 GetView();

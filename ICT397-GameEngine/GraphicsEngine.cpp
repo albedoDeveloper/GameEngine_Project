@@ -20,7 +20,9 @@ GraphicsEngine::GraphicsEngine()
 	m_skyboxInitialized{ false },
 	m_skyboxTextures{},
 	m_clear_color{ 0.45f, 0.55f, 0.60f, 1.00f },
-	m_imgui_io{}
+	m_imgui_io{},
+	m_windowWidth{},
+	m_windowHeight{}
 {
 }
 
@@ -50,7 +52,6 @@ bool GraphicsEngine::initLighting()
 {
 	glDisable(GL_LIGHTING);
 	return true;
-	//return InitOpenGLlighting();
 }
 
 void GraphicsEngine::newFrame(bool debugMenu) 
@@ -239,12 +240,17 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	}
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 
-	if ((m_window = SDL_CreateWindow("ICT398 - Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
+	if ((m_window = SDL_CreateWindow(
+		"ICT398 - Game Engine", 
+		SDL_WINDOWPOS_CENTERED, 
+		SDL_WINDOWPOS_CENTERED, 
+		windowWidth, windowHeight, 
+		SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
 	{
 		std::cout << "Window could not be created! SDL Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -257,10 +263,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	}
 
 	SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
-	//SDL_SetWindowGrab(m_window, SDL_TRUE);
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
-
 
 	// init imgui
 	InitImGui();
@@ -302,11 +306,6 @@ bool GraphicsEngine::InitDirectX()
 {
 	// out of scope for ICT397
 	return false;
-}
-
-void GraphicsEngine::DrawCollider(float maxX, float maxY, float maxZ, float minX, float minY, float minZ, const Transform& worldT)
-{
-
 }
 
 void GraphicsEngine::InitDebug(std::vector <float> &tempVector)

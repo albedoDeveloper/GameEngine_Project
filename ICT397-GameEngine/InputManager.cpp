@@ -778,13 +778,3 @@ void InputManager::QuitGame()
 {
     m_engine->QuitGame();
 }
-
-void InputManager::SaveGame()
-{
-    m_engine->SaveGame();
-}
-
-void InputManager::LoadGame()
-{
-    m_engine->LoadGame();
-}
