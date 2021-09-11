@@ -84,6 +84,7 @@ void Mesh::Draw(Shader& shader, int text)
         glUniform1i(glGetUniformLocation(shader.ID, (name + number).c_str()), i);
         
         //  bind the texture
+        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textures[i].id);
     }
 

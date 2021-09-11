@@ -139,7 +139,7 @@ void CCharacter::Update()
 		Move(moveVector.GetX(), moveVector.GetY(), moveVector.GetZ());
 	}
 
-	static const float GRAVITY = -9.81f;
+	static const float GRAVITY = 0;
 
 	//newtonian calculations
 	m_velocity = m_velocity * 0.8f; // apply damping factor

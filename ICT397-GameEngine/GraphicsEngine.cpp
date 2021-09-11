@@ -140,13 +140,10 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	Vector3f light2pos = GAMEOBJECT->GetGameObject("light2")->GetTransform()->GetWorldTransform().GetPosition();
 	Vector3f whitelightpos = GAMEOBJECT->GetGameObject("whitelight")->GetTransform()->GetWorldTransform().GetPosition();
 	// temp lighting stuff. update these values with light objects/components
-	shader->setVec3("ambientLightColor", glm::vec3(0.1, 0.1, 0.1));
-	shader->setVec3("lightPos1", glm::vec3(light1pos.GetX(), light1pos.GetY(), light1pos.GetZ()));
-	shader->setVec3("lightPos2", glm::vec3(light2pos.GetX(), light2pos.GetY(), light2pos.GetZ()));
-	shader->setVec3("whitelightpos", glm::vec3(whitelightpos.GetX(), whitelightpos.GetY(), whitelightpos.GetZ()));
-	shader->setVec3("lightColor1", glm::vec3(0, 0.1, 0.7));
-	shader->setVec3("lightColor2", glm::vec3(0, 0.4, 0));
-	shader->setVec3("whitelightColor", glm::vec3(1, 1, 1));
+	shader->setVec3("light.position", glm::vec3(whitelightpos.GetX(), whitelightpos.GetY(), whitelightpos.GetZ()));
+	shader->setVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
+	shader->setVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f)); // darken diffuse light a bit
+	shader->setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
 	Vector3f viewPostVec = GAMEOBJECT->GetGameObject("player")->GetComponent<CCamera>()->GetTransform().GetPosition();
 	shader->setVec3(
 		"viewPos",
@@ -156,6 +153,10 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 			viewPostVec.GetZ()
 		)
 	);
+
+	shader->setShaderInt("material.diffuse", 0);
+	shader->setVec3("material.specular", glm::vec3(0.1f, 0.1f, 0.1f));
+	shader->SetFloat("material.shininess", 32.0f);
 	
 	shader->setMat4("projection", GetProjection());
 	
@@ -163,19 +164,6 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	glm::mat4 trans = glm::mat4(1.0f);
 	
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() , worldTrans.GetPosition().GetY() , worldTrans.GetPosition().GetZ()));
-
-	//trans = glm::rotate(
-	//	trans, worldTrans.GetRotation().GetAxisAngleRadians(), 
-	//	glm::vec3(
-	//		worldTrans.GetRotation().GetAxis().GetX(), 
-	//		worldTrans.GetRotation().GetAxis().GetY(),
-	//		worldTrans.GetRotation().GetAxis().GetZ()
-	//	)
-	//);
-
-	//trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
-	//trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetY(), glm::vec3(0.0, 1.0f, 0.0));
-	//trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
 
 	trans = trans * glm::mat4_cast(glm::conjugate(
 		glm::quat(worldTrans.GetRotation().GetW(), worldTrans.GetRotation().GetX(), worldTrans.GetRotation().GetY(), worldTrans.GetRotation().GetZ())
