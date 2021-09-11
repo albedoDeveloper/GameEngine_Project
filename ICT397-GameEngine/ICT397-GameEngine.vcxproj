@@ -54,6 +54,7 @@
     <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="LightFactory.cpp" />
+    <ClCompile Include="LightManager.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathLibrary.cpp" />
@@ -107,6 +108,7 @@
     <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="LightFactory.h" />
+    <ClInclude Include="LightManager.h" />
     <ClInclude Include="lodepng.h" />
     <ClInclude Include="MathLibrary.h" />
     <ClInclude Include="ModernOpenGL\Mesh.h" />

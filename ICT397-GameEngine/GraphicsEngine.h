@@ -13,9 +13,9 @@
 #include "MultiTexture.h"
 #include "imgui/imgui.h"
 #include "SkyBox.h"
+#include "LightManager.h"
 
 class CCamera;
-class CBaseTerrain;
 
 #define CHECK_GL_ERROR \
 	if (glGetError() == GL_NO_ERROR){printf("GL_NO_ERROR\n");} \
@@ -125,6 +125,9 @@ public:
 	void newFrame(bool debugMenu);
 
 	void UpdateViewPos() const;
+
+	void AddPointLight(CPointLight* light);
+
 	/**
 	 * @brief Renders all visible objects
 	*/
@@ -178,11 +181,6 @@ public:
 	 * @param withTexture whether it should be displayed with a texture or not
 	*/
 	void DrawTerrain();
-
-	/**
-	 * @brief generate display list for a terrain. using brute force method
-	*/
-	void GenDisplayListTerrain(CBaseTerrain* terrain, bool withTexture, bool asWirefram);
 
 	/**
 	 * @brief draw a collider
@@ -256,6 +254,8 @@ private:
 	 * @brief Renders debug colliders
 	*/
 	void DrawDebug(glm::mat4 projection, glm::mat4 view);
+
+	LightManager m_lightManager;
 };
 
 #define GRAPHICS GraphicsEngine::instance()

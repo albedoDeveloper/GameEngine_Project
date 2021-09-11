@@ -84,7 +84,6 @@ AHeightMap* CBaseTerrain::GetHeightMap()
 void CBaseTerrain::SetDisplayMode(bool wireframe)
 {
 	displayWireframe = wireframe;
-	GRAPHICS->GenDisplayListTerrain(this, true, displayWireframe);
 }
 
 bool CBaseTerrain::GetDisplayWireframe()
@@ -141,7 +140,6 @@ CTerrainBruteForce::CTerrainBruteForce(Transform* parentTrans, GameObject* paren
 
 void CTerrainBruteForce::Start()
 {
-	GRAPHICS->GenDisplayListTerrain(this, true, displayWireframe);
 }
 
 void CTerrainBruteForce::Update()

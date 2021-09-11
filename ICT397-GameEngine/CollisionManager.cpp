@@ -2,7 +2,6 @@
 #include "GameObject.h"
 
 CollisionManager::CollisionManager()
-    :m_heightMap{ nullptr }
 {
     physicsWorld = physicsCommon.createPhysicsWorld();
     physicsWorld->setIsDebugRenderingEnabled(true);

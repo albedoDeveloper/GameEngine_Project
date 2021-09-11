@@ -94,6 +94,7 @@
     <ClCompile Include="CPointLight.cpp">
       <Filter>components</Filter>
     </ClCompile>
+    <ClCompile Include="LightManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AHeightMap.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="CPointLight.h">
       <Filter>components</Filter>
     </ClInclude>
+    <ClInclude Include="LightManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\Scripts\displayAtQuit.lua">
