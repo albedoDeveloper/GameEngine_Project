@@ -31,7 +31,7 @@ void CWater::Update()
 
 void CWater::Render()
 {
-	GRAPHICS->DrawModelMovingTexture(m_model, m_transform.GetWorldTransform(), texOffset);
+
 }
 
 void CWater::LateRender()

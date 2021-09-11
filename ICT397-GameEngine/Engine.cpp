@@ -8,6 +8,7 @@
 #include "DeltaTime.h"
 #include "imgui/imgui_impl_sdl.h"
 #include "imgui/imgui_impl_opengl3.h"
+#include <glm/glm/gtc/matrix_transform.hpp>
 
 Engine::Engine()
 	:m_isRunning{ true }, m_saveState{ false }, m_loadState{false}, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
@@ -154,11 +155,32 @@ void Engine::OnLoop()
 
 void Engine::OnRender()
 {
-	/*GRAPHICS->newFrame(m_editMenu);
-	
-	levelEditor.DrawInspector();
+	Vector3f viewPostVec = GAMEOBJECT->GetGameObject("player")->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetPosition();
+	GRAPHICS->shader->setVec3(
+		"viewPos",
+		glm::vec3(
+			viewPostVec.GetX(),
+			viewPostVec.GetY(),
+			viewPostVec.GetZ()
+		)
+	);
 
-	GRAPHICS->endFrame(m_editMenu);*/
+	Vector3f light1pos = GAMEOBJECT->GetGameObject("light1")->GetTransform()->GetWorldTransform().GetPosition();
+	Vector3f light2pos = GAMEOBJECT->GetGameObject("light2")->GetTransform()->GetWorldTransform().GetPosition();
+	Vector3f whitelightpos = GAMEOBJECT->GetGameObject("whitelight")->GetTransform()->GetWorldTransform().GetPosition();
+	// temp lighting stuff. update these values with light objects/components
+	GRAPHICS->shader->setVec3("light.position", glm::vec3(whitelightpos.GetX(), whitelightpos.GetY(), whitelightpos.GetZ()));
+	GRAPHICS->shader->setVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
+	GRAPHICS->shader->setVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f)); // darken diffuse light a bit
+	GRAPHICS->shader->setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+
+	GRAPHICS->shader->setShaderInt("material.diffuse", 0);
+	GRAPHICS->shader->setVec3("material.specular", glm::vec3(0.1f, 0.1f, 0.1f));
+	GRAPHICS->shader->SetFloat("material.shininess", 32.0f);
+
+	GRAPHICS->shader->setMat4("projection", GRAPHICS->GetProjection());
+
+	GRAPHICS->shader->setMat4("view", GRAPHICS->GetView());
 
 	GRAPHICS->newFrame(m_debugMenu);
 	GRAPHICS->renderObjects();

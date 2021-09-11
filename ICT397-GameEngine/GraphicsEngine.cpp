@@ -135,49 +135,18 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	}
 	
 	shader->useShaderForLoop();
-	
-	Vector3f light1pos = GAMEOBJECT->GetGameObject("light1")->GetTransform()->GetWorldTransform().GetPosition();
-	Vector3f light2pos = GAMEOBJECT->GetGameObject("light2")->GetTransform()->GetWorldTransform().GetPosition();
-	Vector3f whitelightpos = GAMEOBJECT->GetGameObject("whitelight")->GetTransform()->GetWorldTransform().GetPosition();
-	// temp lighting stuff. update these values with light objects/components
-	shader->setVec3("light.position", glm::vec3(whitelightpos.GetX(), whitelightpos.GetY(), whitelightpos.GetZ()));
-	shader->setVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
-	shader->setVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f)); // darken diffuse light a bit
-	shader->setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-	Vector3f viewPostVec = GAMEOBJECT->GetGameObject("player")->GetComponent<CCamera>()->GetTransform().GetPosition();
-	shader->setVec3(
-		"viewPos",
-		glm::vec3(
-			viewPostVec.GetX(),
-			viewPostVec.GetY(),
-			viewPostVec.GetZ()
-		)
-	);
 
-	shader->setShaderInt("material.diffuse", 0);
-	shader->setVec3("material.specular", glm::vec3(0.1f, 0.1f, 0.1f));
-	shader->SetFloat("material.shininess", 32.0f);
-	
-	shader->setMat4("projection", GetProjection());
-	
-	shader->setMat4("view", GetView());
 	glm::mat4 trans = glm::mat4(1.0f);
-	
-	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() , worldTrans.GetPosition().GetY() , worldTrans.GetPosition().GetZ()));
+	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
 
 	trans = trans * glm::mat4_cast(glm::conjugate(
 		glm::quat(worldTrans.GetRotation().GetW(), worldTrans.GetRotation().GetX(), worldTrans.GetRotation().GetY(), worldTrans.GetRotation().GetZ())
-		));
-	
-	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+	));
 
-	shader->setMat4("model", trans);
+	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+	GRAPHICS->shader->setMat4("model", trans);
 
 	model->Draw(*shader);
-}
-
-void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
-{
 }
 
 void GraphicsEngine::DrawTerrain()
