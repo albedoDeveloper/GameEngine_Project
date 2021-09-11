@@ -157,7 +157,7 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType 
 {
     std::vector<Texture> textures;
 
-    std::cout << m_directory <<" mat->GetTextureCount(" << typeName << "): " << mat->GetTextureCount(type) << std::endl; // DEBUG
+    std::cout << m_directory <<" mat->GetTextureCount(" << typeName << "): " << mat->GetTextureCount(type) << std::endl;
     for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
     {
         aiString str;

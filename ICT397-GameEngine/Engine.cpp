@@ -172,6 +172,9 @@ void Engine::OnRender()
 	GRAPHICS->shader->setVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
 	GRAPHICS->shader->setVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f)); // darken diffuse light a bit
 	GRAPHICS->shader->setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+	GRAPHICS->shader->SetFloat("light.constant", 1.0f);
+	GRAPHICS->shader->SetFloat("light.linear", 0.09f);
+	GRAPHICS->shader->SetFloat("light.quadratic", 0.032f);
 
 	GRAPHICS->shader->SetFloat("material.shininess", 16);
 

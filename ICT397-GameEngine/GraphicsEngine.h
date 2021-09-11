@@ -165,6 +165,20 @@ public:
 	 * @param trans Transform of the model
 	*/
 	void DrawModel(Model* model, const Transform& trans);
+
+	void DrawModelMovingTexture(Model* model, const Transform& trans, const float texOffset) const;
+	/**
+	 * @brief Draws a model asset on the screen with lighting
+	 * @param model The model to draw
+	 * @param trans Transform of the model
+	*/
+	void DrawIlluminatedModel(const AModel* model, const Transform& trans) const;
+	/**
+	 * @brief Renders a heightmap on the screen
+	 * @param terrain The terrain to render
+	 * @param withTexture Whether the terrain's texture should be used
+	*/
+	void renderHeightMap(CBaseTerrain* terrain, bool withTexture);
 	/**
 	 * @brief Renders an image to the screen
 	 * @param textureKey the key of the image to draw
@@ -219,10 +233,6 @@ public:
 
 	void Close();
 
-	glm::mat4 GetProjection();
-
-	glm::mat4 GetView();
-
 	Shader* shader = nullptr;
 	
 	Shader* debugShader = nullptr;
@@ -257,6 +267,11 @@ private:
 	*/
 	void DrawDebug(glm::mat4 projection, glm::mat4 view);
 
+
+	glm::mat4 GetProjection();
+
+
+	glm::mat4 GetView();
 
 };
 
