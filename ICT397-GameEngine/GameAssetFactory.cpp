@@ -18,24 +18,6 @@ void GameAssetFactory::LoadModel(std::string key, std::string filePath)
      Model* model = new Model(filePath,key);
     
      m_assets.emplace(key, model);
-
-#if _DEBUG
-
-#endif
-
-    /*if (LoadOBJFile(filePath, model))
-    {
-        m_assets.emplace(key, model);
-#if _DEBUG
-        std::cout << "Model loaded in Model:" << key << std::endl;
-#endif
-    }
-    else
-    {
-#if _DEBUG
-        std::cout << "Error: there was an error loading model:" << filePath << std::endl;
-#endif*/
-        //delete(model);
    
 }
 
@@ -43,9 +25,7 @@ void GameAssetFactory::LoadScript(std::string key, std::string filePath)
 {
     if (CheckName(key))
     {
-#if _DEBUG
         std::cout << "Error: Cannot load script, script name already exists\n";
-#endif
         return;
     }
 
@@ -54,15 +34,10 @@ void GameAssetFactory::LoadScript(std::string key, std::string filePath)
     if (LoadLuaFile(filePath, script))
     {
         m_assets.emplace(key, script);
-#if _DEBUG
-        std::cout << "Script loaded in Script:" << key << std::endl;
-#endif
     }
     else
     {
-#if _DEBUG
         std::cout << "Error: there was an error loading script:" << filePath << std::endl;
-#endif
         delete(script);
     }
 }

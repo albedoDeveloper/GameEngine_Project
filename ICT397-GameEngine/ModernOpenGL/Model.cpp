@@ -140,10 +140,10 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
     // 1. diffuse maps
     std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
     textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
-   /*// 2. specular maps
+    // 2. specular maps
     std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
     textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
-    // 3. normal maps
+    /*// 3. normal maps
     std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
     textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
     // 4. height maps
@@ -158,17 +158,17 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType 
 {
     std::vector<Texture> textures;
 
-        aiString str;
-        mat->GetTexture(type, 0, &str);
+    aiString str;
+    mat->GetTexture(type, 0, &str);
        
-        {   // if texture hasn't been loaded already, load it
-            Texture texture;
-            texture.id = TextureFromFile(str.C_Str(), this->directory, true);
-            texture.type = typeName;
-            texture.path = str.C_Str();
-            textures.push_back(texture);
-            textures_loaded.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
-        }
+    {   // if texture hasn't been loaded already, load it
+        Texture texture;
+        texture.id = TextureFromFile(str.C_Str(), this->directory, true);
+        texture.type = typeName;
+        texture.path = str.C_Str();
+        textures.push_back(texture);
+        textures_loaded.push_back(texture);  // store it as texture loaded for entire model, to ensure we won't unnecesery load duplicate textures.
+    }
     return textures;
 }
 
