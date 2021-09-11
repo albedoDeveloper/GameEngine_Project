@@ -241,6 +241,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 
 	if ((m_window = SDL_CreateWindow("ICT398 - Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
 	{
@@ -259,9 +261,11 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
 
+
 	// init imgui
 	InitImGui();
 
+	glEnable(GL_MULTISAMPLE);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
