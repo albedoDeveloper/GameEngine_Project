@@ -1,4 +1,5 @@
 #include "CPointLight.h"
+#include "GraphicsEngine.h"
 
 CPointLight::CPointLight(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }, m_colour(1, 0, 0)
@@ -11,6 +12,7 @@ void CPointLight::Start()
 
 void CPointLight::Update()
 {
+	
 }
 
 void CPointLight::Render()

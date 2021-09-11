@@ -72,6 +72,19 @@ void GraphicsEngine::newFrame(bool debugMenu)
 	}
 }
 
+void GraphicsEngine::UpdateViewPos() const
+{
+	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetPosition();
+	GRAPHICS->shader->setVec3(
+		"viewPos",
+		glm::vec3(
+			viewPosVec.GetX(),
+			viewPosVec.GetY(),
+			viewPosVec.GetZ()
+		)
+	);
+}
+
 void GraphicsEngine::renderObjects() 
 {
 	skybox.DrawSkybox(GetProjection(), GetView());

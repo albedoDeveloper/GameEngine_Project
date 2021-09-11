@@ -123,6 +123,8 @@ public:
 	 * @brief Function to be called at the start of every frame for rendering
 	*/
 	void newFrame(bool debugMenu);
+
+	void UpdateViewPos() const;
 	/**
 	 * @brief Renders all visible objects
 	*/
@@ -165,20 +167,6 @@ public:
 	 * @param trans Transform of the model
 	*/
 	void DrawModel(Model* model, const Transform& trans);
-
-	void DrawModelMovingTexture(Model* model, const Transform& trans, const float texOffset) const;
-	/**
-	 * @brief Draws a model asset on the screen with lighting
-	 * @param model The model to draw
-	 * @param trans Transform of the model
-	*/
-	void DrawIlluminatedModel(const AModel* model, const Transform& trans) const;
-	/**
-	 * @brief Renders a heightmap on the screen
-	 * @param terrain The terrain to render
-	 * @param withTexture Whether the terrain's texture should be used
-	*/
-	void renderHeightMap(CBaseTerrain* terrain, bool withTexture);
 	/**
 	 * @brief Renders an image to the screen
 	 * @param textureKey the key of the image to draw
@@ -215,8 +203,6 @@ public:
 	 * @return the key of the texture
 	*/
 	unsigned GetTexID(std::string key) const;
-	
-	unsigned char* GetTextureArray(std::string key, int &w, int &h);
 
 	void GetScreenSize(int&w, int&h);
 

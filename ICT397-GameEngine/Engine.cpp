@@ -155,15 +155,7 @@ void Engine::OnLoop()
 
 void Engine::OnRender()
 {
-	Vector3f viewPostVec = GAMEOBJECT->GetGameObject("player")->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetPosition();
-	GRAPHICS->shader->setVec3(
-		"viewPos",
-		glm::vec3(
-			viewPostVec.GetX(),
-			viewPostVec.GetY(),
-			viewPostVec.GetZ()
-		)
-	);
+	GRAPHICS->UpdateViewPos();
 	GRAPHICS->shader->setShaderInt("material.texture_diffuse1", 0);
 	GRAPHICS->shader->setShaderInt("material.texture_specular1", 1);
 	Vector3f whitelightpos = GAMEOBJECT->GetGameObject("whitelight")->GetTransform()->GetWorldTransform().GetPosition();

@@ -15,6 +15,7 @@ LoadModel("south_bar_barrier", "south_bar_barrier/south_bar_barrier.fbx")
 LoadModel("south_bar_barrier_2", "south_bar_barrier_2/south_bar_barrier_2.fbx")
 LoadModel("south_bar_wall", "south_bar_wall/south_bar_wall.fbx")
 LoadModel("spiked_door_bar", "spiked_door_bar/spiked_door_bar.fbx")
+LoadModel("spiked_door_toilet", "spiked_door_toilet/spiked_door_toilet.fbx")
 LoadModel("tavern_glass_door_wall", "tavern_glass_door_wall/tavern_glass_door_wall.fbx")
 LoadModel("tavern_glass_door_wall_long", "tavern_glass_door_wall_long/tavern_glass_door_wall_long.fbx")
 LoadModel("tavern_glass_door_wall_long_2", "tavern_glass_door_wall_long_2/tavern_glass_door_wall_long_2.fbx")
@@ -22,6 +23,9 @@ LoadModel("toilet_block", "toilet_block/toilet_block.fbx")
 LoadModel("waitress", "waitress/waitress.fbx")
 
 LoadScript("rotate", "rotate.lua")
+
+SpawnGameObject("spiked_door_toilet"):SetStatic(true)
+GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_toilet")
 
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
