@@ -80,32 +80,32 @@ void GraphicsEngine::UpdateViewPos() const
 	);
 }
 
-void GraphicsEngine::AddPointLight(CPointLight* light)
+int GraphicsEngine::AddPointLight(CPointLight* light)
 {
 	int numpointLights = m_lightManager.AddPointLight(light);
 	shader->useShaderForLoop();
 	shader->setShaderInt("numOfPointLights", numpointLights);
-	for (int i = 0; i < numpointLights; i++)
-	{
-		GRAPHICS->shader->setVec3("pointLights[" + std::to_string(i) + "].ambient", glm::vec3(
-			light->LightInfo.ambientColour.GetX(),
-			light->LightInfo.ambientColour.GetY(),
-			light->LightInfo.ambientColour.GetZ()
-		));
-		GRAPHICS->shader->setVec3("pointLights[" + std::to_string(i) + "].diffuse", glm::vec3(
-			light->LightInfo.diffuseColour.GetX(),
-			light->LightInfo.diffuseColour.GetY(),
-			light->LightInfo.diffuseColour.GetZ()
-		));
-		GRAPHICS->shader->setVec3("pointLights[" + std::to_string(i) + "].specular", glm::vec3(
-			light->LightInfo.specularColour.GetX(),
-			light->LightInfo.specularColour.GetY(),
-			light->LightInfo.specularColour.GetZ()
-		));
-		GRAPHICS->shader->SetFloat("pointLights[" + std::to_string(i) + "].constant", light->LightInfo.constant);
-		GRAPHICS->shader->SetFloat("pointLights[" + std::to_string(i) + "].linear", light->LightInfo.linear);
-		GRAPHICS->shader->SetFloat("pointLights[" + std::to_string(i) + "].quadratic", light->LightInfo.quadratic);
-	}
+
+	GRAPHICS->shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].ambient", glm::vec3(
+		light->LightInfo.ambientColour.GetX(),
+		light->LightInfo.ambientColour.GetY(),
+		light->LightInfo.ambientColour.GetZ()
+	));
+	GRAPHICS->shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].diffuse", glm::vec3(
+		light->LightInfo.diffuseColour.GetX(),
+		light->LightInfo.diffuseColour.GetY(),
+		light->LightInfo.diffuseColour.GetZ()
+	));
+	GRAPHICS->shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].specular", glm::vec3(
+		light->LightInfo.specularColour.GetX(),
+		light->LightInfo.specularColour.GetY(),
+		light->LightInfo.specularColour.GetZ()
+	));
+	GRAPHICS->shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].constant", light->LightInfo.constant);
+	GRAPHICS->shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].linear", light->LightInfo.linear);
+	GRAPHICS->shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].quadratic", light->LightInfo.quadratic);
+
+	return numpointLights;
 }
 
 void GraphicsEngine::renderObjects() 

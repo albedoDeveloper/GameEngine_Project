@@ -125,7 +125,7 @@ public:
 
 	void UpdateViewPos() const;
 
-	void AddPointLight(CPointLight* light);
+	int AddPointLight(CPointLight* light);
 
 	/**
 	 * @brief Renders all visible objects

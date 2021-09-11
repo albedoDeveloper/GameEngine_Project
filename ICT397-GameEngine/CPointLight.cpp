@@ -11,5 +11,15 @@ CPointLight::CPointLight(Transform* parent, GameObject* parentObj)
 	LightInfo.constant = 1;
 	LightInfo.linear = 0.09f;
 	LightInfo.quadratic = 0.032f;
-	GRAPHICS->AddPointLight(this);
+	m_shaderIndex = GRAPHICS->AddPointLight(this) - 1;
+}
+
+void CPointLight::Update()
+{
+	Vector3f worldPos = m_transform.GetWorldTransform().GetPosition();
+	GRAPHICS->shader->setVec3("pointLights[" + std::to_string(m_shaderIndex) + "].position", glm::vec3(
+		worldPos.GetX(),
+		worldPos.GetY(),
+		worldPos.GetZ()
+	));
 }
