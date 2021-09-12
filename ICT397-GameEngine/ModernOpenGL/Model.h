@@ -22,42 +22,29 @@ struct modelInfo
 class Model : public Asset
 {
 public:
-    Model(std::string path, std::string keyTemp) :Asset{ keyTemp }
-    {
-        info.path = path;
-        key = keyTemp;
-        loadModel(path);
-    }
-    void AssignTextureKey(std::string)
-    {
-
-    };
-    //Model()
+    Model(std::string path, std::string keyTemp);
 
     void Draw(Shader& shader);
     std::string key;
-    std::vector<Mesh>& GetMesh() { return meshes; }
+    std::vector<Mesh>& GetMesh() { return m_meshes; }
 
-    std::vector<float> minMax;
-    int numberOfFaces = 0;
+    std::vector<float> m_minMax;
+    int m_numberOfFaces = 0;
 private:
     // model data
-    std::vector<Mesh> meshes;
-    std::string directory;
-    std::vector<Texture> textures_loaded;
-    modelInfo info;
+    std::vector<Mesh> m_meshes;
+    std::string m_directory;
+    std::vector<Texture> m_textures_loaded;
+    modelInfo m_info;
 
-
-
-    int text;
-    std::string texturePath;
+    int m_text;
+    std::string m_texturePath;
 
     void loadModel(std::string path);
     void processNode(aiNode* node, const aiScene* scene);
-    Mesh processMesh(aiMesh* mesh, const aiScene* scene);
+    void processMesh(aiMesh* mesh, const aiScene* scene);
     std::vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName);
-    unsigned int TextureFromFile(const char* path, const std::string& directory, bool gamma);
-    void calculateMinMax();
+    unsigned int TextureFromFile(const char* path, const std::string& directory);
 };
 
 #endif

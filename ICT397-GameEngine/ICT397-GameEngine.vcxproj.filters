@@ -26,35 +26,19 @@
     <ClCompile Include="CCharacterComponent.cpp">
       <Filter>components</Filter>
     </ClCompile>
-    <ClCompile Include="CGridComponent.cpp">
-      <Filter>components</Filter>
-    </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>components</Filter>
     </ClCompile>
     <ClCompile Include="CScript.cpp">
       <Filter>components</Filter>
     </ClCompile>
-    <ClCompile Include="CStateMachineAI.cpp">
-      <Filter>components</Filter>
-    </ClCompile>
     <ClCompile Include="CStaticMesh.cpp">
-      <Filter>components</Filter>
-    </ClCompile>
-    <ClCompile Include="CTerrain.cpp">
       <Filter>components</Filter>
     </ClCompile>
     <ClCompile Include="CUserInterface.cpp">
       <Filter>components</Filter>
     </ClCompile>
     <ClCompile Include="DeltaTime.cpp" />
-    <ClCompile Include="CSpotlight.cpp">
-      <Filter>components</Filter>
-    </ClCompile>
-    <ClCompile Include="LightFactory.cpp" />
-    <ClCompile Include="CWater.cpp">
-      <Filter>components</Filter>
-    </ClCompile>
     <ClCompile Include="ModernOpenGL\Mesh.cpp">
       <Filter>ModernOpenGl</Filter>
     </ClCompile>
@@ -94,6 +78,7 @@
     <ClCompile Include="CPointLight.cpp">
       <Filter>components</Filter>
     </ClCompile>
+    <ClCompile Include="LightManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AHeightMap.h" />
@@ -124,22 +109,13 @@
     <ClInclude Include="CCharacterComponent.h">
       <Filter>components</Filter>
     </ClInclude>
-    <ClInclude Include="CGridComponent.h">
-      <Filter>components</Filter>
-    </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>components</Filter>
     </ClInclude>
     <ClInclude Include="CScript.h">
       <Filter>components</Filter>
     </ClInclude>
-    <ClInclude Include="CStateMachineAI.h">
-      <Filter>components</Filter>
-    </ClInclude>
     <ClInclude Include="CStaticMesh.h">
-      <Filter>components</Filter>
-    </ClInclude>
-    <ClInclude Include="CTerrain.h">
       <Filter>components</Filter>
     </ClInclude>
     <ClInclude Include="CUserInterface.h">
@@ -147,13 +123,6 @@
     </ClInclude>
     <ClInclude Include="SkyboxVerts.h" />
     <ClInclude Include="DeltaTime.h" />
-    <ClInclude Include="CSpotlight.h">
-      <Filter>components</Filter>
-    </ClInclude>
-    <ClInclude Include="LightFactory.h" />
-    <ClInclude Include="CWater.h">
-      <Filter>components</Filter>
-    </ClInclude>
     <ClInclude Include="ModernOpenGL\Mesh.h">
       <Filter>ModernOpenGl</Filter>
     </ClInclude>
@@ -199,6 +168,8 @@
     <ClInclude Include="CPointLight.h">
       <Filter>components</Filter>
     </ClInclude>
+    <ClInclude Include="LightManager.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\Scripts\displayAtQuit.lua">
@@ -240,13 +211,13 @@
     <None Include="..\Assets\Scripts\waterInteraction.lua" />
     <None Include="..\Assets\Scripts\acidInteract.lua" />
     <None Include="..\Assets\Scripts\loadButton.lua" />
-    <None Include="ModernOpenGL\colourShader.fs">
+    <None Include="ModernOpenGL\lit.frag">
       <Filter>ModernOpenGl</Filter>
     </None>
-    <None Include="ModernOpenGL\vertexShader.vs">
+    <None Include="ModernOpenGL\vertexShader.vert">
       <Filter>ModernOpenGl</Filter>
     </None>
-    <None Include="ModernOpenGL\debugColourShader.fs">
+    <None Include="ModernOpenGL\unlit.frag">
       <Filter>ModernOpenGl</Filter>
     </None>
   </ItemGroup>
@@ -263,5 +234,15 @@
     <Filter Include="imgui">
       <UniqueIdentifier>{f335aa88-d95e-4ece-9600-0743604016e9}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ICT397-GameEngine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="E:\Desktop\rock_stones.png" />
+    <Image Include="icon1.ico" />
+    <Image Include="E:\Desktop\frankenstein.png" />
+    <Image Include="E:\Desktop\frankengine.ico" />
+    <Image Include="..\Resources\frankengine.ico" />
   </ItemGroup>
 </Project>

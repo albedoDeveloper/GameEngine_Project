@@ -8,8 +8,6 @@
 #include <vector>
 #include "Component.h"
 
-
-
 class CSound : public Component
 {
 public:
@@ -18,22 +16,9 @@ public:
 	void PlaySound(std::string soundName, int length,bool positional);
 
     /**
-    * @brief initialises component at program start
-   */
-    virtual void Start();
-    /**
      * @brief updates ongoing behaviour each frame
     */
     virtual void Update();
-    /**
-     * @brief renders the component to the screen if visible
-    */
-    virtual void Render();
-    /**
-     * @brief renders the component after others have been rendered
-    */
-    virtual void LateRender();
-
 
 private:
     struct SoundInfo
@@ -45,7 +30,4 @@ private:
 
     std::unordered_map<std::string, Mix_Chunk*> soundList;
     std::vector<SoundInfo> soundinfo;
-
-
 };
-

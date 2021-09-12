@@ -30,19 +30,14 @@
     <ClCompile Include="CPointLight.cpp" />
     <ClCompile Include="CScript.cpp" />
     <ClCompile Include="CSound.cpp" />
-    <ClCompile Include="CSpotlight.cpp" />
-    <ClCompile Include="CStateMachineAI.cpp" />
     <ClCompile Include="CStaticMesh.cpp" />
-    <ClCompile Include="CTerrain.cpp" />
     <ClCompile Include="CUserInterface.cpp" />
-    <ClCompile Include="CWater.cpp" />
     <ClCompile Include="DeltaTime.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameAssetFactory.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GraphicsEngine.cpp" />
-    <ClCompile Include="CGridComponent.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -53,7 +48,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
-    <ClCompile Include="LightFactory.cpp" />
+    <ClCompile Include="LightManager.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathLibrary.cpp" />
@@ -79,12 +74,8 @@
     <ClInclude Include="CPointLight.h" />
     <ClInclude Include="CScript.h" />
     <ClInclude Include="CSound.h" />
-    <ClInclude Include="CSpotlight.h" />
-    <ClInclude Include="CStateMachineAI.h" />
     <ClInclude Include="CStaticMesh.h" />
-    <ClInclude Include="CTerrain.h" />
     <ClInclude Include="CUserInterface.h" />
-    <ClInclude Include="CWater.h" />
     <ClInclude Include="DeltaTime.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameAssetFactory.h" />
@@ -92,7 +83,6 @@
     <ClInclude Include="AModel.h" />
     <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GraphicsEngine.h" />
-    <ClInclude Include="CGridComponent.h" />
     <ClInclude Include="GraphicsLibraryEnum.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
@@ -106,13 +96,14 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="LevelLoader.h" />
-    <ClInclude Include="LightFactory.h" />
+    <ClInclude Include="LightManager.h" />
     <ClInclude Include="lodepng.h" />
     <ClInclude Include="MathLibrary.h" />
     <ClInclude Include="ModernOpenGL\Mesh.h" />
     <ClInclude Include="ModernOpenGL\Model.h" />
     <ClInclude Include="ModernOpenGL\Shader.h" />
     <ClInclude Include="MultiTexture.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="ScriptingEngine.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="SkyboxVerts.h" />
@@ -134,9 +125,19 @@
     <None Include="..\Assets\Scripts\startButton.lua" />
     <None Include="..\Assets\Scripts\terrainWireframe.lua" />
     <None Include="..\Assets\Scripts\waterInteraction.lua" />
-    <None Include="ModernOpenGL\colourShader.fs" />
-    <None Include="ModernOpenGL\debugColourShader.fs" />
-    <None Include="ModernOpenGL\vertexShader.vs" />
+    <None Include="ModernOpenGL\lit.frag" />
+    <None Include="ModernOpenGL\unlit.frag" />
+    <None Include="ModernOpenGL\vertexShader.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ICT397-GameEngine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\frankengine.ico" />
+    <Image Include="E:\Desktop\frankengine.ico" />
+    <Image Include="E:\Desktop\frankenstein.png" />
+    <Image Include="E:\Desktop\rock_stones.png" />
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

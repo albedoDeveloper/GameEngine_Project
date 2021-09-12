@@ -20,7 +20,11 @@ GraphicsEngine::GraphicsEngine()
 	m_skyboxInitialized{ false },
 	m_skyboxTextures{},
 	m_clear_color{ 0.45f, 0.55f, 0.60f, 1.00f },
-	m_imgui_io{}
+	m_imgui_io{},
+	m_windowWidth{},
+	m_windowHeight{},
+	m_shader{ nullptr },
+	m_debugShader{ nullptr }
 {
 }
 
@@ -50,19 +54,11 @@ bool GraphicsEngine::initLighting()
 {
 	glDisable(GL_LIGHTING);
 	return true;
-	//return InitOpenGLlighting();
 }
-
-void GraphicsEngine::UpdateSpotlight(const CSpotlight * light)
-{
-}
-
 
 void GraphicsEngine::newFrame(bool debugMenu) 
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
-	m_firstFrameDebug = true;
 
 	if (debugMenu)
 	{
@@ -72,6 +68,49 @@ void GraphicsEngine::newFrame(bool debugMenu)
 	}
 }
 
+void GraphicsEngine::UpdateViewPos() const
+{
+	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetPosition();
+	GRAPHICS->m_shader->use();
+	GRAPHICS->m_shader->setVec3(
+		"viewPos",
+		glm::vec3(
+			viewPosVec.GetX(),
+			viewPosVec.GetY(),
+			viewPosVec.GetZ()
+		)
+	);
+
+	GRAPHICS->m_debugShader->use();
+	GRAPHICS->m_debugShader->setVec3(
+		"viewPos",
+		glm::vec3(
+			viewPosVec.GetX(),
+			viewPosVec.GetY(),
+			viewPosVec.GetZ()
+		)
+	);
+}
+
+int GraphicsEngine::AddPointLight(CPointLight* light)
+{
+	int numpointLights = m_lightManager.AddPointLight(light);
+
+	m_shader->use();
+	m_shader->setShaderInt("numOfPointLights", numpointLights);
+	GRAPHICS->m_shader->setShaderFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
+	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].colour", glm::vec3(
+		light->LightInfo.colour.GetX(),
+		light->LightInfo.colour.GetY(),
+		light->LightInfo.colour.GetZ()
+	));
+	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].constant", light->LightInfo.constant);
+	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].linear", light->LightInfo.linear);
+	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].quadratic", light->LightInfo.quadratic);
+
+	return numpointLights;
+}
+
 void GraphicsEngine::renderObjects() 
 {
 	skybox.DrawSkybox(GetProjection(), GetView());
@@ -79,7 +118,7 @@ void GraphicsEngine::renderObjects()
 
 	if (m_drawDebug)
 	{
-		DrawDebug(GetProjection(), GetView());
+		DrawDebug();
 	}
 }
 
@@ -134,79 +173,32 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 		return;
 	}
 	
-	shader->useShaderForLoop();
-	
-	Vector3f light1pos = GAMEOBJECT->GetGameObject("light1")->GetTransform()->GetWorldTransform().GetPosition();
-	Vector3f light2pos = GAMEOBJECT->GetGameObject("light2")->GetTransform()->GetWorldTransform().GetPosition();
-	Vector3f whitelightpos = GAMEOBJECT->GetGameObject("whitelight")->GetTransform()->GetWorldTransform().GetPosition();
-	// temp lighting stuff. update these values with light objects/components
-	shader->setVec3("ambientLightColor", glm::vec3(0.1, 0.1, 0.1));
-	shader->setVec3("lightPos1", glm::vec3(light1pos.GetX(), light1pos.GetY(), light1pos.GetZ()));
-	shader->setVec3("lightPos2", glm::vec3(light2pos.GetX(), light2pos.GetY(), light2pos.GetZ()));
-	shader->setVec3("whitelightpos", glm::vec3(whitelightpos.GetX(), whitelightpos.GetY(), whitelightpos.GetZ()));
-	shader->setVec3("lightColor1", glm::vec3(0, 0.1, 0.7));
-	shader->setVec3("lightColor2", glm::vec3(0, 0.4, 0));
-	shader->setVec3("whitelightColor", glm::vec3(1, 1, 1));
-	
-	shader->setMat4("projection", GetProjection());
-	
-	shader->setMat4("view", GetView());
 	glm::mat4 trans = glm::mat4(1.0f);
-	
-	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX() , worldTrans.GetPosition().GetY() , worldTrans.GetPosition().GetZ()));
-
-	//trans = glm::rotate(
-	//	trans, worldTrans.GetRotation().GetAxisAngleRadians(), 
-	//	glm::vec3(
-	//		worldTrans.GetRotation().GetAxis().GetX(), 
-	//		worldTrans.GetRotation().GetAxis().GetY(),
-	//		worldTrans.GetRotation().GetAxis().GetZ()
-	//	)
-	//);
-
-	//trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetZ(), glm::vec3(0.0, 0.0f, 1.0f));
-	//trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetY(), glm::vec3(0.0, 1.0f, 0.0));
-	//trans = glm::rotate(trans, worldTrans.GetRotation().GetEulerAngles().GetX(), glm::vec3(1.0f, 0.0f, 0.0));
+	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
 
 	trans = trans * glm::mat4_cast(glm::conjugate(
 		glm::quat(worldTrans.GetRotation().GetW(), worldTrans.GetRotation().GetX(), worldTrans.GetRotation().GetY(), worldTrans.GetRotation().GetZ())
-		));
-	
+	));
+
 	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
 
-	shader->setMat4("model", trans);
+	m_shader->use();
+	m_shader->setMat4("model", trans);
 
-	model->Draw(*shader);
-}
+	m_shader->setShaderInt("material.texture_diffuse1", 0);
+	m_shader->setShaderInt("material.texture_specular1", 1);
 
-void GraphicsEngine::DrawModelMovingTexture(Model* model, const Transform& worldTrans, const float texOffset) const // NOTE keep these commented out statements, we will need them for texturing
-{
-}
+	glEnable(GL_CULL_FACE);
+	glPolygonMode(GL_FRONT, GL_FILL);
+	glPolygonMode(GL_BACK, GL_FILL);
 
-void GraphicsEngine::DrawTerrain()
-{
-	glCallList(1);
-}
-
-void GraphicsEngine::GenDisplayListTerrain(CBaseTerrain* terrain, bool withTexture, bool asWireframe)
-{
-}
-
-void GraphicsEngine::DrawGrid(float gridHeight, float lineThickness, float gridWidth, float cellWidth)
-{
-
-}
-
-void GraphicsEngine::DrawImage(std::string key, int width, int height, int posX, int posY)
-{
-
+	model->Draw(*m_shader);
 }
 
 unsigned GraphicsEngine::GetTexID(std::string key) const
 {
 	return m_textureIDs.at(key);
 }
-
 
 void GraphicsEngine::GetScreenSize(int& w, int& h)
 {
@@ -245,10 +237,17 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	}
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 
-	if ((m_window = SDL_CreateWindow("ICT398 - Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
+	if ((m_window = SDL_CreateWindow(
+		"ICT398 - FrankEngine", 
+		SDL_WINDOWPOS_CENTERED, 
+		SDL_WINDOWPOS_CENTERED, 
+		windowWidth, windowHeight, 
+		SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
 	{
 		std::cout << "Window could not be created! SDL Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -261,29 +260,30 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	}
 
 	SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
-	//SDL_SetWindowGrab(m_window, SDL_TRUE);
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
 
 	// init imgui
 	InitImGui();
 
+	glEnable(GL_MULTISAMPLE);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glEnable(GL_FRAMEBUFFER_SRGB); // gamma correction. looks too washed out
 	glClearColor(0.4, 0.2, 0.7, 1);
 
-	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/colourShader.fs");
-	debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/debugColourShader.fs");
+	m_shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/lit.frag");
+	m_debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/unlit.frag");
 	
 	skybox.CreateSkybox(std::vector<std::string>{
-		"../Assets/skybox/right.jpg",
-		"../Assets/skybox/left.jpg",
-		"../Assets/skybox/top.jpg",
-		"../Assets/skybox/bottom.jpg",
-		"../Assets/skybox/front.jpg",
-		"../Assets/skybox/back.jpg"}
+		"../Assets/skybox/right.png",
+		"../Assets/skybox/left.png",
+		"../Assets/skybox/top.png",
+		"../Assets/skybox/bottom.png",
+		"../Assets/skybox/front.png",
+		"../Assets/skybox/back.png"}
 	);
 
 	return true;
@@ -304,11 +304,6 @@ bool GraphicsEngine::InitDirectX()
 {
 	// out of scope for ICT397
 	return false;
-}
-
-void GraphicsEngine::DrawCollider(float maxX, float maxY, float maxZ, float minX, float minY, float minZ, const Transform& worldT)
-{
-
 }
 
 void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
@@ -333,9 +328,20 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 	}
 }
 
-void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view)
+void GraphicsEngine::DrawDebug()
 {
+	m_debugShader->use();
+
+	m_debugShader->setMat4("projection", GetProjection());
+
+	m_debugShader->setMat4("view", GetView());
+	
+	m_debugShader->setMat4("model", glm::mat4(1.0f));
+	m_debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
+
 	glDisable(GL_CULL_FACE);
+	glPolygonMode(GL_FRONT, GL_LINE);
+	glPolygonMode(GL_BACK, GL_LINE);
 
 	std::vector <float> tempVector;
 	
@@ -362,29 +368,10 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view)
 	{
 		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
 	}
-
-	glPolygonMode(GL_FRONT, GL_LINE);
-	glPolygonMode(GL_BACK, GL_LINE);
-
-	debugShader->useShaderForLoop();
-
-	debugShader->setMat4("projection", projection);
-
-	debugShader->setMat4("view", view);
-	
-	debugShader->setMat4("model", glm::mat4(1.0f));
-	debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
 		
-	glBindVertexArray(0);
-
 	glBindVertexArray(VAODebug);
 	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles()*3);
 	glBindVertexArray(0);
-
-	glPolygonMode(GL_FRONT, GL_FILL);
-	glPolygonMode(GL_BACK, GL_FILL);
-	glEnable(GL_CULL_FACE);
-	m_firstFrameDebug = false;
 }
 
 glm::mat4 GraphicsEngine::GetProjection()

@@ -28,18 +28,6 @@ public:
     */
     virtual void Start();
     /**
-     * @brief updates ongoing behaviour each frame
-    */
-    virtual void Update();
-    /**
-     * @brief renders the component to the screen if visible
-    */
-    virtual void Render();
-    /**
-     * @brief renders the component after others have been rendered
-    */
-    virtual void LateRender();
-    /**
      * @brief Draws to imgui
     */
     virtual void DrawToImGui();

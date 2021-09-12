@@ -1,13 +1,10 @@
 #include "CCharacterComponent.h"
 #include "GameObject.h"
-//debug
 #include "GraphicsEngine.h"
 #include "InputManager.h"
 #include "DeltaTime.h"
-
-#if _DEBUG
 #include <iostream>
-#endif
+
 
 CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }, 
@@ -139,7 +136,7 @@ void CCharacter::Update()
 		Move(moveVector.GetX(), moveVector.GetY(), moveVector.GetZ());
 	}
 
-	static const float GRAVITY = -9.81f;
+	static const float GRAVITY = 0;
 
 	//newtonian calculations
 	m_velocity = m_velocity * 0.8f; // apply damping factor
@@ -180,13 +177,6 @@ void CCharacter::Update()
 	}
 }
 
-void CCharacter::Render()
-{
-}
-
-void CCharacter::LateRender()
-{}
-
 void CCharacter::Save(nlohmann::json& j)
 {
 	m_savedHitpoints = m_hitpoints;
@@ -216,14 +206,12 @@ void CCharacter::DrawToImGui()
 		// Drags
 		float drag_max_speed = m_maxSpeed;
 
-
 		ImGui::PushItemWidth(50);
 
 		ImGui::Text("Max Speed "); ImGui::SameLine();
 		ImGui::DragFloat("##maxSpeed", &m_maxSpeed, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", maxSpeedFlag);
 
 		ImGui::TreePop();
-
 	}
 }
 

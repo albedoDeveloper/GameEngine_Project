@@ -55,18 +55,6 @@ public:
 	CUserInterface(Transform* parent, GameObject* parentObj);
 
 	/**
-	 * @brief image mutator using storage key for asset factory
-	 * @param key The key the image is stored at
-	 * @return the image
-	*/
-	void AssignTexture(std::string key);
-	/**
-	 * @brief isVisible mutator
-	 * @param visibility whether the component should be visible
-	*/
-	void SetVisibility(bool visibility);
-
-	/**
 	 * @brief set size of image in terms of pixels
 	*/
 	void SetSize(unsigned width, unsigned height);
@@ -90,17 +78,4 @@ public:
 	 * @brief Initiates the UI component so it can begin
 	*/
 	virtual void Start();
-	/**
-	 * @brief Updates with ongoing behaviour
-	*/
-	virtual void Update();
-	/**
-	 * @brief Renders the image
-	*/
-	virtual void Render();
-	/**
-	 * @brief Renders the image after other components render
-	*/
-	virtual void LateRender();
 };
-
