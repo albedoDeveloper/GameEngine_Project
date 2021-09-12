@@ -10,7 +10,6 @@
 #include "CScript.h"
 #include "CCharacterComponent.h"
 #include "CCameraComponent.h"
-#include "CGridComponent.h"
 #include "CCollider.h"
 #include "CSound.h"
 #include <nlohmann/json.hpp>
@@ -74,11 +73,6 @@ public:
 
 	CPointLight* GetCPointLight();
 
-	/**
-	 * @brief Adds a grid component
-	 * @return the created grid
-	*/
-	CGridComponent* AddCGridComponent();
 	/**
 	 * @brief Adds a collider component
 	 * @return the created collider

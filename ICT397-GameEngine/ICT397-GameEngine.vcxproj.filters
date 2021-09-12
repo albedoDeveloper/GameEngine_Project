@@ -26,9 +26,6 @@
     <ClCompile Include="CCharacterComponent.cpp">
       <Filter>components</Filter>
     </ClCompile>
-    <ClCompile Include="CGridComponent.cpp">
-      <Filter>components</Filter>
-    </ClCompile>
     <ClCompile Include="Component.cpp">
       <Filter>components</Filter>
     </ClCompile>
@@ -110,9 +107,6 @@
       <Filter>components</Filter>
     </ClInclude>
     <ClInclude Include="CCharacterComponent.h">
-      <Filter>components</Filter>
-    </ClInclude>
-    <ClInclude Include="CGridComponent.h">
       <Filter>components</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">

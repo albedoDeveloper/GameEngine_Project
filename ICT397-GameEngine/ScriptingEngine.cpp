@@ -5,7 +5,6 @@
 #include "CUserInterface.h"
 #include "CScript.h"
 #include "CCharacterComponent.h"
-#include "CGridComponent.h"
 #include "InputManager.h"
 #include "CCollider.h"
 #include "Engine.h"
@@ -103,7 +102,6 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("GetCUserInterface", &GameObject::GetCUserInterface)
             .addFunction("AddCCharacter", &GameObject::AddCCharacter)
             .addFunction("AddCCameraComponent", &GameObject::AddCCameraComponent)
-            .addFunction("AddCGridComponent", &GameObject::AddCGridComponent)
             .addFunction("GetTransform", &GameObject::GetTransform)
             .addFunction("GetClosestObject", &GameObject::GetClosestObject)
             .addFunction("GetCCamera", &GameObject::GetCCamera)
@@ -191,12 +189,6 @@ lua_State* ScriptingEngine::NewState()
        .addFunction("AddConcaveCollider", &CCollider::AddConcaveCollider)
        .addFunction("CollideWith", &CCollider::CollideWith)
        .endClass();
-
-    getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
-        .endClass()
-        .deriveClass<CGridComponent, Component>("CGridComponent")
-        .endClass();
 
     getGlobalNamespace(Lbuff)
         .beginClass<Asset>("Asset")

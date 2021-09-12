@@ -22,7 +22,9 @@ GraphicsEngine::GraphicsEngine()
 	m_clear_color{ 0.45f, 0.55f, 0.60f, 1.00f },
 	m_imgui_io{},
 	m_windowWidth{},
-	m_windowHeight{}
+	m_windowHeight{},
+	m_shader{ nullptr },
+	m_debugShader{ nullptr }
 {
 }
 
@@ -57,8 +59,6 @@ bool GraphicsEngine::initLighting()
 void GraphicsEngine::newFrame(bool debugMenu) 
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
-	m_firstFrameDebug = true;
 
 	if (debugMenu)
 	{
@@ -71,7 +71,18 @@ void GraphicsEngine::newFrame(bool debugMenu)
 void GraphicsEngine::UpdateViewPos() const
 {
 	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetPosition();
-	GRAPHICS->shader->setVec3(
+	GRAPHICS->m_shader->use();
+	GRAPHICS->m_shader->setVec3(
+		"viewPos",
+		glm::vec3(
+			viewPosVec.GetX(),
+			viewPosVec.GetY(),
+			viewPosVec.GetZ()
+		)
+	);
+
+	GRAPHICS->m_debugShader->use();
+	GRAPHICS->m_debugShader->setVec3(
 		"viewPos",
 		glm::vec3(
 			viewPosVec.GetX(),
@@ -85,22 +96,22 @@ int GraphicsEngine::AddPointLight(CPointLight* light)
 {
 	int numpointLights = m_lightManager.AddPointLight(light);
 
-	shader->useShaderForLoop();
-	shader->setShaderInt("numOfPointLights", numpointLights);
-	GRAPHICS->shader->setShaderFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
-	GRAPHICS->shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].diffuse", glm::vec3(
+	m_shader->use();
+	m_shader->setShaderInt("numOfPointLights", numpointLights);
+	GRAPHICS->m_shader->setShaderFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
+	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].diffuse", glm::vec3(
 		light->LightInfo.diffuseColour.GetX(),
 		light->LightInfo.diffuseColour.GetY(),
 		light->LightInfo.diffuseColour.GetZ()
 	));
-	GRAPHICS->shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].specular", glm::vec3(
+	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].specular", glm::vec3(
 		light->LightInfo.specularColour.GetX(),
 		light->LightInfo.specularColour.GetY(),
 		light->LightInfo.specularColour.GetZ()
 	));
-	GRAPHICS->shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].constant", light->LightInfo.constant);
-	GRAPHICS->shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].linear", light->LightInfo.linear);
-	GRAPHICS->shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].quadratic", light->LightInfo.quadratic);
+	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].constant", light->LightInfo.constant);
+	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].linear", light->LightInfo.linear);
+	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].quadratic", light->LightInfo.quadratic);
 
 	return numpointLights;
 }
@@ -112,7 +123,7 @@ void GraphicsEngine::renderObjects()
 
 	if (m_drawDebug)
 	{
-		DrawDebug(GetProjection(), GetView());
+		DrawDebug();
 	}
 }
 
@@ -167,7 +178,7 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 		return;
 	}
 	
-	shader->useShaderForLoop();
+	m_shader->use();
 
 	glm::mat4 trans = glm::mat4(1.0f);
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
@@ -177,31 +188,22 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	));
 
 	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
-	GRAPHICS->shader->setMat4("model", trans);
+	m_shader->setMat4("model", trans);
 
-	model->Draw(*shader);
-}
+	m_shader->setShaderInt("material.texture_diffuse1", 0);
+	m_shader->setShaderInt("material.texture_specular1", 1);
 
-void GraphicsEngine::DrawTerrain()
-{
-	glCallList(1);
-}
+	glEnable(GL_CULL_FACE);
+	glPolygonMode(GL_FRONT, GL_FILL);
+	glPolygonMode(GL_BACK, GL_FILL);
 
-void GraphicsEngine::DrawGrid(float gridHeight, float lineThickness, float gridWidth, float cellWidth)
-{
-
-}
-
-void GraphicsEngine::DrawImage(std::string key, int width, int height, int posX, int posY)
-{
-
+	model->Draw(*m_shader);
 }
 
 unsigned GraphicsEngine::GetTexID(std::string key) const
 {
 	return m_textureIDs.at(key);
 }
-
 
 void GraphicsEngine::GetScreenSize(int& w, int& h)
 {
@@ -276,8 +278,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glClearColor(0.4, 0.2, 0.7, 1);
 
-	shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/lit.frag");
-	debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/unlit.frag");
+	m_shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/lit.frag");
+	m_debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/unlit.frag");
 	
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.jpg",
@@ -330,9 +332,20 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 	}
 }
 
-void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view)
+void GraphicsEngine::DrawDebug()
 {
+	m_debugShader->use();
+
+	m_debugShader->setMat4("projection", GetProjection());
+
+	m_debugShader->setMat4("view", GetView());
+	
+	m_debugShader->setMat4("model", glm::mat4(1.0f));
+	m_debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
+
 	glDisable(GL_CULL_FACE);
+	glPolygonMode(GL_FRONT, GL_LINE);
+	glPolygonMode(GL_BACK, GL_LINE);
 
 	std::vector <float> tempVector;
 	
@@ -359,29 +372,10 @@ void GraphicsEngine::DrawDebug(glm::mat4 projection, glm::mat4 view)
 	{
 		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
 	}
-
-	glPolygonMode(GL_FRONT, GL_LINE);
-	glPolygonMode(GL_BACK, GL_LINE);
-
-	debugShader->useShaderForLoop();
-
-	debugShader->setMat4("projection", projection);
-
-	debugShader->setMat4("view", view);
-	
-	debugShader->setMat4("model", glm::mat4(1.0f));
-	debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
 		
-	glBindVertexArray(0);
-
 	glBindVertexArray(VAODebug);
 	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles()*3);
 	glBindVertexArray(0);
-
-	glPolygonMode(GL_FRONT, GL_FILL);
-	glPolygonMode(GL_BACK, GL_FILL);
-	glEnable(GL_CULL_FACE);
-	m_firstFrameDebug = false;
 }
 
 glm::mat4 GraphicsEngine::GetProjection()

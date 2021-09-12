@@ -24,7 +24,6 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 	}
 
 	SDL_Event event;
-	DeltaTime delta;
 
 	while (m_isRunning)
 	{
@@ -150,14 +149,13 @@ void Engine::OnLoop()
 void Engine::OnRender()
 {
 	GRAPHICS->UpdateViewPos();
-	GRAPHICS->shader->setShaderInt("material.texture_diffuse1", 0);
-	GRAPHICS->shader->setShaderInt("material.texture_specular1", 1);
 
-	GRAPHICS->shader->SetFloat("material.shininess", 16);
+	GRAPHICS->m_shader->use();
+	GRAPHICS->m_shader->SetFloat("material.shininess", 16); // TODO move somewhere else
 
-	GRAPHICS->shader->setMat4("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_shader->setMat4("projection", GRAPHICS->GetProjection());
 
-	GRAPHICS->shader->setMat4("view", GRAPHICS->GetView());
+	GRAPHICS->m_shader->setMat4("view", GRAPHICS->GetView());
 
 	GRAPHICS->newFrame(m_debugMenu);
 	GRAPHICS->renderObjects();

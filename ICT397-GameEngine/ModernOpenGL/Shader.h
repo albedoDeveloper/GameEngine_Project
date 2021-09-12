@@ -23,7 +23,7 @@ class Shader
     public:
         std::string shaderName;
         unsigned int ID;
-        bool useShaderForLoop();
+        bool use();
         Shader(const char* vertexPath, const char* fragmentPath);
 
         void setShaderBool(const std::string& name, bool value) const

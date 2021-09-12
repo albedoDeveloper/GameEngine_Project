@@ -38,7 +38,6 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GraphicsEngine.cpp" />
-    <ClCompile Include="CGridComponent.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -84,7 +83,6 @@
     <ClInclude Include="AModel.h" />
     <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GraphicsEngine.h" />
-    <ClInclude Include="CGridComponent.h" />
     <ClInclude Include="GraphicsLibraryEnum.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />

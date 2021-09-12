@@ -67,11 +67,6 @@ CPointLight* GameObject::GetCPointLight()
 	return GetComponent<CPointLight>();
 }
 
-CGridComponent* GameObject::AddCGridComponent() 
-{
-	return AddComponent<CGridComponent>();
-}
-
 CCamera* GameObject::GetCCamera()
 {
 	return GetComponent<CCamera>();

@@ -165,31 +165,6 @@ public:
 	*/
 	void DrawModel(Model* model, const Transform& trans);
 	/**
-	 * @brief Renders an image to the screen
-	 * @param textureKey the key of the image to draw
-	*/
-	void DrawImage(std::string textureKey, int width, int height, int posX, int posY);
-	/**
-	 * @brief Renders a section of terrain
-	 * @param terrain the terrain to display
-	 * @param withTexture whether it should be displayed with a texture or not
-	*/
-	void DrawTerrain();
-
-	/**
-	 * @brief draw a collider
-	*/
-	void DrawCollider(float maxX, float maxY, float maxZ, float minX, float minY, float minZ, const Transform& worldT);
-
-	/**
-	 * @brief Renders a square grid floor on the screen
-	 * @param gridHeight, the height the grid will be drawn at
-	 * @param lineThickness the thickness of the grid lines
-	 * @param gridWidth the width of the grid (number of cells)
-	 * @param cellWidth the size of the grid squares
-	*/
-	void DrawGrid(float gridHeight, float lineThickness, float gridWidth, float cellWidth);
-	/**
 	 * @brief retrieves the ID by which a texture is stored in the graphics library
 	 * @param key the key by which it's stored by the asset factory
 	 * @return the key of the texture
@@ -222,11 +197,9 @@ public:
 
 	glm::mat4 GetView();
 
-	Shader* shader = nullptr;
+	Shader* m_shader;
 	
-	Shader* debugShader = nullptr;
-
-	bool m_firstFrameDebug = false;
+	Shader* m_debugShader;
 
 	bool m_drawDebug = false;
 
@@ -254,7 +227,7 @@ private:
 	/*
 	 * @brief Renders debug colliders
 	*/
-	void DrawDebug(glm::mat4 projection, glm::mat4 view);
+	void DrawDebug();
 
 	LightManager m_lightManager;
 };
