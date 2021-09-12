@@ -276,6 +276,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glEnable(GL_FRAMEBUFFER_SRGB); // gamma correction. looks too washed out
 	glClearColor(0.4, 0.2, 0.7, 1);
 
 	m_shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/lit.frag");

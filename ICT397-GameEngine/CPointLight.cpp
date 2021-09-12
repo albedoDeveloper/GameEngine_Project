@@ -17,6 +17,7 @@ CPointLight::CPointLight(Transform* parent, GameObject* parentObj)
 void CPointLight::Update()
 {
 	Vector3f worldPos = m_transform.GetWorldTransform().GetPosition();
+	GRAPHICS->m_shader->use();
 	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(m_shaderIndex) + "].position", glm::vec3(
 		worldPos.GetX(),
 		worldPos.GetY(),
@@ -29,6 +30,7 @@ void CPointLight::AssignColour(float r, float g, float b)
 	LightInfo.diffuseColour.SetX(r);
 	LightInfo.diffuseColour.SetY(g);
 	LightInfo.diffuseColour.SetZ(b);
+	GRAPHICS->m_shader->use();
 	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(m_shaderIndex) + "].diffuse", glm::vec3(
 		r,
 		g,
@@ -39,5 +41,6 @@ void CPointLight::AssignColour(float r, float g, float b)
 void CPointLight::AssignAmbientStrength(float strength)
 {
 	LightInfo.ambientStrength = strength;
+	GRAPHICS->m_shader->use();
 	GRAPHICS->m_shader->setShaderInt("pointLights[" + std::to_string(m_shaderIndex) + "].ambientStrength", strength);
 }

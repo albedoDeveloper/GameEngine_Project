@@ -90,13 +90,18 @@ SpawnGameObject("back_wall"):SetStatic(true)
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
 
 SpawnGameObject("lightAnchor"):SetStatic(false)
-GetGameObject("lightAnchor"):GetTransform():Translate(0,2,0)
+GetGameObject("lightAnchor"):GetTransform():SetPosition(6.534999847412109,
+2.134999990463257,
+1.284999966621399);
 GetGameObject("lightAnchor"):AddCScript():AssignScript("rotate")
 
 SpawnGameObject("light1"):SetStatic(false)
 GetGameObject("light1"):AddCPointLight()
+GetGameObject("light1"):GetCPointLight():AssignColour(1,1,1)
 GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(0.1)
-GetGameObject("light1"):GetTransform():Translate(-3,2,1)
+GetGameObject("light1"):GetTransform():SetPosition(-8.354999542236328,
+2.6700000762939453,
+1.0);
 --GetGameObject("light1"):SetParentObject("lightAnchor")
 --GetGameObject("light1"):GetTransform():Translate(5,0,0)
 GetGameObject("light1"):AddCStaticMesh():AssignModel("axis")
@@ -110,6 +115,6 @@ SpawnGameObject("light2"):SetStatic(false)
 GetGameObject("light2"):AddCPointLight()
 GetGameObject("light2"):GetCPointLight():AssignColour(0,0,1)
 GetGameObject("light2"):GetCPointLight():AssignAmbientStrength(0.1)
-GetGameObject("light2"):GetTransform():Translate(-1,0,0)
 GetGameObject("light2"):SetParentObject("lightAnchor")
 GetGameObject("light2"):AddCStaticMesh():AssignModel("axis")
+GetGameObject("light2"):GetTransform():Translate(2,0,0)
