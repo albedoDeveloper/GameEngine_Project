@@ -98,7 +98,7 @@ void Shader::ShaderLinking(unsigned int& vertexShader, unsigned int& fragmentSha
     }
 }
 
-bool Shader::useShaderForLoop()
+bool Shader::use()
 {
     if (ID == NULL)
         return false;

@@ -23,14 +23,6 @@ public:
 	 * @brief Updates ongoing behaviour each frame
 	*/
 	virtual void Update();
-	/**
-	 * @brief Renders the component to the screen, if visible
-	*/
-	virtual void Render();
-	/**
-	 * @brief Renders the component after others are rendered
-	*/
-	virtual void LateRender();
 
 	/**
 	 * @brief script mutator

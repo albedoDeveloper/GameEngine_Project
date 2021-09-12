@@ -39,15 +39,6 @@ public:
 	 * @brief updates ongoing behaviour each frame
 	*/
 	void Update();
-	/**
-	 * @brief randers the component if visible
-	*/
-	void Render();
-
-	/**
-	 * @brief a second render called after the first
-	*/
-	void LateRender();
 
 	/**
 	 * @brief saves the component
@@ -91,6 +82,4 @@ public:
 	void AddConvexCollider();
 	void AddConcaveCollider(int layer);
 	void CollideWith(int layerToCollideWith);
-
 };
-

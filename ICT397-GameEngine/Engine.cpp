@@ -8,6 +8,7 @@
 #include "DeltaTime.h"
 #include "imgui/imgui_impl_sdl.h"
 #include "imgui/imgui_impl_opengl3.h"
+#include <glm/glm/gtc/matrix_transform.hpp>
 
 Engine::Engine()
 	:m_isRunning{ true }, m_saveState{ false }, m_loadState{false}, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
@@ -23,7 +24,6 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 	}
 
 	SDL_Event event;
-	DeltaTime delta;
 
 	while (m_isRunning)
 	{
@@ -85,36 +85,24 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	COLLISION;
+	COLLISION; //init collision manager
+
 	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
 	{
 		return false;
 	}
-
-	auto gL_version = glGetString(GL_VERSION);
-
-	std::cout << gL_version << std::endl;
 
 	SCRIPT->Initialise(*this);
 	SCRIPT->RunInitScript();
 
 	// temporarily creating player controller here
 	// TODO move to level loader class
-	GAMEOBJECT->SpawnGameObject("player");
-	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 2, 0);
-	GAMEOBJECT->GetGameObject("player")->AddCCollider()->AddBoxCollider(0.5, 1.4, 0.5, 0 ,0, 0, false, 2, false);
-	GAMEOBJECT->GetGameObject("player")->GetCCollider()->CollideWith(1);
-	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
-	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
 	GAMEOBJECT->GetGameObject("player")->AddCSound()->LoadSound("milkyway.wav");
 	GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav",-1,false);
 
 	GAMEOBJECT->Start();
 	INPUT->Initialise(this);
 	INPUT->LockCursor(true);
-
-	//levelLoader.SaveTest();
-
 
 	return true;
 }
@@ -164,11 +152,14 @@ void Engine::OnLoop()
 
 void Engine::OnRender()
 {
-	/*GRAPHICS->newFrame(m_editMenu);
-	
-	levelEditor.DrawInspector();
+	GRAPHICS->UpdateViewPos();
 
-	GRAPHICS->endFrame(m_editMenu);*/
+	GRAPHICS->m_shader->use();
+	GRAPHICS->m_shader->SetFloat("material.shininess", 16); // TODO move somewhere else
+
+	GRAPHICS->m_shader->setMat4("projection", GRAPHICS->GetProjection());
+
+	GRAPHICS->m_shader->setMat4("view", GRAPHICS->GetView());
 
 	GRAPHICS->newFrame(m_debugMenu);
 	GRAPHICS->renderObjects();
@@ -178,7 +169,6 @@ void Engine::OnRender()
 		//ImGui::ShowDemoWindow();
 
 		levelEditor.DrawEditor();
-
 
 		ImGui::Begin("Debug Menu");                          // Create a window called "Hello, world!" and append into it.
 

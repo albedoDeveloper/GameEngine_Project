@@ -1,6 +1,5 @@
 #pragma once
 #include "CCollider.h"
-#include "CTerrain.h"
 #include <vector>
 #include "DeltaTime.h"
 
@@ -24,11 +23,6 @@ private:
 	 * @brief Vector containing all of the colliders in the game
 	*/
 	std::vector<CCollider*> m_colliderArray;
-
-	/**
-	 * @brief height map in level. currently only supports one heightmap at a time
-	*/
-	CBaseTerrain* m_heightMap;
 
 	bool m_collision;
 

@@ -15,16 +15,6 @@ CUserInterface::CUserInterface(Transform* parent, GameObject* parentObj)
 }
 
 
-void CUserInterface::AssignTexture(std::string key)
-{
-	//textureKey = key;
-}
-
-void CUserInterface::SetVisibility(bool visibility)
-{
-	//isVisible = visibility;
-}
-
 void CUserInterface::SetSize(unsigned width, unsigned height)
 {
 	m_width = width;
@@ -50,29 +40,4 @@ bool CUserInterface::MouseClicked() const
 void CUserInterface::Start()
 {
 	m_initialVisibility = isVisible;
-}
-
-void CUserInterface::Update()
-{
-	/*m_mouseDown = false;
-	int xPos = INPUT->GetMouseXPos();
-	int yPos = INPUT->GetMouseYPos();
-	if (xPos >= m_xPos && xPos <= m_xPos+m_width
-			&& yPos >= m_yPos && yPos <= m_yPos+m_height)
-	{
-		if (INPUT->GetMouseButtonDown(0))
-		{
-			m_mouseDown = true;
-		}
-	}*/
-}
-
-void CUserInterface::Render()
-{
-}
-
-void CUserInterface::LateRender()
-{
-	/*if (isVisible)
-		GRAPHICS->DrawImage(textureKey, m_width, m_height, m_xPos, m_yPos);*/
 }

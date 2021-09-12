@@ -4,7 +4,6 @@
 #include "ModernOpenGL/Model.h"
 #include "AModel.h"
 #include "Color.h"
-#include "CSpotlight.h"
 
 #include <SDL2/SDL.h>
 #include "GraphicsLibraryEnum.h"
@@ -13,9 +12,9 @@
 #include "MultiTexture.h"
 #include "imgui/imgui.h"
 #include "SkyBox.h"
+#include "LightManager.h"
 
 class CCamera;
-class CBaseTerrain;
 
 #define CHECK_GL_ERROR \
 	if (glGetError() == GL_NO_ERROR){printf("GL_NO_ERROR\n");} \
@@ -123,6 +122,11 @@ public:
 	 * @brief Function to be called at the start of every frame for rendering
 	*/
 	void newFrame(bool debugMenu);
+
+	void UpdateViewPos() const;
+
+	int AddPointLight(CPointLight* light);
+
 	/**
 	 * @brief Renders all visible objects
 	*/
@@ -155,68 +159,17 @@ public:
 	*/
 	CCamera* GetDisplayCamera();
 	/**
-	 * @brief sets up a spotlight within the scene
-	 * @param light the spotlight to set up
-	*/
-	void UpdateSpotlight(const CSpotlight* light);
-	/**
 	 * @brief Draws a model asset on the screen
 	 * @param model The model to draw
 	 * @param trans Transform of the model
 	*/
 	void DrawModel(Model* model, const Transform& trans);
-
-	void DrawModelMovingTexture(Model* model, const Transform& trans, const float texOffset) const;
-	/**
-	 * @brief Draws a model asset on the screen with lighting
-	 * @param model The model to draw
-	 * @param trans Transform of the model
-	*/
-	void DrawIlluminatedModel(const AModel* model, const Transform& trans) const;
-	/**
-	 * @brief Renders a heightmap on the screen
-	 * @param terrain The terrain to render
-	 * @param withTexture Whether the terrain's texture should be used
-	*/
-	void renderHeightMap(CBaseTerrain* terrain, bool withTexture);
-	/**
-	 * @brief Renders an image to the screen
-	 * @param textureKey the key of the image to draw
-	*/
-	void DrawImage(std::string textureKey, int width, int height, int posX, int posY);
-	/**
-	 * @brief Renders a section of terrain
-	 * @param terrain the terrain to display
-	 * @param withTexture whether it should be displayed with a texture or not
-	*/
-	void DrawTerrain();
-
-	/**
-	 * @brief generate display list for a terrain. using brute force method
-	*/
-	void GenDisplayListTerrain(CBaseTerrain* terrain, bool withTexture, bool asWirefram);
-
-	/**
-	 * @brief draw a collider
-	*/
-	void DrawCollider(float maxX, float maxY, float maxZ, float minX, float minY, float minZ, const Transform& worldT);
-
-	/**
-	 * @brief Renders a square grid floor on the screen
-	 * @param gridHeight, the height the grid will be drawn at
-	 * @param lineThickness the thickness of the grid lines
-	 * @param gridWidth the width of the grid (number of cells)
-	 * @param cellWidth the size of the grid squares
-	*/
-	void DrawGrid(float gridHeight, float lineThickness, float gridWidth, float cellWidth);
 	/**
 	 * @brief retrieves the ID by which a texture is stored in the graphics library
 	 * @param key the key by which it's stored by the asset factory
 	 * @return the key of the texture
 	*/
 	unsigned GetTexID(std::string key) const;
-	
-	unsigned char* GetTextureArray(std::string key, int &w, int &h);
 
 	void GetScreenSize(int&w, int&h);
 
@@ -233,11 +186,20 @@ public:
 
 	void Close();
 
-	Shader* shader = nullptr;
-	
-	Shader* debugShader = nullptr;
+	void GoFullscreen() const
+	{
+		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
+		SDL_Surface* surface = SDL_GetWindowSurface(m_window);
+		SDL_UpdateWindowSurface(m_window);
+	}
 
-	bool m_firstFrameDebug = false;
+	glm::mat4 GetProjection();
+
+	glm::mat4 GetView();
+
+	Shader* m_shader;
+	
+	Shader* m_debugShader;
 
 	bool m_drawDebug = false;
 
@@ -265,14 +227,9 @@ private:
 	/*
 	 * @brief Renders debug colliders
 	*/
-	void DrawDebug(glm::mat4 projection, glm::mat4 view);
+	void DrawDebug();
 
-
-	glm::mat4 GetProjection();
-
-
-	glm::mat4 GetView();
-
+	LightManager m_lightManager;
 };
 
 #define GRAPHICS GraphicsEngine::instance()

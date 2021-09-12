@@ -29,22 +29,22 @@ public:
 	/**
 	 * @brief called at start of game
 	*/
-	virtual void Start() = 0;
+	virtual void Start() {};
 
 	/**
 	 * @brief To be called every frame to process the component's behaviour, if any
 	*/
-	virtual void Update() = 0;
+	virtual void Update() {};
 
 	/**
 	 * @brief To be called every frame to display the component on the screen, if visible
 	*/
-	virtual void Render() = 0;
+	virtual void Render() {};
 
 	/**
 	 * @brief Displays the component after others are displayed
 	*/
-	virtual void LateRender() = 0;
+	virtual void LateRender() {};
 
 	/**
 	 * @brief saves the component
@@ -79,7 +79,6 @@ public:
 	*/
 	GameObject* GetParentObject();
 
-	
 
 protected:
 	/**

@@ -288,14 +288,6 @@ public:
      * @brief quits the game
     */
     void QuitGame();
-    /**
-     * @brief saves the game
-    */
-    void SaveGame();
-    /**
-     * @brief loads the game from saved state
-    */
-    void LoadGame();
 };
 
 #define INPUT InputManager::Instance()

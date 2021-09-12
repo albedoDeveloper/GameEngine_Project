@@ -8,18 +8,12 @@ LevelEditor::LevelEditor()
 
 void LevelEditor::DrawEditor()
 {
-	
-
 	ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
 	
 	if (ImGui::CollapsingHeader("Level Editor"))
 	{
 		ObjectList();
-
-		
 	}
-
-	//ImGui::End();
 }
 
 void LevelEditor::ObjectList() 
