@@ -30,7 +30,7 @@ void CPointLight::AssignColour(float r, float g, float b)
 	LightInfo.colour.SetY(g);
 	LightInfo.colour.SetZ(b);
 	GRAPHICS->m_shader->use();
-	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(m_shaderIndex) + "].diffuse", glm::vec3(
+	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(m_shaderIndex) + "].colour", glm::vec3(
 		r,
 		g,
 		b
