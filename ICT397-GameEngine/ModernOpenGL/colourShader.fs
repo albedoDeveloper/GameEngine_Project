@@ -20,7 +20,6 @@ void main()
     vec3 norm = normalize(Normal);
     vec3 result;
 
-    // phase 2: Point lights
     vec3 lightDir = normalize(lightPos1 - FragPos);
     float diff = max(dot(Normal, lightDir), 0.0);
     float distance = length(lightPos1 - FragPos);
@@ -36,13 +35,10 @@ void main()
     result += lightColor2 * diff * vec3(texture(texture_diffuse1, TexCoords));
 
     lightDir = normalize(whitelightpos - FragPos);
-    // attenuation
     distance = length(whitelightpos - FragPos);
     attenuation = 1.0 / (1 + 0.7 * distance + 1.8 * (distance * distance));
     diff = max(dot(Normal, lightDir), 0.0) * attenuation;
     result += whitelightColor * diff * vec3(texture(texture_diffuse1, TexCoords));
-
-    //result += CalcPointLight(lightPos2, norm, FragPos, lightColor2, TexCoords);     
     
     FragColor = vec4(result, texture(texture_diffuse1, TexCoords).w);
 }
