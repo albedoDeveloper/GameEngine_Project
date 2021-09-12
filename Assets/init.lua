@@ -81,8 +81,6 @@ GetGameObject("pool-table"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("main_bar_bench"):SetStatic(true)
 GetGameObject("main_bar_bench"):AddCStaticMesh():AssignModel("main_bar_bench")
-GetGameObject("main_bar_bench"):AddCCollider():AddConcaveCollider(1)
-GetGameObject("main_bar_bench"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("graffiti_block"):SetStatic(true)
 GetGameObject("graffiti_block"):AddCStaticMesh():AssignModel("graffiti_block")
