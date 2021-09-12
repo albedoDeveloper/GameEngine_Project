@@ -128,6 +128,7 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("Jump", &CCharacter::Jump)
             .addFunction("GetHitpoints", &CCharacter::GetHitpoints)
             .addFunction("SetHitpoints", &CCharacter::SetHitpoints)
+            .addFunction("SetPlayerControlled", &CCharacter::SetPlayerControlled)
         .endClass();
 
     getGlobalNamespace(Lbuff)
