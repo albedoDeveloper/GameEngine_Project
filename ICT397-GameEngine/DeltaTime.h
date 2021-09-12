@@ -15,6 +15,8 @@ public:
 	*/
 	void UpdateDeltaTime();
 
+	void CatchupDeltaTime();
+
 	/**
 	 * @brief get current delta time
 	*/

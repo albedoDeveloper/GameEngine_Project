@@ -29,9 +29,20 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 	{
 		//must reset inputs before polling next event, otherwise previous events are retained
 		INPUT->ResetInputValues();
+		TIME->UpdateDeltaTime();
 
 		while (SDL_PollEvent(&event))
 		{
+			if (event.type == SDL_WINDOWEVENT)
+			{
+				switch (event.window.event)
+				{
+				case SDL_WINDOWEVENT_MOVED:
+					TIME->CatchupDeltaTime();
+					break;
+				}
+			}
+
 			if (m_debugMenu)
 			{
 				ImGui_ImplSDL2_ProcessEvent(&event);
@@ -110,7 +121,6 @@ void Engine::OnEvent(SDL_Event* e)
 
 void Engine::OnLoop()
 {
-	TIME->UpdateDeltaTime();
 	GAMEOBJECT->Update();
 	if (INPUT->GetKeyDown('`'))
 	{
