@@ -6,8 +6,7 @@ CPointLight::CPointLight(Transform* parent, GameObject* parentObj)
 	LightInfo{}
 {
 	LightInfo.ambientStrength = 0.2f;
-	LightInfo.diffuseColour = Vector3f(0.8f, 0.8f, 0.8f);
-	LightInfo.specularColour = Vector3f(1, 1, 1);
+	LightInfo.colour = Vector3f(0.8f, 0.8f, 0.8f);
 	LightInfo.constant = 1;
 	LightInfo.linear = 0.09f;
 	LightInfo.quadratic = 0.032f;
@@ -27,9 +26,9 @@ void CPointLight::Update()
 
 void CPointLight::AssignColour(float r, float g, float b)
 {
-	LightInfo.diffuseColour.SetX(r);
-	LightInfo.diffuseColour.SetY(g);
-	LightInfo.diffuseColour.SetZ(b);
+	LightInfo.colour.SetX(r);
+	LightInfo.colour.SetY(g);
+	LightInfo.colour.SetZ(b);
 	GRAPHICS->m_shader->use();
 	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(m_shaderIndex) + "].diffuse", glm::vec3(
 		r,

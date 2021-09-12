@@ -32,15 +32,23 @@ GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
+GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("toilet_block"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
+GetGameObject("tavern_glass_door_wall_long_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("tavern_glass_door_wall_long_2"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("tavern_glass_door_wall_long"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long")
+GetGameObject("tavern_glass_door_wall_long"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("tavern_glass_door_wall_long"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("tavern_glass_door_wall"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_glass_door_wall")
+GetGameObject("tavern_glass_door_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("tavern_glass_door_wall"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("spiked_door_bar"):SetStatic(true)
 GetGameObject("spiked_door_bar"):AddCStaticMesh():AssignModel("spiked_door_bar")
@@ -50,21 +58,31 @@ GetGameObject("south_bar_wall"):AddCStaticMesh():AssignModel("south_bar_wall")
 
 SpawnGameObject("south_bar_barrier_2"):SetStatic(true)
 GetGameObject("south_bar_barrier_2"):AddCStaticMesh():AssignModel("south_bar_barrier_2")
+GetGameObject("south_bar_barrier_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("south_bar_barrier_2"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("south_bar_barrier"):SetStatic(true)
 GetGameObject("south_bar_barrier"):AddCStaticMesh():AssignModel("south_bar_barrier")
+GetGameObject("south_bar_barrier"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("south_bar_barrier"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("tavern_floor"):SetStatic(true)
 GetGameObject("tavern_floor"):AddCStaticMesh():AssignModel("tavern_floor")
+GetGameObject("tavern_floor"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("tavern_floor"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("roof_interior"):SetStatic(true)
 GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
 
 SpawnGameObject("pool-table"):SetStatic(true)
 GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
+GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("pool-table"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("main_bar_bench"):SetStatic(true)
 GetGameObject("main_bar_bench"):AddCStaticMesh():AssignModel("main_bar_bench")
+GetGameObject("main_bar_bench"):AddCCollider():AddConcaveCollider(1)
+GetGameObject("main_bar_bench"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("graffiti_block"):SetStatic(true)
 GetGameObject("graffiti_block"):AddCStaticMesh():AssignModel("graffiti_block")
@@ -90,15 +108,15 @@ SpawnGameObject("back_wall"):SetStatic(true)
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
 
 SpawnGameObject("lightAnchor"):SetStatic(false)
-GetGameObject("lightAnchor"):GetTransform():SetPosition(6.534999847412109,
-2.134999990463257,
-1.284999966621399);
+GetGameObject("lightAnchor"):GetTransform():SetPosition(4.954999923706055,
+1.9049999713897705,
+5.275000095367432);
 GetGameObject("lightAnchor"):AddCScript():AssignScript("rotate")
 
 SpawnGameObject("light1"):SetStatic(false)
 GetGameObject("light1"):AddCPointLight()
-GetGameObject("light1"):GetCPointLight():AssignColour(1,1,1)
-GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(0.1)
+GetGameObject("light1"):GetCPointLight():AssignColour(0.8,0.8,0.8)
+GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(1)
 GetGameObject("light1"):GetTransform():SetPosition(-8.354999542236328,
 2.6700000762939453,
 1.0);
@@ -117,4 +135,4 @@ GetGameObject("light2"):GetCPointLight():AssignColour(0,0,1)
 GetGameObject("light2"):GetCPointLight():AssignAmbientStrength(0.1)
 GetGameObject("light2"):SetParentObject("lightAnchor")
 GetGameObject("light2"):AddCStaticMesh():AssignModel("axis")
-GetGameObject("light2"):GetTransform():Translate(2,0,0)
+GetGameObject("light2"):GetTransform():Translate(0.5,0,0)

@@ -5,8 +5,7 @@
 struct PointLight
 {
 	float ambientStrength;
-	Vector3f diffuseColour;
-	Vector3f specularColour;
+	Vector3f colour;
 
 	// attenuation
 	float constant;

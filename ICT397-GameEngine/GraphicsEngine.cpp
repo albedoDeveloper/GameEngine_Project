@@ -99,15 +99,10 @@ int GraphicsEngine::AddPointLight(CPointLight* light)
 	m_shader->use();
 	m_shader->setShaderInt("numOfPointLights", numpointLights);
 	GRAPHICS->m_shader->setShaderFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
-	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].diffuse", glm::vec3(
-		light->LightInfo.diffuseColour.GetX(),
-		light->LightInfo.diffuseColour.GetY(),
-		light->LightInfo.diffuseColour.GetZ()
-	));
-	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].specular", glm::vec3(
-		light->LightInfo.specularColour.GetX(),
-		light->LightInfo.specularColour.GetY(),
-		light->LightInfo.specularColour.GetZ()
+	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].colour", glm::vec3(
+		light->LightInfo.colour.GetX(),
+		light->LightInfo.colour.GetY(),
+		light->LightInfo.colour.GetZ()
 	));
 	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].constant", light->LightInfo.constant);
 	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].linear", light->LightInfo.linear);
@@ -178,8 +173,6 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 		return;
 	}
 	
-	m_shader->use();
-
 	glm::mat4 trans = glm::mat4(1.0f);
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
 
@@ -188,6 +181,8 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 	));
 
 	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+
+	m_shader->use();
 	m_shader->setMat4("model", trans);
 
 	m_shader->setShaderInt("material.texture_diffuse1", 0);
@@ -283,12 +278,12 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	m_debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/unlit.frag");
 	
 	skybox.CreateSkybox(std::vector<std::string>{
-		"../Assets/skybox/right.jpg",
-		"../Assets/skybox/left.jpg",
-		"../Assets/skybox/top.jpg",
-		"../Assets/skybox/bottom.jpg",
-		"../Assets/skybox/front.jpg",
-		"../Assets/skybox/back.jpg"}
+		"../Assets/skybox/right.png",
+		"../Assets/skybox/left.png",
+		"../Assets/skybox/top.png",
+		"../Assets/skybox/bottom.png",
+		"../Assets/skybox/front.png",
+		"../Assets/skybox/back.png"}
 	);
 
 	return true;

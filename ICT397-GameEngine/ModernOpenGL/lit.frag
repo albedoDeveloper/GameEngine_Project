@@ -12,8 +12,7 @@ struct PointLight
     vec3 position;
   
     float ambientStrength;
-    vec3 diffuse;
-    vec3 specular;
+    vec3 colour;
 
     // attenuation
     float constant;
@@ -51,7 +50,7 @@ void main()
 
 vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
 {
-    vec3 ambientColour = light.diffuse * light.ambientStrength;
+    vec3 ambientColour = light.colour * light.ambientStrength;
 
     vec3 lightDir = normalize(light.position - fragPos);
     // diffuse shading
@@ -65,8 +64,8 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
   			     light.quadratic * (distance * distance));    
     // combine results
     vec3 ambient  = ambientColour  * vec3(texture(material.texture_diffuse1, TexCoords));
-    vec3 diffuse  = light.diffuse  * diff * vec3(texture(material.texture_diffuse1, TexCoords));
-    vec3 specular = light.specular * spec * vec3(texture(material.texture_specular1, TexCoords));
+    vec3 diffuse  = light.colour  * diff * vec3(texture(material.texture_diffuse1, TexCoords));
+    vec3 specular = light.colour * spec * vec3(texture(material.texture_specular1, TexCoords));
     ambient  *= attenuation;
     diffuse  *= attenuation;
     specular *= attenuation;
