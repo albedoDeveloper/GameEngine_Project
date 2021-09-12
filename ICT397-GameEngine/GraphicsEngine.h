@@ -11,6 +11,8 @@
 #include <string>
 #include <map>
 #include "MultiTexture.h"
+#include "imgui/imgui.h"
+#include "SkyBox.h"
 
 class CCamera;
 class CBaseTerrain;
@@ -70,8 +72,19 @@ private:
 	*/
 	bool m_skyboxInitialized;
 
+	int m_windowWidth;
 
-	
+	int m_windowHeight;
+
+	ImGuiIO m_imgui_io;
+
+	ImVec4 m_clear_color;
+
+	unsigned int VAODebug = 0;
+	unsigned int VBODebug = 0;
+	bool initDebug = true;
+
+	SkyBox skybox;
 
 public:
 	/**
@@ -89,7 +102,7 @@ public:
 	 * @param renderer - which graphics api to use
 	 * @return Whether initialisation succeeded
 	*/
-	bool initialise(GraphicsLibrary renderer);
+	bool initialise(GraphicsLibrary renderer, int windowWidth, int windowHeight);
 	/**
 	 * @brief initialises lighting
 	 * @return whether operation succeeded
@@ -106,12 +119,10 @@ public:
 	*/
 	//Camera GetCamera();
 
-	void GenMultiTexture(std::string tex1Key, std::string tex2Key);
-
 	/**
 	 * @brief Function to be called at the start of every frame for rendering
 	*/
-	void newFrame();
+	void newFrame(bool debugMenu);
 	/**
 	 * @brief Renders all visible objects
 	*/
@@ -119,7 +130,7 @@ public:
 	/**
 	 * @brief Function to be called at the end of every frame for rendering
 	*/
-	void endFrame();
+	void endFrame(bool debugMenu);
 	/**
 	 * @brief generates a texture for the graphics library
 	 * @param key the texture key
@@ -153,7 +164,7 @@ public:
 	 * @param model The model to draw
 	 * @param trans Transform of the model
 	*/
-	void DrawModel(Model* model, const Transform& trans) const;
+	void DrawModel(Model* model, const Transform& trans);
 
 	void DrawModelMovingTexture(Model* model, const Transform& trans, const float texOffset) const;
 	/**
@@ -220,40 +231,48 @@ public:
 
 	void RenderSkybox();
 
-	Shader* shader = nullptr;
+	void Close();
 
+	Shader* shader = nullptr;
+	
+	Shader* debugShader = nullptr;
+
+	bool m_firstFrameDebug = false;
+
+	bool m_drawDebug = false;
 
 private:
 	/**
 	 * @brief initialises openGL
 	 * @return whether operation succeeded
 	*/
-	bool InitOpenGL();
-	/**
-	 * @brief initialises lighting for openGL
-	 * @return whether operation succeeded
-	*/
-	bool InitOpenGLlighting();
+	bool InitOpenGL(int windowWidth, int windowHeight);
+
+	void InitImGui();
+
 	/**
 	 * @brief initialises directX
 	 * @return whether operation succeeded
 	*/
 	bool InitDirectX();
-	/**
-	 * @brief generates an opengl texture
-	 * @param image the image data to send in
-	 * @param width width of the image in pixels
-	 * @param height height of the image in pixels
-	 * @param key key at which the texture should be stored
-	*/
-	void GenOpenGLTexture(unsigned char* image, int width, int height, std::string key);
-	/**
-	 * @brief Sends a transformation to openGL
-	 * @param t the transformation to use
-	*/
-	void OpenGLTransformation(const Transform& t) const;
 
 	
+	/**
+	 * @brief Setups the debug rendering of collider boxes
+	*/
+	void InitDebug(std::vector <float>& tempVector);
+	
+	/*
+	 * @brief Renders debug colliders
+	*/
+	void DrawDebug(glm::mat4 projection, glm::mat4 view);
+
+
+	glm::mat4 GetProjection();
+
+
+	glm::mat4 GetView();
+
 };
 
 #define GRAPHICS GraphicsEngine::instance()

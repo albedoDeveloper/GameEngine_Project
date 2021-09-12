@@ -8,7 +8,7 @@
 #include "CCharacterComponent.h"
 #include "CGridComponent.h"
 #include "InputManager.h"
-#include "CAABBCollider.h"
+#include "CCollider.h"
 #include "CWater.h"
 #include "Engine.h"
 #include "CSpotlight.h"
@@ -52,7 +52,6 @@ lua_State* ScriptingEngine::NewState()
     getGlobalNamespace(Lbuff).addFunction("SpawnGameObject", SpawnGameObject);
     getGlobalNamespace(Lbuff).addFunction("GetGameObject", GetGameObject);
     getGlobalNamespace(Lbuff).addFunction("QuitGame", QuitGame);
-    getGlobalNamespace(Lbuff).addFunction("RestartGame", RestartGame);
     getGlobalNamespace(Lbuff).addFunction("SaveGame", SaveGame);
     getGlobalNamespace(Lbuff).addFunction("LoadGame", LoadGame);
     getGlobalNamespace(Lbuff).addFunction("CheckSaveState", CheckSaveState);
@@ -72,9 +71,11 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("GetPosition", &Transform::GetPosition)
             .addFunction("SetPosition", &Transform::SetPosition)
             .addFunction("RotateLocal", &Transform::RotateLocal)
+            .addFunction("RotateLocalX", &Transform::RotateLocalX)
             .addFunction("RotateLocalY", &Transform::RotateLocalY)
+            .addFunction("RotateLocalZ", &Transform::RotateLocalZ)
             .addFunction("Translate", &Transform::Translate)
-            .addFunction("Scale", &Transform::ScaleLocal)
+            .addFunction("ScaleLocal", &Transform::ScaleLocal)
             .addFunction("GetDistance", &Transform::GetDistance)
             .addFunction("GetDistance3f", &Transform::GetDistance3f)
             .addFunction("MoveTowards", &Transform::MoveTowards)
@@ -94,7 +95,6 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("LockCursor", &InputManager::LockCursor)
             .addFunction("CheckCursorLock", &InputManager::CheckCursorLock)
             .addFunction("QuitGame", &InputManager::QuitGame)
-            .addFunction("RestartGame", &InputManager::RestartGame)
             .addFunction("SaveGame", &InputManager::SaveGame)
             .addFunction("LoadGame", &InputManager::LoadGame)
         .endClass();
@@ -119,14 +119,20 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("GetClosestObject", &GameObject::GetClosestObject)
             .addFunction("GetCCamera", &GameObject::GetCCamera)
             .addFunction("GetCCharacter", &GameObject::GetCCharacter)
-            .addFunction("AddCAABBCollider", &GameObject::AddCAABBCollider)
+            .addFunction("AddCCollider", &GameObject::AddCCollider)
             .addFunction("AddCSpotlight", &GameObject::AddCSpotlight)
             .addFunction("GetCSpotlight", &GameObject::GetCSpotlight)
+            .addFunction("AddCPointLight", &GameObject::AddCPointLight)
+            .addFunction("GetCPointLight", &GameObject::GetCPointLight)
             .addFunction("AddCWaterComponent", &GameObject::AddCWaterComponent)
             .addFunction("SetActive", &GameObject::SetActive)
             .addFunction("SetDifficulty", &GameObject::SetDifficulty)
             .addFunction("GetDifficulty", &GameObject::GetDifficulty)
-        .addFunction("GetCTerrainBruteForce", &GameObject::GetCTerrainBruteForce)
+            .addFunction("SetParentObject", &GameObject::SetParentObject)
+            .addFunction("AddCSound", &GameObject::AddCSound)
+            .addFunction("GetCSound", &GameObject::GetCSound)
+            .addFunction("SetStatic", &GameObject::SetStatic)
+            .addFunction("GetCCollider", &GameObject::GetCCollider)
         .endClass();
 
     getGlobalNamespace(Lbuff)
@@ -147,6 +153,7 @@ lua_State* ScriptingEngine::NewState()
         .deriveClass<CCamera, Component>("CCameraComponent.h")
             .addFunction("SetAsCurrentCamera", &CCamera::SetAsCurrentCamera)
         .endClass();
+
 
     getGlobalNamespace(Lbuff)
         .beginClass<Component>("Component")
@@ -170,11 +177,26 @@ lua_State* ScriptingEngine::NewState()
     getGlobalNamespace(Lbuff)
         .beginClass<Component>("Component")
         .endClass()
+        .deriveClass<CPointLight, Component>("CPointLight")
+            .addFunction("AssignColour", &CPointLight::AssignColour)
+        .endClass();
+
+    getGlobalNamespace(Lbuff)
+        .beginClass<Component>("Component")
+        .endClass()
         .deriveClass<CStateMachineAI, Component>("CStateMachineAI")
             .addFunction("AssignScript", &CStateMachineAI::AssignScriptByKey)
             .addFunction("SetCurrentState", &CStateMachineAI::SetCurrentState)
             .addFunction("GetCurrentState", &CStateMachineAI::GetCurrentState)
             .addFunction("RunCurrentState", &CStateMachineAI::RunCurrentState)
+        .endClass();
+
+    getGlobalNamespace(Lbuff)
+        .beginClass<Component>("Component")
+        .endClass()
+        .deriveClass<CSound, Component>("CSound")
+        .addFunction("LoadSound", &CSound::LoadSound)
+        .addFunction("PlaySound", &CSound::PlaySound)
         .endClass();
 
     getGlobalNamespace(Lbuff)
@@ -203,13 +225,15 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("GetDisplayWireframe", &CTerrainBruteForce::GetDisplayWireframe)
         .endClass();
 
-    getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
-        .endClass()
-        .deriveClass<CAABBCollider, Component>("CAABBCollider")
-            .addFunction("GetCollider", &CAABBCollider::GetCollider)
-            .addFunction("SetCollider", &CAABBCollider::SetCollider)
-        .endClass();
+   getGlobalNamespace(Lbuff)
+       .beginClass<Component>("Component")
+       .endClass()
+       .deriveClass<CCollider, Component>("CCollider")
+       .addFunction("AddConvexCollider", &CCollider::AddConvexCollider)
+       .addFunction("AddBoxCollider", &CCollider::AddBoxCollider)
+       .addFunction("AddConcaveCollider", &CCollider::AddConcaveCollider)
+       .addFunction("CollideWith", &CCollider::CollideWith)
+       .endClass();
 
     getGlobalNamespace(Lbuff)
         .beginClass<Component>("Component")
@@ -290,24 +314,19 @@ void ScriptingEngine::LoadHeightMap(std::string key, std::string filePath)
     ASSET->LoadHeightMap(key, "../Assets/HeightMaps/" + filePath);
 }
 
-void ScriptingEngine::SpawnGameObject(std::string key)
+GameObject* ScriptingEngine::SpawnGameObject(std::string key)
 {
-    GAMEOBJECT->SpawnGameObject(key);
+    return GAMEOBJECT->SpawnGameObject(key);
 }
 
 GameObject* ScriptingEngine::GetGameObject(std::string objectKey)
 {
-    return GAMEOBJECT->getObject(objectKey);
+    return GAMEOBJECT->GetGameObject(objectKey);
 }
 
 void ScriptingEngine::QuitGame()
 {
     m_engine->QuitGame();
-}
-
-void ScriptingEngine::RestartGame()
-{
-    m_engine->RestartGame();
 }
 
 void ScriptingEngine::SaveGame()

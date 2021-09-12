@@ -13,9 +13,12 @@
 #include "CCameraComponent.h"
 #include "CGridComponent.h"
 #include "CTerrain.h"
-#include "CAABBCollider.h"
+#include "CCollider.h"
 #include "CSpotlight.h"
 #include "CWater.h"
+#include "CSound.h"
+#include <nlohmann/json.hpp>
+#include "CPointLight.h"
 
 #if _DEBUG
 #include <iostream>
@@ -82,6 +85,11 @@ public:
 	 * @return the created camera
 	*/
 	CCamera* AddCCameraComponent();
+
+	CPointLight* AddCPointLight();
+
+	CPointLight* GetCPointLight();
+
 	/**
 	 * @brief Adds a grid component
 	 * @return the created grid
@@ -96,7 +104,7 @@ public:
 	 * @brief Adds a collider component
 	 * @return the created collider
 	*/
-	CAABBCollider* AddCAABBCollider();
+	CCollider* AddCCollider();
 	/**
 	 * @brief Adds a spotlight component
 	 * @return the created spotlight
@@ -117,12 +125,25 @@ public:
 
 	CCamera* GetCCamera();
 
+	bool IsStatic() const;
+
+	CSound* AddCSound();
+
+	CSound* GetCSound();
+
+	void SetStatic(bool isStatic);
+
 	CCharacter* GetCCharacter();
+
+	CCollider* GetCCollider();
+
 	/**
 	 * @brief gets the first spotlight component
 	 * @return spotlight component
 	*/
 	CSpotlight* GetCSpotlight();
+
+	void SetParentObject(std::string newParent);
 
 	/**
 	 * @brief component accessor
@@ -185,17 +206,18 @@ public:
 	*/
 	void LateRender();
 	/**
-	 * @brief Calls the restart function of every component
-	*/
-	void Restart();
-	/**
 	 * @brief saves the object
 	*/
-	void Save();
+	void Save(nlohmann::json& j);
 	/**
 	 * @brief loads the object from saved state
 	*/
-	void Load();
+	void Load(nlohmann::json& j);
+
+	/**
+	 * @brief retrieves component map
+	*/
+	std::unordered_map<std::type_index, std::list<Component*>*> GetComponentMap();
 
 private:
 	/**
@@ -234,6 +256,8 @@ private:
 	 * @brief the difficulty of the game for this object
 	*/
 	std::string m_difficulty;
+
+	bool m_static;
 };
 
 template<class T, class... Targs>
@@ -250,10 +274,6 @@ inline T* GameObject::AddComponent(Targs&&... args)
 		}
 
 		m_components.at(std::type_index(typeid(T)))->push_back(obj);
-
-#if _DEBUG
-		std::cout << "Component of type " << typeid(T).name() << " added to GameObject (key=" << m_factoryKey << ")\n";
-#endif
 		
 		return obj;
 	}

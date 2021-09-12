@@ -2,6 +2,9 @@
 
 #include <SDL2/SDL.h>
 #include "GraphicsLibraryEnum.h"
+#include "LevelLoader.h"
+#include "LevelEditor.h"
+#include <reactphysics3d/reactphysics3d.h>
 
 /**
  * @brief A game engine that handles all the backend of a video game and allows for creation of video games with a client program
@@ -14,13 +17,29 @@ private:
 	*/
 	bool m_isRunning;
 	/**
-	 * @brief whether the engine is currently restarting
-	*/
-	bool m_restart;
-	/**
 	 * @brief whether the game has been saved
 	*/
 	bool m_saveState;
+	/**
+	 * @brief whether the game needs to be laoded
+	*/
+	bool m_loadState;
+	/**
+	 * @brief the level loader class
+	*/
+	LevelLoader levelLoader;
+	/**
+	 * @brief the level editor class
+	*/
+	LevelEditor levelEditor;
+
+
+	bool m_debugMenu;
+
+	bool m_editMenu;
+
+	bool m_drawColliders;
+
 public:
 	/**
 	 * @brief default constructor
@@ -32,15 +51,11 @@ public:
 	 * @param renderer - which graphics library you want to be used to render
 	 * @return An integer representing program completion status
 	*/
-	int OnExecute(GraphicsLibrary renderer);
+	int OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeight);
 	/**
 	 * @brief ends the game
 	*/
 	void QuitGame();
-	/**
-	 * @brief starts the game over
-	*/
-	void RestartGame();
 	/**
 	 * @brief saves the game
 	*/
@@ -61,7 +76,7 @@ private:
 	 * @param renderer - which graphics api you want to be used to render
 	 * @return Whether intialisation succeeded
 	*/
-	bool OnInit(GraphicsLibrary renderer);
+	bool OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight);
 
 	/**
 	 * @brief Event handler to be called when an SDL event occurs
@@ -83,4 +98,11 @@ private:
 	 * @brief Cleans up the program on its conclusion before quitting
 	*/
 	void OnCleanup();
+
+
+
+
+
+
+
 };

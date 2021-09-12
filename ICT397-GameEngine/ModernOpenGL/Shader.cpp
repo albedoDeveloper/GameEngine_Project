@@ -55,9 +55,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     {
         std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
     }
-
-
-
 }
 
 void Shader::CreateShaders(unsigned int& shadername, const GLchar* const* actualShader, int typeOfShader)
@@ -110,8 +107,6 @@ bool Shader::useShaderForLoop()
         glUseProgram(ID);
         return true;
     }
-
-
 }
 
 

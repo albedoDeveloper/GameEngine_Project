@@ -117,8 +117,15 @@ void InputManager::CheckKeyDown(SDL_Event* e)
         if(debugKeyPresses)
             std::cout << "k Down: " << " down = " << x_Key.down << ": held = " << x_Key.held << ": up = " << x_Key.up << std::endl;
         break;
+    case SDLK_c:
+        c_Key.held = true;
+        if (!e->key.repeat)
+        {
+            c_Key.held = true;
+            c_Key.down = true;
+        }
     case SDLK_k:
-        m_Key.held = true;
+        k_Key.held = true;
         if (!e->key.repeat)
         {
             k_Key.held = true;
@@ -133,6 +140,14 @@ void InputManager::CheckKeyDown(SDL_Event* e)
         {
             space_Key.held = true;
             space_Key.down = true;
+        }
+        break;
+    case SDLK_BACKQUOTE:
+        tilde_Key.held = true;
+        if (!e->key.repeat)
+        {
+            tilde_Key.held = true;
+            tilde_Key.down = true;
         }
         break;
     default:
@@ -203,10 +218,20 @@ void InputManager::CheckKeyUp(SDL_Event* e)
         m_Key.held = false;
         m_Key.down = false;
         break;
+    case SDLK_c:
+        c_Key.up = true;
+        c_Key.held = false;
+        c_Key.down = false;
+        break;
     case SDLK_SPACE:
         space_Key.up = true;
         space_Key.held = false;
         space_Key.down = false;
+        break;
+    case SDLK_BACKQUOTE:
+        tilde_Key.up = true;
+        tilde_Key.held = false;
+        tilde_Key.down = false;
         break;
     }
 }
@@ -332,8 +357,14 @@ void InputManager::ResetKeyValues()
     //k_Key.held = false;
     m_Key.up = false;
 
+    c_Key.down = false;
+    c_Key.up = false;
+
     space_Key.down = false;
     space_Key.up = false;
+
+    tilde_Key.down = false;
+    tilde_Key.up = false;
 }
 
 void InputManager::ResetMouseButtonValues()
@@ -439,8 +470,15 @@ bool InputManager::GetKey(char c)
     case  'M':
         return  m_Key.held || m_Key.down;
         break;
+    case  'c':
+    case  'C':
+        return  c_Key.held || c_Key.down;
+        break;
     case  ' ':
         return space_Key.held || space_Key.down;
+        break;
+    case  '`':
+        return tilde_Key.held || tilde_Key.down;
         break;
     default:
         break;
@@ -535,6 +573,9 @@ bool InputManager::GetKeyDown(char c)
         break;
     case ' ':
         return space_Key.down;
+        break;
+    case '`':
+        return tilde_Key.down;
         break;
     default:
         break;
@@ -732,14 +773,10 @@ int InputManager::GetMouseYPos() const
 {
     return mouseYAbsolute;
 }
+
 void InputManager::QuitGame()
 {
     m_engine->QuitGame();
-}
-
-void InputManager::RestartGame()
-{
-    m_engine->RestartGame();
 }
 
 void InputManager::SaveGame()

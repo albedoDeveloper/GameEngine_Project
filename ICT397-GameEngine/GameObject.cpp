@@ -2,7 +2,7 @@
 #include "GameObjectFactory.h"
 
 GameObject::GameObject()
-	:m_components{}, m_factoryKey{}, m_isActive{ true }
+	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ }, m_static{ false }
 {
 }
 
@@ -41,6 +41,21 @@ CStaticMesh* GameObject::GetCStaticMesh()
 	return GetComponent<CStaticMesh>();
 }
 
+CSound* GameObject::AddCSound()
+{
+	return AddComponent<CSound>();
+}
+
+CSound* GameObject::GetCSound()
+{
+	return GetComponent<CSound>();
+}
+
+void GameObject::SetStatic(bool isStatic)
+{
+	m_static = isStatic;
+}
+
 CCharacter* GameObject::AddCCharacter()
 {
 	return AddComponent<CCharacter>();
@@ -49,6 +64,16 @@ CCharacter* GameObject::AddCCharacter()
 CCamera* GameObject::AddCCameraComponent()
 {
 	return AddComponent<CCamera>();
+}
+
+CPointLight* GameObject::AddCPointLight()
+{
+	return AddComponent<CPointLight>();
+}
+
+CPointLight* GameObject::GetCPointLight()
+{
+	return GetComponent<CPointLight>();
 }
 
 CGridComponent* GameObject::AddCGridComponent() 
@@ -73,9 +98,19 @@ CCamera* GameObject::GetCCamera()
 	return GetComponent<CCamera>();
 }
 
+bool GameObject::IsStatic() const
+{
+	return m_static;
+}
+
 CCharacter* GameObject::GetCCharacter()
 {
 	return GetComponent<CCharacter>();
+}
+
+CCollider* GameObject::GetCCollider()
+{
+	return GetComponent<CCollider>();
 }
 
 Transform* GameObject::GetTransform()
@@ -88,9 +123,9 @@ GameObject* GameObject::GetClosestObject(std::string partialKey)
 	return GAMEOBJECT->getClosestObject(&m_transform, partialKey);
 }
 
-CAABBCollider* GameObject::AddCAABBCollider()
+CCollider* GameObject::AddCCollider()
 {
-	return AddComponent<CAABBCollider>();
+	return AddComponent<CCollider>();
 }
 
 CSpotlight* GameObject::AddCSpotlight()
@@ -101,6 +136,17 @@ CSpotlight* GameObject::AddCSpotlight()
 CSpotlight* GameObject::GetCSpotlight()
 {
 	return GetComponent<CSpotlight>();
+}
+
+void GameObject::SetParentObject(std::string newParent)
+{
+	GameObject* otherObject = GAMEOBJECT->GetGameObject(newParent);
+	if (otherObject == nullptr)
+	{
+		std::cout << "ERROR SetParentObject(). Cannot find object by ID: " << newParent << std::endl;
+		exit(-25);
+	}
+	m_transform.SetParent(otherObject->GetTransform());
 }
 
 CWater* GameObject::AddCWaterComponent()
@@ -210,13 +256,13 @@ void GameObject::LateRender()
 	}
 }
 
-void GameObject::Restart()
+void GameObject::Save(nlohmann::json& j)
 {
-	m_isActive = m_initialActivation;
+	j[getFactoryKey()]["key"] = getFactoryKey();
 
-	m_transform.SetPositionV(m_initTransform.GetPosition());
-	m_transform.SetRotation(m_initTransform.GetRotation());
-	m_transform.SetScale(m_initTransform.GetScale());
+	GetTransform()->ToJson(j, getFactoryKey());
+
+	std::cout << "SAVED" << std::endl;
 
 	// iterate through all component lists
 	for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
@@ -224,46 +270,66 @@ void GameObject::Restart()
 		// iterate through all components in list
 		for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 		{
-			(*listIterator)->Restart();
+			(*listIterator)->Save(j);
 		}
 	}
 }
 
-void GameObject::Save()
+void GameObject::Load(nlohmann::json& j)
 {
-	m_savedActivation = m_isActive;
+	std::cout << getFactoryKey() << std::endl;
+	GetTransform()->FromJson(j, getFactoryKey());
 
-	m_savedTransform = new Transform();
-	m_savedTransform.SetPositionV(m_transform.GetPosition());
-	m_savedTransform.SetRotation(m_transform.GetRotation());
-	m_savedTransform.SetScale(m_transform.GetScale());
+	std::cout << j.at(getFactoryKey()).at("Components").size() << std::endl;
 
-	// iterate through all component lists
-	for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+	for (auto it : j.at(getFactoryKey()).at("Components").items())
 	{
-		// iterate through all components in list
-		for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+		std::cout << "GO TEST" << it.key() << " | " << it.value() << std::endl;
+
+		
+
+		if (it.key() == "ScriptComponent")
 		{
-			(*listIterator)->Save();
+			if (GetComponent<CScript>()) 
+			{
+				GetComponent<CScript>()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
+			}
+			else 
+			{
+				AddCScript()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
+			}
+		}
+
+		if (it.key() == "StaticMeshComponent")
+		{
+			if (GetComponent<CStaticMesh>())
+			{
+				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("Model"));
+			}
+			else 
+			{
+				AddCStaticMesh()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("Model"));
+			}
+		}
+
+		if (it.key() == "AABBComponent")
+		{
+			if (GetComponent<CCollider>()) 
+			{
+				std::cout << "collider already exists" << std::endl;
+				GetComponent<CCollider>()->UpdateCollider();
+			}
+			else
+			{
+				CCollider* col = AddCCollider();
+				
+				col->Load(j);
+			}
 		}
 	}
 }
 
-void GameObject::Load()
+std::unordered_map<std::type_index, std::list<Component*>*> GameObject::GetComponentMap() 
 {
-	m_isActive = m_savedActivation;
-
-	m_transform.SetPositionV(m_savedTransform.GetPosition());
-	m_transform.SetRotation(m_savedTransform.GetRotation());
-	m_transform.SetScale(m_savedTransform.GetScale());
-
-	// iterate through all component lists
-	for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
-	{
-		// iterate through all components in list
-		for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
-		{
-			(*listIterator)->Load();
-		}
-	}
+	return m_components;
 }

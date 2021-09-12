@@ -2,7 +2,7 @@
 
 #include "Component.h"
 #include "CollisionManager.h"
-#include "CAABBCollider.h"
+#include "CCollider.h"
 //Debug
 //#include "GameObject.h"
 
@@ -55,6 +55,8 @@ public:
 	*/
 	void SetHitpoints(int hp);
 
+	void SetPlayerControlled(bool playerControlled);
+
 	/**
 	 * @brief Initialises the component at program start
 	*/
@@ -71,18 +73,22 @@ public:
 	 * @brief displays the component after other components are displayed
 	*/
 	virtual void LateRender();
-	/**
-	 * @brief restarts component to initial state
-	*/
-	void Restart();
+
 	/**
 	 * @brief saves the component
 	*/
-	void Save();
+	void Save(nlohmann::json& j);
 	/**
 	 * @brief loads the component from saved state
 	*/
-	void Load();
+	void Load(nlohmann::json& j);
+
+	/**
+	 * @brief Draws to imgui
+	*/
+	virtual void DrawToImGui();
+
+	void SetMouseEnabled(bool isEnabled);
 
 private:
 	/**
@@ -131,8 +137,11 @@ private:
 	*/
 	Vector3f m_acceleration;
 
-	/**
-	 * @brief The character's collision data for checking collision with other objects
-	*/
-	CAABBCollider *m_characterCollider;
+	bool m_playerControlled;
+
+	bool m_mouseEnabled;
+
+	CCollider* m_collider;
+
+	Transform* m_parentTransform;
 };

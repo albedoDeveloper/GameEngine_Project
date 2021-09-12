@@ -20,14 +20,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
-    <ClCompile Include="CAABBCollider.cpp" />
+    <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CCameraComponent.cpp" />
     <ClCompile Include="CCharacterComponent.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="CPointLight.cpp" />
     <ClCompile Include="CScript.cpp" />
+    <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CSpotlight.cpp" />
     <ClCompile Include="CStateMachineAI.cpp" />
     <ClCompile Include="CStaticMesh.cpp" />
@@ -41,7 +43,16 @@
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GraphicsEngine.cpp" />
     <ClCompile Include="CGridComponent.cpp" />
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_demo.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="imgui\imgui_impl_sdl.cpp" />
+    <ClCompile Include="imgui\imgui_tables.cpp" />
+    <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="LevelEditor.cpp" />
+    <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="LightFactory.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
@@ -51,20 +62,23 @@
     <ClCompile Include="ModernOpenGL\Shader.cpp" />
     <ClCompile Include="MultiTexture.cpp" />
     <ClCompile Include="ScriptingEngine.cpp" />
+    <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AHeightMap.h" />
     <ClInclude Include="AScript.h" />
     <ClInclude Include="Asset.h" />
-    <ClInclude Include="CAABBCollider.h" />
+    <ClInclude Include="CCollider.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CCameraComponent.h" />
     <ClInclude Include="CCharacterComponent.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="CPointLight.h" />
     <ClInclude Include="CScript.h" />
+    <ClInclude Include="CSound.h" />
     <ClInclude Include="CSpotlight.h" />
     <ClInclude Include="CStateMachineAI.h" />
     <ClInclude Include="CStaticMesh.h" />
@@ -80,7 +94,18 @@
     <ClInclude Include="GraphicsEngine.h" />
     <ClInclude Include="CGridComponent.h" />
     <ClInclude Include="GraphicsLibraryEnum.h" />
+    <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imgui.h" />
+    <ClInclude Include="imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="imgui\imgui_impl_sdl.h" />
+    <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="imgui\imstb_rectpack.h" />
+    <ClInclude Include="imgui\imstb_textedit.h" />
+    <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="LevelEditor.h" />
+    <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="LightFactory.h" />
     <ClInclude Include="lodepng.h" />
     <ClInclude Include="MathLibrary.h" />
@@ -89,6 +114,7 @@
     <ClInclude Include="ModernOpenGL\Shader.h" />
     <ClInclude Include="MultiTexture.h" />
     <ClInclude Include="ScriptingEngine.h" />
+    <ClInclude Include="SkyBox.h" />
     <ClInclude Include="SkyboxVerts.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
@@ -109,6 +135,7 @@
     <None Include="..\Assets\Scripts\terrainWireframe.lua" />
     <None Include="..\Assets\Scripts\waterInteraction.lua" />
     <None Include="ModernOpenGL\colourShader.fs" />
+    <None Include="ModernOpenGL\debugColourShader.fs" />
     <None Include="ModernOpenGL\vertexShader.vs" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -217,7 +244,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -226,7 +253,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc142-mtd.lib;zlibd.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc142-mtd.lib;zlibd.lib;glew32.lib;reactphysics3d.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -235,15 +262,16 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glew32.lib;glew32s.lib;zlibd.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glew32.lib;glew32s.lib;zlibd.lib;assimp-vc142-mtd.lib;reactphysics3d.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

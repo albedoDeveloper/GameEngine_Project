@@ -112,7 +112,7 @@ bool GameAssetFactory::UnloadTexture(std::string key)
 
 bool GameAssetFactory::LoadHeightMap(std::string key, std::string filePath)
 {
-    if (CheckName(key))
+   /* if (CheckName(key))
     {
         return false;
     }
@@ -150,9 +150,10 @@ bool GameAssetFactory::LoadHeightMap(std::string key, std::string filePath)
 
 #if _DEBUG
     std::cout << "Height map loaded in. key:" << key << std::endl;
-#endif
+#endif*/
 
     return true;
+
 }
 
 bool GameAssetFactory::CheckName(std::string name)

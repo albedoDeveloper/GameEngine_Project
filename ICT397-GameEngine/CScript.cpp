@@ -35,10 +35,29 @@ void CScript::LateRender()
 {
 }
 
-void CScript::Restart()
+void CScript::Save(nlohmann::json& j)
 {
-	//m_L = SCRIPT->NewState();
-	Component::Restart();
+	GameObject* g = GetParentObject();
+	j[g->getFactoryKey()]["Components"]["ScriptComponent"]["Script"] = m_script->key;
+
+	//m_transform.ToJson(j, g->getFactoryKey());
+}
+
+void CScript::Load(nlohmann::json& j)
+{
+	GameObject* g = GetParentObject();
+	//m_transform.FromJson(j, g->getFactoryKey());
+}
+
+void CScript::DrawToImGui()
+{
+	//ImGui::Text("staticMesh TREE");
+	if (ImGui::TreeNode("Script Component"))
+	{
+		ImGui::Text("Script Info : "); ImGui::SameLine(); ImGui::Text(m_script->key.c_str());
+		ImGui::TreePop();
+
+	}
 }
 
 void CScript::AssignScript(AScript* script)

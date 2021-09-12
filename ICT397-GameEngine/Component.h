@@ -1,5 +1,6 @@
 #pragma once
 #include "Transform.h"
+#include <nlohmann/json.hpp>
 
 class GameObject;
 
@@ -46,19 +47,19 @@ public:
 	virtual void LateRender() = 0;
 
 	/**
-	 * @brief Resets component to initial state
-	*/
-	virtual void Restart();
-
-	/**
 	 * @brief saves the component
 	*/
-	virtual void Save();
+	virtual void Save(nlohmann::json& j);
 
 	/**
 	 * @brief loads the component from saved state
 	*/
-	virtual void Load();
+	virtual void Load(nlohmann::json& j);
+
+	/**
+	 * @brief Draws to imgui
+	*/
+	virtual void DrawToImGui();
 
 	/**
 	 * @brief transform accessor
@@ -78,15 +79,13 @@ public:
 	*/
 	GameObject* GetParentObject();
 
+	
+
 protected:
 	/**
 	 * @brief The transform for this component storing position data
 	*/
 	Transform m_transform;
-	/**
-	 * @brief The transform this component began with
-	*/
-	Transform m_initTransform;
 	/**
 	 * @brief The transform this component has saved
 	*/

@@ -116,7 +116,9 @@ private:
     */
     Key t_Key;
     Key m_Key;
+    Key c_Key;
     Key space_Key;
+    Key tilde_Key;
 
     /**
      * @brief the primary mouse button
@@ -286,10 +288,6 @@ public:
      * @brief quits the game
     */
     void QuitGame();
-    /**
-     * @brief restarts the game
-    */
-    void RestartGame();
     /**
      * @brief saves the game
     */

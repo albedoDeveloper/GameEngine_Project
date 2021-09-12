@@ -377,7 +377,7 @@ public:
 	*/
 	void Rotate(float degrees, const Vector3f& axis)
 	{
-		m_quat = glm::rotate(m_quat, degrees, glm::vec3(axis.GetX(), axis.GetY(), axis.GetZ()));
+		m_quat = glm::rotate(m_quat, glm::radians(degrees), glm::vec3(axis.GetX(), axis.GetY(), axis.GetZ()));
 	}
 	
 	//float GetAngleDegrees() const
@@ -395,6 +395,27 @@ public:
 			axis.y,
 			axis.z
 		);
+	}
+
+	float GetAxisAngleRadians() const
+	{
+		return glm::angle(m_quat);
+	}
+
+	Vector3f GetEulerAngles() const
+	{
+		glm::vec3 axis = glm::eulerAngles(m_quat);
+		return Vector3f(
+			axis.x,
+			axis.y,
+			axis.z
+		);
+	}
+
+	// x,y,z in rads
+	void SetEulerAngles(float x, float y, float z)
+	{
+		m_quat = glm::quat(glm::vec3(x, y, z));
 	}
 
 	/**
@@ -461,6 +482,11 @@ public:
 	void SetW(float w)
 	{
 		m_quat.w = w;
+	}
+
+	Quaternion GetInverse()
+	{
+		return glm::inverse(m_quat);
 	}
 };
 
@@ -751,3 +777,7 @@ float Lerp(float start, float end, float time);
 	 * Then the results of the lerps are compared to the z value
 */
 float BiLerp(float a, float b, float c, float d, float x, float z);
+
+float RadToDegrees(float rads);
+
+float DegreesToRad(float degrees);

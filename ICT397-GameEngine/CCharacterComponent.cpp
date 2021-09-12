@@ -10,17 +10,17 @@
 #endif
 
 CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj }, m_velocity{ 0,0,0 }, m_maxSpeed{ 50 }, m_acceleration{ 0,0,0 }, m_characterCollider{ nullptr }, m_lastTime{ 0 }, m_currentTime{ 0 }, m_updateInterval{1.f/60}
+	:Component{ parent, parentObj }, 
+	m_parentTransform{m_parent->GetTransform()},
+	m_velocity{ 0,0,0 }, 
+	m_maxSpeed{ 10 }, 
+	m_acceleration{ 0,0,0 }, 
+	m_lastTime{ 0 }, 
+	m_currentTime{ 0 }, 
+	m_updateInterval{1.f/60},
+	m_playerControlled{ false },
+	m_mouseEnabled{ true }
 {
-	m_characterCollider = m_parent->GetComponent<CAABBCollider>();
-
-	m_hitpoints = 1;
-
-	if (m_characterCollider == NULL)
-	{
-		m_characterCollider = m_parent->AddComponent<CAABBCollider>();
-		m_parent->GetComponent<CAABBCollider>()->SetCollider(0.5f, 1, 0.5f, -0.5f, -1, -0.5f);
-	}
 }
 
 void CCharacter::Move(float x, float y, float z)
@@ -58,84 +58,125 @@ void CCharacter::SetHitpoints(int hp)
 	m_hitpoints = hp;
 }
 
+void CCharacter::SetPlayerControlled(bool playerControlled)
+{
+	m_playerControlled = playerControlled;
+}
+
 void CCharacter::Start() 
 {
 	m_initialHitpoints = m_hitpoints;
+	m_collider = m_parent->GetComponent<CCollider>();
+	if (!m_collider)
+	{
+		std::cout << "ERROR: CCharacter cannot find collider on parent object\n";
+		exit(34);
+	}
 }
 
 void CCharacter::Update()
 {
-	m_currentTime += TIME->GetDeltaTime();
-	while (m_currentTime - m_lastTime >= m_updateInterval) {
+	double deltaTime = TIME->GetDeltaTime();
+	float mouseSens = 60;
+	Vector3f moveVector(0, 0, 0);
 
-		const float GRAVITY = -0.f;
-
-		//newtonian calculations
-		m_velocity = m_velocity * 0.8f;
-		m_velocity = m_velocity + Vector3f(0, GRAVITY * TIME->GetDeltaTime(), 0); // gravity
-		m_velocity = m_velocity + m_acceleration;
-		m_acceleration = Vector3f(0, 0, 0);
-		if (m_velocity.Magnitude() > m_maxSpeed)
+	if (m_playerControlled)
+	{
+		if (INPUT->GetKey('s'))
 		{
-			m_velocity.SetMagnitude(m_maxSpeed);
+			moveVector.SetZ(1 * deltaTime);
+		}
+		else if (INPUT->GetKey('w'))
+		{
+			moveVector.SetZ(-1 * deltaTime);
 		}
 
-		//convert to world space
-		Vector3f newPos = m_transform.GetWorldTransform().GetPosition();
-		Vector3f worldVel = m_velocity * m_parent->GetTransform()->GetRotation();
-
-		// calculate next frames transform to check if will collide
-		// one axis at a time
-		Transform futureWorldT;
-
-		// x axis
-		futureWorldT = m_transform.GetWorldTransform();
-		futureWorldT.Translate(worldVel.GetX(), 0, 0);
-		if (!COLLISION->CheckCollision(*m_characterCollider, futureWorldT))
+		if (INPUT->GetKey('a'))
 		{
-			newPos.SetX(newPos.GetX() + worldVel.GetX());
+			moveVector.SetX(-1 * deltaTime);
+		}
+		else if (INPUT->GetKey('d'))
+		{
+			moveVector.SetX(1 * deltaTime);
 		}
 
-		futureWorldT = m_transform.GetWorldTransform();
-		futureWorldT.Translate(0, worldVel.GetY(), 0);
-		if (!COLLISION->CheckCollision(*m_characterCollider, futureWorldT))
+		if (INPUT->GetKey(' '))
 		{
-			newPos.SetY(newPos.GetY() + worldVel.GetY());
+			moveVector.SetY(1 * deltaTime);
+		}
+		else if (INPUT->GetKey('c'))
+		{
+			moveVector.SetY(-1 * deltaTime);
 		}
 
-		// z axis
-		futureWorldT = m_transform.GetWorldTransform();
-		futureWorldT.Translate(0, 0, worldVel.GetZ());
-		if (!COLLISION->CheckCollision(*m_characterCollider, futureWorldT))
+		GameObject *parentObj = GetParentObject();
+		
+		if (m_mouseEnabled)
 		{
-			newPos.SetZ(newPos.GetZ() + worldVel.GetZ());
+			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * deltaTime * mouseSens);
+			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
 		}
 
-		m_parent->GetTransform()->SetPositionV(newPos);
-
-		//apply ground height
-		double groundHeight = COLLISION->CheckCameraTerrainCollisionBilinear(m_parent->GetTransform()->GetPosition());
-
-		//Bilinear interpolation collision
-		//COLLISION->CheckCameraTerrainCollisionBilinear(m_parent->GetTransform()->GetPosition());
-
-
-		//std::cout << "ground height == " << groundHeight << "Diff = " << groundHeight - m_parent->GetTransform()->GetPosition().GetY() <<
-		//" x = " << m_parent->GetTransform()->GetPosition().GetX() << " z = " << m_parent->GetTransform()->GetPosition().GetZ() << std::endl;
-
-		//m_parent->GetTransform()->GetPosition().SetY(m_parent->GetTransform()->GetPosition().GetY() - groundHeight);
-
-		if (m_parent->GetTransform()->GetPosition().GetY() < groundHeight + 4)
+		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f ||
+			RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) < -90.f)
 		{
-			m_parent->GetTransform()->SetPosition(
-				m_parent->GetTransform()->GetPosition().GetX(),
-				(float)groundHeight + 4,
-				m_parent->GetTransform()->GetPosition().GetZ()
+			Vector3f eulersInRads(
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX(),
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetY(),
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetZ()
 			);
-			m_onGround = true;
+
+			if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f)
+			{
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().SetEulerAngles(DegreesToRad(90.f), eulersInRads.GetY(), eulersInRads.GetZ());
+			}
+			else
+			{
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().SetEulerAngles(DegreesToRad(-90.f), eulersInRads.GetY(), eulersInRads.GetZ());
+			}
 		}
 
-		m_lastTime += m_updateInterval;
+		Move(moveVector.GetX(), moveVector.GetY(), moveVector.GetZ());
+	}
+
+	static const float GRAVITY = -9.81f;
+
+	//newtonian calculations
+	m_velocity = m_velocity * 0.8f; // apply damping factor
+	m_velocity = m_velocity + Vector3f(0, GRAVITY * deltaTime, 0); // gravity
+	m_velocity = m_velocity + m_acceleration;
+	m_acceleration = Vector3f(0, 0, 0);
+	if (m_velocity.Magnitude() > m_maxSpeed)
+	{
+		m_velocity.SetMagnitude(m_maxSpeed);
+	}
+
+	//convert to world space
+	Vector3f newPos = m_transform.GetWorldTransform().GetPosition();
+	Vector3f worldVel = m_velocity * m_parent->GetTransform()->GetRotation();
+
+	m_parentTransform->Translate(worldVel.GetX(), 0, 0);
+	m_collider->UpdateCollider();
+	if (COLLISION->CheckCollision(*m_collider))
+	{
+		m_parentTransform->Translate((-worldVel.GetX()), 0, 0);
+		m_collider->UpdateCollider();
+	}
+
+	m_parentTransform->Translate(0, worldVel.GetY(), 0);
+	m_collider->UpdateCollider();
+	if (COLLISION->CheckCollision(*m_collider))
+	{
+		m_parentTransform->Translate(0, -worldVel.GetY(), 0);
+		m_collider->UpdateCollider();
+	}
+
+	m_parentTransform->Translate(0, 0, worldVel.GetZ());
+	m_collider->UpdateCollider();
+	if (COLLISION->CheckCollision(*m_collider))
+	{
+		m_parentTransform->Translate(0, 0, -worldVel.GetZ());
+		m_collider->UpdateCollider();
 	}
 }
 
@@ -146,20 +187,47 @@ void CCharacter::Render()
 void CCharacter::LateRender()
 {}
 
-void CCharacter::Restart()
-{
-	m_hitpoints = m_initialHitpoints;
-	Component::Restart();
-}
-
-void CCharacter::Save()
+void CCharacter::Save(nlohmann::json& j)
 {
 	m_savedHitpoints = m_hitpoints;
-	Component::Save();
+	Component::Save(j);
 }
 
-void CCharacter::Load()
+void CCharacter::Load(nlohmann::json& j)
 {
 	m_hitpoints = m_savedHitpoints;
-	Component::Load();
+	Component::Load(j);
+}
+
+void CCharacter::DrawToImGui()
+{
+	//ImGui::Text("staticMesh TREE");
+	if (ImGui::TreeNode("Character Component"))
+	{
+		ImGui::Text("Character info : ");
+		ImGui::Text("Velocity : x = "); ImGui::SameLine(); ImGui::Text(std::to_string(m_velocity.GetX()).c_str());
+		ImGui::SameLine();
+		ImGui::Text("y = "); ImGui::SameLine(); ImGui::Text(std::to_string(m_velocity.GetY()).c_str());
+		ImGui::SameLine();
+		ImGui::Text("z = "); ImGui::SameLine(); ImGui::Text(std::to_string(m_velocity.GetZ()).c_str());
+
+		//flags
+		ImGuiSliderFlags maxSpeedFlag = ImGuiSliderFlags_None;
+		// Drags
+		float drag_max_speed = m_maxSpeed;
+
+
+		ImGui::PushItemWidth(50);
+
+		ImGui::Text("Max Speed "); ImGui::SameLine();
+		ImGui::DragFloat("##maxSpeed", &m_maxSpeed, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", maxSpeedFlag);
+
+		ImGui::TreePop();
+
+	}
+}
+
+void CCharacter::SetMouseEnabled(bool isEnabled)
+{
+	m_mouseEnabled = isEnabled;
 }

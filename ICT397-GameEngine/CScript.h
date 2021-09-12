@@ -31,14 +31,27 @@ public:
 	 * @brief Renders the component after others are rendered
 	*/
 	virtual void LateRender();
-	/**
-	 * @brief Rsets the component to its initial state
-	*/
-	void Restart();
+
 	/**
 	 * @brief script mutator
 	 * @param script pointer to the script for this component to use
 	*/
+
+	/**
+	 * @brief saves the component
+	*/
+	virtual void Save(nlohmann::json& j);
+
+	/**
+	 * @brief loads the component from saved state
+	*/
+	virtual void Load(nlohmann::json& j);
+
+	/**
+	 * @brief Draws to imgui
+	*/
+	virtual void DrawToImGui();
+
 	void AssignScript(AScript* script);
 	/**
 	 * @brief script mutator using factory key

@@ -1,6 +1,9 @@
 #include "CStaticMesh.h"
 #include "GraphicsEngine.h"
 #include "GameAssetFactory.h"
+#include "GameObject.h"
+
+
 
 #if _DEBUG
 #include <iostream>
@@ -11,15 +14,6 @@ CStaticMesh::CStaticMesh(Transform* parent, GameObject* parentObj)
 {
 }
 
-void CStaticMesh::AssignModel(Model* model)
-{
-	m_model = model;
-
-#if _DEBUG
-	std::cout << "Model assigned to mesh. Model:" << model->key << std::endl;
-#endif
-}
-
 Model* CStaticMesh::GetModel()
 {
 	return m_model;
@@ -28,8 +22,13 @@ Model* CStaticMesh::GetModel()
 Model* CStaticMesh::AssignModelByKey(std::string modelKey)
 {
 	Model* model = static_cast<Model*>(ASSET->GetAsset(modelKey));
-	AssignModel(model);
-	return model;
+	if (model == nullptr)
+	{
+		std::cout << "ERROR ASSIGNING MODEL BY KEY : " << modelKey << std::endl;
+		exit(-23);
+	}
+	m_model = model;
+	return m_model;
 }
 
 void CStaticMesh::Start()
@@ -38,6 +37,34 @@ void CStaticMesh::Start()
 
 void CStaticMesh::Update()
 {
+	//if (m_parent->getFactoryKey().compare("goblin 1") == 0)
+	{
+	//std::cout << m_parent->getFactoryKey() << ": ";
+	//std::cout << RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetX()) << " " <<
+	//	RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetY()) << " " <<
+	//		RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
+
+		//std::cout << m_parent->getFactoryKey() << ": ";
+		//std::cout << m_parent->GetTransform()->GetPosition().GetX() << " " <<
+		//	m_parent->GetTransform()->GetPosition().GetY() << " " <<
+		//	m_parent->GetTransform()->GetPosition().GetZ() << " " << std::endl;
+
+		//std::cout << m_parent->getFactoryKey() << ": ";
+		//std::cout << m_transform.GetPosition().GetX() << " " <<
+		//	m_transform.GetPosition().GetY() << " " <<
+		//	m_transform.GetPosition().GetZ() << " " << std::endl;
+
+//		std::cout << m_parent->getFactoryKey() << ": ";
+//std::cout << RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetX()) << " " <<
+//	RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetY()) << " " <<
+//		RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
+
+	//		std::cout << m_parent->getFactoryKey() << ": ";
+	//std::cout << RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetX()) << " " <<
+	//	RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetY()) << " " <<
+	//		RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
+
+	}
 }
 
 void CStaticMesh::Render()
@@ -47,3 +74,28 @@ void CStaticMesh::Render()
 
 void CStaticMesh::LateRender()
 {}
+
+void CStaticMesh::Save(nlohmann::json& j)
+{
+	GameObject* g = GetParentObject();
+	j[g->getFactoryKey()]["Components"]["StaticMeshComponent"]["Model"] = m_model->key;
+
+	//m_transform.ToJson(j, g->getFactoryKey());
+}
+
+void CStaticMesh::Load(nlohmann::json& j)
+{
+	GameObject* g = GetParentObject();
+	//m_transform.FromJson(j, g->getFactoryKey());
+}
+
+void CStaticMesh::DrawToImGui()
+{
+	//ImGui::Text("staticMesh TREE");
+	if (ImGui::TreeNode("StaticMesh Component"))
+	{
+		ImGui::Text("Model Name : "); ImGui::SameLine(); ImGui::Text(m_model->key.c_str());
+		ImGui::TreePop();
+
+	}
+}

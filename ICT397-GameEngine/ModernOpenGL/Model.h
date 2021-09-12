@@ -6,6 +6,7 @@
 #include "../Asset.h"
 #include <string>
 #include <vector> 
+#include <array>
 #include "Mesh.h"
 
 
@@ -27,13 +28,18 @@ public:
         key = keyTemp;
         loadModel(path);
     }
-    void Draw(Shader& shader);
-    std::string key;
     void AssignTextureKey(std::string)
     {
 
     };
+    //Model()
 
+    void Draw(Shader& shader);
+    std::string key;
+    std::vector<Mesh>& GetMesh() { return meshes; }
+
+    std::vector<float> minMax;
+    int numberOfFaces = 0;
 private:
     // model data
     std::vector<Mesh> meshes;
@@ -41,13 +47,17 @@ private:
     std::vector<Texture> textures_loaded;
     modelInfo info;
 
+
+
     int text;
+    std::string texturePath;
+
     void loadModel(std::string path);
     void processNode(aiNode* node, const aiScene* scene);
     Mesh processMesh(aiMesh* mesh, const aiScene* scene);
     std::vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName);
     unsigned int TextureFromFile(const char* path, const std::string& directory, bool gamma);
-
+    void calculateMinMax();
 };
 
 #endif

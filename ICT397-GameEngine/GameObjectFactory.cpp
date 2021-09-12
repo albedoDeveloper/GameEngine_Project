@@ -10,7 +10,12 @@ GameObjectFactory* GameObjectFactory::instance() {
 	return factory;
 }
 
-GameObject* GameObjectFactory::getObject(std::string key) {
+std::map<std::string, GameObject*>* GameObjectFactory::GetObjectMap() 
+{
+	return &objectList;
+}
+
+GameObject* GameObjectFactory::GetGameObject(std::string key) {
 #if _DEBUG
 	if (objectList.find(key) == objectList.end()) {
 		std::cout << "GameObject (Key:" << key << ") not found\n";
@@ -89,7 +94,7 @@ GameObject* GameObjectFactory::SpawnGameObject(std::string key) {
 	object->setFactoryKey(key);
 
 #if _DEBUG
-	std::cout << "Game Object Created. Key = " << key << "\n";
+	//std::cout << "Game Object Created. Key = " << key << "\n";
 #endif
 
 	return object;
@@ -121,27 +126,19 @@ void GameObjectFactory::render() {
 	}
 }
 
-void GameObjectFactory::Restart()
+void GameObjectFactory::Save(nlohmann::json& j)
 {
 	std::map<std::string, GameObject*>::iterator it;
 	for (it = objectList.begin(); it != objectList.end(); it++) {
-		it->second->Restart();
+		it->second->Save(j);
 	}
 }
 
-void GameObjectFactory::Save()
+void GameObjectFactory::Load(nlohmann::json& j)
 {
 	std::map<std::string, GameObject*>::iterator it;
 	for (it = objectList.begin(); it != objectList.end(); it++) {
-		it->second->Save();
-	}
-}
-
-void GameObjectFactory::Load()
-{
-	std::map<std::string, GameObject*>::iterator it;
-	for (it = objectList.begin(); it != objectList.end(); it++) {
-		it->second->Load();
+		it->second->Load(j);
 	}
 }
 

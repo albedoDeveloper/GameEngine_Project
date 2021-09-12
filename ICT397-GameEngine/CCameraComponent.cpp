@@ -33,6 +33,17 @@ void CCamera::LateRender()
 {
 }
 
+void CCamera::DrawToImGui()
+{
+    //ImGui::Text("staticMesh TREE");
+    if (ImGui::TreeNode("Camera Component"))
+    {
+        ImGui::Text("Camera info : ");
+        ImGui::TreePop();
+
+    }
+}
+
 void CCamera::SetCamera(Camera camera)
 {
     m_camera = camera;

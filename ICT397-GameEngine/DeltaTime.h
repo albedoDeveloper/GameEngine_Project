@@ -15,10 +15,14 @@ public:
 	*/
 	void UpdateDeltaTime();
 
+	void CatchupDeltaTime();
+
 	/**
 	 * @brief get current delta time
 	*/
 	double GetDeltaTime();
+
+	float GetTimeElapsed() const;
 
 
 	/**

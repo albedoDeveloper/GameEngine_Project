@@ -133,39 +133,6 @@ private:
 	*/
 	void GenerateCombinedTexture()
 	{
-		/*const int PIXEL_DEPTH = 4; //RGBA
-		unsigned char* newImage = new unsigned char[size * size * PIXEL_DEPTH];
 
-		for (std::map<std::string, TerrainTextureRange>::iterator it = m_textures.begin(); it != m_textures.end(); it++)
-		{
-			int w, h;
-			unsigned char* texture = GRAPHICS->GetTextureArray(it->first, w, h);
-
-			for (int y = 0; y < size; y++)
-			{
-				for (int x = 0; x < size; x++)
-				{
-					Vector3uc totalColour(0, 0, 0);
-					unsigned char heightValue = data[x + (y * size)];
-					int range = it->second.max - it->second.min;
-					float weight = (range - abs((int)heightValue - (int)it->second.max)) / (float)range;
-					if (weight > 0)
-					{
-						Vector3uc colour = ExtractColour(texture, size, PIXEL_DEPTH, x, y);
-						totalColour.x += (unsigned char)((float)colour.x * weight);
-						totalColour.y += (unsigned char)((float)colour.y * weight);
-						totalColour.z += (unsigned char)((float)colour.z * weight);
-					}
-					AssignTextureColour(PIXEL_DEPTH, size, newImage, x, y, totalColour);
-				}
-			}
-			delete[] texture;
-		}
-	
-
-		//register new texture to opengl
-		GRAPHICS->DeleteTexture(combinedTextureKey); // delete old combined texture from renderer
-		GRAPHICS->GenerateTexture(combinedTextureKey, newImage, size, size);
-		delete[] newImage;*/
 	}
 };

@@ -102,9 +102,5 @@ public:
 	 * @brief Renders the image after other components render
 	*/
 	virtual void LateRender();
-	/**
-	 * @brief Resets the image to its initial state
-	*/
-	void Restart();
 };
 

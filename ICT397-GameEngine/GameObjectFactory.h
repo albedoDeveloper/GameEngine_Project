@@ -2,6 +2,8 @@
 #include "GameObject.h"
 #include <map>
 #include <string>
+#include <nlohmann/json.hpp>
+
 
 /**
  * @brief A singleton factory class to produce all GameObjects, store them in memory, and allow access to them
@@ -32,12 +34,19 @@ public:
 	 * @brief closes the factory
 	*/
 	void Close();
+
+	/**
+	 * @brief Accessor for the map of objects created by the factory
+	 * @return A pointer to the object Map
+	*/
+	std::map<std::string, GameObject*>* GetObjectMap();
+
 	/**
 	 * @brief Accessor for objects created by the factory
 	 * @param key String holding the object's place in the storage map
 	 * @return A pointer to the object
 	*/
-	GameObject* getObject(std::string key);
+	GameObject* GetGameObject(std::string key);
 	/**
 	 * @brief searches for the closest object to a given transform with a key containing a given substring
 	 * @param target the point from which to search
@@ -76,17 +85,13 @@ public:
 	*/
 	void render();
 	/**
-	 * @brief resets all objects to initial state
-	*/
-	void Restart();
-	/**
 	 * @brief saves the game
 	*/
-	void Save();
+	void Save(nlohmann::json& j);
 	/**
 	 * @brief loads the game from saved state
 	*/
-	void Load();
+	void Load(nlohmann::json& j);
 };
 
 #define GAMEOBJECT GameObjectFactory::instance()

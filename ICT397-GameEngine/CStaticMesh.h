@@ -16,11 +16,6 @@ public:
 	 * @param parentObj The object to which this component belongs
 	*/
 	CStaticMesh(Transform* parent, GameObject* parentObj);
-	/**
-	 * @brief model mutator
-	 * @param model the asset model to assign
-	*/
-	void AssignModel(Model* model);
 
 	/**
 	 * @brief constructor taking parent as argument
@@ -53,9 +48,26 @@ public:
 	*/
 	virtual void LateRender();
 
-protected:
 	/**
-	 * @brief the model this mesh is storing
+	 * @brief saves the component
 	*/
+	virtual void Save(nlohmann::json& j);
+
+	/**
+	 * @brief loads the component from saved state
+	*/
+	virtual void Load(nlohmann::json& j);
+
+	/**
+	 * @brief Draws to imgui
+	*/
+	virtual void DrawToImGui();
+
+	/**
+ * @brief the model this mesh is storing
+*/
 	Model* m_model;
+
+protected:
+
 };
