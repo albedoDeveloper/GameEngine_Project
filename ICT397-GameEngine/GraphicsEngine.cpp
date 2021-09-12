@@ -248,7 +248,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 
 	if ((m_window = SDL_CreateWindow(
-		"ICT398 - Game Engine", 
+		"ICT398 - FrankEngine", 
 		SDL_WINDOWPOS_CENTERED, 
 		SDL_WINDOWPOS_CENTERED, 
 		windowWidth, windowHeight, 

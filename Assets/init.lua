@@ -83,6 +83,7 @@ GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
 
 SpawnGameObject("crate"):SetStatic(true)
 GetGameObject("crate"):AddCStaticMesh():AssignModel("crate")
+GetGameObject("crate"):GetTransform():SetPosition(-7.744999885559082, 1.315000057220459, -0.4449999928474426);
 GetGameObject("crate"):AddCScript():AssignScript("rotate")
 
 SpawnGameObject("back_wall"):SetStatic(true)

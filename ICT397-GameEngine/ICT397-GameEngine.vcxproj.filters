@@ -169,6 +169,7 @@
       <Filter>components</Filter>
     </ClInclude>
     <ClInclude Include="LightManager.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\Scripts\displayAtQuit.lua">
@@ -233,5 +234,15 @@
     <Filter Include="imgui">
       <UniqueIdentifier>{f335aa88-d95e-4ece-9600-0743604016e9}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ICT397-GameEngine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="E:\Desktop\rock_stones.png" />
+    <Image Include="icon1.ico" />
+    <Image Include="E:\Desktop\frankenstein.png" />
+    <Image Include="E:\Desktop\frankengine.ico" />
+    <Image Include="..\Resources\frankengine.ico" />
   </ItemGroup>
 </Project>

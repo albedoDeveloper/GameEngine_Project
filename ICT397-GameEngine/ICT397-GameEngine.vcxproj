@@ -103,6 +103,7 @@
     <ClInclude Include="ModernOpenGL\Model.h" />
     <ClInclude Include="ModernOpenGL\Shader.h" />
     <ClInclude Include="MultiTexture.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="ScriptingEngine.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="SkyboxVerts.h" />
@@ -127,6 +128,16 @@
     <None Include="ModernOpenGL\lit.frag" />
     <None Include="ModernOpenGL\unlit.frag" />
     <None Include="ModernOpenGL\vertexShader.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ICT397-GameEngine.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\frankengine.ico" />
+    <Image Include="E:\Desktop\frankengine.ico" />
+    <Image Include="E:\Desktop\frankenstein.png" />
+    <Image Include="E:\Desktop\rock_stones.png" />
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
