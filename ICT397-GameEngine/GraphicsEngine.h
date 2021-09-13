@@ -107,16 +107,8 @@ public:
 	 * @return whether operation succeeded
 	*/
 	bool initLighting();
-	/**
-	 * @brief camera mutator
-	 * @param camera the camera to use
-	*/
-	//void SetCamera(Camera camera);
-	/**
-	 * @brief camera accessor
-	 * @return the camera in use
-	*/
-	//Camera GetCamera();
+
+	void MotionBlur() const;
 
 	/**
 	 * @brief Function to be called at the start of every frame for rendering
