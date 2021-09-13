@@ -108,8 +108,6 @@ public:
 	*/
 	bool initLighting();
 
-	void MotionBlur() const;
-
 	/**
 	 * @brief Function to be called at the start of every frame for rendering
 	*/
@@ -164,17 +162,6 @@ public:
 	unsigned GetTexID(std::string key) const;
 
 	void GetScreenSize(int&w, int&h);
-
-	void InitSkybox(
-		std::string negx,
-		std::string negy,
-		std::string negz,
-		std::string posx,
-		std::string posy,
-		std::string posz
-	);
-
-	void RenderSkybox();
 
 	void Close();
 

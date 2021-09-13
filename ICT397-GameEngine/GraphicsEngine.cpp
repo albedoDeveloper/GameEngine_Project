@@ -217,15 +217,6 @@ void GraphicsEngine::GetScreenSize(int& w, int& h)
 	h = hBuf;
 }
 
-void GraphicsEngine::InitSkybox(std::string negx, std::string negy, std::string negz, std::string posx, std::string posy, std::string posz)
-{
-
-}
-
-void GraphicsEngine::RenderSkybox()
-{
-}
-
 void GraphicsEngine::Close()
 {
 	ImGui_ImplOpenGL3_Shutdown();
