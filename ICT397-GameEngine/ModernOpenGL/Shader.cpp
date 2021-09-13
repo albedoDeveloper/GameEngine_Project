@@ -37,7 +37,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
         vertexShaderCode = vShaderStream.str();
         fragmentShaderCode = fShaderStream.str();
    
-
         const char* vShaderCode = vertexShaderCode.c_str();
         const char* fShaderCode = fragmentShaderCode.c_str();
 
@@ -47,7 +46,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
         CreateShaders(vertexShader, &vShaderCode, 0);
         CreateShaders(fragmentShader, &fShaderCode, 1);
         ShaderLinking(vertexShader, fragmentShader);
-    
     }
     
     catch (std::ifstream::failure e)
