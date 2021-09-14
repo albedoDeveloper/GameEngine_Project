@@ -3,11 +3,12 @@
 #include "GameAssetFactory.h"
 #include "GameObject.h"
 #include <iostream>
+#include "InputManager.h" // debug
 
 CStaticMesh::CStaticMesh(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj}, 
 	m_model{ nullptr },
-	m_shader{ GRAPHICS->m_litShader }
+	m_shader{ GRAPHICS->m_unlitShader }
 {
 }
 
@@ -55,6 +56,15 @@ void CStaticMesh::AssignShader(std::string shader)
 
 void CStaticMesh::Render()
 {
+	if (INPUT->GetKeyDownByCode(KeyCode::T) && m_shader == GRAPHICS->m_unlitShader)
+	{
+		m_shader = GRAPHICS->m_litShader;
+	}
+	else if (INPUT->GetKeyDownByCode(KeyCode::T) && m_shader == GRAPHICS->m_litShader)
+	{
+		m_shader = GRAPHICS->m_unlitShader;
+	}
+
 	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), m_shader);
 }
 
