@@ -38,7 +38,8 @@ enum class KeyCode
     K,
     T,
     M,
-    SPACE
+    SPACE,
+    ESC
 };
 
 /**
@@ -118,6 +119,7 @@ private:
     Key m_Key;
     Key c_Key;
     Key space_Key;
+    Key esc_Key;
     Key tilde_Key;
 
     /**
@@ -291,4 +293,3 @@ public:
 };
 
 #define INPUT InputManager::Instance()
-

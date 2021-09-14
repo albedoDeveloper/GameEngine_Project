@@ -106,6 +106,11 @@ void CCharacter::Update()
 			moveVector.SetY(-1 * deltaTime);
 		}
 
+		if (INPUT->GetKeyDownByCode(KeyCode::ESC))
+		{
+			std::cout << "ESC down\n";
+		}
+
 		GameObject *parentObj = GetParentObject();
 		
 		if (m_mouseEnabled)
