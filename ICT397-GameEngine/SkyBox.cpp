@@ -1,5 +1,6 @@
 #include "SkyBox.h"
 #include <stbi_image/stb_image.h>
+#include "ShaderClasses.h"
 
 void SkyBox::CreateSkybox(std::vector<std::string> skyBoxFaces)
 {
@@ -31,7 +32,7 @@ void SkyBox::CreateSkybox(std::vector<std::string> skyBoxFaces)
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
-	skyBoxShader = new Shader("../ICT397-GameEngine/ModernOpenGL/skyBoxVertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/skyBoxColourShader.fs");
+	skyBoxShader = new Shader("./shaders/skyBoxVertexShader.vs", "./shaders/skyBoxColourShader.fs");
 	CreateVAOandVBO();
 }
 
@@ -40,9 +41,9 @@ void SkyBox::DrawSkybox(const glm::mat4& persepective, const glm::mat4& view)
 	glDepthMask(GL_FALSE);
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_FILL);
-	skyBoxShader->use();
-	skyBoxShader->setMat4("projection", persepective);
-	skyBoxShader->setMat4("view", glm::mat4(glm::mat3(view)));
+	skyBoxShader->Use();
+	skyBoxShader->SetMat4("projection", persepective);
+	skyBoxShader->SetMat4("view", glm::mat4(glm::mat3(view)));
 	
 	glBindVertexArray(VAO);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, texID);

@@ -155,7 +155,7 @@ public:
 	 * @param model The model to draw
 	 * @param trans Transform of the model
 	*/
-	void DrawModel(Model* model, const Transform& trans);
+	void DrawModel(Model* model, const Transform& trans, const Shader* m_shader);
 	/**
 	 * @brief retrieves the ID by which a texture is stored in the graphics library
 	 * @param key the key by which it's stored by the asset factory

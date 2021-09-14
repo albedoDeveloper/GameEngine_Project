@@ -81,8 +81,8 @@ void GraphicsEngine::newFrame(bool debugMenu)
 void GraphicsEngine::UpdateViewPos() const
 {
 	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetPosition();
-	GRAPHICS->m_litShader->use();
-	GRAPHICS->m_litShader->setVec3(
+	GRAPHICS->m_litShader->Use();
+	GRAPHICS->m_litShader->SetVec3(
 		"viewPos",
 		glm::vec3(
 			viewPosVec.GetX(),
@@ -91,8 +91,8 @@ void GraphicsEngine::UpdateViewPos() const
 		)
 	);
 
-	GRAPHICS->m_debugShader->use();
-	GRAPHICS->m_debugShader->setVec3(
+	GRAPHICS->m_debugShader->Use();
+	GRAPHICS->m_debugShader->SetVec3(
 		"viewPos",
 		glm::vec3(
 			viewPosVec.GetX(),
@@ -106,10 +106,10 @@ int GraphicsEngine::AddPointLight(CPointLight* light)
 {
 	int numpointLights = m_lightManager.AddPointLight(light);
 
-	m_litShader->use();
-	m_litShader->setShaderInt("numOfPointLights", numpointLights);
-	GRAPHICS->m_litShader->setShaderFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
-	GRAPHICS->m_litShader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].colour", glm::vec3(
+	m_litShader->Use();
+	m_litShader->SetInt("numOfPointLights", numpointLights);
+	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
+	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(numpointLights - 1) + "].colour", glm::vec3(
 		light->LightInfo.colour.GetX(),
 		light->LightInfo.colour.GetY(),
 		light->LightInfo.colour.GetZ()
@@ -176,7 +176,7 @@ void GraphicsEngine::DeleteTexture(std::string key)
 	glDeleteTextures(1, texId);
 }
 
-void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOTE keep these commented out statements, we will need them for texturing
+void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans, const Shader* shader)
 {
 	if (!model)
 	{
@@ -192,17 +192,14 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 
 	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
 
-	m_litShader->use();
-	m_litShader->setMat4("model", trans);
-
-	m_litShader->setShaderInt("material.texture_diffuse1", 0);
-	m_litShader->setShaderInt("material.texture_specular1", 1);
+	shader->Use();
+	shader->SetMat4("model", trans);
 
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
 
-	model->Draw(*m_litShader);
+	model->Draw(shader);
 }
 
 unsigned GraphicsEngine::GetTexID(std::string key) const
@@ -284,9 +281,9 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	//glEnable(GL_FRAMEBUFFER_SRGB); // gamma correction. looks too washed out
 	glClearColor(0.4, 0.2, 0.7, 1);
 
-	m_litShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/lit.frag");
-	m_unlitShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/debug.frag");
-	m_debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/debug.frag");
+	m_litShader = new Shader("./shaders/vertexShader.vert", "./shaders/lit.frag");
+	m_unlitShader = new Shader("./shaders/vertexShader.vert", "./shaders/unlit.frag");
+	m_debugShader = new Shader("./shaders/vertexShader.vert", "./shaders/debug.frag");
 	
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",
@@ -341,14 +338,14 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 
 void GraphicsEngine::DrawDebug()
 {
-	m_debugShader->use();
+	m_debugShader->Use();
 
-	m_debugShader->setMat4("projection", GetProjection());
-
-	m_debugShader->setMat4("view", GetView());
-	
-	m_debugShader->setMat4("model", glm::mat4(1.0f));
-	m_debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
+	m_debugShader->SetMat4("projection", GetProjection());
+				   
+	m_debugShader->SetMat4("view", GetView());
+				   
+	m_debugShader->SetMat4("model", glm::mat4(1.0f));
+	m_debugShader->SetVec4("ourColour", glm::vec4(1, 0, 0, 1));
 
 	glDisable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_LINE);

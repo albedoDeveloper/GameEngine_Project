@@ -2,6 +2,11 @@
 #include "Shader.h"
 
 
+void Shader::Use() const
+{
+    glUseProgram(ID);
+}
+
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 {
     GLenum err = glewInit();
@@ -97,17 +102,3 @@ void Shader::ShaderLinking(unsigned int& vertexShader, unsigned int& fragmentSha
         std::cout << "ERROR::SHADER::LINKER::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
 }
-
-bool Shader::use()
-{
-    if (ID == NULL)
-        return false;
-    else
-    {
-        glUseProgram(ID);
-        return true;
-    }
-}
-
-
-

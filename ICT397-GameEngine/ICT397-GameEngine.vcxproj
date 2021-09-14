@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -49,6 +49,7 @@
     <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="LightManager.cpp" />
+    <ClCompile Include="ShaderClasses.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathLibrary.cpp" />
@@ -96,6 +97,7 @@
     <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="LightManager.h" />
+    <ClInclude Include="ShaderClasses.h" />
     <ClInclude Include="lodepng.h" />
     <ClInclude Include="MathLibrary.h" />
     <ClInclude Include="ModernOpenGL\Mesh.h" />
@@ -104,6 +106,7 @@
     <ClInclude Include="MultiTexture.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ScriptingEngine.h" />
+    <ClInclude Include="ShaderType.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="SkyboxVerts.h" />
     <ClInclude Include="Transform.h" />
@@ -124,9 +127,12 @@
     <None Include="..\Assets\Scripts\startButton.lua" />
     <None Include="..\Assets\Scripts\terrainWireframe.lua" />
     <None Include="..\Assets\Scripts\waterInteraction.lua" />
-    <None Include="ModernOpenGL\lit.frag" />
-    <None Include="ModernOpenGL\debug.frag" />
-    <None Include="ModernOpenGL\vertexShader.vert" />
+    <None Include="shaders\debug.frag" />
+    <None Include="shaders\lit.frag" />
+    <None Include="shaders\skyBoxColourShader.fs" />
+    <None Include="shaders\skyBoxVertexShader.vs" />
+    <None Include="shaders\unlit.frag" />
+    <None Include="shaders\vertexShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ICT397-GameEngine.rc" />

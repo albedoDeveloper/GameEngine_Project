@@ -5,8 +5,15 @@
 #include <iostream>
 
 CStaticMesh::CStaticMesh(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj}, m_model{ nullptr }
+	:Component{ parent, parentObj}, 
+	m_model{ nullptr },
+	m_shader{ GRAPHICS->m_litShader }
 {
+}
+
+CStaticMesh::~CStaticMesh()
+{
+	delete m_model;
 }
 
 Model* CStaticMesh::GetModel()
@@ -26,9 +33,29 @@ Model* CStaticMesh::AssignModelByKey(std::string modelKey)
 	return m_model;
 }
 
+void CStaticMesh::AssignShader(std::string shader)
+{
+	if (!shader.compare("lit"))
+	{
+		m_shader = GRAPHICS->m_litShader;
+	}
+	else if (!shader.compare("unlit"))
+	{
+		m_shader = GRAPHICS->m_unlitShader;
+	}
+	else if (!shader.compare("debug"))
+	{
+		m_shader = GRAPHICS->m_debugShader;
+	}
+	else
+	{
+		std::cout << "ERROR: CStaticMesh::AssignShader ... invalid shader string entered\n";
+	}
+}
+
 void CStaticMesh::Render()
 {
-	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform());
+	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), m_shader);
 }
 
 void CStaticMesh::Save(nlohmann::json& j)

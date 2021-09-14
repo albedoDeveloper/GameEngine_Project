@@ -46,7 +46,7 @@ void main()
         result += CalcPointLight(pointLights[i], norm, FragPos, viewDir); 
     
     FragColor = vec4(result, texture(material.texture_diffuse1, TexCoords).w);
-}
+} 
 
 vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
 {

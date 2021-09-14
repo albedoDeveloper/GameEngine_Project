@@ -16,8 +16,8 @@ CPointLight::CPointLight(Transform* parent, GameObject* parentObj)
 void CPointLight::Update()
 {
 	Vector3f worldPos = m_transform.GetWorldTransform().GetPosition();
-	GRAPHICS->m_litShader->use();
-	GRAPHICS->m_litShader->setVec3("pointLights[" + std::to_string(m_litShaderIndex) + "].position", glm::vec3(
+	GRAPHICS->m_litShader->Use();
+	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(m_litShaderIndex) + "].position", glm::vec3(
 		worldPos.GetX(),
 		worldPos.GetY(),
 		worldPos.GetZ()
@@ -29,8 +29,8 @@ void CPointLight::AssignColour(float r, float g, float b)
 	LightInfo.colour.SetX(r);
 	LightInfo.colour.SetY(g);
 	LightInfo.colour.SetZ(b);
-	GRAPHICS->m_litShader->use();
-	GRAPHICS->m_litShader->setVec3("pointLights[" + std::to_string(m_litShaderIndex) + "].colour", glm::vec3(
+	GRAPHICS->m_litShader->Use();
+	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(m_litShaderIndex) + "].colour", glm::vec3(
 		r,
 		g,
 		b
@@ -40,6 +40,6 @@ void CPointLight::AssignColour(float r, float g, float b)
 void CPointLight::AssignAmbientStrength(float strength)
 {
 	LightInfo.ambientStrength = strength;
-	GRAPHICS->m_litShader->use();
-	GRAPHICS->m_litShader->setShaderInt("pointLights[" + std::to_string(m_litShaderIndex) + "].ambientStrength", strength);
+	GRAPHICS->m_litShader->Use();
+	GRAPHICS->m_litShader->SetInt("pointLights[" + std::to_string(m_litShaderIndex) + "].ambientStrength", strength);
 }

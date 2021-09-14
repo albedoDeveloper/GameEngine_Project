@@ -24,7 +24,7 @@ class Model : public Asset
 public:
     Model(std::string path, std::string keyTemp);
 
-    void Draw(Shader& shader);
+    void Draw(const Shader* shader) const;
     std::string key;
     std::vector<Mesh>& GetMesh() { return m_meshes; }
 

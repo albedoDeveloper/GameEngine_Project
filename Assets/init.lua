@@ -25,19 +25,18 @@ LoadModel("endscreen", "endscreen/endscreen.fbx")
 
 LoadScript("rotate", "rotate.lua")
 
-SpawnGameObject("endscreen"):SetStatic(true)
-GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")
-
 SpawnGameObject("spiked_door_toilet"):SetStatic(true)
 GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_toilet")
 
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
+GetGameObject("waitress"):GetCStaticMesh():AssignShader("unlit")
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
 GetGameObject("toilet_block"):AddCCollider():AddConcaveCollider(1)
 GetGameObject("toilet_block"):GetCCollider():CollideWith(2)
+GetGameObject("toilet_block"):GetCStaticMesh():AssignShader("unlit")
 
 SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
@@ -140,3 +139,11 @@ GetGameObject("player"):AddCCollider():AddBoxCollider(0.5, 1.4, 0.5, 0 ,0, 0, fa
 GetGameObject("player"):GetCCollider():CollideWith(1);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
+
+SpawnGameObject("endscreen")
+GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")
+GetGameObject("endscreen"):GetCStaticMesh():AssignShader("unlit")
+GetGameObject("endscreen"):GetTransform():SetParent(
+	GetGameObject("player"):GetCCamera():GetTransform()
+)
+GetGameObject("endscreen"):GetTransform():Translate(0,0,-0.05)
