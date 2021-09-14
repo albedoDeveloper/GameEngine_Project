@@ -77,7 +77,7 @@ void CCharacter::Start()
 void CCharacter::Update()
 {
 	double deltaTime = TIME->GetDeltaTime();
-	float mouseSens = 60;
+	float mouseSens = 0.1f;
 	Vector3f moveVector(0, 0, 0);
 
 	if (m_playerControlled)
@@ -133,8 +133,8 @@ void CCharacter::Update()
 		
 		if (m_mouseEnabled)
 		{
-			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * deltaTime * mouseSens);
-			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
+			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * mouseSens);
+			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * -mouseSens);
 		}
 
 		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f ||

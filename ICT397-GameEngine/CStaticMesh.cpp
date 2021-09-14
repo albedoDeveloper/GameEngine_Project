@@ -8,7 +8,7 @@
 CStaticMesh::CStaticMesh(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj}, 
 	m_model{ nullptr },
-	m_shader{ GRAPHICS->m_unlitShader }
+	m_shader{ GRAPHICS->m_litShader }
 {
 }
 

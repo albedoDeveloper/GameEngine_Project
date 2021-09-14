@@ -30,13 +30,11 @@ GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_to
 
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
-GetGameObject("waitress"):GetCStaticMesh():AssignShader("unlit")
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
 GetGameObject("toilet_block"):AddCCollider():AddConcaveCollider(1)
 GetGameObject("toilet_block"):GetCCollider():CollideWith(2)
-GetGameObject("toilet_block"):GetCStaticMesh():AssignShader("unlit")
 
 SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
@@ -125,6 +123,7 @@ GetGameObject("light1"):GetTransform():SetPosition(-8.354999542236328,
 GetGameObject("light1"):AddCStaticMesh():AssignModel("axis")
 
 
+
 SpawnGameObject("light2"):SetStatic(false)
 GetGameObject("light2"):AddCPointLight()
 GetGameObject("light2"):GetCPointLight():AssignColour(0,0,1)
@@ -142,7 +141,6 @@ GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
 
 SpawnGameObject("endscreen"):SetActive(false)
 GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")
-GetGameObject("endscreen"):GetCStaticMesh():AssignShader("unlit")
 GetGameObject("endscreen"):GetTransform():SetParent(
 	GetGameObject("player"):GetCCamera():GetTransform()
 )
