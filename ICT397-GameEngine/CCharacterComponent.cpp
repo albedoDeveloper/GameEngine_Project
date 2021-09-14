@@ -4,7 +4,8 @@
 #include "InputManager.h"
 #include "DeltaTime.h"
 #include <iostream>
-
+#include "Engine.h"
+#include "GameObjectFactory.h"
 
 CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }, 
@@ -16,7 +17,9 @@ CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	m_currentTime{ 0 }, 
 	m_updateInterval{1.f/60},
 	m_playerControlled{ false },
-	m_mouseEnabled{ true }
+	m_mouseEnabled{ true },
+	m_moveEnabled{ true },
+	m_endscreenUp{ false }
 {
 }
 
@@ -79,36 +82,51 @@ void CCharacter::Update()
 
 	if (m_playerControlled)
 	{
-		if (INPUT->GetKey('s'))
+		if (m_moveEnabled)
 		{
-			moveVector.SetZ(1 * deltaTime);
-		}
-		else if (INPUT->GetKey('w'))
-		{
-			moveVector.SetZ(-1 * deltaTime);
-		}
+			if (INPUT->GetKey('s'))
+			{
+				moveVector.SetZ(1 * deltaTime);
+			}
+			else if (INPUT->GetKey('w'))
+			{
+				moveVector.SetZ(-1 * deltaTime);
+			}
 
-		if (INPUT->GetKey('a'))
-		{
-			moveVector.SetX(-1 * deltaTime);
-		}
-		else if (INPUT->GetKey('d'))
-		{
-			moveVector.SetX(1 * deltaTime);
-		}
+			if (INPUT->GetKey('a'))
+			{
+				moveVector.SetX(-1 * deltaTime);
+			}
+			else if (INPUT->GetKey('d'))
+			{
+				moveVector.SetX(1 * deltaTime);
+			}
 
-		if (INPUT->GetKey(' '))
-		{
-			moveVector.SetY(1 * deltaTime);
-		}
-		else if (INPUT->GetKey('c'))
-		{
-			moveVector.SetY(-1 * deltaTime);
+			if (INPUT->GetKey(' '))
+			{
+				moveVector.SetY(1 * deltaTime);
+			}
+			else if (INPUT->GetKey('c'))
+			{
+				moveVector.SetY(-1 * deltaTime);
+			}
 		}
 
 		if (INPUT->GetKeyDownByCode(KeyCode::ESC))
 		{
-			std::cout << "ESC down\n";
+			m_mouseEnabled = false;
+			m_moveEnabled = false;
+			m_endscreenUp = true;
+			INPUT->LockCursor(false);
+			GAMEOBJECT->GetGameObject("endscreen")->SetActive(true);
+		}
+
+		if (m_endscreenUp)
+		{
+			if (INPUT->GetMouseButtonDown(0) || INPUT->GetMouseButtonDown(1))
+			{
+				ENGINE->QuitGame();
+			}
 		}
 
 		GameObject *parentObj = GetParentObject();

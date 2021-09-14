@@ -41,17 +41,14 @@ private:
 	bool m_drawColliders;
 
 public:
-	/**
-	 * @brief default constructor
-	*/
-	Engine();
+	static Engine* Instance();
 
 	/**
 	 * @brief The main function to execute all behaviour of the game engine
 	 * @param renderer - which graphics library you want to be used to render
 	 * @return An integer representing program completion status
 	*/
-	int OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeight);
+	int Execute(GraphicsLibrary renderer, int windowWidth, int windowHeight);
 	/**
 	 * @brief ends the game
 	*/
@@ -71,6 +68,9 @@ public:
 	bool CheckSaveState();
 
 private:
+
+	Engine();
+
 	/**
 	 * @brief Intialisation function to set all parts of the engine up
 	 * @param renderer - which graphics api you want to be used to render
@@ -98,11 +98,6 @@ private:
 	 * @brief Cleans up the program on its conclusion before quitting
 	*/
 	void OnCleanup();
-
-
-
-
-
-
-
 };
+
+#define ENGINE Engine::Instance()

@@ -140,7 +140,7 @@ GetGameObject("player"):GetCCollider():CollideWith(1);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
 
-SpawnGameObject("endscreen")
+SpawnGameObject("endscreen"):SetActive(false)
 GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")
 GetGameObject("endscreen"):GetCStaticMesh():AssignShader("unlit")
 GetGameObject("endscreen"):GetTransform():SetParent(

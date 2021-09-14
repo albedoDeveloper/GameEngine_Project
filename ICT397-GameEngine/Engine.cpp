@@ -16,7 +16,13 @@ Engine::Engine()
 {
 }
 
-int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeight)
+Engine* Engine::Instance()
+{
+	static Engine engine;
+	return &engine;
+}
+
+int Engine::Execute(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
 	if (OnInit(renderer, windowWidth, windowHeight) == false)
 	{
@@ -62,6 +68,7 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 void Engine::QuitGame()
 {
 	m_isRunning = false;
+	std::cout << "Hope you enjoyed your stay...\n";
 }
 
 void Engine::SaveGame()
