@@ -55,7 +55,6 @@
     <ClCompile Include="ModernOpenGL\Mesh.cpp" />
     <ClCompile Include="ModernOpenGL\Model.cpp" />
     <ClCompile Include="ModernOpenGL\Shader.cpp" />
-    <ClCompile Include="MultiTexture.cpp" />
     <ClCompile Include="ScriptingEngine.cpp" />
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -126,7 +125,7 @@
     <None Include="..\Assets\Scripts\terrainWireframe.lua" />
     <None Include="..\Assets\Scripts\waterInteraction.lua" />
     <None Include="ModernOpenGL\lit.frag" />
-    <None Include="ModernOpenGL\unlit.frag" />
+    <None Include="ModernOpenGL\debug.frag" />
     <None Include="ModernOpenGL\vertexShader.vert" />
   </ItemGroup>
   <ItemGroup>

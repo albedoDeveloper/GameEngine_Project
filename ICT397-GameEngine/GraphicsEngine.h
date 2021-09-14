@@ -9,7 +9,6 @@
 #include "GraphicsLibraryEnum.h"
 #include <string>
 #include <map>
-#include "MultiTexture.h"
 #include "imgui/imgui.h"
 #include "SkyBox.h"
 #include "LightManager.h"
@@ -90,6 +89,9 @@ public:
 	 * @brief default constructor
 	*/
 	GraphicsEngine();
+
+	~GraphicsEngine();
+
 	/**
 	 * @brief Generates pointer to instance of singleton
 	 * @return Pointer to the graphics engine
@@ -107,16 +109,6 @@ public:
 	 * @return whether operation succeeded
 	*/
 	bool initLighting();
-	/**
-	 * @brief camera mutator
-	 * @param camera the camera to use
-	*/
-	//void SetCamera(Camera camera);
-	/**
-	 * @brief camera accessor
-	 * @return the camera in use
-	*/
-	//Camera GetCamera();
 
 	/**
 	 * @brief Function to be called at the start of every frame for rendering
@@ -197,7 +189,9 @@ public:
 
 	glm::mat4 GetView();
 
-	Shader* m_shader;
+	Shader* m_litShader;
+
+	Shader* m_unlitShader;
 	
 	Shader* m_debugShader;
 

@@ -14,7 +14,6 @@
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathLibrary.cpp" />
-    <ClCompile Include="MultiTexture.cpp" />
     <ClCompile Include="ScriptingEngine.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="CCollider.cpp">
@@ -217,7 +216,7 @@
     <None Include="ModernOpenGL\vertexShader.vert">
       <Filter>ModernOpenGl</Filter>
     </None>
-    <None Include="ModernOpenGL\unlit.frag">
+    <None Include="ModernOpenGL\debug.frag">
       <Filter>ModernOpenGl</Filter>
     </None>
   </ItemGroup>

@@ -23,9 +23,19 @@ GraphicsEngine::GraphicsEngine()
 	m_imgui_io{},
 	m_windowWidth{},
 	m_windowHeight{},
-	m_shader{ nullptr },
+	m_litShader{ nullptr },
 	m_debugShader{ nullptr }
 {
+}
+
+GraphicsEngine::~GraphicsEngine()
+{
+	delete m_camera;
+	delete m_debugShader;
+	delete m_litShader;
+	delete m_renderer;
+	delete m_unlitShader;
+	delete m_window;
 }
 
 GraphicsEngine* GraphicsEngine::instance() 
@@ -71,8 +81,8 @@ void GraphicsEngine::newFrame(bool debugMenu)
 void GraphicsEngine::UpdateViewPos() const
 {
 	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetPosition();
-	GRAPHICS->m_shader->use();
-	GRAPHICS->m_shader->setVec3(
+	GRAPHICS->m_litShader->use();
+	GRAPHICS->m_litShader->setVec3(
 		"viewPos",
 		glm::vec3(
 			viewPosVec.GetX(),
@@ -96,17 +106,17 @@ int GraphicsEngine::AddPointLight(CPointLight* light)
 {
 	int numpointLights = m_lightManager.AddPointLight(light);
 
-	m_shader->use();
-	m_shader->setShaderInt("numOfPointLights", numpointLights);
-	GRAPHICS->m_shader->setShaderFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
-	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].colour", glm::vec3(
+	m_litShader->use();
+	m_litShader->setShaderInt("numOfPointLights", numpointLights);
+	GRAPHICS->m_litShader->setShaderFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
+	GRAPHICS->m_litShader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].colour", glm::vec3(
 		light->LightInfo.colour.GetX(),
 		light->LightInfo.colour.GetY(),
 		light->LightInfo.colour.GetZ()
 	));
-	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].constant", light->LightInfo.constant);
-	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].linear", light->LightInfo.linear);
-	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].quadratic", light->LightInfo.quadratic);
+	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].constant", light->LightInfo.constant);
+	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].linear", light->LightInfo.linear);
+	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].quadratic", light->LightInfo.quadratic);
 
 	return numpointLights;
 }
@@ -182,17 +192,17 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 
 	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
 
-	m_shader->use();
-	m_shader->setMat4("model", trans);
+	m_litShader->use();
+	m_litShader->setMat4("model", trans);
 
-	m_shader->setShaderInt("material.texture_diffuse1", 0);
-	m_shader->setShaderInt("material.texture_specular1", 1);
+	m_litShader->setShaderInt("material.texture_diffuse1", 0);
+	m_litShader->setShaderInt("material.texture_specular1", 1);
 
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
 
-	model->Draw(*m_shader);
+	model->Draw(*m_litShader);
 }
 
 unsigned GraphicsEngine::GetTexID(std::string key) const
@@ -274,8 +284,9 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	//glEnable(GL_FRAMEBUFFER_SRGB); // gamma correction. looks too washed out
 	glClearColor(0.4, 0.2, 0.7, 1);
 
-	m_shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/lit.frag");
-	m_debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/unlit.frag");
+	m_litShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/lit.frag");
+	m_unlitShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/debug.frag");
+	m_debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/debug.frag");
 	
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",

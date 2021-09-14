@@ -154,12 +154,12 @@ void Engine::OnRender()
 {
 	GRAPHICS->UpdateViewPos();
 
-	GRAPHICS->m_shader->use();
-	GRAPHICS->m_shader->SetFloat("material.shininess", 16); // TODO move somewhere else
+	GRAPHICS->m_litShader->use();
+	GRAPHICS->m_litShader->SetFloat("material.shininess", 16); // TODO move somewhere else
 
-	GRAPHICS->m_shader->setMat4("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_litShader->setMat4("projection", GRAPHICS->GetProjection());
 
-	GRAPHICS->m_shader->setMat4("view", GRAPHICS->GetView());
+	GRAPHICS->m_litShader->setMat4("view", GRAPHICS->GetView());
 
 	GRAPHICS->newFrame(m_debugMenu);
 	GRAPHICS->renderObjects();
