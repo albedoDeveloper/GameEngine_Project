@@ -21,8 +21,12 @@ LoadModel("tavern_glass_door_wall_long", "tavern_glass_door_wall_long/tavern_gla
 LoadModel("tavern_glass_door_wall_long_2", "tavern_glass_door_wall_long_2/tavern_glass_door_wall_long_2.fbx")
 LoadModel("toilet_block", "toilet_block/toilet_block.fbx")
 LoadModel("waitress", "waitress/waitress.fbx")
+LoadModel("endscreen", "endscreen/endscreen.fbx")
 
 LoadScript("rotate", "rotate.lua")
+
+SpawnGameObject("endscreen"):SetStatic(true)
+GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")
 
 SpawnGameObject("spiked_door_toilet"):SetStatic(true)
 GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_toilet")
