@@ -1,15 +1,14 @@
 #pragma once
 
-#include "Component.h"
+#include "CComponent.h"
 #include "CStaticMesh.h"
 #include "CScript.h"
-#include "CUserInterface.h"
 #include <unordered_map>
 #include <typeindex>
 #include <list>
 #include "CScript.h"
 #include "CCharacterComponent.h"
-#include "CCameraComponent.h"
+#include "CCamera.h"
 #include "CCollider.h"
 #include "CSound.h"
 #include <nlohmann/json.hpp>
@@ -44,17 +43,6 @@ public:
 	 * @return the created script
 	*/
 	CScript* AddCScript();
-
-	/**
-	 * @brief Adds a user interface component
-	 * @return the created UI
-	*/
-	CUserInterface* AddCUserInterface();
-	/**
-	 * @brief user interface accessor
-	 * @return a pointer to the first user interface
-	*/
-	CUserInterface* GetCUserInterface();
 
 	CStaticMesh* GetCStaticMesh();
 	
@@ -167,13 +155,13 @@ public:
 	/**
 	 * @brief retrieves component map
 	*/
-	std::unordered_map<std::type_index, std::list<Component*>*> GetComponentMap();
+	std::unordered_map<std::type_index, std::list<CComponent*>*> GetComponentMap();
 
 private:
 	/**
 	 * @brief All of this object's components, stored in a map of lists, organised by type
 	*/
-	std::unordered_map<std::type_index, std::list<Component*>*> m_components;
+	std::unordered_map<std::type_index, std::list<CComponent*>*> m_components;
 	/**
 	 * @brief This object's key in the game object factory
 	*/
@@ -213,14 +201,14 @@ private:
 template<class T, class... Targs>
 inline T* GameObject::AddComponent(Targs&&... args)
 {
-	if (std::is_base_of<Component, T>::value) // make sure T is a component
+	if (std::is_base_of<CComponent, T>::value) // make sure T is a component
 	{
 		T* obj = new T(&m_transform, this, std::forward<Targs>(args)...);
 
 		// check if type of component already exists
 		if (m_components.find(std::type_index(typeid(T))) == m_components.end()) //if not found
 		{
-			m_components[std::type_index(typeid(T))] = new std::list<Component*>();
+			m_components[std::type_index(typeid(T))] = new std::list<CComponent*>();
 		}
 
 		m_components.at(std::type_index(typeid(T)))->push_back(obj);
@@ -240,7 +228,7 @@ template<class T>
 inline T* GameObject::GetComponent()
 {
 	// return if a non component type was passed in
-	if (!std::is_base_of<Component, T>::value)
+	if (!std::is_base_of<CComponent, T>::value)
 	{
 		return nullptr;
 	}

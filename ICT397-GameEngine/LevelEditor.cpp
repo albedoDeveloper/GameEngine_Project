@@ -153,13 +153,13 @@ void LevelEditor::ComponentTree(GameObject* g)
 {
 	if (ImGui::CollapsingHeader("Components"))
 	{
-		std::unordered_map<std::type_index, std::list<Component*>*> compMap = g->GetComponentMap();
+		std::unordered_map<std::type_index, std::list<CComponent*>*> compMap = g->GetComponentMap();
 
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = compMap.begin(); mapIterator != compMap.end(); ++mapIterator)
+		for (std::unordered_map<std::type_index, std::list<CComponent*>*>::iterator mapIterator = compMap.begin(); mapIterator != compMap.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->DrawToImGui();
 			}

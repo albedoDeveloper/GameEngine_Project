@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Component.h"
+#include "CComponent.h"
 #include "CollisionManager.h"
 #include "CCollider.h"
 
 /**
  * @brief A component representing a character capable of moving
 */
-class CCharacter : public Component
+class CCharacter : public CComponent
 {
 public:
 	/**

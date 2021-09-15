@@ -3,7 +3,7 @@
 #include "GraphicsEngine.h"
 #include <glm/glm/gtx/vector_angle.hpp>
 CSound::CSound(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj }
+	:CComponent{ parent, parentObj }
 {
 	int flags = MIX_INIT_MP3;
 	int initted = Mix_Init(flags);

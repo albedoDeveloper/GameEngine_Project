@@ -14,7 +14,6 @@ class InputManager;
 class ScriptingEngine
 {
 	friend class CScript;
-
 public:
 	/**
 	 * @brief Singleton instance getter
@@ -22,7 +21,7 @@ public:
 	*/
 	static ScriptingEngine* Instance();
 
-	void Initialise(Engine &engine);
+	void Initialise();
 
 	/**
 	 * @brief Sets up the engine with initial processes and variables and exposes engine functionality to lua
@@ -54,7 +53,6 @@ private:
 	*/
 	lua_State* m_L;
 
-	static Engine* m_engine;
 
 private: 
 

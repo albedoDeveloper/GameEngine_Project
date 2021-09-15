@@ -2,12 +2,12 @@
 #include "GameObjectFactory.h"
 #include <iostream>
 #include "Color.h"
-#include "CCameraComponent.h"
+#include "CCamera.h"
 #include "SkyboxVerts.h"
 #include "InputManager.h"
-#include "imgui/imgui.h"
-#include "imgui/imgui_impl_sdl.h"
-#include "imgui/imgui_impl_opengl3.h"
+#include "./ThirdParty/imgui/imgui.h"
+#include "./ThirdParty/imgui/imgui_impl_sdl.h"
+#include "./ThirdParty/imgui/imgui_impl_opengl3.h"
 
 extern "C"
 {
@@ -53,7 +53,7 @@ GraphicsEngine* GraphicsEngine::instance()
 	return engine;
 }
 
-bool GraphicsEngine::initialise(GraphicsLibrary renderer, int windowWidth, int windowHeight) 
+bool GraphicsEngine::Init(GraphicsLibrary renderer, int windowWidth, int windowHeight) 
 {
 	m_windowWidth = windowWidth;
 	m_windowHeight = windowHeight;
@@ -185,7 +185,7 @@ void GraphicsEngine::DeleteTexture(std::string key)
 	glDeleteTextures(1, texId);
 }
 
-void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans, const Shader* shader)
+void GraphicsEngine::DrawModel(AModel* model, const Transform& worldTrans, const Shader* shader)
 {
 	if (!model)
 	{

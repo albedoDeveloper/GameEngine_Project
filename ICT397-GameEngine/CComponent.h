@@ -7,7 +7,7 @@ class GameObject;
 /**
  * @brief A component of a game object with its own assets and/or behaviour
 */
-class Component 
+class CComponent
 {
 private:
 	/**
@@ -18,13 +18,13 @@ public:
 	/**
 	 * @brief default constructor 
 	*/
-	Component();
+	CComponent();
 	/**
 	 * @brief constructor taking parent data
 	 * @param parentTrans The parent transform for this component's transform
 	 * @param parentObject The parent object of this component
 	*/
-	Component(Transform* parentTrans, GameObject* parentObject);
+	CComponent(Transform* parentTrans, GameObject* parentObject);
 
 	/**
 	 * @brief called at start of game

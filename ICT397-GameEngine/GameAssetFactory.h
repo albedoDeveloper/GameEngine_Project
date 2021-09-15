@@ -1,15 +1,12 @@
 #pragma once
-#include "ModernOpenGL/Model.h"
-#include "AModel.h"
+#include "ModernOpenGL/AModel.h"
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
 #include <vector>
 #include <fstream>
 #include <sstream>
-#include "lodepng.h"
 #include "GraphicsEngine.h"
-#include "AModel.h"
 #include <map>
 #include <string>
 #include "AScript.h"
@@ -60,22 +57,14 @@ public:
 	 * @param key the key at which the asset is stored
 	 * @return pointer to the asset
 	*/
-	//Model* GetAsset(std::string key);
-	Asset* GetAsset(std::string key);
+	//AModel* GetAsset(std::string key);
+	AAsset* GetAsset(std::string key);
 	/**
 	 * @brief closes the factory
 	*/
 	void Close();
 
-	//Shader shader
 private:
-	/**
-	 * @brief loads in an object file
-	 * @param path the location of the file
-	 * @param model the model asset to load it into
-	 * @return whether operation suceeded
-	*/
-	bool LoadOBJFile(std::string path, AModel* model);
 	/**
 	 * @brief loads in a lua file
 	 * @param path location of the file
@@ -86,10 +75,9 @@ private:
 	/**
 	 * @brief map of assets, stored by string key
 	*/
-	std::map<std::string, Asset*> m_assets;
+	std::map<std::string, AAsset*> m_assets;
 	//std::map <std::string, Amodel*> m_assets;
-	
-
+		
 	bool oneTimeShader = false;
 };
 

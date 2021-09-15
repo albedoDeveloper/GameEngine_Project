@@ -15,7 +15,7 @@ void GameAssetFactory::LoadModel(std::string key, std::string filePath)
         return;
     }
 
-     Model* model = new Model(filePath,key);
+     AModel* model = new AModel(filePath,key);
     
      m_assets.emplace(key, model);
    
@@ -103,8 +103,8 @@ bool GameAssetFactory::CheckName(std::string name)
 	return !( m_assets.find(name) == m_assets.end() );
 }
 
-//Model* GameAssetFactory::GetAsset(std::string key)
-Asset* GameAssetFactory::GetAsset(std::string key)
+//AModel* GameAssetFactory::GetAsset(std::string key)
+AAsset* GameAssetFactory::GetAsset(std::string key)
 {
 #if _DEBUG
     if (m_assets.find(key) == m_assets.end()) 
@@ -119,156 +119,6 @@ Asset* GameAssetFactory::GetAsset(std::string key)
     }
     
     return nullptr;
-}
-
-bool GameAssetFactory::LoadOBJFile(std::string path, AModel* model)
-{
-    std::string line{};
-    std::ifstream file{};
-    std::vector<Vector3f> verts{};
-    std::vector<Vector2f> texverts{};
-    std::vector<Vector3u> faces{};
-    std::vector<Vector3u> texfaces{};
-    bool v = false;
-    bool vt = false;
-    bool vn = false;
-
-    file.open(path);
-
-    if (!file)
-    {
-#if _DEBUG
-        std::cout << "Error: Cannot open file: " << path << std::endl;
-#endif
-        return false; // Cannot open file
-    }
-
-    while (std::getline(file, line))
-    {
-        if (line.substr(0, 2) == "v ") // Read in all vertices
-        {
-            v = true;
-            std::istringstream s(line.substr(2));
-            Vector3f v;
-            float buf;
-            s >> buf;
-            v.SetX(buf);
-            s >> buf;
-            v.SetY(buf);
-            s >> buf;
-            v.SetZ(buf);
-            verts.push_back(v);
-        }
-        else if (line.substr(0, 2) == "vt") // read texture coords
-        {
-            vt = true;
-            std::istringstream s(line.substr(2));
-            Vector2f vt;
-            float buf;
-            s >> buf;
-            vt.SetX(buf);
-            s >> buf;
-            vt.SetY(buf);
-            texverts.push_back(vt);
-        }
-        else if (line.substr(0, 2) == "vn") // read in normals
-        {
-            // ignoring normals for now
-            vn = true;
-        }
-        else if (line.substr(0, 2) == "f ") // read face values
-        {
-            std::istringstream s(line.substr(2));
-            Vector3u f{}; // face
-            Vector3u ft{}; // texture face
-            char binc{}; // char bin
-            int bini{}; // int bin
-            unsigned buf; // unsigned buffer
-
-            if (vt && !vn)
-            {
-                s >> buf;
-                f.SetX(buf);
-                s >> binc; // skip '/'
-                s >> buf;
-                ft.SetX(buf);
-
-                s >> buf;
-                f.SetY(buf);
-                s >> binc; // skip '/'
-                s >> buf;
-                ft.SetY(buf);
-
-                s >> buf;
-                f.SetZ(buf);
-                s >> binc; // skip '/'
-                s >> buf;
-                ft.SetZ(buf);
-            }
-            else if (vn && vt)
-            {
-                s >> buf;
-                f.SetX(buf);
-                s >> binc; // skip '/'
-                s >> buf;
-                ft.SetX(buf);
-                s >> binc; // skip '/'
-                s >> bini;
-
-                s >> buf;
-                f.SetY(buf);
-                s >> binc; // skip '/'
-                s >> buf;
-                ft.SetY(buf);
-                s >> binc; // skip '/'
-                s >> bini;
-
-                s >> buf;
-                f.SetZ(buf);
-                s >> binc; // skip '/'
-                s >> buf;
-                ft.SetZ(buf);
-                s >> binc; // skip '/'
-                s >> bini;
-            }
-
-            // make faces start from 0 instead of 1
-            f.SetX(f.GetX() - 1);
-            f.SetY(f.GetY() - 1);
-            f.SetZ(f.GetZ() - 1);
-            ft.SetX(ft.GetX() - 1);
-            ft.SetY(ft.GetY() - 1);
-            ft.SetZ(ft.GetZ() - 1);
-            faces.push_back(f);
-            texfaces.push_back(ft);
-        }
-    }
-
-    model->NumVerts = verts.size();
-    model->NumFaces = faces.size();
-    model->ntexcoords = texverts.size();
-    model->verts = new Vector3f[verts.size()];
-    model->texverts = new Vector2f[texverts.size()];
-    model->faces = new Vector3u[faces.size()];
-    model->texfaces = new Vector3u[texfaces.size()];
-    for (unsigned i = 0; i < verts.size(); i++)
-    {
-        model->verts[i] = verts[i];
-    }
-    for (size_t i = 0; i < texverts.size(); i++)
-    {
-        model->texverts[i] = texverts[i];
-    }
-    for (size_t i = 0; i < faces.size(); i++)
-    {
-        model->faces[i] = faces[i];
-    }
-    for (size_t i = 0; i < texfaces.size(); i++)
-    {
-        model->texfaces[i] = texfaces[i];
-    }
-
-    return true;
 }
 
 bool GameAssetFactory::LoadLuaFile(std::string path, AScript* script)
@@ -289,6 +139,6 @@ bool GameAssetFactory::LoadLuaFile(std::string path, AScript* script)
 
 void GameAssetFactory::Close()
 {
-    //m_assets = *new std::map<std::string, Model*>();
-    m_assets = *new std::map<std::string, Asset*>();
+    //m_assets = *new std::map<std::string, AModel*>();
+    m_assets = *new std::map<std::string, AAsset*>();
 }

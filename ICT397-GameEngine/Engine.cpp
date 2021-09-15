@@ -6,8 +6,8 @@
 #include "InputManager.h"
 #include "GameObjectFactory.h"
 #include "DeltaTime.h"
-#include "imgui/imgui_impl_sdl.h"
-#include "imgui/imgui_impl_opengl3.h"
+#include "./ThirdParty/imgui/imgui_impl_sdl.h"
+#include "./ThirdParty/imgui/imgui_impl_opengl3.h"
 #include <glm/glm/gtc/matrix_transform.hpp>
 
 Engine::Engine()
@@ -94,12 +94,12 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
 	COLLISION; //init collision manager // TODO make init func
 
-	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
+	if (!GRAPHICS->Init(renderer, windowWidth, windowHeight)) 
 	{
 		return false;
 	}
 
-	SCRIPT->Initialise(*this);
+	SCRIPT->Initialise();
 	SCRIPT->RunInitScript();
 
 	// temporarily creating player controller here
@@ -108,7 +108,6 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav",-1,false);
 
 	GAMEOBJECT->Start();
-	INPUT->Initialise(this);
 	INPUT->LockCursor(true);
 
 	return true;

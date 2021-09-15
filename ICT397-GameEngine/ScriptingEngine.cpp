@@ -2,15 +2,12 @@
 #include "GameAssetFactory.h"
 #include "GameObjectFactory.h"
 #include "CStaticMesh.h"
-#include "CUserInterface.h"
 #include "CScript.h"
 #include "CCharacterComponent.h"
 #include "InputManager.h"
 #include "CCollider.h"
 #include "Engine.h"
 #include <iostream>
-
-Engine* ScriptingEngine::m_engine = nullptr;
 
 using namespace luabridge;
 
@@ -20,10 +17,9 @@ ScriptingEngine* ScriptingEngine::Instance()
 	return &instance;
 }
 
-void ScriptingEngine::Initialise(Engine &engine)
+void ScriptingEngine::Initialise()
 {
     m_L = NewState();
-    m_engine = &engine;
 }
 
 lua_State* ScriptingEngine::NewState()
@@ -96,8 +92,6 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("AddCStaticMesh", &GameObject::AddCStaticMesh)
             .addFunction("GetCStaticMesh", &GameObject::GetCStaticMesh)
             .addFunction("AddCScript", &GameObject::AddCScript)
-            .addFunction("AddCUserInterface", &GameObject::AddCUserInterface)
-            .addFunction("GetCUserInterface", &GameObject::GetCUserInterface)
             .addFunction("AddCCharacter", &GameObject::AddCCharacter)
             .addFunction("AddCCameraComponent", &GameObject::AddCCameraComponent)
             .addFunction("GetTransform", &GameObject::GetTransform)
@@ -118,10 +112,10 @@ lua_State* ScriptingEngine::NewState()
         .endClass();
 
     getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
-            .addFunction("GetTransform", &Component::GetTransform)
+        .beginClass<CComponent>("CComponent")
+            .addFunction("GetTransform", &CComponent::GetTransform)
         .endClass()
-        .deriveClass<CCharacter, Component>("CCharacter")
+        .deriveClass<CCharacter, CComponent>("CCharacter")
             .addFunction("Move", &CCharacter::Move)
             .addFunction("Jump", &CCharacter::Jump)
             .addFunction("GetHitpoints", &CCharacter::GetHitpoints)
@@ -130,60 +124,50 @@ lua_State* ScriptingEngine::NewState()
         .endClass();
 
     getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
-            .addFunction("GetTransform", &Component::GetTransform)
+        .beginClass<CComponent>("CComponent")
+            .addFunction("GetTransform", &CComponent::GetTransform)
         .endClass()
-        .deriveClass<CCamera, Component>("CCameraComponent.h")
+        .deriveClass<CCamera, CComponent>("CCameraComponent.h")
             .addFunction("SetAsCurrentCamera", &CCamera::SetAsCurrentCamera)
         .endClass();
 
 
     getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
+        .beginClass<CComponent>("CComponent")
         .endClass()
-        .deriveClass<CStaticMesh,Component>("CStaticMesh")
+        .deriveClass<CStaticMesh,CComponent>("CStaticMesh")
             .addFunction("AssignModel", &CStaticMesh::AssignModelByKey)
             .addFunction("GetModel", &CStaticMesh::GetModel)
             .addFunction("AssignShader", &CStaticMesh::AssignShader)
         .endClass();
 
     getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
+        .beginClass<CComponent>("CComponent")
         .endClass()
-        .deriveClass<CScript, Component>("CScript")
+        .deriveClass<CScript, CComponent>("CScript")
             .addFunction("AssignScript", &CScript::AssignScriptByKey)
         .endClass();
 
     getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
+        .beginClass<CComponent>("CComponent")
         .endClass()
-        .deriveClass<CPointLight, Component>("CPointLight")
+        .deriveClass<CPointLight, CComponent>("CPointLight")
             .addFunction("AssignColour", &CPointLight::AssignColour)
             .addFunction("AssignAmbientStrength", &CPointLight::AssignAmbientStrength)
         .endClass();
 
     getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
+        .beginClass<CComponent>("CComponent")
         .endClass()
-        .deriveClass<CSound, Component>("CSound")
+        .deriveClass<CSound, CComponent>("CSound")
         .addFunction("LoadSound", &CSound::LoadSound)
         .addFunction("PlaySound", &CSound::PlaySound)
         .endClass();
 
-    getGlobalNamespace(Lbuff)
-        .beginClass<Component>("Component")
-        .endClass()
-        .deriveClass<CUserInterface, Component>("CUserInterface")
-        .addFunction("SetSize", &CUserInterface::SetSize)
-        .addFunction("SetFullscreen", &CUserInterface::SetFullscreen)
-        .addFunction("MouseClicked", &CUserInterface::MouseClicked)
-        .addFunction("SetPosition", &CUserInterface::SetPosition)
-        .endClass();
-
    getGlobalNamespace(Lbuff)
-       .beginClass<Component>("Component")
+       .beginClass<CComponent>("CComponent")
        .endClass()
-       .deriveClass<CCollider, Component>("CCollider")
+       .deriveClass<CCollider, CComponent>("CCollider")
        .addFunction("AddConvexCollider", &CCollider::AddConvexCollider)
        .addFunction("AddBoxCollider", &CCollider::AddBoxCollider)
        .addFunction("AddConcaveCollider", &CCollider::AddConcaveCollider)
@@ -191,9 +175,9 @@ lua_State* ScriptingEngine::NewState()
        .endClass();
 
     getGlobalNamespace(Lbuff)
-        .beginClass<Asset>("Asset")
+        .beginClass<AAsset>("AAsset")
         .endClass()
-        .deriveClass<Model, Component>("AModel")
+        .deriveClass<AModel, CComponent>("AModel")
         .endClass();
 
     return Lbuff;
@@ -255,22 +239,22 @@ GameObject* ScriptingEngine::GetGameObject(std::string objectKey)
 
 void ScriptingEngine::QuitGame()
 {
-    m_engine->QuitGame();
+    ENGINE->QuitGame();
 }
 
 void ScriptingEngine::SaveGame()
 {
-    m_engine->SaveGame();
+    ENGINE->SaveGame();
 }
 
 void ScriptingEngine::LoadGame()
 {
-    m_engine->LoadGame();
+    ENGINE->LoadGame();
 }
 
 bool ScriptingEngine::CheckSaveState()
 {
-    return m_engine->CheckSaveState();
+    return ENGINE->CheckSaveState();
 }
 
 InputManager* ScriptingEngine::GetInputManager()

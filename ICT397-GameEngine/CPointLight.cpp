@@ -2,7 +2,7 @@
 #include "GraphicsEngine.h"
 
 CPointLight::CPointLight(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj },
+	:CComponent{ parent, parentObj },
 	LightInfo{}
 {
 	LightInfo.ambientStrength = 0.2f;

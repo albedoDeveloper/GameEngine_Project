@@ -8,7 +8,7 @@
 #include "GameObjectFactory.h"
 
 CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj }, 
+	:CComponent{ parent, parentObj }, 
 	m_parentTransform{m_parent->GetTransform()},
 	m_velocity{ 0,0,0 }, 
 	m_maxSpeed{ 10 }, 
@@ -207,19 +207,19 @@ void CCharacter::Update()
 void CCharacter::Save(nlohmann::json& j)
 {
 	m_savedHitpoints = m_hitpoints;
-	Component::Save(j);
+	CComponent::Save(j);
 }
 
 void CCharacter::Load(nlohmann::json& j)
 {
 	m_hitpoints = m_savedHitpoints;
-	Component::Load(j);
+	CComponent::Load(j);
 }
 
 void CCharacter::DrawToImGui()
 {
 	//ImGui::Text("staticMesh TREE");
-	if (ImGui::TreeNode("Character Component"))
+	if (ImGui::TreeNode("Character CComponent"))
 	{
 		ImGui::Text("Character info : ");
 		ImGui::Text("Velocity : x = "); ImGui::SameLine(); ImGui::Text(std::to_string(m_velocity.GetX()).c_str());

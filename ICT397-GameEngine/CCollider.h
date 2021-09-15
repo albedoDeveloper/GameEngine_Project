@@ -1,12 +1,12 @@
 #pragma once
-#include "Component.h"
+#include "CComponent.h"
 #include <reactphysics3d/reactphysics3d.h>
 #include <memory>
 
 /**
  * @brief 
 */
-class CCollider : public Component 
+class CCollider : public CComponent 
 {
 public:
 	/**

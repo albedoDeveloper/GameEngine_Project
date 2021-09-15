@@ -1,6 +1,6 @@
 #pragma once
-#include "imgui/imgui_impl_sdl.h"
-#include "imgui/imgui_impl_opengl3.h"
+#include "./ThirdParty/imgui/imgui_impl_sdl.h"
+#include "./ThirdParty/imgui/imgui_impl_opengl3.h"
 #include "GameObject.h"
 #include <SDL2/SDL.h>
 #include <string> 
@@ -31,8 +31,4 @@ class LevelEditor
 		void ScaleManipulators(GameObject* g);
 
 		void ComponentTree(GameObject* g);
-
-
-
 };
-

@@ -48,9 +48,6 @@ enum class KeyCode
 class InputManager
 {
 private:
-    
-    Engine* m_engine;
-
     bool m_cursorLocked;
 
     /**
@@ -158,8 +155,6 @@ public:
      * @return a pointer to the instance of the input manager
     */
     static InputManager* Instance();
-
-    void Initialise(Engine* e);
 
     /**
      * @brief checks whether a key is being pressed and stores the resulting data

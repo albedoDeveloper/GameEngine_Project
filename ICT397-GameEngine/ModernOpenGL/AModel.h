@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "../Asset.h"
+#include "../AAsset.h"
 #include <string>
 #include <vector> 
 #include <array>
@@ -19,10 +19,10 @@ struct modelInfo
 };
 
 
-class Model : public Asset
+class AModel : public AAsset
 {
 public:
-    Model(std::string path, std::string keyTemp);
+    AModel(std::string path, std::string keyTemp);
 
     void Draw(const Shader* shader) const;
     std::string key;

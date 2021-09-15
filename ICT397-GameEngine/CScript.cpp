@@ -6,7 +6,7 @@
 using namespace luabridge;
 
 CScript::CScript(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj }, m_script{ nullptr }
+	:CComponent{ parent, parentObj }, m_script{ nullptr }
 {
 	m_L = SCRIPT->NewState();
 }
@@ -42,7 +42,7 @@ void CScript::Load(nlohmann::json& j)
 void CScript::DrawToImGui()
 {
 	//ImGui::Text("staticMesh TREE");
-	if (ImGui::TreeNode("Script Component"))
+	if (ImGui::TreeNode("Script CComponent"))
 	{
 		ImGui::Text("Script Info : "); ImGui::SameLine(); ImGui::Text(m_script->key.c_str());
 		ImGui::TreePop();

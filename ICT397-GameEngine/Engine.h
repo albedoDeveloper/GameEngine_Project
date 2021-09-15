@@ -11,35 +11,6 @@
 */
 class Engine
 {
-private:
-	/**
-	 * @brief Whether the engine is running
-	*/
-	bool m_isRunning;
-	/**
-	 * @brief whether the game has been saved
-	*/
-	bool m_saveState;
-	/**
-	 * @brief whether the game needs to be laoded
-	*/
-	bool m_loadState;
-	/**
-	 * @brief the level loader class
-	*/
-	LevelLoader levelLoader;
-	/**
-	 * @brief the level editor class
-	*/
-	LevelEditor levelEditor;
-
-
-	bool m_debugMenu;
-
-	bool m_editMenu;
-
-	bool m_drawColliders;
-
 public:
 	static Engine* Instance();
 
@@ -68,7 +39,6 @@ public:
 	bool CheckSaveState();
 
 private:
-
 	Engine();
 
 	/**
@@ -98,6 +68,36 @@ private:
 	 * @brief Cleans up the program on its conclusion before quitting
 	*/
 	void OnCleanup();
+
+private:
+	/**
+	 * @brief Whether the engine is running
+	*/
+	bool m_isRunning;
+	/**
+	 * @brief whether the game has been saved
+	*/
+	bool m_saveState;
+	/**
+	 * @brief whether the game needs to be laoded
+	*/
+	bool m_loadState;
+	/**
+	 * @brief the level loader class
+	*/
+	LevelLoader levelLoader;
+	/**
+	 * @brief the level editor class
+	*/
+	LevelEditor levelEditor;
+
+
+	bool m_debugMenu;
+
+	bool m_editMenu;
+
+	bool m_drawColliders;
+
 };
 
 #define ENGINE Engine::Instance()

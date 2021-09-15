@@ -6,9 +6,9 @@
 #include <unordered_map>
 #include <memory>
 #include <vector>
-#include "Component.h"
+#include "CComponent.h"
 
-class CSound : public Component
+class CSound : public CComponent
 {
 public:
 	CSound(Transform* parent, GameObject* parentObj);

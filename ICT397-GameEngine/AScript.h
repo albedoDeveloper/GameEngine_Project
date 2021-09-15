@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Asset.h"
+#include "AAsset.h"
 #include <string>
 
 /**
  * @brief An asset for a script storing game behaviour
 */
-struct AScript : public Asset
+struct AScript : public AAsset
 {
     /**
      * @brief the contents of the script
@@ -18,7 +18,7 @@ struct AScript : public Asset
      * @param newKey storage key in the asset factory
     */
     AScript(std::string newKey)
-        :Asset{ newKey }
+        :AAsset{ newKey }
     {
     }
 };

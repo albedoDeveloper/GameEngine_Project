@@ -8,7 +8,8 @@
 /**
  * @brief A singleton factory class to produce all GameObjects, store them in memory, and allow access to them
 */
-class GameObjectFactory {
+class GameObjectFactory 
+{
 private:
 	/**
 	 * @brief The list of all GameObjects, stored in a map with a string as the key. Objects can be inserted with a chosen key or an automatic key

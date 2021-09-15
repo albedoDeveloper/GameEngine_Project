@@ -2,10 +2,7 @@
 
 #include "MathLibrary.h"
 #include <stack>
-
 #include <nlohmann/json.hpp>
-
-//using json = nlohmann::json;
 
 /**
  * @brief Stores data about an object or componet's location in space
@@ -52,7 +49,6 @@ public:
 	 * @brief loads the transform from JSON
 	*/
 	void FromJson(nlohmann::json& j, std::string key);
-
 
 	/**
 	 * @brief Gets this transform's absolute value in world space

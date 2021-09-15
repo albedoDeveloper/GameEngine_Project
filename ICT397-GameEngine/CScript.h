@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Component.h"
+#include "CComponent.h"
 #include "AScript.h"
 #include "GameAssetFactory.h"
 
 struct lua_State;
 
-class CScript : public Component
+class CScript : public CComponent
 {
 public:
 	/**

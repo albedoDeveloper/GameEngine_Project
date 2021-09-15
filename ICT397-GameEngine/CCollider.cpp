@@ -4,7 +4,7 @@
 #include <iostream>
 
 CCollider::CCollider(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj }, m_allowRotation{ true }
+	:CComponent{ parent, parentObj }, m_allowRotation{ true }
 {
 	CStaticMesh* meshComp = m_parent->GetComponent<CStaticMesh>();
 	Transform* meshTrans = nullptr;
@@ -59,7 +59,7 @@ void CCollider::Load(nlohmann::json& j)
 void CCollider::DrawToImGui()
 {
 	//ImGui::Text("staticMesh TREE");
-	if (ImGui::TreeNode("Collider Component"))
+	if (ImGui::TreeNode("Collider CComponent"))
 	{
 		ImGui::Text("Collider Info : ");
 		ImGui::TreePop();

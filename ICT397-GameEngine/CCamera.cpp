@@ -1,13 +1,9 @@
 #include "GameObject.h"
-#include "CCameraComponent.h"
+#include "CCamera.h"
 #include "GraphicsEngine.h"
 
-#if _DEBUG
-#include <iostream>
-#endif
-
 CCamera::CCamera(Transform* parent, GameObject* parentObj)
-    :Component{ parent, parentObj }
+    :CComponent{ parent, parentObj }
     ,m_camera {}
 {
 }

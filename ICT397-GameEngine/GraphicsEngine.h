@@ -1,15 +1,13 @@
 #pragma once
 
 #include "Camera.h"
-#include "ModernOpenGL/Model.h"
-#include "AModel.h"
+#include "ModernOpenGL/AModel.h"
 #include "Color.h"
-
 #include <SDL2/SDL.h>
 #include "GraphicsLibraryEnum.h"
 #include <string>
 #include <map>
-#include "imgui/imgui.h"
+#include "./ThirdParty/imgui/imgui.h"
 #include "SkyBox.h"
 #include "LightManager.h"
 
@@ -103,7 +101,7 @@ public:
 	 * @param renderer - which graphics api to use
 	 * @return Whether initialisation succeeded
 	*/
-	bool initialise(GraphicsLibrary renderer, int windowWidth, int windowHeight);
+	bool Init(GraphicsLibrary renderer, int windowWidth, int windowHeight);
 	/**
 	 * @brief initialises lighting
 	 * @return whether operation succeeded
@@ -155,7 +153,7 @@ public:
 	 * @param model The model to draw
 	 * @param trans Transform of the model
 	*/
-	void DrawModel(Model* model, const Transform& trans, const Shader* m_shader);
+	void DrawModel(AModel* model, const Transform& trans, const Shader* m_shader);
 	/**
 	 * @brief retrieves the ID by which a texture is stored in the graphics library
 	 * @param key the key by which it's stored by the asset factory

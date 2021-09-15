@@ -6,7 +6,7 @@
 #include <iostream>
 
 InputManager::InputManager()
-    :m_Event{ nullptr }, m_cursorLocked{ true }, m_engine{ nullptr }
+    :m_Event{ nullptr }, m_cursorLocked{ true }
 {
 }
 
@@ -14,11 +14,6 @@ InputManager* InputManager::Instance()
 {
     static InputManager inputMngr;
     return &inputMngr;
-}
-
-void InputManager::Initialise(Engine* e)
-{
-    m_engine = e;
 }
 
 void InputManager::CheckKey(SDL_Event* e)
@@ -795,5 +790,5 @@ int InputManager::GetMouseYPos() const
 
 void InputManager::QuitGame()
 {
-    m_engine->QuitGame();
+    ENGINE->QuitGame();
 }

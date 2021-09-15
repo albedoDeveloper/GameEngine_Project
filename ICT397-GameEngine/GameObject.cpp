@@ -16,17 +16,6 @@ CScript* GameObject::AddCScript()
 	return AddComponent<CScript>();
 }
 
-
-CUserInterface* GameObject::AddCUserInterface()
-{
-	return AddComponent<CUserInterface>();
-}
-
-CUserInterface* GameObject::GetCUserInterface()
-{
-	return GetComponent<CUserInterface>();
-}
-
 CStaticMesh* GameObject::GetCStaticMesh()
 {
 	return GetComponent<CStaticMesh>();
@@ -156,10 +145,10 @@ void GameObject::Start()
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (std::unordered_map<std::type_index, std::list<CComponent*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->Start();
 			}
@@ -172,10 +161,10 @@ void GameObject::Update()
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (std::unordered_map<std::type_index, std::list<CComponent*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->Update();
 			}
@@ -188,10 +177,10 @@ void GameObject::Render()
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (std::unordered_map<std::type_index, std::list<CComponent*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->Render();
 			}
@@ -204,10 +193,10 @@ void GameObject::LateRender()
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (std::unordered_map<std::type_index, std::list<CComponent*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->LateRender();
 			}
@@ -224,10 +213,10 @@ void GameObject::Save(nlohmann::json& j)
 	std::cout << "SAVED" << std::endl;
 
 	// iterate through all component lists
-	for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+	for (std::unordered_map<std::type_index, std::list<CComponent*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 	{
 		// iterate through all components in list
-		for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+		for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 		{
 			(*listIterator)->Save(j);
 		}
@@ -263,11 +252,11 @@ void GameObject::Load(nlohmann::json& j)
 		{
 			if (GetComponent<CStaticMesh>())
 			{
-				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("Model"));
+				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
 			}
 			else 
 			{
-				AddCStaticMesh()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("Model"));
+				AddCStaticMesh()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
 			}
 		}
 
@@ -288,7 +277,7 @@ void GameObject::Load(nlohmann::json& j)
 	}
 }
 
-std::unordered_map<std::type_index, std::list<Component*>*> GameObject::GetComponentMap() 
+std::unordered_map<std::type_index, std::list<CComponent*>*> GameObject::GetComponentMap() 
 {
 	return m_components;
 }

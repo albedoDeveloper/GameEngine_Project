@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Component.h"
+#include "CComponent.h"
 #include "Camera.h"
 #include "GraphicsEngine.h"
 
 /**
  * @brief A component holding and managing a camera
 */
-class CCamera : public Component
+class CCamera : public CComponent
 {
 private:
     /**

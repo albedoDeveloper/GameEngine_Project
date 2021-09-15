@@ -763,8 +763,13 @@ struct Vector3uc
 	}
 };
 
-void Decompose(const Matrix4f& m, Vector3f& scaleOut, Quaternion& rotationOut, Vector3f& positionOut);
 
+
+////////////////////////////////////////////////////////////
+//					Standalone math funcs				 //
+///////////////////////////////////////////////////////////
+
+void Decompose(const Matrix4f& m, Vector3f& scaleOut, Quaternion& rotationOut, Vector3f& positionOut);
 
 /**
 	 * @brief returns a point between the start and end determined by strength

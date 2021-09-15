@@ -1,21 +1,21 @@
-#include "Model.h"
+#include "AModel.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stbi_image/stb_image.h>
-Model::Model(std::string path, std::string keyTemp)
-    :Asset{ keyTemp }, key{ keyTemp }
+AModel::AModel(std::string path, std::string keyTemp)
+    :AAsset{ keyTemp }, key{ keyTemp }
 {
     m_info.path = path;
     loadModel(path);
 }
 
-void Model::Draw(const Shader* shader) const
+void AModel::Draw(const Shader* shader) const
 {
     for (unsigned int i = 0; i < m_meshes.size(); i++)
         m_meshes[i].Draw(shader, m_text);
 }
 
-void Model::loadModel(std::string path)
+void AModel::loadModel(std::string path)
 {
     // read file via ASSIMP
     Assimp::Importer importer;
@@ -34,7 +34,7 @@ void Model::loadModel(std::string path)
     processNode(scene->mRootNode, scene);
 }
 
-void  Model::processNode(aiNode* node, const aiScene* scene)
+void  AModel::processNode(aiNode* node, const aiScene* scene)
 {
     for (unsigned int i = 0; i < node->mNumMeshes; i++)
     {
@@ -61,7 +61,7 @@ void  Model::processNode(aiNode* node, const aiScene* scene)
     }
 }
 
-void Model::processMesh(aiMesh* mesh, const aiScene* scene)
+void AModel::processMesh(aiMesh* mesh, const aiScene* scene)
 {
     // data to fill
     std::vector<Vertex> vertices;
@@ -152,7 +152,7 @@ void Model::processMesh(aiMesh* mesh, const aiScene* scene)
     m_meshes.push_back(Mesh(vertices, indices, textures));
 }
 
-std::vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
+std::vector<Texture> AModel::loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName)
 {
     std::vector<Texture> textures;
 
@@ -170,7 +170,7 @@ std::vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType 
     return textures;
 }
 
-unsigned int Model::TextureFromFile(const char* path, const std::string& directory)
+unsigned int AModel::TextureFromFile(const char* path, const std::string& directory)
 {
     std::string filename = std::string(path);
     filename = directory + '/' + filename;
