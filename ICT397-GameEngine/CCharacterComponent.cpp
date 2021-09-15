@@ -118,7 +118,11 @@ void CCharacter::Update()
 			m_moveEnabled = false;
 			m_endscreenUp = true;
 			INPUT->LockCursor(false);
-			GAMEOBJECT->GetGameObject("endscreen")->SetActive(true);
+			GameObject* end = GAMEOBJECT->GetGameObject("endscreen");
+			if (end)
+			{
+				end->SetActive(true);
+			}
 		}
 
 		if (m_endscreenUp)
