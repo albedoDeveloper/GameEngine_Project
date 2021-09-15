@@ -1,6 +1,5 @@
 #include "SkyBox.h"
 #include <stbi_image/stb_image.h>
-#include "ShaderClasses.h"
 
 void SkyBox::CreateSkybox(std::vector<std::string> skyBoxFaces)
 {

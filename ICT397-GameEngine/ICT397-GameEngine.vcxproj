@@ -49,7 +49,6 @@
     <ClCompile Include="LevelEditor.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="LightManager.cpp" />
-    <ClCompile Include="ShaderClasses.cpp" />
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathLibrary.cpp" />
@@ -97,7 +96,6 @@
     <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="LightManager.h" />
-    <ClInclude Include="ShaderClasses.h" />
     <ClInclude Include="lodepng.h" />
     <ClInclude Include="MathLibrary.h" />
     <ClInclude Include="ModernOpenGL\Mesh.h" />
@@ -106,7 +104,6 @@
     <ClInclude Include="MultiTexture.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ScriptingEngine.h" />
-    <ClInclude Include="ShaderType.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="SkyboxVerts.h" />
     <ClInclude Include="Transform.h" />

@@ -75,7 +75,6 @@
       <Filter>components</Filter>
     </ClCompile>
     <ClCompile Include="LightManager.cpp" />
-    <ClCompile Include="ShaderClasses.cpp" />
     <ClCompile Include="ModernOpenGL\Shader.cpp">
       <Filter>ModernOpenGl</Filter>
     </ClCompile>
@@ -167,8 +166,6 @@
     </ClInclude>
     <ClInclude Include="LightManager.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="ShaderType.h" />
-    <ClInclude Include="ShaderClasses.h" />
     <ClInclude Include="ModernOpenGL\Shader.h">
       <Filter>ModernOpenGl</Filter>
     </ClInclude>
