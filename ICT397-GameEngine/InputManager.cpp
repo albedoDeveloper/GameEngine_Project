@@ -150,6 +150,14 @@ void InputManager::CheckKeyDown(SDL_Event* e)
             tilde_Key.down = true;
         }
         break;
+    case SDLK_ESCAPE:
+        esc_Key.held = true;
+        if (!e->key.repeat)
+        {
+            esc_Key.held = true;
+            esc_Key.down = true;
+        }
+        break;
     default:
         break;
     }
@@ -232,6 +240,11 @@ void InputManager::CheckKeyUp(SDL_Event* e)
         tilde_Key.up = true;
         tilde_Key.held = false;
         tilde_Key.down = false;
+        break;
+    case SDLK_ESCAPE:
+        esc_Key.up = true;
+        esc_Key.held = false;
+        esc_Key.down = false;
         break;
     }
 }
@@ -364,7 +377,10 @@ void InputManager::ResetKeyValues()
     space_Key.up = false;
 
     tilde_Key.down = false;
-    tilde_Key.up = false;
+    tilde_Key.up = false;    
+    
+    esc_Key.down = false;
+    esc_Key.up = false;
 }
 
 void InputManager::ResetMouseButtonValues()
@@ -520,6 +536,9 @@ bool InputManager::GetKeyDownByCode(KeyCode keyCode)
             break;
         case  KeyCode::SPACE:
             return space_Key.down;
+            break;
+        case  KeyCode::ESC:
+            return esc_Key.down;
             break;
         default:
             break;

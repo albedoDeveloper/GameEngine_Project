@@ -27,5 +27,5 @@ public:
 
 	PointLight LightInfo;
 
-	int m_shaderIndex; // index in the shader array of point lights. TODO make this more robust later
+	int m_litShaderIndex; // index in the shader array of point lights. TODO make this more robust later
 };

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -55,7 +55,6 @@
     <ClCompile Include="ModernOpenGL\Mesh.cpp" />
     <ClCompile Include="ModernOpenGL\Model.cpp" />
     <ClCompile Include="ModernOpenGL\Shader.cpp" />
-    <ClCompile Include="MultiTexture.cpp" />
     <ClCompile Include="ScriptingEngine.cpp" />
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -125,9 +124,12 @@
     <None Include="..\Assets\Scripts\startButton.lua" />
     <None Include="..\Assets\Scripts\terrainWireframe.lua" />
     <None Include="..\Assets\Scripts\waterInteraction.lua" />
-    <None Include="ModernOpenGL\lit.frag" />
-    <None Include="ModernOpenGL\unlit.frag" />
-    <None Include="ModernOpenGL\vertexShader.vert" />
+    <None Include="shaders\debug.frag" />
+    <None Include="shaders\lit.frag" />
+    <None Include="shaders\skyBoxColourShader.fs" />
+    <None Include="shaders\skyBoxVertexShader.vs" />
+    <None Include="shaders\unlit.frag" />
+    <None Include="shaders\vertexShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ICT397-GameEngine.rc" />

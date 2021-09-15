@@ -1,5 +1,6 @@
 #include "DeltaTime.h"
 #include <iostream>
+#include <algorithm>
 
 DeltaTime::DeltaTime()
 {
@@ -13,7 +14,6 @@ DeltaTime* DeltaTime::Instance()
     static DeltaTime instance;
     return &instance; 
 }
-
 
 void DeltaTime::UpdateDeltaTime()
 {

@@ -15,19 +15,19 @@ std::map<std::string, GameObject*>* GameObjectFactory::GetObjectMap()
 	return &objectList;
 }
 
-GameObject* GameObjectFactory::GetGameObject(std::string key) {
-#if _DEBUG
-	if (objectList.find(key) == objectList.end()) {
+GameObject* GameObjectFactory::GetGameObject(std::string key) 
+{
+	if (objectList.find(key) == objectList.end()) 
+	{
 		std::cout << "GameObject (Key:" << key << ") not found\n";
+		return nullptr;
 	}
-#endif
 
 	if (objectList.find(key) != objectList.end())
 	{
 		return objectList.at(key);
 	}
 
-	return nullptr;
 }
 
 GameObject* GameObjectFactory::getClosestObject(Transform* target, std::string partialKey) 

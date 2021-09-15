@@ -40,7 +40,7 @@ Mesh::Mesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>&
     SetupMesh();
 };
 
-void Mesh::Draw(Shader& shader, int text)
+void Mesh::Draw(const Shader* shader, int text) const
 {
     // bind appropriate textures
     unsigned int diffuseNr = 1;
@@ -48,7 +48,6 @@ void Mesh::Draw(Shader& shader, int text)
     unsigned int normalNr = 1;
     unsigned int heightNr = 1;
    
-    //std::cout << textures.size() << std::endl;
     for (unsigned int i = 0; i < textures.size(); i++)
     {
         glActiveTexture(GL_TEXTURE0 + i); 
@@ -67,7 +66,7 @@ void Mesh::Draw(Shader& shader, int text)
         else if (name == "texture_height")
             number = std::to_string(heightNr++);
 
-        shader.SetFloat(("material." + name + number).c_str(), i);
+        shader->SetInt(("material." + name + number).c_str(), i);
         glBindTexture(GL_TEXTURE_2D, textures[i].id);
     }
     glActiveTexture(GL_TEXTURE0);

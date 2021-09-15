@@ -86,10 +86,6 @@ protected:
 	*/
 	Transform m_transform;
 	/**
-	 * @brief The transform this component has saved
-	*/
-	Transform m_savedTransform;
-	/**
 	 * @brief The object to which this component belongs
 	*/
 	GameObject *m_parent;

@@ -17,6 +17,8 @@ public:
 	*/
 	CStaticMesh(Transform* parent, GameObject* parentObj);
 
+	~CStaticMesh();
+
 	/**
 	 * @brief constructor taking parent as argument
 	 * @param parent pointer to parent transform for this component's transform
@@ -29,6 +31,8 @@ public:
 	 * @param modelKey the asset factory key of the model to assign
 	*/
 	Model* AssignModelByKey(std::string modelKey);
+
+	void AssignShader(std::string);
 
 	/**
 	 * @brief displays the mesh's model on the screen
@@ -54,4 +58,6 @@ public:
  * @brief the model this mesh is storing
 */
 	Model* m_model;
+
+	Shader *m_shader;
 };

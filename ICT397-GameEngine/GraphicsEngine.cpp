@@ -32,9 +32,19 @@ GraphicsEngine::GraphicsEngine()
 	m_imgui_io{},
 	m_windowWidth{},
 	m_windowHeight{},
-	m_shader{ nullptr },
+	m_litShader{ nullptr },
 	m_debugShader{ nullptr }
 {
+}
+
+GraphicsEngine::~GraphicsEngine()
+{
+	delete m_camera;
+	delete m_debugShader;
+	delete m_litShader;
+	delete m_renderer;
+	delete m_unlitShader;
+	delete m_window;
 }
 
 GraphicsEngine* GraphicsEngine::instance() 
@@ -80,8 +90,8 @@ void GraphicsEngine::newFrame(bool debugMenu)
 void GraphicsEngine::UpdateViewPos() const
 {
 	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetPosition();
-	GRAPHICS->m_shader->use();
-	GRAPHICS->m_shader->setVec3(
+	GRAPHICS->m_litShader->Use();
+	GRAPHICS->m_litShader->SetVec3(
 		"viewPos",
 		glm::vec3(
 			viewPosVec.GetX(),
@@ -90,8 +100,8 @@ void GraphicsEngine::UpdateViewPos() const
 		)
 	);
 
-	GRAPHICS->m_debugShader->use();
-	GRAPHICS->m_debugShader->setVec3(
+	GRAPHICS->m_debugShader->Use();
+	GRAPHICS->m_debugShader->SetVec3(
 		"viewPos",
 		glm::vec3(
 			viewPosVec.GetX(),
@@ -105,17 +115,17 @@ int GraphicsEngine::AddPointLight(CPointLight* light)
 {
 	int numpointLights = m_lightManager.AddPointLight(light);
 
-	m_shader->use();
-	m_shader->setShaderInt("numOfPointLights", numpointLights);
-	GRAPHICS->m_shader->setShaderFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
-	GRAPHICS->m_shader->setVec3("pointLights[" + std::to_string(numpointLights - 1) + "].colour", glm::vec3(
+	m_litShader->Use();
+	m_litShader->SetInt("numOfPointLights", numpointLights);
+	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
+	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(numpointLights - 1) + "].colour", glm::vec3(
 		light->LightInfo.colour.GetX(),
 		light->LightInfo.colour.GetY(),
 		light->LightInfo.colour.GetZ()
 	));
-	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].constant", light->LightInfo.constant);
-	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].linear", light->LightInfo.linear);
-	GRAPHICS->m_shader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].quadratic", light->LightInfo.quadratic);
+	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].constant", light->LightInfo.constant);
+	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].linear", light->LightInfo.linear);
+	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].quadratic", light->LightInfo.quadratic);
 
 	return numpointLights;
 }
@@ -175,7 +185,7 @@ void GraphicsEngine::DeleteTexture(std::string key)
 	glDeleteTextures(1, texId);
 }
 
-void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOTE keep these commented out statements, we will need them for texturing
+void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans, const Shader* shader)
 {
 	if (!model)
 	{
@@ -191,17 +201,14 @@ void GraphicsEngine::DrawModel(Model* model, const Transform& worldTrans) // NOT
 
 	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
 
-	m_shader->use();
-	m_shader->setMat4("model", trans);
-
-	m_shader->setShaderInt("material.texture_diffuse1", 0);
-	m_shader->setShaderInt("material.texture_specular1", 1);
+	shader->Use();
+	shader->SetMat4("model", trans);
 
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
 
-	model->Draw(*m_shader);
+	model->Draw(shader);
 }
 
 unsigned GraphicsEngine::GetTexID(std::string key) const
@@ -278,9 +285,10 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	std::cerr << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
 	std::cerr << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl;
 
-	m_shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/lit.frag");
-	m_debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/unlit.frag");
-	
+	m_litShader = new Shader("./shaders/vertexShader.vert", "./shaders/lit.frag");
+	m_unlitShader = new Shader("./shaders/vertexShader.vert", "./shaders/unlit.frag");
+	m_debugShader = new Shader("./shaders/vertexShader.vert", "./shaders/debug.frag");
+
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",
 		"../Assets/skybox/left.png",
@@ -334,14 +342,14 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 
 void GraphicsEngine::DrawDebug()
 {
-	m_debugShader->use();
+	m_debugShader->Use();
 
-	m_debugShader->setMat4("projection", GetProjection());
-
-	m_debugShader->setMat4("view", GetView());
-	
-	m_debugShader->setMat4("model", glm::mat4(1.0f));
-	m_debugShader->setVec4("ourColour", glm::vec4(1, 0, 0, 1));
+	m_debugShader->SetMat4("projection", GetProjection());
+				   
+	m_debugShader->SetMat4("view", GetView());
+				   
+	m_debugShader->SetMat4("model", glm::mat4(1.0f));
+	m_debugShader->SetVec4("ourColour", glm::vec4(1, 0, 0, 1));
 
 	glDisable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_LINE);

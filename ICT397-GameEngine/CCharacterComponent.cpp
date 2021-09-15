@@ -4,7 +4,8 @@
 #include "InputManager.h"
 #include "DeltaTime.h"
 #include <iostream>
-
+#include "Engine.h"
+#include "GameObjectFactory.h"
 
 CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	:Component{ parent, parentObj }, 
@@ -16,7 +17,9 @@ CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	m_currentTime{ 0 }, 
 	m_updateInterval{1.f/60},
 	m_playerControlled{ false },
-	m_mouseEnabled{ true }
+	m_mouseEnabled{ true },
+	m_moveEnabled{ true },
+	m_endscreenUp{ false }
 {
 }
 
@@ -74,44 +77,68 @@ void CCharacter::Start()
 void CCharacter::Update()
 {
 	double deltaTime = TIME->GetDeltaTime();
-	float mouseSens = 60;
+	float mouseSens = 0.1f;
 	Vector3f moveVector(0, 0, 0);
 
 	if (m_playerControlled)
 	{
-		if (INPUT->GetKey('s'))
+		if (m_moveEnabled)
 		{
-			moveVector.SetZ(0.5 * deltaTime);
-		}
-		else if (INPUT->GetKey('w'))
-		{
-			moveVector.SetZ(-0.5 * deltaTime);
+			if (INPUT->GetKey('s'))
+			{
+				moveVector.SetZ(0.5f * deltaTime);
+			}
+			else if (INPUT->GetKey('w'))
+			{
+				moveVector.SetZ(-0.5f * deltaTime);
+			}
+
+			if (INPUT->GetKey('a'))
+			{
+				moveVector.SetX(-0.5f * deltaTime);
+			}
+			else if (INPUT->GetKey('d'))
+			{
+				moveVector.SetX(0.5f * deltaTime);
+			}
+
+			if (INPUT->GetKey(' '))
+			{
+				moveVector.SetY(0.5f * deltaTime);
+			}
+			else if (INPUT->GetKey('c'))
+			{
+				moveVector.SetY(-0.5f * deltaTime);
+			}
 		}
 
-		if (INPUT->GetKey('a'))
+		if (INPUT->GetKeyDownByCode(KeyCode::ESC))
 		{
-			moveVector.SetX(-0.5 * deltaTime);
-		}
-		else if (INPUT->GetKey('d'))
-		{
-			moveVector.SetX(0.5 * deltaTime);
+			m_mouseEnabled = false;
+			m_moveEnabled = false;
+			m_endscreenUp = true;
+			INPUT->LockCursor(false);
+			GameObject* end = GAMEOBJECT->GetGameObject("endscreen");
+			if (end)
+			{
+				end->SetActive(true);
+			}
 		}
 
-		if (INPUT->GetKey(' '))
+		if (m_endscreenUp)
 		{
-			moveVector.SetY(0.5 * deltaTime);
-		}
-		else if (INPUT->GetKey('c'))
-		{
-			moveVector.SetY(-0.5 * deltaTime);
+			if (INPUT->GetMouseButtonDown(0) || INPUT->GetMouseButtonDown(1))
+			{
+				ENGINE->QuitGame();
+			}
 		}
 
 		GameObject *parentObj = GetParentObject();
 		
 		if (m_mouseEnabled)
 		{
-			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * deltaTime * mouseSens);
-			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * deltaTime * -mouseSens);
+			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * mouseSens);
+			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * -mouseSens);
 		}
 
 		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f ||

@@ -49,17 +49,6 @@ public:
 	*/
 	static CollisionManager* Instance();
 
-
-	/**
-	 * @brief check if the camera is colliding with the terrain. Brute force method
-	*/
-	int CheckCameraTerrainCollision(Vector3f pos);
-
-	/**
-	 * @brief check if the camera is colliding with the terrain, using billinear interpolation
-	*/
-	double CheckCameraTerrainCollisionBilinear(Vector3f pos);
-
 	/**
 	 * @brief check if a AABB is colliding with any other AABB's
 	*/

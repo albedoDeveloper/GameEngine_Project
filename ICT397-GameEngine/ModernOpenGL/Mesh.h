@@ -32,7 +32,7 @@ public:
 
     Mesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices, const std::vector<Texture>& textures);
 
-    void Draw(Shader& shader, int text);
+    void Draw(const Shader* shader, int text) const;
     
 private:
     // render data

@@ -14,7 +14,6 @@
     <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MathLibrary.cpp" />
-    <ClCompile Include="MultiTexture.cpp" />
     <ClCompile Include="ScriptingEngine.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="CCollider.cpp">
@@ -43,9 +42,6 @@
       <Filter>ModernOpenGl</Filter>
     </ClCompile>
     <ClCompile Include="ModernOpenGL\Model.cpp">
-      <Filter>ModernOpenGl</Filter>
-    </ClCompile>
-    <ClCompile Include="ModernOpenGL\Shader.cpp">
       <Filter>ModernOpenGl</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui.cpp">
@@ -79,6 +75,9 @@
       <Filter>components</Filter>
     </ClCompile>
     <ClCompile Include="LightManager.cpp" />
+    <ClCompile Include="ModernOpenGL\Shader.cpp">
+      <Filter>ModernOpenGl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AHeightMap.h" />
@@ -129,9 +128,6 @@
     <ClInclude Include="ModernOpenGL\Model.h">
       <Filter>ModernOpenGl</Filter>
     </ClInclude>
-    <ClInclude Include="ModernOpenGL\Shader.h">
-      <Filter>ModernOpenGl</Filter>
-    </ClInclude>
     <ClInclude Include="imgui\imconfig.h">
       <Filter>imgui</Filter>
     </ClInclude>
@@ -170,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="LightManager.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="ModernOpenGL\Shader.h">
+      <Filter>ModernOpenGl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\Scripts\displayAtQuit.lua">
@@ -211,14 +210,23 @@
     <None Include="..\Assets\Scripts\waterInteraction.lua" />
     <None Include="..\Assets\Scripts\acidInteract.lua" />
     <None Include="..\Assets\Scripts\loadButton.lua" />
-    <None Include="ModernOpenGL\lit.frag">
-      <Filter>ModernOpenGl</Filter>
+    <None Include="shaders\debug.frag">
+      <Filter>shaders</Filter>
     </None>
-    <None Include="ModernOpenGL\vertexShader.vert">
-      <Filter>ModernOpenGl</Filter>
+    <None Include="shaders\lit.frag">
+      <Filter>shaders</Filter>
     </None>
-    <None Include="ModernOpenGL\unlit.frag">
-      <Filter>ModernOpenGl</Filter>
+    <None Include="shaders\skyBoxColourShader.fs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\skyBoxVertexShader.vs">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\vertexShader.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shaders\unlit.frag">
+      <Filter>shaders</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +241,9 @@
     </Filter>
     <Filter Include="imgui">
       <UniqueIdentifier>{f335aa88-d95e-4ece-9600-0743604016e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{1554616f-f854-4c96-b656-ca4e8f91a1b8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,6 @@
 #include "Engine.h"
 #include <iostream>
 
-
 Engine* ScriptingEngine::m_engine = nullptr;
 
 using namespace luabridge;
@@ -40,7 +39,6 @@ lua_State* ScriptingEngine::NewState()
 
     getGlobalNamespace(Lbuff).addFunction("LoadModel", LoadModel);
     getGlobalNamespace(Lbuff).addFunction("LoadScript", LoadScript);
-    getGlobalNamespace(Lbuff).addFunction("LoadTexture", LoadTexture);
     getGlobalNamespace(Lbuff).addFunction("UnloadTexture", UnloadTexture);
     getGlobalNamespace(Lbuff).addFunction("LoadHeightMap", LoadHeightMap);
     getGlobalNamespace(Lbuff).addFunction("SpawnGameObject", SpawnGameObject);
@@ -74,6 +72,7 @@ lua_State* ScriptingEngine::NewState()
             .addFunction("MoveTowards", &Transform::MoveTowards)
             .addFunction("MoveTowards3f", &Transform::MoveTowards3f)
             .addFunction("RotateTowards", &Transform::RotateTowards)
+            .addFunction("SetParent", &Transform::SetParent)
         .endClass();
 
     getGlobalNamespace(Lbuff)
@@ -145,6 +144,7 @@ lua_State* ScriptingEngine::NewState()
         .deriveClass<CStaticMesh,Component>("CStaticMesh")
             .addFunction("AssignModel", &CStaticMesh::AssignModelByKey)
             .addFunction("GetModel", &CStaticMesh::GetModel)
+            .addFunction("AssignShader", &CStaticMesh::AssignShader)
         .endClass();
 
     getGlobalNamespace(Lbuff)
@@ -231,11 +231,6 @@ void ScriptingEngine::LoadModel(std::string name, std::string filePath)
 void ScriptingEngine::LoadScript(std::string key, std::string filePath)
 {
     ASSET->LoadScript(key, "../Assets/Scripts/"+filePath);
-}
-
-void ScriptingEngine::LoadTexture(std::string key, std::string fileName)
-{
-    ASSET->LoadTexture(key, fileName);
 }
 
 void ScriptingEngine::UnloadTexture(std::string key)

@@ -9,7 +9,6 @@
 #include "GraphicsLibraryEnum.h"
 #include <string>
 #include <map>
-#include "MultiTexture.h"
 #include "imgui/imgui.h"
 #include "SkyBox.h"
 #include "LightManager.h"
@@ -90,6 +89,9 @@ public:
 	 * @brief default constructor
 	*/
 	GraphicsEngine();
+
+	~GraphicsEngine();
+
 	/**
 	 * @brief Generates pointer to instance of singleton
 	 * @return Pointer to the graphics engine
@@ -153,7 +155,7 @@ public:
 	 * @param model The model to draw
 	 * @param trans Transform of the model
 	*/
-	void DrawModel(Model* model, const Transform& trans);
+	void DrawModel(Model* model, const Transform& trans, const Shader* m_shader);
 	/**
 	 * @brief retrieves the ID by which a texture is stored in the graphics library
 	 * @param key the key by which it's stored by the asset factory
@@ -176,7 +178,9 @@ public:
 
 	glm::mat4 GetView();
 
-	Shader* m_shader;
+	Shader* m_litShader;
+
+	Shader* m_unlitShader;
 	
 	Shader* m_debugShader;
 

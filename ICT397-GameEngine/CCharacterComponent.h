@@ -131,6 +131,10 @@ private:
 
 	bool m_mouseEnabled;
 
+	bool m_moveEnabled;
+
+	bool m_endscreenUp;
+
 	CCollider* m_collider;
 
 	Transform* m_parentTransform;
