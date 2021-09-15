@@ -47,7 +47,6 @@ lua_State* ScriptingEngine::NewState()
     getGlobalNamespace(Lbuff).addFunction("SaveGame", SaveGame);
     getGlobalNamespace(Lbuff).addFunction("LoadGame", LoadGame);
     getGlobalNamespace(Lbuff).addFunction("CheckSaveState", CheckSaveState);
-    getGlobalNamespace(Lbuff).addFunction("InitSkybox", InitSkybox);
     getGlobalNamespace(Lbuff).addFunction("GetInput", GetInputManager);
     
     getGlobalNamespace(Lbuff)
@@ -272,25 +271,6 @@ void ScriptingEngine::LoadGame()
 bool ScriptingEngine::CheckSaveState()
 {
     return m_engine->CheckSaveState();
-}
-
-void ScriptingEngine::InitSkybox(
-    std::string negx,
-    std::string negy,
-    std::string negz,
-    std::string posx,
-    std::string posy,
-    std::string posz
-)
-{
-    GRAPHICS->InitSkybox(
-        negx,
-        negy,
-        negz,
-        posx,
-        posy,
-        posz
-    );
 }
 
 InputManager* ScriptingEngine::GetInputManager()

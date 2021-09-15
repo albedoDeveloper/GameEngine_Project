@@ -116,7 +116,7 @@ GetGameObject("lightAnchor"):AddCScript():AssignScript("rotate")
 SpawnGameObject("light1"):SetStatic(false)
 GetGameObject("light1"):AddCPointLight()
 GetGameObject("light1"):GetCPointLight():AssignColour(0.8,0.8,0.8)
-GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(1)
+GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(0.2)
 GetGameObject("light1"):GetTransform():SetPosition(-8.354999542236328,
 2.6700000762939453,
 1.0);
@@ -138,11 +138,3 @@ GetGameObject("player"):AddCCollider():AddBoxCollider(0.5, 1.4, 0.5, 0 ,0, 0, fa
 GetGameObject("player"):GetCCollider():CollideWith(1);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
-
-SpawnGameObject("endscreen"):SetActive(false)
-GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")
-GetGameObject("endscreen"):GetCStaticMesh():AssignShader("unlit")
-GetGameObject("endscreen"):GetTransform():SetParent(
-	GetGameObject("player"):GetCCamera():GetTransform()
-)
-GetGameObject("endscreen"):GetTransform():Translate(0,0,-0.05)

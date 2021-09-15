@@ -112,15 +112,6 @@ private:
 	*/
 	static bool CheckSaveState();
 
-	static void InitSkybox(
-		std::string negx,
-		std::string negy,
-		std::string negz,
-		std::string posx,
-		std::string posy,
-		std::string posz
-	);
-
 	static InputManager* GetInputManager();
 };
 
