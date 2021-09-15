@@ -50,6 +50,7 @@ void main()
 
 vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
 {
+    // ambient
     vec3 ambientColour = light.colour * light.ambientStrength;
 
     vec3 lightDir = normalize(light.position - fragPos);
@@ -63,7 +64,7 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
     float attenuation = 1.0 / (light.constant + light.linear * distance + 
   			     light.quadratic * (distance * distance));    
     // combine results
-    vec3 ambient  = ambientColour  * vec3(texture(material.texture_diffuse1, TexCoords));
+    vec3 ambient  = ambientColour * vec3(texture(material.texture_diffuse1, TexCoords));
     vec3 diffuse  = light.colour  * diff * vec3(texture(material.texture_diffuse1, TexCoords));
     vec3 specular = light.colour * spec * vec3(texture(material.texture_specular1, TexCoords));
     ambient  *= attenuation;

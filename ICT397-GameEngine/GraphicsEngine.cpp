@@ -9,6 +9,15 @@
 #include "imgui/imgui_impl_sdl.h"
 #include "imgui/imgui_impl_opengl3.h"
 
+extern "C"
+{
+	__declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
+}
+
+extern "C"
+{
+	__declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
+}
 
 GraphicsEngine::GraphicsEngine()
 	:m_window{ nullptr },
@@ -208,15 +217,6 @@ void GraphicsEngine::GetScreenSize(int& w, int& h)
 	h = hBuf;
 }
 
-void GraphicsEngine::InitSkybox(std::string negx, std::string negy, std::string negz, std::string posx, std::string posy, std::string posz)
-{
-
-}
-
-void GraphicsEngine::RenderSkybox()
-{
-}
-
 void GraphicsEngine::Close()
 {
 	ImGui_ImplOpenGL3_Shutdown();
@@ -273,6 +273,10 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	//glEnable(GL_FRAMEBUFFER_SRGB); // gamma correction. looks too washed out
 	glClearColor(0.4, 0.2, 0.7, 1);
+	std::cout << glGetString(GL_VENDOR) << " : " << glGetString(GL_RENDERER) << std::endl; // GPU used
+	std::cerr << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+	std::cerr << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
+	std::cerr << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl;
 
 	m_shader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/lit.frag");
 	m_debugShader = new Shader("../ICT397-GameEngine/ModernOpenGL/vertexShader.vert", "../ICT397-GameEngine/ModernOpenGL/unlit.frag");

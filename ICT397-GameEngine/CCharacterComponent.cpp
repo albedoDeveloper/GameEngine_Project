@@ -81,29 +81,29 @@ void CCharacter::Update()
 	{
 		if (INPUT->GetKey('s'))
 		{
-			moveVector.SetZ(1 * deltaTime);
+			moveVector.SetZ(0.5 * deltaTime);
 		}
 		else if (INPUT->GetKey('w'))
 		{
-			moveVector.SetZ(-1 * deltaTime);
+			moveVector.SetZ(-0.5 * deltaTime);
 		}
 
 		if (INPUT->GetKey('a'))
 		{
-			moveVector.SetX(-1 * deltaTime);
+			moveVector.SetX(-0.5 * deltaTime);
 		}
 		else if (INPUT->GetKey('d'))
 		{
-			moveVector.SetX(1 * deltaTime);
+			moveVector.SetX(0.5 * deltaTime);
 		}
 
 		if (INPUT->GetKey(' '))
 		{
-			moveVector.SetY(1 * deltaTime);
+			moveVector.SetY(0.5 * deltaTime);
 		}
 		else if (INPUT->GetKey('c'))
 		{
-			moveVector.SetY(-1 * deltaTime);
+			moveVector.SetY(-0.5 * deltaTime);
 		}
 
 		GameObject *parentObj = GetParentObject();

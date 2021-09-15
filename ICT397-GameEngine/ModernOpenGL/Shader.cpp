@@ -9,7 +9,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     {
         std::cerr << "Error: " << glewGetErrorString(err) << std::endl;
     }
-    std::cerr << "Status: Using GLEW " << glewGetString(GLEW_VERSION) << std::endl;
     //Variables to open the shader file
     std::string vertexShaderCode;
     std::string fragmentShaderCode;
@@ -38,7 +37,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
         vertexShaderCode = vShaderStream.str();
         fragmentShaderCode = fShaderStream.str();
    
-
         const char* vShaderCode = vertexShaderCode.c_str();
         const char* fShaderCode = fragmentShaderCode.c_str();
 
@@ -48,7 +46,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
         CreateShaders(vertexShader, &vShaderCode, 0);
         CreateShaders(fragmentShader, &fShaderCode, 1);
         ShaderLinking(vertexShader, fragmentShader);
-    
     }
     
     catch (std::ifstream::failure e)
