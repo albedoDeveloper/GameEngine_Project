@@ -13,7 +13,6 @@ class InputManager;
 */
 class ScriptingEngine
 {
-	friend class CScript;
 public:
 	/**
 	 * @brief Singleton instance getter
@@ -48,13 +47,14 @@ public:
 	void Close();
 
 private:
+	friend class CScript;
+
+	ScriptingEngine(); // enforce singleton
+
 	/**
 	 * @brief The lua state the engine will use for lua functionality
 	*/
 	lua_State* m_L;
-
-
-private: 
 
 	/**
 	 * @brief Loads a model into the game engine's asset manager

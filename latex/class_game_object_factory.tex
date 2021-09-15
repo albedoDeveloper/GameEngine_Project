@@ -1,0 +1,304 @@
+\hypertarget{class_game_object_factory}{}\doxysection{Game\+Object\+Factory Class Reference}
+\label{class_game_object_factory}\index{GameObjectFactory@{GameObjectFactory}}
+
+
+A singleton factory class to produce all Game\+Objects, store them in memory, and allow access to them.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Object\+Factory.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_object_factory_acb06c511e88956d6e47c28d026dc8ddd}{Game\+Object\+Factory}} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_factory_a4bd13ad9ccf5879c650d2fe2e8cebdf6}{Close}} ()
+\begin{DoxyCompactList}\small\item\em closes the factory \end{DoxyCompactList}\item 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_game_object_factory_a77d1c9cc919bd38a4ce5d08e7b6d0ab5}{Get\+Object\+Map}} ()
+\begin{DoxyCompactList}\small\item\em Accessor for the map of objects created by the factory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ \mbox{\hyperlink{class_game_object_factory_addabc3d0422e81d4a529d2957903ec2d}{Get\+Game\+Object}} (std\+::string key)
+\begin{DoxyCompactList}\small\item\em Accessor for objects created by the factory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ \mbox{\hyperlink{class_game_object_factory_a814d8aaad84d626a629a7d04677a3802}{get\+Closest\+Object}} (\mbox{\hyperlink{class_transform}{Transform}} $\ast$target, std\+::string partial\+Key)
+\begin{DoxyCompactList}\small\item\em searches for the closest object to a given transform with a key containing a given substring \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_game_object_factory_abee0679145d8ba8f44e90a4325a14cb8}{get\+Num\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em returns the number of objects created \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ \mbox{\hyperlink{class_game_object_factory_a91bb0f9c0dac32c7c76e7c3a7b856df4}{Spawn\+Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Creates an object in the object list using an automatically allocated key. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ \mbox{\hyperlink{class_game_object_factory_a52defa7834fdabc1e8eae6228d493a28}{Spawn\+Game\+Object}} (std\+::string key)
+\begin{DoxyCompactList}\small\item\em Create an object in the object list using a manually allocated key. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_factory_a0e9916e849fb306d1892c1e305c0b38b}{Start}} ()
+\begin{DoxyCompactList}\small\item\em calls the start function of each object in storage \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_factory_a862aab1045e44b5d9c8fc5ada5190de7}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Calls the update function of each object in storage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_factory_a1044d10bcad94a3248fb5d80fc95879d}{render}} ()
+\begin{DoxyCompactList}\small\item\em Calls the render function of each \mbox{\hyperlink{class_game_object}{Game\+Object}} in storage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_factory_a1b58aaaa41905bd9d4ef47acc4a55d59}{Save}} (\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&j)
+\begin{DoxyCompactList}\small\item\em saves the game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_factory_a28d822eb067f09bc0d2b9e3241da6c31}{Load}} (\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&j)
+\begin{DoxyCompactList}\small\item\em loads the game from saved state \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_game_object_factory}{Game\+Object\+Factory}} $\ast$ \mbox{\hyperlink{class_game_object_factory_a17052b959edb1a964ecbed795cbc41e3}{instance}} ()
+\begin{DoxyCompactList}\small\item\em Returns an instance of this singleton for consistent access across disconnected classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A singleton factory class to produce all Game\+Objects, store them in memory, and allow access to them. 
+
+Definition at line 11 of file Game\+Object\+Factory.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_object_factory_acb06c511e88956d6e47c28d026dc8ddd}\label{class_game_object_factory_acb06c511e88956d6e47c28d026dc8ddd}} 
+\index{GameObjectFactory@{GameObjectFactory}!GameObjectFactory@{GameObjectFactory}}
+\index{GameObjectFactory@{GameObjectFactory}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{GameObjectFactory()}{GameObjectFactory()}}
+{\footnotesize\ttfamily Game\+Object\+Factory\+::\+Game\+Object\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+default constructor 
+
+
+
+Definition at line 4 of file Game\+Object\+Factory.\+cpp.
+
+Here is the caller graph for this function\+:
+% FIG 0
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_object_factory_a4bd13ad9ccf5879c650d2fe2e8cebdf6}\label{class_game_object_factory_a4bd13ad9ccf5879c650d2fe2e8cebdf6}} 
+\index{GameObjectFactory@{GameObjectFactory}!Close@{Close}}
+\index{Close@{Close}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void Game\+Object\+Factory\+::\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+closes the factory 
+
+
+
+Definition at line 145 of file Game\+Object\+Factory.\+cpp.
+
+\mbox{\Hypertarget{class_game_object_factory_a814d8aaad84d626a629a7d04677a3802}\label{class_game_object_factory_a814d8aaad84d626a629a7d04677a3802}} 
+\index{GameObjectFactory@{GameObjectFactory}!getClosestObject@{getClosestObject}}
+\index{getClosestObject@{getClosestObject}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{getClosestObject()}{getClosestObject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ Game\+Object\+Factory\+::get\+Closest\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_transform}{Transform}} $\ast$}]{target,  }\item[{std\+::string}]{partial\+Key }\end{DoxyParamCaption})}
+
+
+
+searches for the closest object to a given transform with a key containing a given substring 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & the point from which to search \\
+\hline
+{\em partial\+Key} & the substring the found object must contain \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the closest object with a matching key 
+\end{DoxyReturn}
+
+
+Definition at line 33 of file Game\+Object\+Factory.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{class_game_object_factory_addabc3d0422e81d4a529d2957903ec2d}\label{class_game_object_factory_addabc3d0422e81d4a529d2957903ec2d}} 
+\index{GameObjectFactory@{GameObjectFactory}!GetGameObject@{GetGameObject}}
+\index{GetGameObject@{GetGameObject}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{GetGameObject()}{GetGameObject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ Game\+Object\+Factory\+::\+Get\+Game\+Object (\begin{DoxyParamCaption}\item[{std\+::string}]{key }\end{DoxyParamCaption})}
+
+
+
+Accessor for objects created by the factory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & String holding the object\textquotesingle{}s place in the storage map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the object 
+\end{DoxyReturn}
+
+
+Definition at line 18 of file Game\+Object\+Factory.\+cpp.
+
+\mbox{\Hypertarget{class_game_object_factory_abee0679145d8ba8f44e90a4325a14cb8}\label{class_game_object_factory_abee0679145d8ba8f44e90a4325a14cb8}} 
+\index{GameObjectFactory@{GameObjectFactory}!getNumObjects@{getNumObjects}}
+\index{getNumObjects@{getNumObjects}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{getNumObjects()}{getNumObjects()}}
+{\footnotesize\ttfamily int Game\+Object\+Factory\+::get\+Num\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns the number of objects created 
+
+\begin{DoxyReturn}{Returns}
+the number of objects 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file Game\+Object\+Factory.\+cpp.
+
+\mbox{\Hypertarget{class_game_object_factory_a77d1c9cc919bd38a4ce5d08e7b6d0ab5}\label{class_game_object_factory_a77d1c9cc919bd38a4ce5d08e7b6d0ab5}} 
+\index{GameObjectFactory@{GameObjectFactory}!GetObjectMap@{GetObjectMap}}
+\index{GetObjectMap@{GetObjectMap}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{GetObjectMap()}{GetObjectMap()}}
+{\footnotesize\ttfamily std\+::map$<$ std\+::string, \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ $>$ $\ast$ Game\+Object\+Factory\+::\+Get\+Object\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Accessor for the map of objects created by the factory. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the object Map 
+\end{DoxyReturn}
+
+
+Definition at line 13 of file Game\+Object\+Factory.\+cpp.
+
+\mbox{\Hypertarget{class_game_object_factory_a17052b959edb1a964ecbed795cbc41e3}\label{class_game_object_factory_a17052b959edb1a964ecbed795cbc41e3}} 
+\index{GameObjectFactory@{GameObjectFactory}!instance@{instance}}
+\index{instance@{instance}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{instance()}{instance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_object_factory}{Game\+Object\+Factory}} $\ast$ Game\+Object\+Factory\+::instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns an instance of this singleton for consistent access across disconnected classes. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the factory 
+\end{DoxyReturn}
+
+
+Definition at line 8 of file Game\+Object\+Factory.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{class_game_object_factory_a28d822eb067f09bc0d2b9e3241da6c31}\label{class_game_object_factory_a28d822eb067f09bc0d2b9e3241da6c31}} 
+\index{GameObjectFactory@{GameObjectFactory}!Load@{Load}}
+\index{Load@{Load}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void Game\+Object\+Factory\+::\+Load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&}]{j }\end{DoxyParamCaption})}
+
+
+
+loads the game from saved state 
+
+
+
+Definition at line 137 of file Game\+Object\+Factory.\+cpp.
+
+\mbox{\Hypertarget{class_game_object_factory_a1044d10bcad94a3248fb5d80fc95879d}\label{class_game_object_factory_a1044d10bcad94a3248fb5d80fc95879d}} 
+\index{GameObjectFactory@{GameObjectFactory}!render@{render}}
+\index{render@{render}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily void Game\+Object\+Factory\+::render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calls the render function of each \mbox{\hyperlink{class_game_object}{Game\+Object}} in storage. 
+
+
+
+Definition at line 119 of file Game\+Object\+Factory.\+cpp.
+
+\mbox{\Hypertarget{class_game_object_factory_a1b58aaaa41905bd9d4ef47acc4a55d59}\label{class_game_object_factory_a1b58aaaa41905bd9d4ef47acc4a55d59}} 
+\index{GameObjectFactory@{GameObjectFactory}!Save@{Save}}
+\index{Save@{Save}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily void Game\+Object\+Factory\+::\+Save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&}]{j }\end{DoxyParamCaption})}
+
+
+
+saves the game 
+
+
+
+Definition at line 129 of file Game\+Object\+Factory.\+cpp.
+
+\mbox{\Hypertarget{class_game_object_factory_a91bb0f9c0dac32c7c76e7c3a7b856df4}\label{class_game_object_factory_a91bb0f9c0dac32c7c76e7c3a7b856df4}} 
+\index{GameObjectFactory@{GameObjectFactory}!SpawnGameObject@{SpawnGameObject}}
+\index{SpawnGameObject@{SpawnGameObject}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{SpawnGameObject()}{SpawnGameObject()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ Game\+Object\+Factory\+::\+Spawn\+Game\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates an object in the object list using an automatically allocated key. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the spawned object 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file Game\+Object\+Factory.\+cpp.
+
+\mbox{\Hypertarget{class_game_object_factory_a52defa7834fdabc1e8eae6228d493a28}\label{class_game_object_factory_a52defa7834fdabc1e8eae6228d493a28}} 
+\index{GameObjectFactory@{GameObjectFactory}!SpawnGameObject@{SpawnGameObject}}
+\index{SpawnGameObject@{SpawnGameObject}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{SpawnGameObject()}{SpawnGameObject()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ Game\+Object\+Factory\+::\+Spawn\+Game\+Object (\begin{DoxyParamCaption}\item[{std\+::string}]{key }\end{DoxyParamCaption})}
+
+
+
+Create an object in the object list using a manually allocated key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The map key for the object to be stored at \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the spawned object, or null if the key is already in use 
+\end{DoxyReturn}
+
+
+Definition at line 87 of file Game\+Object\+Factory.\+cpp.
+
+\mbox{\Hypertarget{class_game_object_factory_a0e9916e849fb306d1892c1e305c0b38b}\label{class_game_object_factory_a0e9916e849fb306d1892c1e305c0b38b}} 
+\index{GameObjectFactory@{GameObjectFactory}!Start@{Start}}
+\index{Start@{Start}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Game\+Object\+Factory\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+calls the start function of each object in storage 
+
+
+
+Definition at line 103 of file Game\+Object\+Factory.\+cpp.
+
+\mbox{\Hypertarget{class_game_object_factory_a862aab1045e44b5d9c8fc5ada5190de7}\label{class_game_object_factory_a862aab1045e44b5d9c8fc5ada5190de7}} 
+\index{GameObjectFactory@{GameObjectFactory}!Update@{Update}}
+\index{Update@{Update}!GameObjectFactory@{GameObjectFactory}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Game\+Object\+Factory\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calls the update function of each object in storage. 
+
+
+
+Definition at line 111 of file Game\+Object\+Factory.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_game_object_factory_8h}{Game\+Object\+Factory.\+h}}\item 
+\mbox{\hyperlink{_game_object_factory_8cpp}{Game\+Object\+Factory.\+cpp}}\end{DoxyCompactItemize}

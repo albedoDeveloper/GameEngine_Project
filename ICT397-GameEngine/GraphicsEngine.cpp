@@ -314,7 +314,7 @@ void GraphicsEngine::InitImGui()
 
 bool GraphicsEngine::InitDirectX()
 {
-	// out of scope for ICT397
+	// out of scope for ICT398
 	return false;
 }
 

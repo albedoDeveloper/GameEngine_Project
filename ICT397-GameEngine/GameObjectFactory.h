@@ -10,22 +10,8 @@
 */
 class GameObjectFactory 
 {
-private:
-	/**
-	 * @brief The list of all GameObjects, stored in a map with a string as the key. Objects can be inserted with a chosen key or an automatic key
-	*/
-	std::map<std::string, GameObject*> objectList;
-
-	/**
-	 * @brief A utility function function designed to increment an alphabetic key through combinations of letters
-	 * @param key The key to be incremented. Should only have alphabetic characters
-	*/
-	void iterateKey(std::string& key);
 public:
-	/**
-	 * @brief default constructor
-	*/
-	GameObjectFactory();
+
 	/**
 	 * @brief Returns an instance of this singleton for consistent access across disconnected classes
 	 * @return A pointer to the factory
@@ -93,6 +79,23 @@ public:
 	 * @brief loads the game from saved state
 	*/
 	void Load(nlohmann::json& j);
+
+private:
+	/**
+	 * @brief default constructor
+	*/
+	GameObjectFactory();
+
+	/**
+	 * @brief The list of all GameObjects, stored in a map with a string as the key. Objects can be inserted with a chosen key or an automatic key
+	*/
+	std::map<std::string, GameObject*> objectList;
+
+	/**
+	 * @brief A utility function function designed to increment an alphabetic key through combinations of letters
+	 * @param key The key to be incremented. Should only have alphabetic characters
+	*/
+	void iterateKey(std::string& key);
 };
 
 #define GAMEOBJECT GameObjectFactory::instance()

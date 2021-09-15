@@ -1,0 +1,167 @@
+\hypertarget{class_scripting_engine}{}\doxysection{Scripting\+Engine Class Reference}
+\label{class_scripting_engine}\index{ScriptingEngine@{ScriptingEngine}}
+
+
+A singleton that gets information from and manages lua scripts.  
+
+
+
+
+{\ttfamily \#include $<$Scripting\+Engine.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_scripting_engine_a1562d2141d926c4645b7ba24dd69e1e1}{Initialise}} ()
+\item 
+lua\+\_\+\+State $\ast$ \mbox{\hyperlink{class_scripting_engine_a125a0c206da8e74b8f6664c4e523606a}{New\+State}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the engine with initial processes and variables and exposes engine functionality to lua. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scripting_engine_ab8277a75fbdc5ddd1a0da291e81fd35a}{Run\+Init\+Script}} ()
+\begin{DoxyCompactList}\small\item\em Runs the lua scripts to initialise the engine with assets and objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scripting_engine_a218cc92e0e9c813a80c6203a4abc96bc}{Run\+State\+From\+Script}} (lua\+\_\+\+State $\ast$lua\+State, std\+::string AIscript, std\+::string AIstate, \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$parent)
+\begin{DoxyCompactList}\small\item\em runs one of an AI script\textquotesingle{}s state behaviours \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scripting_engine_a7e35a3c96de94be7f039c06216f48ff8}{Do\+File}} (std\+::string file\+Path)
+\item 
+void \mbox{\hyperlink{class_scripting_engine_a271b1b21de27a3866eb97c9594c060dc}{Close}} ()
+\begin{DoxyCompactList}\small\item\em Shuts down lua at program end. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_scripting_engine}{Scripting\+Engine}} $\ast$ \mbox{\hyperlink{class_scripting_engine_a2813a338d6dc0bdc1377a2b2c0d11621}{Instance}} ()
+\begin{DoxyCompactList}\small\item\em Singleton instance getter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_scripting_engine_a9a24037c8ae3b49de02caf02f9b9a8e0}{CScript}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A singleton that gets information from and manages lua scripts. 
+
+Definition at line 14 of file Scripting\+Engine.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scripting_engine_a271b1b21de27a3866eb97c9594c060dc}\label{class_scripting_engine_a271b1b21de27a3866eb97c9594c060dc}} 
+\index{ScriptingEngine@{ScriptingEngine}!Close@{Close}}
+\index{Close@{Close}!ScriptingEngine@{ScriptingEngine}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void Scripting\+Engine\+::\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Shuts down lua at program end. 
+
+
+
+Definition at line 205 of file Scripting\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_scripting_engine_a7e35a3c96de94be7f039c06216f48ff8}\label{class_scripting_engine_a7e35a3c96de94be7f039c06216f48ff8}} 
+\index{ScriptingEngine@{ScriptingEngine}!DoFile@{DoFile}}
+\index{DoFile@{DoFile}!ScriptingEngine@{ScriptingEngine}}
+\doxysubsubsection{\texorpdfstring{DoFile()}{DoFile()}}
+{\footnotesize\ttfamily void Scripting\+Engine\+::\+Do\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 200 of file Scripting\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_scripting_engine_a1562d2141d926c4645b7ba24dd69e1e1}\label{class_scripting_engine_a1562d2141d926c4645b7ba24dd69e1e1}} 
+\index{ScriptingEngine@{ScriptingEngine}!Initialise@{Initialise}}
+\index{Initialise@{Initialise}!ScriptingEngine@{ScriptingEngine}}
+\doxysubsubsection{\texorpdfstring{Initialise()}{Initialise()}}
+{\footnotesize\ttfamily void Scripting\+Engine\+::\+Initialise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file Scripting\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_scripting_engine_a2813a338d6dc0bdc1377a2b2c0d11621}\label{class_scripting_engine_a2813a338d6dc0bdc1377a2b2c0d11621}} 
+\index{ScriptingEngine@{ScriptingEngine}!Instance@{Instance}}
+\index{Instance@{Instance}!ScriptingEngine@{ScriptingEngine}}
+\doxysubsubsection{\texorpdfstring{Instance()}{Instance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_scripting_engine}{Scripting\+Engine}} $\ast$ Scripting\+Engine\+::\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Singleton instance getter. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the scripting engine 
+\end{DoxyReturn}
+
+
+Definition at line 14 of file Scripting\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_scripting_engine_a125a0c206da8e74b8f6664c4e523606a}\label{class_scripting_engine_a125a0c206da8e74b8f6664c4e523606a}} 
+\index{ScriptingEngine@{ScriptingEngine}!NewState@{NewState}}
+\index{NewState@{NewState}!ScriptingEngine@{ScriptingEngine}}
+\doxysubsubsection{\texorpdfstring{NewState()}{NewState()}}
+{\footnotesize\ttfamily lua\+\_\+\+State $\ast$ Scripting\+Engine\+::\+New\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sets up the engine with initial processes and variables and exposes engine functionality to lua. 
+
+
+
+Definition at line 25 of file Scripting\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_scripting_engine_ab8277a75fbdc5ddd1a0da291e81fd35a}\label{class_scripting_engine_ab8277a75fbdc5ddd1a0da291e81fd35a}} 
+\index{ScriptingEngine@{ScriptingEngine}!RunInitScript@{RunInitScript}}
+\index{RunInitScript@{RunInitScript}!ScriptingEngine@{ScriptingEngine}}
+\doxysubsubsection{\texorpdfstring{RunInitScript()}{RunInitScript()}}
+{\footnotesize\ttfamily void Scripting\+Engine\+::\+Run\+Init\+Script (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Runs the lua scripts to initialise the engine with assets and objects. 
+
+
+
+Definition at line 186 of file Scripting\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_scripting_engine_a218cc92e0e9c813a80c6203a4abc96bc}\label{class_scripting_engine_a218cc92e0e9c813a80c6203a4abc96bc}} 
+\index{ScriptingEngine@{ScriptingEngine}!RunStateFromScript@{RunStateFromScript}}
+\index{RunStateFromScript@{RunStateFromScript}!ScriptingEngine@{ScriptingEngine}}
+\doxysubsubsection{\texorpdfstring{RunStateFromScript()}{RunStateFromScript()}}
+{\footnotesize\ttfamily void Scripting\+Engine\+::\+Run\+State\+From\+Script (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{lua\+State,  }\item[{std\+::string}]{AIscript,  }\item[{std\+::string}]{AIstate,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$}]{parent }\end{DoxyParamCaption})}
+
+
+
+runs one of an AI script\textquotesingle{}s state behaviours 
+
+
+\begin{DoxyParams}{Parameters}
+{\em AIscript} & the AI script where the state is located \\
+\hline
+{\em state} & the state to run \\
+\hline
+{\em parent} & the object to which this AI belongs \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 194 of file Scripting\+Engine.\+cpp.
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_scripting_engine_a9a24037c8ae3b49de02caf02f9b9a8e0}\label{class_scripting_engine_a9a24037c8ae3b49de02caf02f9b9a8e0}} 
+\index{ScriptingEngine@{ScriptingEngine}!CScript@{CScript}}
+\index{CScript@{CScript}!ScriptingEngine@{ScriptingEngine}}
+\doxysubsubsection{\texorpdfstring{CScript}{CScript}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{class_c_script}{CScript}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 16 of file Scripting\+Engine.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_scripting_engine_8h}{Scripting\+Engine.\+h}}\item 
+\mbox{\hyperlink{_scripting_engine_8cpp}{Scripting\+Engine.\+cpp}}\end{DoxyCompactItemize}

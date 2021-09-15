@@ -1,0 +1,320 @@
+\hypertarget{class_c_component}{}\doxysection{CComponent Class Reference}
+\label{class_c_component}\index{CComponent@{CComponent}}
+
+
+A component of a game object with its own assets and/or behaviour.  
+
+
+
+
+{\ttfamily \#include $<$CComponent.\+h$>$}
+
+
+
+Inheritance diagram for CComponent\+:
+% FIG 0
+
+
+Collaboration diagram for CComponent\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_component_ab87a6940be69962c3f4f5a8552643245}{CComponent}} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_component_a9210f52589bcbde3d74448ef4538e3ff}{CComponent}} (\mbox{\hyperlink{class_transform}{Transform}} $\ast$parent\+Trans, \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$parent\+Object)
+\begin{DoxyCompactList}\small\item\em constructor taking parent data \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_component_adcee296a2416501cf52755038d4f27eb}{Start}} ()
+\begin{DoxyCompactList}\small\item\em called at start of game \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_component_a95eac92b576c4d07d911e1e2dec99c0a}{Update}} ()
+\begin{DoxyCompactList}\small\item\em To be called every frame to process the component\textquotesingle{}s behaviour, if any. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_component_a08579b9141ab0a3eaaddc59f167c93bb}{Render}} ()
+\begin{DoxyCompactList}\small\item\em To be called every frame to display the component on the screen, if visible. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_component_a47b15d4d62bbf7b2df036f2d7a66dbd4}{Late\+Render}} ()
+\begin{DoxyCompactList}\small\item\em Displays the component after others are displayed. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_component_acd3219b90aa85de5d026d7d12bff7981}{Save}} (\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&j)
+\begin{DoxyCompactList}\small\item\em saves the component \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_component_a11335298284532e2684a6a73a45f7c3f}{Load}} (\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&j)
+\begin{DoxyCompactList}\small\item\em loads the component from saved state \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_component_a5c5f18ab5d67e9d91e7fa7b26b836e96}{Draw\+To\+Im\+Gui}} ()
+\begin{DoxyCompactList}\small\item\em Draws to imgui. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_transform}{Transform}} \& \mbox{\hyperlink{class_c_component_a3796546e2460ee6457af80534ddff0d5}{Get\+Transform}} ()
+\begin{DoxyCompactList}\small\item\em transform accessor \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_transform}{Transform}} \& \mbox{\hyperlink{class_c_component_af5cce04979b7dbc171f0898f9d375603}{Get\+Transform\+Const}} () const
+\begin{DoxyCompactList}\small\item\em get a constant reference to transform \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ \mbox{\hyperlink{class_c_component_a460c951a4f15f3d4af3cb7216ab838d9}{Get\+Parent\+Object}} ()
+\begin{DoxyCompactList}\small\item\em parent object accessor \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_transform}{Transform}} \mbox{\hyperlink{class_c_component_a3a65e4856c24eba721958e2366acd8a8}{m\+\_\+transform}}
+\begin{DoxyCompactList}\small\item\em The transform for this component storing position data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ \mbox{\hyperlink{class_c_component_ab7c47531297d9f1b2f039f848591dd67}{m\+\_\+parent}}
+\begin{DoxyCompactList}\small\item\em The object to which this component belongs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A component of a game object with its own assets and/or behaviour. 
+
+Definition at line 10 of file CComponent.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_component_ab87a6940be69962c3f4f5a8552643245}\label{class_c_component_ab87a6940be69962c3f4f5a8552643245}} 
+\index{CComponent@{CComponent}!CComponent@{CComponent}}
+\index{CComponent@{CComponent}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{CComponent()}{CComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily CComponent\+::\+CComponent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+default constructor 
+
+
+
+Definition at line 6 of file CComponent.\+cpp.
+
+\mbox{\Hypertarget{class_c_component_a9210f52589bcbde3d74448ef4538e3ff}\label{class_c_component_a9210f52589bcbde3d74448ef4538e3ff}} 
+\index{CComponent@{CComponent}!CComponent@{CComponent}}
+\index{CComponent@{CComponent}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{CComponent()}{CComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily CComponent\+::\+CComponent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_transform}{Transform}} $\ast$}]{parent\+Trans,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$}]{parent\+Object }\end{DoxyParamCaption})}
+
+
+
+constructor taking parent data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent\+Trans} & The parent transform for this component\textquotesingle{}s transform \\
+\hline
+{\em parent\+Object} & The parent object of this component \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 12 of file CComponent.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_component_a5c5f18ab5d67e9d91e7fa7b26b836e96}\label{class_c_component_a5c5f18ab5d67e9d91e7fa7b26b836e96}} 
+\index{CComponent@{CComponent}!DrawToImGui@{DrawToImGui}}
+\index{DrawToImGui@{DrawToImGui}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{DrawToImGui()}{DrawToImGui()}}
+{\footnotesize\ttfamily void CComponent\+::\+Draw\+To\+Im\+Gui (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws to imgui. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_c_static_mesh_abd835b6f7e95f4dbdc7bb4418ada46b4}{CStatic\+Mesh}}, \mbox{\hyperlink{class_c_script_ab1754b7da43237ce0d2784a8ddb9205a}{CScript}}, \mbox{\hyperlink{class_c_collider_aafb37d9330706fa8ed0251a06ee6a7ab}{CCollider}}, \mbox{\hyperlink{class_c_character_a037a51556b6aef411ec09613812f3ba4}{CCharacter}}, and \mbox{\hyperlink{class_c_camera_a0bac4c460d157856f34fb815a131cdd0}{CCamera}}.
+
+
+
+Definition at line 46 of file CComponent.\+cpp.
+
+\mbox{\Hypertarget{class_c_component_a460c951a4f15f3d4af3cb7216ab838d9}\label{class_c_component_a460c951a4f15f3d4af3cb7216ab838d9}} 
+\index{CComponent@{CComponent}!GetParentObject@{GetParentObject}}
+\index{GetParentObject@{GetParentObject}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{GetParentObject()}{GetParentObject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ CComponent\+::\+Get\+Parent\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+parent object accessor 
+
+\begin{DoxyReturn}{Returns}
+pointer to the object to which this component belongs 
+\end{DoxyReturn}
+
+
+Definition at line 27 of file CComponent.\+cpp.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{class_c_component_a3796546e2460ee6457af80534ddff0d5}\label{class_c_component_a3796546e2460ee6457af80534ddff0d5}} 
+\index{CComponent@{CComponent}!GetTransform@{GetTransform}}
+\index{GetTransform@{GetTransform}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{GetTransform()}{GetTransform()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_transform}{Transform}} \& CComponent\+::\+Get\+Transform (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+transform accessor 
+
+\begin{DoxyReturn}{Returns}
+pointer to this component\textquotesingle{}s transform 
+\end{DoxyReturn}
+
+
+Definition at line 17 of file CComponent.\+cpp.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{class_c_component_af5cce04979b7dbc171f0898f9d375603}\label{class_c_component_af5cce04979b7dbc171f0898f9d375603}} 
+\index{CComponent@{CComponent}!GetTransformConst@{GetTransformConst}}
+\index{GetTransformConst@{GetTransformConst}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{GetTransformConst()}{GetTransformConst()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{class_transform}{Transform}} \& CComponent\+::\+Get\+Transform\+Const (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get a constant reference to transform 
+
+
+
+Definition at line 22 of file CComponent.\+cpp.
+
+\mbox{\Hypertarget{class_c_component_a47b15d4d62bbf7b2df036f2d7a66dbd4}\label{class_c_component_a47b15d4d62bbf7b2df036f2d7a66dbd4}} 
+\index{CComponent@{CComponent}!LateRender@{LateRender}}
+\index{LateRender@{LateRender}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{LateRender()}{LateRender()}}
+{\footnotesize\ttfamily virtual void CComponent\+::\+Late\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Displays the component after others are displayed. 
+
+
+
+Definition at line 47 of file CComponent.\+h.
+
+\mbox{\Hypertarget{class_c_component_a11335298284532e2684a6a73a45f7c3f}\label{class_c_component_a11335298284532e2684a6a73a45f7c3f}} 
+\index{CComponent@{CComponent}!Load@{Load}}
+\index{Load@{Load}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void CComponent\+::\+Load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+loads the component from saved state 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_c_static_mesh_af17a59afb7413668380f2410e4588def}{CStatic\+Mesh}}, \mbox{\hyperlink{class_c_script_a5e8994e009e4e21d127e261f35788bb8}{CScript}}, \mbox{\hyperlink{class_c_collider_ab69c5c7345b0d7da17393d5db4e10ae2}{CCollider}}, and \mbox{\hyperlink{class_c_character_a35c526a7a9f634e02c4ac54503e332bc}{CCharacter}}.
+
+
+
+Definition at line 40 of file CComponent.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{class_c_component_a08579b9141ab0a3eaaddc59f167c93bb}\label{class_c_component_a08579b9141ab0a3eaaddc59f167c93bb}} 
+\index{CComponent@{CComponent}!Render@{Render}}
+\index{Render@{Render}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily virtual void CComponent\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+To be called every frame to display the component on the screen, if visible. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_c_static_mesh_a811c339becc8cff2323cfb0af8bf558c}{CStatic\+Mesh}}.
+
+
+
+Definition at line 42 of file CComponent.\+h.
+
+\mbox{\Hypertarget{class_c_component_acd3219b90aa85de5d026d7d12bff7981}\label{class_c_component_acd3219b90aa85de5d026d7d12bff7981}} 
+\index{CComponent@{CComponent}!Save@{Save}}
+\index{Save@{Save}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily void CComponent\+::\+Save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+saves the component 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_c_static_mesh_a410db97c2c01756b0d478049d44e7033}{CStatic\+Mesh}}, \mbox{\hyperlink{class_c_script_a271450247c297dd454b235ee8c103a50}{CScript}}, \mbox{\hyperlink{class_c_collider_ae4524c7cc0069673c49d73ff16a1b68f}{CCollider}}, and \mbox{\hyperlink{class_c_character_ae606109ebef5561fbda23cd95b57496c}{CCharacter}}.
+
+
+
+Definition at line 32 of file CComponent.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{class_c_component_adcee296a2416501cf52755038d4f27eb}\label{class_c_component_adcee296a2416501cf52755038d4f27eb}} 
+\index{CComponent@{CComponent}!Start@{Start}}
+\index{Start@{Start}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily virtual void CComponent\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+called at start of game 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_c_script_a1bc70c343f6d5e8138157f05d8f07838}{CScript}}, \mbox{\hyperlink{class_c_collider_ab8fd6544bb2eb98523b7f27e60ac9e03}{CCollider}}, \mbox{\hyperlink{class_c_character_ab774064d1c84af41bcace35d81cc1fb5}{CCharacter}}, and \mbox{\hyperlink{class_c_camera_a0f43f3ad015152e60df26bd596a7eaef}{CCamera}}.
+
+
+
+Definition at line 32 of file CComponent.\+h.
+
+\mbox{\Hypertarget{class_c_component_a95eac92b576c4d07d911e1e2dec99c0a}\label{class_c_component_a95eac92b576c4d07d911e1e2dec99c0a}} 
+\index{CComponent@{CComponent}!Update@{Update}}
+\index{Update@{Update}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily virtual void CComponent\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+To be called every frame to process the component\textquotesingle{}s behaviour, if any. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_c_sound_aa29a578b102b123e836b34faddd8cdba}{CSound}}, \mbox{\hyperlink{class_c_script_a26179a9c21a96af7bdb31b11894f64d7}{CScript}}, \mbox{\hyperlink{class_c_point_light_ae6a75621fe9a91e46e1471888a4e5009}{CPoint\+Light}}, \mbox{\hyperlink{class_c_collider_a858c10f0e9fb3a6e73bd00fcfcdb99f1}{CCollider}}, and \mbox{\hyperlink{class_c_character_adc476a488c7157c7fc2b32381760b4e0}{CCharacter}}.
+
+
+
+Definition at line 37 of file CComponent.\+h.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_c_component_ab7c47531297d9f1b2f039f848591dd67}\label{class_c_component_ab7c47531297d9f1b2f039f848591dd67}} 
+\index{CComponent@{CComponent}!m\_parent@{m\_parent}}
+\index{m\_parent@{m\_parent}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{m\_parent}{m\_parent}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game_object}{Game\+Object}}$\ast$ CComponent\+::m\+\_\+parent\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The object to which this component belongs. 
+
+
+
+Definition at line 91 of file CComponent.\+h.
+
+\mbox{\Hypertarget{class_c_component_a3a65e4856c24eba721958e2366acd8a8}\label{class_c_component_a3a65e4856c24eba721958e2366acd8a8}} 
+\index{CComponent@{CComponent}!m\_transform@{m\_transform}}
+\index{m\_transform@{m\_transform}!CComponent@{CComponent}}
+\doxysubsubsection{\texorpdfstring{m\_transform}{m\_transform}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_transform}{Transform}} CComponent\+::m\+\_\+transform\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The transform for this component storing position data. 
+
+
+
+Definition at line 87 of file CComponent.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_c_component_8h}{CComponent.\+h}}\item 
+\mbox{\hyperlink{_c_component_8cpp}{CComponent.\+cpp}}\end{DoxyCompactItemize}

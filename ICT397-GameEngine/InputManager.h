@@ -1,4 +1,5 @@
 #pragma once
+
 #include <SDL2/SDL.h>
 #include <string>
 #include "GraphicsEngine.h"
@@ -14,6 +15,7 @@ struct Key
     bool held = false;
     bool up = false;
 };
+
 /**
  * @brief represents a button on the mouse
 */
@@ -47,109 +49,7 @@ enum class KeyCode
 */
 class InputManager
 {
-private:
-    bool m_cursorLocked;
-
-    /**
-     * @brief the SDL event taking place
-    */
-    SDL_Event* m_Event;
-
-    /**
-     * @brief the current x coordinate of the mouse
-    */
-    int mouseX = false;
-    /**
-     * @brief the current y coordinate of the mouse
-    */
-    int mouseY = false;
-
-    int mouseXAbsolute;
-
-    int mouseYAbsolute;
-
-    /**
-     * @brief the previous x coordinate of the mouse
-    */
-    int prevMouseX = 0;
-    /**
-     * @brief the previous y coordinate of the mouse
-    */
-    int prevMouseY = 0;
-
-    /**
-     * @brief the W key
-    */
-    Key w_Key;
-    /**
-     * @brief the A key
-    */
-    Key a_Key;
-    /**
-     * @brief the S key
-    */
-    Key s_Key;
-    /**
-     * @brief the D key
-    */
-    Key d_Key;
-    /**
-     * @brief the Z key
-    */
-    Key z_Key;
-    /**
-     * @brief the X key
-    */
-    Key x_Key;
-    /**
-     * @brief the Q key
-    */
-    Key q_Key;
-    /**
-     * @brief the K key
-    */
-    Key k_Key;    
-    /**
-     * @brief the t key
-    */
-    Key t_Key;
-    Key m_Key;
-    Key c_Key;
-    Key space_Key;
-    Key esc_Key;
-    Key tilde_Key;
-
-    /**
-     * @brief the primary mouse button
-    */
-    MouseButton leftMouseButton;
-    /**
-     * @brief the secondary mouse button
-    */
-    MouseButton rightMouseButton;
-    /**
-     * @brief the tertiary mouse button
-    */
-    MouseButton middleMouseButton;
-
-    /**
-     * @brief whether key presses should be logged for debugging
-    */
-    bool debugKeyPresses = false;
-    /**
-     * @brief whether mouse buttons should be logged for debugging
-    */
-    bool debugMouseButtons = false;
-    /**
-     * @brief whether mouse movement should be logged for debugging
-    */
-    bool debugMouseMovement = false;
-
 public:
-    /**
-     * @brief default constructor
-    */
-    InputManager();
     /**
      * @brief singleton instance generator
      * @return a pointer to the instance of the input manager
@@ -251,12 +151,14 @@ public:
      * @return whether the button is being held
     */
     bool GetMouseButton(int mouseButton);
+
     /**
      * @brief checks whether a mouse button is down
      * @param mouseButton which button to check
      * @return whether the button is down
     */
     bool GetMouseButtonDown(int mouseButton);
+
     /**
      * @brief checks whether a mouse button is up
      * @param mouseButton which button to check
@@ -285,6 +187,109 @@ public:
      * @brief quits the game
     */
     void QuitGame();
+
+private:
+    /**
+        * @brief default constructor
+    */
+    InputManager();
+
+    bool m_cursorLocked;
+
+    /**
+        * @brief the SDL event taking place
+    */
+    SDL_Event* m_Event;
+
+    /**
+        * @brief the current x coordinate of the mouse
+    */
+    int mouseX = false;
+    /**
+        * @brief the current y coordinate of the mouse
+    */
+    int mouseY = false;
+
+    int mouseXAbsolute;
+
+    int mouseYAbsolute;
+
+    /**
+        * @brief the previous x coordinate of the mouse
+    */
+    int prevMouseX = 0;
+    /**
+        * @brief the previous y coordinate of the mouse
+    */
+    int prevMouseY = 0;
+
+    /**
+        * @brief the W key
+    */
+    Key w_Key;
+    /**
+        * @brief the A key
+    */
+    Key a_Key;
+    /**
+        * @brief the S key
+    */
+    Key s_Key;
+    /**
+        * @brief the D key
+    */
+    Key d_Key;
+    /**
+        * @brief the Z key
+    */
+    Key z_Key;
+    /**
+        * @brief the X key
+    */
+    Key x_Key;
+    /**
+        * @brief the Q key
+    */
+    Key q_Key;
+    /**
+        * @brief the K key
+    */
+    Key k_Key;
+    /**
+        * @brief the t key
+    */
+    Key t_Key;
+    Key m_Key;
+    Key c_Key;
+    Key space_Key;
+    Key esc_Key;
+    Key tilde_Key;
+
+    /**
+        * @brief the primary mouse button
+    */
+    MouseButton leftMouseButton;
+    /**
+        * @brief the secondary mouse button
+    */
+    MouseButton rightMouseButton;
+    /**
+        * @brief the tertiary mouse button
+    */
+    MouseButton middleMouseButton;
+
+    /**
+        * @brief whether key presses should be logged for debugging
+    */
+    bool debugKeyPresses = false;
+    /**
+        * @brief whether mouse buttons should be logged for debugging
+    */
+    bool debugMouseButtons = false;
+    /**
+        * @brief whether mouse movement should be logged for debugging
+    */
+    bool debugMouseMovement = false;
 };
 
 #define INPUT InputManager::Instance()

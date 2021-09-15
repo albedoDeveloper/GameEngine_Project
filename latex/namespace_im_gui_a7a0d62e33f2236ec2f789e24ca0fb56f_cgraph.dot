@@ -1,0 +1,14 @@
+digraph "ImGui::LogRenderedText"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ImGui::LogRenderedText",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="ImGui::FindRenderedTextEnd",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a7671e1dbc803a31b06081b52a771d83f",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="ImStreolRange",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$imgui_8cpp.html#a578b4ec1e004a6c9e07610720421a482",tooltip=" "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="ImGui::LogText",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#aa548475d8f771ab6524d73d900a41198",tooltip=" "];
+}

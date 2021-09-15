@@ -28,68 +28,7 @@ class CCamera;
 */
 class GraphicsEngine
 {
-private:
-	/**
-	 * @brief The SDL window
-	*/
-	SDL_Window* m_window;
-	/**
-	 * @brief The SDL renderer
-	*/
-	SDL_Renderer* m_renderer;
-
-	/**
-	 * @brief The openGL context used for SDL
-	*/
-	SDL_GLContext m_glContext;
-
-	/**
-	 * @brief the camera in use
-	*/
-	CCamera* m_camera;
-
-	/**
-	 * @brief The graphics library in use
-	*/
-	GraphicsLibrary m_graphLib;
-
-	/**
-	 * @brief list of texture IDs registered with openGL
-	*/
-	std::map<std::string, unsigned> m_textureIDs;
-
-	/**
-	 * @brief texture id's of skybox textures
-	*/
-	std::string m_skyboxTextures[6];
-
-	/**
-	 * @brief if the skybox has been initialised
-	*/
-	bool m_skyboxInitialized;
-
-	int m_windowWidth;
-
-	int m_windowHeight;
-
-	ImGuiIO m_imgui_io;
-
-	ImVec4 m_clear_color;
-
-	unsigned int VAODebug = 0;
-	unsigned int VBODebug = 0;
-	bool initDebug = true;
-
-	SkyBox skybox;
-
 public:
-	/**
-	 * @brief default constructor
-	*/
-	GraphicsEngine();
-
-	~GraphicsEngine();
-
 	/**
 	 * @brief Generates pointer to instance of singleton
 	 * @return Pointer to the graphics engine
@@ -186,6 +125,66 @@ public:
 
 private:
 	/**
+	 * @brief default constructor
+	*/
+	GraphicsEngine();
+
+	~GraphicsEngine();
+
+	/**
+	 * @brief The SDL window
+	*/
+	SDL_Window* m_window;
+	/**
+	 * @brief The SDL renderer
+	*/
+	SDL_Renderer* m_renderer;
+
+	/**
+	 * @brief The openGL context used for SDL
+	*/
+	SDL_GLContext m_glContext;
+
+	/**
+	 * @brief the camera in use
+	*/
+	CCamera* m_camera;
+
+	/**
+	 * @brief The graphics library in use
+	*/
+	GraphicsLibrary m_graphLib;
+
+	/**
+	 * @brief list of texture IDs registered with openGL
+	*/
+	std::map<std::string, unsigned> m_textureIDs;
+
+	/**
+	 * @brief texture id's of skybox textures
+	*/
+	std::string m_skyboxTextures[6];
+
+	/**
+	 * @brief if the skybox has been initialised
+	*/
+	bool m_skyboxInitialized;
+
+	int m_windowWidth;
+
+	int m_windowHeight;
+
+	ImGuiIO m_imgui_io;
+
+	ImVec4 m_clear_color;
+
+	unsigned int VAODebug = 0;
+	unsigned int VBODebug = 0;
+	bool initDebug = true;
+
+	SkyBox skybox;
+
+	/**
 	 * @brief initialises openGL
 	 * @return whether operation succeeded
 	*/
@@ -198,7 +197,6 @@ private:
 	 * @return whether operation succeeded
 	*/
 	bool InitDirectX();
-
 	
 	/**
 	 * @brief Setups the debug rendering of collider boxes

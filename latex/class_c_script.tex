@@ -1,0 +1,245 @@
+\hypertarget{class_c_script}{}\doxysection{CScript Class Reference}
+\label{class_c_script}\index{CScript@{CScript}}
+
+
+{\ttfamily \#include $<$CScript.\+h$>$}
+
+
+
+Inheritance diagram for CScript\+:
+% FIG 0
+
+
+Collaboration diagram for CScript\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_script_a1771b6b5fdc57471778b986ebe44bc36}{CScript}} (\mbox{\hyperlink{class_transform}{Transform}} $\ast$parent, \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$parent\+Obj)
+\begin{DoxyCompactList}\small\item\em Constructor based on parent \mbox{\hyperlink{class_game_object}{Game\+Object}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_script_a1bc70c343f6d5e8138157f05d8f07838}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Initiates the script at program start. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_script_a26179a9c21a96af7bdb31b11894f64d7}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Updates ongoing behaviour each frame. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_script_a271450247c297dd454b235ee8c103a50}{Save}} (\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&j)
+\begin{DoxyCompactList}\small\item\em script mutator \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_script_a5e8994e009e4e21d127e261f35788bb8}{Load}} (\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&j)
+\begin{DoxyCompactList}\small\item\em loads the component from saved state \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_script_ab1754b7da43237ce0d2784a8ddb9205a}{Draw\+To\+Im\+Gui}} ()
+\begin{DoxyCompactList}\small\item\em Draws to imgui. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_script_a9f8304d5b4836cfa663bc4b5bc1db30b}{Assign\+Script}} (\mbox{\hyperlink{struct_a_script}{AScript}} $\ast$script)
+\item 
+void \mbox{\hyperlink{class_c_script_a6dbae7090411b8b06124f054680ef991}{Assign\+Script\+By\+Key}} (std\+::string asset\+Key)
+\begin{DoxyCompactList}\small\item\em script mutator using factory key \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_a_script}{AScript}} $\ast$ \mbox{\hyperlink{class_c_script_ab8f3a2c8e079926c8b74d5aecac296e4}{m\+\_\+script}}
+\begin{DoxyCompactList}\small\item\em The script asset storing information on the script. \end{DoxyCompactList}\item 
+lua\+\_\+\+State $\ast$ \mbox{\hyperlink{class_c_script_a3871d95971cdcc7dfaf3e07f43cef611}{m\+\_\+L}}
+\begin{DoxyCompactList}\small\item\em lua state object for this component \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 9 of file CScript.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_script_a1771b6b5fdc57471778b986ebe44bc36}\label{class_c_script_a1771b6b5fdc57471778b986ebe44bc36}} 
+\index{CScript@{CScript}!CScript@{CScript}}
+\index{CScript@{CScript}!CScript@{CScript}}
+\doxysubsubsection{\texorpdfstring{CScript()}{CScript()}}
+{\footnotesize\ttfamily CScript\+::\+CScript (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_transform}{Transform}} $\ast$}]{parent,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$}]{parent\+Obj }\end{DoxyParamCaption})}
+
+
+
+Constructor based on parent \mbox{\hyperlink{class_game_object}{Game\+Object}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & the parent transform for this component \\
+\hline
+{\em parent\+Obj} & the parent object of this component \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 8 of file CScript.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_script_a9f8304d5b4836cfa663bc4b5bc1db30b}\label{class_c_script_a9f8304d5b4836cfa663bc4b5bc1db30b}} 
+\index{CScript@{CScript}!AssignScript@{AssignScript}}
+\index{AssignScript@{AssignScript}!CScript@{CScript}}
+\doxysubsubsection{\texorpdfstring{AssignScript()}{AssignScript()}}
+{\footnotesize\ttfamily void CScript\+::\+Assign\+Script (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_a_script}{AScript}} $\ast$}]{script }\end{DoxyParamCaption})}
+
+
+
+Definition at line 53 of file CScript.\+cpp.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{class_c_script_a6dbae7090411b8b06124f054680ef991}\label{class_c_script_a6dbae7090411b8b06124f054680ef991}} 
+\index{CScript@{CScript}!AssignScriptByKey@{AssignScriptByKey}}
+\index{AssignScriptByKey@{AssignScriptByKey}!CScript@{CScript}}
+\doxysubsubsection{\texorpdfstring{AssignScriptByKey()}{AssignScriptByKey()}}
+{\footnotesize\ttfamily void CScript\+::\+Assign\+Script\+By\+Key (\begin{DoxyParamCaption}\item[{std\+::string}]{asset\+Key }\end{DoxyParamCaption})}
+
+
+
+script mutator using factory key 
+
+
+\begin{DoxyParams}{Parameters}
+{\em asset\+Key} & the key by which the script is stored in the asset factory \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 59 of file CScript.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{class_c_script_ab1754b7da43237ce0d2784a8ddb9205a}\label{class_c_script_ab1754b7da43237ce0d2784a8ddb9205a}} 
+\index{CScript@{CScript}!DrawToImGui@{DrawToImGui}}
+\index{DrawToImGui@{DrawToImGui}!CScript@{CScript}}
+\doxysubsubsection{\texorpdfstring{DrawToImGui()}{DrawToImGui()}}
+{\footnotesize\ttfamily void CScript\+::\+Draw\+To\+Im\+Gui (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws to imgui. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_component_a5c5f18ab5d67e9d91e7fa7b26b836e96}{CComponent}}.
+
+
+
+Definition at line 42 of file CScript.\+cpp.
+
+\mbox{\Hypertarget{class_c_script_a5e8994e009e4e21d127e261f35788bb8}\label{class_c_script_a5e8994e009e4e21d127e261f35788bb8}} 
+\index{CScript@{CScript}!Load@{Load}}
+\index{Load@{Load}!CScript@{CScript}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void CScript\+::\+Load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+loads the component from saved state 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_component_a11335298284532e2684a6a73a45f7c3f}{CComponent}}.
+
+
+
+Definition at line 36 of file CScript.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{class_c_script_a271450247c297dd454b235ee8c103a50}\label{class_c_script_a271450247c297dd454b235ee8c103a50}} 
+\index{CScript@{CScript}!Save@{Save}}
+\index{Save@{Save}!CScript@{CScript}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily void CScript\+::\+Save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+script mutator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em script} & pointer to the script for this component to use\\
+\hline
+\end{DoxyParams}
+saves the component 
+
+Reimplemented from \mbox{\hyperlink{class_c_component_acd3219b90aa85de5d026d7d12bff7981}{CComponent}}.
+
+
+
+Definition at line 28 of file CScript.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{class_c_script_a1bc70c343f6d5e8138157f05d8f07838}\label{class_c_script_a1bc70c343f6d5e8138157f05d8f07838}} 
+\index{CScript@{CScript}!Start@{Start}}
+\index{Start@{Start}!CScript@{CScript}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void CScript\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Initiates the script at program start. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_component_adcee296a2416501cf52755038d4f27eb}{CComponent}}.
+
+
+
+Definition at line 14 of file CScript.\+cpp.
+
+\mbox{\Hypertarget{class_c_script_a26179a9c21a96af7bdb31b11894f64d7}\label{class_c_script_a26179a9c21a96af7bdb31b11894f64d7}} 
+\index{CScript@{CScript}!Update@{Update}}
+\index{Update@{Update}!CScript@{CScript}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void CScript\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates ongoing behaviour each frame. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_component_a95eac92b576c4d07d911e1e2dec99c0a}{CComponent}}.
+
+
+
+Definition at line 20 of file CScript.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_c_script_a3871d95971cdcc7dfaf3e07f43cef611}\label{class_c_script_a3871d95971cdcc7dfaf3e07f43cef611}} 
+\index{CScript@{CScript}!m\_L@{m\_L}}
+\index{m\_L@{m\_L}!CScript@{CScript}}
+\doxysubsubsection{\texorpdfstring{m\_L}{m\_L}}
+{\footnotesize\ttfamily lua\+\_\+\+State$\ast$ CScript\+::m\+\_\+L\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+lua state object for this component 
+
+
+
+Definition at line 63 of file CScript.\+h.
+
+\mbox{\Hypertarget{class_c_script_ab8f3a2c8e079926c8b74d5aecac296e4}\label{class_c_script_ab8f3a2c8e079926c8b74d5aecac296e4}} 
+\index{CScript@{CScript}!m\_script@{m\_script}}
+\index{m\_script@{m\_script}!CScript@{CScript}}
+\doxysubsubsection{\texorpdfstring{m\_script}{m\_script}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_a_script}{AScript}}$\ast$ CScript\+::m\+\_\+script\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The script asset storing information on the script. 
+
+
+
+Definition at line 58 of file CScript.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_c_script_8h}{CScript.\+h}}\item 
+\mbox{\hyperlink{_c_script_8cpp}{CScript.\+cpp}}\end{DoxyCompactItemize}

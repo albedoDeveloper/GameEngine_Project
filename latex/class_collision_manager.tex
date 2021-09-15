@@ -1,0 +1,173 @@
+\hypertarget{class_collision_manager}{}\doxysection{Collision\+Manager Class Reference}
+\label{class_collision_manager}\index{CollisionManager@{CollisionManager}}
+
+
+A singleton that manages collisions between objects.  
+
+
+
+
+{\ttfamily \#include $<$Collision\+Manager.\+h$>$}
+
+
+
+Inheritance diagram for Collision\+Manager\+:
+% FIG 0
+
+
+Collaboration diagram for Collision\+Manager\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_collision_manager_a81f0b3f0cc0268c80f54714cd7ddb55f}{Collision\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_collision_manager_a2c3f7c98835978fb8753a18d972d2f5b}{Check\+Collision}} (\mbox{\hyperlink{class_c_collider}{CCollider}} \&my\+Collider)
+\begin{DoxyCompactList}\small\item\em check if a AABB is colliding with any other AABB\textquotesingle{}s \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_collision_manager_abd7b40d81999f48ebd33f662ce180d0f}{on\+Contact}} (const Callback\+Data \&callback\+Data)
+\item 
+reactphysics3d\+::\+Physics\+World $\ast$ \mbox{\hyperlink{class_collision_manager_a35974da398267e50ddcfb792ef07382d}{Get\+Physics\+World}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_collision_manager}{Collision\+Manager}} $\ast$ \mbox{\hyperlink{class_collision_manager_a2f69dc109914167a1fd5953727f14dc8}{Instance}} ()
+\begin{DoxyCompactList}\small\item\em Singleton instance accessor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+reactphysics3d\+::\+Physics\+World $\ast$ \mbox{\hyperlink{class_collision_manager_ac042bf60937e79822a02ba4009d6eced}{physics\+World}}
+\item 
+reactphysics3d\+::\+Physics\+Common \mbox{\hyperlink{class_collision_manager_a3c8e816678ec1e3be009541a5c4de044}{physics\+Common}}
+\item 
+reactphysics3d\+::\+Debug\+Renderer $\ast$ \mbox{\hyperlink{class_collision_manager_aae622e6090ef4663f75cf11aceae2898}{debug\+Render}}
+\item 
+int \mbox{\hyperlink{class_collision_manager_ad52d2235d45a4a16d14e93c357e85bb7}{wait\+Time}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A singleton that manages collisions between objects. 
+
+Definition at line 9 of file Collision\+Manager.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_collision_manager_a81f0b3f0cc0268c80f54714cd7ddb55f}\label{class_collision_manager_a81f0b3f0cc0268c80f54714cd7ddb55f}} 
+\index{CollisionManager@{CollisionManager}!CollisionManager@{CollisionManager}}
+\index{CollisionManager@{CollisionManager}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{CollisionManager()}{CollisionManager()}}
+{\footnotesize\ttfamily Collision\+Manager\+::\+Collision\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+default constructor 
+
+
+
+Definition at line 4 of file Collision\+Manager.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_collision_manager_a2c3f7c98835978fb8753a18d972d2f5b}\label{class_collision_manager_a2c3f7c98835978fb8753a18d972d2f5b}} 
+\index{CollisionManager@{CollisionManager}!CheckCollision@{CheckCollision}}
+\index{CheckCollision@{CheckCollision}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{CheckCollision()}{CheckCollision()}}
+{\footnotesize\ttfamily bool Collision\+Manager\+::\+Check\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_collider}{CCollider}} \&}]{my\+Collider }\end{DoxyParamCaption})}
+
+
+
+check if a AABB is colliding with any other AABB\textquotesingle{}s 
+
+
+
+Definition at line 19 of file Collision\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_collision_manager_a35974da398267e50ddcfb792ef07382d}\label{class_collision_manager_a35974da398267e50ddcfb792ef07382d}} 
+\index{CollisionManager@{CollisionManager}!GetPhysicsWorld@{GetPhysicsWorld}}
+\index{GetPhysicsWorld@{GetPhysicsWorld}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{GetPhysicsWorld()}{GetPhysicsWorld()}}
+{\footnotesize\ttfamily reactphysics3d\+::\+Physics\+World$\ast$ Collision\+Manager\+::\+Get\+Physics\+World (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+@\+Get the static collision world, to either add collisonbody or test for colliders 
+
+Definition at line 62 of file Collision\+Manager.\+h.
+
+\mbox{\Hypertarget{class_collision_manager_a2f69dc109914167a1fd5953727f14dc8}\label{class_collision_manager_a2f69dc109914167a1fd5953727f14dc8}} 
+\index{CollisionManager@{CollisionManager}!Instance@{Instance}}
+\index{Instance@{Instance}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{Instance()}{Instance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_manager}{Collision\+Manager}} $\ast$ Collision\+Manager\+::\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Singleton instance accessor. 
+
+\begin{DoxyReturn}{Returns}
+the single instance of this manager 
+\end{DoxyReturn}
+
+
+Definition at line 13 of file Collision\+Manager.\+cpp.
+
+\mbox{\Hypertarget{class_collision_manager_abd7b40d81999f48ebd33f662ce180d0f}\label{class_collision_manager_abd7b40d81999f48ebd33f662ce180d0f}} 
+\index{CollisionManager@{CollisionManager}!onContact@{onContact}}
+\index{onContact@{onContact}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{onContact()}{onContact()}}
+{\footnotesize\ttfamily void Collision\+Manager\+::on\+Contact (\begin{DoxyParamCaption}\item[{const Callback\+Data \&}]{callback\+Data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file Collision\+Manager.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_collision_manager_aae622e6090ef4663f75cf11aceae2898}\label{class_collision_manager_aae622e6090ef4663f75cf11aceae2898}} 
+\index{CollisionManager@{CollisionManager}!debugRender@{debugRender}}
+\index{debugRender@{debugRender}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{debugRender}{debugRender}}
+{\footnotesize\ttfamily reactphysics3d\+::\+Debug\+Renderer$\ast$ Collision\+Manager\+::debug\+Render}
+
+
+
+Definition at line 37 of file Collision\+Manager.\+h.
+
+\mbox{\Hypertarget{class_collision_manager_a3c8e816678ec1e3be009541a5c4de044}\label{class_collision_manager_a3c8e816678ec1e3be009541a5c4de044}} 
+\index{CollisionManager@{CollisionManager}!physicsCommon@{physicsCommon}}
+\index{physicsCommon@{physicsCommon}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{physicsCommon}{physicsCommon}}
+{\footnotesize\ttfamily reactphysics3d\+::\+Physics\+Common Collision\+Manager\+::physics\+Common}
+
+
+
+Definition at line 35 of file Collision\+Manager.\+h.
+
+\mbox{\Hypertarget{class_collision_manager_ac042bf60937e79822a02ba4009d6eced}\label{class_collision_manager_ac042bf60937e79822a02ba4009d6eced}} 
+\index{CollisionManager@{CollisionManager}!physicsWorld@{physicsWorld}}
+\index{physicsWorld@{physicsWorld}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{physicsWorld}{physicsWorld}}
+{\footnotesize\ttfamily reactphysics3d\+::\+Physics\+World$\ast$ Collision\+Manager\+::physics\+World}
+
+
+
+Definition at line 33 of file Collision\+Manager.\+h.
+
+\mbox{\Hypertarget{class_collision_manager_ad52d2235d45a4a16d14e93c357e85bb7}\label{class_collision_manager_ad52d2235d45a4a16d14e93c357e85bb7}} 
+\index{CollisionManager@{CollisionManager}!waitTime@{waitTime}}
+\index{waitTime@{waitTime}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{waitTime}{waitTime}}
+{\footnotesize\ttfamily int Collision\+Manager\+::wait\+Time = 0}
+
+
+
+Definition at line 39 of file Collision\+Manager.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_collision_manager_8h}{Collision\+Manager.\+h}}\item 
+\mbox{\hyperlink{_collision_manager_8cpp}{Collision\+Manager.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,6 @@
+<map id="CCollider" name="CCollider">
+<area shape="rect" id="node1" title=" " alt="" coords="70,171,145,197"/>
+<area shape="rect" id="node2" href="$class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="59,95,156,121"/>
+<area shape="rect" id="node3" href="$class_game_object.html" title="An object as represented in the game world containing all information on the object itself and its co..." alt="" coords="5,5,100,32"/>
+<area shape="rect" id="node4" href="$class_transform.html" title="Stores data about an object or componet&#39;s location in space." alt="" coords="124,5,203,32"/>
+</map>

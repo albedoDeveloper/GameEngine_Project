@@ -1,0 +1,4 @@
+<map id="Transform::GetDistance" name="Transform::GetDistance">
+<area shape="rect" id="node1" title="calculates the distance to another transform" alt="" coords="5,5,164,32"/>
+<area shape="rect" id="node2" href="$class_vector3f.html#afb1763cca9cabe61674bdff20efcc81f" title=" " alt="" coords="212,5,351,32"/>
+</map>

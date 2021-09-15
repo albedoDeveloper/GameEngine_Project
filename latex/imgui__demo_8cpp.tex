@@ -1,0 +1,122 @@
+\hypertarget{imgui__demo_8cpp}{}\doxysection{Third\+Party/imgui/imgui\+\_\+demo.cpp File Reference}
+\label{imgui__demo_8cpp}\index{ThirdParty/imgui/imgui\_demo.cpp@{ThirdParty/imgui/imgui\_demo.cpp}}
+{\ttfamily \#include \char`\"{}imgui.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$limits.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for imgui\+\_\+demo.\+cpp\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_example_app_console}{Example\+App\+Console}}
+\item 
+struct \mbox{\hyperlink{struct_example_app_log}{Example\+App\+Log}}
+\item 
+struct \mbox{\hyperlink{struct_my_document}{My\+Document}}
+\item 
+struct \mbox{\hyperlink{struct_example_app_documents}{Example\+App\+Documents}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespace_im_gui}{Im\+Gui}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{imgui__demo_8cpp_a1bfa04d9a2431433f9668c814fd4c3d5}{IM\+\_\+\+NEWLINE}}~\char`\"{}\textbackslash{}n\char`\"{}
+\item 
+\#define \mbox{\hyperlink{imgui__demo_8cpp_ad91933eea087ec3f87b1744a7fd01224}{IM\+\_\+\+PRId64}}~\char`\"{}lld\char`\"{}
+\item 
+\#define \mbox{\hyperlink{imgui__demo_8cpp_af6951e34b07f45afbeeddd6de6718ac7}{IM\+\_\+\+PRIu64}}~\char`\"{}llu\char`\"{}
+\item 
+\#define \mbox{\hyperlink{imgui__demo_8cpp_af25a13a96600f1a018104f6c2d3da645}{IM\+\_\+\+MIN}}(A,  B)~(((A) $<$ (B)) ? (A) \+: (B))
+\item 
+\#define \mbox{\hyperlink{imgui__demo_8cpp_a9d0693fad89638629beea97300c8f8f6}{IM\+\_\+\+MAX}}(A,  B)~(((A) $>$= (B)) ? (A) \+: (B))
+\item 
+\#define \mbox{\hyperlink{imgui__demo_8cpp_a25d1e4d29150e7587f99e0723493a004}{IM\+\_\+\+CLAMP}}(V,  MN,  MX)~((V) $<$ (MN) ? (MN) \+: (V) $>$ (MX) ? (MX) \+: (V))
+\item 
+\#define \mbox{\hyperlink{imgui__demo_8cpp_a3a504542c4837c193bd5e54911123fe1}{IMGUI\+\_\+\+CDECL}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{imgui__impl__opengl3__loader_8h_ac668e7cffd9e2e9cfee428b9b2f34fa7}{void}} \mbox{\hyperlink{namespace_im_gui_acab51ec2b39577845309f24535381038}{Im\+Gui\+::\+Show\+Font\+Atlas}} (\mbox{\hyperlink{struct_im_font_atlas}{Im\+Font\+Atlas}} $\ast$atlas)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{imgui__demo_8cpp_a25d1e4d29150e7587f99e0723493a004}\label{imgui__demo_8cpp_a25d1e4d29150e7587f99e0723493a004}} 
+\index{imgui\_demo.cpp@{imgui\_demo.cpp}!IM\_CLAMP@{IM\_CLAMP}}
+\index{IM\_CLAMP@{IM\_CLAMP}!imgui\_demo.cpp@{imgui\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{IM\_CLAMP}{IM\_CLAMP}}
+{\footnotesize\ttfamily \#define IM\+\_\+\+CLAMP(\begin{DoxyParamCaption}\item[{}]{V,  }\item[{}]{MN,  }\item[{}]{MX }\end{DoxyParamCaption})~((V) $<$ (MN) ? (MN) \+: (V) $>$ (MX) ? (MX) \+: (V))}
+
+
+
+Definition at line 155 of file imgui\+\_\+demo.\+cpp.
+
+\mbox{\Hypertarget{imgui__demo_8cpp_a9d0693fad89638629beea97300c8f8f6}\label{imgui__demo_8cpp_a9d0693fad89638629beea97300c8f8f6}} 
+\index{imgui\_demo.cpp@{imgui\_demo.cpp}!IM\_MAX@{IM\_MAX}}
+\index{IM\_MAX@{IM\_MAX}!imgui\_demo.cpp@{imgui\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{IM\_MAX}{IM\_MAX}}
+{\footnotesize\ttfamily \#define IM\+\_\+\+MAX(\begin{DoxyParamCaption}\item[{}]{A,  }\item[{}]{B }\end{DoxyParamCaption})~(((A) $>$= (B)) ? (A) \+: (B))}
+
+
+
+Definition at line 154 of file imgui\+\_\+demo.\+cpp.
+
+\mbox{\Hypertarget{imgui__demo_8cpp_af25a13a96600f1a018104f6c2d3da645}\label{imgui__demo_8cpp_af25a13a96600f1a018104f6c2d3da645}} 
+\index{imgui\_demo.cpp@{imgui\_demo.cpp}!IM\_MIN@{IM\_MIN}}
+\index{IM\_MIN@{IM\_MIN}!imgui\_demo.cpp@{imgui\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{IM\_MIN}{IM\_MIN}}
+{\footnotesize\ttfamily \#define IM\+\_\+\+MIN(\begin{DoxyParamCaption}\item[{}]{A,  }\item[{}]{B }\end{DoxyParamCaption})~(((A) $<$ (B)) ? (A) \+: (B))}
+
+
+
+Definition at line 153 of file imgui\+\_\+demo.\+cpp.
+
+\mbox{\Hypertarget{imgui__demo_8cpp_a1bfa04d9a2431433f9668c814fd4c3d5}\label{imgui__demo_8cpp_a1bfa04d9a2431433f9668c814fd4c3d5}} 
+\index{imgui\_demo.cpp@{imgui\_demo.cpp}!IM\_NEWLINE@{IM\_NEWLINE}}
+\index{IM\_NEWLINE@{IM\_NEWLINE}!imgui\_demo.cpp@{imgui\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{IM\_NEWLINE}{IM\_NEWLINE}}
+{\footnotesize\ttfamily \#define IM\+\_\+\+NEWLINE~\char`\"{}\textbackslash{}n\char`\"{}}
+
+
+
+Definition at line 128 of file imgui\+\_\+demo.\+cpp.
+
+\mbox{\Hypertarget{imgui__demo_8cpp_ad91933eea087ec3f87b1744a7fd01224}\label{imgui__demo_8cpp_ad91933eea087ec3f87b1744a7fd01224}} 
+\index{imgui\_demo.cpp@{imgui\_demo.cpp}!IM\_PRId64@{IM\_PRId64}}
+\index{IM\_PRId64@{IM\_PRId64}!imgui\_demo.cpp@{imgui\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{IM\_PRId64}{IM\_PRId64}}
+{\footnotesize\ttfamily \#define IM\+\_\+\+PRId64~\char`\"{}lld\char`\"{}}
+
+
+
+Definition at line 145 of file imgui\+\_\+demo.\+cpp.
+
+\mbox{\Hypertarget{imgui__demo_8cpp_af6951e34b07f45afbeeddd6de6718ac7}\label{imgui__demo_8cpp_af6951e34b07f45afbeeddd6de6718ac7}} 
+\index{imgui\_demo.cpp@{imgui\_demo.cpp}!IM\_PRIu64@{IM\_PRIu64}}
+\index{IM\_PRIu64@{IM\_PRIu64}!imgui\_demo.cpp@{imgui\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{IM\_PRIu64}{IM\_PRIu64}}
+{\footnotesize\ttfamily \#define IM\+\_\+\+PRIu64~\char`\"{}llu\char`\"{}}
+
+
+
+Definition at line 146 of file imgui\+\_\+demo.\+cpp.
+
+\mbox{\Hypertarget{imgui__demo_8cpp_a3a504542c4837c193bd5e54911123fe1}\label{imgui__demo_8cpp_a3a504542c4837c193bd5e54911123fe1}} 
+\index{imgui\_demo.cpp@{imgui\_demo.cpp}!IMGUI\_CDECL@{IMGUI\_CDECL}}
+\index{IMGUI\_CDECL@{IMGUI\_CDECL}!imgui\_demo.cpp@{imgui\_demo.cpp}}
+\doxysubsubsection{\texorpdfstring{IMGUI\_CDECL}{IMGUI\_CDECL}}
+{\footnotesize\ttfamily \#define IMGUI\+\_\+\+CDECL}
+
+
+
+Definition at line 162 of file imgui\+\_\+demo.\+cpp.
+

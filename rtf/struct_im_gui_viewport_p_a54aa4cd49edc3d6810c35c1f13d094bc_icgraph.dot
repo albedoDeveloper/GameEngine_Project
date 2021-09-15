@@ -1,0 +1,14 @@
+digraph "ImGuiViewportP::CalcWorkRectSize"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ImGuiViewportP::CalcWork\lRectSize",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ImGuiViewportP::GetBuild\lWorkRect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_im_gui_viewport_p.html#a86bd0e71fac71355b11d49d2ba182009",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ImGui::BeginViewportSideBar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a4216382dd5ad6c17e183f9f894db2e15",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ImGuiViewportP::UpdateWorkRect",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_im_gui_viewport_p.html#a00cd6261263e9637c819908d93580e0c",tooltip=" "];
+}

@@ -1,0 +1,471 @@
+\hypertarget{class_graphics_engine}{}\doxysection{Graphics\+Engine Class Reference}
+\label{class_graphics_engine}\index{GraphicsEngine@{GraphicsEngine}}
+
+
+A singleton that handles all of the engine graphics.  
+
+
+
+
+{\ttfamily \#include $<$Graphics\+Engine.\+h$>$}
+
+
+
+Collaboration diagram for Graphics\+Engine\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_graphics_engine_aeeb84a8028c8301bc4702430447024ed}{Graphics\+Engine}} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_graphics_engine_ab67afeefbc9f1c284f6ce310c31ae8f6}{$\sim$\+Graphics\+Engine}} ()
+\item 
+bool \mbox{\hyperlink{class_graphics_engine_a0b799e061567654e1301e7479679be3a}{Init}} (\mbox{\hyperlink{_graphics_library_enum_8h_a9b4126a116ac5389ca457a452359337b}{Graphics\+Library}} renderer, int window\+Width, int window\+Height)
+\begin{DoxyCompactList}\small\item\em Initialises the graphics. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_graphics_engine_a109e9d2005bf7f5af769b9a72a29eb04}{init\+Lighting}} ()
+\begin{DoxyCompactList}\small\item\em initialises lighting \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_engine_af8004593bcd7572d299d0f76985eab91}{new\+Frame}} (bool debug\+Menu)
+\begin{DoxyCompactList}\small\item\em Function to be called at the start of every frame for rendering. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_engine_a54e3edb4d2869a986afba9598e16cc86}{Update\+View\+Pos}} () const
+\item 
+int \mbox{\hyperlink{class_graphics_engine_ac691c275727e8bd932d0145eebf0c773}{Add\+Point\+Light}} (\mbox{\hyperlink{class_c_point_light}{CPoint\+Light}} $\ast$light)
+\item 
+void \mbox{\hyperlink{class_graphics_engine_ae3c7dbf362306dc1ecf0b6c4a3144fd3}{render\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em Renders all visible objects. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_engine_ae491d94eb4322462ba2d7efe4fd55bce}{end\+Frame}} (bool debug\+Menu)
+\begin{DoxyCompactList}\small\item\em Function to be called at the end of every frame for rendering. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_engine_a99afb5a377b35747a5e75f476a45bc45}{Generate\+Texture}} (std\+::string key, unsigned char $\ast$image, int width, int height)
+\begin{DoxyCompactList}\small\item\em generates a texture for the graphics library \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_engine_a352b53918707736daf66b47a6219a513}{Delete\+Texture}} (std\+::string key)
+\begin{DoxyCompactList}\small\item\em deletes a texture from the graphics library \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_engine_ab52a83677b455cbfdf44672597397901}{Set\+Display\+Camera}} (\mbox{\hyperlink{class_c_camera}{CCamera}} $\ast$camera)
+\begin{DoxyCompactList}\small\item\em changes the current camera displaying to the screen \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_camera}{CCamera}} $\ast$ \mbox{\hyperlink{class_graphics_engine_a307a78d11e79539a3925bbe5c3a5e242}{Get\+Display\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em current camera accessor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_engine_a750597125cf08bca414df5432daffa56}{Draw\+Model}} (\mbox{\hyperlink{class_a_model}{AModel}} $\ast$model, const \mbox{\hyperlink{class_transform}{Transform}} \&trans, const \mbox{\hyperlink{class_shader}{Shader}} $\ast$m\+\_\+shader)
+\begin{DoxyCompactList}\small\item\em Draws a model asset on the screen. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_graphics_engine_acc37cf2fd567c6151ddb643f2ade31f3}{Get\+Tex\+ID}} (std\+::string key) const
+\begin{DoxyCompactList}\small\item\em retrieves the ID by which a texture is stored in the graphics library \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_graphics_engine_a0aede58e091342b864485d5ef1425631}{Get\+Screen\+Size}} (int \&w, int \&h)
+\item 
+void \mbox{\hyperlink{class_graphics_engine_a526dd537e18e783cc6e90b51920d26f8}{Close}} ()
+\item 
+void \mbox{\hyperlink{class_graphics_engine_afcba01c8c9adccb6e5e23f258f455ef8}{Go\+Fullscreen}} () const
+\item 
+glm\+::mat4 \mbox{\hyperlink{class_graphics_engine_a6ffba3010d098883c89ad6db13c376e0}{Get\+Projection}} ()
+\item 
+glm\+::mat4 \mbox{\hyperlink{class_graphics_engine_a68f81b8f354a5d4538a47b5216efc12f}{Get\+View}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_graphics_engine}{Graphics\+Engine}} $\ast$ \mbox{\hyperlink{class_graphics_engine_a4bf36eed1a7be314dc967ace533aff62}{instance}} ()
+\begin{DoxyCompactList}\small\item\em Generates pointer to instance of singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_shader}{Shader}} $\ast$ \mbox{\hyperlink{class_graphics_engine_aa289ef6552313763ef8237ad0a29bf72}{m\+\_\+lit\+Shader}}
+\item 
+\mbox{\hyperlink{class_shader}{Shader}} $\ast$ \mbox{\hyperlink{class_graphics_engine_a2275a37da6728d79db7cd50f47c75c5b}{m\+\_\+unlit\+Shader}}
+\item 
+\mbox{\hyperlink{class_shader}{Shader}} $\ast$ \mbox{\hyperlink{class_graphics_engine_ae137c8f93832b17febf12e7cbbad3f07}{m\+\_\+debug\+Shader}}
+\item 
+bool \mbox{\hyperlink{class_graphics_engine_a3c1f6693fb6adcfc281b5efd800fbb86}{m\+\_\+draw\+Debug}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A singleton that handles all of the engine graphics. 
+
+Definition at line 29 of file Graphics\+Engine.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_graphics_engine_aeeb84a8028c8301bc4702430447024ed}\label{class_graphics_engine_aeeb84a8028c8301bc4702430447024ed}} 
+\index{GraphicsEngine@{GraphicsEngine}!GraphicsEngine@{GraphicsEngine}}
+\index{GraphicsEngine@{GraphicsEngine}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{GraphicsEngine()}{GraphicsEngine()}}
+{\footnotesize\ttfamily Graphics\+Engine\+::\+Graphics\+Engine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+default constructor 
+
+
+
+Definition at line 22 of file Graphics\+Engine.\+cpp.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{class_graphics_engine_ab67afeefbc9f1c284f6ce310c31ae8f6}\label{class_graphics_engine_ab67afeefbc9f1c284f6ce310c31ae8f6}} 
+\index{GraphicsEngine@{GraphicsEngine}!````~GraphicsEngine@{$\sim$GraphicsEngine}}
+\index{````~GraphicsEngine@{$\sim$GraphicsEngine}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{$\sim$GraphicsEngine()}{~GraphicsEngine()}}
+{\footnotesize\ttfamily Graphics\+Engine\+::$\sim$\+Graphics\+Engine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file Graphics\+Engine.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_graphics_engine_ac691c275727e8bd932d0145eebf0c773}\label{class_graphics_engine_ac691c275727e8bd932d0145eebf0c773}} 
+\index{GraphicsEngine@{GraphicsEngine}!AddPointLight@{AddPointLight}}
+\index{AddPointLight@{AddPointLight}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{AddPointLight()}{AddPointLight()}}
+{\footnotesize\ttfamily int Graphics\+Engine\+::\+Add\+Point\+Light (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_point_light}{CPoint\+Light}} $\ast$}]{light }\end{DoxyParamCaption})}
+
+
+
+Definition at line 114 of file Graphics\+Engine.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{class_graphics_engine_a526dd537e18e783cc6e90b51920d26f8}\label{class_graphics_engine_a526dd537e18e783cc6e90b51920d26f8}} 
+\index{GraphicsEngine@{GraphicsEngine}!Close@{Close}}
+\index{Close@{Close}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void Graphics\+Engine\+::\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 227 of file Graphics\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_graphics_engine_a352b53918707736daf66b47a6219a513}\label{class_graphics_engine_a352b53918707736daf66b47a6219a513}} 
+\index{GraphicsEngine@{GraphicsEngine}!DeleteTexture@{DeleteTexture}}
+\index{DeleteTexture@{DeleteTexture}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{DeleteTexture()}{DeleteTexture()}}
+{\footnotesize\ttfamily void Graphics\+Engine\+::\+Delete\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{key }\end{DoxyParamCaption})}
+
+
+
+deletes a texture from the graphics library 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & factory storage key of the texture \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 177 of file Graphics\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_graphics_engine_a750597125cf08bca414df5432daffa56}\label{class_graphics_engine_a750597125cf08bca414df5432daffa56}} 
+\index{GraphicsEngine@{GraphicsEngine}!DrawModel@{DrawModel}}
+\index{DrawModel@{DrawModel}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{DrawModel()}{DrawModel()}}
+{\footnotesize\ttfamily void Graphics\+Engine\+::\+Draw\+Model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_a_model}{AModel}} $\ast$}]{model,  }\item[{const \mbox{\hyperlink{class_transform}{Transform}} \&}]{trans,  }\item[{const \mbox{\hyperlink{class_shader}{Shader}} $\ast$}]{m\+\_\+shader }\end{DoxyParamCaption})}
+
+
+
+Draws a model asset on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & The model to draw \\
+\hline
+{\em trans} & \mbox{\hyperlink{class_transform}{Transform}} of the model \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 188 of file Graphics\+Engine.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{class_graphics_engine_ae491d94eb4322462ba2d7efe4fd55bce}\label{class_graphics_engine_ae491d94eb4322462ba2d7efe4fd55bce}} 
+\index{GraphicsEngine@{GraphicsEngine}!endFrame@{endFrame}}
+\index{endFrame@{endFrame}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{endFrame()}{endFrame()}}
+{\footnotesize\ttfamily void Graphics\+Engine\+::end\+Frame (\begin{DoxyParamCaption}\item[{bool}]{debug\+Menu }\end{DoxyParamCaption})}
+
+
+
+Function to be called at the end of every frame for rendering. 
+
+
+
+Definition at line 144 of file Graphics\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_graphics_engine_a99afb5a377b35747a5e75f476a45bc45}\label{class_graphics_engine_a99afb5a377b35747a5e75f476a45bc45}} 
+\index{GraphicsEngine@{GraphicsEngine}!GenerateTexture@{GenerateTexture}}
+\index{GenerateTexture@{GenerateTexture}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{GenerateTexture()}{GenerateTexture()}}
+{\footnotesize\ttfamily void Graphics\+Engine\+::\+Generate\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{key,  }\item[{unsigned char $\ast$}]{image,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+generates a texture for the graphics library 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & the texture key \\
+\hline
+{\em image} & the texture image data \\
+\hline
+{\em width} & the width of the texture \\
+\hline
+{\em height} & the height of the texture \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 165 of file Graphics\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_graphics_engine_a307a78d11e79539a3925bbe5c3a5e242}\label{class_graphics_engine_a307a78d11e79539a3925bbe5c3a5e242}} 
+\index{GraphicsEngine@{GraphicsEngine}!GetDisplayCamera@{GetDisplayCamera}}
+\index{GetDisplayCamera@{GetDisplayCamera}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{GetDisplayCamera()}{GetDisplayCamera()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_c_camera}{CCamera}} $\ast$ Graphics\+Engine\+::\+Get\+Display\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+current camera accessor 
+
+\begin{DoxyReturn}{Returns}
+the camerca currently in use 
+\end{DoxyReturn}
+
+
+Definition at line 160 of file Graphics\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_graphics_engine_a6ffba3010d098883c89ad6db13c376e0}\label{class_graphics_engine_a6ffba3010d098883c89ad6db13c376e0}} 
+\index{GraphicsEngine@{GraphicsEngine}!GetProjection@{GetProjection}}
+\index{GetProjection@{GetProjection}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{GetProjection()}{GetProjection()}}
+{\footnotesize\ttfamily glm\+::mat4 Graphics\+Engine\+::\+Get\+Projection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 389 of file Graphics\+Engine.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{class_graphics_engine_a0aede58e091342b864485d5ef1425631}\label{class_graphics_engine_a0aede58e091342b864485d5ef1425631}} 
+\index{GraphicsEngine@{GraphicsEngine}!GetScreenSize@{GetScreenSize}}
+\index{GetScreenSize@{GetScreenSize}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{GetScreenSize()}{GetScreenSize()}}
+{\footnotesize\ttfamily void Graphics\+Engine\+::\+Get\+Screen\+Size (\begin{DoxyParamCaption}\item[{int \&}]{w,  }\item[{int \&}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line 219 of file Graphics\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_graphics_engine_acc37cf2fd567c6151ddb643f2ade31f3}\label{class_graphics_engine_acc37cf2fd567c6151ddb643f2ade31f3}} 
+\index{GraphicsEngine@{GraphicsEngine}!GetTexID@{GetTexID}}
+\index{GetTexID@{GetTexID}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{GetTexID()}{GetTexID()}}
+{\footnotesize\ttfamily unsigned Graphics\+Engine\+::\+Get\+Tex\+ID (\begin{DoxyParamCaption}\item[{std\+::string}]{key }\end{DoxyParamCaption}) const}
+
+
+
+retrieves the ID by which a texture is stored in the graphics library 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & the key by which it\textquotesingle{}s stored by the asset factory \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the key of the texture 
+\end{DoxyReturn}
+
+
+Definition at line 214 of file Graphics\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_graphics_engine_a68f81b8f354a5d4538a47b5216efc12f}\label{class_graphics_engine_a68f81b8f354a5d4538a47b5216efc12f}} 
+\index{GraphicsEngine@{GraphicsEngine}!GetView@{GetView}}
+\index{GetView@{GetView}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{GetView()}{GetView()}}
+{\footnotesize\ttfamily glm\+::mat4 Graphics\+Engine\+::\+Get\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 399 of file Graphics\+Engine.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{class_graphics_engine_afcba01c8c9adccb6e5e23f258f455ef8}\label{class_graphics_engine_afcba01c8c9adccb6e5e23f258f455ef8}} 
+\index{GraphicsEngine@{GraphicsEngine}!GoFullscreen@{GoFullscreen}}
+\index{GoFullscreen@{GoFullscreen}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{GoFullscreen()}{GoFullscreen()}}
+{\footnotesize\ttfamily void Graphics\+Engine\+::\+Go\+Fullscreen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 168 of file Graphics\+Engine.\+h.
+
+\mbox{\Hypertarget{class_graphics_engine_a0b799e061567654e1301e7479679be3a}\label{class_graphics_engine_a0b799e061567654e1301e7479679be3a}} 
+\index{GraphicsEngine@{GraphicsEngine}!Init@{Init}}
+\index{Init@{Init}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily bool Graphics\+Engine\+::\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_graphics_library_enum_8h_a9b4126a116ac5389ca457a452359337b}{Graphics\+Library}}}]{renderer,  }\item[{int}]{window\+Width,  }\item[{int}]{window\+Height }\end{DoxyParamCaption})}
+
+
+
+Initialises the graphics. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & -\/ which graphics api to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether initialisation succeeded 
+\end{DoxyReturn}
+
+
+Definition at line 56 of file Graphics\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_graphics_engine_a109e9d2005bf7f5af769b9a72a29eb04}\label{class_graphics_engine_a109e9d2005bf7f5af769b9a72a29eb04}} 
+\index{GraphicsEngine@{GraphicsEngine}!initLighting@{initLighting}}
+\index{initLighting@{initLighting}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{initLighting()}{initLighting()}}
+{\footnotesize\ttfamily bool Graphics\+Engine\+::init\+Lighting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+initialises lighting 
+
+\begin{DoxyReturn}{Returns}
+whether operation succeeded 
+\end{DoxyReturn}
+
+
+Definition at line 72 of file Graphics\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_graphics_engine_a4bf36eed1a7be314dc967ace533aff62}\label{class_graphics_engine_a4bf36eed1a7be314dc967ace533aff62}} 
+\index{GraphicsEngine@{GraphicsEngine}!instance@{instance}}
+\index{instance@{instance}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{instance()}{instance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_graphics_engine}{Graphics\+Engine}} $\ast$ Graphics\+Engine\+::instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Generates pointer to instance of singleton. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the graphics engine 
+\end{DoxyReturn}
+
+
+Definition at line 50 of file Graphics\+Engine.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{class_graphics_engine_af8004593bcd7572d299d0f76985eab91}\label{class_graphics_engine_af8004593bcd7572d299d0f76985eab91}} 
+\index{GraphicsEngine@{GraphicsEngine}!newFrame@{newFrame}}
+\index{newFrame@{newFrame}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{newFrame()}{newFrame()}}
+{\footnotesize\ttfamily void Graphics\+Engine\+::new\+Frame (\begin{DoxyParamCaption}\item[{bool}]{debug\+Menu }\end{DoxyParamCaption})}
+
+
+
+Function to be called at the start of every frame for rendering. 
+
+
+
+Definition at line 78 of file Graphics\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_graphics_engine_ae3c7dbf362306dc1ecf0b6c4a3144fd3}\label{class_graphics_engine_ae3c7dbf362306dc1ecf0b6c4a3144fd3}} 
+\index{GraphicsEngine@{GraphicsEngine}!renderObjects@{renderObjects}}
+\index{renderObjects@{renderObjects}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{renderObjects()}{renderObjects()}}
+{\footnotesize\ttfamily void Graphics\+Engine\+::render\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Renders all visible objects. 
+
+
+
+Definition at line 133 of file Graphics\+Engine.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{class_graphics_engine_ab52a83677b455cbfdf44672597397901}\label{class_graphics_engine_ab52a83677b455cbfdf44672597397901}} 
+\index{GraphicsEngine@{GraphicsEngine}!SetDisplayCamera@{SetDisplayCamera}}
+\index{SetDisplayCamera@{SetDisplayCamera}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{SetDisplayCamera()}{SetDisplayCamera()}}
+{\footnotesize\ttfamily void Graphics\+Engine\+::\+Set\+Display\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_c_camera}{CCamera}} $\ast$}]{camera }\end{DoxyParamCaption})}
+
+
+
+changes the current camera displaying to the screen 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & the camera to use \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 155 of file Graphics\+Engine.\+cpp.
+
+\mbox{\Hypertarget{class_graphics_engine_a54e3edb4d2869a986afba9598e16cc86}\label{class_graphics_engine_a54e3edb4d2869a986afba9598e16cc86}} 
+\index{GraphicsEngine@{GraphicsEngine}!UpdateViewPos@{UpdateViewPos}}
+\index{UpdateViewPos@{UpdateViewPos}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{UpdateViewPos()}{UpdateViewPos()}}
+{\footnotesize\ttfamily void Graphics\+Engine\+::\+Update\+View\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 90 of file Graphics\+Engine.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_graphics_engine_ae137c8f93832b17febf12e7cbbad3f07}\label{class_graphics_engine_ae137c8f93832b17febf12e7cbbad3f07}} 
+\index{GraphicsEngine@{GraphicsEngine}!m\_debugShader@{m\_debugShader}}
+\index{m\_debugShader@{m\_debugShader}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{m\_debugShader}{m\_debugShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_shader}{Shader}}$\ast$ Graphics\+Engine\+::m\+\_\+debug\+Shader}
+
+
+
+Definition at line 183 of file Graphics\+Engine.\+h.
+
+\mbox{\Hypertarget{class_graphics_engine_a3c1f6693fb6adcfc281b5efd800fbb86}\label{class_graphics_engine_a3c1f6693fb6adcfc281b5efd800fbb86}} 
+\index{GraphicsEngine@{GraphicsEngine}!m\_drawDebug@{m\_drawDebug}}
+\index{m\_drawDebug@{m\_drawDebug}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{m\_drawDebug}{m\_drawDebug}}
+{\footnotesize\ttfamily bool Graphics\+Engine\+::m\+\_\+draw\+Debug = false}
+
+
+
+Definition at line 185 of file Graphics\+Engine.\+h.
+
+\mbox{\Hypertarget{class_graphics_engine_aa289ef6552313763ef8237ad0a29bf72}\label{class_graphics_engine_aa289ef6552313763ef8237ad0a29bf72}} 
+\index{GraphicsEngine@{GraphicsEngine}!m\_litShader@{m\_litShader}}
+\index{m\_litShader@{m\_litShader}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{m\_litShader}{m\_litShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_shader}{Shader}}$\ast$ Graphics\+Engine\+::m\+\_\+lit\+Shader}
+
+
+
+Definition at line 179 of file Graphics\+Engine.\+h.
+
+\mbox{\Hypertarget{class_graphics_engine_a2275a37da6728d79db7cd50f47c75c5b}\label{class_graphics_engine_a2275a37da6728d79db7cd50f47c75c5b}} 
+\index{GraphicsEngine@{GraphicsEngine}!m\_unlitShader@{m\_unlitShader}}
+\index{m\_unlitShader@{m\_unlitShader}!GraphicsEngine@{GraphicsEngine}}
+\doxysubsubsection{\texorpdfstring{m\_unlitShader}{m\_unlitShader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_shader}{Shader}}$\ast$ Graphics\+Engine\+::m\+\_\+unlit\+Shader}
+
+
+
+Definition at line 181 of file Graphics\+Engine.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_graphics_engine_8h}{Graphics\+Engine.\+h}}\item 
+\mbox{\hyperlink{_graphics_engine_8cpp}{Graphics\+Engine.\+cpp}}\end{DoxyCompactItemize}

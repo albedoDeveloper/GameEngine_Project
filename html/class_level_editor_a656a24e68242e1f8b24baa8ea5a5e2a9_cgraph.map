@@ -1,0 +1,12 @@
+<map id="LevelEditor::PositionManipulators" name="LevelEditor::PositionManipulators">
+<area shape="rect" id="node1" title=" " alt="" coords="5,132,220,159"/>
+<area shape="rect" id="node2" href="$class_transform.html#a2bd3205164a8f8f64f1c738ab6cb365f" title="position accessor" alt="" coords="281,5,436,32"/>
+<area shape="rect" id="node3" href="$class_game_object.html#ad4de114a5ac23de244bcfbf1947e041a" title="transform accessor" alt="" coords="268,56,449,83"/>
+<area shape="rect" id="node4" href="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="305,107,412,133"/>
+<area shape="rect" id="node5" href="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="305,157,413,184"/>
+<area shape="rect" id="node6" href="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="305,208,412,235"/>
+<area shape="rect" id="node7" href="$class_transform.html#a7c287f2ec371a1214df9fa7ad6a9718b" title=" " alt="" coords="281,259,436,285"/>
+<area shape="rect" id="node8" href="$class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="498,208,603,235"/>
+<area shape="rect" id="node9" href="$class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="497,259,604,285"/>
+<area shape="rect" id="node10" href="$class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="498,309,603,336"/>
+</map>

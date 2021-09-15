@@ -1,36 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="CCollider.cpp">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="CCamera.cpp">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="CCharacterComponent.cpp">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="CComponent.cpp">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="CScript.cpp">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="CStaticMesh.cpp">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="CSound.cpp">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="CPointLight.cpp">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="ModernOpenGL\AModel.cpp">
-      <Filter>Source\AssetClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="AAsset.cpp">
-      <Filter>Source\AssetClasses</Filter>
-    </ClCompile>
     <ClCompile Include="ThirdParty\imgui\imgui.cpp">
       <Filter>ThirdParty\imgui</Filter>
     </ClCompile>
@@ -52,101 +22,95 @@
     <ClCompile Include="ThirdParty\imgui\imgui_widgets.cpp">
       <Filter>ThirdParty\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionManager.cpp">
-      <Filter>Source\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Color.cpp">
-      <Filter>Source\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="DeltaTime.cpp">
-      <Filter>Source\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Source\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="GameAssetFactory.cpp">
-      <Filter>Source\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjectFactory.cpp">
-      <Filter>Source\Source</Filter>
+      <Filter>Source\Misc\Source</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>Source\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicsEngine.cpp">
-      <Filter>Source\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Source\Source</Filter>
+      <Filter>Source\Misc\Source</Filter>
     </ClCompile>
     <ClCompile Include="LevelEditor.cpp">
-      <Filter>Source\Source</Filter>
+      <Filter>Source\Misc\Source</Filter>
     </ClCompile>
     <ClCompile Include="LevelLoader.cpp">
-      <Filter>Source\Source</Filter>
+      <Filter>Source\Misc\Source</Filter>
     </ClCompile>
     <ClCompile Include="LightManager.cpp">
-      <Filter>Source\Source</Filter>
+      <Filter>Source\Misc\Source</Filter>
     </ClCompile>
     <ClCompile Include="MathLibrary.cpp">
-      <Filter>Source\Source</Filter>
+      <Filter>Source\Misc\Source</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="ScriptingEngine.cpp">
-      <Filter>Source\Source</Filter>
+      <Filter>Source\Misc\Source</Filter>
     </ClCompile>
     <ClCompile Include="ModernOpenGL\Shader.cpp">
-      <Filter>Source\Source</Filter>
+      <Filter>Source\Misc\Source</Filter>
     </ClCompile>
     <ClCompile Include="SkyBox.cpp">
-      <Filter>Source\Source</Filter>
+      <Filter>Source\Misc\Source</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
-      <Filter>Source\Source</Filter>
+      <Filter>Source\Misc\Source</Filter>
     </ClCompile>
     <ClCompile Include="ModernOpenGL\Mesh.cpp">
-      <Filter>Source\Source</Filter>
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CCharacterComponent.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CComponent.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CPointLight.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CScript.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CStaticMesh.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AAsset.cpp">
+      <Filter>Source\AssetClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModernOpenGL\AModel.cpp">
+      <Filter>Source\AssetClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DeltaTime.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameAssetFactory.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectFactory.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptingEngine.cpp">
+      <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CCollider.h">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="CCamera.h">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="CCharacterComponent.h">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="CComponent.h">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="CScript.h">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="CStaticMesh.h">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="CSound.h">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="CPointLight.h">
-      <Filter>Source\ComponentClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="ModernOpenGL\AModel.h">
-      <Filter>Source\AssetClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="AScript.h">
-      <Filter>Source\AssetClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="AAsset.h">
-      <Filter>Source\AssetClasses</Filter>
-    </ClInclude>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">
       <Filter>ThirdParty\imgui</Filter>
     </ClInclude>
@@ -175,70 +139,103 @@
       <Filter>ThirdParty\imgui</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Source\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionManager.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
-      <Filter>Source\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="DeltaTime.h">
-      <Filter>Source\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine.h">
-      <Filter>Source\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="GameAssetFactory.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Source\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectFactory.h">
-      <Filter>Source\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicsEngine.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsLibraryEnum.h">
-      <Filter>Source\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="LevelEditor.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="LevelLoader.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="LightManager.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="MathLibrary.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="ModernOpenGL\Mesh.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Source\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="ScriptingEngine.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="ModernOpenGL\Shader.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="SkyBox.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="SkyboxVerts.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
-      <Filter>Source\Headers</Filter>
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCharacterComponent.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CComponent.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPointLight.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CScript.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CStaticMesh.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="AAsset.h">
+      <Filter>Source\AssetClasses\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ModernOpenGL\AModel.h">
+      <Filter>Source\AssetClasses\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AScript.h">
+      <Filter>Source\AssetClasses\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DeltaTime.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameAssetFactory.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectFactory.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptingEngine.h">
+      <Filter>Source\Singletons\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -283,33 +280,47 @@
     <Filter Include="Source">
       <UniqueIdentifier>{b08299a7-e45f-4bd7-93e1-fc9a9021cd73}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Headers">
-      <UniqueIdentifier>{e4669bb1-686b-4e8b-9d0b-2f96886d7acd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Source">
-      <UniqueIdentifier>{52d15461-67b7-47c8-96a0-c92512638a0c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\AssetClasses">
       <UniqueIdentifier>{c5492773-7fe0-4e91-a16d-defea0c00063}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\ComponentClasses">
       <UniqueIdentifier>{0a17ef3c-b26a-4c84-8208-89f05973ab79}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\ComponentClasses\Headers">
+      <UniqueIdentifier>{e7abb32c-0314-43dd-8aa8-f9116f08862d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ComponentClasses\Source">
+      <UniqueIdentifier>{a9492315-71bf-40b7-a857-2273138935ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\AssetClasses\Header">
+      <UniqueIdentifier>{45de4fdf-5961-4a2c-8734-b816791f0034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\AssetClasses\Source">
+      <UniqueIdentifier>{9af37afb-a542-4959-ae69-3c3a00b5fcbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Singletons">
+      <UniqueIdentifier>{26533421-9a30-486d-9704-01539fee5d88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Singletons\Source">
+      <UniqueIdentifier>{deb1f81b-a84d-4e2a-90b4-d5f074f14e8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Singletons\Headers">
+      <UniqueIdentifier>{1ff036df-31f8-43aa-88cd-d175fed44a24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Misc">
+      <UniqueIdentifier>{e408af05-9149-4f9b-a4b3-20e7e9a4135a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Misc\Source">
+      <UniqueIdentifier>{52d15461-67b7-47c8-96a0-c92512638a0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Misc\Headers">
+      <UniqueIdentifier>{e4669bb1-686b-4e8b-9d0b-2f96886d7acd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="E:\Desktop\frankengine.ico">
-      <Filter>Source</Filter>
-    </Image>
-    <Image Include="..\Resources\frankengine.ico">
-      <Filter>Source</Filter>
-    </Image>
-    <Image Include="E:\Desktop\frankenstein.png">
-      <Filter>Source</Filter>
-    </Image>
+    <Image Include="..\Resources\frankengine.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ICT397-GameEngine.rc">
-      <Filter>Source</Filter>
-    </ResourceCompile>
+    <ResourceCompile Include="ICT397-GameEngine.rc" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,25 @@
+digraph "ImGui::FindOrCreateWindowSettings"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="ImGui::FindOrCreateWindow\lSettings",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="ImGui::CreateNewWindowSettings",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a2f325a08e833855b408f70a96d5fa064",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="ImChunkStream::alloc\l_chunk",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_im_chunk_stream.html#abe839ee96b7507850073541509998d1f",tooltip=" "];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="ImVector::resize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_im_vector.html#ac371dd62e56ae486b1a5038cf07eee56",tooltip=" "];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="ImGuiWindowSettings\l::GetName",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_im_gui_window_settings.html#aeb65945139ec9f3bfaf5b11040419373",tooltip=" "];
+  Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="ImHashStr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$imgui_8cpp.html#acd1b12694d0365b516bf7373f182eeee",tooltip=" "];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="ImGui::FindWindowSettings",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a9920e3b99972583f7fed0357b64a3fb2",tooltip=" "];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="ImChunkStream::begin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_im_chunk_stream.html#a7cf0b26462edf55fba30b1a32de10117",tooltip=" "];
+  Node7 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="ImChunkStream::next\l_chunk",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_im_chunk_stream.html#a279ef3799a73ef047ca26a55aefb726e",tooltip=" "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+}

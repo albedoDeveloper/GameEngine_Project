@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="AAsset.cpp" />
     <ClCompile Include="CCollider.cpp" />
-    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCharacterComponent.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
@@ -116,8 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\frankengine.ico" />
-    <Image Include="E:\Desktop\frankengine.ico" />
-    <Image Include="E:\Desktop\frankenstein.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

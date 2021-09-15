@@ -1,0 +1,16 @@
+digraph "ImGui::ColorConvertHSVtoRGB"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ImGui::ColorConvertHSVtoRGB",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="ImGui::ColorButton",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a82b18bfe08594b76c08894848d1e6fce",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="ImGui::ColorTooltip",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#afad90b366b6471e3b13175c0ebeb26c8",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="ImColor::HSV",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_im_color.html#ac8cb52119648523038818a613becf010",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="ImColor::SetHSV",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_im_color.html#afcff20160db703b956d56e5a9fa88e24",tooltip=" "];
+}

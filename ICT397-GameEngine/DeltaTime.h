@@ -31,6 +31,8 @@ public:
 	DeltaTime();
 
 private:
+	DeltaTime();
+
 	Uint64 NOW;
 	Uint64 LAST;
 	double deltaTime;

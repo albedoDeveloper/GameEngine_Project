@@ -56,11 +56,11 @@ int Engine::Execute(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 			OnEvent(&event);
 		}
 
-		OnLoop();
-		OnRender();
+		Update();
+		Render();
 	}
 
-	OnCleanup();
+	Cleanup();
 
 	return 0;
 }
@@ -92,7 +92,8 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	COLLISION; //init collision manager // TODO make init func
+	// set up physics world
+	COLLISION->Init();
 
 	if (!GRAPHICS->Init(renderer, windowWidth, windowHeight)) 
 	{
@@ -125,7 +126,7 @@ void Engine::OnEvent(SDL_Event* e)
 	INPUT->CheckKey(e);
 }
 
-void Engine::OnLoop()
+void Engine::Update()
 {
 	GAMEOBJECT->Update();
 	if (INPUT->GetKeyDown('`'))
@@ -156,7 +157,7 @@ void Engine::OnLoop()
 	}
 }
 
-void Engine::OnRender()
+void Engine::Render()
 {
 	GRAPHICS->UpdateViewPos();
 
@@ -203,7 +204,7 @@ void Engine::OnRender()
 	GRAPHICS->endFrame(m_debugMenu);
 }
 
-void Engine::OnCleanup()
+void Engine::Cleanup()
 {
 	SCRIPT->Close();
 	GRAPHICS->Close();

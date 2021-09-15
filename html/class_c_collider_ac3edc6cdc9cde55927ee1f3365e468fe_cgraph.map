@@ -1,0 +1,5 @@
+<map id="CCollider::AddConcaveCollider" name="CCollider::AddConcaveCollider">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,203,57"/>
+<area shape="rect" id="node2" href="$class_game_object.html#ace4028c08027f5a8949ba9dac125b759" title=" " alt="" coords="253,5,451,32"/>
+<area shape="rect" id="node3" href="$class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9" title="parent object accessor" alt="" coords="251,56,453,83"/>
+</map>

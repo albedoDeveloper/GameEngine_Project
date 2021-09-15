@@ -1,4 +1,5 @@
 #pragma once
+
 #include "CCollider.h"
 #include <vector>
 #include "DeltaTime.h"
@@ -43,6 +44,9 @@ public:
 	 * @brief default constructor
 	*/
 	CollisionManager();
+
+	void Init();
+
 	/**
 	 * @brief Singleton instance accessor
 	 * @return the single instance of this manager

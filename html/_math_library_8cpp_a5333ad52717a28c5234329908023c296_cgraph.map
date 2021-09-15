@@ -1,0 +1,18 @@
+<map id="Decompose" name="Decompose">
+<area shape="rect" id="node1" title=" " alt="" coords="5,360,96,387"/>
+<area shape="rect" id="node2" href="$class_matrix4f.html#a54e3080a852329be44f8d0a5ae9a4b41" title=" " alt="" coords="144,5,299,32"/>
+<area shape="rect" id="node3" href="$class_quaternion.html#aab6106f3b5d030da7cbc450151a88449" title="w value accessor" alt="" coords="158,56,285,83"/>
+<area shape="rect" id="node4" href="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="168,107,275,133"/>
+<area shape="rect" id="node5" href="$class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93" title="x value accessor" alt="" coords="161,157,282,184"/>
+<area shape="rect" id="node6" href="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="167,208,275,235"/>
+<area shape="rect" id="node7" href="$class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a" title="y value accessor" alt="" coords="160,259,283,285"/>
+<area shape="rect" id="node8" href="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="168,309,275,336"/>
+<area shape="rect" id="node9" href="$class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c" title="z value accessor" alt="" coords="161,360,282,387"/>
+<area shape="rect" id="node10" href="$class_quaternion.html#a1ebf115669b6eea34055c9ceabbab3c7" title="w value mutator" alt="" coords="158,411,285,437"/>
+<area shape="rect" id="node11" href="$class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="169,461,274,488"/>
+<area shape="rect" id="node12" href="$class_quaternion.html#a1bfc1782be552d9163706f772faab415" title="x value mutator" alt="" coords="161,512,281,539"/>
+<area shape="rect" id="node13" href="$class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="168,563,275,589"/>
+<area shape="rect" id="node14" href="$class_quaternion.html#a7bb167a496e76cd5dfeeff68cd22c143" title="y value mutator" alt="" coords="160,613,283,640"/>
+<area shape="rect" id="node15" href="$class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="169,664,274,691"/>
+<area shape="rect" id="node16" href="$class_quaternion.html#a68030fa2014f3d281ac8116722954661" title="z value mutator" alt="" coords="161,715,281,741"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="Vector3f::Magnitude" name="Vector3f::Magnitude">
+<area shape="rect" id="node1" title=" " alt="" coords="655,97,793,123"/>
+<area shape="rect" id="node2" href="$class_transform.html#a19aaf61ebb28048705c9554de15285ef" title="calculates the distance to another transform" alt="" coords="448,71,607,98"/>
+<area shape="rect" id="node6" href="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="459,122,595,149"/>
+<area shape="rect" id="node3" href="$class_game_object_factory.html#a814d8aaad84d626a629a7d04677a3802" title="searches for the closest object to a given transform with a key containing a given substring" alt="" coords="242,5,389,47"/>
+<area shape="rect" id="node4" href="$class_transform.html#acdf5060e65bb0c87353a3b880b46a6ad" title="calculates the distance to a set of coordinates" alt="" coords="231,71,400,98"/>
+<area shape="rect" id="node5" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,97,183,123"/>
+</map>

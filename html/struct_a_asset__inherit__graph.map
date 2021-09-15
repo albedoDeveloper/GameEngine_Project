@@ -1,0 +1,5 @@
+<map id="AAsset" name="AAsset">
+<area shape="rect" id="node1" title="A game asset storing information on a piece of imported game data." alt="" coords="51,5,117,32"/>
+<area shape="rect" id="node2" href="$class_a_model.html" title=" " alt="" coords="5,80,72,107"/>
+<area shape="rect" id="node3" href="$struct_a_script.html" title="An asset for a script storing game behaviour." alt="" coords="97,80,162,107"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Matrix4f::Scale" name="Matrix4f::Scale">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,115,83"/>
+<area shape="rect" id="node2" href="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="163,5,270,32"/>
+<area shape="rect" id="node3" href="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="163,56,271,83"/>
+<area shape="rect" id="node4" href="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="163,107,270,133"/>
+</map>

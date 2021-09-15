@@ -1,0 +1,4 @@
+<map id="LevelEditor::ComponentTree" name="LevelEditor::ComponentTree">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,189,32"/>
+<area shape="rect" id="node2" href="$class_game_object.html#a37a34c80df10b55fe3a4429add79eefe" title="retrieves component map" alt="" coords="237,5,452,32"/>
+</map>

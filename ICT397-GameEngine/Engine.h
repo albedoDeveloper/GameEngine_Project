@@ -57,17 +57,17 @@ private:
 	/**
 	 * @brief Function to be called every iteration of the program and handle ongoing behaviour
 	*/
-	void OnLoop();
+	void Update();
 
 	/**
 	 * @brief Function to render all of the visible objects in the program
 	*/
-	void OnRender();
+	void Render();
 
 	/**
 	 * @brief Cleans up the program on its conclusion before quitting
 	*/
-	void OnCleanup();
+	void Cleanup();
 
 private:
 	/**

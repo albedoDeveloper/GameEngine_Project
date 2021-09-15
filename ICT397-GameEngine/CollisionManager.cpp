@@ -3,12 +3,16 @@
 
 CollisionManager::CollisionManager()
 {
+}
+
+void CollisionManager::Init()
+{
     physicsWorld = physicsCommon.createPhysicsWorld();
     physicsWorld->setIsDebugRenderingEnabled(true);
     debugRender = &physicsWorld->getDebugRenderer();
     debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::COLLISION_SHAPE, true);
     debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::CONTACT_POINT, true);
-;}
+}
 
 CollisionManager* CollisionManager::Instance()
 {

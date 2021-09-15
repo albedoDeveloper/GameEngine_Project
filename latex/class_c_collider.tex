@@ -1,0 +1,416 @@
+\hypertarget{class_c_collider}{}\doxysection{CCollider Class Reference}
+\label{class_c_collider}\index{CCollider@{CCollider}}
+
+
+{\ttfamily \#include $<$CCollider.\+h$>$}
+
+
+
+Inheritance diagram for CCollider\+:
+% FIG 0
+
+
+Collaboration diagram for CCollider\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_collider_a74c40f1839119643222abcbf23ce5e4e}{CCollider}} (\mbox{\hyperlink{class_transform}{Transform}} $\ast$parent, \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$parent\+Obj)
+\begin{DoxyCompactList}\small\item\em constructor taking parent as argument \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_c_collider_a72f89c0ee3eaeb590ec0a453935468ae}{$\sim$\+CCollider}} ()
+\item 
+void \mbox{\hyperlink{class_c_collider_ab8fd6544bb2eb98523b7f27e60ac9e03}{Start}} ()
+\begin{DoxyCompactList}\small\item\em initialises the component at start of program \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_collider_a858c10f0e9fb3a6e73bd00fcfcdb99f1}{Update}} ()
+\begin{DoxyCompactList}\small\item\em updates ongoing behaviour each frame \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_collider_ae4524c7cc0069673c49d73ff16a1b68f}{Save}} (\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&j)
+\begin{DoxyCompactList}\small\item\em saves the component \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_collider_ab69c5c7345b0d7da17393d5db4e10ae2}{Load}} (\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&j)
+\begin{DoxyCompactList}\small\item\em loads the component from saved state \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_c_collider_aafb37d9330706fa8ed0251a06ee6a7ab}{Draw\+To\+Im\+Gui}} ()
+\begin{DoxyCompactList}\small\item\em Draws to imgui. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_c_collider_ae82b280aee96b0a2d6e532e0a663f256}{Update\+Collider}} ()
+\item 
+void \mbox{\hyperlink{class_c_collider_ac44996b225b212a06b6e57529e1109ee}{Add\+Box\+Collider}} (float x=0.\+2, float y=0.\+2, float z=0.\+2, float offsetX=0, float offsetY=0, float offsetZ=0, bool auto\+Size=false, int layer=1, bool allow\+Rotation=true)
+\item 
+void \mbox{\hyperlink{class_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8}{Add\+Convex\+Collider}} ()
+\item 
+void \mbox{\hyperlink{class_c_collider_ac3edc6cdc9cde55927ee1f3365e468fe}{Add\+Concave\+Collider}} (int layer)
+\item 
+void \mbox{\hyperlink{class_c_collider_a036b8b3a71d5285c01ea19478fe6574b}{Collide\+With}} (int layer\+To\+Collide\+With)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec3 \mbox{\hyperlink{class_c_collider_aab61685026901f57ea82253d46b7b8aa}{m\+\_\+offset}}
+\item 
+bool \mbox{\hyperlink{class_c_collider_a14e94623cf3dccc1117760b547e22a45}{m\+\_\+is\+Registered}} = false
+\begin{DoxyCompactList}\small\item\em whether the collider is registered with the collider manager \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_c_collider_aed4eb91bc8a6b10c460f72e8d6894df8}{m\+\_\+allow\+Rotation}}
+\item 
+reactphysics3d\+::\+Collision\+Body $\ast$ \mbox{\hyperlink{class_c_collider_adb84273cb4c402272ea229ec46cf992a}{col\+Body}} = nullptr
+\item 
+reactphysics3d\+::\+Box\+Shape $\ast$ \mbox{\hyperlink{class_c_collider_ab169c0d4c6b95ee664f7da30c66b2b9e}{box\+Collider}} = nullptr
+\item 
+reactphysics3d\+::\+Triangle\+Mesh $\ast$ \mbox{\hyperlink{class_c_collider_a4b1a7f432047b6342f28cbf266b0656f}{triangle\+Mesh}} = nullptr
+\item 
+reactphysics3d\+::\+Concave\+Mesh\+Shape $\ast$ \mbox{\hyperlink{class_c_collider_a41f23a000e9af546b6a03aeadf4adb89}{concave\+Mesh}} = nullptr
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{class_c_collider_aaf688ecb529f6f811dbec37a1ea203d3}{concave\+Vertices}}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_c_collider_aea7d2b55212ecea15c8bbc6d9458dbe3}{concave\+Indices}}
+\item 
+reactphysics3d\+::\+Convex\+Mesh\+Shape $\ast$ \mbox{\hyperlink{class_c_collider_a7e79bdcaf9bf368a647181f0f9250a37}{convex\+Collider}} = nullptr
+\item 
+reactphysics3d\+::\+Collider $\ast$ \mbox{\hyperlink{class_c_collider_a411dd8c075a110b13360638056ce8e23}{col}}
+\item 
+reactphysics3d\+::\+Polygon\+Vertex\+Array\+::\+Polygon\+Face $\ast$ \mbox{\hyperlink{class_c_collider_a633534c17b8204dbec4242235493f02b}{poly\+Face}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 9 of file CCollider.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_collider_a74c40f1839119643222abcbf23ce5e4e}\label{class_c_collider_a74c40f1839119643222abcbf23ce5e4e}} 
+\index{CCollider@{CCollider}!CCollider@{CCollider}}
+\index{CCollider@{CCollider}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{CCollider()}{CCollider()}}
+{\footnotesize\ttfamily CCollider\+::\+CCollider (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_transform}{Transform}} $\ast$}]{parent,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$}]{parent\+Obj }\end{DoxyParamCaption})}
+
+
+
+constructor taking parent as argument 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & pointer to parent transform for this component\textquotesingle{}s transform \\
+\hline
+{\em parent\+Obj} & pointer to parent object of this component \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 6 of file CCollider.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{class_c_collider_a72f89c0ee3eaeb590ec0a453935468ae}\label{class_c_collider_a72f89c0ee3eaeb590ec0a453935468ae}} 
+\index{CCollider@{CCollider}!````~CCollider@{$\sim$CCollider}}
+\index{````~CCollider@{$\sim$CCollider}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{$\sim$CCollider()}{~CCollider()}}
+{\footnotesize\ttfamily CCollider\+::$\sim$\+CCollider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 18 of file CCollider.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_collider_ac44996b225b212a06b6e57529e1109ee}\label{class_c_collider_ac44996b225b212a06b6e57529e1109ee}} 
+\index{CCollider@{CCollider}!AddBoxCollider@{AddBoxCollider}}
+\index{AddBoxCollider@{AddBoxCollider}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{AddBoxCollider()}{AddBoxCollider()}}
+{\footnotesize\ttfamily void CCollider\+::\+Add\+Box\+Collider (\begin{DoxyParamCaption}\item[{float}]{x = {\ttfamily 0.2},  }\item[{float}]{y = {\ttfamily 0.2},  }\item[{float}]{z = {\ttfamily 0.2},  }\item[{float}]{offsetX = {\ttfamily 0},  }\item[{float}]{offsetY = {\ttfamily 0},  }\item[{float}]{offsetZ = {\ttfamily 0},  }\item[{bool}]{auto\+Size = {\ttfamily false},  }\item[{int}]{layer = {\ttfamily 1},  }\item[{bool}]{allow\+Rotation = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 101 of file CCollider.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{class_c_collider_ac3edc6cdc9cde55927ee1f3365e468fe}\label{class_c_collider_ac3edc6cdc9cde55927ee1f3365e468fe}} 
+\index{CCollider@{CCollider}!AddConcaveCollider@{AddConcaveCollider}}
+\index{AddConcaveCollider@{AddConcaveCollider}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{AddConcaveCollider()}{AddConcaveCollider()}}
+{\footnotesize\ttfamily void CCollider\+::\+Add\+Concave\+Collider (\begin{DoxyParamCaption}\item[{int}]{layer }\end{DoxyParamCaption})}
+
+
+
+Definition at line 180 of file CCollider.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{class_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8}\label{class_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8}} 
+\index{CCollider@{CCollider}!AddConvexCollider@{AddConvexCollider}}
+\index{AddConvexCollider@{AddConvexCollider}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{AddConvexCollider()}{AddConvexCollider()}}
+{\footnotesize\ttfamily void CCollider\+::\+Add\+Convex\+Collider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 137 of file CCollider.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{class_c_collider_a036b8b3a71d5285c01ea19478fe6574b}\label{class_c_collider_a036b8b3a71d5285c01ea19478fe6574b}} 
+\index{CCollider@{CCollider}!CollideWith@{CollideWith}}
+\index{CollideWith@{CollideWith}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{CollideWith()}{CollideWith()}}
+{\footnotesize\ttfamily void CCollider\+::\+Collide\+With (\begin{DoxyParamCaption}\item[{int}]{layer\+To\+Collide\+With }\end{DoxyParamCaption})}
+
+
+
+Definition at line 213 of file CCollider.\+cpp.
+
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{class_c_collider_aafb37d9330706fa8ed0251a06ee6a7ab}\label{class_c_collider_aafb37d9330706fa8ed0251a06ee6a7ab}} 
+\index{CCollider@{CCollider}!DrawToImGui@{DrawToImGui}}
+\index{DrawToImGui@{DrawToImGui}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{DrawToImGui()}{DrawToImGui()}}
+{\footnotesize\ttfamily void CCollider\+::\+Draw\+To\+Im\+Gui (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws to imgui. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_component_a5c5f18ab5d67e9d91e7fa7b26b836e96}{CComponent}}.
+
+
+
+Definition at line 59 of file CCollider.\+cpp.
+
+\mbox{\Hypertarget{class_c_collider_ab69c5c7345b0d7da17393d5db4e10ae2}\label{class_c_collider_ab69c5c7345b0d7da17393d5db4e10ae2}} 
+\index{CCollider@{CCollider}!Load@{Load}}
+\index{Load@{Load}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily void CCollider\+::\+Load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+loads the component from saved state 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_component_a11335298284532e2684a6a73a45f7c3f}{CComponent}}.
+
+
+
+Definition at line 52 of file CCollider.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{class_c_collider_ae4524c7cc0069673c49d73ff16a1b68f}\label{class_c_collider_ae4524c7cc0069673c49d73ff16a1b68f}} 
+\index{CCollider@{CCollider}!Save@{Save}}
+\index{Save@{Save}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily void CCollider\+::\+Save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_level_loader_8h_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \&}]{j }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+saves the component 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_component_acd3219b90aa85de5d026d7d12bff7981}{CComponent}}.
+
+
+
+Definition at line 44 of file CCollider.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{class_c_collider_ab8fd6544bb2eb98523b7f27e60ac9e03}\label{class_c_collider_ab8fd6544bb2eb98523b7f27e60ac9e03}} 
+\index{CCollider@{CCollider}!Start@{Start}}
+\index{Start@{Start}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void CCollider\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+initialises the component at start of program 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_component_adcee296a2416501cf52755038d4f27eb}{CComponent}}.
+
+
+
+Definition at line 69 of file CCollider.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{class_c_collider_a858c10f0e9fb3a6e73bd00fcfcdb99f1}\label{class_c_collider_a858c10f0e9fb3a6e73bd00fcfcdb99f1}} 
+\index{CCollider@{CCollider}!Update@{Update}}
+\index{Update@{Update}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void CCollider\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+updates ongoing behaviour each frame 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_component_a95eac92b576c4d07d911e1e2dec99c0a}{CComponent}}.
+
+
+
+Definition at line 36 of file CCollider.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{class_c_collider_ae82b280aee96b0a2d6e532e0a663f256}\label{class_c_collider_ae82b280aee96b0a2d6e532e0a663f256}} 
+\index{CCollider@{CCollider}!UpdateCollider@{UpdateCollider}}
+\index{UpdateCollider@{UpdateCollider}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{UpdateCollider()}{UpdateCollider()}}
+{\footnotesize\ttfamily void CCollider\+::\+Update\+Collider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file CCollider.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 15
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_c_collider_ab169c0d4c6b95ee664f7da30c66b2b9e}\label{class_c_collider_ab169c0d4c6b95ee664f7da30c66b2b9e}} 
+\index{CCollider@{CCollider}!boxCollider@{boxCollider}}
+\index{boxCollider@{boxCollider}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{boxCollider}{boxCollider}}
+{\footnotesize\ttfamily reactphysics3d\+::\+Box\+Shape$\ast$ CCollider\+::box\+Collider = nullptr}
+
+
+
+Definition at line 69 of file CCollider.\+h.
+
+\mbox{\Hypertarget{class_c_collider_a411dd8c075a110b13360638056ce8e23}\label{class_c_collider_a411dd8c075a110b13360638056ce8e23}} 
+\index{CCollider@{CCollider}!col@{col}}
+\index{col@{col}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{col}{col}}
+{\footnotesize\ttfamily reactphysics3d\+::\+Collider$\ast$ CCollider\+::col}
+
+
+
+Definition at line 77 of file CCollider.\+h.
+
+\mbox{\Hypertarget{class_c_collider_adb84273cb4c402272ea229ec46cf992a}\label{class_c_collider_adb84273cb4c402272ea229ec46cf992a}} 
+\index{CCollider@{CCollider}!colBody@{colBody}}
+\index{colBody@{colBody}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{colBody}{colBody}}
+{\footnotesize\ttfamily reactphysics3d\+::\+Collision\+Body$\ast$ CCollider\+::col\+Body = nullptr}
+
+
+
+Definition at line 67 of file CCollider.\+h.
+
+\mbox{\Hypertarget{class_c_collider_aea7d2b55212ecea15c8bbc6d9458dbe3}\label{class_c_collider_aea7d2b55212ecea15c8bbc6d9458dbe3}} 
+\index{CCollider@{CCollider}!concaveIndices@{concaveIndices}}
+\index{concaveIndices@{concaveIndices}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{concaveIndices}{concaveIndices}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ CCollider\+::concave\+Indices}
+
+
+
+Definition at line 74 of file CCollider.\+h.
+
+\mbox{\Hypertarget{class_c_collider_a41f23a000e9af546b6a03aeadf4adb89}\label{class_c_collider_a41f23a000e9af546b6a03aeadf4adb89}} 
+\index{CCollider@{CCollider}!concaveMesh@{concaveMesh}}
+\index{concaveMesh@{concaveMesh}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{concaveMesh}{concaveMesh}}
+{\footnotesize\ttfamily reactphysics3d\+::\+Concave\+Mesh\+Shape$\ast$ CCollider\+::concave\+Mesh = nullptr}
+
+
+
+Definition at line 72 of file CCollider.\+h.
+
+\mbox{\Hypertarget{class_c_collider_aaf688ecb529f6f811dbec37a1ea203d3}\label{class_c_collider_aaf688ecb529f6f811dbec37a1ea203d3}} 
+\index{CCollider@{CCollider}!concaveVertices@{concaveVertices}}
+\index{concaveVertices@{concaveVertices}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{concaveVertices}{concaveVertices}}
+{\footnotesize\ttfamily std\+::vector$<$float$>$ CCollider\+::concave\+Vertices}
+
+
+
+Definition at line 73 of file CCollider.\+h.
+
+\mbox{\Hypertarget{class_c_collider_a7e79bdcaf9bf368a647181f0f9250a37}\label{class_c_collider_a7e79bdcaf9bf368a647181f0f9250a37}} 
+\index{CCollider@{CCollider}!convexCollider@{convexCollider}}
+\index{convexCollider@{convexCollider}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{convexCollider}{convexCollider}}
+{\footnotesize\ttfamily reactphysics3d\+::\+Convex\+Mesh\+Shape$\ast$ CCollider\+::convex\+Collider = nullptr}
+
+
+
+Definition at line 76 of file CCollider.\+h.
+
+\mbox{\Hypertarget{class_c_collider_aed4eb91bc8a6b10c460f72e8d6894df8}\label{class_c_collider_aed4eb91bc8a6b10c460f72e8d6894df8}} 
+\index{CCollider@{CCollider}!m\_allowRotation@{m\_allowRotation}}
+\index{m\_allowRotation@{m\_allowRotation}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{m\_allowRotation}{m\_allowRotation}}
+{\footnotesize\ttfamily bool CCollider\+::m\+\_\+allow\+Rotation}
+
+
+
+Definition at line 65 of file CCollider.\+h.
+
+\mbox{\Hypertarget{class_c_collider_a14e94623cf3dccc1117760b547e22a45}\label{class_c_collider_a14e94623cf3dccc1117760b547e22a45}} 
+\index{CCollider@{CCollider}!m\_isRegistered@{m\_isRegistered}}
+\index{m\_isRegistered@{m\_isRegistered}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{m\_isRegistered}{m\_isRegistered}}
+{\footnotesize\ttfamily bool CCollider\+::m\+\_\+is\+Registered = false}
+
+
+
+whether the collider is registered with the collider manager 
+
+
+
+Definition at line 63 of file CCollider.\+h.
+
+\mbox{\Hypertarget{class_c_collider_aab61685026901f57ea82253d46b7b8aa}\label{class_c_collider_aab61685026901f57ea82253d46b7b8aa}} 
+\index{CCollider@{CCollider}!m\_offset@{m\_offset}}
+\index{m\_offset@{m\_offset}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{m\_offset}{m\_offset}}
+{\footnotesize\ttfamily glm\+::vec3 CCollider\+::m\+\_\+offset}
+
+
+
+Definition at line 57 of file CCollider.\+h.
+
+\mbox{\Hypertarget{class_c_collider_a633534c17b8204dbec4242235493f02b}\label{class_c_collider_a633534c17b8204dbec4242235493f02b}} 
+\index{CCollider@{CCollider}!polyFace@{polyFace}}
+\index{polyFace@{polyFace}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{polyFace}{polyFace}}
+{\footnotesize\ttfamily reactphysics3d\+::\+Polygon\+Vertex\+Array\+::\+Polygon\+Face$\ast$ CCollider\+::poly\+Face}
+
+
+
+Definition at line 78 of file CCollider.\+h.
+
+\mbox{\Hypertarget{class_c_collider_a4b1a7f432047b6342f28cbf266b0656f}\label{class_c_collider_a4b1a7f432047b6342f28cbf266b0656f}} 
+\index{CCollider@{CCollider}!triangleMesh@{triangleMesh}}
+\index{triangleMesh@{triangleMesh}!CCollider@{CCollider}}
+\doxysubsubsection{\texorpdfstring{triangleMesh}{triangleMesh}}
+{\footnotesize\ttfamily reactphysics3d\+::\+Triangle\+Mesh$\ast$ CCollider\+::triangle\+Mesh = nullptr}
+
+
+
+Definition at line 71 of file CCollider.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_c_collider_8h}{CCollider.\+h}}\item 
+\mbox{\hyperlink{_c_collider_8cpp}{CCollider.\+cpp}}\end{DoxyCompactItemize}

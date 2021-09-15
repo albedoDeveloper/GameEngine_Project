@@ -1,0 +1,555 @@
+\hypertarget{class_vector3f}{}\doxysection{Vector3f Class Reference}
+\label{class_vector3f}\index{Vector3f@{Vector3f}}
+
+
+Stores information about a vector or point in three dimensions as floats.  
+
+
+
+
+{\ttfamily \#include $<$Math\+Library.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_vector3f_a1b14b77d2503c1b1ca1363163ff55432}{Vector3f}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vector3f_a71033a308401bb8950d846a012d13da8}{Vector3f}} (float x, float y, float z)
+\begin{DoxyCompactList}\small\item\em Non-\/default Constructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vector3f_afbc2c6534b8ae613c08d93ccfdf8c1f6}{Translate}} (const \mbox{\hyperlink{class_vector3f}{Vector3f}} \&v)
+\begin{DoxyCompactList}\small\item\em Moves the vector by a relative amount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vector3f_a619334360f4fc0c8a1e09f721a191ea9}{Scale}} (float x, float y, float z)
+\begin{DoxyCompactList}\small\item\em Scales the vector by a relative amount. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_vector3f_abb50ca8baf8111e9bae60e4f7c144db3}{GetX}} () const
+\begin{DoxyCompactList}\small\item\em x value accessor \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_vector3f_a9a1317e3ba2ef2c5e661d340a74a825a}{GetY}} () const
+\begin{DoxyCompactList}\small\item\em y value accessor \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_vector3f_a874fc93c81a47a0455afb9cdd542c599}{GetZ}} () const
+\begin{DoxyCompactList}\small\item\em z value accessor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vector3f_aaa6791fa256647707bcf41017f498bcf}{SetX}} (float x)
+\begin{DoxyCompactList}\small\item\em x value mutator \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vector3f_a260bcd7eb6bebb43f79a29421d254f2b}{SetY}} (float y)
+\begin{DoxyCompactList}\small\item\em y value mutator \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vector3f_afb24d616af2e75cce9af632c870141ac}{SetZ}} (float z)
+\begin{DoxyCompactList}\small\item\em z value mutator \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_vector3f_afb1763cca9cabe61674bdff20efcc81f}{Magnitude}} () const
+\item 
+void \mbox{\hyperlink{class_vector3f_adfb7e99ca57f1fc60fae278e1841c6e5}{Set\+Magnitude}} (float length)
+\item 
+\mbox{\hyperlink{class_vector3f}{Vector3f}} \mbox{\hyperlink{class_vector3f_a888467216389c2fe26712dec320a14ee}{cross\+Product}} (\mbox{\hyperlink{class_vector3f}{Vector3f}} o\+Vec)
+\begin{DoxyCompactList}\small\item\em Cross product of two vectors \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_vector3f_a4689cad658179e3c9bf6b26ae944f0ef}{dot\+Product}} (\mbox{\hyperlink{class_vector3f}{Vector3f}} o\+Vec)
+\begin{DoxyCompactList}\small\item\em Dot Product of two vectors \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vector3f}{Vector3f}} \mbox{\hyperlink{class_vector3f_a03a67fd6ec4ea8a248e9241d3c0c3ba6}{Normalise}} (\mbox{\hyperlink{class_vector3f}{Vector3f}} o\+Vec)
+\begin{DoxyCompactList}\small\item\em Normalise a vector \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_vector3f_a0a20157906da4049397311c47230f3b5}{Rad2\+Deg}} (float rad)
+\item 
+\mbox{\hyperlink{class_vector3f}{Vector3f}} \mbox{\hyperlink{class_vector3f_a663cda4e765204ed18cbf02659fad6c0}{Rad2\+Deg}} ()
+\item 
+\mbox{\hyperlink{class_vector3f}{Vector3f}} \mbox{\hyperlink{class_vector3f_a590a069eafc18d2b7361901a92849a1f}{operator+}} (\mbox{\hyperlink{class_vector3f}{Vector3f}} o\+Vec)
+\begin{DoxyCompactList}\small\item\em Operator + overload \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vector3f}{Vector3f}} \mbox{\hyperlink{class_vector3f_ac545a4d8ba24dbcdbb9e2ece80bda494}{operator$\ast$}} (const \mbox{\hyperlink{class_vector3f}{Vector3f}} \&o\+Vec)
+\begin{DoxyCompactList}\small\item\em Operator $\ast$ overload \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vector3f}{Vector3f}} \mbox{\hyperlink{class_vector3f_a8008bdcb2339cf8b2a5303896c42c953}{operator$\ast$}} (const float \&num)
+\begin{DoxyCompactList}\small\item\em Operator $\ast$ overload \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vector3f}{Vector3f}} \mbox{\hyperlink{class_vector3f_a094255c691a571a5c23568145692d80f}{operator/}} (const \mbox{\hyperlink{class_vector3f}{Vector3f}} \&o\+Vec)
+\begin{DoxyCompactList}\small\item\em division operator \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vector3f}{Vector3f}} \mbox{\hyperlink{class_vector3f_aa38ca1b0c8f06379d0cfddc865a8932e}{operator-\/}} (const \mbox{\hyperlink{class_vector3f}{Vector3f}} \&o\+Vec)
+\begin{DoxyCompactList}\small\item\em Operator -\/ overload \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vector3f}{Vector3f}} \mbox{\hyperlink{class_vector3f_a7155e46fef76868ed9696ae120df3ca3}{operator=}} (const \mbox{\hyperlink{class_vector3f}{Vector3f}} \&o\+Vec)
+\begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vector3f}{Vector3f}} \mbox{\hyperlink{class_vector3f_acf9096bffe34f8d51be8818f7cc1c8be}{operator$\ast$}} (const \mbox{\hyperlink{class_quaternion}{Quaternion}} \&quat)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Stores information about a vector or point in three dimensions as floats. 
+
+Definition at line 15 of file Math\+Library.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_vector3f_a1b14b77d2503c1b1ca1363163ff55432}\label{class_vector3f_a1b14b77d2503c1b1ca1363163ff55432}} 
+\index{Vector3f@{Vector3f}!Vector3f@{Vector3f}}
+\index{Vector3f@{Vector3f}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{Vector3f()}{Vector3f()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Vector3f\+::\+Vector3f (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+
+
+Definition at line 36 of file Math\+Library.\+h.
+
+\mbox{\Hypertarget{class_vector3f_a71033a308401bb8950d846a012d13da8}\label{class_vector3f_a71033a308401bb8950d846a012d13da8}} 
+\index{Vector3f@{Vector3f}!Vector3f@{Vector3f}}
+\index{Vector3f@{Vector3f}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{Vector3f()}{Vector3f()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Vector3f\+::\+Vector3f (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Non-\/default Constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+{\em z} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 47 of file Math\+Library.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_vector3f_a888467216389c2fe26712dec320a14ee}\label{class_vector3f_a888467216389c2fe26712dec320a14ee}} 
+\index{Vector3f@{Vector3f}!crossProduct@{crossProduct}}
+\index{crossProduct@{crossProduct}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{crossProduct()}{crossProduct()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector3f}{Vector3f}} Vector3f\+::cross\+Product (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector3f}{Vector3f}}}]{o\+Vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cross product of two vectors 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+Vec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 144 of file Math\+Library.\+h.
+
+\mbox{\Hypertarget{class_vector3f_a4689cad658179e3c9bf6b26ae944f0ef}\label{class_vector3f_a4689cad658179e3c9bf6b26ae944f0ef}} 
+\index{Vector3f@{Vector3f}!dotProduct@{dotProduct}}
+\index{dotProduct@{dotProduct}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{dotProduct()}{dotProduct()}}
+{\footnotesize\ttfamily float Vector3f\+::dot\+Product (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector3f}{Vector3f}}}]{o\+Vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Dot Product of two vectors 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+Vec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 154 of file Math\+Library.\+h.
+
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{class_vector3f_abb50ca8baf8111e9bae60e4f7c144db3}\label{class_vector3f_abb50ca8baf8111e9bae60e4f7c144db3}} 
+\index{Vector3f@{Vector3f}!GetX@{GetX}}
+\index{GetX@{GetX}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{GetX()}{GetX()}}
+{\footnotesize\ttfamily float Vector3f\+::\+GetX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+x value accessor 
+
+\begin{DoxyReturn}{Returns}
+the value of X 
+\end{DoxyReturn}
+
+
+Definition at line 79 of file Math\+Library.\+h.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{class_vector3f_a9a1317e3ba2ef2c5e661d340a74a825a}\label{class_vector3f_a9a1317e3ba2ef2c5e661d340a74a825a}} 
+\index{Vector3f@{Vector3f}!GetY@{GetY}}
+\index{GetY@{GetY}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{GetY()}{GetY()}}
+{\footnotesize\ttfamily float Vector3f\+::\+GetY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+y value accessor 
+
+\begin{DoxyReturn}{Returns}
+the value of Y 
+\end{DoxyReturn}
+
+
+Definition at line 88 of file Math\+Library.\+h.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{class_vector3f_a874fc93c81a47a0455afb9cdd542c599}\label{class_vector3f_a874fc93c81a47a0455afb9cdd542c599}} 
+\index{Vector3f@{Vector3f}!GetZ@{GetZ}}
+\index{GetZ@{GetZ}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{GetZ()}{GetZ()}}
+{\footnotesize\ttfamily float Vector3f\+::\+GetZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+z value accessor 
+
+\begin{DoxyReturn}{Returns}
+the value of Z 
+\end{DoxyReturn}
+
+
+Definition at line 97 of file Math\+Library.\+h.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{class_vector3f_afb1763cca9cabe61674bdff20efcc81f}\label{class_vector3f_afb1763cca9cabe61674bdff20efcc81f}} 
+\index{Vector3f@{Vector3f}!Magnitude@{Magnitude}}
+\index{Magnitude@{Magnitude}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{Magnitude()}{Magnitude()}}
+{\footnotesize\ttfamily float Vector3f\+::\+Magnitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 129 of file Math\+Library.\+h.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{class_vector3f_a03a67fd6ec4ea8a248e9241d3c0c3ba6}\label{class_vector3f_a03a67fd6ec4ea8a248e9241d3c0c3ba6}} 
+\index{Vector3f@{Vector3f}!Normalise@{Normalise}}
+\index{Normalise@{Normalise}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{Normalise()}{Normalise()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector3f}{Vector3f}} Vector3f\+::\+Normalise (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector3f}{Vector3f}}}]{o\+Vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Normalise a vector 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+Vec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 166 of file Math\+Library.\+h.
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{class_vector3f_a8008bdcb2339cf8b2a5303896c42c953}\label{class_vector3f_a8008bdcb2339cf8b2a5303896c42c953}} 
+\index{Vector3f@{Vector3f}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector3f}{Vector3f}} Vector3f\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const float \&}]{num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operator $\ast$ overload 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 211 of file Math\+Library.\+h.
+
+\mbox{\Hypertarget{class_vector3f_acf9096bffe34f8d51be8818f7cc1c8be}\label{class_vector3f_acf9096bffe34f8d51be8818f7cc1c8be}} 
+\index{Vector3f@{Vector3f}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector3f}{Vector3f}} Vector3f\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_quaternion}{Quaternion}} \&}]{quat }\end{DoxyParamCaption})}
+
+
+
+
+
+Operator $\ast$ overload
+
+
+\begin{DoxyParams}{Parameters}
+{\em quat} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file Math\+Library.\+cpp.
+
+\mbox{\Hypertarget{class_vector3f_ac545a4d8ba24dbcdbb9e2ece80bda494}\label{class_vector3f_ac545a4d8ba24dbcdbb9e2ece80bda494}} 
+\index{Vector3f@{Vector3f}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector3f}{Vector3f}} Vector3f\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector3f}{Vector3f}} \&}]{o\+Vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operator $\ast$ overload 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+Vec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 201 of file Math\+Library.\+h.
+
+\mbox{\Hypertarget{class_vector3f_a590a069eafc18d2b7361901a92849a1f}\label{class_vector3f_a590a069eafc18d2b7361901a92849a1f}} 
+\index{Vector3f@{Vector3f}!operator+@{operator+}}
+\index{operator+@{operator+}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector3f}{Vector3f}} Vector3f\+::operator+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vector3f}{Vector3f}}}]{o\+Vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operator + overload 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+Vec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 191 of file Math\+Library.\+h.
+
+\mbox{\Hypertarget{class_vector3f_aa38ca1b0c8f06379d0cfddc865a8932e}\label{class_vector3f_aa38ca1b0c8f06379d0cfddc865a8932e}} 
+\index{Vector3f@{Vector3f}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector3f}{Vector3f}} Vector3f\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector3f}{Vector3f}} \&}]{o\+Vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Operator -\/ overload 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+Vec} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 231 of file Math\+Library.\+h.
+
+\mbox{\Hypertarget{class_vector3f_a094255c691a571a5c23568145692d80f}\label{class_vector3f_a094255c691a571a5c23568145692d80f}} 
+\index{Vector3f@{Vector3f}!operator/@{operator/}}
+\index{operator/@{operator/}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{operator/()}{operator/()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector3f}{Vector3f}} Vector3f\+::operator/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector3f}{Vector3f}} \&}]{o\+Vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+division operator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+Vec} & the vector to divide by \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result of division 
+\end{DoxyReturn}
+
+
+Definition at line 221 of file Math\+Library.\+h.
+
+\mbox{\Hypertarget{class_vector3f_a7155e46fef76868ed9696ae120df3ca3}\label{class_vector3f_a7155e46fef76868ed9696ae120df3ca3}} 
+\index{Vector3f@{Vector3f}!operator=@{operator=}}
+\index{operator=@{operator=}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector3f}{Vector3f}} Vector3f\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector3f}{Vector3f}} \&}]{o\+Vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+assignment operator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+Vec} & the vector to set this vector to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value of the vector 
+\end{DoxyReturn}
+
+
+Definition at line 241 of file Math\+Library.\+h.
+
+\mbox{\Hypertarget{class_vector3f_a663cda4e765204ed18cbf02659fad6c0}\label{class_vector3f_a663cda4e765204ed18cbf02659fad6c0}} 
+\index{Vector3f@{Vector3f}!Rad2Deg@{Rad2Deg}}
+\index{Rad2Deg@{Rad2Deg}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{Rad2Deg()}{Rad2Deg()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector3f}{Vector3f}} Vector3f\+::\+Rad2\+Deg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 176 of file Math\+Library.\+h.
+
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{class_vector3f_a0a20157906da4049397311c47230f3b5}\label{class_vector3f_a0a20157906da4049397311c47230f3b5}} 
+\index{Vector3f@{Vector3f}!Rad2Deg@{Rad2Deg}}
+\index{Rad2Deg@{Rad2Deg}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{Rad2Deg()}{Rad2Deg()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily float Vector3f\+::\+Rad2\+Deg (\begin{DoxyParamCaption}\item[{float}]{rad }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 171 of file Math\+Library.\+h.
+
+\mbox{\Hypertarget{class_vector3f_a619334360f4fc0c8a1e09f721a191ea9}\label{class_vector3f_a619334360f4fc0c8a1e09f721a191ea9}} 
+\index{Vector3f@{Vector3f}!Scale@{Scale}}
+\index{Scale@{Scale}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{Scale()}{Scale()}}
+{\footnotesize\ttfamily void Vector3f\+::\+Scale (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Scales the vector by a relative amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X component of the scaling factor \\
+\hline
+{\em y} & Y component of the scaling factor \\
+\hline
+{\em z} & Z component of the scaling factor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 68 of file Math\+Library.\+h.
+
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{class_vector3f_adfb7e99ca57f1fc60fae278e1841c6e5}\label{class_vector3f_adfb7e99ca57f1fc60fae278e1841c6e5}} 
+\index{Vector3f@{Vector3f}!SetMagnitude@{SetMagnitude}}
+\index{SetMagnitude@{SetMagnitude}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{SetMagnitude()}{SetMagnitude()}}
+{\footnotesize\ttfamily void Vector3f\+::\+Set\+Magnitude (\begin{DoxyParamCaption}\item[{float}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 134 of file Math\+Library.\+h.
+
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{class_vector3f_aaa6791fa256647707bcf41017f498bcf}\label{class_vector3f_aaa6791fa256647707bcf41017f498bcf}} 
+\index{Vector3f@{Vector3f}!SetX@{SetX}}
+\index{SetX@{SetX}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{SetX()}{SetX()}}
+{\footnotesize\ttfamily void Vector3f\+::\+SetX (\begin{DoxyParamCaption}\item[{float}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+x value mutator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the desired value of X \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 106 of file Math\+Library.\+h.
+
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{class_vector3f_a260bcd7eb6bebb43f79a29421d254f2b}\label{class_vector3f_a260bcd7eb6bebb43f79a29421d254f2b}} 
+\index{Vector3f@{Vector3f}!SetY@{SetY}}
+\index{SetY@{SetY}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{SetY()}{SetY()}}
+{\footnotesize\ttfamily void Vector3f\+::\+SetY (\begin{DoxyParamCaption}\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+y value mutator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & the desired value of Y \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 115 of file Math\+Library.\+h.
+
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{class_vector3f_afb24d616af2e75cce9af632c870141ac}\label{class_vector3f_afb24d616af2e75cce9af632c870141ac}} 
+\index{Vector3f@{Vector3f}!SetZ@{SetZ}}
+\index{SetZ@{SetZ}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{SetZ()}{SetZ()}}
+{\footnotesize\ttfamily void Vector3f\+::\+SetZ (\begin{DoxyParamCaption}\item[{float}]{z }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+z value mutator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em z} & the desired value of Z \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 124 of file Math\+Library.\+h.
+
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{class_vector3f_afbc2c6534b8ae613c08d93ccfdf8c1f6}\label{class_vector3f_afbc2c6534b8ae613c08d93ccfdf8c1f6}} 
+\index{Vector3f@{Vector3f}!Translate@{Translate}}
+\index{Translate@{Translate}!Vector3f@{Vector3f}}
+\doxysubsubsection{\texorpdfstring{Translate()}{Translate()}}
+{\footnotesize\ttfamily void Vector3f\+::\+Translate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_vector3f}{Vector3f}} \&}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Moves the vector by a relative amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & The vector to add to this vector \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 57 of file Math\+Library.\+h.
+
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_math_library_8h}{Math\+Library.\+h}}\item 
+\mbox{\hyperlink{_math_library_8cpp}{Math\+Library.\+cpp}}\end{DoxyCompactItemize}

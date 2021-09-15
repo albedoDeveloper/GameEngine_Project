@@ -1,0 +1,14 @@
+digraph "ImParseFormatFindStart"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ImParseFormatFindStart",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="ImParseFormatPrecision",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$imgui__internal_8h.html#a4bff16ce85d201d97552ce9017c1d79a",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="ImParseFormatTrimDecorations",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$imgui__internal_8h.html#a1ef2acf46b5260ebdcbb18400c94d42e",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="ImGui::TempInputScalar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a392fed3e7db2a75abf217bf84c6abce9",tooltip=" "];
+}

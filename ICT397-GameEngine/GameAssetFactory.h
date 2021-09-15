@@ -1,4 +1,5 @@
 #pragma once
+
 #include "ModernOpenGL/AModel.h"
 #include <fstream>
 #include <sstream>
@@ -65,6 +66,8 @@ public:
 	void Close();
 
 private:
+	GameAssetFactory() {};
+
 	/**
 	 * @brief loads in a lua file
 	 * @param path location of the file

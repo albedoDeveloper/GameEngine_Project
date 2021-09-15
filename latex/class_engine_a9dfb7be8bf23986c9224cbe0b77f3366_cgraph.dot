@@ -1,0 +1,12 @@
+digraph "Engine::Execute"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Engine::Execute",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="The main function to execute all behaviour of the game engine."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="ImGui_ImplSDL2_ProcessEvent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$imgui__impl__sdl_8cpp.html#af02f4ad765d4f65b334eb14a4065f8eb",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="ImGui::GetIO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a3179e560812f878f3961ce803a5d9302",tooltip=" "];
+}

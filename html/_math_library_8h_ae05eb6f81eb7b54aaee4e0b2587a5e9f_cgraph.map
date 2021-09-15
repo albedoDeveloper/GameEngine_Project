@@ -1,0 +1,4 @@
+<map id="BiLerp" name="BiLerp">
+<area shape="rect" id="node1" title="returns a value determined by 4 points and the x and z positions first the liner interpolation of the..." alt="" coords="5,5,64,32"/>
+<area shape="rect" id="node2" href="$_math_library_8cpp.html#ab51c67589d08974528961514027b63ee" title="returns a point between the start and end determined by strength" alt="" coords="112,5,159,32"/>
+</map>
