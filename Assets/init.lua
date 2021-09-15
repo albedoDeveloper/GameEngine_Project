@@ -141,6 +141,7 @@ GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
 
 SpawnGameObject("endscreen"):SetActive(false)
 GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")
+GetGameObject("endscreen"):GetCStaticMesh():AssignShader("unlit")
 GetGameObject("endscreen"):GetTransform():SetParent(
 	GetGameObject("player"):GetCCamera():GetTransform()
 )

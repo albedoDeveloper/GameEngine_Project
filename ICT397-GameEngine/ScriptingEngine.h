@@ -64,12 +64,6 @@ private:
 	 * @param filePath The location of the model in storage
 	*/
 	static void LoadModel(std::string name, std::string filePath);
-	/**
-	 * @brief Loads a texture into the game engine's asset manager
-	 * @param key name of the texture
-	 * @param filePath location of the texture in storage
-	*/
-	static void LoadTexture(std::string key, std::string filePath);
 
 	static void UnloadTexture(std::string key);
 

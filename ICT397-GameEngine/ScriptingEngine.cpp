@@ -39,7 +39,6 @@ lua_State* ScriptingEngine::NewState()
 
     getGlobalNamespace(Lbuff).addFunction("LoadModel", LoadModel);
     getGlobalNamespace(Lbuff).addFunction("LoadScript", LoadScript);
-    getGlobalNamespace(Lbuff).addFunction("LoadTexture", LoadTexture);
     getGlobalNamespace(Lbuff).addFunction("UnloadTexture", UnloadTexture);
     getGlobalNamespace(Lbuff).addFunction("LoadHeightMap", LoadHeightMap);
     getGlobalNamespace(Lbuff).addFunction("SpawnGameObject", SpawnGameObject);
@@ -233,11 +232,6 @@ void ScriptingEngine::LoadModel(std::string name, std::string filePath)
 void ScriptingEngine::LoadScript(std::string key, std::string filePath)
 {
     ASSET->LoadScript(key, "../Assets/Scripts/"+filePath);
-}
-
-void ScriptingEngine::LoadTexture(std::string key, std::string fileName)
-{
-    ASSET->LoadTexture(key, fileName);
 }
 
 void ScriptingEngine::UnloadTexture(std::string key)

@@ -42,31 +42,6 @@ void GameAssetFactory::LoadScript(std::string key, std::string filePath)
     }
 }
 
-
-bool GameAssetFactory::LoadTexture(std::string key, std::string fileName)
-{
-    /*if (CheckName(key))
-    {
-        return false;
-    }
-
-    unsigned width, height;
-    unsigned error;
-    unsigned char* image;
-    error = lodepng_decode32_file(&image, &width, &height,("../Assets/Textures/" + fileName).c_str()); // RETURNS RGBA
-    if (error) printf("error %u: %s\n", error, lodepng_error_text(error));
-
-    GRAPHICS->GenerateTexture(key, image, width, height);
-
-    free(image);*/
-
-#if _DEBUG
-    std::cout << "Texture loaded in. key:" << key << std::endl;
-#endif
-
-    return true;
-}
-
 bool GameAssetFactory::UnloadTexture(std::string key)
 {
     if (CheckName(key))

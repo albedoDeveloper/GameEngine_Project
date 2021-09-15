@@ -39,13 +39,6 @@ public:
 	void LoadScript(std::string key, std::string filePath);
 
 	/**
-	 * @brief loads in a texture
-	 * @param key the storage key for the texture
-	 * @param filePath the location of the file to load
-	*/
-	bool LoadTexture(std::string key, std::string fileName);
-
-	/**
 	 * @brief unload a texture from memory
 	*/
 	bool UnloadTexture(std::string key);
