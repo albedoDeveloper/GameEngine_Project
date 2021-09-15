@@ -284,7 +284,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	m_litShader = new Shader("./shaders/vertexShader.vert", "./shaders/lit.frag");
 	m_unlitShader = new Shader("./shaders/vertexShader.vert", "./shaders/unlit.frag");
 	m_debugShader = new Shader("./shaders/vertexShader.vert", "./shaders/debug.frag");
-	
+
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",
 		"../Assets/skybox/left.png",

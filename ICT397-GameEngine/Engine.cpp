@@ -92,7 +92,7 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	COLLISION; //init collision manager
+	COLLISION; //init collision manager // TODO make init func
 
 	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
 	{
@@ -103,7 +103,7 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	SCRIPT->RunInitScript();
 
 	// temporarily creating player controller here
-	// TODO move to level loader class
+	// TODO move to init
 	GAMEOBJECT->GetGameObject("player")->AddCSound()->LoadSound("milkyway.wav");
 	GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav",-1,false);
 
