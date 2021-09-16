@@ -9,8 +9,6 @@
 #include <array>
 #include "Mesh.h"
 
-
-
 struct modelInfo
 {
     std::string path;
@@ -40,7 +38,7 @@ private:
     int m_text;
     std::string m_texturePath;
 
-    void loadModel(std::string path);
+    void LoadModel(std::string path);
     void processNode(aiNode* node, const aiScene* scene);
     void processMesh(aiMesh* mesh, const aiScene* scene);
     std::vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName);

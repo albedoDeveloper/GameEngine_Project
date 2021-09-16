@@ -177,7 +177,7 @@ void GameObject::Render()
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<CComponent*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (auto mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
 			for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
@@ -193,7 +193,7 @@ void GameObject::LateRender()
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<CComponent*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (auto mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
 			for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)

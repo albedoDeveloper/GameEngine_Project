@@ -21,7 +21,7 @@ public:
 	 * @brief Moves the character by altering its acceleration
 	 * @param acceleration the acceleration to add
 	*/
-	void Move(float x, float y, float z);
+	//void Move(float x, float y, float z);
 
 	/**
 	 * @brief constructor taking parent as argument
@@ -125,7 +125,7 @@ private:
 	/**
 	 * @brief The character's acceleration, how much and in what direction its velocity changes over time
 	*/
-	Vector3f m_acceleration;
+	//Vector3f m_acceleration;
 
 	bool m_playerControlled;
 

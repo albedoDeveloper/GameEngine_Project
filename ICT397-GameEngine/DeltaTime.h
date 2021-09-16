@@ -24,12 +24,6 @@ public:
 
 	float GetTimeElapsed() const;
 
-
-	/**
-	 * @brief default constructor
-	*/
-	DeltaTime();
-
 private:
 	DeltaTime();
 

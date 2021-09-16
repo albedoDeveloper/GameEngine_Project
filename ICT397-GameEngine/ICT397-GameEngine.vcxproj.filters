@@ -251,10 +251,10 @@
     <None Include="shaders\lit.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="shaders\skyBoxColourShader.fs">
+    <None Include="shaders\skyBoxColourShader.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="shaders\skyBoxVertexShader.vs">
+    <None Include="shaders\skyBoxVertexShader.vert">
       <Filter>Shaders</Filter>
     </None>
     <None Include="shaders\vertexShader.vert">

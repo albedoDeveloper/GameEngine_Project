@@ -49,7 +49,7 @@ public:
 private:
 	friend class CScript;
 
-	ScriptingEngine(); // enforce singleton
+	ScriptingEngine() {}; // enforce singleton
 
 	/**
 	 * @brief The lua state the engine will use for lua functionality

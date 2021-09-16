@@ -105,8 +105,8 @@
     <None Include="..\Assets\Scripts\rotate.lua" />
     <None Include="shaders\debug.frag" />
     <None Include="shaders\lit.frag" />
-    <None Include="shaders\skyBoxColourShader.fs" />
-    <None Include="shaders\skyBoxVertexShader.vs" />
+    <None Include="shaders\skyBoxColourShader.frag" />
+    <None Include="shaders\skyBoxVertexShader.vert" />
     <None Include="shaders\unlit.frag" />
     <None Include="shaders\vertexShader.vert" />
   </ItemGroup>

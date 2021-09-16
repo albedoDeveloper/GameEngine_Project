@@ -12,7 +12,7 @@ CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	m_parentTransform{m_parent->GetTransform()},
 	m_velocity{ 0,0,0 }, 
 	m_maxSpeed{ 10 }, 
-	m_acceleration{ 0,0,0 }, 
+	//m_acceleration{ 0,0,0 }, 
 	m_lastTime{ 0 }, 
 	m_currentTime{ 0 }, 
 	m_updateInterval{1.f/60},
@@ -23,10 +23,10 @@ CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 {
 }
 
-void CCharacter::Move(float x, float y, float z)
-{
-	m_acceleration = Vector3f(x, y, z);
-}
+//void CCharacter::Move(float x, float y, float z)
+//{
+//	m_acceleration = Vector3f(x, y, z);
+//}
 
 void CCharacter::Jump(float x, float y, float z)
 {
@@ -78,7 +78,7 @@ void CCharacter::Update()
 {
 	double deltaTime = TIME->GetDeltaTime();
 	float mouseSens = 0.1f;
-	Vector3f moveVector(0, 0, 0);
+	Vector3f accel(0, 0, 0);
 
 	if (m_playerControlled)
 	{
@@ -86,29 +86,29 @@ void CCharacter::Update()
 		{
 			if (INPUT->GetKey('s'))
 			{
-				moveVector.SetZ(0.5f * deltaTime);
+				accel.SetZ(0.5f * deltaTime);
 			}
 			else if (INPUT->GetKey('w'))
 			{
-				moveVector.SetZ(-0.5f * deltaTime);
+				accel.SetZ(-0.5f * deltaTime);
 			}
 
 			if (INPUT->GetKey('a'))
 			{
-				moveVector.SetX(-0.5f * deltaTime);
+				accel.SetX(-0.5f * deltaTime);
 			}
 			else if (INPUT->GetKey('d'))
 			{
-				moveVector.SetX(0.5f * deltaTime);
+				accel.SetX(0.5f * deltaTime);
 			}
 
 			if (INPUT->GetKey(' '))
 			{
-				moveVector.SetY(0.5f * deltaTime);
+				accel.SetY(0.5f * deltaTime);
 			}
 			else if (INPUT->GetKey('c'))
 			{
-				moveVector.SetY(-0.5f * deltaTime);
+				accel.SetY(-0.5f);
 			}
 		}
 
@@ -159,8 +159,6 @@ void CCharacter::Update()
 				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().SetEulerAngles(DegreesToRad(-90.f), eulersInRads.GetY(), eulersInRads.GetZ());
 			}
 		}
-
-		Move(moveVector.GetX(), moveVector.GetY(), moveVector.GetZ());
 	}
 
 	static const float GRAVITY = 0;
@@ -168,8 +166,8 @@ void CCharacter::Update()
 	//newtonian calculations
 	m_velocity = m_velocity * 0.8f; // apply damping factor
 	m_velocity = m_velocity + Vector3f(0, GRAVITY * deltaTime, 0); // gravity
-	m_velocity = m_velocity + m_acceleration;
-	m_acceleration = Vector3f(0, 0, 0);
+	m_velocity = m_velocity + accel;
+	std::cout << accel.GetY() << std::endl;
 	if (m_velocity.Magnitude() > m_maxSpeed)
 	{
 		m_velocity.SetMagnitude(m_maxSpeed);

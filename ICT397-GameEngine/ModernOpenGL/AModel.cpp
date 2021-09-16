@@ -6,7 +6,7 @@ AModel::AModel(std::string path, std::string keyTemp)
     :AAsset{ keyTemp }, key{ keyTemp }
 {
     m_info.path = path;
-    loadModel(path);
+    LoadModel(path);
 }
 
 void AModel::Draw(const Shader* shader) const
@@ -15,7 +15,7 @@ void AModel::Draw(const Shader* shader) const
         m_meshes[i].Draw(shader, m_text);
 }
 
-void AModel::loadModel(std::string path)
+void AModel::LoadModel(std::string path)
 {
     // read file via ASSIMP
     Assimp::Importer importer;
