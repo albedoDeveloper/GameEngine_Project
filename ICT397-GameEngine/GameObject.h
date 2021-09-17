@@ -31,55 +31,55 @@ public:
 	 * @return The created component
 	*/
 	template<class T, class... Targs>
-	inline T* AddComponent(Targs &&... args);
+	inline T *AddComponent(Targs &&... args);
 
 	/**
 	 * @brief Adds a static mesh component
 	 * @return The created mesh
 	*/
-	CStaticMesh* AddCStaticMesh();
+	CStaticMesh *AddCStaticMesh();
 	/**
 	 * @brief Adds a script component
 	 * @return the created script
 	*/
-	CScript* AddCScript();
+	CScript *AddCScript();
 
-	CStaticMesh* GetCStaticMesh();
-	
+	CStaticMesh *GetCStaticMesh();
+
 	/**
 	 * @brief Adds a character component
 	 * @return the created character
 	*/
-	CCharacter* AddCCharacter();
+	CCharacter *AddCCharacter();
 	/**
 	 * @brief Adds a camera component
 	 * @return the created camera
 	*/
-	CCamera* AddCCameraComponent();
+	CCamera *AddCCameraComponent();
 
-	CPointLight* AddCPointLight();
+	CPointLight *AddCPointLight();
 
-	CPointLight* GetCPointLight();
+	CPointLight *GetCPointLight();
 
 	/**
 	 * @brief Adds a collider component
 	 * @return the created collider
 	*/
-	CCollider* AddCCollider();
+	CCollider *AddCCollider();
 
-	CCamera* GetCCamera();
+	CCamera *GetCCamera();
 
 	bool IsStatic() const;
 
-	CSound* AddCSound();
+	CSound *AddCSound();
 
-	CSound* GetCSound();
+	CSound *GetCSound();
 
 	void SetStatic(bool isStatic);
 
-	CCharacter* GetCCharacter();
+	CCharacter *GetCCharacter();
 
-	CCollider* GetCCollider();
+	CCollider *GetCCollider();
 
 	void SetParentObject(std::string newParent);
 
@@ -89,20 +89,20 @@ public:
 	 * @return Components of the given type
 	*/
 	template <class T>
-	T* GetComponent();
+	T *GetComponent();
 
 	/**
 	 * @brief transform accessor
 	 * @return Pointer to the object's transform
 	*/
-	Transform* GetTransform();
+	Transform *GetTransform();
 
 	/**
 	 * @brief searches for the closest object with a key containing a given substring
 	 * @param partialKey the substring that objects checked must contain
 	 * @return the closest object that matches the partial key
 	*/
-	GameObject* GetClosestObject(std::string partialKey);
+	GameObject *GetClosestObject(std::string partialKey);
 
 	/**
 	 * @brief Factory key accessor
@@ -146,22 +146,22 @@ public:
 	/**
 	 * @brief saves the object
 	*/
-	void Save(nlohmann::json& j);
+	void Save(nlohmann::json &j);
 	/**
 	 * @brief loads the object from saved state
 	*/
-	void Load(nlohmann::json& j);
+	void Load(nlohmann::json &j);
 
 	/**
 	 * @brief retrieves component map
 	*/
-	std::unordered_map<std::type_index, std::list<CComponent*>*> GetComponentMap();
+	std::unordered_map<std::type_index, std::list<CComponent *> *> GetComponentMap();
 
 private:
 	/**
 	 * @brief All of this object's components, stored in a map of lists, organised by type
 	*/
-	std::unordered_map<std::type_index, std::list<CComponent*>*> m_components;
+	std::unordered_map<std::type_index, std::list<CComponent *> *> m_components;
 	/**
 	 * @brief This object's key in the game object factory
 	*/
@@ -199,20 +199,20 @@ private:
 };
 
 template<class T, class... Targs>
-inline T* GameObject::AddComponent(Targs&&... args)
+inline T *GameObject::AddComponent(Targs&&... args)
 {
 	if (std::is_base_of<CComponent, T>::value) // make sure T is a component
 	{
-		T* obj = new T(&m_transform, this, std::forward<Targs>(args)...);
+		T *obj = new T(&m_transform, this, std::forward<Targs>(args)...);
 
 		// check if type of component already exists
 		if (m_components.find(std::type_index(typeid(T))) == m_components.end()) //if not found
 		{
-			m_components[std::type_index(typeid(T))] = new std::list<CComponent*>();
+			m_components[std::type_index(typeid(T))] = new std::list<CComponent *>();
 		}
 
 		m_components.at(std::type_index(typeid(T)))->push_back(obj);
-		
+
 		return obj;
 	}
 	else
@@ -225,7 +225,7 @@ inline T* GameObject::AddComponent(Targs&&... args)
 
 // returns first component of type T, or nullptr if none found
 template<class T>
-inline T* GameObject::GetComponent()
+inline T *GameObject::GetComponent()
 {
 	// return if a non component type was passed in
 	if (!std::is_base_of<CComponent, T>::value)
@@ -234,12 +234,12 @@ inline T* GameObject::GetComponent()
 	}
 
 	// check if component of type T is in object
-	if (m_components.find( std::type_index(typeid(T)) ) == m_components.end()) // if not found
+	if (m_components.find(std::type_index(typeid(T))) == m_components.end()) // if not found
 	{
 		return nullptr;
 	}
 	else
 	{
-		return static_cast<T*>( m_components.at( std::type_index(typeid(T)) )->front() ); // at the moment just returns first compnent found of that type
+		return static_cast<T *>(m_components.at(std::type_index(typeid(T)))->front()); // at the moment just returns first compnent found of that type
 	}
 }

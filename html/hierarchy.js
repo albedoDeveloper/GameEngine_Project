@@ -1,9 +1,7 @@
 var hierarchy =
 [
-    [ "AAsset", null, [
-      [ "AModel", "class_a_model.html", null ]
-    ] ],
-    [ "AScript", "struct_a_script.html", null ],
+    [ "AModel", "class_a_model.html", null ],
+    [ "AScript", "class_a_script.html", null ],
     [ "Camera", "struct_camera.html", null ],
     [ "CComponent", "class_c_component.html", [
       [ "CCamera", "class_c_camera.html", null ],

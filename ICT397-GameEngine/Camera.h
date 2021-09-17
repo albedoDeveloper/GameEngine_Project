@@ -38,8 +38,8 @@ struct Camera
 	Camera()
 		:
 		FOV{ glm::radians(80.f) },
-		NearClip{0.02f},
-		FarClip{2000},
+		NearClip{ 0.02f },
+		FarClip{ 2000 },
 		Projection{ CameraProjection::PERSPECTIVE }
 	{
 	}

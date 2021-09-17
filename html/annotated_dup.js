@@ -1,7 +1,7 @@
 var annotated_dup =
 [
     [ "AModel", "class_a_model.html", "class_a_model" ],
-    [ "AScript", "struct_a_script.html", "struct_a_script" ],
+    [ "AScript", "class_a_script.html", "class_a_script" ],
     [ "Camera", "struct_camera.html", "struct_camera" ],
     [ "CCamera", "class_c_camera.html", "class_c_camera" ],
     [ "CCharacter", "class_c_character.html", "class_c_character" ],

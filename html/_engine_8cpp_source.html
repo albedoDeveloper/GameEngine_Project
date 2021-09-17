@@ -190,8 +190,8 @@ $(document).ready(function(){initNavTree('_engine_8cpp_source.html',''); initRes
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="_scripting_engine_8h.html#a8b953c0e577c049a57c981b7eeb6fa37">SCRIPT</a>-&gt;Initialise();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="_scripting_engine_8h.html#a8b953c0e577c049a57c981b7eeb6fa37">SCRIPT</a>-&gt;RunInitScript();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="_game_asset_factory_8h.html#a72d924d1cb8e1544b6d5198e98d52ca9abc283a640f11da0ce7f95dd103c0b38f">SCRIPT</a>-&gt;Initialise();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="_game_asset_factory_8h.html#a72d924d1cb8e1544b6d5198e98d52ca9abc283a640f11da0ce7f95dd103c0b38f">SCRIPT</a>-&gt;RunInitScript();</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">// temporarily creating player controller here</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">// TODO move to init</span></div>
@@ -296,12 +296,13 @@ $(document).ready(function(){initNavTree('_engine_8cpp_source.html',''); initRes
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keywordtype">void</span> Engine::Cleanup()</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;{</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="_scripting_engine_8h.html#a8b953c0e577c049a57c981b7eeb6fa37">SCRIPT</a>-&gt;Close();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="_game_asset_factory_8h.html#a72d924d1cb8e1544b6d5198e98d52ca9abc283a640f11da0ce7f95dd103c0b38f">SCRIPT</a>-&gt;Close();</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <a class="code" href="_graphics_engine_8h.html#a36c5995036907afe534f70b04cb1d360">GRAPHICS</a>-&gt;Close();</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
 <div class="ttc" id="a_collision_manager_8h_html_aafd826a123a41fd03a9c88842387a821"><div class="ttname"><a href="_collision_manager_8h.html#aafd826a123a41fd03a9c88842387a821">COLLISION</a></div><div class="ttdeci">#define COLLISION</div><div class="ttdef"><b>Definition:</b> <a href="_collision_manager_8h_source.html#l00072">CollisionManager.h:72</a></div></div>
 <div class="ttc" id="a_delta_time_8h_html"><div class="ttname"><a href="_delta_time_8h.html">DeltaTime.h</a></div></div>
 <div class="ttc" id="a_engine_8h_html"><div class="ttname"><a href="_engine_8h.html">Engine.h</a></div></div>
+<div class="ttc" id="a_game_asset_factory_8h_html_a72d924d1cb8e1544b6d5198e98d52ca9abc283a640f11da0ce7f95dd103c0b38f"><div class="ttname"><a href="_game_asset_factory_8h.html#a72d924d1cb8e1544b6d5198e98d52ca9abc283a640f11da0ce7f95dd103c0b38f">AssetType::SCRIPT</a></div><div class="ttdeci">@ SCRIPT</div></div>
 <div class="ttc" id="a_game_object_8h_html"><div class="ttname"><a href="_game_object_8h.html">GameObject.h</a></div></div>
 <div class="ttc" id="a_game_object_factory_8h_html"><div class="ttname"><a href="_game_object_factory_8h.html">GameObjectFactory.h</a></div></div>
 <div class="ttc" id="a_game_object_factory_8h_html_afb75a9937f90d733ea07a2ed608b39c3"><div class="ttname"><a href="_game_object_factory_8h.html#afb75a9937f90d733ea07a2ed608b39c3">GAMEOBJECT</a></div><div class="ttdeci">#define GAMEOBJECT</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_factory_8h_source.html#l00101">GameObjectFactory.h:101</a></div></div>
@@ -311,7 +312,6 @@ $(document).ready(function(){initNavTree('_engine_8cpp_source.html',''); initRes
 <div class="ttc" id="a_input_manager_8h_html"><div class="ttname"><a href="_input_manager_8h.html">InputManager.h</a></div></div>
 <div class="ttc" id="a_input_manager_8h_html_a1bb283bd7893b9855e2f23013891fc82"><div class="ttname"><a href="_input_manager_8h.html#a1bb283bd7893b9855e2f23013891fc82">INPUT</a></div><div class="ttdeci">#define INPUT</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00295">InputManager.h:295</a></div></div>
 <div class="ttc" id="a_scripting_engine_8h_html"><div class="ttname"><a href="_scripting_engine_8h.html">ScriptingEngine.h</a></div></div>
-<div class="ttc" id="a_scripting_engine_8h_html_a8b953c0e577c049a57c981b7eeb6fa37"><div class="ttname"><a href="_scripting_engine_8h.html#a8b953c0e577c049a57c981b7eeb6fa37">SCRIPT</a></div><div class="ttdeci">#define SCRIPT</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8h_source.html#l00116">ScriptingEngine.h:116</a></div></div>
 <div class="ttc" id="aclass_c_character_html"><div class="ttname"><a href="class_c_character.html">CCharacter</a></div><div class="ttdoc">A component representing a character capable of moving.</div><div class="ttdef"><b>Definition:</b> <a href="_c_character_component_8h_source.html#l00010">CCharacterComponent.h:11</a></div></div>
 <div class="ttc" id="aclass_engine_html"><div class="ttname"><a href="class_engine.html">Engine</a></div><div class="ttdoc">A game engine that handles all the backend of a video game and allows for creation of video games wit...</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8h_source.html#l00012">Engine.h:13</a></div></div>
 <div class="ttc" id="aclass_engine_html_a38ab2010499784f54fee99a3ce2880ab"><div class="ttname"><a href="class_engine.html#a38ab2010499784f54fee99a3ce2880ab">Engine::SaveGame</a></div><div class="ttdeci">void SaveGame()</div><div class="ttdoc">saves the game</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cpp_source.html#l00074">Engine.cpp:74</a></div></div>

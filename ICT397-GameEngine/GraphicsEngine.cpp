@@ -47,13 +47,13 @@ GraphicsEngine::~GraphicsEngine()
 	delete m_window;
 }
 
-GraphicsEngine* GraphicsEngine::instance() 
+GraphicsEngine *GraphicsEngine::instance()
 {
-	static GraphicsEngine* engine = new GraphicsEngine();
+	static GraphicsEngine *engine = new GraphicsEngine();
 	return engine;
 }
 
-bool GraphicsEngine::Init(GraphicsLibrary renderer, int windowWidth, int windowHeight) 
+bool GraphicsEngine::Init(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
 	m_windowWidth = windowWidth;
 	m_windowHeight = windowHeight;
@@ -75,7 +75,7 @@ bool GraphicsEngine::initLighting()
 	return true;
 }
 
-void GraphicsEngine::newFrame(bool debugMenu) 
+void GraphicsEngine::newFrame(bool debugMenu)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -111,7 +111,7 @@ void GraphicsEngine::UpdateViewPos() const
 	);
 }
 
-int GraphicsEngine::AddPointLight(CPointLight* light)
+int GraphicsEngine::AddPointLight(CPointLight *light)
 {
 	int numpointLights = m_lightManager.AddPointLight(light);
 
@@ -123,14 +123,14 @@ int GraphicsEngine::AddPointLight(CPointLight* light)
 		light->LightInfo.colour.GetY(),
 		light->LightInfo.colour.GetZ()
 	));
-	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].constant", light->LightInfo.constant);
-	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].linear", light->LightInfo.linear);
-	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights-1) + "].quadratic", light->LightInfo.quadratic);
+	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights - 1) + "].constant", light->LightInfo.constant);
+	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights - 1) + "].linear", light->LightInfo.linear);
+	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights - 1) + "].quadratic", light->LightInfo.quadratic);
 
 	return numpointLights;
 }
 
-void GraphicsEngine::renderObjects() 
+void GraphicsEngine::renderObjects()
 {
 	skybox.DrawSkybox(GetProjection(), GetView());
 	GAMEOBJECT->render();
@@ -141,7 +141,7 @@ void GraphicsEngine::renderObjects()
 	}
 }
 
-void GraphicsEngine::endFrame(bool debugMenu) 
+void GraphicsEngine::endFrame(bool debugMenu)
 {
 	if (debugMenu)
 	{
@@ -152,17 +152,17 @@ void GraphicsEngine::endFrame(bool debugMenu)
 	SDL_GL_SwapWindow(m_window);
 }
 
-void GraphicsEngine::SetDisplayCamera(CCamera* camera) 
+void GraphicsEngine::SetDisplayCamera(CCamera *camera)
 {
 	m_camera = camera;
 }
 
-CCamera* GraphicsEngine::GetDisplayCamera() 
+CCamera *GraphicsEngine::GetDisplayCamera()
 {
 	return m_camera;
 }
 
-void GraphicsEngine::GenerateTexture(std::string key, unsigned char* image, int width, int height)
+void GraphicsEngine::GenerateTexture(std::string key, unsigned char *image, int width, int height)
 {
 	switch (m_graphLib)
 	{
@@ -185,13 +185,13 @@ void GraphicsEngine::DeleteTexture(std::string key)
 	glDeleteTextures(1, texId);
 }
 
-void GraphicsEngine::DrawModel(AModel* model, const Transform& worldTrans, const Shader* shader)
+void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const Shader *shader)
 {
 	if (!model)
 	{
 		return;
 	}
-	
+
 	glm::mat4 trans = glm::mat4(1.0f);
 	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
 
@@ -216,7 +216,7 @@ unsigned GraphicsEngine::GetTexID(std::string key) const
 	return m_textureIDs.at(key);
 }
 
-void GraphicsEngine::GetScreenSize(int& w, int& h)
+void GraphicsEngine::GetScreenSize(int &w, int &h)
 {
 	int wBuf, hBuf;
 	SDL_GetWindowSize(m_window, &wBuf, &hBuf);
@@ -250,10 +250,10 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 
 	if ((m_window = SDL_CreateWindow(
-		"ICT398 - FrankEngine", 
-		SDL_WINDOWPOS_CENTERED, 
-		SDL_WINDOWPOS_CENTERED, 
-		windowWidth, windowHeight, 
+		"ICT398 - FrankEngine",
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		windowWidth, windowHeight,
 		SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
 	{
 		std::cout << "Window could not be created! SDL Error: " << SDL_GetError() << std::endl;
@@ -291,11 +291,11 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",
-		"../Assets/skybox/left.png",
-		"../Assets/skybox/top.png",
-		"../Assets/skybox/bottom.png",
-		"../Assets/skybox/front.png",
-		"../Assets/skybox/back.png"}
+			"../Assets/skybox/left.png",
+			"../Assets/skybox/top.png",
+			"../Assets/skybox/bottom.png",
+			"../Assets/skybox/front.png",
+			"../Assets/skybox/back.png"}
 	);
 
 	return true;
@@ -305,7 +305,7 @@ void GraphicsEngine::InitImGui()
 {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
-	m_imgui_io = ImGui::GetIO(); 
+	m_imgui_io = ImGui::GetIO();
 	(void)m_imgui_io;
 	ImGui::StyleColorsDark();
 	ImGui_ImplSDL2_InitForOpenGL(m_window, m_glContext);
@@ -324,7 +324,7 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 	{
 		// create buffers/arrays
 		glGenVertexArrays(1, &VAODebug);
-		if(VBODebug == 0)
+		if (VBODebug == 0)
 			glGenBuffers(1, &VBODebug);
 		glBindVertexArray(VAODebug);
 		// load data into vertex buffers
@@ -332,7 +332,7 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 
 		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
 		glEnableVertexAttribArray(0);
 		glBindVertexArray(0);
 
@@ -345,9 +345,9 @@ void GraphicsEngine::DrawDebug()
 	m_debugShader->Use();
 
 	m_debugShader->SetMat4("projection", GetProjection());
-				   
+
 	m_debugShader->SetMat4("view", GetView());
-				   
+
 	m_debugShader->SetMat4("model", glm::mat4(1.0f));
 	m_debugShader->SetVec4("ourColour", glm::vec4(1, 0, 0, 1));
 
@@ -356,7 +356,7 @@ void GraphicsEngine::DrawDebug()
 	glPolygonMode(GL_BACK, GL_LINE);
 
 	std::vector <float> tempVector;
-	
+
 	for (int i = 0; i < COLLISION->debugRender->getNbTriangles(); i++)
 	{
 		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point1.x);
@@ -366,7 +366,7 @@ void GraphicsEngine::DrawDebug()
 		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.x);
 		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.y);
 		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.z);
-					
+
 		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.x);
 		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.y);
 		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.z);
@@ -380,18 +380,18 @@ void GraphicsEngine::DrawDebug()
 	{
 		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
 	}
-		
+
 	glBindVertexArray(VAODebug);
-	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles()*3);
+	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3);
 	glBindVertexArray(0);
 }
 
 glm::mat4 GraphicsEngine::GetProjection()
 {
 	return glm::perspective(
-		m_camera->GetCamera().FOV, 
-		((float)GRAPHICS->m_windowWidth / GRAPHICS->m_windowHeight), 
-		m_camera->GetCamera().NearClip, 
+		m_camera->GetCamera().FOV,
+		((float)GRAPHICS->m_windowWidth / GRAPHICS->m_windowHeight),
+		m_camera->GetCamera().NearClip,
 		m_camera->GetCamera().FarClip
 	);
 }
@@ -400,22 +400,22 @@ glm::mat4 GraphicsEngine::GetView()
 {
 	return glm::lookAt(
 		glm::vec3(
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), 
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), 
+			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(),
+			m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(),
 			m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()
 		),
 		glm::vec3(
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(), 
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(), 
+			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(),
+			m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(),
 			m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) +
 				glm::vec3(
-					m_camera->GetTransform().GetWorldTransform().GetForward().GetX(), 
-					m_camera->GetTransform().GetWorldTransform().GetForward().GetY(), 
+					m_camera->GetTransform().GetWorldTransform().GetForward().GetX(),
+					m_camera->GetTransform().GetWorldTransform().GetForward().GetY(),
 					m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()
 				),
 		glm::vec3(
-			m_camera->GetTransform().GetWorldTransform().GetUp().GetX(), 
-			m_camera->GetTransform().GetWorldTransform().GetUp().GetY(), 
+			m_camera->GetTransform().GetWorldTransform().GetUp().GetX(),
+			m_camera->GetTransform().GetWorldTransform().GetUp().GetY(),
 			m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()
 		)
 	);

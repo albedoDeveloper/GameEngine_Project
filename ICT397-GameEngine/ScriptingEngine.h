@@ -18,14 +18,14 @@ public:
 	 * @brief Singleton instance getter
 	 * @return A pointer to the scripting engine
 	*/
-	static ScriptingEngine* Instance();
+	static ScriptingEngine *Instance();
 
 	void Initialise();
 
 	/**
 	 * @brief Sets up the engine with initial processes and variables and exposes engine functionality to lua
 	*/
-	lua_State* NewState();
+	lua_State *NewState();
 
 	/**
 	 * @brief Runs the lua scripts to initialise the engine with assets and objects
@@ -37,7 +37,7 @@ public:
 	 * @param state the state to run
 	 * @param parent the object to which this AI belongs
 	*/
-	void RunStateFromScript(lua_State* luaState, std::string AIscript, std::string AIstate, GameObject* parent);
+	void RunStateFromScript(lua_State *luaState, std::string AIscript, std::string AIstate, GameObject *parent);
 
 	void DoFile(std::string filePath);
 
@@ -49,12 +49,13 @@ public:
 private:
 	friend class CScript;
 
-	ScriptingEngine() {}; // enforce singleton
+	ScriptingEngine()
+	{}; // enforce singleton
 
-	/**
-	 * @brief The lua state the engine will use for lua functionality
-	*/
-	lua_State* m_L;
+/**
+ * @brief The lua state the engine will use for lua functionality
+*/
+	lua_State *m_L;
 
 	/**
 	 * @brief Loads a model into the game engine's asset manager
@@ -69,7 +70,7 @@ private:
 	 * @brief Creates a game object using the game object factory
 	 * @param key The key for storing the object. Can be any typed string
 	*/
-	static GameObject* SpawnGameObject(std::string key);
+	static GameObject *SpawnGameObject(std::string key);
 
 	/**
 	 * @brief Loads a lua script into the engine
@@ -83,7 +84,7 @@ private:
 	 * @param objectKey The storage key for the object
 	 * @return a pointer to the desired object
 	*/
-	static GameObject* GetGameObject(std::string objectKey);
+	static GameObject *GetGameObject(std::string objectKey);
 
 	/**
 	 * @brief quits the game
@@ -103,7 +104,7 @@ private:
 	*/
 	static bool CheckSaveState();
 
-	static InputManager* GetInputManager();
+	static InputManager *GetInputManager();
 };
 
 #define SCRIPT ScriptingEngine::Instance()

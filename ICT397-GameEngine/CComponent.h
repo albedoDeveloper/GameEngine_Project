@@ -13,10 +13,10 @@ private:
 	/**
 	 * @brief The position, rotation, and scale of the component in world space
 	*/
-	Transform* transform;
+	Transform *transform;
 public:
 	/**
-	 * @brief default constructor 
+	 * @brief default constructor
 	*/
 	CComponent();
 	/**
@@ -24,37 +24,41 @@ public:
 	 * @param parentTrans The parent transform for this component's transform
 	 * @param parentObject The parent object of this component
 	*/
-	CComponent(Transform* parentTrans, GameObject* parentObject);
+	CComponent(Transform *parentTrans, GameObject *parentObject);
 
 	/**
 	 * @brief called at start of game
 	*/
-	virtual void Start() {};
+	virtual void Start()
+	{};
 
-	/**
-	 * @brief To be called every frame to process the component's behaviour, if any
-	*/
-	virtual void Update() {};
+/**
+ * @brief To be called every frame to process the component's behaviour, if any
+*/
+	virtual void Update()
+	{};
 
-	/**
-	 * @brief To be called every frame to display the component on the screen, if visible
-	*/
-	virtual void Render() {};
+/**
+ * @brief To be called every frame to display the component on the screen, if visible
+*/
+	virtual void Render()
+	{};
 
-	/**
-	 * @brief Displays the component after others are displayed
-	*/
-	virtual void LateRender() {};
+/**
+ * @brief Displays the component after others are displayed
+*/
+	virtual void LateRender()
+	{};
 
-	/**
-	 * @brief saves the component
-	*/
-	virtual void Save(nlohmann::json& j);
+/**
+ * @brief saves the component
+*/
+	virtual void Save(nlohmann::json &j);
 
 	/**
 	 * @brief loads the component from saved state
 	*/
-	virtual void Load(nlohmann::json& j);
+	virtual void Load(nlohmann::json &j);
 
 	/**
 	 * @brief Draws to imgui
@@ -65,19 +69,19 @@ public:
 	 * @brief transform accessor
 	 * @return pointer to this component's transform
 	*/
-	Transform& GetTransform();
+	Transform &GetTransform();
 
 
 	/**
 	 * @brief get a constant reference to transform
 	*/
-	const Transform& GetTransformConst() const;
+	const Transform &GetTransformConst() const;
 
 	/**
 	 * @brief parent object accessor
 	 * @return pointer to the object to which this component belongs
 	*/
-	GameObject* GetParentObject();
+	GameObject *GetParentObject();
 
 
 protected:

@@ -9,38 +9,37 @@ using json = nlohmann::json;
 class LevelLoader
 {
 
-	//Member variables
-	private:
-		
-		/**
-		 * @brief The list of all GameObjects, stored in a map with a string as the key. Objects can be inserted with a chosen key or an automatic key
-		*/
-		std::map<std::string, GameObject*>* objectList;
+private:
 
-	public:
+	/**
+	 * @brief The list of all GameObjects, stored in a map with a string as the key. Objects can be inserted with a chosen key or an automatic key
+	*/
+	std::map<std::string, GameObject *> *objectList;
 
-		/**
-		* @brief default constructor
-		*/
-		LevelLoader();
+public:
 
-		void JsonFilepath();
+	/**
+	* @brief default constructor
+	*/
+	LevelLoader();
 
-		void ToJson(json& j, GameObject* g);
+	void JsonFilepath();
 
-		void FromJson(json& j, GameObject* g);
+	void ToJson(json &j, GameObject *g);
 
-		
+	void FromJson(json &j, GameObject *g);
 
-		/**
-		* @brief loading test
-		*/
-		void LoadLevel();
 
-		/**
-		* @brief test function
-		*/
-		void SaveLevel();
+
+	/**
+	* @brief loading test
+	*/
+	void LoadLevel();
+
+	/**
+	* @brief test function
+	*/
+	void SaveLevel();
 
 };
 

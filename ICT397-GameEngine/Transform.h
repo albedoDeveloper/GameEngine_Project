@@ -14,10 +14,10 @@ private:
 	 * @brief position of object in local space
 	*/
 	Vector3f m_position;
-    /**
-     * @brief direction object is oriented in local space
-    */
-    Quaternion m_rotation;
+	/**
+	 * @brief direction object is oriented in local space
+	*/
+	Quaternion m_rotation;
 	/**
 	 * @brief scale of object in local space
 	*/
@@ -36,19 +36,19 @@ public:
 	 * @brief constructor
 	 * @param parent the parent transform of this transform, which this will be relative to
 	*/
-	Transform(Transform* parent);
+	Transform(Transform *parent);
 
-	void SetParent(Transform* newParent);
+	void SetParent(Transform *newParent);
 
 	/**
 	 * @brief Saves the transform to JSON
 	*/
-	void ToJson(nlohmann::json& j, std::string key);
+	void ToJson(nlohmann::json &j, std::string key);
 
 	/**
 	 * @brief loads the transform from JSON
 	*/
-	void FromJson(nlohmann::json& j, std::string key);
+	void FromJson(nlohmann::json &j, std::string key);
 
 	/**
 	 * @brief Gets this transform's absolute value in world space
@@ -60,7 +60,7 @@ public:
 	 * @brief Changes the transform's position by a relative amount
 	 * @param v Vector for the movement between the transform's current position and desired position
 	*/
-	void TranslateV(const Vector3f& v);
+	void TranslateV(const Vector3f &v);
 
 	void Translate(float x, float y, float z);
 
@@ -69,13 +69,13 @@ public:
 	 * @param degrees number of degrees to turn
 	 * @param axis the axis to rotate around
 	*/
-	void RotateLocalV(float degrees, const Vector3f& axis);
+	void RotateLocalV(float degrees, const Vector3f &axis);
 	/**
 	 * @brief Rotates the transform around a given axis
 	 * @param degrees number of degrees to turn
 	 * @param axisX X component of the axis vector
 	 * @param axisY y component of the axis vector
-	 * @param axisZ 
+	 * @param axisZ
 	*/
 	void RotateLocal(float degrees, float axisX, float axisY, float axisZ);
 	/**
@@ -106,7 +106,7 @@ public:
 	 * @param newPosition the transform's desired position
 	*/
 	void SetPositionV(Vector3f newPosition);
-	
+
 	void SetPosition(float x, float y, float z);
 
 	/**
@@ -125,7 +125,7 @@ public:
 	 * @return the transform's scale
 	*/
 	Vector3f GetScale() const;
-	
+
 	/**
 	 * @brief rotation accessor
 	 * @param newRotation the transform's desired rotation
@@ -187,3 +187,4 @@ public:
 	*/
 	void MoveTowards3f(float x, float y, float z, double distance);
 };
+

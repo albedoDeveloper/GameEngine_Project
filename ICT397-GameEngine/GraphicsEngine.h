@@ -33,7 +33,7 @@ public:
 	 * @brief Generates pointer to instance of singleton
 	 * @return Pointer to the graphics engine
 	*/
-	static GraphicsEngine* instance();
+	static GraphicsEngine *instance();
 
 	/**
 	 * @brief Initialises the graphics
@@ -54,7 +54,7 @@ public:
 
 	void UpdateViewPos() const;
 
-	int AddPointLight(CPointLight* light);
+	int AddPointLight(CPointLight *light);
 
 	/**
 	 * @brief Renders all visible objects
@@ -71,7 +71,7 @@ public:
 	 * @param width the width of the texture
 	 * @param height the height of the texture
 	*/
-	void GenerateTexture(std::string key, unsigned char* image, int width, int height);
+	void GenerateTexture(std::string key, unsigned char *image, int width, int height);
 	/**
 	 * @brief deletes a texture from the graphics library
 	 * @param key factory storage key of the texture
@@ -81,18 +81,18 @@ public:
 	 * @brief changes the current camera displaying to the screen
 	 * @param camera the camera to use
 	*/
-	void SetDisplayCamera(CCamera* camera);
+	void SetDisplayCamera(CCamera *camera);
 	/**
 	 * @brief current camera accessor
 	 * @return the camerca currently in use
 	*/
-	CCamera* GetDisplayCamera();
+	CCamera *GetDisplayCamera();
 	/**
 	 * @brief Draws a model asset on the screen
 	 * @param model The model to draw
 	 * @param trans Transform of the model
 	*/
-	void DrawModel(AModel* model, const Transform& trans, const Shader* m_shader);
+	void DrawModel(AModel *model, const Transform &trans, const Shader *m_shader);
 	/**
 	 * @brief retrieves the ID by which a texture is stored in the graphics library
 	 * @param key the key by which it's stored by the asset factory
@@ -100,14 +100,14 @@ public:
 	*/
 	unsigned GetTexID(std::string key) const;
 
-	void GetScreenSize(int&w, int&h);
+	void GetScreenSize(int &w, int &h);
 
 	void Close();
 
 	void GoFullscreen() const
 	{
 		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
-		SDL_Surface* surface = SDL_GetWindowSurface(m_window);
+		SDL_Surface *surface = SDL_GetWindowSurface(m_window);
 		SDL_UpdateWindowSurface(m_window);
 	}
 
@@ -115,11 +115,11 @@ public:
 
 	glm::mat4 GetView();
 
-	Shader* m_litShader;
+	Shader *m_litShader;
 
-	Shader* m_unlitShader;
-	
-	Shader* m_debugShader;
+	Shader *m_unlitShader;
+
+	Shader *m_debugShader;
 
 	bool m_drawDebug = false;
 
@@ -134,11 +134,11 @@ private:
 	/**
 	 * @brief The SDL window
 	*/
-	SDL_Window* m_window;
+	SDL_Window *m_window;
 	/**
 	 * @brief The SDL renderer
 	*/
-	SDL_Renderer* m_renderer;
+	SDL_Renderer *m_renderer;
 
 	/**
 	 * @brief The openGL context used for SDL
@@ -148,7 +148,7 @@ private:
 	/**
 	 * @brief the camera in use
 	*/
-	CCamera* m_camera;
+	CCamera *m_camera;
 
 	/**
 	 * @brief The graphics library in use
@@ -197,12 +197,12 @@ private:
 	 * @return whether operation succeeded
 	*/
 	bool InitDirectX();
-	
+
 	/**
 	 * @brief Setups the debug rendering of collider boxes
 	*/
-	void InitDebug(std::vector <float>& tempVector);
-	
+	void InitDebug(std::vector <float> &tempVector);
+
 	/*
 	 * @brief Renders debug colliders
 	*/

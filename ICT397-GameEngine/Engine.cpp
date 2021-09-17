@@ -11,12 +11,12 @@
 #include <glm/glm/gtc/matrix_transform.hpp>
 
 Engine::Engine()
-	:m_isRunning{ true }, m_saveState{ false }, m_loadState{false}, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
-	m_debugMenu{ false }, m_editMenu{true}, m_drawColliders{ false }
+	:m_isRunning{ true }, m_saveState{ false }, m_loadState{ false }, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
+	m_debugMenu{ false }, m_editMenu{ true }, m_drawColliders{ false }
 {
 }
 
-Engine* Engine::Instance()
+Engine *Engine::Instance()
 {
 	static Engine engine;
 	return &engine;
@@ -95,7 +95,7 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	// set up physics world
 	COLLISION->Init();
 
-	if (!GRAPHICS->Init(renderer, windowWidth, windowHeight)) 
+	if (!GRAPHICS->Init(renderer, windowWidth, windowHeight))
 	{
 		return false;
 	}
@@ -106,7 +106,7 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	// temporarily creating player controller here
 	// TODO move to init
 	GAMEOBJECT->GetGameObject("player")->AddCSound()->LoadSound("milkyway.wav");
-	GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav",-1,false);
+	GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav", -1, false);
 
 	GAMEOBJECT->Start();
 	INPUT->LockCursor(true);
@@ -114,7 +114,7 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	return true;
 }
 
-void Engine::OnEvent(SDL_Event* e)
+void Engine::OnEvent(SDL_Event *e)
 {
 	switch (e->type)
 	{
@@ -195,8 +195,8 @@ void Engine::Render()
 
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-		m_saveState = ImGui::Button("Save", ImVec2(100,30));
-		m_loadState = ImGui::Button("Load", ImVec2(100,30));
+		m_saveState = ImGui::Button("Save", ImVec2(100, 30));
+		m_loadState = ImGui::Button("Load", ImVec2(100, 30));
 
 		ImGui::End();
 	}

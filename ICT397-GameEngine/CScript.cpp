@@ -5,7 +5,7 @@
 
 using namespace luabridge;
 
-CScript::CScript(Transform* parent, GameObject* parentObj)
+CScript::CScript(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj }, m_script{ nullptr }
 {
 	m_L = SCRIPT->NewState();
@@ -25,17 +25,17 @@ void CScript::Update()
 	update(m_parent, deltaTime, INPUT);
 }
 
-void CScript::Save(nlohmann::json& j)
+void CScript::Save(nlohmann::json &j)
 {
-	GameObject* g = GetParentObject();
+	GameObject *g = GetParentObject();
 	j[g->getFactoryKey()]["Components"]["ScriptComponent"]["Script"] = m_script->Key();
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }
 
-void CScript::Load(nlohmann::json& j)
+void CScript::Load(nlohmann::json &j)
 {
-	GameObject* g = GetParentObject();
+	GameObject *g = GetParentObject();
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
 
@@ -61,4 +61,4 @@ void CScript::AssignScriptByKey(std::string assetKey)
 	AssignScript(
 		*(ASSET->GetScriptAsset(assetKey))
 	);
-} 
+}

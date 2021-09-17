@@ -15,7 +15,7 @@ public:
 	 * @param parent The parent transform for this component's transform
 	 * @param parentObj The parent object for this component
 	*/
-	CCharacter(Transform* parent, GameObject* parentObj);
+	CCharacter(Transform *parent, GameObject *parentObj);
 
 	/**
 	 * @brief Moves the character by altering its acceleration
@@ -67,11 +67,11 @@ public:
 	/**
 	 * @brief saves the component
 	*/
-	void Save(nlohmann::json& j);
+	void Save(nlohmann::json &j);
 	/**
 	 * @brief loads the component from saved state
 	*/
-	void Load(nlohmann::json& j);
+	void Load(nlohmann::json &j);
 
 	/**
 	 * @brief Draws to imgui
@@ -135,7 +135,7 @@ private:
 
 	bool m_endscreenUp;
 
-	CCollider* m_collider;
+	CCollider *m_collider;
 
-	Transform* m_parentTransform;
+	Transform *m_parentTransform;
 };

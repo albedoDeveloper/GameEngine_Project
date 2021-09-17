@@ -19,15 +19,14 @@
 	/// </summary>
 	/// <param name="quat"></param>
 //	/// <returns></returns>
-Vector3f Vector3f::operator*(const Quaternion& quat)
+Vector3f Vector3f::operator*(const Quaternion &quat)
 {
 	return m_vec * quat.m_quat;
 }
 
 Matrix4f::Matrix4f()
 	:m_mat{ glm::identity<glm::mat4>() }
-{
-}
+{}
 
 const glm::mat4 Matrix4f::GetGLMmat4() const
 {
@@ -36,8 +35,7 @@ const glm::mat4 Matrix4f::GetGLMmat4() const
 
 Matrix4f::Matrix4f(glm::mat4 m)
 	: m_mat{ m }
-{
-}
+{}
 
 void Matrix4f::Translate(Vector3f v)
 {
@@ -54,7 +52,7 @@ void Matrix4f::Scale(Vector3f v)
 	m_mat = glm::scale(m_mat, glm::vec3(v.GetX(), v.GetY(), v.GetZ()));
 }
 
-Matrix4f Matrix4f::Cast(const Quaternion& q)
+Matrix4f Matrix4f::Cast(const Quaternion &q)
 {
 	return glm::mat4_cast(q.m_quat);
 }
@@ -64,7 +62,7 @@ Matrix4f Matrix4f::operator*(Matrix4f other) const
 	return m_mat * other.m_mat;
 }
 
-void Decompose(const Matrix4f& m, Vector3f& scaleOut, Quaternion& rotationOut, Vector3f& positionOut)
+void Decompose(const Matrix4f &m, Vector3f &scaleOut, Quaternion &rotationOut, Vector3f &positionOut)
 {
 	glm::mat4 mat(m.GetGLMmat4());
 	glm::vec3 scale(scaleOut.GetX(), scaleOut.GetY(), scaleOut.GetZ());
@@ -74,11 +72,11 @@ void Decompose(const Matrix4f& m, Vector3f& scaleOut, Quaternion& rotationOut, V
 	glm::vec4 temp2;
 
 	glm::decompose(
-		mat, 
-		scale, 
+		mat,
+		scale,
 		rot,
 		pos,
-		temp1, 
+		temp1,
 		temp2
 	);
 

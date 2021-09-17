@@ -14,7 +14,7 @@ public:
 	 * @param parent the parent transform for this component
 	 * @param parentObj the parent object of this component
 	*/
-	CScript(Transform* parent, GameObject* parentObj);
+	CScript(Transform *parent, GameObject *parentObj);
 
 	/**
 	 * @brief Initiates the script at program start
@@ -34,12 +34,12 @@ public:
 	/**
 	 * @brief saves the component
 	*/
-	virtual void Save(nlohmann::json& j);
+	virtual void Save(nlohmann::json &j);
 
 	/**
 	 * @brief loads the component from saved state
 	*/
-	virtual void Load(nlohmann::json& j);
+	virtual void Load(nlohmann::json &j);
 
 	/**
 	 * @brief Draws to imgui

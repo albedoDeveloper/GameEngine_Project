@@ -1,0 +1,4 @@
+<map id="GameAssetFactory::LoadScript" name="GameAssetFactory::LoadScript">
+<area shape="rect" id="node1" title="loads in a script" alt="" coords="5,5,211,32"/>
+<area shape="rect" id="node2" href="$class_game_asset_factory.html#a6f266ef91cf5d85a78a9c8584b59ca2d" title="cheks whether a storage key already has an asset" alt="" coords="259,5,473,32"/>
+</map>

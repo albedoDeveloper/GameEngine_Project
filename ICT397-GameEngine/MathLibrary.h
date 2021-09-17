@@ -26,17 +26,15 @@ private:
 	/// <param name="v"></param>
 	Vector3f(glm::vec3 v)
 		:m_vec(v)
-	{
-	}
+	{}
 
 public:
 	/**
 	 * @brief Default constructor
 	*/
 	Vector3f()
-		:m_vec(1,1,1)
-	{
-	}
+		:m_vec(1, 1, 1)
+	{}
 
 	/// <summary>
 	/// Non-default Constructor
@@ -54,7 +52,7 @@ public:
 	 * @brief Moves the vector by a relative amount
 	 * @param v The vector to add to this vector
 	*/
-	void Translate(const Vector3f& v)
+	void Translate(const Vector3f &v)
 	{
 		m_vec += glm::vec3(v.GetX(), v.GetY(), v.GetZ());
 	}
@@ -156,7 +154,7 @@ public:
 		return glm::dot(m_vec, oVec.m_vec);
 	}
 
-	
+
 
 	/// <summary>
 	/// Normalise a vector
@@ -170,7 +168,7 @@ public:
 
 	float Rad2Deg(float rad)
 	{
-		return rad*180/ glm::pi<float>();
+		return rad * 180 / glm::pi<float>();
 	}
 
 	Vector3f Rad2Deg()
@@ -198,7 +196,7 @@ public:
 	/// </summary>
 	/// <param name="oVec"></param>
 	/// <returns></returns>
-	Vector3f operator*(const Vector3f& oVec)
+	Vector3f operator*(const Vector3f &oVec)
 	{
 		return m_vec * oVec.m_vec;
 	}
@@ -208,9 +206,9 @@ public:
 	/// </summary>
 	/// <param name="num"></param>
 	/// <returns></returns>
-	Vector3f operator*(const float& num)
+	Vector3f operator*(const float &num)
 	{
-		return glm::vec3(m_vec.x * num, m_vec.y* num, m_vec.z* num);
+		return glm::vec3(m_vec.x * num, m_vec.y * num, m_vec.z * num);
 	}
 
 	/**
@@ -218,7 +216,7 @@ public:
 	 * @param oVec the vector to divide by
 	 * @return result of division
 	*/
-	Vector3f operator/(const Vector3f& oVec)
+	Vector3f operator/(const Vector3f &oVec)
 	{
 		return m_vec / oVec.m_vec;
 	}
@@ -228,7 +226,7 @@ public:
 	/// </summary>
 	/// <param name="oVec"></param>
 	/// <returns></returns>
-	Vector3f operator-(const Vector3f& oVec)
+	Vector3f operator-(const Vector3f &oVec)
 	{
 		return m_vec - oVec.m_vec;
 	}
@@ -238,13 +236,13 @@ public:
 	 * @param oVec the vector to set this vector to
 	 * @return the value of the vector
 	*/
-	Vector3f operator=(const Vector3f& oVec)
+	Vector3f operator=(const Vector3f &oVec)
 	{
 		return m_vec = oVec.m_vec;
 	}
 
 
-	Vector3f operator*(const Quaternion& quat);
+	Vector3f operator*(const Quaternion &quat);
 
 };
 
@@ -302,7 +300,7 @@ public:
 	//void Rotate(Quaternion q);
 	void Scale(Vector3f v);
 
-	float* GetTypePtr()
+	float *GetTypePtr()
 	{
 		return glm::value_ptr(m_mat);
 	}
@@ -329,8 +327,7 @@ private:
 	/// <param name="q"></param>
 	Quaternion(glm::quat q)
 		:m_quat(q)
-	{
-	}
+	{}
 
 public:
 	///// <summary>
@@ -347,8 +344,7 @@ public:
 
 	Quaternion()
 		:m_quat(glm::identity<glm::quat>())
-	{
-	}
+	{}
 
 	/// <summary>
 	/// dot product of two Quaternions
@@ -375,11 +371,11 @@ public:
 	 * @param degrees number of degrees to turn
 	 * @param axis the axis to rotate around
 	*/
-	void Rotate(float degrees, const Vector3f& axis)
+	void Rotate(float degrees, const Vector3f &axis)
 	{
 		m_quat = glm::rotate(m_quat, glm::radians(degrees), glm::vec3(axis.GetX(), axis.GetY(), axis.GetZ()));
 	}
-	
+
 	//float GetAngleDegrees() const
 	//{
 	//	glm::quat aa(1, 1, 0, 0);
@@ -517,8 +513,7 @@ public:
 	*/
 	Vector3u()
 		:m_vec(1, 1, 1)
-	{
-	}
+	{}
 
 	/// <summary>
 	/// Non-default Constructor
@@ -609,7 +604,7 @@ public:
 	/// </summary>
 	/// <param name="oVec"></param>
 	/// <returns></returns>
-	Vector3u operator+(const Vector3u& oVec)
+	Vector3u operator+(const Vector3u &oVec)
 	{
 		Vector3u addedVec(m_vec + oVec.m_vec);
 
@@ -621,7 +616,7 @@ public:
 	/// </summary>
 	/// <param name="oVec"></param>
 	/// <returns></returns>
-	Vector3u operator*(const Vector3u& oVec)
+	Vector3u operator*(const Vector3u &oVec)
 	{
 		Vector3u multipliedVec(m_vec * oVec.m_vec);
 
@@ -633,7 +628,7 @@ public:
 	/// </summary>
 	/// <param name="oVec"></param>
 	/// <returns></returns>
-	Vector3u operator-(const Vector3u& oVec)
+	Vector3u operator-(const Vector3u &oVec)
 	{
 		Vector3u subtractedVec(m_vec - oVec.m_vec);
 
@@ -658,8 +653,7 @@ private:
 	/// <param name="v"></param>
 	Vector2f(glm::vec2 v)
 		:m_vec(v)
-	{
-	}
+	{}
 
 public:
 	/**
@@ -667,8 +661,7 @@ public:
 	*/
 	Vector2f()
 		:m_vec(1, 1)
-	{
-	}
+	{}
 
 	/// <summary>
 	/// Non-default Constructor
@@ -720,7 +713,7 @@ public:
 	/// </summary>
 	/// <param name="oVec"></param>
 	/// <returns></returns>
-	Vector2f operator+(const Vector2f& oVec)
+	Vector2f operator+(const Vector2f &oVec)
 	{
 		Vector2f addedVec(m_vec + oVec.m_vec);
 
@@ -732,7 +725,7 @@ public:
 	/// </summary>
 	/// <param name="oVec"></param>
 	/// <returns></returns>
-	Vector2f operator*(const Vector2f& oVec)
+	Vector2f operator*(const Vector2f &oVec)
 	{
 		Vector2f multipliedVec(m_vec * oVec.m_vec);
 
@@ -744,7 +737,7 @@ public:
 	/// </summary>
 	/// <param name="oVec"></param>
 	/// <returns></returns>
-	Vector2f operator-(const Vector2f& oVec)
+	Vector2f operator-(const Vector2f &oVec)
 	{
 		return (m_vec - oVec.m_vec);
 	}
@@ -769,7 +762,7 @@ struct Vector3uc
 //					Standalone math funcs				 //
 ///////////////////////////////////////////////////////////
 
-void Decompose(const Matrix4f& m, Vector3f& scaleOut, Quaternion& rotationOut, Vector3f& positionOut);
+void Decompose(const Matrix4f &m, Vector3f &scaleOut, Quaternion &rotationOut, Vector3f &positionOut);
 
 /**
 	 * @brief returns a point between the start and end determined by strength

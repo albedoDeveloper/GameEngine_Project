@@ -5,19 +5,19 @@
 #include <iostream>
 #include "InputManager.h" // debug
 
-CStaticMesh::CStaticMesh(Transform* parent, GameObject* parentObj)
-	:CComponent{ parent, parentObj}, 
+CStaticMesh::CStaticMesh(Transform *parent, GameObject *parentObj)
+	:CComponent{ parent, parentObj },
 	m_shader{ GRAPHICS->m_litShader },
 	m_model{ nullptr }
 {
 }
 
-AModel& CStaticMesh::GetModel()
+AModel &CStaticMesh::GetModel()
 {
 	return *m_model;
 }
 
-AModel& CStaticMesh::AssignModelByKey(std::string modelKey)
+AModel &CStaticMesh::AssignModelByKey(std::string modelKey)
 {
 	AModel *model = ASSET->GetModelAsset(modelKey);
 	if (model == nullptr)
@@ -63,17 +63,17 @@ void CStaticMesh::Render()
 	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), m_shader);
 }
 
-void CStaticMesh::Save(nlohmann::json& j)
+void CStaticMesh::Save(nlohmann::json &j)
 {
-	GameObject* g = GetParentObject();
+	GameObject *g = GetParentObject();
 	j[g->getFactoryKey()]["Components"]["StaticMeshComponent"]["AModel"] = m_model->Key();
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }
 
-void CStaticMesh::Load(nlohmann::json& j)
+void CStaticMesh::Load(nlohmann::json &j)
 {
-	GameObject* g = GetParentObject();
+	GameObject *g = GetParentObject();
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
 

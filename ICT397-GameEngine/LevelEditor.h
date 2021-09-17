@@ -8,27 +8,27 @@
 
 class LevelEditor
 {
-	private:
+private:
 
-	public:
-		/**
-		* @brief default constructor
-		*/
-		LevelEditor();
+public:
+	/**
+	* @brief default constructor
+	*/
+	LevelEditor();
 
-		void DrawEditor();
+	void DrawEditor();
 
-		void ObjectList();
+	void ObjectList();
 
-		void ObjectHeader(GameObject* g);
+	void ObjectHeader(GameObject *g);
 
-		void TransformHeader(GameObject* g);
+	void TransformHeader(GameObject *g);
 
-		void PositionManipulators(GameObject* g);
+	void PositionManipulators(GameObject *g);
 
-		void RotationManipulators(GameObject* g);
+	void RotationManipulators(GameObject *g);
 
-		void ScaleManipulators(GameObject* g);
+	void ScaleManipulators(GameObject *g);
 
-		void ComponentTree(GameObject* g);
+	void ComponentTree(GameObject *g);
 };

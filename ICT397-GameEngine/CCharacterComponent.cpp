@@ -7,14 +7,14 @@
 #include "Engine.h"
 #include "GameObjectFactory.h"
 
-CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
-	:CComponent{ parent, parentObj }, 
-	m_parentTransform{m_parent->GetTransform()},
-	m_velocity{ 0,0,0 }, 
+CCharacter::CCharacter(Transform *parent, GameObject *parentObj)
+	:CComponent{ parent, parentObj },
+	m_parentTransform{ m_parent->GetTransform() },
+	m_velocity{ 0,0,0 },
 	m_maxSpeed{ 10 },
-	m_lastTime{ 0 }, 
-	m_currentTime{ 0 }, 
-	m_updateInterval{1.f/60},
+	m_lastTime{ 0 },
+	m_currentTime{ 0 },
+	m_updateInterval{ 1.f / 60 },
 	m_playerControlled{ false },
 	m_mouseEnabled{ true },
 	m_moveEnabled{ true },
@@ -57,7 +57,7 @@ void CCharacter::SetPlayerControlled(bool playerControlled)
 	m_playerControlled = playerControlled;
 }
 
-void CCharacter::Start() 
+void CCharacter::Start()
 {
 	m_initialHitpoints = m_hitpoints;
 	m_collider = m_parent->GetComponent<CCollider>();
@@ -112,7 +112,7 @@ void CCharacter::Update()
 			m_moveEnabled = false;
 			m_endscreenUp = true;
 			INPUT->LockCursor(false);
-			GameObject* end = GAMEOBJECT->GetGameObject("endscreen");
+			GameObject *end = GAMEOBJECT->GetGameObject("endscreen");
 			if (end)
 			{
 				end->SetActive(true);
@@ -128,7 +128,7 @@ void CCharacter::Update()
 		}
 
 		GameObject *parentObj = GetParentObject();
-		
+
 		if (m_mouseEnabled)
 		{
 			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * mouseSens);
@@ -195,13 +195,13 @@ void CCharacter::Update()
 	}
 }
 
-void CCharacter::Save(nlohmann::json& j)
+void CCharacter::Save(nlohmann::json &j)
 {
 	m_savedHitpoints = m_hitpoints;
 	CComponent::Save(j);
 }
 
-void CCharacter::Load(nlohmann::json& j)
+void CCharacter::Load(nlohmann::json &j)
 {
 	m_hitpoints = m_savedHitpoints;
 	CComponent::Load(j);

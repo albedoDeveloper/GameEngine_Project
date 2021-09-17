@@ -258,6 +258,7 @@
     <None Include="shaders\unlit.frag">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\codestyle_config\.editorconfig" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ThirdParty">

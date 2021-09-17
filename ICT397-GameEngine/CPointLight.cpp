@@ -1,7 +1,7 @@
 #include "CPointLight.h"
 #include "GraphicsEngine.h"
 
-CPointLight::CPointLight(Transform* parent, GameObject* parentObj)
+CPointLight::CPointLight(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj },
 	LightInfo{}
 {

@@ -12,7 +12,7 @@
 class Engine
 {
 public:
-	static Engine* Instance();
+	static Engine *Instance();
 
 	/**
 	 * @brief The main function to execute all behaviour of the game engine
@@ -52,7 +52,7 @@ private:
 	 * @brief Event handler to be called when an SDL event occurs
 	 * @param event The event that occurred
 	*/
-	void OnEvent(SDL_Event* event);
+	void OnEvent(SDL_Event *event);
 
 	/**
 	 * @brief Function to be called every iteration of the program and handle ongoing behaviour

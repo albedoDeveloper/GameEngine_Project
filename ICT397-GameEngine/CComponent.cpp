@@ -3,43 +3,43 @@
 
 #include <iostream>
 
-CComponent::CComponent() 
+CComponent::CComponent()
 	:m_parent{ nullptr }
 {
 	transform = new Transform();
 }
 
-CComponent::CComponent(Transform* parentTrans, GameObject* parentObject)
-	:m_transform{ parentTrans }, m_parent{ parentObject }
+CComponent::CComponent(Transform *parentTrans, GameObject *parentObject)
+	: m_transform{ parentTrans }, m_parent{ parentObject }
 {
 }
 
-Transform& CComponent::GetTransform()
-{
-	return m_transform;
-}
-
-const Transform& CComponent::GetTransformConst() const
+Transform &CComponent::GetTransform()
 {
 	return m_transform;
 }
 
-GameObject* CComponent::GetParentObject()
+const Transform &CComponent::GetTransformConst() const
+{
+	return m_transform;
+}
+
+GameObject *CComponent::GetParentObject()
 {
 	return m_parent;
 }
 
-void CComponent::Save(nlohmann::json& j)
+void CComponent::Save(nlohmann::json &j)
 {
-	GameObject* g = GetParentObject();
+	GameObject *g = GetParentObject();
 	j[g->getFactoryKey()]["Components"]["CComponent"] = "CComponent";
- 
+
 	//m_transform.ToJson(j, g->getFactoryKey());
 }
 
-void CComponent::Load(nlohmann::json& j)
+void CComponent::Load(nlohmann::json &j)
 {
-	GameObject* g = GetParentObject();
+	GameObject *g = GetParentObject();
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
 

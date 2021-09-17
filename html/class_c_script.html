@@ -99,22 +99,22 @@ Inheritance diagram for CScript:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_script__inherit__graph.png" border="0" usemap="#a_c_script_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_c_script_inherit__map" id="a_c_script_inherit__map">
-<area shape="rect" title=" " alt="" coords="21,80,87,107"/>
-<area shape="rect" href="class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="5,5,103,32"/>
+<area shape="rect" title=" " alt="" coords="5,307,160,501"/>
+<area shape="rect" href="class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="5,5,160,259"/>
 </map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+</div>
 <div class="dynheader">
 Collaboration diagram for CScript:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_script__coll__graph.png" border="0" usemap="#a_c_script_coll__map" alt="Collaboration graph"/></div>
 <map name="a_c_script_coll__map" id="a_c_script_coll__map">
-<area shape="rect" title=" " alt="" coords="153,184,219,211"/>
-<area shape="rect" href="class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="59,95,156,121"/>
-<area shape="rect" href="class_game_object.html" title="An object as represented in the game world containing all information on the object itself and its co..." alt="" coords="5,5,100,32"/>
-<area shape="rect" href="class_transform.html" title="Stores data about an object or componet&#39;s location in space." alt="" coords="124,5,203,32"/>
-<area shape="rect" href="struct_a_script.html" title="An asset for a script storing game behaviour." alt="" coords="180,95,245,121"/>
+<area shape="rect" title=" " alt="" coords="194,593,349,773"/>
+<area shape="rect" href="class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="118,292,273,531"/>
+<area shape="rect" href="class_game_object.html" title="An object as represented in the game world containing all information on the object itself and its co..." alt="" coords="5,5,191,229"/>
+<area shape="rect" href="class_transform.html" title="Stores data about an object or componet&#39;s location in space." alt="" coords="215,5,370,229"/>
+<area shape="rect" href="class_a_script.html" title="An asset for a script storing game behaviour. can be shared among many components." alt="" coords="297,351,400,472"/>
 </map>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -136,8 +136,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab1754b7da43237ce0d2784a8ddb9205a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_script.html#ab1754b7da43237ce0d2784a8ddb9205a">DrawToImGui</a> ()</td></tr>
 <tr class="memdesc:ab1754b7da43237ce0d2784a8ddb9205a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws to imgui.  <a href="class_c_script.html#ab1754b7da43237ce0d2784a8ddb9205a">More...</a><br /></td></tr>
 <tr class="separator:ab1754b7da43237ce0d2784a8ddb9205a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f8304d5b4836cfa663bc4b5bc1db30b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_script.html#a9f8304d5b4836cfa663bc4b5bc1db30b">AssignScript</a> (<a class="el" href="struct_a_script.html">AScript</a> *script)</td></tr>
-<tr class="separator:a9f8304d5b4836cfa663bc4b5bc1db30b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3453293c2e800dd3b708cabec95cb548"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_script.html#a3453293c2e800dd3b708cabec95cb548">AssignScript</a> (<a class="el" href="class_a_script.html">AScript</a> &amp;script)</td></tr>
+<tr class="separator:a3453293c2e800dd3b708cabec95cb548"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6dbae7090411b8b06124f054680ef991"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_script.html#a6dbae7090411b8b06124f054680ef991">AssignScriptByKey</a> (std::string assetKey)</td></tr>
 <tr class="memdesc:a6dbae7090411b8b06124f054680ef991"><td class="mdescLeft">&#160;</td><td class="mdescRight">script mutator using factory key  <a href="class_c_script.html#a6dbae7090411b8b06124f054680ef991">More...</a><br /></td></tr>
 <tr class="separator:a6dbae7090411b8b06124f054680ef991"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,7 +166,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:ab8f3a2c8e079926c8b74d5aecac296e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_a_script.html">AScript</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_script.html#ab8f3a2c8e079926c8b74d5aecac296e4">m_script</a></td></tr>
+<tr class="memitem:ab8f3a2c8e079926c8b74d5aecac296e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_script.html">AScript</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_script.html#ab8f3a2c8e079926c8b74d5aecac296e4">m_script</a></td></tr>
 <tr class="memdesc:ab8f3a2c8e079926c8b74d5aecac296e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The script asset storing information on the script.  <a href="class_c_script.html#ab8f3a2c8e079926c8b74d5aecac296e4">More...</a><br /></td></tr>
 <tr class="separator:ab8f3a2c8e079926c8b74d5aecac296e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3871d95971cdcc7dfaf3e07f43cef611"><td class="memItemLeft" align="right" valign="top">lua_State *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_script.html#a3871d95971cdcc7dfaf3e07f43cef611">m_L</a></td></tr>
@@ -224,8 +224,8 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9f8304d5b4836cfa663bc4b5bc1db30b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f8304d5b4836cfa663bc4b5bc1db30b">&#9670;&nbsp;</a></span>AssignScript()</h2>
+<a id="a3453293c2e800dd3b708cabec95cb548"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3453293c2e800dd3b708cabec95cb548">&#9670;&nbsp;</a></span>AssignScript()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -233,7 +233,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void CScript::AssignScript </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_a_script.html">AScript</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_a_script.html">AScript</a> &amp;&#160;</td>
           <td class="paramname"><em>script</em></td><td>)</td>
           <td></td>
         </tr>
@@ -242,10 +242,19 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="_c_script_8cpp_source.html#l00053">53</a> of file <a class="el" href="_c_script_8cpp_source.html">CScript.cpp</a>.</p>
 <div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_c_script_a3453293c2e800dd3b708cabec95cb548_cgraph.png" border="0" usemap="#aclass_c_script_a3453293c2e800dd3b708cabec95cb548_cgraph" alt=""/></div>
+<map name="aclass_c_script_a3453293c2e800dd3b708cabec95cb548_cgraph" id="aclass_c_script_a3453293c2e800dd3b708cabec95cb548_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,152,32"/>
+<area shape="rect" href="class_a_script.html#a836878b14aed1fa75e1bbbd70eb49a12" title=" " alt="" coords="200,5,315,32"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_c_script_a9f8304d5b4836cfa663bc4b5bc1db30b_icgraph.png" border="0" usemap="#aclass_c_script_a9f8304d5b4836cfa663bc4b5bc1db30b_icgraph" alt=""/></div>
-<map name="aclass_c_script_a9f8304d5b4836cfa663bc4b5bc1db30b_icgraph" id="aclass_c_script_a9f8304d5b4836cfa663bc4b5bc1db30b_icgraph">
+<div class="center"><img src="class_c_script_a3453293c2e800dd3b708cabec95cb548_icgraph.png" border="0" usemap="#aclass_c_script_a3453293c2e800dd3b708cabec95cb548_icgraph" alt=""/></div>
+<map name="aclass_c_script_a3453293c2e800dd3b708cabec95cb548_icgraph" id="aclass_c_script_a3453293c2e800dd3b708cabec95cb548_icgraph">
 <area shape="rect" title=" " alt="" coords="465,31,612,57"/>
 <area shape="rect" href="class_c_script.html#a6dbae7090411b8b06124f054680ef991" title="script mutator using factory key" alt="" coords="231,31,417,57"/>
 <area shape="rect" href="class_game_object.html#a45246aaee43206b87c40ef6fdc06111b" title="loads the object from saved state" alt="" coords="29,5,159,32"/>
@@ -286,7 +295,8 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="class_c_script_a6dbae7090411b8b06124f054680ef991_cgraph.png" border="0" usemap="#aclass_c_script_a6dbae7090411b8b06124f054680ef991_cgraph" alt=""/></div>
 <map name="aclass_c_script_a6dbae7090411b8b06124f054680ef991_cgraph" id="aclass_c_script_a6dbae7090411b8b06124f054680ef991_cgraph">
 <area shape="rect" title="script mutator using factory key" alt="" coords="5,5,192,32"/>
-<area shape="rect" href="class_c_script.html#a9f8304d5b4836cfa663bc4b5bc1db30b" title=" " alt="" coords="240,5,387,32"/>
+<area shape="rect" href="class_c_script.html#a3453293c2e800dd3b708cabec95cb548" title=" " alt="" coords="240,5,387,32"/>
+<area shape="rect" href="class_a_script.html#a836878b14aed1fa75e1bbbd70eb49a12" title=" " alt="" coords="435,5,549,32"/>
 </map>
 </div>
 <div class="dynheader">
@@ -330,6 +340,15 @@ Here is the caller graph for this function:</div>
 <p>Reimplemented from <a class="el" href="class_c_component.html#a5c5f18ab5d67e9d91e7fa7b26b836e96">CComponent</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_c_script_8cpp_source.html#l00042">42</a> of file <a class="el" href="_c_script_8cpp_source.html">CScript.cpp</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_c_script_ab1754b7da43237ce0d2784a8ddb9205a_cgraph.png" border="0" usemap="#aclass_c_script_ab1754b7da43237ce0d2784a8ddb9205a_cgraph" alt=""/></div>
+<map name="aclass_c_script_ab1754b7da43237ce0d2784a8ddb9205a_cgraph" id="aclass_c_script_ab1754b7da43237ce0d2784a8ddb9205a_cgraph">
+<area shape="rect" title="Draws to imgui." alt="" coords="5,5,156,32"/>
+<area shape="rect" href="class_a_script.html#ab3b19ab32a6104508af08396a75051c9" title=" " alt="" coords="204,5,300,32"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -415,9 +434,10 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_script_a271450247c297dd454b235ee8c103a50_cgraph.png" border="0" usemap="#aclass_c_script_a271450247c297dd454b235ee8c103a50_cgraph" alt=""/></div>
 <map name="aclass_c_script_a271450247c297dd454b235ee8c103a50_cgraph" id="aclass_c_script_a271450247c297dd454b235ee8c103a50_cgraph">
-<area shape="rect" title="script mutator" alt="" coords="5,31,107,57"/>
+<area shape="rect" title="script mutator" alt="" coords="5,56,107,83"/>
 <area shape="rect" href="class_game_object.html#a1777de44c00f8a04cad880a2fe65a51a" title="Factory key accessor." alt="" coords="162,5,350,32"/>
 <area shape="rect" href="class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9" title="parent object accessor" alt="" coords="155,56,357,83"/>
+<area shape="rect" href="class_a_script.html#ab3b19ab32a6104508af08396a75051c9" title=" " alt="" coords="208,107,304,133"/>
 </map>
 </div>
 
@@ -508,7 +528,7 @@ Here is the call graph for this function:</div>
 
 <p>lua state object for this component </p>
 
-<p class="definition">Definition at line <a class="el" href="_c_script_8h_source.html#l00063">63</a> of file <a class="el" href="_c_script_8h_source.html">CScript.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_script_8h_source.html#l00065">65</a> of file <a class="el" href="_c_script_8h_source.html">CScript.h</a>.</p>
 
 </div>
 </div>
@@ -522,7 +542,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_a_script.html">AScript</a>* CScript::m_script</td>
+          <td class="memname"><a class="el" href="class_a_script.html">AScript</a>* CScript::m_script</td>
         </tr>
       </table>
   </td>
@@ -534,7 +554,7 @@ Here is the call graph for this function:</div>
 
 <p>The script asset storing information on the script. </p>
 
-<p class="definition">Definition at line <a class="el" href="_c_script_8h_source.html#l00058">58</a> of file <a class="el" href="_c_script_8h_source.html">CScript.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_script_8h_source.html#l00060">60</a> of file <a class="el" href="_c_script_8h_source.html">CScript.h</a>.</p>
 
 </div>
 </div>

@@ -16,7 +16,7 @@ struct PointLight
 class CPointLight : public CComponent
 {
 public:
-	CPointLight(Transform* parent, GameObject* parentObj);
+	CPointLight(Transform *parent, GameObject *parentObj);
 
 	void Update();
 

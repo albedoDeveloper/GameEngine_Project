@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cameraprojection_1108',['CameraProjection',['../_camera_8h.html#a2d3e98136f7933519abb019705f0d2d8',1,'Camera.h']]]
+  ['assettype_1111',['AssetType',['../_game_asset_factory_8h.html#a72d924d1cb8e1544b6d5198e98d52ca9',1,'GameAssetFactory.h']]]
 ];

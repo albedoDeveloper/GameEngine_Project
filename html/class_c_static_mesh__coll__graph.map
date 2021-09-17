@@ -1,9 +1,8 @@
 <map id="CStaticMesh" name="CStaticMesh">
-<area shape="rect" id="node1" title="A static mesh containing information on a model." alt="" coords="169,184,267,211"/>
-<area shape="rect" id="node2" href="$class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="65,95,163,121"/>
-<area shape="rect" id="node3" href="$class_game_object.html" title="An object as represented in the game world containing all information on the object itself and its co..." alt="" coords="5,5,100,32"/>
-<area shape="rect" id="node4" href="$class_transform.html" title="Stores data about an object or componet&#39;s location in space." alt="" coords="124,5,203,32"/>
-<area shape="rect" id="node5" href="$class_shader.html" title=" " alt="" coords="187,95,249,121"/>
-<area shape="rect" id="node6" href="$class_a_model.html" title=" " alt="" coords="277,95,343,121"/>
-<area shape="rect" id="node7" title=" " alt="" coords="277,5,343,32"/>
+<area shape="rect" id="node1" title="A static mesh containing information on a model." alt="" coords="272,593,428,773"/>
+<area shape="rect" id="node2" href="$class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="118,292,273,531"/>
+<area shape="rect" id="node3" href="$class_game_object.html" title="An object as represented in the game world containing all information on the object itself and its co..." alt="" coords="5,5,191,229"/>
+<area shape="rect" id="node4" href="$class_transform.html" title="Stores data about an object or componet&#39;s location in space." alt="" coords="215,5,370,229"/>
+<area shape="rect" id="node5" href="$class_shader.html" title=" " alt="" coords="297,314,403,509"/>
+<area shape="rect" id="node6" href="$class_a_model.html" title=" " alt="" coords="428,336,533,487"/>
 </map>

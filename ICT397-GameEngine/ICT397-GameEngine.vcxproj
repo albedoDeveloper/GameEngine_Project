@@ -102,6 +102,7 @@
   <ItemGroup>
     <None Include="..\Assets\init.lua" />
     <None Include="..\Assets\Scripts\rotate.lua" />
+    <None Include="..\codestyle_config\.editorconfig" />
     <None Include="shaders\debug.frag" />
     <None Include="shaders\lit.frag" />
     <None Include="shaders\skyBox.frag" />

@@ -4,7 +4,7 @@ var files_dup =
     [ "AModel.cpp", "_a_model_8cpp.html", null ],
     [ "AScript.cpp", "_a_script_8cpp.html", null ],
     [ "AScript.h", "_a_script_8h.html", [
-      [ "AScript", "struct_a_script.html", "struct_a_script" ]
+      [ "AScript", "class_a_script.html", "class_a_script" ]
     ] ],
     [ "Camera.h", "_camera_8h.html", "_camera_8h" ],
     [ "CCamera.cpp", "_c_camera_8cpp.html", null ],

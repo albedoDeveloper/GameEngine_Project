@@ -28,7 +28,7 @@ public:
 	 * @brief singleton instance generator
 	 * @return pointer to the instance of the factory
 	*/
-	static GameAssetFactory* Instance();
+	static GameAssetFactory *Instance();
 	/**
 	 * @brief loads in a model
 	 * @param key the storage key for the mode
@@ -52,30 +52,31 @@ public:
 	 * @param name the key to check
 	 * @return whether the key is free
 	*/
-	bool CheckName(const std::string& key, AssetType type);
+	bool CheckName(const std::string &key, AssetType type);
 
-	AModel* GetModelAsset(const std::string &key);
+	AModel *GetModelAsset(const std::string &key);
 
-	AScript* GetScriptAsset(const std::string &key);
+	AScript *GetScriptAsset(const std::string &key);
 
 private:
 	/**
 	 * enforce singleton
 	 */
-	GameAssetFactory() {};
+	GameAssetFactory()
+	{};
 
-	/**
-	 * @brief loads in a lua file
-	 * @param path location of the file
-	 * @param script script asset to load it into
-	 * @return whether operation succeeded
-	*/
-	void LoadLuaFile(const std::string& key, const std::string& path);
+/**
+ * @brief loads in a lua file
+ * @param path location of the file
+ * @param script script asset to load it into
+ * @return whether operation succeeded
+*/
+	void LoadLuaFile(const std::string &key, const std::string &path);
 
 	std::map<std::string, AScript> m_scriptAssets;
 
 	std::map<std::string, AModel> m_modelAssets;
-		
+
 	bool oneTimeShader = false;
 };
 

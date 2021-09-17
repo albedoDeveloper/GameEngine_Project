@@ -6,27 +6,27 @@ GameObject::GameObject()
 {
 }
 
-CStaticMesh* GameObject::AddCStaticMesh()
+CStaticMesh *GameObject::AddCStaticMesh()
 {
 	return AddComponent<CStaticMesh>();
 }
 
-CScript* GameObject::AddCScript()
+CScript *GameObject::AddCScript()
 {
 	return AddComponent<CScript>();
 }
 
-CStaticMesh* GameObject::GetCStaticMesh()
+CStaticMesh *GameObject::GetCStaticMesh()
 {
 	return GetComponent<CStaticMesh>();
 }
 
-CSound* GameObject::AddCSound()
+CSound *GameObject::AddCSound()
 {
 	return AddComponent<CSound>();
 }
 
-CSound* GameObject::GetCSound()
+CSound *GameObject::GetCSound()
 {
 	return GetComponent<CSound>();
 }
@@ -36,27 +36,27 @@ void GameObject::SetStatic(bool isStatic)
 	m_static = isStatic;
 }
 
-CCharacter* GameObject::AddCCharacter()
+CCharacter *GameObject::AddCCharacter()
 {
 	return AddComponent<CCharacter>();
 }
 
-CCamera* GameObject::AddCCameraComponent()
+CCamera *GameObject::AddCCameraComponent()
 {
 	return AddComponent<CCamera>();
 }
 
-CPointLight* GameObject::AddCPointLight()
+CPointLight *GameObject::AddCPointLight()
 {
 	return AddComponent<CPointLight>();
 }
 
-CPointLight* GameObject::GetCPointLight()
+CPointLight *GameObject::GetCPointLight()
 {
 	return GetComponent<CPointLight>();
 }
 
-CCamera* GameObject::GetCCamera()
+CCamera *GameObject::GetCCamera()
 {
 	return GetComponent<CCamera>();
 }
@@ -66,34 +66,34 @@ bool GameObject::IsStatic() const
 	return m_static;
 }
 
-CCharacter* GameObject::GetCCharacter()
+CCharacter *GameObject::GetCCharacter()
 {
 	return GetComponent<CCharacter>();
 }
 
-CCollider* GameObject::GetCCollider()
+CCollider *GameObject::GetCCollider()
 {
 	return GetComponent<CCollider>();
 }
 
-Transform* GameObject::GetTransform()
+Transform *GameObject::GetTransform()
 {
 	return &m_transform;
 }
 
-GameObject* GameObject::GetClosestObject(std::string partialKey)
+GameObject *GameObject::GetClosestObject(std::string partialKey)
 {
 	return GAMEOBJECT->getClosestObject(&m_transform, partialKey);
 }
 
-CCollider* GameObject::AddCCollider()
+CCollider *GameObject::AddCCollider()
 {
 	return AddComponent<CCollider>();
 }
 
 void GameObject::SetParentObject(std::string newParent)
 {
-	GameObject* otherObject = GAMEOBJECT->GetGameObject(newParent);
+	GameObject *otherObject = GAMEOBJECT->GetGameObject(newParent);
 	if (otherObject == nullptr)
 	{
 		std::cout << "ERROR SetParentObject(). Cannot find object by ID: " << newParent << std::endl;
@@ -102,11 +102,13 @@ void GameObject::SetParentObject(std::string newParent)
 	m_transform.SetParent(otherObject->GetTransform());
 }
 
-std::string GameObject::getFactoryKey() {
+std::string GameObject::getFactoryKey()
+{
 	return m_factoryKey;
 }
 
-void GameObject::setFactoryKey(std::string key) {
+void GameObject::setFactoryKey(std::string key)
+{
 	this->m_factoryKey = key;
 }
 
@@ -136,7 +138,7 @@ std::string GameObject::GetDifficulty()
 void GameObject::Start()
 {
 	m_initialActivation = m_isActive;
-	
+
 	m_initTransform = new Transform();
 	m_initTransform.SetPositionV(m_transform.GetPosition());
 	m_initTransform.SetRotation(m_transform.GetRotation());
@@ -145,10 +147,10 @@ void GameObject::Start()
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<CComponent*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->Start();
 			}
@@ -161,10 +163,10 @@ void GameObject::Update()
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<CComponent*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->Update();
 			}
@@ -180,7 +182,7 @@ void GameObject::Render()
 		for (auto mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->Render();
 			}
@@ -196,7 +198,7 @@ void GameObject::LateRender()
 		for (auto mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->LateRender();
 			}
@@ -204,7 +206,7 @@ void GameObject::LateRender()
 	}
 }
 
-void GameObject::Save(nlohmann::json& j)
+void GameObject::Save(nlohmann::json &j)
 {
 	j[getFactoryKey()]["key"] = getFactoryKey();
 
@@ -213,17 +215,17 @@ void GameObject::Save(nlohmann::json& j)
 	std::cout << "SAVED" << std::endl;
 
 	// iterate through all component lists
-	for (std::unordered_map<std::type_index, std::list<CComponent*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+	for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 	{
 		// iterate through all components in list
-		for (std::list<CComponent*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+		for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 		{
 			(*listIterator)->Save(j);
 		}
 	}
 }
 
-void GameObject::Load(nlohmann::json& j)
+void GameObject::Load(nlohmann::json &j)
 {
 	std::cout << getFactoryKey() << std::endl;
 	GetTransform()->FromJson(j, getFactoryKey());
@@ -234,15 +236,15 @@ void GameObject::Load(nlohmann::json& j)
 	{
 		std::cout << "GO TEST" << it.key() << " | " << it.value() << std::endl;
 
-		
+
 
 		if (it.key() == "ScriptComponent")
 		{
-			if (GetComponent<CScript>()) 
+			if (GetComponent<CScript>())
 			{
 				GetComponent<CScript>()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
 			}
-			else 
+			else
 			{
 				AddCScript()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
 			}
@@ -254,7 +256,7 @@ void GameObject::Load(nlohmann::json& j)
 			{
 				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
 			}
-			else 
+			else
 			{
 				AddCStaticMesh()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
 			}
@@ -262,22 +264,22 @@ void GameObject::Load(nlohmann::json& j)
 
 		if (it.key() == "AABBComponent")
 		{
-			if (GetComponent<CCollider>()) 
+			if (GetComponent<CCollider>())
 			{
 				std::cout << "collider already exists" << std::endl;
 				GetComponent<CCollider>()->UpdateCollider();
 			}
 			else
 			{
-				CCollider* col = AddCCollider();
-				
+				CCollider *col = AddCCollider();
+
 				col->Load(j);
 			}
 		}
 	}
 }
 
-std::unordered_map<std::type_index, std::list<CComponent*>*> GameObject::GetComponentMap() 
+std::unordered_map<std::type_index, std::list<CComponent *> *> GameObject::GetComponentMap()
 {
 	return m_components;
 }

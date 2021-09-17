@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quaternion_583',['Quaternion',['../class_quaternion.html',1,'']]]
+  ['quaternion_585',['Quaternion',['../class_quaternion.html',1,'']]]
 ];
