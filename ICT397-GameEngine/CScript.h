@@ -15,10 +15,12 @@ public:
 	 * @param parentObj the parent object of this component
 	*/
 	CScript(Transform* parent, GameObject* parentObj);
+
 	/**
 	 * @brief Initiates the script at program start
 	*/
 	virtual void Start();
+
 	/**
 	 * @brief Updates ongoing behaviour each frame
 	*/
@@ -44,7 +46,7 @@ public:
 	*/
 	virtual void DrawToImGui();
 
-	void AssignScript(AScript* script);
+	void AssignScript(AScript &script);
 	/**
 	 * @brief script mutator using factory key
 	 * @param assetKey the key by which the script is stored in the asset factory
@@ -55,10 +57,10 @@ protected:
 	/**
 	 * @brief The script asset storing information on the script
 	*/
-	AScript* m_script;
+	AScript *m_script;
 
 	/**
 	 * @brief lua state object for this component
 	*/
-	lua_State* m_L;
+	lua_State *m_L;
 };

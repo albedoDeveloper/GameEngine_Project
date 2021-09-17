@@ -7,138 +7,79 @@ GameAssetFactory* GameAssetFactory::Instance()
 	return &instance;
 }
 
-void GameAssetFactory::LoadModel(std::string key, std::string filePath)
+void GameAssetFactory::LoadModel(const std::string &key, const std::string &filePath)
 {
-    if (CheckName(key))
+    if (CheckName(key, AssetType::MODEL))
     {
-        std::cout << "Error: Cannot load model, model name already exists\n";
+        std::cout << "[Error] Cannot load model, model name already exists\n";
         return;
     }
 
-     AModel* model = new AModel(filePath,key);
-    
-     m_assets.emplace(key, model);
-   
+    m_modelAssets.emplace(key, AModel(filePath, key));
 }
 
-void GameAssetFactory::LoadScript(std::string key, std::string filePath)
+void GameAssetFactory::LoadScript(const std::string &key, const std::string &filePath)
 {
-    if (CheckName(key))
+    if (CheckName(key, AssetType::SCRIPT))
     {
         std::cout << "Error: Cannot load script, script name already exists\n";
         return;
     }
 
-    AScript* script = new AScript(key);
-
-    if (LoadLuaFile(filePath, script))
-    {
-        m_assets.emplace(key, script);
-    }
-    else
-    {
-        std::cout << "Error: there was an error loading script:" << filePath << std::endl;
-        delete(script);
-    }
+    m_scriptAssets.emplace(key, AScript(key, filePath));
 }
 
-bool GameAssetFactory::UnloadTexture(std::string key)
+void GameAssetFactory::UnloadTexture(std::string key)
 {
-    if (CheckName(key))
-    {
-        return false;
-    }
-
     GRAPHICS->DeleteTexture(key);
 }
 
-bool GameAssetFactory::LoadHeightMap(std::string key, std::string filePath)
+bool GameAssetFactory::CheckName(const std::string &key, AssetType type)
 {
-   /* if (CheckName(key))
+    switch (type)
     {
-        return false;
+    case AssetType::MODEL:
+        return !(m_modelAssets.find(key) == m_modelAssets.end());
+        break;
+    case AssetType::SCRIPT:
+        return !(m_scriptAssets.find(key) == m_scriptAssets.end());
+        break;
     }
-
-    std::ifstream infile(filePath.c_str(), std::ios_base::binary);
-    if (!infile)
-    {
-#if _DEBUG
-        std::cout << "LoadHeightMap: cannot open file!\n";
-#endif
-        return false;
-    }
-
-    AHeightMap* heightMap = new AHeightMap(key);
-
-    infile.seekg(0, std::ios::end);
-    unsigned length = (unsigned)infile.tellg();
-    heightMap->data = new unsigned char[length];
-
-    if (heightMap->data == NULL)
-    {
-        delete heightMap;
-#if _DEBUG
-        std::cout << "Failed to create terrain data array!\n";
-#endif
-        return false;
-    }
-    infile.seekg(0, std::ios::beg);
-    infile.read(reinterpret_cast<char*>(heightMap->data), length);
-    infile.close();
-
-    heightMap->size = (unsigned)sqrt(length);
-
-    m_assets.emplace(key, heightMap);
-
-#if _DEBUG
-    std::cout << "Height map loaded in. key:" << key << std::endl;
-#endif*/
-
-    return true;
-
 }
 
-bool GameAssetFactory::CheckName(std::string name)
-{
-	return !( m_assets.find(name) == m_assets.end() );
-}
-
-//AModel* GameAssetFactory::GetAsset(std::string key)
-AAsset* GameAssetFactory::GetAsset(std::string key)
-{
-#if _DEBUG
-    if (m_assets.find(key) == m_assets.end()) 
-    {
-        std::cout << "Error: Game asset (Key:" << key << ") not found!\n";
-    }
-#endif
-
-    if (m_assets.find(key) != m_assets.end()) 
-    {
-        return m_assets.at(key);
-    }
-    
-    return nullptr;
-}
-
-bool GameAssetFactory::LoadLuaFile(std::string path, AScript* script)
+void GameAssetFactory::LoadLuaFile(const std::string &key, const std::string &path)
 {
     std::ifstream inFile(path);
     if (!inFile.is_open()) 
     {
-#if _DEBUG
         std::cout << "Could not open the file: '" << path << "'" << std::endl;
-#endif
-        return false;
     }
 
-    script->Script = std::string((std::istreambuf_iterator<char>(inFile)), std::istreambuf_iterator<char>());
-
-    return true;
+    AScript script(key, std::string((std::istreambuf_iterator<char>(inFile)), std::istreambuf_iterator<char>()));
 }
 
-void GameAssetFactory::Close()
+AModel* GameAssetFactory::GetModelAsset(const std::string &key)
 {
-    //m_assets = *new std::map<std::string, AModel*>();
-    m_assets = *new std::map<std::string, AAsset*>();
+    try
+    {
+        return &(m_modelAssets.at(key));
+    }
+    catch (std::out_of_range e)
+    {
+        std::cout << "[Error] Cannot find AModel with key: " << key << std::endl;
+        return nullptr;
+    }
+}
+
+AScript* GameAssetFactory::GetScriptAsset(const std::string& key)
+{
+    try
+    {
+        return &(m_scriptAssets.at(key));
+    }
+    catch (std::out_of_range e)
+    {
+        std::cout << "[Error] Cannot find AScript with key: " << key << std::endl;
+        return nullptr;
+    }
 }

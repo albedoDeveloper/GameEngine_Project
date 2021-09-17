@@ -7,31 +7,26 @@
 
 CStaticMesh::CStaticMesh(Transform* parent, GameObject* parentObj)
 	:CComponent{ parent, parentObj}, 
-	m_model{ nullptr },
-	m_shader{ GRAPHICS->m_litShader }
+	m_shader{ GRAPHICS->m_litShader },
+	m_model{ nullptr }
 {
 }
 
-CStaticMesh::~CStaticMesh()
+AModel& CStaticMesh::GetModel()
 {
-	delete m_model;
+	return *m_model;
 }
 
-AModel* CStaticMesh::GetModel()
+AModel& CStaticMesh::AssignModelByKey(std::string modelKey)
 {
-	return m_model;
-}
-
-AModel* CStaticMesh::AssignModelByKey(std::string modelKey)
-{
-	AModel* model = static_cast<AModel*>(ASSET->GetAsset(modelKey));
+	AModel *model = ASSET->GetModelAsset(modelKey);
 	if (model == nullptr)
 	{
 		std::cout << "ERROR ASSIGNING MODEL BY KEY : " << modelKey << std::endl;
-		exit(-23);
+		exit(-23); // find a better way to handle error codes
 	}
 	m_model = model;
-	return m_model;
+	return *m_model;
 }
 
 void CStaticMesh::AssignShader(std::string shader)
@@ -71,7 +66,7 @@ void CStaticMesh::Render()
 void CStaticMesh::Save(nlohmann::json& j)
 {
 	GameObject* g = GetParentObject();
-	j[g->getFactoryKey()]["Components"]["StaticMeshComponent"]["AModel"] = m_model->key;
+	j[g->getFactoryKey()]["Components"]["StaticMeshComponent"]["AModel"] = m_model->Key();
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }
@@ -87,7 +82,7 @@ void CStaticMesh::DrawToImGui()
 	//ImGui::Text("staticMesh TREE");
 	if (ImGui::TreeNode("StaticMesh CComponent"))
 	{
-		ImGui::Text("AModel Name : "); ImGui::SameLine(); ImGui::Text(m_model->key.c_str());
+		ImGui::Text("AModel Name : "); ImGui::SameLine(); ImGui::Text(m_model->Key().c_str());
 		ImGui::TreePop();
 	}
 }

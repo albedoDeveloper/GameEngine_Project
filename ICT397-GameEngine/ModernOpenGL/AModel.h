@@ -1,20 +1,20 @@
 #pragma once
 
-#include "../AAsset.h"
 #include <string>
 #include <vector> 
 #include <array>
 #include "Mesh.h"
 
-class AModel : public AAsset
+class AModel
 {
 public:
-    AModel(std::string path, std::string keyTemp);
+    AModel(std::string path, std::string key);
+    const std::string& Key() const;
     void Draw(const Shader* shader) const;
     int NumFaces() const;
     const std::vector<float>& MinMax() const;
     std::vector<Mesh>& GetMesh() { return m_meshes; }
-
+    
 private:
     struct ModelInfo
     {
@@ -23,6 +23,7 @@ private:
         float size = 1;
     };
 
+    std::string m_key;
     std::vector<float> m_minMax;
     int m_numberOfFaces = 0;
 

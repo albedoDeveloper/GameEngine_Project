@@ -28,7 +28,7 @@ void CScript::Update()
 void CScript::Save(nlohmann::json& j)
 {
 	GameObject* g = GetParentObject();
-	j[g->getFactoryKey()]["Components"]["ScriptComponent"]["Script"] = m_script->key;
+	j[g->getFactoryKey()]["Components"]["ScriptComponent"]["Script"] = m_script->Key();
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }
@@ -44,21 +44,21 @@ void CScript::DrawToImGui()
 	//ImGui::Text("staticMesh TREE");
 	if (ImGui::TreeNode("Script CComponent"))
 	{
-		ImGui::Text("Script Info : "); ImGui::SameLine(); ImGui::Text(m_script->key.c_str());
+		ImGui::Text("Script Info : "); ImGui::SameLine(); ImGui::Text(m_script->Key().c_str());
 		ImGui::TreePop();
 
 	}
 }
 
-void CScript::AssignScript(AScript* script)
+void CScript::AssignScript(AScript &script)
 {
-	m_script = script;
-	luaL_dostring(m_L, script->Script.c_str());
+	m_script = &script;
+	luaL_dostring(m_L, script.Source().c_str());
 }
 
 void CScript::AssignScriptByKey(std::string assetKey)
 {
 	AssignScript(
-		static_cast<AScript*>(ASSET->GetAsset(assetKey))
+		*(ASSET->GetScriptAsset(assetKey))
 	);
 } 

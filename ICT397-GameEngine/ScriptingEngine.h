@@ -66,13 +66,6 @@ private:
 	static void UnloadTexture(std::string key);
 
 	/**
-	 * @brief Loads a heightmap into the game engine's asset manager
-	 * @param key name of the texture
-	 * @param filePath location of the texture in storage
-	*/
-	static void LoadHeightMap(std::string key, std::string filePath);
-
-	/**
 	 * @brief Creates a game object using the game object factory
 	 * @param key The key for storing the object. Can be any typed string
 	*/

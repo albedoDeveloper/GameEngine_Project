@@ -36,7 +36,6 @@ lua_State* ScriptingEngine::NewState()
     getGlobalNamespace(Lbuff).addFunction("LoadModel", LoadModel);
     getGlobalNamespace(Lbuff).addFunction("LoadScript", LoadScript);
     getGlobalNamespace(Lbuff).addFunction("UnloadTexture", UnloadTexture);
-    getGlobalNamespace(Lbuff).addFunction("LoadHeightMap", LoadHeightMap);
     getGlobalNamespace(Lbuff).addFunction("SpawnGameObject", SpawnGameObject);
     getGlobalNamespace(Lbuff).addFunction("GetGameObject", GetGameObject);
     getGlobalNamespace(Lbuff).addFunction("QuitGame", QuitGame);
@@ -149,6 +148,14 @@ lua_State* ScriptingEngine::NewState()
         .endClass();
 
     getGlobalNamespace(Lbuff)
+        .beginClass<AModel>("AModel")
+        .endClass();
+
+    getGlobalNamespace(Lbuff)
+        .beginClass<AScript>("AScript")
+        .endClass();
+
+    getGlobalNamespace(Lbuff)
         .beginClass<CComponent>("CComponent")
         .endClass()
         .deriveClass<CPointLight, CComponent>("CPointLight")
@@ -174,12 +181,6 @@ lua_State* ScriptingEngine::NewState()
        .addFunction("AddConcaveCollider", &CCollider::AddConcaveCollider)
        .addFunction("CollideWith", &CCollider::CollideWith)
        .endClass();
-
-    getGlobalNamespace(Lbuff)
-        .beginClass<AAsset>("AAsset")
-        .endClass()
-        .deriveClass<AModel, CComponent>("AModel")
-        .endClass();
 
     return Lbuff;
 }
@@ -221,11 +222,6 @@ void ScriptingEngine::LoadScript(std::string key, std::string filePath)
 void ScriptingEngine::UnloadTexture(std::string key)
 {
     ASSET->UnloadTexture(key);
-}
-
-void ScriptingEngine::LoadHeightMap(std::string key, std::string filePath)
-{
-    ASSET->LoadHeightMap(key, "../Assets/HeightMaps/" + filePath);
 }
 
 GameObject* ScriptingEngine::SpawnGameObject(std::string key)

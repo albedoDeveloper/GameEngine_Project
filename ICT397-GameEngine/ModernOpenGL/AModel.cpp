@@ -3,11 +3,16 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stbi_image/stb_image.h>
 
-AModel::AModel(std::string path, std::string keyTemp)
-    :AAsset{ keyTemp }
+AModel::AModel(std::string path, std::string key)
+    :m_key{ key }
 {
     m_info.path = path;
     LoadModel(path);
+}
+
+const std::string& AModel::Key() const
+{
+    return m_key;
 }
 
 void AModel::Draw(const Shader* shader) const
