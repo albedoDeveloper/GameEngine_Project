@@ -81,9 +81,11 @@
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="LightManager.h" />
     <ClInclude Include="MathLibrary.h" />
+    <ClInclude Include="Matrix4f.h" />
     <ClInclude Include="ModernOpenGL\Mesh.h" />
     <ClInclude Include="ModernOpenGL\AModel.h" />
     <ClInclude Include="ModernOpenGL\Shader.h" />
+    <ClInclude Include="Quaternion.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ScriptingEngine.h" />
     <ClInclude Include="SkyBox.h" />
@@ -98,6 +100,7 @@
     <ClInclude Include="ThirdParty\imgui\imstb_textedit.h" />
     <ClInclude Include="ThirdParty\imgui\imstb_truetype.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="Vector3f.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\init.lua" />

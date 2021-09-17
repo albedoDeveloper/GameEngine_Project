@@ -1,5 +1,6 @@
 #include "LevelEditor.h"
 #include "GameObjectFactory.h"
+#include "Quaternion.h"
 
 LevelEditor::LevelEditor()
 {

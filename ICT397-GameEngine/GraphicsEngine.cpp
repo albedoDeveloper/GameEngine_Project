@@ -8,6 +8,8 @@
 #include "./ThirdParty/imgui/imgui.h"
 #include "./ThirdParty/imgui/imgui_impl_sdl.h"
 #include "./ThirdParty/imgui/imgui_impl_opengl3.h"
+#include "Vector3f.h"
+#include "Matrix4f.h"
 
 extern "C"
 {
@@ -192,14 +194,16 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 		return;
 	}
 
-	glm::mat4 trans = glm::mat4(1.0f);
-	trans = glm::translate(trans, glm::vec3(worldTrans.GetPosition().GetX(), worldTrans.GetPosition().GetY(), worldTrans.GetPosition().GetZ()));
+	Matrix4f trans;
+	trans.Translate(worldTrans.GetPosition());
 
-	trans = trans * glm::mat4_cast(glm::conjugate(
-		glm::quat(worldTrans.GetRotation().GetW(), worldTrans.GetRotation().GetX(), worldTrans.GetRotation().GetY(), worldTrans.GetRotation().GetZ())
-	));
+	trans *= Quaternion(worldTrans.GetRotation())
 
-	trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+	//trans = trans * glm::mat4_cast(glm::conjugate(
+	//	glm::quat(worldTrans.GetRotation().GetW(), worldTrans.GetRotation().GetX(), worldTrans.GetRotation().GetY(), worldTrans.GetRotation().GetZ())
+	//));
+
+		trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
 
 	shader->Use();
 	shader->SetMat4("model", trans);

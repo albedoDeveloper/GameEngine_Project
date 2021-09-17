@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Engine.h"
 #include "GameObjectFactory.h"
+#include "Vector3f.h"
 
 CCharacter::CCharacter(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj },

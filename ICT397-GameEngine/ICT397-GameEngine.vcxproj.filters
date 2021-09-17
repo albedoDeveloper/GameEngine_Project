@@ -37,9 +37,6 @@
     <ClCompile Include="LightManager.cpp">
       <Filter>Source\Misc\Source</Filter>
     </ClCompile>
-    <ClCompile Include="MathLibrary.cpp">
-      <Filter>Source\Misc\Source</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source\Misc\Source</Filter>
     </ClCompile>
@@ -107,6 +104,9 @@
       <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
     <ClCompile Include="AScript.cpp" />
+    <ClCompile Include="MathLibrary.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">
@@ -155,9 +155,6 @@
       <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="LightManager.h">
-      <Filter>Source\Misc\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="MathLibrary.h">
       <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="ModernOpenGL\Mesh.h">
@@ -231,6 +228,18 @@
     </ClInclude>
     <ClInclude Include="ScriptingEngine.h">
       <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MathLibrary.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3f.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4f.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Source\Math\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +320,15 @@
     </Filter>
     <Filter Include="Source\Misc\Headers">
       <UniqueIdentifier>{e4669bb1-686b-4e8b-9d0b-2f96886d7acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Math">
+      <UniqueIdentifier>{4f4301e0-8503-4399-b641-fdd0be54085a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Math\Headers">
+      <UniqueIdentifier>{cd9e83c0-e6f7-4f5d-9f95-2b9ded0bbae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Math\Source">
+      <UniqueIdentifier>{980c5b3f-ba8b-4808-a504-140790bb979f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

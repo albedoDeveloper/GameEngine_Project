@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iostream>
 #include "DeltaTime.h"
+#include "Quaternion.h"
 
 const double pi = 2 * acos(0.0);
 
@@ -120,19 +121,19 @@ Vector3f Transform::GetScale() const
 	return m_scale;
 }
 
-void Transform::SetRotation(Quaternion newRotation)
+void Transform::SetOrientation(Quaternion orientation)
 {
-	m_rotation = newRotation;
+	m_orientation = orientation;
 }
 
-Quaternion &Transform::GetRotation()
+Quaternion &Transform::GetOrientation()
 {
-	return m_rotation;
+	return m_orientation;
 }
 
-Quaternion Transform::GetRotation() const
+Quaternion Transform::GetOrientation() const
 {
-	return m_rotation;
+	return m_orientation;
 }
 
 Transform Transform::GetWorldTransform() const

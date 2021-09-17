@@ -1,5 +1,6 @@
 #include "CPointLight.h"
 #include "GraphicsEngine.h"
+#include "Vector3f.h"
 
 CPointLight::CPointLight(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj },
