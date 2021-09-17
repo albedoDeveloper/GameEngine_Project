@@ -29,6 +29,7 @@
    <div id="projectname">ICT398 - FrankEngine
    &#160;<span id="projectnumber">Milestone 1</span>
    </div>
+   <div id="projectbrief">Custom Game Engine</div>
   </td>
  </tr>
  </tbody>
@@ -193,7 +194,7 @@ $(document).ready(function(){initNavTree('_game_asset_factory_8cpp_source.html',
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">//AModel* GameAssetFactory::GetAsset(std::string key)</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="class_game_asset_factory.html#ae05670f82faa15b8fe684cbe96e54abc">  107</a></span>&#160;<a class="code" href="struct_a_asset.html">AAsset</a>* <a class="code" href="class_game_asset_factory.html#ae05670f82faa15b8fe684cbe96e54abc">GameAssetFactory::GetAsset</a>(std::string key)</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="class_game_asset_factory.html#ae05670f82faa15b8fe684cbe96e54abc">  107</a></span>&#160;AAsset* <a class="code" href="class_game_asset_factory.html#ae05670f82faa15b8fe684cbe96e54abc">GameAssetFactory::GetAsset</a>(std::string key)</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#if _DEBUG</span></div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">if</span> (m_assets.find(key) == m_assets.end()) </div>
@@ -221,7 +222,7 @@ $(document).ready(function(){initNavTree('_game_asset_factory_8cpp_source.html',
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    script-&gt;<a class="code" href="struct_a_script.html#a7968cce6034fed6438c930f916297cb0">Script</a> = std::string((std::istreambuf_iterator&lt;char&gt;(inFile)), std::istreambuf_iterator&lt;char&gt;());</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    script-&gt;Script = std::string((std::istreambuf_iterator&lt;char&gt;(inFile)), std::istreambuf_iterator&lt;char&gt;());</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
@@ -232,9 +233,9 @@ $(document).ready(function(){initNavTree('_game_asset_factory_8cpp_source.html',
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    m_assets = *<span class="keyword">new</span> std::map&lt;std::string, AAsset*&gt;();</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
 <div class="ttc" id="a_game_asset_factory_8h_html"><div class="ttname"><a href="_game_asset_factory_8h.html">GameAssetFactory.h</a></div></div>
-<div class="ttc" id="a_graphics_engine_8h_html_a36c5995036907afe534f70b04cb1d360"><div class="ttname"><a href="_graphics_engine_8h.html#a36c5995036907afe534f70b04cb1d360">GRAPHICS</a></div><div class="ttdeci">#define GRAPHICS</div><div class="ttdef"><b>Definition:</b> <a href="_graphics_engine_8h_source.html#l00216">GraphicsEngine.h:216</a></div></div>
-<div class="ttc" id="aclass_a_model_html"><div class="ttname"><a href="class_a_model.html">AModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_model_8h_source.html#l00022">AModel.h:23</a></div></div>
-<div class="ttc" id="aclass_game_asset_factory_html"><div class="ttname"><a href="class_game_asset_factory.html">GameAssetFactory</a></div><div class="ttdoc">singleton factory for game assets</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8h_source.html#l00017">GameAssetFactory.h:18</a></div></div>
+<div class="ttc" id="a_graphics_engine_8h_html_a36c5995036907afe534f70b04cb1d360"><div class="ttname"><a href="_graphics_engine_8h.html#a36c5995036907afe534f70b04cb1d360">GRAPHICS</a></div><div class="ttdeci">#define GRAPHICS</div><div class="ttdef"><b>Definition:</b> <a href="_graphics_engine_8h_source.html#l00214">GraphicsEngine.h:214</a></div></div>
+<div class="ttc" id="aclass_a_model_html"><div class="ttname"><a href="class_a_model.html">AModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_model_8h_source.html#l00009">AModel.h:10</a></div></div>
+<div class="ttc" id="aclass_game_asset_factory_html"><div class="ttname"><a href="class_game_asset_factory.html">GameAssetFactory</a></div><div class="ttdoc">singleton factory for game assets</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8h_source.html#l00018">GameAssetFactory.h:19</a></div></div>
 <div class="ttc" id="aclass_game_asset_factory_html_a1836e5aacdba78eb42fef096c6e11470"><div class="ttname"><a href="class_game_asset_factory.html#a1836e5aacdba78eb42fef096c6e11470">GameAssetFactory::LoadModel</a></div><div class="ttdeci">void LoadModel(std::string key, std::string filePath)</div><div class="ttdoc">loads in a model</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00010">GameAssetFactory.cpp:10</a></div></div>
 <div class="ttc" id="aclass_game_asset_factory_html_a40b5a89c9a42d946e7c60bac2efb87ca"><div class="ttname"><a href="class_game_asset_factory.html#a40b5a89c9a42d946e7c60bac2efb87ca">GameAssetFactory::LoadScript</a></div><div class="ttdeci">void LoadScript(std::string key, std::string filePath)</div><div class="ttdoc">loads in a script</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00024">GameAssetFactory.cpp:24</a></div></div>
 <div class="ttc" id="aclass_game_asset_factory_html_a72a3cc4c21e9406060ec244b1b29d761"><div class="ttname"><a href="class_game_asset_factory.html#a72a3cc4c21e9406060ec244b1b29d761">GameAssetFactory::UnloadTexture</a></div><div class="ttdeci">bool UnloadTexture(std::string key)</div><div class="ttdoc">unload a texture from memory</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00045">GameAssetFactory.cpp:45</a></div></div>
@@ -243,9 +244,7 @@ $(document).ready(function(){initNavTree('_game_asset_factory_8cpp_source.html',
 <div class="ttc" id="aclass_game_asset_factory_html_a97368a3631a29c1595dd5f682c98df67"><div class="ttname"><a href="class_game_asset_factory.html#a97368a3631a29c1595dd5f682c98df67">GameAssetFactory::Instance</a></div><div class="ttdeci">static GameAssetFactory * Instance()</div><div class="ttdoc">singleton instance generator</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00004">GameAssetFactory.cpp:4</a></div></div>
 <div class="ttc" id="aclass_game_asset_factory_html_a976d3d345587b20c91e6de8d8323b72f"><div class="ttname"><a href="class_game_asset_factory.html#a976d3d345587b20c91e6de8d8323b72f">GameAssetFactory::CheckName</a></div><div class="ttdeci">bool CheckName(std::string key)</div><div class="ttdoc">cheks whether a storage key already has an asset</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00101">GameAssetFactory.cpp:101</a></div></div>
 <div class="ttc" id="aclass_game_asset_factory_html_ae05670f82faa15b8fe684cbe96e54abc"><div class="ttname"><a href="class_game_asset_factory.html#ae05670f82faa15b8fe684cbe96e54abc">GameAssetFactory::GetAsset</a></div><div class="ttdeci">AAsset * GetAsset(std::string key)</div><div class="ttdoc">asset accessor</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00107">GameAssetFactory.cpp:107</a></div></div>
-<div class="ttc" id="astruct_a_asset_html"><div class="ttname"><a href="struct_a_asset.html">AAsset</a></div><div class="ttdoc">A game asset storing information on a piece of imported game data.</div><div class="ttdef"><b>Definition:</b> <a href="_a_asset_8h_source.html#l00008">AAsset.h:9</a></div></div>
-<div class="ttc" id="astruct_a_script_html"><div class="ttname"><a href="struct_a_script.html">AScript</a></div><div class="ttdoc">An asset for a script storing game behaviour.</div><div class="ttdef"><b>Definition:</b> <a href="_a_script_8h_source.html#l00009">AScript.h:10</a></div></div>
-<div class="ttc" id="astruct_a_script_html_a7968cce6034fed6438c930f916297cb0"><div class="ttname"><a href="struct_a_script.html#a7968cce6034fed6438c930f916297cb0">AScript::Script</a></div><div class="ttdeci">std::string Script</div><div class="ttdoc">the contents of the script</div><div class="ttdef"><b>Definition:</b> <a href="_a_script_8h_source.html#l00014">AScript.h:14</a></div></div>
+<div class="ttc" id="astruct_a_script_html"><div class="ttname"><a href="struct_a_script.html">AScript</a></div><div class="ttdoc">An asset for a script storing game behaviour.</div><div class="ttdef"><b>Definition:</b> <a href="_a_script_8h_source.html#l00015">AScript.h:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

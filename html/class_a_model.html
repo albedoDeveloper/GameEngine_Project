@@ -29,6 +29,7 @@
    <div id="projectname">ICT398 - FrankEngine
    &#160;<span id="projectnumber">Milestone 1</span>
    </div>
+   <div id="projectbrief">Custom Game Engine</div>
   </td>
  </tr>
  </tbody>
@@ -84,8 +85,8 @@ $(document).ready(function(){initNavTree('class_a_model.html',''); initResizable
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_a_model-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">AModel Class Reference</div>  </div>
@@ -99,7 +100,7 @@ Inheritance diagram for AModel:</div>
 <div class="center"><img src="class_a_model__inherit__graph.png" border="0" usemap="#a_a_model_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_a_model_inherit__map" id="a_a_model_inherit__map">
 <area shape="rect" title=" " alt="" coords="5,80,72,107"/>
-<area shape="rect" href="struct_a_asset.html" title="A game asset storing information on a piece of imported game data." alt="" coords="6,5,71,32"/>
+<area shape="rect" title=" " alt="" coords="6,5,71,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -108,7 +109,7 @@ Collaboration diagram for AModel:</div>
 <div class="center"><img src="class_a_model__coll__graph.png" border="0" usemap="#a_a_model_coll__map" alt="Collaboration graph"/></div>
 <map name="a_a_model_coll__map" id="a_a_model_coll__map">
 <area shape="rect" title=" " alt="" coords="5,80,72,107"/>
-<area shape="rect" href="struct_a_asset.html" title="A game asset storing information on a piece of imported game data." alt="" coords="6,5,71,32"/>
+<area shape="rect" title=" " alt="" coords="6,5,71,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -118,29 +119,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a27d26b61bcc4d827f39db9e30b1b93c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35a199fe4b840142649f26b1d4b3ff72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_model.html#a35a199fe4b840142649f26b1d4b3ff72">Draw</a> (const <a class="el" href="class_shader.html">Shader</a> *shader) const</td></tr>
 <tr class="separator:a35a199fe4b840142649f26b1d4b3ff72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78576c2dff8569ea8bdee87b16a64754"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_model.html#a78576c2dff8569ea8bdee87b16a64754">NumFaces</a> () const</td></tr>
+<tr class="separator:a78576c2dff8569ea8bdee87b16a64754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1363890857148e45337668981cc39322"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; float &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_model.html#a1363890857148e45337668981cc39322">MinMax</a> () const</td></tr>
+<tr class="separator:a1363890857148e45337668981cc39322"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46b4def599ab4fb9813921a90fc552ff"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_model.html#a46b4def599ab4fb9813921a90fc552ff">GetMesh</a> ()</td></tr>
 <tr class="separator:a46b4def599ab4fb9813921a90fc552ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_struct_a_asset"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_struct_a_asset')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="struct_a_asset.html">AAsset</a></td></tr>
-<tr class="memitem:aecba19b616072b51d4303b841bbe9a5f inherit pub_methods_struct_a_asset"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_a_asset.html#aecba19b616072b51d4303b841bbe9a5f">AAsset</a> (std::string newKey)</td></tr>
-<tr class="memdesc:aecba19b616072b51d4303b841bbe9a5f inherit pub_methods_struct_a_asset"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor  <a href="struct_a_asset.html#aecba19b616072b51d4303b841bbe9a5f">More...</a><br /></td></tr>
-<tr class="separator:aecba19b616072b51d4303b841bbe9a5f inherit pub_methods_struct_a_asset"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ae649a48f27fd83950dd85670bc107927"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_model.html#ae649a48f27fd83950dd85670bc107927">key</a></td></tr>
-<tr class="separator:ae649a48f27fd83950dd85670bc107927"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bcbda96a40ada1d804fd47d53bc4fdd"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_model.html#a3bcbda96a40ada1d804fd47d53bc4fdd">m_minMax</a></td></tr>
-<tr class="separator:a3bcbda96a40ada1d804fd47d53bc4fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5f4c3f36cae9d4cbd1f512bea0f77f3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_model.html#aa5f4c3f36cae9d4cbd1f512bea0f77f3">m_numberOfFaces</a> = 0</td></tr>
-<tr class="separator:aa5f4c3f36cae9d4cbd1f512bea0f77f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_attribs_struct_a_asset"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_struct_a_asset')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="struct_a_asset.html">AAsset</a></td></tr>
-<tr class="memitem:a9fa542a539f68d99fa8c53c59d029033 inherit pub_attribs_struct_a_asset"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_a_asset.html#a9fa542a539f68d99fa8c53c59d029033">key</a></td></tr>
-<tr class="memdesc:a9fa542a539f68d99fa8c53c59d029033 inherit pub_attribs_struct_a_asset"><td class="mdescLeft">&#160;</td><td class="mdescRight">The key with which this asset is stored by the asset factory.  <a href="struct_a_asset.html#a9fa542a539f68d99fa8c53c59d029033">More...</a><br /></td></tr>
-<tr class="separator:a9fa542a539f68d99fa8c53c59d029033 inherit pub_attribs_struct_a_asset"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_a_model_8h_source.html#l00022">22</a> of file <a class="el" href="_a_model_8h_source.html">AModel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_model_8h_source.html#l00009">9</a> of file <a class="el" href="_a_model_8h_source.html">AModel.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a27d26b61bcc4d827f39db9e30b1b93c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27d26b61bcc4d827f39db9e30b1b93c8">&#9670;&nbsp;</a></span>AModel()</h2>
@@ -168,7 +156,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00005">5</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00006">6</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
 
 </div>
 </div>
@@ -189,7 +177,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00012">12</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00013">13</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -225,56 +213,66 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_model_8h_source.html#l00029">29</a> of file <a class="el" href="_a_model_8h_source.html">AModel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_model_8h_source.html#l00016">16</a> of file <a class="el" href="_a_model_8h_source.html">AModel.h</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae649a48f27fd83950dd85670bc107927"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae649a48f27fd83950dd85670bc107927">&#9670;&nbsp;</a></span>key</h2>
+<a id="a1363890857148e45337668981cc39322"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1363890857148e45337668981cc39322">&#9670;&nbsp;</a></span>MinMax()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string AModel::key</td>
+          <td class="memname">const std::vector&lt; float &gt; &amp; AModel::MinMax </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_model_8h_source.html#l00028">28</a> of file <a class="el" href="_a_model_8h_source.html">AModel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00024">24</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_a_model_a1363890857148e45337668981cc39322_icgraph.png" border="0" usemap="#aclass_a_model_a1363890857148e45337668981cc39322_icgraph" alt=""/></div>
+<map name="aclass_a_model_a1363890857148e45337668981cc39322_icgraph" id="aclass_a_model_a1363890857148e45337668981cc39322_icgraph">
+<area shape="rect" title=" " alt="" coords="449,5,569,32"/>
+<area shape="rect" href="class_c_collider.html#ac44996b225b212a06b6e57529e1109ee" title=" " alt="" coords="231,5,401,32"/>
+<area shape="rect" href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,5,183,32"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="a3bcbda96a40ada1d804fd47d53bc4fdd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bcbda96a40ada1d804fd47d53bc4fdd">&#9670;&nbsp;</a></span>m_minMax</h2>
+<a id="a78576c2dff8569ea8bdee87b16a64754"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78576c2dff8569ea8bdee87b16a64754">&#9670;&nbsp;</a></span>NumFaces()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;float&gt; AModel::m_minMax</td>
+          <td class="memname">int AModel::NumFaces </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_a_model_8h_source.html#l00031">31</a> of file <a class="el" href="_a_model_8h_source.html">AModel.h</a>.</p>
-
+<p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00019">19</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_a_model_a78576c2dff8569ea8bdee87b16a64754_icgraph.png" border="0" usemap="#aclass_a_model_a78576c2dff8569ea8bdee87b16a64754_icgraph" alt=""/></div>
+<map name="aclass_a_model_a78576c2dff8569ea8bdee87b16a64754_icgraph" id="aclass_a_model_a78576c2dff8569ea8bdee87b16a64754_icgraph">
+<area shape="rect" title=" " alt="" coords="476,31,613,57"/>
+<area shape="rect" href="class_c_collider.html#ac3edc6cdc9cde55927ee1f3365e468fe" title=" " alt="" coords="231,5,428,32"/>
+<area shape="rect" href="class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8" title=" " alt="" coords="234,56,425,83"/>
+<area shape="rect" href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,31,183,57"/>
+</map>
 </div>
-</div>
-<a id="aa5f4c3f36cae9d4cbd1f512bea0f77f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5f4c3f36cae9d4cbd1f512bea0f77f3">&#9670;&nbsp;</a></span>m_numberOfFaces</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int AModel::m_numberOfFaces = 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_a_model_8h_source.html#l00032">32</a> of file <a class="el" href="_a_model_8h_source.html">AModel.h</a>.</p>
 
 </div>
 </div>

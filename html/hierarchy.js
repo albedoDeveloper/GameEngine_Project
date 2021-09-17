@@ -1,9 +1,9 @@
 var hierarchy =
 [
-    [ "AAsset", "struct_a_asset.html", [
-      [ "AModel", "class_a_model.html", null ],
-      [ "AScript", "struct_a_script.html", null ]
+    [ "AAsset", null, [
+      [ "AModel", "class_a_model.html", null ]
     ] ],
+    [ "AScript", "struct_a_script.html", null ],
     [ "Camera", "struct_camera.html", null ],
     [ "CComponent", "class_c_component.html", [
       [ "CCamera", "class_c_camera.html", null ],
@@ -30,7 +30,6 @@ var hierarchy =
     [ "LightManager", "class_light_manager.html", null ],
     [ "Matrix4f", "class_matrix4f.html", null ],
     [ "Mesh", "class_mesh.html", null ],
-    [ "modelInfo", "structmodel_info.html", null ],
     [ "MouseButton", "struct_mouse_button.html", null ],
     [ "PointLight", "struct_point_light.html", null ],
     [ "Quaternion", "class_quaternion.html", null ],

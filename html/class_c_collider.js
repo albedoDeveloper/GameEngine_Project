@@ -3,6 +3,7 @@ var class_c_collider =
     [ "CCollider", "class_c_collider.html#a74c40f1839119643222abcbf23ce5e4e", null ],
     [ "~CCollider", "class_c_collider.html#a72f89c0ee3eaeb590ec0a453935468ae", null ],
     [ "AddBoxCollider", "class_c_collider.html#ac44996b225b212a06b6e57529e1109ee", null ],
+    [ "AddCapsuleCollider", "class_c_collider.html#a70bfbff53aeac17e1201dfe26a25d68b", null ],
     [ "AddConcaveCollider", "class_c_collider.html#ac3edc6cdc9cde55927ee1f3365e468fe", null ],
     [ "AddConvexCollider", "class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8", null ],
     [ "CollideWith", "class_c_collider.html#a036b8b3a71d5285c01ea19478fe6574b", null ],

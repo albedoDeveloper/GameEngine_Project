@@ -1,6 +1,5 @@
 var annotated_dup =
 [
-    [ "AAsset", "struct_a_asset.html", "struct_a_asset" ],
     [ "AModel", "class_a_model.html", "class_a_model" ],
     [ "AScript", "struct_a_script.html", "struct_a_script" ],
     [ "Camera", "struct_camera.html", "struct_camera" ],
@@ -26,7 +25,6 @@ var annotated_dup =
     [ "LightManager", "class_light_manager.html", "class_light_manager" ],
     [ "Matrix4f", "class_matrix4f.html", "class_matrix4f" ],
     [ "Mesh", "class_mesh.html", "class_mesh" ],
-    [ "modelInfo", "structmodel_info.html", "structmodel_info" ],
     [ "MouseButton", "struct_mouse_button.html", "struct_mouse_button" ],
     [ "PointLight", "struct_point_light.html", "struct_point_light" ],
     [ "Quaternion", "class_quaternion.html", "class_quaternion" ],

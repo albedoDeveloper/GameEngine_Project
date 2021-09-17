@@ -2,8 +2,9 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stbi_image/stb_image.h>
+
 AModel::AModel(std::string path, std::string keyTemp)
-    :AAsset{ keyTemp }, key{ keyTemp }
+    :AAsset{ keyTemp }
 {
     m_info.path = path;
     LoadModel(path);
@@ -13,6 +14,16 @@ void AModel::Draw(const Shader* shader) const
 {
     for (unsigned int i = 0; i < m_meshes.size(); i++)
         m_meshes[i].Draw(shader, m_text);
+}
+
+int AModel::NumFaces() const
+{
+    return m_numberOfFaces;
+}
+
+const std::vector<float>& AModel::MinMax() const
+{
+    return m_minMax;
 }
 
 void AModel::LoadModel(std::string path)

@@ -1,7 +1,5 @@
 var class_graphics_engine =
 [
-    [ "GraphicsEngine", "class_graphics_engine.html#aeeb84a8028c8301bc4702430447024ed", null ],
-    [ "~GraphicsEngine", "class_graphics_engine.html#ab67afeefbc9f1c284f6ce310c31ae8f6", null ],
     [ "AddPointLight", "class_graphics_engine.html#ac691c275727e8bd932d0145eebf0c773", null ],
     [ "Close", "class_graphics_engine.html#a526dd537e18e783cc6e90b51920d26f8", null ],
     [ "DeleteTexture", "class_graphics_engine.html#a352b53918707736daf66b47a6219a513", null ],

@@ -29,6 +29,7 @@
    <div id="projectname">ICT398 - FrankEngine
    &#160;<span id="projectnumber">Milestone 1</span>
    </div>
+   <div id="projectbrief">Custom Game Engine</div>
   </td>
  </tr>
  </tbody>
@@ -87,25 +88,29 @@ $(document).ready(function(){initNavTree('_a_script_8h_source.html',''); initRes
 <div class="title">AScript.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_a_script_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_a_asset_8h.html">AAsset.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="struct_a_script.html">    9</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_a_script.html">AScript</a> : <span class="keyword">public</span> <a class="code" href="struct_a_asset.html">AAsset</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="struct_a_script.html#a7968cce6034fed6438c930f916297cb0">   14</a></span>&#160;    std::string <a class="code" href="struct_a_script.html#a7968cce6034fed6438c930f916297cb0">Script</a>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="struct_a_script.html#ad48f36810d6503d43d1ee2adfa43486e">   20</a></span>&#160;    <a class="code" href="struct_a_script.html#ad48f36810d6503d43d1ee2adfa43486e">AScript</a>(std::string newKey)</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        :<a class="code" href="struct_a_asset.html">AAsset</a>{ newKey }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
-<div class="ttc" id="a_a_asset_8h_html"><div class="ttname"><a href="_a_asset_8h.html">AAsset.h</a></div></div>
-<div class="ttc" id="astruct_a_asset_html"><div class="ttname"><a href="struct_a_asset.html">AAsset</a></div><div class="ttdoc">A game asset storing information on a piece of imported game data.</div><div class="ttdef"><b>Definition:</b> <a href="_a_asset_8h_source.html#l00008">AAsset.h:9</a></div></div>
-<div class="ttc" id="astruct_a_script_html"><div class="ttname"><a href="struct_a_script.html">AScript</a></div><div class="ttdoc">An asset for a script storing game behaviour.</div><div class="ttdef"><b>Definition:</b> <a href="_a_script_8h_source.html#l00009">AScript.h:10</a></div></div>
-<div class="ttc" id="astruct_a_script_html_a7968cce6034fed6438c930f916297cb0"><div class="ttname"><a href="struct_a_script.html#a7968cce6034fed6438c930f916297cb0">AScript::Script</a></div><div class="ttdeci">std::string Script</div><div class="ttdoc">the contents of the script</div><div class="ttdef"><b>Definition:</b> <a href="_a_script_8h_source.html#l00014">AScript.h:14</a></div></div>
-<div class="ttc" id="astruct_a_script_html_ad48f36810d6503d43d1ee2adfa43486e"><div class="ttname"><a href="struct_a_script.html#ad48f36810d6503d43d1ee2adfa43486e">AScript::AScript</a></div><div class="ttdeci">AScript(std::string newKey)</div><div class="ttdoc">constructor</div><div class="ttdef"><b>Definition:</b> <a href="_a_script_8h_source.html#l00020">AScript.h:20</a></div></div>
+<a href="_a_script_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************/</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="struct_a_script.html">   15</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_a_script.html">AScript</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="struct_a_script.html#ad48f36810d6503d43d1ee2adfa43486e">   22</a></span>&#160;    <a class="code" href="struct_a_script.html#ad48f36810d6503d43d1ee2adfa43486e">AScript</a>(std::string newKey)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        :m_key{ newKey }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">const</span> std::string&amp; <a class="code" href="struct_a_script.html#a836878b14aed1fa75e1bbbd70eb49a12">Source</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    std::string m_key;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::string m_sourceCode;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
+<div class="ttc" id="astruct_a_script_html"><div class="ttname"><a href="struct_a_script.html">AScript</a></div><div class="ttdoc">An asset for a script storing game behaviour.</div><div class="ttdef"><b>Definition:</b> <a href="_a_script_8h_source.html#l00015">AScript.h:16</a></div></div>
+<div class="ttc" id="astruct_a_script_html_a836878b14aed1fa75e1bbbd70eb49a12"><div class="ttname"><a href="struct_a_script.html#a836878b14aed1fa75e1bbbd70eb49a12">AScript::Source</a></div><div class="ttdeci">const std::string &amp; Source() const</div><div class="ttdef"><b>Definition:</b> <a href="_a_script_8cpp_source.html#l00003">AScript.cpp:3</a></div></div>
+<div class="ttc" id="astruct_a_script_html_ad48f36810d6503d43d1ee2adfa43486e"><div class="ttname"><a href="struct_a_script.html#ad48f36810d6503d43d1ee2adfa43486e">AScript::AScript</a></div><div class="ttdeci">AScript(std::string newKey)</div><div class="ttdoc">constructor</div><div class="ttdef"><b>Definition:</b> <a href="_a_script_8h_source.html#l00022">AScript.h:22</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

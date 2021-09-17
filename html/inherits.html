@@ -29,6 +29,7 @@
    <div id="projectname">ICT398 - FrankEngine
    &#160;<span id="projectnumber">Milestone 1</span>
    </div>
+   <div id="projectbrief">Custom Game Engine</div>
   </td>
  </tr>
  </tbody>
@@ -90,19 +91,23 @@ $(document).ready(function(){initNavTree('hierarchy.html',''); initResizable(); 
 <div class="textblock">
 <p><a href="hierarchy.html">Go to the textual class hierarchy</a></p>
 </div><table border="0" cellspacing="10" cellpadding="0">
-<tr><td><img src="inherit_graph_0.png" border="0" usemap="#a_a_asset" alt=""/>
-<map name="a_a_asset" id="a_a_asset">
-<area shape="rect" href="struct_a_asset.html" title="A game asset storing information on a piece of imported game data." alt="" coords="5,31,71,57"/>
+<tr><td><img src="inherit_graph_0.png" border="0" usemap="#a_a_model" alt=""/>
+<map name="a_a_model" id="a_a_model">
+<area shape="rect" title=" " alt="" coords="5,5,71,32"/>
 <area shape="rect" href="class_a_model.html" title=" " alt="" coords="119,5,185,32"/>
-<area shape="rect" href="struct_a_script.html" title="An asset for a script storing game behaviour." alt="" coords="119,56,185,83"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_1.png" border="0" usemap="#a_camera" alt=""/>
+<tr><td><img src="inherit_graph_1.png" border="0" usemap="#a_a_script" alt=""/>
+<map name="a_a_script" id="a_a_script">
+<area shape="rect" href="struct_a_script.html" title="An asset for a script storing game behaviour." alt="" coords="5,5,71,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_2.png" border="0" usemap="#a_camera" alt=""/>
 <map name="a_camera" id="a_camera">
 <area shape="rect" href="struct_camera.html" title="Data on a camera to view the game from." alt="" coords="5,5,72,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_2.png" border="0" usemap="#a_c_component" alt=""/>
+<tr><td><img src="inherit_graph_3.png" border="0" usemap="#a_c_component" alt=""/>
 <map name="a_c_component" id="a_c_component">
 <area shape="rect" href="class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="5,157,103,184"/>
 <area shape="rect" href="class_c_camera.html" title="A component holding and managing a camera." alt="" coords="161,5,237,32"/>
@@ -114,80 +119,75 @@ $(document).ready(function(){initNavTree('hierarchy.html',''); initResizable(); 
 <area shape="rect" href="class_c_static_mesh.html" title="A static mesh containing information on a model." alt="" coords="151,309,248,336"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_3.png" border="0" usemap="#a_collision_manager" alt=""/>
+<tr><td><img src="inherit_graph_4.png" border="0" usemap="#a_collision_manager" alt=""/>
 <map name="a_collision_manager" id="a_collision_manager">
 <area shape="rect" title=" " alt="" coords="5,5,172,47"/>
 <area shape="rect" href="class_collision_manager.html" title="A singleton that manages collisions between objects." alt="" coords="220,13,341,39"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_4.png" border="0" usemap="#a_delta_time" alt=""/>
+<tr><td><img src="inherit_graph_5.png" border="0" usemap="#a_delta_time" alt=""/>
 <map name="a_delta_time" id="a_delta_time">
 <area shape="rect" href="class_delta_time.html" title=" " alt="" coords="5,5,85,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_5.png" border="0" usemap="#a_engine" alt=""/>
+<tr><td><img src="inherit_graph_6.png" border="0" usemap="#a_engine" alt=""/>
 <map name="a_engine" id="a_engine">
 <area shape="rect" href="class_engine.html" title="A game engine that handles all the backend of a video game and allows for creation of video games wit..." alt="" coords="5,5,68,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_6.png" border="0" usemap="#a_game_asset_factory" alt=""/>
+<tr><td><img src="inherit_graph_7.png" border="0" usemap="#a_game_asset_factory" alt=""/>
 <map name="a_game_asset_factory" id="a_game_asset_factory">
 <area shape="rect" href="class_game_asset_factory.html" title="singleton factory for game assets" alt="" coords="5,5,140,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_7.png" border="0" usemap="#a_game_object" alt=""/>
+<tr><td><img src="inherit_graph_8.png" border="0" usemap="#a_game_object" alt=""/>
 <map name="a_game_object" id="a_game_object">
 <area shape="rect" href="class_game_object.html" title="An object as represented in the game world containing all information on the object itself and its co..." alt="" coords="5,5,100,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_8.png" border="0" usemap="#a_game_object_factory" alt=""/>
+<tr><td><img src="inherit_graph_9.png" border="0" usemap="#a_game_object_factory" alt=""/>
 <map name="a_game_object_factory" id="a_game_object_factory">
 <area shape="rect" href="class_game_object_factory.html" title="A singleton factory class to produce all GameObjects, store them in memory, and allow access to them." alt="" coords="5,5,144,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_9.png" border="0" usemap="#a_graphics_engine" alt=""/>
+<tr><td><img src="inherit_graph_10.png" border="0" usemap="#a_graphics_engine" alt=""/>
 <map name="a_graphics_engine" id="a_graphics_engine">
 <area shape="rect" href="class_graphics_engine.html" title="A singleton that handles all of the engine graphics." alt="" coords="5,5,120,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_10.png" border="0" usemap="#a_input_manager" alt=""/>
+<tr><td><img src="inherit_graph_11.png" border="0" usemap="#a_input_manager" alt=""/>
 <map name="a_input_manager" id="a_input_manager">
 <area shape="rect" href="class_input_manager.html" title="singleton managing user input" alt="" coords="5,5,105,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_11.png" border="0" usemap="#a_key" alt=""/>
+<tr><td><img src="inherit_graph_12.png" border="0" usemap="#a_key" alt=""/>
 <map name="a_key" id="a_key">
 <area shape="rect" href="struct_key.html" title="represents a key on the keyboard" alt="" coords="5,5,51,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_12.png" border="0" usemap="#a_level_editor" alt=""/>
+<tr><td><img src="inherit_graph_13.png" border="0" usemap="#a_level_editor" alt=""/>
 <map name="a_level_editor" id="a_level_editor">
 <area shape="rect" href="class_level_editor.html" title=" " alt="" coords="5,5,91,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_13.png" border="0" usemap="#a_level_loader" alt=""/>
+<tr><td><img src="inherit_graph_14.png" border="0" usemap="#a_level_loader" alt=""/>
 <map name="a_level_loader" id="a_level_loader">
 <area shape="rect" href="class_level_loader.html" title=" " alt="" coords="5,5,96,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_14.png" border="0" usemap="#a_light_manager" alt=""/>
+<tr><td><img src="inherit_graph_15.png" border="0" usemap="#a_light_manager" alt=""/>
 <map name="a_light_manager" id="a_light_manager">
 <area shape="rect" href="class_light_manager.html" title=" " alt="" coords="5,5,105,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_15.png" border="0" usemap="#a_matrix4f" alt=""/>
+<tr><td><img src="inherit_graph_16.png" border="0" usemap="#a_matrix4f" alt=""/>
 <map name="a_matrix4f" id="a_matrix4f">
 <area shape="rect" href="class_matrix4f.html" title=" " alt="" coords="5,5,73,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_16.png" border="0" usemap="#a_mesh" alt=""/>
+<tr><td><img src="inherit_graph_17.png" border="0" usemap="#a_mesh" alt=""/>
 <map name="a_mesh" id="a_mesh">
 <area shape="rect" href="class_mesh.html" title=" " alt="" coords="5,5,60,32"/>
-</map>
-</td></tr>
-<tr><td><img src="inherit_graph_17.png" border="0" usemap="#amodel_info" alt=""/>
-<map name="amodel_info" id="amodel_info">
-<area shape="rect" href="structmodel_info.html" title=" " alt="" coords="5,5,83,32"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_18.png" border="0" usemap="#a_mouse_button" alt=""/>

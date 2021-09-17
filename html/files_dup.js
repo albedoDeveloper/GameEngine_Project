@@ -1,11 +1,8 @@
 var files_dup =
 [
     [ "ModernOpenGL", "dir_aba6ea1114b89b942a0166b21fbf7db8.html", "dir_aba6ea1114b89b942a0166b21fbf7db8" ],
-    [ "AAsset.cpp", "_a_asset_8cpp.html", null ],
-    [ "AAsset.h", "_a_asset_8h.html", [
-      [ "AAsset", "struct_a_asset.html", "struct_a_asset" ]
-    ] ],
     [ "AModel.cpp", "_a_model_8cpp.html", null ],
+    [ "AScript.cpp", "_a_script_8cpp.html", null ],
     [ "AScript.h", "_a_script_8h.html", [
       [ "AScript", "struct_a_script.html", "struct_a_script" ]
     ] ],
@@ -35,7 +32,7 @@ var files_dup =
       [ "PointLight", "struct_point_light.html", "struct_point_light" ],
       [ "CPointLight", "class_c_point_light.html", "class_c_point_light" ]
     ] ],
-    [ "CScript.cpp", "_c_script_8cpp.html", "_c_script_8cpp" ],
+    [ "CScript.cpp", "_c_script_8cpp.html", null ],
     [ "CScript.h", "_c_script_8h.html", [
       [ "CScript", "class_c_script.html", "class_c_script" ]
     ] ],
@@ -81,9 +78,7 @@ var files_dup =
     [ "MathLibrary.h", "_math_library_8h.html", "_math_library_8h" ],
     [ "resource.h", "resource_8h.html", "resource_8h" ],
     [ "ScriptingEngine.cpp", "_scripting_engine_8cpp.html", null ],
-    [ "ScriptingEngine.h", "_scripting_engine_8h.html", [
-      [ "ScriptingEngine", "class_scripting_engine.html", "class_scripting_engine" ]
-    ] ],
+    [ "ScriptingEngine.h", "_scripting_engine_8h.html", "_scripting_engine_8h" ],
     [ "SkyBox.cpp", "_sky_box_8cpp.html", null ],
     [ "SkyBox.h", "_sky_box_8h.html", [
       [ "SkyBox", "class_sky_box.html", "class_sky_box" ]

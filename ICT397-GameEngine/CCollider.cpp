@@ -108,7 +108,8 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 
 	if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() != nullptr)
 	{
-		auto minMax = this->GetParentObject()->GetCStaticMesh()->m_model->m_minMax;
+		auto minMax = this->GetParentObject()->GetCStaticMesh()->m_model->MinMax();
+		minMax.push_back(23.f);
 		
 		x = (minMax[1] - minMax[0]) / 2.0f;
 		y = (minMax[3] - minMax[2]) / 2.0f;
@@ -145,8 +146,8 @@ void CCollider::AddCapsuleCollider(float radius, float height, int layer)
 void CCollider::AddConvexCollider()
 {
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
-	auto totalFaces = model->m_numberOfFaces;
-	polyFace = new reactphysics3d::PolygonVertexArray::PolygonFace[model->m_numberOfFaces];
+	auto totalFaces = model->NumFaces();
+	polyFace = new reactphysics3d::PolygonVertexArray::PolygonFace[model->NumFaces()];
 	reactphysics3d::PolygonVertexArray::PolygonFace* faces = polyFace;
 	std::vector<float> vertices;
 	std::vector<int> indices;
@@ -169,7 +170,7 @@ void CCollider::AddConvexCollider()
 		indices.emplace_back(model->GetMesh()[0].indices[i]);
 	}
 
-	for (unsigned int i = 0; i < model->m_numberOfFaces; i++)
+	for (unsigned int i = 0; i < model->NumFaces(); i++)
 	{
 		faces->indexBase = i * 3;
 		faces->nbVertices = 4;
@@ -188,7 +189,7 @@ void CCollider::AddConvexCollider()
 void CCollider::AddConcaveCollider(int layer)
 {
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
-	auto totalFaces = model->m_numberOfFaces;
+	auto totalFaces = model->NumFaces();
 
 	for (int i = 0; i < model->GetMesh()[0].vertices.size(); i++)
 	{

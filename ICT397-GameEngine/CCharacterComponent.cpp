@@ -11,8 +11,7 @@ CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	:CComponent{ parent, parentObj }, 
 	m_parentTransform{m_parent->GetTransform()},
 	m_velocity{ 0,0,0 }, 
-	m_maxSpeed{ 10 }, 
-	//m_acceleration{ 0,0,0 }, 
+	m_maxSpeed{ 10 },
 	m_lastTime{ 0 }, 
 	m_currentTime{ 0 }, 
 	m_updateInterval{1.f/60},
@@ -22,11 +21,6 @@ CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
 	m_endscreenUp{ false }
 {
 }
-
-//void CCharacter::Move(float x, float y, float z)
-//{
-//	m_acceleration = Vector3f(x, y, z);
-//}
 
 void CCharacter::Jump(float x, float y, float z)
 {
@@ -108,7 +102,7 @@ void CCharacter::Update()
 			}
 			else if (INPUT->GetKey('c'))
 			{
-				accel.SetY(-0.5f);
+				accel.SetY(-0.5f * deltaTime);
 			}
 		}
 
@@ -164,10 +158,9 @@ void CCharacter::Update()
 	static const float GRAVITY = 0;
 
 	//newtonian calculations
-	m_velocity = m_velocity * 0.8f; // apply damping factor
+	m_velocity = m_velocity * 0.9f; // apply damping factor
 	m_velocity = m_velocity + Vector3f(0, GRAVITY * deltaTime, 0); // gravity
 	m_velocity = m_velocity + accel;
-	std::cout << accel.GetY() << std::endl;
 	if (m_velocity.Magnitude() > m_maxSpeed)
 	{
 		m_velocity.SetMagnitude(m_maxSpeed);

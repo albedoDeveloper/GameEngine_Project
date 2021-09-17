@@ -7,11 +7,23 @@
 
 
 Inheritance diagram for AModel\+:
-% FIG 0
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=130pt]{class_a_model__inherit__graph}
+\end{center}
+\end{figure}
 
 
 Collaboration diagram for AModel\+:
-% FIG 1
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=130pt]{class_a_model__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -19,23 +31,18 @@ Collaboration diagram for AModel\+:
 \item 
 void \mbox{\hyperlink{class_a_model_a35a199fe4b840142649f26b1d4b3ff72}{Draw}} (const \mbox{\hyperlink{class_shader}{Shader}} $\ast$shader) const
 \item 
+int \mbox{\hyperlink{class_a_model_a78576c2dff8569ea8bdee87b16a64754}{Num\+Faces}} () const
+\item 
+const std\+::vector$<$ float $>$ \& \mbox{\hyperlink{class_a_model_a1363890857148e45337668981cc39322}{Min\+Max}} () const
+\item 
 std\+::vector$<$ \mbox{\hyperlink{class_mesh}{Mesh}} $>$ \& \mbox{\hyperlink{class_a_model_a46b4def599ab4fb9813921a90fc552ff}{Get\+Mesh}} ()
-\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-std\+::string \mbox{\hyperlink{class_a_model_ae649a48f27fd83950dd85670bc107927}{key}}
-\item 
-std\+::vector$<$ float $>$ \mbox{\hyperlink{class_a_model_a3bcbda96a40ada1d804fd47d53bc4fdd}{m\+\_\+min\+Max}}
-\item 
-int \mbox{\hyperlink{class_a_model_aa5f4c3f36cae9d4cbd1f512bea0f77f3}{m\+\_\+number\+Of\+Faces}} = 0
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line 22 of file AModel.\+h.
+Definition at line 9 of file AModel.\+h.
 
 
 
@@ -48,7 +55,7 @@ Definition at line 22 of file AModel.\+h.
 
 
 
-Definition at line 5 of file AModel.\+cpp.
+Definition at line 6 of file AModel.\+cpp.
 
 
 
@@ -61,10 +68,15 @@ Definition at line 5 of file AModel.\+cpp.
 
 
 
-Definition at line 12 of file AModel.\+cpp.
+Definition at line 13 of file AModel.\+cpp.
 
-Here is the caller graph for this function\+:
-% FIG 2
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{class_a_model_a35a199fe4b840142649f26b1d4b3ff72_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_a_model_a46b4def599ab4fb9813921a90fc552ff}\label{class_a_model_a46b4def599ab4fb9813921a90fc552ff}} 
 \index{AModel@{AModel}!GetMesh@{GetMesh}}
 \index{GetMesh@{GetMesh}!AModel@{AModel}}
@@ -73,41 +85,44 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 29 of file AModel.\+h.
+Definition at line 16 of file AModel.\+h.
+
+\mbox{\Hypertarget{class_a_model_a1363890857148e45337668981cc39322}\label{class_a_model_a1363890857148e45337668981cc39322}} 
+\index{AModel@{AModel}!MinMax@{MinMax}}
+\index{MinMax@{MinMax}!AModel@{AModel}}
+\doxysubsubsection{\texorpdfstring{MinMax()}{MinMax()}}
+{\footnotesize\ttfamily const std\+::vector$<$ float $>$ \& AModel\+::\+Min\+Max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_a_model_ae649a48f27fd83950dd85670bc107927}\label{class_a_model_ae649a48f27fd83950dd85670bc107927}} 
-\index{AModel@{AModel}!key@{key}}
-\index{key@{key}!AModel@{AModel}}
-\doxysubsubsection{\texorpdfstring{key}{key}}
-{\footnotesize\ttfamily std\+::string AModel\+::key}
+Definition at line 24 of file AModel.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_model_a1363890857148e45337668981cc39322_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_a_model_a78576c2dff8569ea8bdee87b16a64754}\label{class_a_model_a78576c2dff8569ea8bdee87b16a64754}} 
+\index{AModel@{AModel}!NumFaces@{NumFaces}}
+\index{NumFaces@{NumFaces}!AModel@{AModel}}
+\doxysubsubsection{\texorpdfstring{NumFaces()}{NumFaces()}}
+{\footnotesize\ttfamily int AModel\+::\+Num\+Faces (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
-Definition at line 28 of file AModel.\+h.
+Definition at line 19 of file AModel.\+cpp.
 
-\mbox{\Hypertarget{class_a_model_a3bcbda96a40ada1d804fd47d53bc4fdd}\label{class_a_model_a3bcbda96a40ada1d804fd47d53bc4fdd}} 
-\index{AModel@{AModel}!m\_minMax@{m\_minMax}}
-\index{m\_minMax@{m\_minMax}!AModel@{AModel}}
-\doxysubsubsection{\texorpdfstring{m\_minMax}{m\_minMax}}
-{\footnotesize\ttfamily std\+::vector$<$float$>$ AModel\+::m\+\_\+min\+Max}
-
-
-
-Definition at line 31 of file AModel.\+h.
-
-\mbox{\Hypertarget{class_a_model_aa5f4c3f36cae9d4cbd1f512bea0f77f3}\label{class_a_model_aa5f4c3f36cae9d4cbd1f512bea0f77f3}} 
-\index{AModel@{AModel}!m\_numberOfFaces@{m\_numberOfFaces}}
-\index{m\_numberOfFaces@{m\_numberOfFaces}!AModel@{AModel}}
-\doxysubsubsection{\texorpdfstring{m\_numberOfFaces}{m\_numberOfFaces}}
-{\footnotesize\ttfamily int AModel\+::m\+\_\+number\+Of\+Faces = 0}
-
-
-
-Definition at line 32 of file AModel.\+h.
-
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_a_model_a78576c2dff8569ea8bdee87b16a64754_icgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

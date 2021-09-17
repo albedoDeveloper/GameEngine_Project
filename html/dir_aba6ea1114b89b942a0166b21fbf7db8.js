@@ -2,7 +2,6 @@ var dir_aba6ea1114b89b942a0166b21fbf7db8 =
 [
     [ "AModel.cpp", "_modern_open_g_l_2_a_model_8cpp.html", "_modern_open_g_l_2_a_model_8cpp" ],
     [ "AModel.h", "_a_model_8h.html", [
-      [ "modelInfo", "structmodel_info.html", "structmodel_info" ],
       [ "AModel", "class_a_model.html", "class_a_model" ]
     ] ],
     [ "Mesh.cpp", "_mesh_8cpp.html", null ],

@@ -9,30 +9,19 @@ An asset for a script storing game behaviour.
 
 {\ttfamily \#include $<$AScript.\+h$>$}
 
-
-
-Inheritance diagram for AScript\+:
-% FIG 0
-
-
-Collaboration diagram for AScript\+:
-% FIG 1
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{struct_a_script_ad48f36810d6503d43d1ee2adfa43486e}{AScript}} (std\+::string new\+Key)
-\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-std\+::string \mbox{\hyperlink{struct_a_script_a7968cce6034fed6438c930f916297cb0}{Script}}
-\begin{DoxyCompactList}\small\item\em the contents of the script \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{struct_a_script_a836878b14aed1fa75e1bbbd70eb49a12}{Source}} () const
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 An asset for a script storing game behaviour. 
 
-Definition at line 9 of file AScript.\+h.
+Definition at line 15 of file AScript.\+h.
 
 
 
@@ -54,27 +43,27 @@ constructor
 \end{DoxyParams}
 
 
-Definition at line 20 of file AScript.\+h.
+Definition at line 22 of file AScript.\+h.
 
 
 
-\doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{struct_a_script_a7968cce6034fed6438c930f916297cb0}\label{struct_a_script_a7968cce6034fed6438c930f916297cb0}} 
-\index{AScript@{AScript}!Script@{Script}}
-\index{Script@{Script}!AScript@{AScript}}
-\doxysubsubsection{\texorpdfstring{Script}{Script}}
-{\footnotesize\ttfamily std\+::string AScript\+::\+Script}
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_a_script_a836878b14aed1fa75e1bbbd70eb49a12}\label{struct_a_script_a836878b14aed1fa75e1bbbd70eb49a12}} 
+\index{AScript@{AScript}!Source@{Source}}
+\index{Source@{Source}!AScript@{AScript}}
+\doxysubsubsection{\texorpdfstring{Source()}{Source()}}
+{\footnotesize\ttfamily const std\+::string \& AScript\+::\+Source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+get the source code of this script component 
+\end{DoxyReturn}
+
+
+Definition at line 3 of file AScript.\+cpp.
 
 
 
-the contents of the script 
-
-
-
-Definition at line 14 of file AScript.\+h.
-
-
-
-The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{_a_script_8h}{AScript.\+h}}\end{DoxyCompactItemize}
+\mbox{\hyperlink{_a_script_8h}{AScript.\+h}}\item 
+\mbox{\hyperlink{_a_script_8cpp}{AScript.\+cpp}}\end{DoxyCompactItemize}

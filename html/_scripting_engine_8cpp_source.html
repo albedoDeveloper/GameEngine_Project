@@ -29,6 +29,7 @@
    <div id="projectname">ICT398 - FrankEngine
    &#160;<span id="projectnumber">Milestone 1</span>
    </div>
+   <div id="projectbrief">Custom Game Engine</div>
   </td>
  </tr>
  </tbody>
@@ -205,7 +206,7 @@ $(document).ready(function(){initNavTree('_scripting_engine_8cpp_source.html',''
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            .addFunction(<span class="stringliteral">&quot;GetTransform&quot;</span>, &amp;<a class="code" href="class_c_component.html#a3796546e2460ee6457af80534ddff0d5">CComponent::GetTransform</a>)</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        .endClass()</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        .deriveClass&lt;<a class="code" href="class_c_character.html">CCharacter</a>, <a class="code" href="class_c_component.html">CComponent</a>&gt;(<span class="stringliteral">&quot;CCharacter&quot;</span>)</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            .addFunction(<span class="stringliteral">&quot;Move&quot;</span>, &amp;<a class="code" href="class_c_character.html#a4d1ce4b6004810eb3feb6d34e59ca848">CCharacter::Move</a>)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="comment">//.addFunction(&quot;Move&quot;, &amp;CCharacter::Move)</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            .addFunction(<span class="stringliteral">&quot;Jump&quot;</span>, &amp;<a class="code" href="class_c_character.html#a39fbd8b3797741e2ced648e4274947bf">CCharacter::Jump</a>)</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            .addFunction(<span class="stringliteral">&quot;GetHitpoints&quot;</span>, &amp;<a class="code" href="class_c_character.html#aba4679ac0bcaa43be503e9bfe0ec6d1b">CCharacter::GetHitpoints</a>)</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            .addFunction(<span class="stringliteral">&quot;SetHitpoints&quot;</span>, &amp;<a class="code" href="class_c_character.html#a25e56097faa4cce9c291cf4b62c84527">CCharacter::SetHitpoints</a>)</div>
@@ -259,97 +260,98 @@ $(document).ready(function(){initNavTree('_scripting_engine_8cpp_source.html',''
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;       .deriveClass&lt;<a class="code" href="class_c_collider.html">CCollider</a>, <a class="code" href="class_c_component.html">CComponent</a>&gt;(<span class="stringliteral">&quot;CCollider&quot;</span>)</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;       .addFunction(<span class="stringliteral">&quot;AddConvexCollider&quot;</span>, &amp;<a class="code" href="class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8">CCollider::AddConvexCollider</a>)</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;       .addFunction(<span class="stringliteral">&quot;AddBoxCollider&quot;</span>, &amp;<a class="code" href="class_c_collider.html#ac44996b225b212a06b6e57529e1109ee">CCollider::AddBoxCollider</a>)</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;       .addFunction(<span class="stringliteral">&quot;AddConcaveCollider&quot;</span>, &amp;<a class="code" href="class_c_collider.html#ac3edc6cdc9cde55927ee1f3365e468fe">CCollider::AddConcaveCollider</a>)</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;       .addFunction(<span class="stringliteral">&quot;CollideWith&quot;</span>, &amp;<a class="code" href="class_c_collider.html#a036b8b3a71d5285c01ea19478fe6574b">CCollider::CollideWith</a>)</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;       .endClass();</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    getGlobalNamespace(Lbuff)</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        .beginClass&lt;<a class="code" href="struct_a_asset.html">AAsset</a>&gt;(<span class="stringliteral">&quot;AAsset&quot;</span>)</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        .endClass()</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        .deriveClass&lt;<a class="code" href="class_a_model.html">AModel</a>, <a class="code" href="class_c_component.html">CComponent</a>&gt;(<span class="stringliteral">&quot;AModel&quot;</span>)</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        .endClass();</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">return</span> Lbuff;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="class_scripting_engine.html#ab8277a75fbdc5ddd1a0da291e81fd35a">  186</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scripting_engine.html#ab8277a75fbdc5ddd1a0da291e81fd35a">ScriptingEngine::RunInitScript</a>()</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;{</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">if</span> (luaL_dofile(m_L, <span class="stringliteral">&quot;../Assets/init.lua&quot;</span>) != LUA_OK)</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    {</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        std::cout &lt;&lt; lua_tostring(m_L, -1);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    }</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="class_scripting_engine.html#a218cc92e0e9c813a80c6203a4abc96bc">  194</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scripting_engine.html#a218cc92e0e9c813a80c6203a4abc96bc">ScriptingEngine::RunStateFromScript</a>(lua_State* luaState, std::string AIscript, std::string AIstate, <a class="code" href="class_game_object.html">GameObject</a>* parent)</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;{</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    LuaRef State = getGlobal(luaState, AIstate.c_str());</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    State(parent, <a class="code" href="_input_manager_8h.html#a1bb283bd7893b9855e2f23013891fc82">INPUT</a>);</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;}</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="class_scripting_engine.html#a7e35a3c96de94be7f039c06216f48ff8">  200</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scripting_engine.html#a7e35a3c96de94be7f039c06216f48ff8">ScriptingEngine::DoFile</a>(std::string filePath)</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    luaL_dostring(m_L, filePath.c_str());</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;}</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
-<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="class_scripting_engine.html#a271b1b21de27a3866eb97c9594c060dc">  205</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scripting_engine.html#a271b1b21de27a3866eb97c9594c060dc">ScriptingEngine::Close</a>()</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;{</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    lua_close(m_L);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;}</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::LoadModel(std::string name, std::string filePath)</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;{</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <a class="code" href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">ASSET</a>-&gt;LoadModel(name, <span class="stringliteral">&quot;../Assets/Models/&quot;</span>+filePath);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::LoadScript(std::string key, std::string filePath)</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;{</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <a class="code" href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">ASSET</a>-&gt;LoadScript(key, <span class="stringliteral">&quot;../Assets/Scripts/&quot;</span>+filePath);</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;}</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::UnloadTexture(std::string key)</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;{</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <a class="code" href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">ASSET</a>-&gt;UnloadTexture(key);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::LoadHeightMap(std::string key, std::string filePath)</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;{</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <a class="code" href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">ASSET</a>-&gt;LoadHeightMap(key, <span class="stringliteral">&quot;../Assets/HeightMaps/&quot;</span> + filePath);</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;}</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<a class="code" href="class_game_object.html">GameObject</a>* ScriptingEngine::SpawnGameObject(std::string key)</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;{</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="_game_object_factory_8h.html#afb75a9937f90d733ea07a2ed608b39c3">GAMEOBJECT</a>-&gt;SpawnGameObject(key);</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;}</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<a class="code" href="class_game_object.html">GameObject</a>* ScriptingEngine::GetGameObject(std::string objectKey)</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;{</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="_game_object_factory_8h.html#afb75a9937f90d733ea07a2ed608b39c3">GAMEOBJECT</a>-&gt;GetGameObject(objectKey);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;}</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::QuitGame()</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;{</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <a class="code" href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a>-&gt;QuitGame();</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;}</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::SaveGame()</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;{</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a>-&gt;SaveGame();</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::LoadGame()</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;{</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <a class="code" href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a>-&gt;LoadGame();</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;}</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="keywordtype">bool</span> ScriptingEngine::CheckSaveState()</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;{</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a>-&gt;CheckSaveState();</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<a class="code" href="class_input_manager.html">InputManager</a>* ScriptingEngine::GetInputManager()</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;{</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_input_manager.html#a53a27e2e25bec96173a4c7532515d10e">InputManager::Instance</a>();</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;       .addFunction(<span class="stringliteral">&quot;AddCapsuleCollider&quot;</span>, &amp;<a class="code" href="class_c_collider.html#a70bfbff53aeac17e1201dfe26a25d68b">CCollider::AddCapsuleCollider</a>)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;       .addFunction(<span class="stringliteral">&quot;AddConcaveCollider&quot;</span>, &amp;<a class="code" href="class_c_collider.html#ac3edc6cdc9cde55927ee1f3365e468fe">CCollider::AddConcaveCollider</a>)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;       .addFunction(<span class="stringliteral">&quot;CollideWith&quot;</span>, &amp;<a class="code" href="class_c_collider.html#a036b8b3a71d5285c01ea19478fe6574b">CCollider::CollideWith</a>)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;       .endClass();</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    getGlobalNamespace(Lbuff)</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        .beginClass&lt;AAsset&gt;(<span class="stringliteral">&quot;AAsset&quot;</span>)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        .endClass()</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        .deriveClass&lt;<a class="code" href="class_a_model.html">AModel</a>, <a class="code" href="class_c_component.html">CComponent</a>&gt;(<span class="stringliteral">&quot;AModel&quot;</span>)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        .endClass();</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">return</span> Lbuff;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="class_scripting_engine.html#ab8277a75fbdc5ddd1a0da291e81fd35a">  187</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scripting_engine.html#ab8277a75fbdc5ddd1a0da291e81fd35a">ScriptingEngine::RunInitScript</a>()</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;{</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">if</span> (luaL_dofile(m_L, <span class="stringliteral">&quot;../Assets/init.lua&quot;</span>) != LUA_OK)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        std::cout &lt;&lt; lua_tostring(m_L, -1);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="class_scripting_engine.html#a218cc92e0e9c813a80c6203a4abc96bc">  195</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scripting_engine.html#a218cc92e0e9c813a80c6203a4abc96bc">ScriptingEngine::RunStateFromScript</a>(lua_State* luaState, std::string AIscript, std::string AIstate, <a class="code" href="class_game_object.html">GameObject</a>* parent)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;{</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    LuaRef State = getGlobal(luaState, AIstate.c_str());</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    State(parent, <a class="code" href="_input_manager_8h.html#a1bb283bd7893b9855e2f23013891fc82">INPUT</a>);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;}</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="class_scripting_engine.html#a7e35a3c96de94be7f039c06216f48ff8">  201</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scripting_engine.html#a7e35a3c96de94be7f039c06216f48ff8">ScriptingEngine::DoFile</a>(std::string filePath)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;{</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    luaL_dostring(m_L, filePath.c_str());</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;}</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="class_scripting_engine.html#a271b1b21de27a3866eb97c9594c060dc">  206</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_scripting_engine.html#a271b1b21de27a3866eb97c9594c060dc">ScriptingEngine::Close</a>()</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;{</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    lua_close(m_L);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::LoadModel(std::string name, std::string filePath)</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;{</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">ASSET</a>-&gt;LoadModel(name, <span class="stringliteral">&quot;../Assets/Models/&quot;</span>+filePath);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::LoadScript(std::string key, std::string filePath)</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;{</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <a class="code" href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">ASSET</a>-&gt;LoadScript(key, <span class="stringliteral">&quot;../Assets/Scripts/&quot;</span>+filePath);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::UnloadTexture(std::string key)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <a class="code" href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">ASSET</a>-&gt;UnloadTexture(key);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::LoadHeightMap(std::string key, std::string filePath)</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;{</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <a class="code" href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">ASSET</a>-&gt;LoadHeightMap(key, <span class="stringliteral">&quot;../Assets/HeightMaps/&quot;</span> + filePath);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;}</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<a class="code" href="class_game_object.html">GameObject</a>* ScriptingEngine::SpawnGameObject(std::string key)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;{</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="_game_object_factory_8h.html#afb75a9937f90d733ea07a2ed608b39c3">GAMEOBJECT</a>-&gt;SpawnGameObject(key);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;}</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<a class="code" href="class_game_object.html">GameObject</a>* ScriptingEngine::GetGameObject(std::string objectKey)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;{</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="_game_object_factory_8h.html#afb75a9937f90d733ea07a2ed608b39c3">GAMEOBJECT</a>-&gt;GetGameObject(objectKey);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::QuitGame()</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;{</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <a class="code" href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a>-&gt;QuitGame();</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::SaveGame()</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;{</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a>-&gt;SaveGame();</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keywordtype">void</span> ScriptingEngine::LoadGame()</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;{</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <a class="code" href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a>-&gt;LoadGame();</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="keywordtype">bool</span> ScriptingEngine::CheckSaveState()</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;{</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a>-&gt;CheckSaveState();</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<a class="code" href="class_input_manager.html">InputManager</a>* ScriptingEngine::GetInputManager()</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;{</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="class_input_manager.html#a53a27e2e25bec96173a4c7532515d10e">InputManager::Instance</a>();</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
 <div class="ttc" id="a_c_character_component_8h_html"><div class="ttname"><a href="_c_character_component_8h.html">CCharacterComponent.h</a></div></div>
 <div class="ttc" id="a_c_collider_8h_html"><div class="ttname"><a href="_c_collider_8h.html">CCollider.h</a></div></div>
 <div class="ttc" id="a_c_script_8h_html"><div class="ttname"><a href="_c_script_8h.html">CScript.h</a></div></div>
@@ -357,26 +359,26 @@ $(document).ready(function(){initNavTree('_scripting_engine_8cpp_source.html',''
 <div class="ttc" id="a_engine_8h_html"><div class="ttname"><a href="_engine_8h.html">Engine.h</a></div></div>
 <div class="ttc" id="a_engine_8h_html_a0a90beb8d29bf52a676d8da928792519"><div class="ttname"><a href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a></div><div class="ttdeci">#define ENGINE</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8h_source.html#l00103">Engine.h:103</a></div></div>
 <div class="ttc" id="a_game_asset_factory_8h_html"><div class="ttname"><a href="_game_asset_factory_8h.html">GameAssetFactory.h</a></div></div>
-<div class="ttc" id="a_game_asset_factory_8h_html_a0f8c4be26c0c90623a18323d4d1e4990"><div class="ttname"><a href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">ASSET</a></div><div class="ttdeci">#define ASSET</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8h_source.html#l00084">GameAssetFactory.h:84</a></div></div>
+<div class="ttc" id="a_game_asset_factory_8h_html_a0f8c4be26c0c90623a18323d4d1e4990"><div class="ttname"><a href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">ASSET</a></div><div class="ttdeci">#define ASSET</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8h_source.html#l00087">GameAssetFactory.h:87</a></div></div>
 <div class="ttc" id="a_game_object_factory_8h_html"><div class="ttname"><a href="_game_object_factory_8h.html">GameObjectFactory.h</a></div></div>
-<div class="ttc" id="a_game_object_factory_8h_html_afb75a9937f90d733ea07a2ed608b39c3"><div class="ttname"><a href="_game_object_factory_8h.html#afb75a9937f90d733ea07a2ed608b39c3">GAMEOBJECT</a></div><div class="ttdeci">#define GAMEOBJECT</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_factory_8h_source.html#l00098">GameObjectFactory.h:98</a></div></div>
+<div class="ttc" id="a_game_object_factory_8h_html_afb75a9937f90d733ea07a2ed608b39c3"><div class="ttname"><a href="_game_object_factory_8h.html#afb75a9937f90d733ea07a2ed608b39c3">GAMEOBJECT</a></div><div class="ttdeci">#define GAMEOBJECT</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_factory_8h_source.html#l00101">GameObjectFactory.h:101</a></div></div>
 <div class="ttc" id="a_input_manager_8h_html"><div class="ttname"><a href="_input_manager_8h.html">InputManager.h</a></div></div>
-<div class="ttc" id="a_input_manager_8h_html_a1bb283bd7893b9855e2f23013891fc82"><div class="ttname"><a href="_input_manager_8h.html#a1bb283bd7893b9855e2f23013891fc82">INPUT</a></div><div class="ttdeci">#define INPUT</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00290">InputManager.h:290</a></div></div>
+<div class="ttc" id="a_input_manager_8h_html_a1bb283bd7893b9855e2f23013891fc82"><div class="ttname"><a href="_input_manager_8h.html#a1bb283bd7893b9855e2f23013891fc82">INPUT</a></div><div class="ttdeci">#define INPUT</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00295">InputManager.h:295</a></div></div>
 <div class="ttc" id="a_scripting_engine_8h_html"><div class="ttname"><a href="_scripting_engine_8h.html">ScriptingEngine.h</a></div></div>
-<div class="ttc" id="aclass_a_model_html"><div class="ttname"><a href="class_a_model.html">AModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_model_8h_source.html#l00022">AModel.h:23</a></div></div>
+<div class="ttc" id="aclass_a_model_html"><div class="ttname"><a href="class_a_model.html">AModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_model_8h_source.html#l00009">AModel.h:10</a></div></div>
 <div class="ttc" id="aclass_c_camera_html"><div class="ttname"><a href="class_c_camera.html">CCamera</a></div><div class="ttdoc">A component holding and managing a camera.</div><div class="ttdef"><b>Definition:</b> <a href="_c_camera_8h_source.html#l00010">CCamera.h:11</a></div></div>
 <div class="ttc" id="aclass_c_camera_html_a78c8cbcc39a766785720f393069239da"><div class="ttname"><a href="class_c_camera.html#a78c8cbcc39a766785720f393069239da">CCamera::SetAsCurrentCamera</a></div><div class="ttdeci">void SetAsCurrentCamera()</div><div class="ttdoc">makes this component's camera the current one to be used by the engine and display the screen</div><div class="ttdef"><b>Definition:</b> <a href="_c_camera_8cpp_source.html#l00038">CCamera.cpp:38</a></div></div>
 <div class="ttc" id="aclass_c_character_html"><div class="ttname"><a href="class_c_character.html">CCharacter</a></div><div class="ttdoc">A component representing a character capable of moving.</div><div class="ttdef"><b>Definition:</b> <a href="_c_character_component_8h_source.html#l00010">CCharacterComponent.h:11</a></div></div>
-<div class="ttc" id="aclass_c_character_html_a25e56097faa4cce9c291cf4b62c84527"><div class="ttname"><a href="class_c_character.html#a25e56097faa4cce9c291cf4b62c84527">CCharacter::SetHitpoints</a></div><div class="ttdeci">void SetHitpoints(int hp)</div><div class="ttdoc">hitpoints mutator</div><div class="ttdef"><b>Definition:</b> <a href="_c_character_component_8cpp_source.html#l00056">CCharacterComponent.cpp:56</a></div></div>
-<div class="ttc" id="aclass_c_character_html_a39fbd8b3797741e2ced648e4274947bf"><div class="ttname"><a href="class_c_character.html#a39fbd8b3797741e2ced648e4274947bf">CCharacter::Jump</a></div><div class="ttdeci">void Jump(float x, float y, float z)</div><div class="ttdoc">constructor taking parent as argument</div><div class="ttdef"><b>Definition:</b> <a href="_c_character_component_8cpp_source.html#l00031">CCharacterComponent.cpp:31</a></div></div>
-<div class="ttc" id="aclass_c_character_html_a4d1ce4b6004810eb3feb6d34e59ca848"><div class="ttname"><a href="class_c_character.html#a4d1ce4b6004810eb3feb6d34e59ca848">CCharacter::Move</a></div><div class="ttdeci">void Move(float x, float y, float z)</div><div class="ttdoc">Moves the character by altering its acceleration.</div><div class="ttdef"><b>Definition:</b> <a href="_c_character_component_8cpp_source.html#l00026">CCharacterComponent.cpp:26</a></div></div>
-<div class="ttc" id="aclass_c_character_html_a68da14d7117a8a043f10a0011d246a17"><div class="ttname"><a href="class_c_character.html#a68da14d7117a8a043f10a0011d246a17">CCharacter::SetPlayerControlled</a></div><div class="ttdeci">void SetPlayerControlled(bool playerControlled)</div><div class="ttdef"><b>Definition:</b> <a href="_c_character_component_8cpp_source.html#l00061">CCharacterComponent.cpp:61</a></div></div>
-<div class="ttc" id="aclass_c_character_html_aba4679ac0bcaa43be503e9bfe0ec6d1b"><div class="ttname"><a href="class_c_character.html#aba4679ac0bcaa43be503e9bfe0ec6d1b">CCharacter::GetHitpoints</a></div><div class="ttdeci">int GetHitpoints()</div><div class="ttdoc">hitpoints accessor</div><div class="ttdef"><b>Definition:</b> <a href="_c_character_component_8cpp_source.html#l00051">CCharacterComponent.cpp:51</a></div></div>
+<div class="ttc" id="aclass_c_character_html_a25e56097faa4cce9c291cf4b62c84527"><div class="ttname"><a href="class_c_character.html#a25e56097faa4cce9c291cf4b62c84527">CCharacter::SetHitpoints</a></div><div class="ttdeci">void SetHitpoints(int hp)</div><div class="ttdoc">hitpoints mutator</div><div class="ttdef"><b>Definition:</b> <a href="_c_character_component_8cpp_source.html#l00050">CCharacterComponent.cpp:50</a></div></div>
+<div class="ttc" id="aclass_c_character_html_a39fbd8b3797741e2ced648e4274947bf"><div class="ttname"><a href="class_c_character.html#a39fbd8b3797741e2ced648e4274947bf">CCharacter::Jump</a></div><div class="ttdeci">void Jump(float x, float y, float z)</div><div class="ttdoc">Moves the character by altering its acceleration.</div><div class="ttdef"><b>Definition:</b> <a href="_c_character_component_8cpp_source.html#l00025">CCharacterComponent.cpp:25</a></div></div>
+<div class="ttc" id="aclass_c_character_html_a68da14d7117a8a043f10a0011d246a17"><div class="ttname"><a href="class_c_character.html#a68da14d7117a8a043f10a0011d246a17">CCharacter::SetPlayerControlled</a></div><div class="ttdeci">void SetPlayerControlled(bool playerControlled)</div><div class="ttdef"><b>Definition:</b> <a href="_c_character_component_8cpp_source.html#l00055">CCharacterComponent.cpp:55</a></div></div>
+<div class="ttc" id="aclass_c_character_html_aba4679ac0bcaa43be503e9bfe0ec6d1b"><div class="ttname"><a href="class_c_character.html#aba4679ac0bcaa43be503e9bfe0ec6d1b">CCharacter::GetHitpoints</a></div><div class="ttdeci">int GetHitpoints()</div><div class="ttdoc">hitpoints accessor</div><div class="ttdef"><b>Definition:</b> <a href="_c_character_component_8cpp_source.html#l00045">CCharacterComponent.cpp:45</a></div></div>
 <div class="ttc" id="aclass_c_collider_html"><div class="ttname"><a href="class_c_collider.html">CCollider</a></div><div class="ttdef"><b>Definition:</b> <a href="_c_collider_8h_source.html#l00009">CCollider.h:10</a></div></div>
-<div class="ttc" id="aclass_c_collider_html_a036b8b3a71d5285c01ea19478fe6574b"><div class="ttname"><a href="class_c_collider.html#a036b8b3a71d5285c01ea19478fe6574b">CCollider::CollideWith</a></div><div class="ttdeci">void CollideWith(int layerToCollideWith)</div><div class="ttdef"><b>Definition:</b> <a href="_c_collider_8cpp_source.html#l00213">CCollider.cpp:213</a></div></div>
-<div class="ttc" id="aclass_c_collider_html_ac3edc6cdc9cde55927ee1f3365e468fe"><div class="ttname"><a href="class_c_collider.html#ac3edc6cdc9cde55927ee1f3365e468fe">CCollider::AddConcaveCollider</a></div><div class="ttdeci">void AddConcaveCollider(int layer)</div><div class="ttdef"><b>Definition:</b> <a href="_c_collider_8cpp_source.html#l00180">CCollider.cpp:180</a></div></div>
+<div class="ttc" id="aclass_c_collider_html_a036b8b3a71d5285c01ea19478fe6574b"><div class="ttname"><a href="class_c_collider.html#a036b8b3a71d5285c01ea19478fe6574b">CCollider::CollideWith</a></div><div class="ttdeci">void CollideWith(int layerToCollideWith)</div><div class="ttdef"><b>Definition:</b> <a href="_c_collider_8cpp_source.html#l00222">CCollider.cpp:222</a></div></div>
+<div class="ttc" id="aclass_c_collider_html_a70bfbff53aeac17e1201dfe26a25d68b"><div class="ttname"><a href="class_c_collider.html#a70bfbff53aeac17e1201dfe26a25d68b">CCollider::AddCapsuleCollider</a></div><div class="ttdeci">void AddCapsuleCollider(float radius, float height, int layer)</div><div class="ttdef"><b>Definition:</b> <a href="_c_collider_8cpp_source.html#l00138">CCollider.cpp:138</a></div></div>
+<div class="ttc" id="aclass_c_collider_html_ac3edc6cdc9cde55927ee1f3365e468fe"><div class="ttname"><a href="class_c_collider.html#ac3edc6cdc9cde55927ee1f3365e468fe">CCollider::AddConcaveCollider</a></div><div class="ttdeci">void AddConcaveCollider(int layer)</div><div class="ttdef"><b>Definition:</b> <a href="_c_collider_8cpp_source.html#l00189">CCollider.cpp:189</a></div></div>
 <div class="ttc" id="aclass_c_collider_html_ac44996b225b212a06b6e57529e1109ee"><div class="ttname"><a href="class_c_collider.html#ac44996b225b212a06b6e57529e1109ee">CCollider::AddBoxCollider</a></div><div class="ttdeci">void AddBoxCollider(float x=0.2, float y=0.2, float z=0.2, float offsetX=0, float offsetY=0, float offsetZ=0, bool autoSize=false, int layer=1, bool allowRotation=true)</div><div class="ttdef"><b>Definition:</b> <a href="_c_collider_8cpp_source.html#l00101">CCollider.cpp:101</a></div></div>
-<div class="ttc" id="aclass_c_collider_html_af2a8bc9ee9bb4aba6f7237f029c31ad8"><div class="ttname"><a href="class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8">CCollider::AddConvexCollider</a></div><div class="ttdeci">void AddConvexCollider()</div><div class="ttdef"><b>Definition:</b> <a href="_c_collider_8cpp_source.html#l00137">CCollider.cpp:137</a></div></div>
+<div class="ttc" id="aclass_c_collider_html_af2a8bc9ee9bb4aba6f7237f029c31ad8"><div class="ttname"><a href="class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8">CCollider::AddConvexCollider</a></div><div class="ttdeci">void AddConvexCollider()</div><div class="ttdef"><b>Definition:</b> <a href="_c_collider_8cpp_source.html#l00146">CCollider.cpp:146</a></div></div>
 <div class="ttc" id="aclass_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdoc">A component of a game object with its own assets and/or behaviour.</div><div class="ttdef"><b>Definition:</b> <a href="_c_component_8h_source.html#l00010">CComponent.h:11</a></div></div>
 <div class="ttc" id="aclass_c_component_html_a3796546e2460ee6457af80534ddff0d5"><div class="ttname"><a href="class_c_component.html#a3796546e2460ee6457af80534ddff0d5">CComponent::GetTransform</a></div><div class="ttdeci">Transform &amp; GetTransform()</div><div class="ttdoc">transform accessor</div><div class="ttdef"><b>Definition:</b> <a href="_c_component_8cpp_source.html#l00017">CComponent.cpp:17</a></div></div>
 <div class="ttc" id="aclass_c_point_light_html"><div class="ttname"><a href="class_c_point_light.html">CPointLight</a></div><div class="ttdef"><b>Definition:</b> <a href="_c_point_light_8h_source.html#l00016">CPointLight.h:17</a></div></div>
@@ -413,7 +415,7 @@ $(document).ready(function(){initNavTree('_scripting_engine_8cpp_source.html',''
 <div class="ttc" id="aclass_game_object_html_ae999ec020edfeefd12e31f4a7d79b701"><div class="ttname"><a href="class_game_object.html#ae999ec020edfeefd12e31f4a7d79b701">GameObject::GetCCharacter</a></div><div class="ttdeci">CCharacter * GetCCharacter()</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cpp_source.html#l00069">GameObject.cpp:69</a></div></div>
 <div class="ttc" id="aclass_game_object_html_aef8a5d45ebed2a70241618f9f4a19187"><div class="ttname"><a href="class_game_object.html#aef8a5d45ebed2a70241618f9f4a19187">GameObject::GetClosestObject</a></div><div class="ttdeci">GameObject * GetClosestObject(std::string partialKey)</div><div class="ttdoc">searches for the closest object with a key containing a given substring</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cpp_source.html#l00084">GameObject.cpp:84</a></div></div>
 <div class="ttc" id="aclass_game_object_html_af0b1186bf31eff34c33d024a07f227a3"><div class="ttname"><a href="class_game_object.html#af0b1186bf31eff34c33d024a07f227a3">GameObject::AddCCollider</a></div><div class="ttdeci">CCollider * AddCCollider()</div><div class="ttdoc">Adds a collider component.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cpp_source.html#l00089">GameObject.cpp:89</a></div></div>
-<div class="ttc" id="aclass_input_manager_html"><div class="ttname"><a href="class_input_manager.html">InputManager</a></div><div class="ttdoc">singleton managing user input</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00048">InputManager.h:49</a></div></div>
+<div class="ttc" id="aclass_input_manager_html"><div class="ttname"><a href="class_input_manager.html">InputManager</a></div><div class="ttdoc">singleton managing user input</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00050">InputManager.h:51</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a0e837ebe01574849b44a56765e43ad71"><div class="ttname"><a href="class_input_manager.html#a0e837ebe01574849b44a56765e43ad71">InputManager::GetMouseButton</a></div><div class="ttdeci">bool GetMouseButton(int mouseButton)</div><div class="ttdoc">checks whether a mouse button is being held</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00686">InputManager.cpp:686</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a172d1f82841bb39057e3d198fa0d74e6"><div class="ttname"><a href="class_input_manager.html#a172d1f82841bb39057e3d198fa0d74e6">InputManager::GetKey</a></div><div class="ttdeci">bool GetKey(char c)</div><div class="ttdoc">checks whether a key is held or down</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00444">InputManager.cpp:444</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a23b19bcb96aa85a55cae94337eef66f1"><div class="ttname"><a href="class_input_manager.html#a23b19bcb96aa85a55cae94337eef66f1">InputManager::GetKeyUp</a></div><div class="ttdeci">bool GetKeyUp(char c)</div><div class="ttdoc">checks whether a key is up</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00637">InputManager.cpp:637</a></div></div>
@@ -428,11 +430,11 @@ $(document).ready(function(){initNavTree('_scripting_engine_8cpp_source.html',''
 <div class="ttc" id="aclass_scripting_engine_html"><div class="ttname"><a href="class_scripting_engine.html">ScriptingEngine</a></div><div class="ttdoc">A singleton that gets information from and manages lua scripts.</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8h_source.html#l00014">ScriptingEngine.h:15</a></div></div>
 <div class="ttc" id="aclass_scripting_engine_html_a125a0c206da8e74b8f6664c4e523606a"><div class="ttname"><a href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a">ScriptingEngine::NewState</a></div><div class="ttdeci">lua_State * NewState()</div><div class="ttdoc">Sets up the engine with initial processes and variables and exposes engine functionality to lua.</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8cpp_source.html#l00025">ScriptingEngine.cpp:25</a></div></div>
 <div class="ttc" id="aclass_scripting_engine_html_a1562d2141d926c4645b7ba24dd69e1e1"><div class="ttname"><a href="class_scripting_engine.html#a1562d2141d926c4645b7ba24dd69e1e1">ScriptingEngine::Initialise</a></div><div class="ttdeci">void Initialise()</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8cpp_source.html#l00020">ScriptingEngine.cpp:20</a></div></div>
-<div class="ttc" id="aclass_scripting_engine_html_a218cc92e0e9c813a80c6203a4abc96bc"><div class="ttname"><a href="class_scripting_engine.html#a218cc92e0e9c813a80c6203a4abc96bc">ScriptingEngine::RunStateFromScript</a></div><div class="ttdeci">void RunStateFromScript(lua_State *luaState, std::string AIscript, std::string AIstate, GameObject *parent)</div><div class="ttdoc">runs one of an AI script's state behaviours</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8cpp_source.html#l00194">ScriptingEngine.cpp:194</a></div></div>
-<div class="ttc" id="aclass_scripting_engine_html_a271b1b21de27a3866eb97c9594c060dc"><div class="ttname"><a href="class_scripting_engine.html#a271b1b21de27a3866eb97c9594c060dc">ScriptingEngine::Close</a></div><div class="ttdeci">void Close()</div><div class="ttdoc">Shuts down lua at program end.</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8cpp_source.html#l00205">ScriptingEngine.cpp:205</a></div></div>
+<div class="ttc" id="aclass_scripting_engine_html_a218cc92e0e9c813a80c6203a4abc96bc"><div class="ttname"><a href="class_scripting_engine.html#a218cc92e0e9c813a80c6203a4abc96bc">ScriptingEngine::RunStateFromScript</a></div><div class="ttdeci">void RunStateFromScript(lua_State *luaState, std::string AIscript, std::string AIstate, GameObject *parent)</div><div class="ttdoc">runs one of an AI script's state behaviours</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8cpp_source.html#l00195">ScriptingEngine.cpp:195</a></div></div>
+<div class="ttc" id="aclass_scripting_engine_html_a271b1b21de27a3866eb97c9594c060dc"><div class="ttname"><a href="class_scripting_engine.html#a271b1b21de27a3866eb97c9594c060dc">ScriptingEngine::Close</a></div><div class="ttdeci">void Close()</div><div class="ttdoc">Shuts down lua at program end.</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8cpp_source.html#l00206">ScriptingEngine.cpp:206</a></div></div>
 <div class="ttc" id="aclass_scripting_engine_html_a2813a338d6dc0bdc1377a2b2c0d11621"><div class="ttname"><a href="class_scripting_engine.html#a2813a338d6dc0bdc1377a2b2c0d11621">ScriptingEngine::Instance</a></div><div class="ttdeci">static ScriptingEngine * Instance()</div><div class="ttdoc">Singleton instance getter.</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8cpp_source.html#l00014">ScriptingEngine.cpp:14</a></div></div>
-<div class="ttc" id="aclass_scripting_engine_html_a7e35a3c96de94be7f039c06216f48ff8"><div class="ttname"><a href="class_scripting_engine.html#a7e35a3c96de94be7f039c06216f48ff8">ScriptingEngine::DoFile</a></div><div class="ttdeci">void DoFile(std::string filePath)</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8cpp_source.html#l00200">ScriptingEngine.cpp:200</a></div></div>
-<div class="ttc" id="aclass_scripting_engine_html_ab8277a75fbdc5ddd1a0da291e81fd35a"><div class="ttname"><a href="class_scripting_engine.html#ab8277a75fbdc5ddd1a0da291e81fd35a">ScriptingEngine::RunInitScript</a></div><div class="ttdeci">void RunInitScript()</div><div class="ttdoc">Runs the lua scripts to initialise the engine with assets and objects.</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8cpp_source.html#l00186">ScriptingEngine.cpp:186</a></div></div>
+<div class="ttc" id="aclass_scripting_engine_html_a7e35a3c96de94be7f039c06216f48ff8"><div class="ttname"><a href="class_scripting_engine.html#a7e35a3c96de94be7f039c06216f48ff8">ScriptingEngine::DoFile</a></div><div class="ttdeci">void DoFile(std::string filePath)</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8cpp_source.html#l00201">ScriptingEngine.cpp:201</a></div></div>
+<div class="ttc" id="aclass_scripting_engine_html_ab8277a75fbdc5ddd1a0da291e81fd35a"><div class="ttname"><a href="class_scripting_engine.html#ab8277a75fbdc5ddd1a0da291e81fd35a">ScriptingEngine::RunInitScript</a></div><div class="ttdeci">void RunInitScript()</div><div class="ttdoc">Runs the lua scripts to initialise the engine with assets and objects.</div><div class="ttdef"><b>Definition:</b> <a href="_scripting_engine_8cpp_source.html#l00187">ScriptingEngine.cpp:187</a></div></div>
 <div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdoc">Stores data about an object or componet's location in space.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8h_source.html#l00010">Transform.h:11</a></div></div>
 <div class="ttc" id="aclass_transform_html_a092f25418954cdba793f6d78fa3c14e3"><div class="ttname"><a href="class_transform.html#a092f25418954cdba793f6d78fa3c14e3">Transform::RotateLocalZ</a></div><div class="ttdeci">void RotateLocalZ(float degrees)</div><div class="ttdoc">Rotates the transform around the Z axis.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8cpp_source.html#l00193">Transform.cpp:193</a></div></div>
 <div class="ttc" id="aclass_transform_html_a19aaf61ebb28048705c9554de15285ef"><div class="ttname"><a href="class_transform.html#a19aaf61ebb28048705c9554de15285ef">Transform::GetDistance</a></div><div class="ttdeci">float GetDistance(Transform other) const</div><div class="ttdoc">calculates the distance to another transform</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8cpp_source.html#l00218">Transform.cpp:218</a></div></div>
@@ -453,7 +455,6 @@ $(document).ready(function(){initNavTree('_scripting_engine_8cpp_source.html',''
 <div class="ttc" id="aclass_vector3f_html_a874fc93c81a47a0455afb9cdd542c599"><div class="ttname"><a href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599">Vector3f::GetZ</a></div><div class="ttdeci">float GetZ() const</div><div class="ttdoc">z value accessor</div><div class="ttdef"><b>Definition:</b> <a href="_math_library_8h_source.html#l00097">MathLibrary.h:97</a></div></div>
 <div class="ttc" id="aclass_vector3f_html_a9a1317e3ba2ef2c5e661d340a74a825a"><div class="ttname"><a href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a">Vector3f::GetY</a></div><div class="ttdeci">float GetY() const</div><div class="ttdoc">y value accessor</div><div class="ttdef"><b>Definition:</b> <a href="_math_library_8h_source.html#l00088">MathLibrary.h:88</a></div></div>
 <div class="ttc" id="aclass_vector3f_html_abb50ca8baf8111e9bae60e4f7c144db3"><div class="ttname"><a href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3">Vector3f::GetX</a></div><div class="ttdeci">float GetX() const</div><div class="ttdoc">x value accessor</div><div class="ttdef"><b>Definition:</b> <a href="_math_library_8h_source.html#l00079">MathLibrary.h:79</a></div></div>
-<div class="ttc" id="astruct_a_asset_html"><div class="ttname"><a href="struct_a_asset.html">AAsset</a></div><div class="ttdoc">A game asset storing information on a piece of imported game data.</div><div class="ttdef"><b>Definition:</b> <a href="_a_asset_8h_source.html#l00008">AAsset.h:9</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

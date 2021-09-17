@@ -79,9 +79,6 @@
     <ClCompile Include="CStaticMesh.cpp">
       <Filter>Source\ComponentClasses\Source</Filter>
     </ClCompile>
-    <ClCompile Include="AAsset.cpp">
-      <Filter>Source\AssetClasses\Source</Filter>
-    </ClCompile>
     <ClCompile Include="ModernOpenGL\AModel.cpp">
       <Filter>Source\AssetClasses\Source</Filter>
     </ClCompile>
@@ -109,6 +106,7 @@
     <ClCompile Include="ScriptingEngine.cpp">
       <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
+    <ClCompile Include="AScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">
@@ -204,9 +202,6 @@
     <ClInclude Include="CStaticMesh.h">
       <Filter>Source\ComponentClasses\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="AAsset.h">
-      <Filter>Source\AssetClasses\Header</Filter>
-    </ClInclude>
     <ClInclude Include="ModernOpenGL\AModel.h">
       <Filter>Source\AssetClasses\Header</Filter>
     </ClInclude>
@@ -251,10 +246,10 @@
     <None Include="shaders\lit.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="shaders\skyBoxColourShader.frag">
+    <None Include="shaders\skyBox.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="shaders\skyBoxVertexShader.vert">
+    <None Include="shaders\skyBox.vert">
       <Filter>Shaders</Filter>
     </None>
     <None Include="shaders\vertexShader.vert">

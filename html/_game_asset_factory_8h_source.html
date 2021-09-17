@@ -29,6 +29,7 @@
    <div id="projectname">ICT398 - FrankEngine
    &#160;<span id="projectnumber">Milestone 1</span>
    </div>
+   <div id="projectbrief">Custom Game Engine</div>
   </td>
  </tr>
  </tbody>
@@ -88,46 +89,49 @@ $(document).ready(function(){initNavTree('_game_asset_factory_8h_source.html',''
 </div><!--header-->
 <div class="contents">
 <a href="_game_asset_factory_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_a_model_8h.html">ModernOpenGL/AModel.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_graphics_engine_8h.html">GraphicsEngine.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_a_script_8h.html">AScript.h</a>&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_game_asset_factory.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_game_asset_factory.html">GameAssetFactory</a></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_game_asset_factory.html">GameAssetFactory</a>* <a class="code" href="class_game_asset_factory.html#a97368a3631a29c1595dd5f682c98df67">Instance</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game_asset_factory.html#a1836e5aacdba78eb42fef096c6e11470">LoadModel</a>(std::string key, std::string filePath);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game_asset_factory.html#a40b5a89c9a42d946e7c60bac2efb87ca">LoadScript</a>(std::string key, std::string filePath);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_game_asset_factory.html#a72a3cc4c21e9406060ec244b1b29d761">UnloadTexture</a>(std::string key);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_game_asset_factory.html#a898abe6e701e6c86d8c47eacdedd5070">LoadHeightMap</a>(std::string key, std::string filePath);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_game_asset_factory.html#a976d3d345587b20c91e6de8d8323b72f">CheckName</a>(std::string key); <span class="comment">// check if name/id already taken</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"></span>    <span class="comment">//AModel* GetAsset(std::string key);</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="struct_a_asset.html">AAsset</a>* <a class="code" href="class_game_asset_factory.html#ae05670f82faa15b8fe684cbe96e54abc">GetAsset</a>(std::string key);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game_asset_factory.html#a81294bfc369873f5f25db58c05340644">Close</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">bool</span> LoadLuaFile(std::string path, <a class="code" href="struct_a_script.html">AScript</a>* script);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::map&lt;std::string, AAsset*&gt; m_assets;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">//std::map &lt;std::string, Amodel*&gt; m_assets;</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> oneTimeShader = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">   84</a></span>&#160;<span class="preprocessor">#define ASSET GameAssetFactory::Instance()</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_a_model_8h.html">ModernOpenGL/AModel.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_graphics_engine_8h.html">GraphicsEngine.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_a_script_8h.html">AScript.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_game_asset_factory.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_game_asset_factory.html">GameAssetFactory</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_game_asset_factory.html">GameAssetFactory</a>* <a class="code" href="class_game_asset_factory.html#a97368a3631a29c1595dd5f682c98df67">Instance</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game_asset_factory.html#a1836e5aacdba78eb42fef096c6e11470">LoadModel</a>(std::string key, std::string filePath);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game_asset_factory.html#a40b5a89c9a42d946e7c60bac2efb87ca">LoadScript</a>(std::string key, std::string filePath);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_game_asset_factory.html#a72a3cc4c21e9406060ec244b1b29d761">UnloadTexture</a>(std::string key);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_game_asset_factory.html#a898abe6e701e6c86d8c47eacdedd5070">LoadHeightMap</a>(std::string key, std::string filePath);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_game_asset_factory.html#a976d3d345587b20c91e6de8d8323b72f">CheckName</a>(std::string key); <span class="comment">// check if name/id already taken</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"></span>    <span class="comment">//AModel* GetAsset(std::string key);</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    AAsset* <a class="code" href="class_game_asset_factory.html#ae05670f82faa15b8fe684cbe96e54abc">GetAsset</a>(std::string key);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_game_asset_factory.html#a81294bfc369873f5f25db58c05340644">Close</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="class_game_asset_factory.html">GameAssetFactory</a>() {};</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">bool</span> LoadLuaFile(std::string path, <a class="code" href="struct_a_script.html">AScript</a>* script);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    std::map&lt;std::string, AAsset*&gt; m_assets;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">//std::map &lt;std::string, Amodel*&gt; m_assets;</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">bool</span> oneTimeShader = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;};</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="_game_asset_factory_8h.html#a0f8c4be26c0c90623a18323d4d1e4990">   87</a></span>&#160;<span class="preprocessor">#define ASSET GameAssetFactory::Instance()</span></div>
 <div class="ttc" id="a_a_model_8h_html"><div class="ttname"><a href="_a_model_8h.html">AModel.h</a></div></div>
 <div class="ttc" id="a_a_script_8h_html"><div class="ttname"><a href="_a_script_8h.html">AScript.h</a></div></div>
 <div class="ttc" id="a_graphics_engine_8h_html"><div class="ttname"><a href="_graphics_engine_8h.html">GraphicsEngine.h</a></div></div>
-<div class="ttc" id="aclass_game_asset_factory_html"><div class="ttname"><a href="class_game_asset_factory.html">GameAssetFactory</a></div><div class="ttdoc">singleton factory for game assets</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8h_source.html#l00017">GameAssetFactory.h:18</a></div></div>
+<div class="ttc" id="aclass_game_asset_factory_html"><div class="ttname"><a href="class_game_asset_factory.html">GameAssetFactory</a></div><div class="ttdoc">singleton factory for game assets</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8h_source.html#l00018">GameAssetFactory.h:19</a></div></div>
 <div class="ttc" id="aclass_game_asset_factory_html_a1836e5aacdba78eb42fef096c6e11470"><div class="ttname"><a href="class_game_asset_factory.html#a1836e5aacdba78eb42fef096c6e11470">GameAssetFactory::LoadModel</a></div><div class="ttdeci">void LoadModel(std::string key, std::string filePath)</div><div class="ttdoc">loads in a model</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00010">GameAssetFactory.cpp:10</a></div></div>
 <div class="ttc" id="aclass_game_asset_factory_html_a40b5a89c9a42d946e7c60bac2efb87ca"><div class="ttname"><a href="class_game_asset_factory.html#a40b5a89c9a42d946e7c60bac2efb87ca">GameAssetFactory::LoadScript</a></div><div class="ttdeci">void LoadScript(std::string key, std::string filePath)</div><div class="ttdoc">loads in a script</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00024">GameAssetFactory.cpp:24</a></div></div>
 <div class="ttc" id="aclass_game_asset_factory_html_a72a3cc4c21e9406060ec244b1b29d761"><div class="ttname"><a href="class_game_asset_factory.html#a72a3cc4c21e9406060ec244b1b29d761">GameAssetFactory::UnloadTexture</a></div><div class="ttdeci">bool UnloadTexture(std::string key)</div><div class="ttdoc">unload a texture from memory</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00045">GameAssetFactory.cpp:45</a></div></div>
@@ -136,8 +140,7 @@ $(document).ready(function(){initNavTree('_game_asset_factory_8h_source.html',''
 <div class="ttc" id="aclass_game_asset_factory_html_a97368a3631a29c1595dd5f682c98df67"><div class="ttname"><a href="class_game_asset_factory.html#a97368a3631a29c1595dd5f682c98df67">GameAssetFactory::Instance</a></div><div class="ttdeci">static GameAssetFactory * Instance()</div><div class="ttdoc">singleton instance generator</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00004">GameAssetFactory.cpp:4</a></div></div>
 <div class="ttc" id="aclass_game_asset_factory_html_a976d3d345587b20c91e6de8d8323b72f"><div class="ttname"><a href="class_game_asset_factory.html#a976d3d345587b20c91e6de8d8323b72f">GameAssetFactory::CheckName</a></div><div class="ttdeci">bool CheckName(std::string key)</div><div class="ttdoc">cheks whether a storage key already has an asset</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00101">GameAssetFactory.cpp:101</a></div></div>
 <div class="ttc" id="aclass_game_asset_factory_html_ae05670f82faa15b8fe684cbe96e54abc"><div class="ttname"><a href="class_game_asset_factory.html#ae05670f82faa15b8fe684cbe96e54abc">GameAssetFactory::GetAsset</a></div><div class="ttdeci">AAsset * GetAsset(std::string key)</div><div class="ttdoc">asset accessor</div><div class="ttdef"><b>Definition:</b> <a href="_game_asset_factory_8cpp_source.html#l00107">GameAssetFactory.cpp:107</a></div></div>
-<div class="ttc" id="astruct_a_asset_html"><div class="ttname"><a href="struct_a_asset.html">AAsset</a></div><div class="ttdoc">A game asset storing information on a piece of imported game data.</div><div class="ttdef"><b>Definition:</b> <a href="_a_asset_8h_source.html#l00008">AAsset.h:9</a></div></div>
-<div class="ttc" id="astruct_a_script_html"><div class="ttname"><a href="struct_a_script.html">AScript</a></div><div class="ttdoc">An asset for a script storing game behaviour.</div><div class="ttdef"><b>Definition:</b> <a href="_a_script_8h_source.html#l00009">AScript.h:10</a></div></div>
+<div class="ttc" id="astruct_a_script_html"><div class="ttname"><a href="struct_a_script.html">AScript</a></div><div class="ttdoc">An asset for a script storing game behaviour.</div><div class="ttdef"><b>Definition:</b> <a href="_a_script_8h_source.html#l00015">AScript.h:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

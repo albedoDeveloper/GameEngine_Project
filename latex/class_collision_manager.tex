@@ -11,17 +11,29 @@ A singleton that manages collisions between objects.
 
 
 
-Inheritance diagram for Collision\+Manager\+:
-% FIG 0
+Inheritance diagram for Collision\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{class_collision_manager__inherit__graph}
+\end{center}
+\end{figure}
 
 
-Collaboration diagram for Collision\+Manager\+:
-% FIG 1
+Collaboration diagram for Collision\+Manager\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{class_collision_manager__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_collision_manager_a81f0b3f0cc0268c80f54714cd7ddb55f}{Collision\+Manager}} ()
 \begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_collision_manager_a2c5770b90b7a46a5674df008a7a57145}{Init}} ()
+\item 
 bool \mbox{\hyperlink{class_collision_manager_a2c3f7c98835978fb8753a18d972d2f5b}{Check\+Collision}} (\mbox{\hyperlink{class_c_collider}{CCollider}} \&my\+Collider)
 \begin{DoxyCompactList}\small\item\em check if a AABB is colliding with any other AABB\textquotesingle{}s \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_collision_manager_abd7b40d81999f48ebd33f662ce180d0f}{on\+Contact}} (const Callback\+Data \&callback\+Data)
@@ -49,7 +61,7 @@ int \mbox{\hyperlink{class_collision_manager_ad52d2235d45a4a16d14e93c357e85bb7}{
 \doxysubsection{Detailed Description}
 A singleton that manages collisions between objects. 
 
-Definition at line 9 of file Collision\+Manager.\+h.
+Definition at line 10 of file Collision\+Manager.\+h.
 
 
 
@@ -83,7 +95,7 @@ check if a AABB is colliding with any other AABB\textquotesingle{}s
 
 
 
-Definition at line 19 of file Collision\+Manager.\+cpp.
+Definition at line 23 of file Collision\+Manager.\+cpp.
 
 \mbox{\Hypertarget{class_collision_manager_a35974da398267e50ddcfb792ef07382d}\label{class_collision_manager_a35974da398267e50ddcfb792ef07382d}} 
 \index{CollisionManager@{CollisionManager}!GetPhysicsWorld@{GetPhysicsWorld}}
@@ -93,7 +105,17 @@ Definition at line 19 of file Collision\+Manager.\+cpp.
 
 @\+Get the static collision world, to either add collisonbody or test for colliders 
 
-Definition at line 62 of file Collision\+Manager.\+h.
+Definition at line 66 of file Collision\+Manager.\+h.
+
+\mbox{\Hypertarget{class_collision_manager_a2c5770b90b7a46a5674df008a7a57145}\label{class_collision_manager_a2c5770b90b7a46a5674df008a7a57145}} 
+\index{CollisionManager@{CollisionManager}!Init@{Init}}
+\index{Init@{Init}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void Collision\+Manager\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 8 of file Collision\+Manager.\+cpp.
 
 \mbox{\Hypertarget{class_collision_manager_a2f69dc109914167a1fd5953727f14dc8}\label{class_collision_manager_a2f69dc109914167a1fd5953727f14dc8}} 
 \index{CollisionManager@{CollisionManager}!Instance@{Instance}}
@@ -110,7 +132,7 @@ the single instance of this manager
 \end{DoxyReturn}
 
 
-Definition at line 13 of file Collision\+Manager.\+cpp.
+Definition at line 17 of file Collision\+Manager.\+cpp.
 
 \mbox{\Hypertarget{class_collision_manager_abd7b40d81999f48ebd33f662ce180d0f}\label{class_collision_manager_abd7b40d81999f48ebd33f662ce180d0f}} 
 \index{CollisionManager@{CollisionManager}!onContact@{onContact}}
@@ -120,7 +142,7 @@ Definition at line 13 of file Collision\+Manager.\+cpp.
 
 
 
-Definition at line 28 of file Collision\+Manager.\+cpp.
+Definition at line 32 of file Collision\+Manager.\+cpp.
 
 
 
@@ -133,7 +155,7 @@ Definition at line 28 of file Collision\+Manager.\+cpp.
 
 
 
-Definition at line 37 of file Collision\+Manager.\+h.
+Definition at line 38 of file Collision\+Manager.\+h.
 
 \mbox{\Hypertarget{class_collision_manager_a3c8e816678ec1e3be009541a5c4de044}\label{class_collision_manager_a3c8e816678ec1e3be009541a5c4de044}} 
 \index{CollisionManager@{CollisionManager}!physicsCommon@{physicsCommon}}
@@ -143,7 +165,7 @@ Definition at line 37 of file Collision\+Manager.\+h.
 
 
 
-Definition at line 35 of file Collision\+Manager.\+h.
+Definition at line 36 of file Collision\+Manager.\+h.
 
 \mbox{\Hypertarget{class_collision_manager_ac042bf60937e79822a02ba4009d6eced}\label{class_collision_manager_ac042bf60937e79822a02ba4009d6eced}} 
 \index{CollisionManager@{CollisionManager}!physicsWorld@{physicsWorld}}
@@ -153,7 +175,7 @@ Definition at line 35 of file Collision\+Manager.\+h.
 
 
 
-Definition at line 33 of file Collision\+Manager.\+h.
+Definition at line 34 of file Collision\+Manager.\+h.
 
 \mbox{\Hypertarget{class_collision_manager_ad52d2235d45a4a16d14e93c357e85bb7}\label{class_collision_manager_ad52d2235d45a4a16d14e93c357e85bb7}} 
 \index{CollisionManager@{CollisionManager}!waitTime@{waitTime}}
@@ -163,7 +185,7 @@ Definition at line 33 of file Collision\+Manager.\+h.
 
 
 
-Definition at line 39 of file Collision\+Manager.\+h.
+Definition at line 40 of file Collision\+Manager.\+h.
 
 
 

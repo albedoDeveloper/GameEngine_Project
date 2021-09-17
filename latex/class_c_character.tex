@@ -11,21 +11,29 @@ A component representing a character capable of moving.
 
 
 
-Inheritance diagram for CCharacter\+:
-% FIG 0
+Inheritance diagram for CCharacter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{class_c_character__inherit__graph}
+\end{center}
+\end{figure}
 
 
-Collaboration diagram for CCharacter\+:
-% FIG 1
+Collaboration diagram for CCharacter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{class_c_character__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_c_character_ac0a7c8afa905b14f9a38c3a3c22fc6d7}{CCharacter}} (\mbox{\hyperlink{class_transform}{Transform}} $\ast$parent, \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$parent\+Obj)
 \begin{DoxyCompactList}\small\item\em constructor using parent \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_c_character_a4d1ce4b6004810eb3feb6d34e59ca848}{Move}} (float x, float y, float z)
-\begin{DoxyCompactList}\small\item\em Moves the character by altering its acceleration. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_c_character_a39fbd8b3797741e2ced648e4274947bf}{Jump}} (float x, float y, float z)
-\begin{DoxyCompactList}\small\item\em constructor taking parent as argument \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Moves the character by altering its acceleration. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_vector3f}{Vector3f}} \mbox{\hyperlink{class_c_character_ac565b47c7d941320124d243e214a0f22}{Get\+Velocity}} ()
 \begin{DoxyCompactList}\small\item\em velocity accessor \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_c_character_aca92f291e60df21b6469bc54e99fc4cd}{Set\+Velocity}} (\mbox{\hyperlink{class_vector3f}{Vector3f}} new\+Vel)
@@ -99,10 +107,15 @@ Reimplemented from \mbox{\hyperlink{class_c_component_a5c5f18ab5d67e9d91e7fa7b26
 
 
 
-Definition at line 219 of file CCharacter\+Component.\+cpp.
+Definition at line 210 of file CCharacter\+Component.\+cpp.
 
-Here is the call graph for this function\+:
-% FIG 2
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{class_c_character_a037a51556b6aef411ec09613812f3ba4_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_c_character_aba4679ac0bcaa43be503e9bfe0ec6d1b}\label{class_c_character_aba4679ac0bcaa43be503e9bfe0ec6d1b}} 
 \index{CCharacter@{CCharacter}!GetHitpoints@{GetHitpoints}}
 \index{GetHitpoints@{GetHitpoints}!CCharacter@{CCharacter}}
@@ -118,10 +131,15 @@ hitpoints
 \end{DoxyReturn}
 
 
-Definition at line 51 of file CCharacter\+Component.\+cpp.
+Definition at line 45 of file CCharacter\+Component.\+cpp.
 
-Here is the caller graph for this function\+:
-% FIG 3
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_c_character_aba4679ac0bcaa43be503e9bfe0ec6d1b_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_c_character_ac565b47c7d941320124d243e214a0f22}\label{class_c_character_ac565b47c7d941320124d243e214a0f22}} 
 \index{CCharacter@{CCharacter}!GetVelocity@{GetVelocity}}
 \index{GetVelocity@{GetVelocity}!CCharacter@{CCharacter}}
@@ -137,7 +155,7 @@ the velocity of the character; how fast it is moving and in what direction
 \end{DoxyReturn}
 
 
-Definition at line 40 of file CCharacter\+Component.\+cpp.
+Definition at line 34 of file CCharacter\+Component.\+cpp.
 
 \mbox{\Hypertarget{class_c_character_a39fbd8b3797741e2ced648e4274947bf}\label{class_c_character_a39fbd8b3797741e2ced648e4274947bf}} 
 \index{CCharacter@{CCharacter}!Jump@{Jump}}
@@ -147,9 +165,14 @@ Definition at line 40 of file CCharacter\+Component.\+cpp.
 
 
 
+Moves the character by altering its acceleration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em acceleration} & the acceleration to add\\
+\hline
+\end{DoxyParams}
 constructor taking parent as argument 
-
-
 \begin{DoxyParams}{Parameters}
 {\em parent} & pointer to parent transform for this component\textquotesingle{}s transform \\
 \hline
@@ -158,10 +181,16 @@ constructor taking parent as argument
 \end{DoxyParams}
 
 
-Definition at line 31 of file CCharacter\+Component.\+cpp.
+Definition at line 25 of file CCharacter\+Component.\+cpp.
 
 Here is the caller graph for this function\+:
-% FIG 4
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_c_character_a39fbd8b3797741e2ced648e4274947bf_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_c_character_a35c526a7a9f634e02c4ac54503e332bc}\label{class_c_character_a35c526a7a9f634e02c4ac54503e332bc}} 
 \index{CCharacter@{CCharacter}!Load@{Load}}
 \index{Load@{Load}!CCharacter@{CCharacter}}
@@ -178,31 +207,15 @@ Reimplemented from \mbox{\hyperlink{class_c_component_a11335298284532e2684a6a73a
 
 
 
-Definition at line 213 of file CCharacter\+Component.\+cpp.
+Definition at line 204 of file CCharacter\+Component.\+cpp.
 
-Here is the call graph for this function\+:
-% FIG 5
-\mbox{\Hypertarget{class_c_character_a4d1ce4b6004810eb3feb6d34e59ca848}\label{class_c_character_a4d1ce4b6004810eb3feb6d34e59ca848}} 
-\index{CCharacter@{CCharacter}!Move@{Move}}
-\index{Move@{Move}!CCharacter@{CCharacter}}
-\doxysubsubsection{\texorpdfstring{Move()}{Move()}}
-{\footnotesize\ttfamily void CCharacter\+::\+Move (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z }\end{DoxyParamCaption})}
-
-
-
-Moves the character by altering its acceleration. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em acceleration} & the acceleration to add \\
-\hline
-\end{DoxyParams}
-
-
-Definition at line 26 of file CCharacter\+Component.\+cpp.
-
-Here is the caller graph for this function\+:
-% FIG 6
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_c_character_a35c526a7a9f634e02c4ac54503e332bc_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_c_character_ae606109ebef5561fbda23cd95b57496c}\label{class_c_character_ae606109ebef5561fbda23cd95b57496c}} 
 \index{CCharacter@{CCharacter}!Save@{Save}}
 \index{Save@{Save}!CCharacter@{CCharacter}}
@@ -219,10 +232,15 @@ Reimplemented from \mbox{\hyperlink{class_c_component_acd3219b90aa85de5d026d7d12
 
 
 
-Definition at line 207 of file CCharacter\+Component.\+cpp.
+Definition at line 198 of file CCharacter\+Component.\+cpp.
 
-Here is the call graph for this function\+:
-% FIG 7
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_c_character_ae606109ebef5561fbda23cd95b57496c_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_c_character_a25e56097faa4cce9c291cf4b62c84527}\label{class_c_character_a25e56097faa4cce9c291cf4b62c84527}} 
 \index{CCharacter@{CCharacter}!SetHitpoints@{SetHitpoints}}
 \index{SetHitpoints@{SetHitpoints}!CCharacter@{CCharacter}}
@@ -240,10 +258,15 @@ hitpoints mutator
 \end{DoxyParams}
 
 
-Definition at line 56 of file CCharacter\+Component.\+cpp.
+Definition at line 50 of file CCharacter\+Component.\+cpp.
 
-Here is the caller graph for this function\+:
-% FIG 8
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_c_character_a25e56097faa4cce9c291cf4b62c84527_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_c_character_a20b0f64de36c3c8f400c07ab14450add}\label{class_c_character_a20b0f64de36c3c8f400c07ab14450add}} 
 \index{CCharacter@{CCharacter}!SetMouseEnabled@{SetMouseEnabled}}
 \index{SetMouseEnabled@{SetMouseEnabled}!CCharacter@{CCharacter}}
@@ -252,7 +275,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 245 of file CCharacter\+Component.\+cpp.
+Definition at line 236 of file CCharacter\+Component.\+cpp.
 
 \mbox{\Hypertarget{class_c_character_a68da14d7117a8a043f10a0011d246a17}\label{class_c_character_a68da14d7117a8a043f10a0011d246a17}} 
 \index{CCharacter@{CCharacter}!SetPlayerControlled@{SetPlayerControlled}}
@@ -262,10 +285,15 @@ Definition at line 245 of file CCharacter\+Component.\+cpp.
 
 
 
-Definition at line 61 of file CCharacter\+Component.\+cpp.
+Definition at line 55 of file CCharacter\+Component.\+cpp.
 
-Here is the caller graph for this function\+:
-% FIG 9
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_c_character_a68da14d7117a8a043f10a0011d246a17_icgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_c_character_aca92f291e60df21b6469bc54e99fc4cd}\label{class_c_character_aca92f291e60df21b6469bc54e99fc4cd}} 
 \index{CCharacter@{CCharacter}!SetVelocity@{SetVelocity}}
 \index{SetVelocity@{SetVelocity}!CCharacter@{CCharacter}}
@@ -283,7 +311,7 @@ velocity mutator
 \end{DoxyParams}
 
 
-Definition at line 46 of file CCharacter\+Component.\+cpp.
+Definition at line 40 of file CCharacter\+Component.\+cpp.
 
 \mbox{\Hypertarget{class_c_character_ab774064d1c84af41bcace35d81cc1fb5}\label{class_c_character_ab774064d1c84af41bcace35d81cc1fb5}} 
 \index{CCharacter@{CCharacter}!Start@{Start}}
@@ -301,10 +329,15 @@ Reimplemented from \mbox{\hyperlink{class_c_component_adcee296a2416501cf52755038
 
 
 
-Definition at line 66 of file CCharacter\+Component.\+cpp.
+Definition at line 60 of file CCharacter\+Component.\+cpp.
 
-Here is the call graph for this function\+:
-% FIG 10
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_c_character_ab774064d1c84af41bcace35d81cc1fb5_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_c_character_adc476a488c7157c7fc2b32381760b4e0}\label{class_c_character_adc476a488c7157c7fc2b32381760b4e0}} 
 \index{CCharacter@{CCharacter}!Update@{Update}}
 \index{Update@{Update}!CCharacter@{CCharacter}}
@@ -321,10 +354,16 @@ Reimplemented from \mbox{\hyperlink{class_c_component_a95eac92b576c4d07d911e1e2d
 
 
 
-Definition at line 77 of file CCharacter\+Component.\+cpp.
+Definition at line 71 of file CCharacter\+Component.\+cpp.
 
 Here is the call graph for this function\+:
-% FIG 11
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_c_character_adc476a488c7157c7fc2b32381760b4e0_cgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

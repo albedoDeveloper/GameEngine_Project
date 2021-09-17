@@ -1,6 +1,5 @@
 var class_input_manager =
 [
-    [ "InputManager", "class_input_manager.html#a8be46886da639b26d67181c29dab6d6c", null ],
     [ "CheckCursorLock", "class_input_manager.html#a5f06ef1be775796f805d360071d1aaab", null ],
     [ "CheckKey", "class_input_manager.html#a8570c6a2336f8d579b30867d9a7fa97f", null ],
     [ "CheckKeyDown", "class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e", null ],

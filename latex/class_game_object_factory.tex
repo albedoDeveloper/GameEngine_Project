@@ -12,8 +12,6 @@ A singleton factory class to produce all Game\+Objects, store them in memory, an
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_game_object_factory_acb06c511e88956d6e47c28d026dc8ddd}{Game\+Object\+Factory}} ()
-\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_object_factory_a4bd13ad9ccf5879c650d2fe2e8cebdf6}{Close}} ()
 \begin{DoxyCompactList}\small\item\em closes the factory \end{DoxyCompactList}\item 
 std\+::map$<$ std\+::string, \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_game_object_factory_a77d1c9cc919bd38a4ce5d08e7b6d0ab5}{Get\+Object\+Map}} ()
@@ -50,25 +48,6 @@ A singleton factory class to produce all Game\+Objects, store them in memory, an
 
 Definition at line 11 of file Game\+Object\+Factory.\+h.
 
-
-
-\doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{class_game_object_factory_acb06c511e88956d6e47c28d026dc8ddd}\label{class_game_object_factory_acb06c511e88956d6e47c28d026dc8ddd}} 
-\index{GameObjectFactory@{GameObjectFactory}!GameObjectFactory@{GameObjectFactory}}
-\index{GameObjectFactory@{GameObjectFactory}!GameObjectFactory@{GameObjectFactory}}
-\doxysubsubsection{\texorpdfstring{GameObjectFactory()}{GameObjectFactory()}}
-{\footnotesize\ttfamily Game\+Object\+Factory\+::\+Game\+Object\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-default constructor 
-
-
-
-Definition at line 4 of file Game\+Object\+Factory.\+cpp.
-
-Here is the caller graph for this function\+:
-% FIG 0
 
 
 \doxysubsection{Member Function Documentation}
@@ -110,8 +89,13 @@ the closest object with a matching key
 
 Definition at line 33 of file Game\+Object\+Factory.\+cpp.
 
-Here is the call graph for this function\+:
-% FIG 1
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_game_object_factory_a814d8aaad84d626a629a7d04677a3802_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_game_object_factory_addabc3d0422e81d4a529d2957903ec2d}\label{class_game_object_factory_addabc3d0422e81d4a529d2957903ec2d}} 
 \index{GameObjectFactory@{GameObjectFactory}!GetGameObject@{GetGameObject}}
 \index{GetGameObject@{GetGameObject}!GameObjectFactory@{GameObjectFactory}}
@@ -185,8 +169,6 @@ A pointer to the factory
 
 Definition at line 8 of file Game\+Object\+Factory.\+cpp.
 
-Here is the call graph for this function\+:
-% FIG 2
 \mbox{\Hypertarget{class_game_object_factory_a28d822eb067f09bc0d2b9e3241da6c31}\label{class_game_object_factory_a28d822eb067f09bc0d2b9e3241da6c31}} 
 \index{GameObjectFactory@{GameObjectFactory}!Load@{Load}}
 \index{Load@{Load}!GameObjectFactory@{GameObjectFactory}}

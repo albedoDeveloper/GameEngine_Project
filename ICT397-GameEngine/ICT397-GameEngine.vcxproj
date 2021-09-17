@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AAsset.cpp" />
+    <ClCompile Include="AScript.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCharacterComponent.cpp" />
@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AScript.h" />
-    <ClInclude Include="AAsset.h" />
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CCamera.h" />
@@ -105,8 +104,8 @@
     <None Include="..\Assets\Scripts\rotate.lua" />
     <None Include="shaders\debug.frag" />
     <None Include="shaders\lit.frag" />
-    <None Include="shaders\skyBoxColourShader.frag" />
-    <None Include="shaders\skyBoxVertexShader.vert" />
+    <None Include="shaders\skyBox.frag" />
+    <None Include="shaders\skyBox.vert" />
     <None Include="shaders\unlit.frag" />
     <None Include="shaders\vertexShader.vert" />
   </ItemGroup>

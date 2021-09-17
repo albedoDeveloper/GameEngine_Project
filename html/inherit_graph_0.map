@@ -1,5 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$struct_a_asset.html" title="A game asset storing information on a piece of imported game data." alt="" coords="5,31,71,57"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,71,32"/>
 <area shape="rect" id="node2" href="$class_a_model.html" title=" " alt="" coords="119,5,185,32"/>
-<area shape="rect" id="node3" href="$struct_a_script.html" title="An asset for a script storing game behaviour." alt="" coords="119,56,185,83"/>
 </map>

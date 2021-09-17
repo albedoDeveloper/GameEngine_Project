@@ -6,7 +6,6 @@ var class_c_character =
     [ "GetVelocity", "class_c_character.html#ac565b47c7d941320124d243e214a0f22", null ],
     [ "Jump", "class_c_character.html#a39fbd8b3797741e2ced648e4274947bf", null ],
     [ "Load", "class_c_character.html#a35c526a7a9f634e02c4ac54503e332bc", null ],
-    [ "Move", "class_c_character.html#a4d1ce4b6004810eb3feb6d34e59ca848", null ],
     [ "Save", "class_c_character.html#ae606109ebef5561fbda23cd95b57496c", null ],
     [ "SetHitpoints", "class_c_character.html#a25e56097faa4cce9c291cf4b62c84527", null ],
     [ "SetMouseEnabled", "class_c_character.html#a20b0f64de36c3c8f400c07ab14450add", null ],

@@ -29,6 +29,7 @@
    <div id="projectname">ICT398 - FrankEngine
    &#160;<span id="projectnumber">Milestone 1</span>
    </div>
+   <div id="projectbrief">Custom Game Engine</div>
   </td>
  </tr>
  </tbody>
@@ -140,6 +141,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae82b280aee96b0a2d6e532e0a663f256"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac44996b225b212a06b6e57529e1109ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#ac44996b225b212a06b6e57529e1109ee">AddBoxCollider</a> (float x=0.2, float y=0.2, float z=0.2, float offsetX=0, float offsetY=0, float offsetZ=0, bool autoSize=false, int layer=1, bool allowRotation=true)</td></tr>
 <tr class="separator:ac44996b225b212a06b6e57529e1109ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70bfbff53aeac17e1201dfe26a25d68b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#a70bfbff53aeac17e1201dfe26a25d68b">AddCapsuleCollider</a> (float radius, float height, int layer)</td></tr>
+<tr class="separator:a70bfbff53aeac17e1201dfe26a25d68b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2a8bc9ee9bb4aba6f7237f029c31ad8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8">AddConvexCollider</a> ()</td></tr>
 <tr class="separator:af2a8bc9ee9bb4aba6f7237f029c31ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3edc6cdc9cde55927ee1f3365e468fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#ac3edc6cdc9cde55927ee1f3365e468fe">AddConcaveCollider</a> (int layer)</td></tr>
@@ -386,14 +389,15 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_ac44996b225b212a06b6e57529e1109ee_cgraph.png" border="0" usemap="#aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_cgraph" alt=""/></div>
 <map name="aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_cgraph" id="aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_cgraph">
-<area shape="rect" title=" " alt="" coords="5,81,176,108"/>
+<area shape="rect" title=" " alt="" coords="5,107,176,133"/>
 <area shape="rect" href="class_game_object.html#a5ba3b458e6bee6ea5aedd5c8cdeabf18" title="component accessor" alt="" coords="230,5,421,32"/>
 <area shape="rect" href="class_game_object.html#ace4028c08027f5a8949ba9dac125b759" title=" " alt="" coords="226,56,425,83"/>
 <area shape="rect" href="class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9" title="parent object accessor" alt="" coords="224,107,427,133"/>
-<area shape="rect" href="class_transform.html#a7c287f2ec371a1214df9fa7ad6a9718b" title=" " alt="" coords="248,157,403,184"/>
-<area shape="rect" href="class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="475,107,581,133"/>
-<area shape="rect" href="class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="475,157,581,184"/>
-<area shape="rect" href="class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="475,208,581,235"/>
+<area shape="rect" href="class_a_model.html#a1363890857148e45337668981cc39322" title=" " alt="" coords="265,157,385,184"/>
+<area shape="rect" href="class_transform.html#a7c287f2ec371a1214df9fa7ad6a9718b" title=" " alt="" coords="248,208,403,235"/>
+<area shape="rect" href="class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="475,157,581,184"/>
+<area shape="rect" href="class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="475,208,581,235"/>
+<area shape="rect" href="class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="475,259,581,285"/>
 </map>
 </div>
 <div class="dynheader">
@@ -402,6 +406,51 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_c_collider_ac44996b225b212a06b6e57529e1109ee_icgraph.png" border="0" usemap="#aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_icgraph" alt=""/></div>
 <map name="aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_icgraph" id="aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_icgraph">
 <area shape="rect" title=" " alt="" coords="231,5,401,32"/>
+<area shape="rect" href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,5,183,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a70bfbff53aeac17e1201dfe26a25d68b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70bfbff53aeac17e1201dfe26a25d68b">&#9670;&nbsp;</a></span>AddCapsuleCollider()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CCollider::AddCapsuleCollider </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>radius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>layer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00138">138</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_c_collider_a70bfbff53aeac17e1201dfe26a25d68b_icgraph.png" border="0" usemap="#aclass_c_collider_a70bfbff53aeac17e1201dfe26a25d68b_icgraph" alt=""/></div>
+<map name="aclass_c_collider_a70bfbff53aeac17e1201dfe26a25d68b_icgraph" id="aclass_c_collider_a70bfbff53aeac17e1201dfe26a25d68b_icgraph">
+<area shape="rect" title=" " alt="" coords="231,5,425,32"/>
 <area shape="rect" href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,5,183,32"/>
 </map>
 </div>
@@ -424,15 +473,16 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00180">180</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00189">189</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_ac3edc6cdc9cde55927ee1f3365e468fe_cgraph.png" border="0" usemap="#aclass_c_collider_ac3edc6cdc9cde55927ee1f3365e468fe_cgraph" alt=""/></div>
 <map name="aclass_c_collider_ac3edc6cdc9cde55927ee1f3365e468fe_cgraph" id="aclass_c_collider_ac3edc6cdc9cde55927ee1f3365e468fe_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,203,57"/>
+<area shape="rect" title=" " alt="" coords="5,56,203,83"/>
 <area shape="rect" href="class_game_object.html#ace4028c08027f5a8949ba9dac125b759" title=" " alt="" coords="253,5,451,32"/>
 <area shape="rect" href="class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9" title="parent object accessor" alt="" coords="251,56,453,83"/>
+<area shape="rect" href="class_a_model.html#a78576c2dff8569ea8bdee87b16a64754" title=" " alt="" coords="283,107,421,133"/>
 </map>
 </div>
 <div class="dynheader">
@@ -462,15 +512,16 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00137">137</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00146">146</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_cgraph.png" border="0" usemap="#aclass_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_cgraph" alt=""/></div>
 <map name="aclass_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_cgraph" id="aclass_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,196,57"/>
+<area shape="rect" title=" " alt="" coords="5,56,196,83"/>
 <area shape="rect" href="class_game_object.html#ace4028c08027f5a8949ba9dac125b759" title=" " alt="" coords="246,5,445,32"/>
 <area shape="rect" href="class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9" title="parent object accessor" alt="" coords="244,56,447,83"/>
+<area shape="rect" href="class_a_model.html#a78576c2dff8569ea8bdee87b16a64754" title=" " alt="" coords="277,107,414,133"/>
 </map>
 </div>
 <div class="dynheader">
@@ -501,7 +552,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00213">213</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00222">222</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
