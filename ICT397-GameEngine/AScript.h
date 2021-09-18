@@ -1,47 +1,49 @@
 /*****************************************************************//**
  * \file   AScript.h
- * \brief
  *
- * \date   17 September 2021
+ * \date   18 September 2021
  *********************************************************************/
-
 #pragma once
 
 #include <string>
 
-/**
- * @brief An asset for a script storing game behaviour. can be shared among many components
-*/
+	/**
+	 * An asset for a script storing game behaviour. can be shared among many components
+	 */
 class AScript
 {
 public:
-	/**
-	 * @brief constructor
-	 * @param newKey storage key in the asset factory
-	*/
+		/**
+		 * constructs a script asset and loads in a script source file
+		 *
+		 * \param key asset factory reference to this asset
+		 * \param sourceFilePath file path of script to load in
+		 */
 	AScript(const std::string &key, const std::string &sourceFilePath);
 
-	/**
-	 * get the factory key of this asset
-	 *
-	 * \return
-	 */
+		/**
+		 * get the asset factory key of this asset
+		 *
+		 * \return
+		 */
 	const std::string &Key() const;
 
-	/**
-	 * .
-	 * \return get the source code of this script component
-	 */
+		/**
+		 * get the source code of this script asset
+		 * \return get the source code of this script component
+		 */
 	const std::string &Source() const;
 
+		/**
+		 * set the source code this script will use
+		 *
+		 * \param source source code
+		 */
 	void SetSource(const std::string &source);
 
 private:
 	std::string m_key;
 
-	/**
-	 * @brief the contents of the script
-	*/
 	std::string m_sourceCode;
 
 	void LoadLua(const std::string &filePath);

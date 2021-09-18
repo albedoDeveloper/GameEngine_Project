@@ -53,9 +53,6 @@ public:
 	std::vector<Mesh> &GetMeshes();
 
 private:
-		/**
-		 *
-		 */
 	struct ModelInfo
 	{
 		std::string path;
