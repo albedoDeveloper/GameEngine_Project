@@ -8,6 +8,7 @@
 
 #include <SDL2/SDL.h>
 
+/** @brief The elapsed time between frames */
 class DeltaTime
 {
 public:
