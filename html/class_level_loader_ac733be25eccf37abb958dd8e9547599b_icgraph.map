@@ -1,4 +1,0 @@
-<map id="LevelLoader::LoadLevel" name="LevelLoader::LoadLevel">
-<area shape="rect" id="node1" title="loading test" alt="" coords="187,5,341,32"/>
-<area shape="rect" id="node2" href="$class_engine.html#abde21e1bd9d8f467a5d8b464d8bb1ca2" title="loads the game from saved state" alt="" coords="5,5,139,32"/>
-</map>

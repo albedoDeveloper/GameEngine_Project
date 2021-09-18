@@ -1,6 +1,0 @@
-<map id="CPointLight::AssignColour" name="CPointLight::AssignColour">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,180,83"/>
-<area shape="rect" id="node2" href="$class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="229,5,334,32"/>
-<area shape="rect" id="node3" href="$class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="228,56,335,83"/>
-<area shape="rect" id="node4" href="$class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="229,107,334,133"/>
-</map>

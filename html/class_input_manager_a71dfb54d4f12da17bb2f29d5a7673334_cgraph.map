@@ -1,6 +1,0 @@
-<map id="InputManager::ResetInputValues" name="InputManager::ResetInputValues">
-<area shape="rect" id="node1" title="resets all input values to their original data" alt="" coords="5,49,176,90"/>
-<area shape="rect" id="node2" href="$class_input_manager.html#a7d6f584744fad5d74df18ec536d924ae" title="resets mouse movement values to their original data" alt="" coords="224,5,432,32"/>
-<area shape="rect" id="node3" href="$class_input_manager.html#a0d794230d5c5652089ea6cee4cd8e2ea" title="resets key values to their original data" alt="" coords="225,56,431,83"/>
-<area shape="rect" id="node4" href="$class_input_manager.html#a3ff1c64deca492714a35d741c9c0c19b" title="resets mouse button values to their original data" alt="" coords="237,107,419,149"/>
-</map>

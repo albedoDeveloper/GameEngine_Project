@@ -34,10 +34,10 @@ public:
 	{
 		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 	}
-	//void SetVec4(const std::string &name, const glm::vec4 &value) const
-	//{
-	//	glUniform4fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
-	//}
+	void SetVec4(const std::string &name, const glm::vec4 &value) const
+	{
+		glUniform4fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
+	}
 	void SetVec3(const std::string &name, Vector3f value) const
 	{
 		glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, value.ValuePtr());

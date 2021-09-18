@@ -1,4 +1,0 @@
-<map id="GameAssetFactory::LoadModel" name="GameAssetFactory::LoadModel">
-<area shape="rect" id="node1" title="loads in a model" alt="" coords="5,5,212,32"/>
-<area shape="rect" id="node2" href="$class_game_asset_factory.html#a976d3d345587b20c91e6de8d8323b72f" title="cheks whether a storage key already has an asset" alt="" coords="260,5,475,32"/>
-</map>

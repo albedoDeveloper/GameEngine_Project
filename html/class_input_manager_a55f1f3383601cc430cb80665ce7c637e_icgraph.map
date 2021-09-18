@@ -1,4 +1,0 @@
-<map id="InputManager::CheckKeyDown" name="InputManager::CheckKeyDown">
-<area shape="rect" id="node1" title="checks whether a key is moving down and stores the resulting data" alt="" coords="221,5,421,32"/>
-<area shape="rect" id="node2" href="$class_input_manager.html#a8570c6a2336f8d579b30867d9a7fa97f" title="checks whether a key is being pressed and stores the resulting data" alt="" coords="5,5,173,32"/>
-</map>

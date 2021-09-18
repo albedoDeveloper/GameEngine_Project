@@ -5,20 +5,57 @@
 #include <array>
 #include "Mesh.h"
 
+	/**
+	 * Holds model data for a model such as meshes, and textures
+	 */
 class AModel
 {
 public:
+		/**
+		 * Constructs model with a unique key and the pathname of the model file to be loaded
+		 *
+		 * \param path the file path this model was loaded in from
+		 * \param key the unique key of this model, given by the asset factory
+		 */
 	AModel(std::string path, std::string key);
+
+		/**
+		 *
+		 *
+		 * \return the key the asset factory uses to reference this asset
+		 */
 	const std::string &Key() const;
+
+		/**
+		 * draws this asset with a given shader
+		 *
+		 * \param shader shader should contain the projection, view and model matrices
+		 */
 	void Draw(const Shader *shader) const;
+
+		/**
+		 *
+		 * \return the number of faces this model has
+		 */
 	int NumFaces() const;
+
+		/**
+		 * get the min max vertices of this model in x y and z directions
+		 *
+		 * \return in this order [minx, maxx, miny, maxy, minz, maxz]
+		 */
 	const std::vector<float> &MinMax() const;
-	std::vector<Mesh> &GetMesh()
-	{
-		return m_meshes;
-	}
+
+		/**
+		 *
+		 * \return all meshes attatched to this model
+		 */
+	std::vector<Mesh> &GetMeshes();
 
 private:
+		/**
+		 *
+		 */
 	struct ModelInfo
 	{
 		std::string path;
