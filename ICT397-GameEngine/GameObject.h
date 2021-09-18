@@ -189,18 +189,6 @@ public:
 	void SetActive(bool activeStatus);
 
 		/**
-		 * @brief changes the difficulty an object is running at
-		 * @param difficulty the new difficulty
-		*/
-	void SetDifficulty(std::string difficulty);
-
-		/**
-		 * @brief difficulty accessor
-		 * @return current difficulty
-		*/
-	std::string GetDifficulty();
-
-		/**
 		 * @brief Calls the start function of every component
 		*/
 	void Start();
