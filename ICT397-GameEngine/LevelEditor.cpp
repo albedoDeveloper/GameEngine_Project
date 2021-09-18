@@ -79,9 +79,9 @@ void LevelEditor::PositionManipulators(GameObject *g)
 	ImGuiSliderFlags flagPosY = ImGuiSliderFlags_None;
 	ImGuiSliderFlags flagPosZ = ImGuiSliderFlags_None;
 	// Drags
-	float drag_x_pos = g->GetTransform()->GetPosition().GetX();
-	float drag_y_pos = g->GetTransform()->GetPosition().GetY();
-	float drag_z_pos = g->GetTransform()->GetPosition().GetZ();
+	float drag_x_pos = g->GetTransform()->GetRelativePosition().GetX();
+	float drag_y_pos = g->GetTransform()->GetRelativePosition().GetY();
+	float drag_z_pos = g->GetTransform()->GetRelativePosition().GetZ();
 
 	ImGui::PushItemWidth(50);
 
@@ -94,7 +94,7 @@ void LevelEditor::PositionManipulators(GameObject *g)
 	ImGui::SameLine();
 	ImGui::DragFloat("##PosZ", &drag_z_pos, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagPosZ);
 
-	g->GetTransform()->SetPosition(drag_x_pos, drag_y_pos, drag_z_pos);
+	g->GetTransform()->SetRelativePosition(drag_x_pos, drag_y_pos, drag_z_pos);
 }
 
 void LevelEditor::RotationManipulators(GameObject *g)
@@ -104,7 +104,7 @@ void LevelEditor::RotationManipulators(GameObject *g)
 	ImGuiSliderFlags flagRotY = ImGuiSliderFlags_None;
 	ImGuiSliderFlags flagRotZ = ImGuiSliderFlags_None;
 	// Drags
-	Vector3f eulerRot = g->GetTransform()->GetOrientation().GetEulerAnglesDegrees();
+	Vector3f eulerRot = g->GetTransform()->GetRelativeOrientation().GetEulerAnglesDegrees();
 	float drag_x_rot = eulerRot.GetX();
 	float drag_y_rot = eulerRot.GetY();
 	float drag_z_rot = eulerRot.GetZ();
@@ -121,7 +121,7 @@ void LevelEditor::RotationManipulators(GameObject *g)
 	Quaternion newQuat;
 	newQuat.SetEulerAnglesDegrees(drag_x_rot, drag_y_rot, drag_z_rot);
 
-	g->GetTransform()->SetOrientation(newQuat);
+	g->GetTransform()->SetRelativeOrientation(newQuat);
 }
 
 void LevelEditor::ScaleManipulators(GameObject *g)
@@ -131,9 +131,9 @@ void LevelEditor::ScaleManipulators(GameObject *g)
 	ImGuiSliderFlags flagScaleY = ImGuiSliderFlags_None;
 	ImGuiSliderFlags flagScaleZ = ImGuiSliderFlags_None;
 	// Drags
-	float drag_x_scale = g->GetTransform()->GetScale().GetX();
-	float drag_y_scale = g->GetTransform()->GetScale().GetY();
-	float drag_z_scale = g->GetTransform()->GetScale().GetZ();
+	float drag_x_scale = g->GetTransform()->GetRelativeScale().GetX();
+	float drag_y_scale = g->GetTransform()->GetRelativeScale().GetY();
+	float drag_z_scale = g->GetTransform()->GetRelativeScale().GetZ();
 
 	ImGui::Text("Scale"); ImGui::SameLine(); ImGui::SameLine();
 	ImGui::DragFloat("##ScaleX", &drag_x_scale, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagScaleX);
@@ -146,7 +146,7 @@ void LevelEditor::ScaleManipulators(GameObject *g)
 
 	Vector3f newVec(drag_x_scale, drag_y_scale, drag_z_scale);
 
-	g->GetTransform()->SetScale(newVec);
+	g->GetTransform()->SetRelativeScale(newVec);
 
 }
 

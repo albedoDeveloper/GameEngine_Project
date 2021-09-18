@@ -105,7 +105,7 @@ GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
 
 SpawnGameObject("crate"):SetStatic(false)
 GetGameObject("crate"):AddCStaticMesh():AssignModel("crate")
-GetGameObject("crate"):GetTransform():SetPosition(-7.744999885559082, 1.315000057220459, -0.4449999928474426)
+GetGameObject("crate"):GetTransform():SetRelativePosition(-7.744999885559082, 1.315000057220459, -0.4449999928474426)
 GetGameObject("crate"):GetTransform():RotateLocalX(45)
 GetGameObject("crate"):AddCScript():AssignScript("rotate")
 
@@ -113,7 +113,7 @@ SpawnGameObject("back_wall"):SetStatic(true)
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
 
 SpawnGameObject("lightAnchor"):SetStatic(false)
-GetGameObject("lightAnchor"):GetTransform():SetPosition(4.954999923706055,
+GetGameObject("lightAnchor"):GetTransform():SetRelativePosition(4.954999923706055,
 1.9049999713897705,
 5.275000095367432);
 GetGameObject("lightAnchor"):AddCScript():AssignScript("rotate")
@@ -122,7 +122,7 @@ SpawnGameObject("light1"):SetStatic(false)
 GetGameObject("light1"):AddCPointLight()
 GetGameObject("light1"):GetCPointLight():AssignColour(0.8,0.8,0.8)
 GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(0.2)
-GetGameObject("light1"):GetTransform():SetPosition(-8.354999542236328,
+GetGameObject("light1"):GetTransform():SetRelativePosition(-8.354999542236328,
 2.6700000762939453,
 1.0);
 GetGameObject("light1"):AddCStaticMesh():AssignModel("axis")
@@ -136,7 +136,7 @@ GetGameObject("light2"):AddCStaticMesh():AssignModel("axis")
 GetGameObject("light2"):GetTransform():Translate(0.5,0,0)
 
 SpawnGameObject("player");
-GetGameObject("player"):GetTransform():SetPosition(0, 2, 0);
+GetGameObject("player"):GetTransform():SetRelativePosition(0, 2, 0);
 GetGameObject("player"):AddCCollider():AddBoxCollider(0.5, 1.4, 0.5, 0 ,0, 0, false, 2, false);
 GetGameObject("player"):GetCCollider():CollideWith(1);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);

@@ -1,3 +1,9 @@
+/*****************************************************************//**
+ * \file   Transform.h
+ *
+ * \date   September 2021
+ *********************************************************************/
+
 #pragma once
 
 #include <stack>
@@ -5,68 +11,60 @@
 #include "Vector3f.h"
 #include "Quaternion.h"
 
-/**
- * @brief Stores data about an object or componet's location in space
-*/
+	/**
+	 * @brief Stores data about an object or componet's location in space
+	 */
 class Transform
 {
-private:
-		/**
-		 * @brief position of object in local space
-		*/
-	Vector3f m_position;
-
-		/**
-		 * @brief direction object is oriented in local space
-		*/
-	Quaternion m_orientation;
-
-		/**
-		 * @brief scale of object in local space
-		*/
-	Vector3f m_scale;
-
-		/**
-		 * @brief the transform this transform is relative to. ie, variables will be relative to variables of parent
-		*/
-	Transform *m_parent;
-
 public:
 		/**
-		 * @brief default constructor
+		 * @brief default constructor, makes position 0,0,0 ; orientation identity quat ; scale 1,1,1
 		*/
 	Transform();
 
 		/**
-		 * @brief constructor
+		 * @brief constructor, calls the default constructor
 		 * @param parent the parent transform of this transform, which this will be relative to
 		*/
 	Transform(Transform *parent);
 
+		/**
+		 * set parent transform of this transorm
+		 *
+		 * \param newParent
+		 */
 	void SetParent(Transform *newParent);
 
 		/**
 		 * @brief Saves the transform to JSON
 		*/
-	void ToJson(nlohmann::json &j, std::string key);
+	void ToJson(nlohmann::json &j, std::string key); // TODO take this out of transform. Transform is lower level and shouldnt know about json. should be other way around
 
 		/**
 		 * @brief loads the transform from JSON
 		*/
-	void FromJson(nlohmann::json &j, std::string key);
+	void FromJson(nlohmann::json &j, std::string key); // TODO take this out of transform. Transform is lower level and shouldnt know about json. should be other way around
 
 		/**
-		 * @brief Gets this transform's absolute value in world space
-		 * @return The absolute value of this transform
+		 * @brief Gets this transform's absolute value in world space based on all its parents
+		 * @return
 		*/
 	Transform GetWorldTransform() const;
 
 		/**
 		 * @brief Changes the transform's position by a relative amount
+		 * lua can't handle overloaded function so V is added
 		 * @param v Vector for the movement between the transform's current position and desired position
 		*/
 	void TranslateV(const Vector3f &v);
 
+		/**
+		 * Changes the transform's position by a relative amount
+		 *
+		 * \param x
+		 * \param y
+		 * \param z
+		 */
 	void Translate(float x, float y, float z);
 
 		/**
@@ -79,8 +77,8 @@ public:
 		/**
 		 * @brief Rotates the transform around a given axis
 		 * @param degrees number of degrees to turn
-		 * @param axisX X component of the axis vector
-		 * @param axisY y component of the axis vector
+		 * @param axisX
+		 * @param axisY
 		 * @param axisZ
 		*/
 	void RotateLocal(float degrees, float axisX, float axisY, float axisZ);
@@ -109,75 +107,88 @@ public:
 		 * @param y Y component of scaling
 		 * @param z Z component of scaling
 		*/
-	void ScaleLocal(float x, float y, float z);
+	void Scale(float x, float y, float z);
 
 		/**
-		 * @brief position mutator
+		 * @brief set position relative to parent transform
+		 * lua doesn't like overloaded functions so V is added
 		 * @param newPosition the transform's desired position
 		*/
-	void SetPositionV(Vector3f newPosition);
+	void SetRelativePositionV(const Vector3f &newPosition);
 
-	void SetPosition(float x, float y, float z);
+		/**
+		 * set local position relative to parent transform, not world position
+		 *
+		 * \param x
+		 * \param y
+		 * \param z
+		 */
+	void SetRelativePosition(float x, float y, float z);
 
 		/**
 		 * @brief position accessor
 		 * @return the transform's position
 		*/
-	Vector3f GetPosition() const;
+	Vector3f GetRelativePosition() const;
 
 		/**
-		 * @brief scale mutator
+		 * @brief set scale relative to parent transform
 		 * @param newScale the transform's desired scale
 		*/
-	void SetScale(Vector3f newScale);
+	void SetRelativeScale(Vector3f newScale);
 
 		/**
-		 * @brief scale accessor
+		 * @brief get scale relative to parent transform
 		 * @return the transform's scale
 		*/
-	Vector3f GetScale() const;
+	Vector3f GetRelativeScale() const;
 
 		/**
-		 * @brief rotation accessor
+		 * @brief set orientation relative to parent transform
 		 * @param newRotation the transform's desired rotation
 		*/
-	void SetOrientation(Quaternion orientation);
+	void SetRelativeOrientation(Quaternion orientation);
 
 		/**
-		 * @brief rotation accessor
+		 * @brief get orientation relative to parent transform
 		 * @return the transform's rotation
 		*/
-	Quaternion &GetOrientation();
-
-	Quaternion GetOrientation() const;
+	Quaternion &GetRelativeOrientation();
 
 		/**
-		 * @brief Retrieves the forward direction of this vector
+		 * get orientation relative to parent transform
+		 *
+		 * \return
+		 */
+	const Quaternion &GetRelativeOrientation() const;
+
+		/**
+		 * @brief Retrieves the forward direction of this vector relative to parent transform
 		 * @return the forward direction of this vector
 		*/
-	Vector3f GetForward() const;
+	Vector3f GetRelativeForward() const;
 
 		/**
-		 * @brief Retrieves the up direction of this vector
+		 * @brief Retrieves the up direction of this vector relative to parent transform
 		 * @return the up direction of this vector
 		*/
-	Vector3f GetUp() const;
+	Vector3f GetRelativeUp() const;
 
 		/**
-		 * @brief Retrieves the right direction of this vector
+		 * @brief Retrieves the right direction of this vector relative to parent transform
 		 * @return the right direction of this vector
 		*/
-	Vector3f GetRight() const;
+	Vector3f GetRelativeRight() const;
 
 		/**
-		 * @brief calculates the distance to another transform
+		 * @brief calculates the distance to another transform in world space
 		 * @param other the transform to calculate the distance to
 		 * @return the distance, as a float
 		*/
 	float GetDistance(Transform other) const;
 
 		/**
-		 * @brief calculates the distance to a set of coordinates
+		 * @brief calculates the distance of this transform in world space to a point in the world
 		 * @param x X position to calculate to
 		 * @param y Y position to calculate to
 		 * @param z Z position to calculate to
@@ -185,26 +196,16 @@ public:
 		*/
 	float GetDistance3f(float x, float y, float z) const;
 
-		/**
-		 * @brief moves the transform towards another by a specified distance
-		 * @param destination transform to move towards
-		 * @param distance distance to move
-		*/
-	void MoveTowards(Vector3f destination, double distance);
+private:
+	/** position relative to parent transform */
+	Vector3f m_position;
 
-		/**
-		 * @brief rotates the transform towards another by a specified angle
-		 * @param target transform to rotate towards
-		 * @param angle angle to rotate
-		*/
-	void RotateTowards(Vector3f target, double angle);
+	/** orientation relative to parent transform */
+	Quaternion m_orientation;
 
-		/**
-		 * @brief oves the transform towards a set of coordinates by a specified distance
-		 * @param x X position to move towards
-		 * @param y Y position to move towards
-		 * @param Z Z position to move towards
-		 * @param distance  distance to move
-		*/
-	void MoveTowards3f(float x, float y, float z, double distance);
+	/** scale relative to parent transform */
+	Vector3f m_scale;
+
+	/** parent transform */
+	Transform *m_parent;
 };

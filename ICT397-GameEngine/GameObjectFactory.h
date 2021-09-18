@@ -34,13 +34,7 @@ public:
 	 * @return A pointer to the object
 	*/
 	GameObject *GetGameObject(std::string key);
-	/**
-	 * @brief searches for the closest object to a given transform with a key containing a given substring
-	 * @param target the point from which to search
-	 * @param partialKey the substring the found object must contain
-	 * @return the closest object with a matching key
-	*/
-	GameObject *getClosestObject(Transform *target, std::string partialKey);
+
 	/**
 	 * @brief returns the number of objects created
 	 * @return the number of objects

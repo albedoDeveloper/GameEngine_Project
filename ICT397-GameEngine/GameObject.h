@@ -98,13 +98,6 @@ public:
 	Transform *GetTransform();
 
 	/**
-	 * @brief searches for the closest object with a key containing a given substring
-	 * @param partialKey the substring that objects checked must contain
-	 * @return the closest object that matches the partial key
-	*/
-	GameObject *GetClosestObject(std::string partialKey);
-
-	/**
 	 * @brief Factory key accessor
 	 * @return this object's storage key for the game object factory
 	*/

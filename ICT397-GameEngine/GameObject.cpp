@@ -81,10 +81,10 @@ Transform *GameObject::GetTransform()
 	return &m_transform;
 }
 
-GameObject *GameObject::GetClosestObject(std::string partialKey)
-{
-	return GAMEOBJECT->getClosestObject(&m_transform, partialKey);
-}
+//GameObject *GameObject::GetClosestObject(std::string partialKey)
+//{
+//	return GAMEOBJECT->GetClosestObject(&m_transform, partialKey);
+//}
 
 CCollider *GameObject::AddCCollider()
 {
@@ -140,9 +140,9 @@ void GameObject::Start()
 	m_initialActivation = m_isActive;
 
 	m_initTransform = new Transform();
-	m_initTransform.SetPositionV(m_transform.GetPosition());
-	m_initTransform.SetOrientation(m_transform.GetOrientation());
-	m_initTransform.SetScale(m_transform.GetScale());
+	m_initTransform.SetRelativePositionV(m_transform.GetRelativePosition());
+	m_initTransform.SetRelativeOrientation(m_transform.GetRelativeOrientation());
+	m_initTransform.SetRelativeScale(m_transform.GetRelativeScale());
 
 	if (m_isActive)
 	{

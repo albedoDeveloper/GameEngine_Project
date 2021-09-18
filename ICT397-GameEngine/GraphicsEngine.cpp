@@ -93,7 +93,7 @@ void GraphicsEngine::newFrame(bool debugMenu)
 
 void GraphicsEngine::UpdateViewPos() const
 {
-	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetPosition();
+	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetRelativePosition();
 	GRAPHICS->m_litShader->Use();
 	GRAPHICS->m_litShader->SetVec3(
 		"viewPos",
@@ -187,11 +187,11 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	}
 
 	Matrix4f trans;
-	trans.Translate(worldTrans.GetPosition());
+	trans.Translate(worldTrans.GetRelativePosition());
 
-	trans *= worldTrans.GetOrientation().Conjugate().Mat4Cast();
+	trans *= worldTrans.GetRelativeOrientation().Conjugate().Mat4Cast();
 
-	trans.Scale(worldTrans.GetScale());
+	trans.Scale(worldTrans.GetRelativeScale());
 
 	shader->Use();
 	shader->SetMat4("model", trans);
@@ -391,8 +391,8 @@ Matrix4f GraphicsEngine::GetProjection()
 Matrix4f GraphicsEngine::GetView()
 {
 	return LookAt(
-		m_camera->GetTransform().GetWorldTransform().GetPosition(),
-		m_camera->GetTransform().GetWorldTransform().GetPosition() + m_camera->GetTransform().GetWorldTransform().GetForward(),
-		m_camera->GetTransform().GetWorldTransform().GetUp()
+		m_camera->GetTransform().GetWorldTransform().GetRelativePosition(),
+		m_camera->GetTransform().GetWorldTransform().GetRelativePosition() + m_camera->GetTransform().GetWorldTransform().GetRelativeForward(),
+		m_camera->GetTransform().GetWorldTransform().GetRelativeUp()
 	);
 }

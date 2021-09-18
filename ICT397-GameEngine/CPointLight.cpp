@@ -16,7 +16,7 @@ CPointLight::CPointLight(Transform *parent, GameObject *parentObj)
 
 void CPointLight::Update()
 {
-	Vector3f worldPos = m_transform.GetWorldTransform().GetPosition();
+	Vector3f worldPos = m_transform.GetWorldTransform().GetRelativePosition();
 	GRAPHICS->m_litShader->Use();
 	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(m_litShaderIndex) + "].position", Vector3f(
 		worldPos.GetX(),

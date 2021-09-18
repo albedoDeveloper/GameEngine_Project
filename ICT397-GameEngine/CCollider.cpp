@@ -15,16 +15,16 @@ CCollider::CCollider(Transform *parent, GameObject *parentObj)
 	}
 
 	auto worldPosition = reactphysics3d::Vector3(
-		m_transform.GetWorldTransform().GetPosition().GetX(),
-		m_transform.GetWorldTransform().GetPosition().GetY(),
-		m_transform.GetWorldTransform().GetPosition().GetZ()
+		m_transform.GetWorldTransform().GetRelativePosition().GetX(),
+		m_transform.GetWorldTransform().GetRelativePosition().GetY(),
+		m_transform.GetWorldTransform().GetRelativePosition().GetZ()
 	);
 
 	auto worldOrientation = reactphysics3d::Quaternion(
-		m_transform.GetWorldTransform().GetOrientation().GetX(),
-		m_transform.GetWorldTransform().GetOrientation().GetY(),
-		m_transform.GetWorldTransform().GetOrientation().GetZ(),
-		m_transform.GetWorldTransform().GetOrientation().GetW()
+		m_transform.GetWorldTransform().GetRelativeOrientation().GetX(),
+		m_transform.GetWorldTransform().GetRelativeOrientation().GetY(),
+		m_transform.GetWorldTransform().GetRelativeOrientation().GetZ(),
+		m_transform.GetWorldTransform().GetRelativeOrientation().GetW()
 	);
 
 	reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
@@ -76,19 +76,19 @@ void CCollider::UpdateCollider()
 	if (colBody->getNbColliders() != 0)
 	{
 		auto worldPosition = reactphysics3d::Vector3(
-			m_transform.GetWorldTransform().GetPosition().GetX(),
-			m_transform.GetWorldTransform().GetPosition().GetY(),
-			m_transform.GetWorldTransform().GetPosition().GetZ()
+			m_transform.GetWorldTransform().GetRelativePosition().GetX(),
+			m_transform.GetWorldTransform().GetRelativePosition().GetY(),
+			m_transform.GetWorldTransform().GetRelativePosition().GetZ()
 		);
 
 		reactphysics3d::Quaternion worldOrientation(reactphysics3d::Quaternion::identity());
 		if (m_allowRotation)
 		{
 			worldOrientation = reactphysics3d::Quaternion(
-				m_transform.GetWorldTransform().GetOrientation().GetX(),
-				m_transform.GetWorldTransform().GetOrientation().GetY(),
-				m_transform.GetWorldTransform().GetOrientation().GetZ(),
-				m_transform.GetWorldTransform().GetOrientation().GetW()
+				m_transform.GetWorldTransform().GetRelativeOrientation().GetX(),
+				m_transform.GetWorldTransform().GetRelativeOrientation().GetY(),
+				m_transform.GetWorldTransform().GetRelativeOrientation().GetZ(),
+				m_transform.GetWorldTransform().GetRelativeOrientation().GetW()
 			);
 			worldOrientation.inverse();
 		}
@@ -119,7 +119,7 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 		auto yAvg = ((minMax[3]) + (minMax[2])) / 2;
 		auto zAvg = ((minMax[5]) + (minMax[4])) / 2;
 
-		m_transform.SetPosition(xAvg, yAvg, zAvg);
+		m_transform.SetRelativePosition(xAvg, yAvg, zAvg);
 	}
 	else if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() == nullptr)
 	{
