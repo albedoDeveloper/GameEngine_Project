@@ -1,3 +1,9 @@
+/*****************************************************************//**
+ * \file   Shader.h
+ * \brief  Contains information about each shader in the project
+ *
+ * \date   August 2021
+ *********************************************************************/
 #pragma once
 
 #include <glew/GL/glew.h>
@@ -60,7 +66,7 @@ public:
 	}
 	
 	/// <summary>
-	/// Sets a global vector4 uniform in the shader
+	/// Sets a global float uniform in the shader
 	/// </summary>
 	/// <param name="name"></param>
 	/// <param name="value"></param>
@@ -69,10 +75,17 @@ public:
 		glUseProgram(ID);
 		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 	}
-	void SetVec4(const std::string &name, const glm::vec4 &value) const
+	
+	/*void SetVec4(const std::string &name, const glm::vec4 &value) const
 	{
 		glUniform4fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
-	}
+	}*/
+	
+	/// <summary>
+	/// Set a global vector3 for a uniform in the shader
+	/// </summary>
+	/// <param name="name"></param>
+	/// <param name="value"></param>
 	void SetVec3(const std::string &name, Vector3f value) const
 	{
 		glUseProgram(ID);
