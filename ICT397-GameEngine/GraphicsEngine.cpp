@@ -82,6 +82,22 @@ void GraphicsEngine::newFrame(bool debugMenu)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	GRAPHICS->UpdateViewPos();
+
+	GRAPHICS->m_litShader->Use();
+	GRAPHICS->m_litShader->SetMat4("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_litShader->SetMat4("view", GRAPHICS->GetView());
+	GRAPHICS->m_litShader->SetFloat("material.shininess", 16); // TODO move somewhere else
+
+	GRAPHICS->m_unlitShader->Use();
+	GRAPHICS->m_unlitShader->SetMat4("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_unlitShader->SetMat4("view", GRAPHICS->GetView());
+
+	GRAPHICS->m_debugShader->Use();
+	GRAPHICS->m_debugShader->SetMat4("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_debugShader->SetMat4("view", GRAPHICS->GetView());
+
+
 	if (debugMenu)
 	{
 		ImGui_ImplOpenGL3_NewFrame();
@@ -336,10 +352,6 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 void GraphicsEngine::DrawDebug()
 {
 	m_debugShader->Use();
-
-	m_debugShader->SetMat4("projection", GetProjection());
-
-	m_debugShader->SetMat4("view", GetView());
 
 	m_debugShader->SetMat4("model", Matrix4f());
 	m_debugShader->SetVec3("ourColour", Vector3f(1, 0, 0));
