@@ -157,9 +157,9 @@ void CCollider::AddConvexCollider()
 	{
 		if (!breaktime)
 		{
-			vertices.emplace_back(model->GetMesh()[0].vertices[i].Position.GetX());
-			vertices.emplace_back(model->GetMesh()[0].vertices[i].Position.GetY());
-			vertices.emplace_back(model->GetMesh()[0].vertices[i].Position.GetZ());
+			vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetX());
+			vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetY());
+			vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetZ());
 		}
 
 		breaktime = false;
@@ -193,9 +193,9 @@ void CCollider::AddConcaveCollider(int layer)
 
 	for (int i = 0; i < model->GetMeshes()[0].vertices.size(); i++)
 	{
-		concaveVertices.emplace_back(model->GetMesh()[0].vertices[i].Position.GetX());
-		concaveVertices.emplace_back(model->GetMesh()[0].vertices[i].Position.GetY());
-		concaveVertices.emplace_back(model->GetMesh()[0].vertices[i].Position.GetZ());
+		concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetX());
+		concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetY());
+		concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetZ());
 	}
 
 	for (int i = 0; i < model->GetMeshes()[0].indices.size(); i++)

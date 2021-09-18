@@ -1,4 +1,5 @@
 #include "Vector3f.h"
+#include "MiscMath.h"
 
 Vector3f::Vector3f()
 	:m_vec{ 0.f,0.f,0.f }
@@ -85,9 +86,9 @@ Vector3f Vector3f::Rad2Deg()
 {
 	Vector3f temp = m_vec;
 	Vector3f newVec;
-	newVec.SetX(Rad2Deg(temp.GetX()));
-	newVec.SetY(Rad2Deg(temp.GetY()));
-	newVec.SetZ(Rad2Deg(temp.GetZ()));
+	newVec.SetX(RadToDegrees(temp.GetX()));
+	newVec.SetY(RadToDegrees(temp.GetY()));
+	newVec.SetZ(RadToDegrees(temp.GetZ()));
 	return newVec;
 }
 

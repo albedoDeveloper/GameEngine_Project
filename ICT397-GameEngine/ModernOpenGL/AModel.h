@@ -54,7 +54,7 @@ public:
 	std::vector<Mesh> &GetMeshes();
 
 private:
-	
+
 		/// <summary>
 		/// Contains information about the model
 		/// </summary>
@@ -74,7 +74,7 @@ private:
 		/// The mix and maximum vertice value of the model
 		/// </summary>
 	std::vector<float> m_minMax;
-	
+
 		/// <summary>
 		/// The number of faces the model had
 		/// </summary>
@@ -84,7 +84,7 @@ private:
 		/// The meshes that make up the model
 		/// </summary>
 	std::vector<Mesh> m_meshes;
-	
+
 		/// <summary>
 		/// The meshes that make up the model
 		/// </summary>
@@ -109,7 +109,7 @@ private:
 		/// The path to the file containing the texture data
 		/// </summary>
 	std::string m_texturePath;
-	
+
 		/// <summary>
 		/// Load a model into the engine based upon its path
 		/// </summary>
@@ -122,7 +122,7 @@ private:
 		/// <param name="node"></param>
 		/// <param name="scene"></param>
 	void ProcessNode(aiNode *node, const aiScene *scene);
-	
+
 		/// /// <summary>
 		/// For each node, add the model data to the mesh, such as its vertices and texture data
 		/// </summary>
