@@ -83,6 +83,20 @@ void GraphicsEngine::newFrame(bool debugMenu)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	GRAPHICS->UpdateViewPos();
+
+	GRAPHICS->m_litShader->SetMat4("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_litShader->SetMat4("view", GRAPHICS->GetView());
+	GRAPHICS->m_litShader->SetFloat("material.shininess", 16); // TODO move somewhere else
+
+	GRAPHICS->m_unlitShader->SetMat4("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_unlitShader->SetMat4("view", GRAPHICS->GetView());
+
+
+	GRAPHICS->m_debugShader->SetMat4("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_debugShader->SetMat4("view", GRAPHICS->GetView());
+
+
 	if (debugMenu)
 	{
 		ImGui_ImplOpenGL3_NewFrame();
@@ -186,15 +200,13 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 		return;
 	}
 
-	Matrix4f trans;
-	trans.Translate(worldTrans.GetRelativePosition());
+	Matrix4f modelTrans;
 
-	trans *= worldTrans.GetRelativeOrientation().Conjugate().Mat4Cast();
+	modelTrans.Translate(worldTrans.GetRelativePosition());
+	modelTrans *= worldTrans.GetRelativeOrientation().Conjugate().Mat4Cast();
+	modelTrans.Scale(worldTrans.GetRelativeScale());
 
-	trans.Scale(worldTrans.GetRelativeScale());
-
-	shader->Use();
-	shader->SetMat4("model", trans);
+	shader->SetMat4("model", modelTrans);
 
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_FILL);
@@ -279,7 +291,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 
 	m_litShader = new Shader("./shaders/vertexShader.vert", "./shaders/lit.frag");
 	m_unlitShader = new Shader("./shaders/vertexShader.vert", "./shaders/unlit.frag");
-	m_debugShader = new Shader("./shaders/vertexShader.vert", "./shaders/debug.frag");
+	m_debugShader = new Shader("./shaders/simple.vert", "./shaders/debug.frag");
 
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",
@@ -336,8 +348,6 @@ void GraphicsEngine::DrawDebug()
 {
 	m_debugShader->Use();
 
-	m_debugShader->SetMat4("projection", GetProjection());
-	m_debugShader->SetMat4("view", GetView());
 	m_debugShader->SetMat4("model", Matrix4f());
 	m_debugShader->SetVec3("ourColour", Vector3f(1, 0, 0));
 
@@ -374,6 +384,7 @@ void GraphicsEngine::DrawDebug()
 	glBindVertexArray(VAODebug);
 	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3);
 	glBindVertexArray(0);
+
 }
 
 Matrix4f GraphicsEngine::GetProjection()
