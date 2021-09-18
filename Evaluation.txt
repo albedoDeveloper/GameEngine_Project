@@ -1,0 +1,15 @@
+What works in the Engine
+-Modern Opengl
+-Assimp Asset Loading
+-Dynamic Lighting
+-Level Editor
+-Level Loading and Saving
+-Collisions
+-Colliders
+-Debugging
+-Music and Sound
+-3D Modelling / Texturing
+
+What doesnt work in the Engine
+- Polygon/Convex colliders (concave DOES work correctly)
+- Multple fast input of the C key will cause the player to sink in the ground
