@@ -1,7 +1,16 @@
+/*****************************************************************//**
+ * \file   CPointLight.h
+ * \brief  Creates a point light over the parent gameObject
+ *
+ * \date   September 2021
+ *********************************************************************/
 #pragma once
 
 #include "CComponent.h"
 
+	/**
+	 * @brief Parameter for the light
+	*/
 struct PointLight
 {
 	float ambientStrength;
