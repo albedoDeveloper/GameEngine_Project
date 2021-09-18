@@ -20,6 +20,11 @@ public:
 	*/
 	static ScriptingEngine *Instance();
 
+
+	/**
+	 * Initalizes the scripting engine.
+	 * 
+	 */
 	void Initialise();
 
 	/**
@@ -104,6 +109,11 @@ private:
 	*/
 	static bool CheckSaveState();
 
+	/**
+	 * returns the singleton instance of the inputmanager.
+	 * 
+	 * \return 
+	 */
 	static InputManager *GetInputManager();
 };
 
