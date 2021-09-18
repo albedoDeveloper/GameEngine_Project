@@ -3,9 +3,9 @@
 #include "Matrix4f.h"
 #include "Vector3f.h"
 
-Matrix4f &Matrix4f::operator*=(Quaternion other)
+Matrix4f &Matrix4f::operator*=(Matrix4f other)
 {
-	m_mat *= other.m_quat;
+	m_mat = m_mat * other.m_mat;
 	return *this;
 }
 

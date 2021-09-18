@@ -9,7 +9,7 @@ class Matrix4f
 {
 public:
 	Matrix4f()
-		:m_mat{ glm::identity<glm::mat4>() }
+		:m_mat{ 1.0f }
 	{}
 
 	void Translate(Vector3f v);
@@ -23,7 +23,7 @@ public:
 
 	Matrix4f operator*(Matrix4f other);
 
-	Matrix4f &operator*=(Quaternion other);
+	Matrix4f &operator*=(Matrix4f other);
 
 private:
 	Matrix4f(glm::mat4);

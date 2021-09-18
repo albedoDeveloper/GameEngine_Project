@@ -198,13 +198,7 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	Matrix4f trans;
 	trans.Translate(worldTrans.GetPosition());
 
-	trans *= Quaternion(worldTrans.GetOrientation());
-
-	//trans = trans * glm::mat4_cast(glm::conjugate(
-	//	glm::quat(worldTrans.GetRotation().GetW(), worldTrans.GetRotation().GetX(), worldTrans.GetRotation().GetY(), worldTrans.GetRotation().GetZ())
-	//));
-
-	//trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+	trans *= worldTrans.GetOrientation().Conjugate().Mat4Cast();
 
 	trans.Scale(worldTrans.GetScale());
 

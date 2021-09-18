@@ -40,7 +40,6 @@ public:
 	//}
 	void SetVec3(const std::string &name, Vector3f value) const
 	{
-		//glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
 		glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, value.ValuePtr());
 	}
 	void SetMat4(const std::string &name, Matrix4f mat) const
