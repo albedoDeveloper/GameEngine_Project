@@ -35,8 +35,5 @@ var annotated_dup =
     [ "Transform", "class_transform.html", "class_transform" ],
     [ "Vector2f", "class_vector2f.html", "class_vector2f" ],
     [ "Vector3f", "class_vector3f.html", "class_vector3f" ],
-    [ "Vector3u", "class_vector3u.html", "class_vector3u" ],
-    [ "Vector3uc", "struct_vector3uc.html", "struct_vector3uc" ],
-    [ "Vector4f", "class_vector4f.html", "class_vector4f" ],
     [ "Vertex", "struct_vertex.html", "struct_vertex" ]
 ];

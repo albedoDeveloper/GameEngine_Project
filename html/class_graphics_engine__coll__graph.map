@@ -1,4 +1,4 @@
 <map id="GraphicsEngine" name="GraphicsEngine">
-<area shape="rect" id="node1" title="A singleton that handles all of the engine graphics." alt="" coords="5,292,156,531"/>
-<area shape="rect" id="node2" href="$class_shader.html" title=" " alt="" coords="27,5,134,200"/>
+<area shape="rect" id="node1" title="A singleton that handles all of the engine graphics." alt="" coords="5,336,156,575"/>
+<area shape="rect" id="node2" href="$class_shader.html" title=" " alt="" coords="11,5,150,244"/>
 </map>

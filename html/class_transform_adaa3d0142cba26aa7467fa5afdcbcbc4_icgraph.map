@@ -1,0 +1,12 @@
+<map id="Transform::SetRelativeScale" name="Transform::SetRelativeScale">
+<area shape="rect" id="node1" title="set scale relative to parent transform" alt="" coords="1116,81,1301,108"/>
+<area shape="rect" id="node2" href="$class_transform.html#a55390da2160d0cac9951401756e752b7" title="loads the transform from JSON" alt="" coords="896,31,1040,57"/>
+<area shape="rect" id="node5" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="879,81,1057,108"/>
+<area shape="rect" id="node6" href="$class_level_editor.html#a07d3584976205e962c0dffcb1e9d3ad0" title="displays the scale fields in the transform editor" alt="" coords="868,132,1068,159"/>
+<area shape="rect" id="node3" href="$class_level_loader.html#abfedb40032867527767815299aa75594" title="Read data from JSON &#45; DEPRECIATED." alt="" coords="647,5,802,32"/>
+<area shape="rect" id="node4" href="$class_game_object.html#a45246aaee43206b87c40ef6fdc06111b" title="loads the object from saved state" alt="" coords="659,56,790,83"/>
+<area shape="rect" id="node7" href="$class_level_editor.html#aac394ace767b605adef1afdfb0473046" title="displays the gameobjects transform editor" alt="" coords="629,132,820,159"/>
+<area shape="rect" id="node8" href="$class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de" title="Creates the objects header using the current gameobject in the iterator." alt="" coords="409,132,581,159"/>
+<area shape="rect" id="node9" href="$class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0" title="fills in the object list" alt="" coords="209,132,361,159"/>
+<area shape="rect" id="node10" href="$class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048" title="Draws the editor to screen." alt="" coords="5,132,161,159"/>
+</map>

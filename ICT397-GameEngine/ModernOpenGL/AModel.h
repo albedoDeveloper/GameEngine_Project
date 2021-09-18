@@ -1,3 +1,9 @@
+/*****************************************************************//**
+ * \file   AModel.h
+ * \brief  Model of object
+ *
+ * \date   August 2021
+ *********************************************************************/
 #pragma once
 
 #include <string>
@@ -6,51 +12,55 @@
 #include "../Vector3f.h"
 #include "Mesh.h"
 
+	/**
+	 * Holds model data for a model such as meshes, and textures
+	 */
 class AModel
 {
 public:
-		/// <summary>
-		///	Creates the model, and sets its identifing key and filepath
-		/// </summary>
-		/// <param name="path"></param>
-		/// <param name="key"></param>
+		/**
+		 * Constructs model with a unique key and the pathname of the model file to be loaded
+		 *
+		 * \param path the file path this model was loaded in from
+		 * \param key the unique key of this model, given by the asset factory
+		 */
 	AModel(std::string path, std::string key);
 
-		/// <summary>
-		/// Returns the models key
-		/// </summary>
-		/// <returns></returns>
+		/**
+		 *
+		 *
+		 * \return the key the asset factory uses to reference this asset
+		 */
 	const std::string &Key() const;
 
-		/// <summary>
-		/// Draw the models meshes according to the shader parameter
-		/// </summary>
-		/// <param name="shader"></param>
+		/**
+		 * draws this asset with a given shader
+		 *
+		 * \param shader shader should contain the projection, view and model matrices
+		 */
 	void Draw(const Shader *shader) const;
 
-		/// <summary>
-		/// Returns the amount faces the model has
-		/// </summary>
-		/// <returns></returns>
+		/**
+		 *
+		 * \return the number of faces this model has
+		 */
 	int NumFaces() const;
 
-		/// <summary>
-		/// Returns the min and maximum vertice points of the model
-		/// </summary>
-		/// <returns></returns>
+		/**
+		 * get the min max vertices of this model in x y and z directions
+		 *
+		 * \return in this order [minx, maxx, miny, maxy, minz, maxz]
+		 */
 	const std::vector<float> &MinMax() const;
-	
-		/// <summary>
-		/// Returns the mesh for use in the collider class
-		/// </summary>
-		/// <returns></returns>
-	std::vector<Mesh> &GetMesh()
-	{
-		return m_meshes;
-	}
+
+		/**
+		 *
+		 * \return all meshes attatched to this model
+		 */
+	std::vector<Mesh> &GetMeshes();
 
 private:
-	
+
 		/// <summary>
 		/// Contains information about the model
 		/// </summary>
@@ -70,7 +80,7 @@ private:
 		/// The mix and maximum vertice value of the model
 		/// </summary>
 	std::vector<float> m_minMax;
-	
+
 		/// <summary>
 		/// The number of faces the model had
 		/// </summary>
@@ -80,7 +90,7 @@ private:
 		/// The meshes that make up the model
 		/// </summary>
 	std::vector<Mesh> m_meshes;
-	
+
 		/// <summary>
 		/// The meshes that make up the model
 		/// </summary>
@@ -105,7 +115,7 @@ private:
 		/// The path to the file containing the texture data
 		/// </summary>
 	std::string m_texturePath;
-	
+
 		/// <summary>
 		/// Load a model into the engine based upon its path
 		/// </summary>
@@ -118,7 +128,7 @@ private:
 		/// <param name="node"></param>
 		/// <param name="scene"></param>
 	void ProcessNode(aiNode *node, const aiScene *scene);
-	
+
 		/// /// <summary>
 		/// For each node, add the model data to the mesh, such as its vertices and texture data
 		/// </summary>

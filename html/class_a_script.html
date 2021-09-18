@@ -92,23 +92,19 @@ $(document).ready(function(){initNavTree('class_a_script.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 
-<p>An asset for a script storing game behaviour. can be shared among many components.  
- <a href="class_a_script.html#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="_a_script_8h_source.html">AScript.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for AScript:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_script__coll__graph.png" border="0" usemap="#a_a_script_coll__map" alt="Collaboration graph"/></div>
 <map name="a_a_script_coll__map" id="a_a_script_coll__map">
-<area shape="rect" title="An asset for a script storing game behaviour. can be shared among many components." alt="" coords="5,5,108,127"/>
+<area shape="rect" title=" " alt="" coords="5,5,108,127"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1dd9d7e802e1ac3f979b2a5860e98840"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_script.html#a1dd9d7e802e1ac3f979b2a5860e98840">AScript</a> (const std::string &amp;key, const std::string &amp;sourceFilePath)</td></tr>
-<tr class="memdesc:a1dd9d7e802e1ac3f979b2a5860e98840"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor  <a href="class_a_script.html#a1dd9d7e802e1ac3f979b2a5860e98840">More...</a><br /></td></tr>
 <tr class="separator:a1dd9d7e802e1ac3f979b2a5860e98840"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3b19ab32a6104508af08396a75051c9"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_script.html#ab3b19ab32a6104508af08396a75051c9">Key</a> () const</td></tr>
 <tr class="separator:ab3b19ab32a6104508af08396a75051c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,9 +114,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2d00733c2e4a1135ea11713cb843b86b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>An asset for a script storing game behaviour. can be shared among many components. </p>
+<div class="textblock"><p>An asset for a script storing game behaviour. can be shared among many components </p>
 
-<p class="definition">Definition at line <a class="el" href="_a_script_8h_source.html#l00015">15</a> of file <a class="el" href="_a_script_8h_source.html">AScript.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_a_script_8h_source.html#l00013">13</a> of file <a class="el" href="_a_script_8h_source.html">AScript.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1dd9d7e802e1ac3f979b2a5860e98840"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1dd9d7e802e1ac3f979b2a5860e98840">&#9670;&nbsp;</a></span>AScript()</h2>
@@ -147,11 +143,11 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>constructor </p>
+<p>constructs a script asset and loads in a script source file</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">newKey</td><td>storage key in the asset factory </td></tr>
+    <tr><td class="paramname">key</td><td>asset factory reference to this asset </td></tr>
+    <tr><td class="paramname">sourceFilePath</td><td>file path of script to load in </td></tr>
   </table>
   </dd>
 </dl>
@@ -175,7 +171,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>get the factory key of this asset</p>
+<p>get the asset factory key of this asset</p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_a_script_8cpp_source.html#l00011">11</a> of file <a class="el" href="_a_script_8cpp_source.html">AScript.cpp</a>.</p>
@@ -207,6 +203,13 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>set the source code this script will use</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>source code </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="_a_script_8cpp_source.html#l00021">21</a> of file <a class="el" href="_a_script_8cpp_source.html">AScript.cpp</a>.</p>
 
@@ -226,7 +229,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>get the source code of this script component </dd></dl>
+<p>get the source code of this script asset </p><dl class="section return"><dt>Returns</dt><dd>get the source code of this script component </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_a_script_8cpp_source.html#l00016">16</a> of file <a class="el" href="_a_script_8cpp_source.html">AScript.cpp</a>.</p>
 <div class="dynheader">

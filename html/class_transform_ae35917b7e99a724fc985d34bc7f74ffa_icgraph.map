@@ -1,6 +1,0 @@
-<map id="Transform::TranslateV" name="Transform::TranslateV">
-<area shape="rect" id="node1" title="Changes the transform&#39;s position by a relative amount." alt="" coords="667,31,816,57"/>
-<area shape="rect" id="node2" href="$class_transform.html#adc0e9f3169de16736796fbcd8b268472" title="moves the transform towards another by a specified distance" alt="" coords="453,31,619,57"/>
-<area shape="rect" id="node3" href="$class_transform.html#aa404399a3a6b57b093923b7b043a0ef6" title="oves the transform towards a set of coordinates by a specified distance" alt="" coords="231,5,405,32"/>
-<area shape="rect" id="node4" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,31,183,57"/>
-</map>

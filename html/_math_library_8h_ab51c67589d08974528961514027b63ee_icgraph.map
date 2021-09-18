@@ -1,4 +1,0 @@
-<map id="Lerp" name="Lerp">
-<area shape="rect" id="node1" title="returns a point between the start and end determined by strength" alt="" coords="112,5,159,32"/>
-<area shape="rect" id="node2" href="$_math_library_8cpp.html#ae05eb6f81eb7b54aaee4e0b2587a5e9f" title="returns a value determined by 4 points and the x and z positions first the liner interpolation of the..." alt="" coords="5,5,64,32"/>
-</map>

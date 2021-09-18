@@ -1,5 +1,5 @@
 <map id="CComponent::Save" name="CComponent::Save">
-<area shape="rect" id="node1" title="saves the component" alt="" coords="5,31,139,57"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,139,57"/>
 <area shape="rect" id="node2" href="$class_game_object.html#a1777de44c00f8a04cad880a2fe65a51a" title="Factory key accessor." alt="" coords="194,5,382,32"/>
 <area shape="rect" id="node3" href="$class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9" title="parent object accessor" alt="" coords="187,56,389,83"/>
 </map>

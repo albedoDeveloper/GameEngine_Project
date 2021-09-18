@@ -98,25 +98,24 @@ Collaboration diagram for SkyBox:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_sky_box__coll__graph.png" border="0" usemap="#a_sky_box_coll__map" alt="Collaboration graph"/></div>
 <map name="a_sky_box_coll__map" id="a_sky_box_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,163,112"/>
+<area shape="rect" title=" " alt="" coords="5,5,129,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a282e6669514ccb632b75f67342dcd089"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_box.html#a282e6669514ccb632b75f67342dcd089">CreateSkybox</a> (std::vector&lt; std::string &gt; skyBoxFaces)</td></tr>
-<tr class="separator:a282e6669514ccb632b75f67342dcd089"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc48f952a1b9bb4777d4ef4c47eb99af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_box.html#afc48f952a1b9bb4777d4ef4c47eb99af">DrawSkybox</a> (const glm::mat4 &amp;persepective, const glm::mat4 &amp;view)</td></tr>
-<tr class="separator:afc48f952a1b9bb4777d4ef4c47eb99af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4170faf85d9c48b6b84aebae9f0efbd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_box.html#a4170faf85d9c48b6b84aebae9f0efbd1">CreateVAOandVBO</a> ()</td></tr>
-<tr class="separator:a4170faf85d9c48b6b84aebae9f0efbd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0968f9c0b87491621b2b327db1108718"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_box.html#a0968f9c0b87491621b2b327db1108718">CreateSkybox</a> (std::vector&lt; std::string &gt; textures)</td></tr>
+<tr class="separator:a0968f9c0b87491621b2b327db1108718"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdb120b43fa970aaecb43c460e688f51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sky_box.html#acdb120b43fa970aaecb43c460e688f51">DrawSkybox</a> (<a class="el" href="class_matrix4f.html">Matrix4f</a> projection, <a class="el" href="class_matrix4f.html">Matrix4f</a> view)</td></tr>
+<tr class="separator:acdb120b43fa970aaecb43c460e688f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_sky_box_8h_source.html#l00005">5</a> of file <a class="el" href="_sky_box_8h_source.html">SkyBox.h</a>.</p>
+<div class="textblock"><p>skybox class. </p>
+
+<p class="definition">Definition at line <a class="el" href="_sky_box_8h_source.html#l00015">15</a> of file <a class="el" href="_sky_box_8h_source.html">SkyBox.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a282e6669514ccb632b75f67342dcd089"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a282e6669514ccb632b75f67342dcd089">&#9670;&nbsp;</a></span>CreateSkybox()</h2>
+<a id="a0968f9c0b87491621b2b327db1108718"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0968f9c0b87491621b2b327db1108718">&#9670;&nbsp;</a></span>CreateSkybox()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,55 +124,25 @@ Public Member Functions</h2></td></tr>
           <td class="memname">void SkyBox::CreateSkybox </td>
           <td>(</td>
           <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
-          <td class="paramname"><em>skyBoxFaces</em></td><td>)</td>
+          <td class="paramname"><em>textures</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>creates skybox graphics related stuff.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">skyBoxFaces</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="_sky_box_8cpp_source.html#l00004">4</a> of file <a class="el" href="_sky_box_8cpp_source.html">SkyBox.cpp</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_sky_box_a282e6669514ccb632b75f67342dcd089_cgraph.png" border="0" usemap="#aclass_sky_box_a282e6669514ccb632b75f67342dcd089_cgraph" alt=""/></div>
-<map name="aclass_sky_box_a282e6669514ccb632b75f67342dcd089_cgraph" id="aclass_sky_box_a282e6669514ccb632b75f67342dcd089_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,164,32"/>
-<area shape="rect" href="class_sky_box.html#a4170faf85d9c48b6b84aebae9f0efbd1" title=" " alt="" coords="212,5,403,32"/>
-</map>
-</div>
 
 </div>
 </div>
-<a id="a4170faf85d9c48b6b84aebae9f0efbd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4170faf85d9c48b6b84aebae9f0efbd1">&#9670;&nbsp;</a></span>CreateVAOandVBO()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SkyBox::CreateVAOandVBO </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_sky_box_8cpp_source.html#l00053">53</a> of file <a class="el" href="_sky_box_8cpp_source.html">SkyBox.cpp</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_sky_box_a4170faf85d9c48b6b84aebae9f0efbd1_icgraph.png" border="0" usemap="#aclass_sky_box_a4170faf85d9c48b6b84aebae9f0efbd1_icgraph" alt=""/></div>
-<map name="aclass_sky_box_a4170faf85d9c48b6b84aebae9f0efbd1_icgraph" id="aclass_sky_box_a4170faf85d9c48b6b84aebae9f0efbd1_icgraph">
-<area shape="rect" title=" " alt="" coords="212,5,403,32"/>
-<area shape="rect" href="class_sky_box.html#a282e6669514ccb632b75f67342dcd089" title=" " alt="" coords="5,5,164,32"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="afc48f952a1b9bb4777d4ef4c47eb99af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc48f952a1b9bb4777d4ef4c47eb99af">&#9670;&nbsp;</a></span>DrawSkybox()</h2>
+<a id="acdb120b43fa970aaecb43c460e688f51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdb120b43fa970aaecb43c460e688f51">&#9670;&nbsp;</a></span>DrawSkybox()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -181,13 +150,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void SkyBox::DrawSkybox </td>
           <td>(</td>
-          <td class="paramtype">const glm::mat4 &amp;&#160;</td>
-          <td class="paramname"><em>persepective</em>, </td>
+          <td class="paramtype"><a class="el" href="class_matrix4f.html">Matrix4f</a>&#160;</td>
+          <td class="paramname"><em>projection</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const glm::mat4 &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_matrix4f.html">Matrix4f</a>&#160;</td>
           <td class="paramname"><em>view</em>&#160;</td>
         </tr>
         <tr>
@@ -197,23 +166,32 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>draw skybox.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">persepective</td><td></td></tr>
+    <tr><td class="paramname">view</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="_sky_box_8cpp_source.html#l00038">38</a> of file <a class="el" href="_sky_box_8cpp_source.html">SkyBox.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_sky_box_afc48f952a1b9bb4777d4ef4c47eb99af_cgraph.png" border="0" usemap="#aclass_sky_box_afc48f952a1b9bb4777d4ef4c47eb99af_cgraph" alt=""/></div>
-<map name="aclass_sky_box_afc48f952a1b9bb4777d4ef4c47eb99af_cgraph" id="aclass_sky_box_afc48f952a1b9bb4777d4ef4c47eb99af_cgraph">
+<div class="center"><img src="class_sky_box_acdb120b43fa970aaecb43c460e688f51_cgraph.png" border="0" usemap="#aclass_sky_box_acdb120b43fa970aaecb43c460e688f51_cgraph" alt=""/></div>
+<map name="aclass_sky_box_acdb120b43fa970aaecb43c460e688f51_cgraph" id="aclass_sky_box_acdb120b43fa970aaecb43c460e688f51_cgraph">
 <area shape="rect" title=" " alt="" coords="5,31,155,57"/>
-<area shape="rect" href="class_shader.html#a073aaba20478e601d18d761ef187d9aa" title=" " alt="" coords="203,5,323,32"/>
-<area shape="rect" href="class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1" title=" " alt="" coords="215,56,310,83"/>
+<area shape="rect" href="class_shader.html#af3c9771992ec0ec23433713bebb4ee79" title="Sets a global matrix 4x4 uniform in the shader" alt="" coords="203,5,367,32"/>
+<area shape="rect" href="class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1" title="Sets this shader object to the current opengl shader instance" alt="" coords="237,56,332,83"/>
+<area shape="rect" href="class_matrix4f.html#a2e3678454ddd2063fff3f21dfac85a45" title=" " alt="" coords="415,5,541,32"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_sky_box_afc48f952a1b9bb4777d4ef4c47eb99af_icgraph.png" border="0" usemap="#aclass_sky_box_afc48f952a1b9bb4777d4ef4c47eb99af_icgraph" alt=""/></div>
-<map name="aclass_sky_box_afc48f952a1b9bb4777d4ef4c47eb99af_icgraph" id="aclass_sky_box_afc48f952a1b9bb4777d4ef4c47eb99af_icgraph">
+<div class="center"><img src="class_sky_box_acdb120b43fa970aaecb43c460e688f51_icgraph.png" border="0" usemap="#aclass_sky_box_acdb120b43fa970aaecb43c460e688f51_icgraph" alt=""/></div>
+<map name="aclass_sky_box_acdb120b43fa970aaecb43c460e688f51_icgraph" id="aclass_sky_box_acdb120b43fa970aaecb43c460e688f51_icgraph">
 <area shape="rect" title=" " alt="" coords="256,5,405,32"/>
 <area shape="rect" href="class_graphics_engine.html#ae3c7dbf362306dc1ecf0b6c4a3144fd3" title="Renders all visible objects." alt="" coords="5,5,208,32"/>
 </map>

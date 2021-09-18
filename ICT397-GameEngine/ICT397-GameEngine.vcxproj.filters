@@ -112,14 +112,17 @@
     <ClCompile Include="Vector3f.cpp">
       <Filter>Source\Math\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2f.cpp">
-      <Filter>Source\Math\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>Source\Math\Source</Filter>
     </ClCompile>
     <ClCompile Include="Quaternion.cpp">
       <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2f.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source\Misc\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -174,16 +177,10 @@
     <ClInclude Include="ModernOpenGL\Mesh.h">
       <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Source\Misc\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="ModernOpenGL\Shader.h">
       <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="SkyBox.h">
-      <Filter>Source\Misc\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="SkyboxVerts.h">
       <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="CCamera.h">
@@ -252,10 +249,10 @@
     <ClInclude Include="Quaternion.h">
       <Filter>Source\Math\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2f.h">
+    <ClInclude Include="Transform.h">
       <Filter>Source\Math\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
+    <ClInclude Include="Vector2f.h">
       <Filter>Source\Math\Headers</Filter>
     </ClInclude>
   </ItemGroup>

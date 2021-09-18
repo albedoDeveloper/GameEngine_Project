@@ -1,5 +1,5 @@
 <map id="LevelLoader::JsonFilepath" name="LevelLoader::JsonFilepath">
-<area shape="rect" id="node1" title=" " alt="" coords="389,5,560,32"/>
-<area shape="rect" id="node2" href="$class_level_loader.html#abf78efbfeff5bf1dd377c12a7ca45ff2" title="test function" alt="" coords="187,5,341,32"/>
+<area shape="rect" id="node1" title="test if the filepath works, if not we create a path" alt="" coords="389,5,560,32"/>
+<area shape="rect" id="node2" href="$class_level_loader.html#abf78efbfeff5bf1dd377c12a7ca45ff2" title="Save Current Level." alt="" coords="187,5,341,32"/>
 <area shape="rect" id="node3" href="$class_engine.html#a38ab2010499784f54fee99a3ce2880ab" title="saves the game" alt="" coords="5,5,139,32"/>
 </map>

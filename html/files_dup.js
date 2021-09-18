@@ -6,7 +6,10 @@ var files_dup =
     [ "AScript.h", "_a_script_8h.html", [
       [ "AScript", "class_a_script.html", "class_a_script" ]
     ] ],
-    [ "Camera.h", "_camera_8h.html", "_camera_8h" ],
+    [ "Camera.cpp", "_camera_8cpp.html", null ],
+    [ "Camera.h", "_camera_8h.html", [
+      [ "Camera", "struct_camera.html", "struct_camera" ]
+    ] ],
     [ "CCamera.cpp", "_c_camera_8cpp.html", null ],
     [ "CCamera.h", "_c_camera_8h.html", [
       [ "CCamera", "class_c_camera.html", "class_c_camera" ]
@@ -74,18 +77,32 @@ var files_dup =
       [ "LightManager", "class_light_manager.html", "class_light_manager" ]
     ] ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
-    [ "MathLibrary.cpp", "_math_library_8cpp.html", "_math_library_8cpp" ],
-    [ "MathLibrary.h", "_math_library_8h.html", "_math_library_8h" ],
-    [ "resource.h", "resource_8h.html", "resource_8h" ],
+    [ "Matrix4f.cpp", "_matrix4f_8cpp.html", null ],
+    [ "Matrix4f.h", "_matrix4f_8h.html", [
+      [ "Matrix4f", "class_matrix4f.html", "class_matrix4f" ]
+    ] ],
+    [ "MiscMath.cpp", "_misc_math_8cpp.html", "_misc_math_8cpp" ],
+    [ "MiscMath.h", "_misc_math_8h.html", "_misc_math_8h" ],
+    [ "Quaternion.cpp", "_quaternion_8cpp.html", null ],
+    [ "Quaternion.h", "_quaternion_8h.html", [
+      [ "Quaternion", "class_quaternion.html", "class_quaternion" ]
+    ] ],
     [ "ScriptingEngine.cpp", "_scripting_engine_8cpp.html", null ],
     [ "ScriptingEngine.h", "_scripting_engine_8h.html", "_scripting_engine_8h" ],
     [ "SkyBox.cpp", "_sky_box_8cpp.html", null ],
     [ "SkyBox.h", "_sky_box_8h.html", [
       [ "SkyBox", "class_sky_box.html", "class_sky_box" ]
     ] ],
-    [ "SkyboxVerts.h", "_skybox_verts_8h.html", "_skybox_verts_8h" ],
     [ "Transform.cpp", "_transform_8cpp.html", "_transform_8cpp" ],
     [ "Transform.h", "_transform_8h.html", [
       [ "Transform", "class_transform.html", "class_transform" ]
+    ] ],
+    [ "Vector2f.cpp", "_vector2f_8cpp.html", null ],
+    [ "Vector2f.h", "_vector2f_8h.html", [
+      [ "Vector2f", "class_vector2f.html", "class_vector2f" ]
+    ] ],
+    [ "Vector3f.cpp", "_vector3f_8cpp.html", null ],
+    [ "Vector3f.h", "_vector3f_8h.html", [
+      [ "Vector3f", "class_vector3f.html", "class_vector3f" ]
     ] ]
 ];

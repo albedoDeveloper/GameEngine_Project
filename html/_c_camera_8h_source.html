@@ -88,42 +88,44 @@ $(document).ready(function(){initNavTree('_c_camera_8h_source.html',''); initRes
 <div class="title">CCamera.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_c_camera_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_c_component_8h.html">CComponent.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_camera_8h.html">Camera.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_graphics_engine_8h.html">GraphicsEngine.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_c_camera.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_camera.html">CCamera</a> : <span class="keyword">public</span> <a class="code" href="class_c_component.html">CComponent</a></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="struct_camera.html">Camera</a> m_camera;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_c_camera.html#a0fa7696e72123a9d87377f48a8dc2c0a">CCamera</a>(<a class="code" href="class_transform.html">Transform</a>* parent, <a class="code" href="class_game_object.html">GameObject</a>* parentObj);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_c_camera.html#a0f43f3ad015152e60df26bd596a7eaef">Start</a>();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_c_camera.html#a0bac4c460d157856f34fb815a131cdd0">DrawToImGui</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_camera.html#a0b20c2103d6ca99d2897605553611f06">SetCamera</a>(<a class="code" href="struct_camera.html">Camera</a> camera);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="struct_camera.html">Camera</a> <a class="code" href="class_c_camera.html#a0e2ace71b0702c64078e5cf997026247">GetCamera</a>();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_camera.html#a78c8cbcc39a766785720f393069239da">SetAsCurrentCamera</a>(); </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="ttc" id="a_c_component_8h_html"><div class="ttname"><a href="_c_component_8h.html">CComponent.h</a></div></div>
+<a href="_c_camera_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************/</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_c_component_8h.html">CComponent.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_camera_8h.html">Camera.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_graphics_engine_8h.html">GraphicsEngine.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_c_camera.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_c_camera.html">CCamera</a> : <span class="keyword">public</span> <a class="code" href="class_c_component.html">CComponent</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="struct_camera.html">Camera</a> m_camera;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_c_camera.html#a0fa7696e72123a9d87377f48a8dc2c0a">CCamera</a>(<a class="code" href="class_transform.html">Transform</a> *parent, <a class="code" href="class_game_object.html">GameObject</a> *parentObj);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_c_camera.html#a0f43f3ad015152e60df26bd596a7eaef">Start</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_c_camera.html#a0bac4c460d157856f34fb815a131cdd0">DrawToImGui</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_camera.html#a0b20c2103d6ca99d2897605553611f06">SetCamera</a>(<a class="code" href="struct_camera.html">Camera</a> camera);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="struct_camera.html">Camera</a> <a class="code" href="class_c_camera.html#a0e2ace71b0702c64078e5cf997026247">GetCamera</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_camera.html#a78c8cbcc39a766785720f393069239da">SetAsCurrentCamera</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="ttc" id="a_c_component_8h_html"><div class="ttname"><a href="_c_component_8h.html">CComponent.h</a></div><div class="ttdoc">Default Component, Components derive from this.</div></div>
 <div class="ttc" id="a_camera_8h_html"><div class="ttname"><a href="_camera_8h.html">Camera.h</a></div></div>
-<div class="ttc" id="a_graphics_engine_8h_html"><div class="ttname"><a href="_graphics_engine_8h.html">GraphicsEngine.h</a></div></div>
-<div class="ttc" id="aclass_c_camera_html"><div class="ttname"><a href="class_c_camera.html">CCamera</a></div><div class="ttdoc">A component holding and managing a camera.</div><div class="ttdef"><b>Definition:</b> <a href="_c_camera_8h_source.html#l00010">CCamera.h:11</a></div></div>
+<div class="ttc" id="a_graphics_engine_8h_html"><div class="ttname"><a href="_graphics_engine_8h.html">GraphicsEngine.h</a></div><div class="ttdoc">Graphics and Rendering.</div></div>
+<div class="ttc" id="aclass_c_camera_html"><div class="ttname"><a href="class_c_camera.html">CCamera</a></div><div class="ttdoc">A component holding and managing a camera.</div><div class="ttdef"><b>Definition:</b> <a href="_c_camera_8h_source.html#l00016">CCamera.h:17</a></div></div>
 <div class="ttc" id="aclass_c_camera_html_a0b20c2103d6ca99d2897605553611f06"><div class="ttname"><a href="class_c_camera.html#a0b20c2103d6ca99d2897605553611f06">CCamera::SetCamera</a></div><div class="ttdeci">void SetCamera(Camera camera)</div><div class="ttdoc">camera mutator</div><div class="ttdef"><b>Definition:</b> <a href="_c_camera_8cpp_source.html#l00028">CCamera.cpp:28</a></div></div>
 <div class="ttc" id="aclass_c_camera_html_a0bac4c460d157856f34fb815a131cdd0"><div class="ttname"><a href="class_c_camera.html#a0bac4c460d157856f34fb815a131cdd0">CCamera::DrawToImGui</a></div><div class="ttdeci">virtual void DrawToImGui()</div><div class="ttdoc">Draws to imgui.</div><div class="ttdef"><b>Definition:</b> <a href="_c_camera_8cpp_source.html#l00017">CCamera.cpp:17</a></div></div>
 <div class="ttc" id="aclass_c_camera_html_a0e2ace71b0702c64078e5cf997026247"><div class="ttname"><a href="class_c_camera.html#a0e2ace71b0702c64078e5cf997026247">CCamera::GetCamera</a></div><div class="ttdeci">Camera GetCamera()</div><div class="ttdoc">camera accessor</div><div class="ttdef"><b>Definition:</b> <a href="_c_camera_8cpp_source.html#l00033">CCamera.cpp:33</a></div></div>
 <div class="ttc" id="aclass_c_camera_html_a0f43f3ad015152e60df26bd596a7eaef"><div class="ttname"><a href="class_c_camera.html#a0f43f3ad015152e60df26bd596a7eaef">CCamera::Start</a></div><div class="ttdeci">virtual void Start()</div><div class="ttdoc">initialises component at program start</div><div class="ttdef"><b>Definition:</b> <a href="_c_camera_8cpp_source.html#l00011">CCamera.cpp:11</a></div></div>
 <div class="ttc" id="aclass_c_camera_html_a0fa7696e72123a9d87377f48a8dc2c0a"><div class="ttname"><a href="class_c_camera.html#a0fa7696e72123a9d87377f48a8dc2c0a">CCamera::CCamera</a></div><div class="ttdeci">CCamera(Transform *parent, GameObject *parentObj)</div><div class="ttdoc">constructor</div><div class="ttdef"><b>Definition:</b> <a href="_c_camera_8cpp_source.html#l00005">CCamera.cpp:5</a></div></div>
 <div class="ttc" id="aclass_c_camera_html_a78c8cbcc39a766785720f393069239da"><div class="ttname"><a href="class_c_camera.html#a78c8cbcc39a766785720f393069239da">CCamera::SetAsCurrentCamera</a></div><div class="ttdeci">void SetAsCurrentCamera()</div><div class="ttdoc">makes this component's camera the current one to be used by the engine and display the screen</div><div class="ttdef"><b>Definition:</b> <a href="_c_camera_8cpp_source.html#l00038">CCamera.cpp:38</a></div></div>
-<div class="ttc" id="aclass_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdoc">A component of a game object with its own assets and/or behaviour.</div><div class="ttdef"><b>Definition:</b> <a href="_c_component_8h_source.html#l00010">CComponent.h:11</a></div></div>
-<div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdoc">An object as represented in the game world containing all information on the object itself and its co...</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00021">GameObject.h:22</a></div></div>
-<div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdoc">Stores data about an object or componet's location in space.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8h_source.html#l00010">Transform.h:11</a></div></div>
+<div class="ttc" id="aclass_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdoc">A component of a game object with its own assets and/or behaviour.</div><div class="ttdef"><b>Definition:</b> <a href="_c_component_8h_source.html#l00017">CComponent.h:18</a></div></div>
+<div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdoc">An object as represented in the game world containing all information on the object itself and its co...</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00027">GameObject.h:28</a></div></div>
+<div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdoc">Stores data about an object or componet's location in space.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8h_source.html#l00017">Transform.h:18</a></div></div>
 <div class="ttc" id="astruct_camera_html"><div class="ttname"><a href="struct_camera.html">Camera</a></div><div class="ttdoc">Data on a camera to view the game from.</div><div class="ttdef"><b>Definition:</b> <a href="_camera_8h_source.html#l00016">Camera.h:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

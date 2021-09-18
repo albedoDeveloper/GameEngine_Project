@@ -1,7 +1,6 @@
 var class_game_object_factory =
 [
     [ "Close", "class_game_object_factory.html#a4bd13ad9ccf5879c650d2fe2e8cebdf6", null ],
-    [ "getClosestObject", "class_game_object_factory.html#a814d8aaad84d626a629a7d04677a3802", null ],
     [ "GetGameObject", "class_game_object_factory.html#addabc3d0422e81d4a529d2957903ec2d", null ],
     [ "getNumObjects", "class_game_object_factory.html#abee0679145d8ba8f44e90a4325a14cb8", null ],
     [ "GetObjectMap", "class_game_object_factory.html#a77d1c9cc919bd38a4ce5d08e7b6d0ab5", null ],

@@ -13,16 +13,11 @@ var class_c_collider =
     [ "Start", "class_c_collider.html#ab8fd6544bb2eb98523b7f27e60ac9e03", null ],
     [ "Update", "class_c_collider.html#a858c10f0e9fb3a6e73bd00fcfcdb99f1", null ],
     [ "UpdateCollider", "class_c_collider.html#ae82b280aee96b0a2d6e532e0a663f256", null ],
-    [ "boxCollider", "class_c_collider.html#ab169c0d4c6b95ee664f7da30c66b2b9e", null ],
     [ "col", "class_c_collider.html#a411dd8c075a110b13360638056ce8e23", null ],
     [ "colBody", "class_c_collider.html#adb84273cb4c402272ea229ec46cf992a", null ],
     [ "concaveIndices", "class_c_collider.html#aea7d2b55212ecea15c8bbc6d9458dbe3", null ],
-    [ "concaveMesh", "class_c_collider.html#a41f23a000e9af546b6a03aeadf4adb89", null ],
     [ "concaveVertices", "class_c_collider.html#aaf688ecb529f6f811dbec37a1ea203d3", null ],
-    [ "convexCollider", "class_c_collider.html#a7e79bdcaf9bf368a647181f0f9250a37", null ],
     [ "m_allowRotation", "class_c_collider.html#aed4eb91bc8a6b10c460f72e8d6894df8", null ],
     [ "m_isRegistered", "class_c_collider.html#a14e94623cf3dccc1117760b547e22a45", null ],
-    [ "m_offset", "class_c_collider.html#aab61685026901f57ea82253d46b7b8aa", null ],
-    [ "polyFace", "class_c_collider.html#a633534c17b8204dbec4242235493f02b", null ],
-    [ "triangleMesh", "class_c_collider.html#a4b1a7f432047b6342f28cbf266b0656f", null ]
+    [ "m_offset", "class_c_collider.html#aab61685026901f57ea82253d46b7b8aa", null ]
 ];

@@ -93,13 +93,16 @@ $(document).ready(function(){initNavTree('class_delta_time.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 
+<p>The elapsed time between frames.  
+ <a href="class_delta_time.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_delta_time_8h_source.html">DeltaTime.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for DeltaTime:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_delta_time__coll__graph.png" border="0" usemap="#a_delta_time_coll__map" alt="Collaboration graph"/></div>
 <map name="a_delta_time_coll__map" id="a_delta_time_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,153,141"/>
+<area shape="rect" title="The elapsed time between frames." alt="" coords="5,5,153,141"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -109,11 +112,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2b4b3993488d658e318f2e29b385d24b"><td class="mdescLeft">&#160;</td><td class="mdescRight">call once a frame to update delta time value  <a href="class_delta_time.html#a2b4b3993488d658e318f2e29b385d24b">More...</a><br /></td></tr>
 <tr class="separator:a2b4b3993488d658e318f2e29b385d24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac094ba8e92921b96f93381499c387f3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_delta_time.html#ac094ba8e92921b96f93381499c387f3d">CatchupDeltaTime</a> ()</td></tr>
+<tr class="memdesc:ac094ba8e92921b96f93381499c387f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the current time if we are lagging behind  <a href="class_delta_time.html#ac094ba8e92921b96f93381499c387f3d">More...</a><br /></td></tr>
 <tr class="separator:ac094ba8e92921b96f93381499c387f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16be81d4d9ef62ec4f19daa4f91d947e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_delta_time.html#a16be81d4d9ef62ec4f19daa4f91d947e">GetDeltaTime</a> ()</td></tr>
 <tr class="memdesc:a16be81d4d9ef62ec4f19daa4f91d947e"><td class="mdescLeft">&#160;</td><td class="mdescRight">get current delta time  <a href="class_delta_time.html#a16be81d4d9ef62ec4f19daa4f91d947e">More...</a><br /></td></tr>
 <tr class="separator:a16be81d4d9ef62ec4f19daa4f91d947e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a5e0e793501193b432d4eff55a0f9a1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_delta_time.html#a9a5e0e793501193b432d4eff55a0f9a1">GetTimeElapsed</a> () const</td></tr>
+<tr class="memdesc:a9a5e0e793501193b432d4eff55a0f9a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets elapsed time since last frame.  <a href="class_delta_time.html#a9a5e0e793501193b432d4eff55a0f9a1">More...</a><br /></td></tr>
 <tr class="separator:a9a5e0e793501193b432d4eff55a0f9a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -123,8 +128,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:aa7e68e4581f2d225d2edfa9b14eca60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_delta_time_8h_source.html#l00005">5</a> of file <a class="el" href="_delta_time_8h_source.html">DeltaTime.h</a>.</p>
+<div class="textblock"><p>The elapsed time between frames. </p>
+
+<p class="definition">Definition at line <a class="el" href="_delta_time_8h_source.html#l00012">12</a> of file <a class="el" href="_delta_time_8h_source.html">DeltaTime.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac094ba8e92921b96f93381499c387f3d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac094ba8e92921b96f93381499c387f3d">&#9670;&nbsp;</a></span>CatchupDeltaTime()</h2>
@@ -140,6 +146,8 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>returns the current time if we are lagging behind </p>
 
 <p class="definition">Definition at line <a class="el" href="_delta_time_8cpp_source.html#l00026">26</a> of file <a class="el" href="_delta_time_8cpp_source.html">DeltaTime.cpp</a>.</p>
 
@@ -180,6 +188,9 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Gets elapsed time since last frame. </p>
+<dl class="section return"><dt>Returns</dt><dd>the elapsed time as a float </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_delta_time_8cpp_source.html#l00036">36</a> of file <a class="el" href="_delta_time_8cpp_source.html">DeltaTime.cpp</a>.</p>
 

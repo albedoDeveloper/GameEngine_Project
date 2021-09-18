@@ -1,21 +1,11 @@
 <map id="Quaternion::GetW" name="Quaternion::GetW">
-<area shape="rect" id="node1" title="w value accessor" alt="" coords="1000,259,1127,285"/>
-<area shape="rect" id="node2" href="$class_c_collider.html#a74c40f1839119643222abcbf23ce5e4e" title="constructor taking parent as argument" alt="" coords="296,5,431,32"/>
-<area shape="rect" id="node3" href="$_math_library_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="813,208,904,235"/>
-<area shape="rect" id="node12" href="$class_c_collider.html#ae82b280aee96b0a2d6e532e0a663f256" title=" " alt="" coords="280,411,447,437"/>
-<area shape="rect" id="node16" href="$class_graphics_engine.html#a750597125cf08bca414df5432daffa56" title="Draws a model asset on the screen." alt="" coords="765,309,952,336"/>
-<area shape="rect" id="node17" href="$class_transform.html#ab720c8e888790aa2a8f29ca4efc5c0cc" title="Saves the transform to JSON." alt="" coords="795,360,923,387"/>
-<area shape="rect" id="node4" href="$class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space." alt="" coords="519,208,717,235"/>
-<area shape="rect" id="node5" href="$class_graphics_engine.html#a68f81b8f354a5d4538a47b5216efc12f" title=" " alt="" coords="278,56,449,83"/>
-<area shape="rect" id="node7" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="18,157,195,184"/>
-<area shape="rect" id="node8" href="$class_c_static_mesh.html#a811c339becc8cff2323cfb0af8bf558c" title="displays the mesh&#39;s model on the screen" alt="" coords="290,157,437,184"/>
-<area shape="rect" id="node9" href="$class_transform.html#a79f8e547657f72f85ebf0b464c6b20df" title="rotates the transform towards another by a specified angle" alt="" coords="277,208,450,235"/>
-<area shape="rect" id="node10" href="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="39,296,175,323"/>
-<area shape="rect" id="node11" href="$class_c_point_light.html#ae6a75621fe9a91e46e1471888a4e5009" title="To be called every frame to process the component&#39;s behaviour, if any." alt="" coords="294,309,433,336"/>
-<area shape="rect" id="node15" href="$class_graphics_engine.html#a54e3edb4d2869a986afba9598e16cc86" title=" " alt="" coords="256,360,471,387"/>
-<area shape="rect" id="node6" href="$class_graphics_engine.html#ae3c7dbf362306dc1ecf0b6c4a3144fd3" title="Renders all visible objects." alt="" coords="5,56,208,83"/>
-<area shape="rect" id="node13" href="$class_c_collider.html#ab8fd6544bb2eb98523b7f27e60ac9e03" title="initialises the component at start of program" alt="" coords="51,385,162,412"/>
-<area shape="rect" id="node14" href="$class_c_collider.html#a858c10f0e9fb3a6e73bd00fcfcdb99f1" title="updates ongoing behaviour each frame" alt="" coords="45,436,168,463"/>
-<area shape="rect" id="node18" href="$class_game_object.html#aedc9f47690b6dab433843fccb736064f" title="saves the object" alt="" coords="553,335,683,361"/>
-<area shape="rect" id="node19" href="$class_level_loader.html#a201799a503e97f7ede6f9b012633602f" title=" " alt="" coords="549,385,687,412"/>
+<area shape="rect" id="node1" title="w value accessor" alt="" coords="407,56,533,83"/>
+<area shape="rect" id="node2" href="$class_c_collider.html#a74c40f1839119643222abcbf23ce5e4e" title="constructor taking parent as argument" alt="" coords="208,5,343,32"/>
+<area shape="rect" id="node3" href="$class_transform.html#ab720c8e888790aa2a8f29ca4efc5c0cc" title="Saves the transform to JSON." alt="" coords="211,56,339,83"/>
+<area shape="rect" id="node6" href="$class_c_collider.html#ae82b280aee96b0a2d6e532e0a663f256" title="Updates the colliders with any transformations changes based on the colliders model." alt="" coords="192,132,359,159"/>
+<area shape="rect" id="node4" href="$class_game_object.html#aedc9f47690b6dab433843fccb736064f" title="saves the object" alt="" coords="9,5,140,32"/>
+<area shape="rect" id="node5" href="$class_level_loader.html#a201799a503e97f7ede6f9b012633602f" title="write game data to JSON &#45; DEPRECIATED" alt="" coords="5,56,144,83"/>
+<area shape="rect" id="node7" href="$class_c_collider.html#ab8fd6544bb2eb98523b7f27e60ac9e03" title="initialises the component at start of program" alt="" coords="19,107,130,133"/>
+<area shape="rect" id="node8" href="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="7,157,143,184"/>
+<area shape="rect" id="node9" href="$class_c_collider.html#a858c10f0e9fb3a6e73bd00fcfcdb99f1" title="updates ongoing behaviour each frame" alt="" coords="13,208,136,235"/>
 </map>

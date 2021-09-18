@@ -58,8 +58,8 @@ void CSound::Update()
 			auto playerTransform = GAMEOBJECT->GetGameObject("player")->GetTransform();
 			auto thisTransform = this->GetParentObject()->GetTransform();
 
-			int distance = (glm::abs(thisTransform->GetPosition().GetZ() - playerTransform->GetPosition().GetZ())) +
-				glm::abs((thisTransform->GetPosition().GetX() - playerTransform->GetPosition().GetX())) / 2 * 60;
+			int distance = (glm::abs(thisTransform->GetRelativePosition().GetZ() - playerTransform->GetRelativePosition().GetZ())) +
+				glm::abs((thisTransform->GetRelativePosition().GetX() - playerTransform->GetRelativePosition().GetX())) / 2 * 60;
 
 			if (distance < 1)
 				distance = 1;
@@ -75,7 +75,7 @@ void CSound::Update()
 			bool centred = false;
 
 
-			int rotation = glm::degrees(rawRotation.GetEulerAngles().GetY());
+			int rotation = glm::degrees(rawRotation.GetEulerAnglesDegrees().GetY());
 
 			if (rotation < 0)
 				rotation += 360.0;*/

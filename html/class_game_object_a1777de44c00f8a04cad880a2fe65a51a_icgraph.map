@@ -1,16 +1,16 @@
 <map id="GameObject::getFactoryKey" name="GameObject::getFactoryKey">
 <area shape="rect" id="node1" title="Factory key accessor." alt="" coords="635,233,823,260"/>
-<area shape="rect" id="node2" href="$class_level_loader.html#abfedb40032867527767815299aa75594" title=" " alt="" coords="421,5,575,32"/>
+<area shape="rect" id="node2" href="$class_level_loader.html#abfedb40032867527767815299aa75594" title="Read data from JSON &#45; DEPRECIATED." alt="" coords="421,5,575,32"/>
 <area shape="rect" id="node3" href="$class_game_object.html#a45246aaee43206b87c40ef6fdc06111b" title="loads the object from saved state" alt="" coords="433,56,563,83"/>
 <area shape="rect" id="node4" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="409,107,587,133"/>
-<area shape="rect" id="node5" href="$class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de" title=" " alt="" coords="412,157,584,184"/>
+<area shape="rect" id="node5" href="$class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de" title="Creates the objects header using the current gameobject in the iterator." alt="" coords="412,157,584,184"/>
 <area shape="rect" id="node8" href="$class_c_collider.html#ae4524c7cc0069673c49d73ff16a1b68f" title="saves the component" alt="" coords="443,208,553,235"/>
-<area shape="rect" id="node9" href="$class_c_component.html#acd3219b90aa85de5d026d7d12bff7981" title="saves the component" alt="" coords="431,259,565,285"/>
+<area shape="rect" id="node9" href="$class_c_component.html#acd3219b90aa85de5d026d7d12bff7981" title=" " alt="" coords="431,259,565,285"/>
 <area shape="rect" id="node11" href="$class_c_script.html#a271450247c297dd454b235ee8c103a50" title="script mutator" alt="" coords="447,309,549,336"/>
-<area shape="rect" id="node12" href="$class_c_static_mesh.html#a410db97c2c01756b0d478049d44e7033" title="saves the component" alt="" coords="431,360,565,387"/>
+<area shape="rect" id="node12" href="$class_c_static_mesh.html#a410db97c2c01756b0d478049d44e7033" title="save the component" alt="" coords="431,360,565,387"/>
 <area shape="rect" id="node13" href="$class_game_object.html#aedc9f47690b6dab433843fccb736064f" title="saves the object" alt="" coords="433,411,563,437"/>
-<area shape="rect" id="node14" href="$class_level_loader.html#a201799a503e97f7ede6f9b012633602f" title=" " alt="" coords="429,461,567,488"/>
-<area shape="rect" id="node6" href="$class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0" title=" " alt="" coords="209,157,361,184"/>
-<area shape="rect" id="node7" href="$class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048" title=" " alt="" coords="5,157,161,184"/>
+<area shape="rect" id="node14" href="$class_level_loader.html#a201799a503e97f7ede6f9b012633602f" title="write game data to JSON &#45; DEPRECIATED" alt="" coords="429,461,567,488"/>
+<area shape="rect" id="node6" href="$class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0" title="fills in the object list" alt="" coords="209,157,361,184"/>
+<area shape="rect" id="node7" href="$class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048" title="Draws the editor to screen." alt="" coords="5,157,161,184"/>
 <area shape="rect" id="node10" href="$class_c_character.html#ae606109ebef5561fbda23cd95b57496c" title="saves the component" alt="" coords="224,259,347,285"/>
 </map>

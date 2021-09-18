@@ -38,8 +38,5 @@ var hierarchy =
     [ "Transform", "class_transform.html", null ],
     [ "Vector2f", "class_vector2f.html", null ],
     [ "Vector3f", "class_vector3f.html", null ],
-    [ "Vector3u", "class_vector3u.html", null ],
-    [ "Vector3uc", "struct_vector3uc.html", null ],
-    [ "Vector4f", "class_vector4f.html", null ],
     [ "Vertex", "struct_vertex.html", null ]
 ];

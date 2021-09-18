@@ -1,10 +1,10 @@
 <map id="CComponent" name="CComponent">
 <area shape="rect" id="node1" title="A component of a game object with its own assets and/or behaviour." alt="" coords="569,5,724,259"/>
-<area shape="rect" id="node2" href="$class_c_camera.html" title="A component holding and managing a camera." alt="" coords="5,439,171,589"/>
-<area shape="rect" id="node3" href="$class_c_character.html" title="A component representing a character capable of moving." alt="" coords="195,387,352,641"/>
-<area shape="rect" id="node4" href="$class_c_collider.html" title=" " alt="" coords="376,307,533,721"/>
-<area shape="rect" id="node5" href="$class_c_point_light.html" title=" " alt="" coords="557,446,736,582"/>
-<area shape="rect" id="node6" href="$class_c_script.html" title=" " alt="" coords="760,417,915,611"/>
-<area shape="rect" id="node7" href="$class_c_sound.html" title=" " alt="" coords="939,453,1045,575"/>
-<area shape="rect" id="node8" href="$class_c_static_mesh.html" title="A static mesh containing information on a model." alt="" coords="1070,417,1226,611"/>
+<area shape="rect" id="node2" href="$class_c_camera.html" title="A component holding and managing a camera." alt="" coords="5,402,171,553"/>
+<area shape="rect" id="node3" href="$class_c_character.html" title="A component representing a character capable of moving." alt="" coords="195,351,352,604"/>
+<area shape="rect" id="node4" href="$class_c_collider.html" title="Collider Component." alt="" coords="376,307,533,648"/>
+<area shape="rect" id="node5" href="$class_c_point_light.html" title="Point light component class." alt="" coords="557,409,736,545"/>
+<area shape="rect" id="node6" href="$class_c_script.html" title="ScriptComponent Class." alt="" coords="760,380,915,575"/>
+<area shape="rect" id="node7" href="$class_c_sound.html" title="Sound Component Class." alt="" coords="939,417,1045,538"/>
+<area shape="rect" id="node8" href="$class_c_static_mesh.html" title="A static mesh containing information on a model." alt="" coords="1070,380,1226,575"/>
 </map>

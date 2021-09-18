@@ -1,13 +1,15 @@
 var class_shader =
 [
     [ "Shader", "class_shader.html#a3e135bbf914b087a939114d79c10d283", null ],
-    [ "SetBool", "class_shader.html#a70cd07acf03715e4e927df1be5c5b5a0", null ],
-    [ "SetFloat", "class_shader.html#ac20ee02a436e4baeb63dde08a0364574", null ],
-    [ "SetInt", "class_shader.html#a645ef3753b1fc09a30dbb26f817d88e5", null ],
-    [ "SetMat4", "class_shader.html#a073aaba20478e601d18d761ef187d9aa", null ],
-    [ "SetVec3", "class_shader.html#a8d1456b390875e5a99e70a658a4dfdd3", null ],
-    [ "SetVec4", "class_shader.html#a12c2843859a8c0f26d8342ef17b4355c", null ],
-    [ "Use", "class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1", null ],
-    [ "ID", "class_shader.html#a142a08b6fbdfc982d82ca10ee0b0f38d", null ],
-    [ "shaderName", "class_shader.html#ac35cb9054084194c6f9a46de21802600", null ]
+    [ "GetID", "class_shader.html#a9c12bedaaa026e0fe6e7ce5cb1eb2d60", null ],
+    [ "GetShaderName", "class_shader.html#a51d73abfcce9cac370071c880cae351a", null ],
+    [ "SetBoolUniform", "class_shader.html#a06b316ea498b6f3114e2048e33a2640c", null ],
+    [ "SetFloatUniform", "class_shader.html#a8fc8ad9035abae25a6365fe6e602e202", null ],
+    [ "SetID", "class_shader.html#a28a4711637cca9bada7a9cb3cc3d3aea", null ],
+    [ "SetIntUniform", "class_shader.html#ae21dc0c955edfa4bd8fdc773c1a88ea3", null ],
+    [ "SetMat4Uniform", "class_shader.html#af3c9771992ec0ec23433713bebb4ee79", null ],
+    [ "SetShaderName", "class_shader.html#a239e5bd43f690f34dd2847ac7813fa38", null ],
+    [ "SetVec3Uniform", "class_shader.html#a45c80435b4ade277078d352c0cad5aa8", null ],
+    [ "SetVec4Uniform", "class_shader.html#a30a6937913a5b713c56719196dad219d", null ],
+    [ "Use", "class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1", null ]
 ];

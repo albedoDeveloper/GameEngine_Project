@@ -1,12 +1,11 @@
 <map id="Transform.h" name="Transform.h">
-<area shape="rect" id="node1" title=" " alt="" coords="549,5,639,32"/>
-<area shape="rect" id="node2" href="$_math_library_8h.html" title=" " alt="" coords="441,80,542,107"/>
-<area shape="rect" id="node9" title=" " alt="" coords="567,80,621,107"/>
-<area shape="rect" id="node10" title=" " alt="" coords="646,80,777,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,162,124,189"/>
-<area shape="rect" id="node4" title=" " alt="" coords="149,162,327,189"/>
-<area shape="rect" id="node5" title=" " alt="" coords="351,162,474,189"/>
-<area shape="rect" id="node6" title=" " alt="" coords="498,162,645,189"/>
-<area shape="rect" id="node7" title=" " alt="" coords="669,155,799,196"/>
-<area shape="rect" id="node8" title=" " alt="" coords="824,162,991,189"/>
+<area shape="rect" id="node1" title=" " alt="" coords="322,5,413,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="157,80,212,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="237,80,367,107"/>
+<area shape="rect" id="node4" href="$_vector3f_8h.html" title=" " alt="" coords="392,80,473,107"/>
+<area shape="rect" id="node8" href="$_quaternion_8h.html" title=" " alt="" coords="541,155,637,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,155,124,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="149,155,325,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="349,155,516,181"/>
+<area shape="rect" id="node9" title=" " alt="" coords="499,229,678,256"/>
 </map>

@@ -91,25 +91,25 @@ $(document).ready(function(){initNavTree('_sky_box_8cpp_source.html',''); initRe
 <a href="_sky_box_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_sky_box_8h.html">SkyBox.h</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;stbi_image/stb_image.h&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_sky_box.html#a282e6669514ccb632b75f67342dcd089">    4</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_sky_box.html#a282e6669514ccb632b75f67342dcd089">SkyBox::CreateSkybox</a>(std::vector&lt;std::string&gt; skyBoxFaces)</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_sky_box.html#a0968f9c0b87491621b2b327db1108718">    4</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_sky_box.html#a0968f9c0b87491621b2b327db1108718">SkyBox::CreateSkybox</a>(std::vector&lt;std::string&gt; textures)</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    glGenTextures(1, &amp;texID);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    glBindTexture(GL_TEXTURE_CUBE_MAP, texID);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    glGenTextures(1, &amp;m_texID);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    glBindTexture(GL_TEXTURE_CUBE_MAP, m_texID);</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">int</span> width, height, nrChannels;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; skyBoxFaces.size(); i++)</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; textures.size(); i++)</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* data = stbi_load(skyBoxFaces[i].c_str(), &amp;width, &amp;height, &amp;nrChannels, 0);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *data = stbi_load(textures[i].c_str(), &amp;width, &amp;height, &amp;nrChannels, 0);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordflow">if</span> (data)</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                         0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            );</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            stbi_image_free(data);</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        }</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Failed to load skybox texture: &quot;</span> &lt;&lt; skyBoxFaces[i] &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Failed to load skybox texture: &quot;</span> &lt;&lt; textures[i] &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            stbi_image_free(data);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
@@ -121,50 +121,47 @@ $(document).ready(function(){initNavTree('_sky_box_8cpp_source.html',''); initRe
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    skyBoxShader = <span class="keyword">new</span> <a class="code" href="class_shader.html">Shader</a>(<span class="stringliteral">&quot;./shaders/skyBox.vert&quot;</span>, <span class="stringliteral">&quot;./shaders/skyBox.frag&quot;</span>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="class_sky_box.html#a4170faf85d9c48b6b84aebae9f0efbd1">CreateVAOandVBO</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    skyBoxShader = <span class="keyword">new</span> <a class="code" href="class_shader.html">Shader</a>(<span class="stringliteral">&quot;./shaders/simple.vert&quot;</span>, <span class="stringliteral">&quot;./shaders/skyBox.frag&quot;</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    CreateVAOandVBO();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_sky_box.html#afc48f952a1b9bb4777d4ef4c47eb99af">   38</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_sky_box.html#afc48f952a1b9bb4777d4ef4c47eb99af">SkyBox::DrawSkybox</a>(<span class="keyword">const</span> glm::mat4&amp; persepective, <span class="keyword">const</span> glm::mat4&amp; view)</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_sky_box.html#acdb120b43fa970aaecb43c460e688f51">   38</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_sky_box.html#acdb120b43fa970aaecb43c460e688f51">SkyBox::DrawSkybox</a>(<a class="code" href="class_matrix4f.html">Matrix4f</a> projection, <a class="code" href="class_matrix4f.html">Matrix4f</a> view)</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    glDepthMask(GL_FALSE);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    glEnable(GL_CULL_FACE);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    glPolygonMode(GL_FRONT, GL_FILL);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    skyBoxShader-&gt;<a class="code" href="class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1">Use</a>();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    skyBoxShader-&gt;<a class="code" href="class_shader.html#a073aaba20478e601d18d761ef187d9aa">SetMat4</a>(<span class="stringliteral">&quot;projection&quot;</span>, persepective);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    skyBoxShader-&gt;<a class="code" href="class_shader.html#a073aaba20478e601d18d761ef187d9aa">SetMat4</a>(<span class="stringliteral">&quot;view&quot;</span>, glm::mat4(glm::mat3(view)));</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    glBindVertexArray(VAO);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    glBindTexture(GL_TEXTURE_CUBE_MAP, texID);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    skyBoxShader-&gt;<a class="code" href="class_shader.html#af3c9771992ec0ec23433713bebb4ee79">SetMat4Uniform</a>(<span class="stringliteral">&quot;projection&quot;</span>, projection);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    skyBoxShader-&gt;<a class="code" href="class_shader.html#af3c9771992ec0ec23433713bebb4ee79">SetMat4Uniform</a>(<span class="stringliteral">&quot;view&quot;</span>, view);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    glBindVertexArray(m_VAO);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    glBindTexture(GL_TEXTURE_CUBE_MAP, m_texID);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    glDrawArrays(GL_TRIANGLES, 0, 36);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    glDepthMask(GL_TRUE);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_sky_box.html#a4170faf85d9c48b6b84aebae9f0efbd1">   53</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_sky_box.html#a4170faf85d9c48b6b84aebae9f0efbd1">SkyBox::CreateVAOandVBO</a>()</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> SkyBox::CreateVAOandVBO()</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    glGenVertexArrays(1, &amp;VAO);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    glGenBuffers(1, &amp;VBO);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    glGenVertexArrays(1, &amp;m_VAO);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    glGenBuffers(1, &amp;m_VBO);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    glBindVertexArray(VAO);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    glBindVertexArray(m_VAO);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// load data into vertex buffers</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    glBindBuffer(GL_ARRAY_BUFFER, VBO);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    glBindBuffer(GL_ARRAY_BUFFER, m_VBO);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    glBufferData(GL_ARRAY_BUFFER, skyboxVertices.size() * <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), &amp;skyboxVertices.data()[0], GL_STATIC_DRAW);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    glEnableVertexAttribArray(0);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3* <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), (<span class="keywordtype">void</span>*)0);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>), (<span class="keywordtype">void</span> *)0);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    glBindVertexArray(0);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="ttc" id="a_sky_box_8h_html"><div class="ttname"><a href="_sky_box_8h.html">SkyBox.h</a></div></div>
-<div class="ttc" id="aclass_shader_html"><div class="ttname"><a href="class_shader.html">Shader</a></div><div class="ttdef"><b>Definition:</b> <a href="_shader_8h_source.html#l00014">Shader.h:15</a></div></div>
-<div class="ttc" id="aclass_shader_html_a073aaba20478e601d18d761ef187d9aa"><div class="ttname"><a href="class_shader.html#a073aaba20478e601d18d761ef187d9aa">Shader::SetMat4</a></div><div class="ttdeci">void SetMat4(const std::string &amp;name, const glm::mat4 &amp;mat) const</div><div class="ttdef"><b>Definition:</b> <a href="_shader_8h_source.html#l00044">Shader.h:44</a></div></div>
-<div class="ttc" id="aclass_shader_html_a11a2de17d1d077ec34acd4f7cd57f6b1"><div class="ttname"><a href="class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1">Shader::Use</a></div><div class="ttdeci">virtual void Use() const</div><div class="ttdef"><b>Definition:</b> <a href="_shader_8cpp_source.html#l00005">Shader.cpp:5</a></div></div>
-<div class="ttc" id="aclass_sky_box_html_a282e6669514ccb632b75f67342dcd089"><div class="ttname"><a href="class_sky_box.html#a282e6669514ccb632b75f67342dcd089">SkyBox::CreateSkybox</a></div><div class="ttdeci">void CreateSkybox(std::vector&lt; std::string &gt; skyBoxFaces)</div><div class="ttdef"><b>Definition:</b> <a href="_sky_box_8cpp_source.html#l00004">SkyBox.cpp:4</a></div></div>
-<div class="ttc" id="aclass_sky_box_html_a4170faf85d9c48b6b84aebae9f0efbd1"><div class="ttname"><a href="class_sky_box.html#a4170faf85d9c48b6b84aebae9f0efbd1">SkyBox::CreateVAOandVBO</a></div><div class="ttdeci">void CreateVAOandVBO()</div><div class="ttdef"><b>Definition:</b> <a href="_sky_box_8cpp_source.html#l00053">SkyBox.cpp:53</a></div></div>
-<div class="ttc" id="aclass_sky_box_html_afc48f952a1b9bb4777d4ef4c47eb99af"><div class="ttname"><a href="class_sky_box.html#afc48f952a1b9bb4777d4ef4c47eb99af">SkyBox::DrawSkybox</a></div><div class="ttdeci">void DrawSkybox(const glm::mat4 &amp;persepective, const glm::mat4 &amp;view)</div><div class="ttdef"><b>Definition:</b> <a href="_sky_box_8cpp_source.html#l00038">SkyBox.cpp:38</a></div></div>
+<div class="ttc" id="aclass_matrix4f_html"><div class="ttname"><a href="class_matrix4f.html">Matrix4f</a></div><div class="ttdef"><b>Definition:</b> <a href="_matrix4f_8h_source.html#l00017">Matrix4f.h:18</a></div></div>
+<div class="ttc" id="aclass_shader_html"><div class="ttname"><a href="class_shader.html">Shader</a></div><div class="ttdef"><b>Definition:</b> <a href="_shader_8h_source.html#l00024">Shader.h:25</a></div></div>
+<div class="ttc" id="aclass_shader_html_a11a2de17d1d077ec34acd4f7cd57f6b1"><div class="ttname"><a href="class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1">Shader::Use</a></div><div class="ttdeci">virtual void Use() const</div><div class="ttdoc">Sets this shader object to the current opengl shader instance</div><div class="ttdef"><b>Definition:</b> <a href="_shader_8cpp_source.html#l00005">Shader.cpp:5</a></div></div>
+<div class="ttc" id="aclass_shader_html_af3c9771992ec0ec23433713bebb4ee79"><div class="ttname"><a href="class_shader.html#af3c9771992ec0ec23433713bebb4ee79">Shader::SetMat4Uniform</a></div><div class="ttdeci">void SetMat4Uniform(const std::string &amp;name, Matrix4f mat) const</div><div class="ttdoc">Sets a global matrix 4x4 uniform in the shader</div><div class="ttdef"><b>Definition:</b> <a href="_shader_8cpp_source.html#l00091">Shader.cpp:91</a></div></div>
+<div class="ttc" id="aclass_sky_box_html_a0968f9c0b87491621b2b327db1108718"><div class="ttname"><a href="class_sky_box.html#a0968f9c0b87491621b2b327db1108718">SkyBox::CreateSkybox</a></div><div class="ttdeci">void CreateSkybox(std::vector&lt; std::string &gt; textures)</div><div class="ttdef"><b>Definition:</b> <a href="_sky_box_8cpp_source.html#l00004">SkyBox.cpp:4</a></div></div>
+<div class="ttc" id="aclass_sky_box_html_acdb120b43fa970aaecb43c460e688f51"><div class="ttname"><a href="class_sky_box.html#acdb120b43fa970aaecb43c460e688f51">SkyBox::DrawSkybox</a></div><div class="ttdeci">void DrawSkybox(Matrix4f projection, Matrix4f view)</div><div class="ttdef"><b>Definition:</b> <a href="_sky_box_8cpp_source.html#l00038">SkyBox.cpp:38</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

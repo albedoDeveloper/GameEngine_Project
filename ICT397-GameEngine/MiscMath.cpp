@@ -31,9 +31,9 @@ void Decompose(const Matrix4f &m, Vector3f &scaleOut, Quaternion &rotationOut, V
 	positionOut.SetZ(pos.z);
 }
 
-float Lerp(float start, float end, float time)
+float Lerp(float start, float end, float interpolant)
 {
-	return start + time * (end - start);
+	return start + interpolant * (end - start);
 }
 
 float BiLerp(float a, float b, float c, float d, float x, float z)

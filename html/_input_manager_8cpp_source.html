@@ -100,39 +100,39 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_input_manager.html#a53a27e2e25bec96173a4c7532515d10e">   13</a></span>&#160;<a class="code" href="class_input_manager.html">InputManager</a>* <a class="code" href="class_input_manager.html#a53a27e2e25bec96173a4c7532515d10e">InputManager::Instance</a>() </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_input_manager.html#a53a27e2e25bec96173a4c7532515d10e">   13</a></span>&#160;<a class="code" href="class_input_manager.html">InputManager</a> *<a class="code" href="class_input_manager.html#a53a27e2e25bec96173a4c7532515d10e">InputManager::Instance</a>()</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_input_manager.html">InputManager</a> inputMngr;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">return</span> &amp;inputMngr;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_input_manager.html#a8570c6a2336f8d579b30867d9a7fa97f">   19</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a8570c6a2336f8d579b30867d9a7fa97f">InputManager::CheckKey</a>(SDL_Event* e)</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_input_manager.html#a8570c6a2336f8d579b30867d9a7fa97f">   19</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a8570c6a2336f8d579b30867d9a7fa97f">InputManager::CheckKey</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    m_Event = e;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">switch</span> (e-&gt;type)</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">case</span>(SDL_KEYDOWN):</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">CheckKeyDown</a>(e);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">case</span>(SDL_KEYUP):</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">CheckKeyUp</a>(e);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">case</span>(SDL_MOUSEBUTTONDOWN):</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <a class="code" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">CheckMouseButtonDown</a>(e);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">case</span>(SDL_KEYDOWN):</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">CheckKeyDown</a>(e);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">case</span>(SDL_KEYUP):</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">CheckKeyUp</a>(e);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">case</span>(SDL_MOUSEBUTTONDOWN):</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">CheckMouseButtonDown</a>(e);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">case</span>(SDL_MOUSEBUTTONUP):</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">CheckMouseButtonUp</a>(e);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">case</span>(SDL_MOUSEBUTTONUP):</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">CheckMouseButtonUp</a>(e);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">case</span>(SDL_MOUSEMOTION):</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <a class="code" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">CheckMouseMovement</a>(e);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">case</span>(SDL_MOUSEMOTION):</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">CheckMouseMovement</a>(e);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">default</span>:</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">   45</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">InputManager::CheckKeyDown</a>(SDL_Event* e) </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">   45</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">InputManager::CheckKeyDown</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">switch</span> (e-&gt;key.keysym.sym)</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
@@ -199,7 +199,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            m_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            m_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span>(debugKeyPresses)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> (debugKeyPresses)</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;k Down: &quot;</span> &lt;&lt; <span class="stringliteral">&quot; down = &quot;</span> &lt;&lt; x_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a> &lt;&lt; <span class="stringliteral">&quot;: held = &quot;</span> &lt;&lt; x_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> &lt;&lt; <span class="stringliteral">&quot;: up = &quot;</span> &lt;&lt; x_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">case</span> SDLK_c:</div>
@@ -248,7 +248,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">  161</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">InputManager::CheckKeyUp</a>(SDL_Event* e) </div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">  161</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">InputManager::CheckKeyUp</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;{</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">switch</span> (e-&gt;key.keysym.sym)</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    {</div>
@@ -334,20 +334,20 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">  247</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">InputManager::CheckMouseButtonDown</a>(SDL_Event* e)</div>
+<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">  247</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">InputManager::CheckMouseButtonDown</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;{</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">switch</span> (e-&gt;button.button)</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">case</span> SDL_BUTTON_LEFT:  </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">case</span> SDL_BUTTON_LEFT:</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        leftMouseButton.<a class="code" href="struct_mouse_button.html#aed4f07c2bc62d3cea2f3b0418323dcb2">held</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        leftMouseButton.<a class="code" href="struct_mouse_button.html#af0c32568169b672be66b33081986f95d">down</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordflow">if</span> (debugMouseButtons)</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;LMB Down: &quot;</span> &lt;&lt; <span class="stringliteral">&quot; down = &quot;</span> &lt;&lt; leftMouseButton.<a class="code" href="struct_mouse_button.html#af0c32568169b672be66b33081986f95d">down</a> &lt;&lt; <span class="stringliteral">&quot;: held = &quot;</span> &lt;&lt; leftMouseButton.<a class="code" href="struct_mouse_button.html#aed4f07c2bc62d3cea2f3b0418323dcb2">held</a> &lt;&lt;</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="stringliteral">&quot;: up = &quot;</span> &lt;&lt; leftMouseButton.<a class="code" href="struct_mouse_button.html#a5435ec928759a6b9129f6eb2643f76b2">up</a> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">case</span> SDL_BUTTON_RIGHT:  </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">case</span> SDL_BUTTON_RIGHT:</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        rightMouseButton.<a class="code" href="struct_mouse_button.html#aed4f07c2bc62d3cea2f3b0418323dcb2">held</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        rightMouseButton.<a class="code" href="struct_mouse_button.html#af0c32568169b672be66b33081986f95d">down</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
@@ -355,7 +355,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;RMB Down: &quot;</span> &lt;&lt; <span class="stringliteral">&quot; down = &quot;</span> &lt;&lt; rightMouseButton.<a class="code" href="struct_mouse_button.html#af0c32568169b672be66b33081986f95d">down</a> &lt;&lt; <span class="stringliteral">&quot;: held = &quot;</span> &lt;&lt; rightMouseButton.<a class="code" href="struct_mouse_button.html#aed4f07c2bc62d3cea2f3b0418323dcb2">held</a> &lt;&lt;</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="stringliteral">&quot;: up = &quot;</span> &lt;&lt; rightMouseButton.<a class="code" href="struct_mouse_button.html#a5435ec928759a6b9129f6eb2643f76b2">up</a> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">case</span> SDL_BUTTON_MIDDLE:  </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">case</span> SDL_BUTTON_MIDDLE:</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        middleMouseButton.<a class="code" href="struct_mouse_button.html#aed4f07c2bc62d3cea2f3b0418323dcb2">held</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        middleMouseButton.<a class="code" href="struct_mouse_button.html#af0c32568169b672be66b33081986f95d">down</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
@@ -366,7 +366,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
-<div class="line"><a name="l00279"></a><span class="lineno"><a class="line" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">  279</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">InputManager::CheckMouseButtonUp</a>(SDL_Event* e)</div>
+<div class="line"><a name="l00279"></a><span class="lineno"><a class="line" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">  279</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">InputManager::CheckMouseButtonUp</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;{</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">switch</span> (e-&gt;button.button)</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    {</div>
@@ -376,7 +376,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        leftMouseButton.<a class="code" href="struct_mouse_button.html#af0c32568169b672be66b33081986f95d">down</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <span class="keywordflow">if</span> (debugMouseButtons)</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;LMB Released: &quot;</span> &lt;&lt; <span class="stringliteral">&quot; down = &quot;</span> &lt;&lt; leftMouseButton.<a class="code" href="struct_mouse_button.html#af0c32568169b672be66b33081986f95d">down</a> &lt;&lt; <span class="stringliteral">&quot;: held = &quot;</span> &lt;&lt; leftMouseButton.<a class="code" href="struct_mouse_button.html#aed4f07c2bc62d3cea2f3b0418323dcb2">held</a> &lt;&lt;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="stringliteral">&quot;: up = &quot;</span> &lt;&lt; leftMouseButton.<a class="code" href="struct_mouse_button.html#a5435ec928759a6b9129f6eb2643f76b2">up</a> &lt;&lt; std::endl; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="stringliteral">&quot;: up = &quot;</span> &lt;&lt; leftMouseButton.<a class="code" href="struct_mouse_button.html#a5435ec928759a6b9129f6eb2643f76b2">up</a> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">case</span> SDL_BUTTON_RIGHT:</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        rightMouseButton.<a class="code" href="struct_mouse_button.html#a5435ec928759a6b9129f6eb2643f76b2">up</a> = <span class="keyword">true</span>;</div>
@@ -395,29 +395,29 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <span class="stringliteral">&quot;: up = &quot;</span> &lt;&lt; middleMouseButton.<a class="code" href="struct_mouse_button.html#a5435ec928759a6b9129f6eb2643f76b2">up</a> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;}   </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;}</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00310"></a><span class="lineno"><a class="line" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">  310</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">InputManager::CheckMouseMovement</a>(SDL_Event* e) </div>
+<div class="line"><a name="l00310"></a><span class="lineno"><a class="line" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">  310</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">InputManager::CheckMouseMovement</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;{</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    mouseXAbsolute = e-&gt;motion.x;</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    mouseYAbsolute = e-&gt;motion.y;</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    mouseX = -(prevMouseX - e-&gt;motion.x);</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    prevMouseX = e-&gt;motion.x;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    mouseY = prevMouseY - e-&gt;motion.y;</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    prevMouseY = e-&gt;motion.y;</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
-<div class="line"><a name="l00323"></a><span class="lineno"><a class="line" href="class_input_manager.html#a71dfb54d4f12da17bb2f29d5a7673334">  323</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a71dfb54d4f12da17bb2f29d5a7673334">InputManager::ResetInputValues</a>() </div>
+<div class="line"><a name="l00323"></a><span class="lineno"><a class="line" href="class_input_manager.html#a71dfb54d4f12da17bb2f29d5a7673334">  323</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a71dfb54d4f12da17bb2f29d5a7673334">InputManager::ResetInputValues</a>()</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;{</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <a class="code" href="class_input_manager.html#a0d794230d5c5652089ea6cee4cd8e2ea">ResetKeyValues</a>();</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="class_input_manager.html#a3ff1c64deca492714a35d741c9c0c19b">ResetMouseButtonValues</a>();</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <a class="code" href="class_input_manager.html#a7d6f584744fad5d74df18ec536d924ae">ResetAxisValues</a>();</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
-<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="class_input_manager.html#a0d794230d5c5652089ea6cee4cd8e2ea">  330</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a0d794230d5c5652089ea6cee4cd8e2ea">InputManager::ResetKeyValues</a>() </div>
+<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="class_input_manager.html#a0d794230d5c5652089ea6cee4cd8e2ea">  330</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a0d794230d5c5652089ea6cee4cd8e2ea">InputManager::ResetKeyValues</a>()</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;{</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    w_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="comment">//w_Key.held = false;</span></div>
@@ -462,8 +462,8 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    space_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    tilde_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    tilde_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a> = <span class="keyword">false</span>;    </div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    tilde_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    esc_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    esc_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;}</div>
@@ -486,7 +486,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    middleMouseButton.<a class="code" href="struct_mouse_button.html#a5435ec928759a6b9129f6eb2643f76b2">up</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;}</div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
-<div class="line"><a name="l00399"></a><span class="lineno"><a class="line" href="class_input_manager.html#a7d6f584744fad5d74df18ec536d924ae">  399</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a7d6f584744fad5d74df18ec536d924ae">InputManager::ResetAxisValues</a>() </div>
+<div class="line"><a name="l00399"></a><span class="lineno"><a class="line" href="class_input_manager.html#a7d6f584744fad5d74df18ec536d924ae">  399</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a7d6f584744fad5d74df18ec536d924ae">InputManager::ResetAxisValues</a>()</div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;{</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    mouseX = 0;</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    mouseY = 0;</div>
@@ -496,43 +496,43 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;{</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordflow">switch</span> (keyCode)</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    {</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a61e9c06ea9a85a5088a499df6458d276">KeyCode::W</a>:</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            <span class="keywordflow">return</span>  w_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || w_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a5dbc98dcc983a70728bd082d1a47546e">KeyCode::S</a>: </div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            <span class="keywordflow">return</span>  s_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || s_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            <span class="keywordflow">break</span>;       </div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a7fc56270e7a70fa81a5935b72eacbe29">KeyCode::A</a>: </div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            <span class="keywordflow">return</span>  a_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || a_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            <span class="keywordflow">break</span>;       </div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2af623e75af30e62bbd73d6df5b50bb7b5">KeyCode::D</a>: </div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            <span class="keywordflow">return</span>  d_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || d_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a21c2e59531c8710156d34a3c30ac81d5">KeyCode::Z</a>:</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            <span class="keywordflow">return</span>  z_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || z_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a02129bb861061d1a052c592e2dc6b383">KeyCode::X</a>:</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            <span class="keywordflow">return</span>  x_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || x_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2aa5f3c6a11b03839d46af9fb43c97c188">KeyCode::K</a>:</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            <span class="keywordflow">return</span>  k_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || k_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">KeyCode::T</a>:</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            <span class="keywordflow">return</span>  t_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || t_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a69691c7bdcc3ce6d5d8a1361f22d04ac">KeyCode::M</a>:</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            <span class="keywordflow">return</span>  m_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || m_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a6506ae39fdca9845e3a6de3865183e57">KeyCode::SPACE</a>:</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            <span class="keywordflow">return</span> space_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || space_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a61e9c06ea9a85a5088a499df6458d276">KeyCode::W</a>:</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <span class="keywordflow">return</span>  w_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || w_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a5dbc98dcc983a70728bd082d1a47546e">KeyCode::S</a>:</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <span class="keywordflow">return</span>  s_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || s_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a7fc56270e7a70fa81a5935b72eacbe29">KeyCode::A</a>:</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        <span class="keywordflow">return</span>  a_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || a_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2af623e75af30e62bbd73d6df5b50bb7b5">KeyCode::D</a>:</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keywordflow">return</span>  d_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || d_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a21c2e59531c8710156d34a3c30ac81d5">KeyCode::Z</a>:</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        <span class="keywordflow">return</span>  z_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || z_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a02129bb861061d1a052c592e2dc6b383">KeyCode::X</a>:</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        <span class="keywordflow">return</span>  x_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || x_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2aa5f3c6a11b03839d46af9fb43c97c188">KeyCode::K</a>:</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        <span class="keywordflow">return</span>  k_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || k_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">KeyCode::T</a>:</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        <span class="keywordflow">return</span>  t_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || t_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a69691c7bdcc3ce6d5d8a1361f22d04ac">KeyCode::M</a>:</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        <span class="keywordflow">return</span>  m_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || m_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a6506ae39fdca9845e3a6de3865183e57">KeyCode::SPACE</a>:</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="keywordflow">return</span> space_Key.<a class="code" href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">held</a> || space_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    }</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;}</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
 <div class="line"><a name="l00444"></a><span class="lineno"><a class="line" href="class_input_manager.html#a172d1f82841bb39057e3d198fa0d74e6">  444</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="class_input_manager.html#a172d1f82841bb39057e3d198fa0d74e6">InputManager::GetKey</a>(<span class="keywordtype">char</span> c)</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;{    </div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;{</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="keywordflow">switch</span> (c)</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    {</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    <span class="keywordflow">case</span> <span class="charliteral">&#39;w&#39;</span>:</div>
@@ -592,41 +592,41 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;{</div>
 <div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    <span class="keywordflow">switch</span> (keyCode)</div>
 <div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    {</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a61e9c06ea9a85a5088a499df6458d276">KeyCode::W</a>:</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            <span class="keywordflow">return</span>  w_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a5dbc98dcc983a70728bd082d1a47546e">KeyCode::S</a>:</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;            <span class="keywordflow">return</span>  s_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a7fc56270e7a70fa81a5935b72eacbe29">KeyCode::A</a>:</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            <span class="keywordflow">return</span>  a_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2af623e75af30e62bbd73d6df5b50bb7b5">KeyCode::D</a>:</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            <span class="keywordflow">return</span>  d_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a21c2e59531c8710156d34a3c30ac81d5">KeyCode::Z</a>:</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            <span class="keywordflow">return</span>  z_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a02129bb861061d1a052c592e2dc6b383">KeyCode::X</a>:</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            <span class="keywordflow">return</span>  x_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2aa5f3c6a11b03839d46af9fb43c97c188">KeyCode::K</a>:</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            <span class="keywordflow">return</span>  k_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">KeyCode::T</a>:</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;            <span class="keywordflow">return</span>  t_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a69691c7bdcc3ce6d5d8a1361f22d04ac">KeyCode::M</a>:</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;            <span class="keywordflow">return</span>  m_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a6506ae39fdca9845e3a6de3865183e57">KeyCode::SPACE</a>:</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;            <span class="keywordflow">return</span> space_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a6351aefd1e5e1b62c76f8580116964be">KeyCode::ESC</a>:</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;            <span class="keywordflow">return</span> esc_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a61e9c06ea9a85a5088a499df6458d276">KeyCode::W</a>:</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        <span class="keywordflow">return</span>  w_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a5dbc98dcc983a70728bd082d1a47546e">KeyCode::S</a>:</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;        <span class="keywordflow">return</span>  s_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a7fc56270e7a70fa81a5935b72eacbe29">KeyCode::A</a>:</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;        <span class="keywordflow">return</span>  a_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2af623e75af30e62bbd73d6df5b50bb7b5">KeyCode::D</a>:</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;        <span class="keywordflow">return</span>  d_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a21c2e59531c8710156d34a3c30ac81d5">KeyCode::Z</a>:</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;        <span class="keywordflow">return</span>  z_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a02129bb861061d1a052c592e2dc6b383">KeyCode::X</a>:</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;        <span class="keywordflow">return</span>  x_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2aa5f3c6a11b03839d46af9fb43c97c188">KeyCode::K</a>:</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        <span class="keywordflow">return</span>  k_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">KeyCode::T</a>:</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        <span class="keywordflow">return</span>  t_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a69691c7bdcc3ce6d5d8a1361f22d04ac">KeyCode::M</a>:</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;        <span class="keywordflow">return</span>  m_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a6506ae39fdca9845e3a6de3865183e57">KeyCode::SPACE</a>:</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;        <span class="keywordflow">return</span> space_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a6351aefd1e5e1b62c76f8580116964be">KeyCode::ESC</a>:</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;        <span class="keywordflow">return</span> esc_Key.<a class="code" href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">down</a>;</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    }</div>
 <div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;}</div>
@@ -691,35 +691,35 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;{</div>
 <div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    <span class="keywordflow">switch</span> (keyCode)</div>
 <div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;    {</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a61e9c06ea9a85a5088a499df6458d276">KeyCode::W</a>:</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            <span class="keywordflow">return</span>  w_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a5dbc98dcc983a70728bd082d1a47546e">KeyCode::S</a>:</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;            <span class="keywordflow">return</span>  s_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a7fc56270e7a70fa81a5935b72eacbe29">KeyCode::A</a>:</div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;            <span class="keywordflow">return</span>  a_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2af623e75af30e62bbd73d6df5b50bb7b5">KeyCode::D</a>:</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;            <span class="keywordflow">return</span>  d_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a21c2e59531c8710156d34a3c30ac81d5">KeyCode::Z</a>:</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;            <span class="keywordflow">return</span>  z_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a02129bb861061d1a052c592e2dc6b383">KeyCode::X</a>:</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;            <span class="keywordflow">return</span>  x_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2aa5f3c6a11b03839d46af9fb43c97c188">KeyCode::K</a>:</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;            <span class="keywordflow">return</span>  k_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">KeyCode::T</a>:</div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;            <span class="keywordflow">return</span>  k_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;        <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a6506ae39fdca9845e3a6de3865183e57">KeyCode::SPACE</a>:</div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;            <span class="keywordflow">return</span> space_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a61e9c06ea9a85a5088a499df6458d276">KeyCode::W</a>:</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        <span class="keywordflow">return</span>  w_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a5dbc98dcc983a70728bd082d1a47546e">KeyCode::S</a>:</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        <span class="keywordflow">return</span>  s_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a7fc56270e7a70fa81a5935b72eacbe29">KeyCode::A</a>:</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;        <span class="keywordflow">return</span>  a_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2af623e75af30e62bbd73d6df5b50bb7b5">KeyCode::D</a>:</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;        <span class="keywordflow">return</span>  d_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a21c2e59531c8710156d34a3c30ac81d5">KeyCode::Z</a>:</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;        <span class="keywordflow">return</span>  z_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a02129bb861061d1a052c592e2dc6b383">KeyCode::X</a>:</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;        <span class="keywordflow">return</span>  x_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2aa5f3c6a11b03839d46af9fb43c97c188">KeyCode::K</a>:</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;        <span class="keywordflow">return</span>  k_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">KeyCode::T</a>:</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;        <span class="keywordflow">return</span>  k_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    <span class="keywordflow">case</span>  <a class="code" href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a6506ae39fdca9845e3a6de3865183e57">KeyCode::SPACE</a>:</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        <span class="keywordflow">return</span> space_Key.<a class="code" href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">up</a>;</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    }</div>
 <div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;}</div>
@@ -779,16 +779,16 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;    {</div>
 <div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    <span class="keywordflow">case</span> 0:</div>
 <div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;        <span class="keywordflow">return</span> leftMouseButton.<a class="code" href="struct_mouse_button.html#aed4f07c2bc62d3cea2f3b0418323dcb2">held</a>;</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;    <span class="keywordflow">case</span> 1:</div>
 <div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;        <span class="keywordflow">return</span> rightMouseButton.<a class="code" href="struct_mouse_button.html#aed4f07c2bc62d3cea2f3b0418323dcb2">held</a>;</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    <span class="keywordflow">case</span> 2:</div>
 <div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;        <span class="keywordflow">return</span> middleMouseButton.<a class="code" href="struct_mouse_button.html#aed4f07c2bc62d3cea2f3b0418323dcb2">held</a>;</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;    <span class="keywordflow">default</span>:</div>
 <div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;    }</div>
 <div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;}</div>
 <div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160; </div>
@@ -832,12 +832,12 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160; </div>
 <div class="line"><a name="l00743"></a><span class="lineno"><a class="line" href="class_input_manager.html#aa0a2e8d1b38d06b6d6f8155d63c15d6a">  743</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_input_manager.html#aa0a2e8d1b38d06b6d6f8155d63c15d6a">InputManager::GetAxis</a>(std::string axisName)</div>
 <div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;{</div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    <span class="keywordflow">if</span> (axisName == <span class="stringliteral">&quot;Mouse X&quot;</span>) </div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;    <span class="keywordflow">if</span> (axisName == <span class="stringliteral">&quot;Mouse X&quot;</span>)</div>
 <div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;    {</div>
 <div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;        <span class="keywordflow">return</span> mouseX;</div>
 <div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;    }</div>
 <div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160; </div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;    <span class="keywordflow">if</span> (axisName == <span class="stringliteral">&quot;Mouse Y&quot;</span>) </div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;    <span class="keywordflow">if</span> (axisName == <span class="stringliteral">&quot;Mouse Y&quot;</span>)</div>
 <div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;    {</div>
 <div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;        <span class="keywordflow">return</span> mouseY;</div>
 <div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;    }</div>
@@ -882,10 +882,10 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;{</div>
 <div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;    <a class="code" href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a>-&gt;QuitGame();</div>
 <div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;}</div>
-<div class="ttc" id="a_engine_8h_html"><div class="ttname"><a href="_engine_8h.html">Engine.h</a></div></div>
-<div class="ttc" id="a_engine_8h_html_a0a90beb8d29bf52a676d8da928792519"><div class="ttname"><a href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a></div><div class="ttdeci">#define ENGINE</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8h_source.html#l00103">Engine.h:103</a></div></div>
-<div class="ttc" id="a_input_manager_8h_html"><div class="ttname"><a href="_input_manager_8h.html">InputManager.h</a></div></div>
-<div class="ttc" id="a_input_manager_8h_html_a7885f47644a0388f981f416fa20389b2"><div class="ttname"><a href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2">KeyCode</a></div><div class="ttdeci">KeyCode</div><div class="ttdoc">the letter represented by a key</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00031">InputManager.h:32</a></div></div>
+<div class="ttc" id="a_engine_8h_html"><div class="ttname"><a href="_engine_8h.html">Engine.h</a></div><div class="ttdoc">brief the Engine backend</div></div>
+<div class="ttc" id="a_engine_8h_html_a0a90beb8d29bf52a676d8da928792519"><div class="ttname"><a href="_engine_8h.html#a0a90beb8d29bf52a676d8da928792519">ENGINE</a></div><div class="ttdeci">#define ENGINE</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8h_source.html#l00119">Engine.h:119</a></div></div>
+<div class="ttc" id="a_input_manager_8h_html"><div class="ttname"><a href="_input_manager_8h.html">InputManager.h</a></div><div class="ttdoc">Handles Various Inputs.</div></div>
+<div class="ttc" id="a_input_manager_8h_html_a7885f47644a0388f981f416fa20389b2"><div class="ttname"><a href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2">KeyCode</a></div><div class="ttdeci">KeyCode</div><div class="ttdoc">the letter represented by a key</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00036">InputManager.h:37</a></div></div>
 <div class="ttc" id="a_input_manager_8h_html_a7885f47644a0388f981f416fa20389b2a02129bb861061d1a052c592e2dc6b383"><div class="ttname"><a href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a02129bb861061d1a052c592e2dc6b383">KeyCode::X</a></div><div class="ttdeci">@ X</div></div>
 <div class="ttc" id="a_input_manager_8h_html_a7885f47644a0388f981f416fa20389b2a21c2e59531c8710156d34a3c30ac81d5"><div class="ttname"><a href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a21c2e59531c8710156d34a3c30ac81d5">KeyCode::Z</a></div><div class="ttdeci">@ Z</div></div>
 <div class="ttc" id="a_input_manager_8h_html_a7885f47644a0388f981f416fa20389b2a5dbc98dcc983a70728bd082d1a47546e"><div class="ttname"><a href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2a5dbc98dcc983a70728bd082d1a47546e">KeyCode::S</a></div><div class="ttdeci">@ S</div></div>
@@ -897,7 +897,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="ttc" id="a_input_manager_8h_html_a7885f47644a0388f981f416fa20389b2aa5f3c6a11b03839d46af9fb43c97c188"><div class="ttname"><a href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2aa5f3c6a11b03839d46af9fb43c97c188">KeyCode::K</a></div><div class="ttdeci">@ K</div></div>
 <div class="ttc" id="a_input_manager_8h_html_a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3"><div class="ttname"><a href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2ab9ece18c950afbfa6b0fdbfa4ff731d3">KeyCode::T</a></div><div class="ttdeci">@ T</div></div>
 <div class="ttc" id="a_input_manager_8h_html_a7885f47644a0388f981f416fa20389b2af623e75af30e62bbd73d6df5b50bb7b5"><div class="ttname"><a href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2af623e75af30e62bbd73d6df5b50bb7b5">KeyCode::D</a></div><div class="ttdeci">@ D</div></div>
-<div class="ttc" id="aclass_input_manager_html"><div class="ttname"><a href="class_input_manager.html">InputManager</a></div><div class="ttdoc">singleton managing user input</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00050">InputManager.h:51</a></div></div>
+<div class="ttc" id="aclass_input_manager_html"><div class="ttname"><a href="class_input_manager.html">InputManager</a></div><div class="ttdoc">singleton managing user input</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00055">InputManager.h:56</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a0d794230d5c5652089ea6cee4cd8e2ea"><div class="ttname"><a href="class_input_manager.html#a0d794230d5c5652089ea6cee4cd8e2ea">InputManager::ResetKeyValues</a></div><div class="ttdeci">void ResetKeyValues()</div><div class="ttdoc">resets key values to their original data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00330">InputManager.cpp:330</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a0e837ebe01574849b44a56765e43ad71"><div class="ttname"><a href="class_input_manager.html#a0e837ebe01574849b44a56765e43ad71">InputManager::GetMouseButton</a></div><div class="ttdeci">bool GetMouseButton(int mouseButton)</div><div class="ttdoc">checks whether a mouse button is being held</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00686">InputManager.cpp:686</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a172d1f82841bb39057e3d198fa0d74e6"><div class="ttname"><a href="class_input_manager.html#a172d1f82841bb39057e3d198fa0d74e6">InputManager::GetKey</a></div><div class="ttdeci">bool GetKey(char c)</div><div class="ttdoc">checks whether a key is held or down</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00444">InputManager.cpp:444</a></div></div>
@@ -908,7 +908,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="ttc" id="aclass_input_manager_html_a53a27e2e25bec96173a4c7532515d10e"><div class="ttname"><a href="class_input_manager.html#a53a27e2e25bec96173a4c7532515d10e">InputManager::Instance</a></div><div class="ttdeci">static InputManager * Instance()</div><div class="ttdoc">singleton instance generator</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00013">InputManager.cpp:13</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a55f1f3383601cc430cb80665ce7c637e"><div class="ttname"><a href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">InputManager::CheckKeyDown</a></div><div class="ttdeci">void CheckKeyDown(SDL_Event *e)</div><div class="ttdoc">checks whether a key is moving down and stores the resulting data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00045">InputManager.cpp:45</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a580863f757c65f3349348af997c03fcf"><div class="ttname"><a href="class_input_manager.html#a580863f757c65f3349348af997c03fcf">InputManager::GetMouseButtonDown</a></div><div class="ttdeci">bool GetMouseButtonDown(int mouseButton)</div><div class="ttdoc">checks whether a mouse button is down</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00705">InputManager.cpp:705</a></div></div>
-<div class="ttc" id="aclass_input_manager_html_a5f06ef1be775796f805d360071d1aaab"><div class="ttname"><a href="class_input_manager.html#a5f06ef1be775796f805d360071d1aaab">InputManager::CheckCursorLock</a></div><div class="ttdeci">bool CheckCursorLock()</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00776">InputManager.cpp:776</a></div></div>
+<div class="ttc" id="aclass_input_manager_html_a5f06ef1be775796f805d360071d1aaab"><div class="ttname"><a href="class_input_manager.html#a5f06ef1be775796f805d360071d1aaab">InputManager::CheckCursorLock</a></div><div class="ttdeci">bool CheckCursorLock()</div><div class="ttdoc">Check if the cursor is locked.</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00776">InputManager.cpp:776</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a71dfb54d4f12da17bb2f29d5a7673334"><div class="ttname"><a href="class_input_manager.html#a71dfb54d4f12da17bb2f29d5a7673334">InputManager::ResetInputValues</a></div><div class="ttdeci">void ResetInputValues()</div><div class="ttdoc">resets all input values to their original data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00323">InputManager.cpp:323</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a7d6f584744fad5d74df18ec536d924ae"><div class="ttname"><a href="class_input_manager.html#a7d6f584744fad5d74df18ec536d924ae">InputManager::ResetAxisValues</a></div><div class="ttdeci">void ResetAxisValues()</div><div class="ttdoc">resets mouse movement values to their original data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00399">InputManager.cpp:399</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a8570c6a2336f8d579b30867d9a7fa97f"><div class="ttname"><a href="class_input_manager.html#a8570c6a2336f8d579b30867d9a7fa97f">InputManager::CheckKey</a></div><div class="ttdeci">void CheckKey(SDL_Event *e)</div><div class="ttdoc">checks whether a key is being pressed and stores the resulting data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00019">InputManager.cpp:19</a></div></div>
@@ -916,20 +916,20 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="ttc" id="aclass_input_manager_html_aa0463d9ab75246d2ce93ba5273011864"><div class="ttname"><a href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">InputManager::CheckMouseMovement</a></div><div class="ttdeci">void CheckMouseMovement(SDL_Event *e)</div><div class="ttdoc">checks whether the mouse is being moved and stores the resulting data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00310">InputManager.cpp:310</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_aa0a2e8d1b38d06b6d6f8155d63c15d6a"><div class="ttname"><a href="class_input_manager.html#aa0a2e8d1b38d06b6d6f8155d63c15d6a">InputManager::GetAxis</a></div><div class="ttdeci">int GetAxis(std::string axisName)</div><div class="ttdoc">gets the value of a mouse movement axis</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00743">InputManager.cpp:743</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_aa5be61253a0a18ae8ed38a208d4b5ebd"><div class="ttname"><a href="class_input_manager.html#aa5be61253a0a18ae8ed38a208d4b5ebd">InputManager::GetKeyUpByCode</a></div><div class="ttdeci">bool GetKeyUpByCode(KeyCode keyCode)</div><div class="ttdoc">checks whether a key is up</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00600">InputManager.cpp:600</a></div></div>
-<div class="ttc" id="aclass_input_manager_html_aa5e75e80f5086f1d6c6097dea589722e"><div class="ttname"><a href="class_input_manager.html#aa5e75e80f5086f1d6c6097dea589722e">InputManager::GetMouseXPos</a></div><div class="ttdeci">int GetMouseXPos() const</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00781">InputManager.cpp:781</a></div></div>
+<div class="ttc" id="aclass_input_manager_html_aa5e75e80f5086f1d6c6097dea589722e"><div class="ttname"><a href="class_input_manager.html#aa5e75e80f5086f1d6c6097dea589722e">InputManager::GetMouseXPos</a></div><div class="ttdeci">int GetMouseXPos() const</div><div class="ttdoc">Access current Mouse X position.</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00781">InputManager.cpp:781</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_ac55a8954de6d05dc08141c58783239fe"><div class="ttname"><a href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">InputManager::CheckMouseButtonUp</a></div><div class="ttdeci">void CheckMouseButtonUp(SDL_Event *e)</div><div class="ttdoc">checks whether a mouse button is being released and stores the resulting data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00279">InputManager.cpp:279</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_ac91ed42fc5b99435f048869899e10d36"><div class="ttname"><a href="class_input_manager.html#ac91ed42fc5b99435f048869899e10d36">InputManager::GetKeyByCode</a></div><div class="ttdeci">bool GetKeyByCode(KeyCode keyCode)</div><div class="ttdoc">checks whether a key is held or down</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00405">InputManager.cpp:405</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_aca3fd9c9f408099a74f0ee9d3f565cef"><div class="ttname"><a href="class_input_manager.html#aca3fd9c9f408099a74f0ee9d3f565cef">InputManager::GetKeyDownByCode</a></div><div class="ttdeci">bool GetKeyDownByCode(KeyCode keyCode)</div><div class="ttdoc">checks whether a key is down</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00501">InputManager.cpp:501</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_adde930b4ec958d6f0373405cae659e8f"><div class="ttname"><a href="class_input_manager.html#adde930b4ec958d6f0373405cae659e8f">InputManager::GetKeyDown</a></div><div class="ttdeci">bool GetKeyDown(char c)</div><div class="ttdoc">checks whether a key is down</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00544">InputManager.cpp:544</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_aeca1a04077d915d094064cc38e5837d8"><div class="ttname"><a href="class_input_manager.html#aeca1a04077d915d094064cc38e5837d8">InputManager::QuitGame</a></div><div class="ttdeci">void QuitGame()</div><div class="ttdoc">quits the game</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00791">InputManager.cpp:791</a></div></div>
-<div class="ttc" id="aclass_input_manager_html_af2a750407afe72b3a07f6cb30afa1e2e"><div class="ttname"><a href="class_input_manager.html#af2a750407afe72b3a07f6cb30afa1e2e">InputManager::GetMouseYPos</a></div><div class="ttdeci">int GetMouseYPos() const</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00786">InputManager.cpp:786</a></div></div>
+<div class="ttc" id="aclass_input_manager_html_af2a750407afe72b3a07f6cb30afa1e2e"><div class="ttname"><a href="class_input_manager.html#af2a750407afe72b3a07f6cb30afa1e2e">InputManager::GetMouseYPos</a></div><div class="ttdeci">int GetMouseYPos() const</div><div class="ttdoc">Access current Mouse Y position.</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00786">InputManager.cpp:786</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_afb4a9546b6025c9e059692bbe5815ea2"><div class="ttname"><a href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">InputManager::CheckMouseButtonDown</a></div><div class="ttdeci">void CheckMouseButtonDown(SDL_Event *e)</div><div class="ttdoc">checks whether a mouse button is being help and stores the resulting data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00247">InputManager.cpp:247</a></div></div>
-<div class="ttc" id="astruct_key_html_a1c7fa81ea3ba5fec66863c92f9a6e315"><div class="ttname"><a href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">Key::held</a></div><div class="ttdeci">bool held</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00015">InputManager.h:15</a></div></div>
-<div class="ttc" id="astruct_key_html_a5193f8723d01992084c2fd98909b9f22"><div class="ttname"><a href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">Key::up</a></div><div class="ttdeci">bool up</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00016">InputManager.h:16</a></div></div>
-<div class="ttc" id="astruct_key_html_a6c3991e4d72dbac5edb982502282cc93"><div class="ttname"><a href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">Key::down</a></div><div class="ttdeci">bool down</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00014">InputManager.h:14</a></div></div>
-<div class="ttc" id="astruct_mouse_button_html_a5435ec928759a6b9129f6eb2643f76b2"><div class="ttname"><a href="struct_mouse_button.html#a5435ec928759a6b9129f6eb2643f76b2">MouseButton::up</a></div><div class="ttdeci">bool up</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00026">InputManager.h:26</a></div></div>
-<div class="ttc" id="astruct_mouse_button_html_aed4f07c2bc62d3cea2f3b0418323dcb2"><div class="ttname"><a href="struct_mouse_button.html#aed4f07c2bc62d3cea2f3b0418323dcb2">MouseButton::held</a></div><div class="ttdeci">bool held</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00025">InputManager.h:25</a></div></div>
-<div class="ttc" id="astruct_mouse_button_html_af0c32568169b672be66b33081986f95d"><div class="ttname"><a href="struct_mouse_button.html#af0c32568169b672be66b33081986f95d">MouseButton::down</a></div><div class="ttdeci">bool down</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00024">InputManager.h:24</a></div></div>
+<div class="ttc" id="astruct_key_html_a1c7fa81ea3ba5fec66863c92f9a6e315"><div class="ttname"><a href="struct_key.html#a1c7fa81ea3ba5fec66863c92f9a6e315">Key::held</a></div><div class="ttdeci">bool held</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00019">InputManager.h:19</a></div></div>
+<div class="ttc" id="astruct_key_html_a5193f8723d01992084c2fd98909b9f22"><div class="ttname"><a href="struct_key.html#a5193f8723d01992084c2fd98909b9f22">Key::up</a></div><div class="ttdeci">bool up</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00020">InputManager.h:20</a></div></div>
+<div class="ttc" id="astruct_key_html_a6c3991e4d72dbac5edb982502282cc93"><div class="ttname"><a href="struct_key.html#a6c3991e4d72dbac5edb982502282cc93">Key::down</a></div><div class="ttdeci">bool down</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00018">InputManager.h:18</a></div></div>
+<div class="ttc" id="astruct_mouse_button_html_a5435ec928759a6b9129f6eb2643f76b2"><div class="ttname"><a href="struct_mouse_button.html#a5435ec928759a6b9129f6eb2643f76b2">MouseButton::up</a></div><div class="ttdeci">bool up</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00030">InputManager.h:30</a></div></div>
+<div class="ttc" id="astruct_mouse_button_html_aed4f07c2bc62d3cea2f3b0418323dcb2"><div class="ttname"><a href="struct_mouse_button.html#aed4f07c2bc62d3cea2f3b0418323dcb2">MouseButton::held</a></div><div class="ttdeci">bool held</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00029">InputManager.h:29</a></div></div>
+<div class="ttc" id="astruct_mouse_button_html_af0c32568169b672be66b33081986f95d"><div class="ttname"><a href="struct_mouse_button.html#af0c32568169b672be66b33081986f95d">MouseButton::down</a></div><div class="ttdeci">bool down</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00028">InputManager.h:28</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

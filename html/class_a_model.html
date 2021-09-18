@@ -99,7 +99,7 @@ Collaboration diagram for AModel:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_model__coll__graph.png" border="0" usemap="#a_a_model_coll__map" alt="Collaboration graph"/></div>
 <map name="a_a_model_coll__map" id="a_a_model_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,111,156"/>
+<area shape="rect" title=" " alt="" coords="5,5,115,156"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -115,12 +115,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a78576c2dff8569ea8bdee87b16a64754"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1363890857148e45337668981cc39322"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; float &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_model.html#a1363890857148e45337668981cc39322">MinMax</a> () const</td></tr>
 <tr class="separator:a1363890857148e45337668981cc39322"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46b4def599ab4fb9813921a90fc552ff"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_model.html#a46b4def599ab4fb9813921a90fc552ff">GetMesh</a> ()</td></tr>
-<tr class="separator:a46b4def599ab4fb9813921a90fc552ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4155ce21412384022cc6ae3cf154bc53"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_model.html#a4155ce21412384022cc6ae3cf154bc53">GetMeshes</a> ()</td></tr>
+<tr class="separator:a4155ce21412384022cc6ae3cf154bc53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_a_model_8h_source.html#l00008">8</a> of file <a class="el" href="_a_model_8h_source.html">AModel.h</a>.</p>
+<div class="textblock"><p>Holds model data for a model such as meshes, and textures </p>
+
+<p class="definition">Definition at line <a class="el" href="_a_model_8h_source.html#l00018">18</a> of file <a class="el" href="_a_model_8h_source.html">AModel.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa8badaafdfc5cdeda4b53e078c7f7014"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa8badaafdfc5cdeda4b53e078c7f7014">&#9670;&nbsp;</a></span>AModel()</h2>
@@ -147,6 +148,14 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Constructs model with a unique key and the pathname of the model file to be loaded</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>the file path this model was loaded in from </td></tr>
+    <tr><td class="paramname">key</td><td>the unique key of this model, given by the asset factory </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00006">6</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
 
@@ -168,6 +177,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>draws this asset with a given shader</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shader</td><td>shader should contain the projection, view and model matrices </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00018">18</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
 <div class="dynheader">
@@ -182,30 +198,23 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a46b4def599ab4fb9813921a90fc552ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46b4def599ab4fb9813921a90fc552ff">&#9670;&nbsp;</a></span>GetMesh()</h2>
+<a id="a4155ce21412384022cc6ae3cf154bc53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4155ce21412384022cc6ae3cf154bc53">&#9670;&nbsp;</a></span>GetMeshes()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="class_mesh.html">Mesh</a>&gt;&amp; AModel::GetMesh </td>
+          <td class="memname">std::vector&lt; <a class="el" href="class_mesh.html">Mesh</a> &gt; &amp; AModel::GetMeshes </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>all meshes attatched to this model </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_a_model_8h_source.html#l00016">16</a> of file <a class="el" href="_a_model_8h_source.html">AModel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00034">34</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
 
 </div>
 </div>
@@ -223,6 +232,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the key the asset factory uses to reference this asset </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00013">13</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
 <div class="dynheader">
@@ -232,7 +242,7 @@ Here is the caller graph for this function:</div>
 <map name="aclass_a_model_a8cd02e52572f637579f5d5ff7def0d75_icgraph" id="aclass_a_model_a8cd02e52572f637579f5d5ff7def0d75_icgraph">
 <area shape="rect" title=" " alt="" coords="236,31,333,57"/>
 <area shape="rect" href="class_c_static_mesh.html#abd835b6f7e95f4dbdc7bb4418ada46b4" title="Draws to imgui." alt="" coords="5,5,188,32"/>
-<area shape="rect" href="class_c_static_mesh.html#a410db97c2c01756b0d478049d44e7033" title="saves the component" alt="" coords="30,56,163,83"/>
+<area shape="rect" href="class_c_static_mesh.html#a410db97c2c01756b0d478049d44e7033" title="save the component" alt="" coords="30,56,163,83"/>
 </map>
 </div>
 
@@ -252,6 +262,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>get the min max vertices of this model in x y and z directions</p>
+<dl class="section return"><dt>Returns</dt><dd>in this order [minx, maxx, miny, maxy, minz, maxz] </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00029">29</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
 <div class="dynheader">
@@ -260,7 +272,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_a_model_a1363890857148e45337668981cc39322_icgraph.png" border="0" usemap="#aclass_a_model_a1363890857148e45337668981cc39322_icgraph" alt=""/></div>
 <map name="aclass_a_model_a1363890857148e45337668981cc39322_icgraph" id="aclass_a_model_a1363890857148e45337668981cc39322_icgraph">
 <area shape="rect" title=" " alt="" coords="449,5,569,32"/>
-<area shape="rect" href="class_c_collider.html#ac44996b225b212a06b6e57529e1109ee" title=" " alt="" coords="231,5,401,32"/>
+<area shape="rect" href="class_c_collider.html#ac44996b225b212a06b6e57529e1109ee" title="Creates a box collider around the object. Can either be automatically resized to fit the object,..." alt="" coords="231,5,401,32"/>
 <area shape="rect" href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,5,183,32"/>
 </map>
 </div>
@@ -281,6 +293,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the number of faces this model has </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html#l00024">24</a> of file <a class="el" href="_modern_open_g_l_2_a_model_8cpp_source.html">AModel.cpp</a>.</p>
 <div class="dynheader">
@@ -290,7 +303,7 @@ Here is the caller graph for this function:</div>
 <map name="aclass_a_model_a78576c2dff8569ea8bdee87b16a64754_icgraph" id="aclass_a_model_a78576c2dff8569ea8bdee87b16a64754_icgraph">
 <area shape="rect" title=" " alt="" coords="476,31,613,57"/>
 <area shape="rect" href="class_c_collider.html#ac3edc6cdc9cde55927ee1f3365e468fe" title=" " alt="" coords="231,5,428,32"/>
-<area shape="rect" href="class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8" title=" " alt="" coords="234,56,425,83"/>
+<area shape="rect" href="class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8" title="Creates a convex/polygon collider around the object. Currently is not working." alt="" coords="234,56,425,83"/>
 <area shape="rect" href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,31,183,57"/>
 </map>
 </div>

@@ -81,10 +81,10 @@ Transform *GameObject::GetTransform()
 	return &m_transform;
 }
 
-GameObject *GameObject::GetClosestObject(std::string partialKey)
-{
-	return GAMEOBJECT->getClosestObject(&m_transform, partialKey);
-}
+//GameObject *GameObject::GetClosestObject(std::string partialKey)
+//{
+//	return GAMEOBJECT->GetClosestObject(&m_transform, partialKey);
+//}
 
 CCollider *GameObject::AddCCollider()
 {
@@ -121,29 +121,9 @@ void GameObject::SetActive(bool activeStatus)
 	}
 }
 
-void GameObject::SetDifficulty(std::string difficulty)
-{
-	m_difficulty = difficulty;
-	if (m_isActive)
-	{
-		Start();
-	}
-}
-
-std::string GameObject::GetDifficulty()
-{
-	return m_difficulty;
-}
 
 void GameObject::Start()
 {
-	m_initialActivation = m_isActive;
-
-	m_initTransform = new Transform();
-	m_initTransform.SetPositionV(m_transform.GetPosition());
-	m_initTransform.SetOrientation(m_transform.GetOrientation());
-	m_initTransform.SetScale(m_transform.GetScale());
-
 	if (m_isActive)
 	{
 		// iterate through all component lists
@@ -211,8 +191,6 @@ void GameObject::Save(nlohmann::json &j)
 	j[getFactoryKey()]["key"] = getFactoryKey();
 
 	GetTransform()->ToJson(j, getFactoryKey());
-
-	std::cout << "SAVED" << std::endl;
 
 	// iterate through all component lists
 	for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)

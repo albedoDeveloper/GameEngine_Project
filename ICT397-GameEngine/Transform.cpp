@@ -28,24 +28,24 @@ void Transform::ToJson(nlohmann::json &j, std::string key)
 {
 	j[key]["Transform"]["Position"] =
 	{
-		{"x",GetPosition().GetX()},
-		{"y",GetPosition().GetY()},
-		{"z",GetPosition().GetZ()},
+		{"x",GetRelativePosition().GetX()},
+		{"y",GetRelativePosition().GetY()},
+		{"z",GetRelativePosition().GetZ()},
 	};
 
 	j[key]["Transform"]["Rotation"] =
 	{
-		{"x",GetOrientation().GetX()},
-		{"y",GetOrientation().GetY()},
-		{"z",GetOrientation().GetZ()},
-		{"w",GetOrientation().GetW()},
+		{"x",GetRelativeOrientation().GetX()},
+		{"y",GetRelativeOrientation().GetY()},
+		{"z",GetRelativeOrientation().GetZ()},
+		{"w",GetRelativeOrientation().GetW()},
 	};
 
 	j[key]["Transform"]["Scale"] =
 	{
-		{"x",GetScale().GetX()},
-		{"y",GetScale().GetY()},
-		{"z",GetScale().GetZ()},
+		{"x",GetRelativeScale().GetX()},
+		{"y",GetRelativeScale().GetY()},
+		{"z",GetRelativeScale().GetZ()},
 	};
 }
 
@@ -60,7 +60,7 @@ void Transform::FromJson(nlohmann::json &j, std::string key)
 		//move to position
 		if (j.at(key).at("Transform").contains("Position"))
 		{
-			SetPosition(j.at(key).at("Transform").at("Position").at("x"),
+			SetRelativePosition(j.at(key).at("Transform").at("Position").at("x"),
 				j.at(key).at("Transform").at("Position").at("y"),
 				j.at(key).at("Transform").at("Position").at("z"));
 		}
@@ -75,7 +75,7 @@ void Transform::FromJson(nlohmann::json &j, std::string key)
 			q.SetZ(j.at(key).at("Transform").at("Rotation").at("z"));
 			q.SetW(j.at(key).at("Transform").at("Rotation").at("w"));
 
-			SetOrientation(q);
+			SetRelativeOrientation(q);
 		}
 
 
@@ -87,49 +87,49 @@ void Transform::FromJson(nlohmann::json &j, std::string key)
 			v.SetY(j.at(key).at("Transform").at("Scale").at("y"));
 			v.SetZ(j.at(key).at("Transform").at("Scale").at("z"));
 
-			SetScale(v);
+			SetRelativeScale(v);
 		}
 	}
 }
 
-void Transform::SetPositionV(Vector3f newPosition)
+void Transform::SetRelativePositionV(const Vector3f &newPosition)
 {
 	m_position = newPosition;
 }
 
-void Transform::SetPosition(float x, float y, float z)
+void Transform::SetRelativePosition(float x, float y, float z)
 {
 	m_position.SetX(x);
 	m_position.SetY(y);
 	m_position.SetZ(z);
 }
 
-Vector3f Transform::GetPosition() const
+Vector3f Transform::GetRelativePosition() const
 {
 	return m_position;
 }
 
-void Transform::SetScale(Vector3f newScale)
+void Transform::SetRelativeScale(Vector3f newScale)
 {
 	m_scale = newScale;
 }
 
-Vector3f Transform::GetScale() const
+Vector3f Transform::GetRelativeScale() const
 {
 	return m_scale;
 }
 
-void Transform::SetOrientation(Quaternion orientation)
+void Transform::SetRelativeOrientation(Quaternion orientation)
 {
 	m_orientation = orientation;
 }
 
-Quaternion &Transform::GetOrientation()
+Quaternion &Transform::GetRelativeOrientation()
 {
 	return m_orientation;
 }
 
-Quaternion Transform::GetOrientation() const
+const Quaternion &Transform::GetRelativeOrientation() const
 {
 	return m_orientation;
 }
@@ -161,12 +161,12 @@ Transform Transform::GetWorldTransform() const
 
 void Transform::TranslateV(const Vector3f &v)
 {
-	m_position.Translate(v);
+	m_position += v;
 }
 
 void Transform::Translate(float x, float y, float z)
 {
-	m_position.Translate(Vector3f(x, y, z));
+	m_position += Vector3f(x, y, z);
 }
 
 void Transform::RotateLocalV(float degrees, const Vector3f &axis)
@@ -194,29 +194,29 @@ void Transform::RotateLocalZ(float degrees)
 	m_orientation.Rotate(degrees, Vector3f(0, 0, 1));
 }
 
-void Transform::ScaleLocal(float x, float y, float z)
+void Transform::Scale(float x, float y, float z)
 {
 	m_scale.Scale(x, y, z);
 }
 
-Vector3f Transform::GetForward() const
+Vector3f Transform::GetRelativeForward() const
 {
 	return Vector3f(0, 0, -1) * m_orientation;
 }
 
-Vector3f Transform::GetUp() const
+Vector3f Transform::GetRelativeUp() const
 {
 	return Vector3f(0, 1, 0) * m_orientation;
 }
 
-Vector3f Transform::GetRight() const
+Vector3f Transform::GetRelativeRight() const
 {
 	return Vector3f(1, 0, 0) * m_orientation;
 }
 
 float Transform::GetDistance(Transform other) const
 {
-	Vector3f difference = other.m_position - this->m_position;
+	Vector3f difference = other.GetWorldTransform().m_position - this->GetWorldTransform().m_position;
 	return difference.Magnitude();
 }
 
@@ -224,49 +224,7 @@ float Transform::GetDistance3f(float x, float y, float z) const
 {
 	Vector3f position = Vector3f(x, y, z);
 	Transform transform = Transform();
-	transform.SetPositionV(position);
+	transform.SetRelativePositionV(position);
 
 	return GetDistance(transform);
-}
-
-void Transform::MoveTowards(Vector3f destination, double distance)
-{
-	Vector3f difference = destination - m_position;
-	difference = difference.Normalise(difference);
-	difference = difference * distance;
-	TranslateV(difference);
-}
-
-void Transform::RotateTowards(Vector3f target, double angle)
-{
-	Vector3f directionTo = target - GetWorldTransform().GetPosition();
-	directionTo.SetY(0);
-	directionTo = directionTo.Normalise(directionTo);
-	Vector3f forward = GetWorldTransform().GetForward();
-	forward = forward.Normalise(forward);
-
-	float cos = forward.dotProduct(directionTo);
-	float fullAngle = glm::acos(cos);
-
-	if (abs(fullAngle) < 0.1)
-	{
-		return;
-	}
-
-	Vector3f right = GetWorldTransform().GetRight();
-	right = right.Normalise(right);
-	float rightCos = right.dotProduct(directionTo);
-	if (rightCos < 0)
-	{
-		fullAngle *= -1;
-	}
-
-	fullAngle = glm::radians(fullAngle);
-	RotateLocalY(fullAngle * angle);
-}
-
-void Transform::MoveTowards3f(float x, float y, float z, double distance)
-{
-	Vector3f destination = Vector3f(x, y, z);
-	MoveTowards(destination, distance);
 }

@@ -103,13 +103,13 @@ Inheritance diagram for CComponent:</div>
 <div class="center"><img src="class_c_component__inherit__graph.png" border="0" usemap="#a_c_component_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_c_component_inherit__map" id="a_c_component_inherit__map">
 <area shape="rect" title="A component of a game object with its own assets and/or behaviour." alt="" coords="569,5,724,259"/>
-<area shape="rect" href="class_c_camera.html" title="A component holding and managing a camera." alt="" coords="5,439,171,589"/>
-<area shape="rect" href="class_c_character.html" title="A component representing a character capable of moving." alt="" coords="195,387,352,641"/>
-<area shape="rect" href="class_c_collider.html" title=" " alt="" coords="376,307,533,721"/>
-<area shape="rect" href="class_c_point_light.html" title=" " alt="" coords="557,446,736,582"/>
-<area shape="rect" href="class_c_script.html" title=" " alt="" coords="760,417,915,611"/>
-<area shape="rect" href="class_c_sound.html" title=" " alt="" coords="939,453,1045,575"/>
-<area shape="rect" href="class_c_static_mesh.html" title="A static mesh containing information on a model." alt="" coords="1070,417,1226,611"/>
+<area shape="rect" href="class_c_camera.html" title="A component holding and managing a camera." alt="" coords="5,402,171,553"/>
+<area shape="rect" href="class_c_character.html" title="A component representing a character capable of moving." alt="" coords="195,351,352,604"/>
+<area shape="rect" href="class_c_collider.html" title="Collider Component." alt="" coords="376,307,533,648"/>
+<area shape="rect" href="class_c_point_light.html" title="Point light component class." alt="" coords="557,409,736,545"/>
+<area shape="rect" href="class_c_script.html" title="ScriptComponent Class." alt="" coords="760,380,915,575"/>
+<area shape="rect" href="class_c_sound.html" title="Sound Component Class." alt="" coords="939,417,1045,538"/>
+<area shape="rect" href="class_c_static_mesh.html" title="A static mesh containing information on a model." alt="" coords="1070,380,1226,575"/>
 </map>
 </div>
 <div class="dynheader">
@@ -144,7 +144,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a47b15d4d62bbf7b2df036f2d7a66dbd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the component after others are displayed.  <a href="class_c_component.html#a47b15d4d62bbf7b2df036f2d7a66dbd4">More...</a><br /></td></tr>
 <tr class="separator:a47b15d4d62bbf7b2df036f2d7a66dbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd3219b90aa85de5d026d7d12bff7981"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#acd3219b90aa85de5d026d7d12bff7981">Save</a> (<a class="el" href="_level_loader_8h.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a> &amp;j)</td></tr>
-<tr class="memdesc:acd3219b90aa85de5d026d7d12bff7981"><td class="mdescLeft">&#160;</td><td class="mdescRight">saves the component  <a href="class_c_component.html#acd3219b90aa85de5d026d7d12bff7981">More...</a><br /></td></tr>
 <tr class="separator:acd3219b90aa85de5d026d7d12bff7981"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11335298284532e2684a6a73a45f7c3f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_component.html#a11335298284532e2684a6a73a45f7c3f">Load</a> (<a class="el" href="_level_loader_8h.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a> &amp;j)</td></tr>
 <tr class="memdesc:a11335298284532e2684a6a73a45f7c3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">loads the component from saved state  <a href="class_c_component.html#a11335298284532e2684a6a73a45f7c3f">More...</a><br /></td></tr>
@@ -174,7 +173,7 @@ Protected Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A component of a game object with its own assets and/or behaviour. </p>
 
-<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00010">10</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00017">17</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab87a6940be69962c3f4f5a8552643245"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab87a6940be69962c3f4f5a8552643245">&#9670;&nbsp;</a></span>CComponent() <span class="overload">[1/2]</span></h2>
@@ -293,17 +292,17 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_c_component_a460c951a4f15f3d4af3cb7216ab838d9_icgraph.png" border="0" usemap="#aclass_c_component_a460c951a4f15f3d4af3cb7216ab838d9_icgraph" alt=""/></div>
 <map name="aclass_c_component_a460c951a4f15f3d4af3cb7216ab838d9_icgraph" id="aclass_c_component_a460c951a4f15f3d4af3cb7216ab838d9_icgraph">
 <area shape="rect" title="parent object accessor" alt="" coords="476,309,679,336"/>
-<area shape="rect" href="class_c_collider.html#ac44996b225b212a06b6e57529e1109ee" title=" " alt="" coords="244,5,415,32"/>
+<area shape="rect" href="class_c_collider.html#ac44996b225b212a06b6e57529e1109ee" title="Creates a box collider around the object. Can either be automatically resized to fit the object,..." alt="" coords="244,5,415,32"/>
 <area shape="rect" href="class_c_collider.html#ac3edc6cdc9cde55927ee1f3365e468fe" title=" " alt="" coords="231,56,428,83"/>
-<area shape="rect" href="class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8" title=" " alt="" coords="234,107,425,133"/>
+<area shape="rect" href="class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8" title="Creates a convex/polygon collider around the object. Currently is not working." alt="" coords="234,107,425,133"/>
 <area shape="rect" href="class_c_collider.html#ab69c5c7345b0d7da17393d5db4e10ae2" title="loads the component from saved state" alt="" coords="274,157,385,184"/>
 <area shape="rect" href="class_c_component.html#a11335298284532e2684a6a73a45f7c3f" title="loads the component from saved state" alt="" coords="263,208,396,235"/>
 <area shape="rect" href="class_c_script.html#a5e8994e009e4e21d127e261f35788bb8" title="loads the component from saved state" alt="" coords="279,259,380,285"/>
 <area shape="rect" href="class_c_static_mesh.html#af17a59afb7413668380f2410e4588def" title="loads the component from saved state" alt="" coords="263,309,396,336"/>
 <area shape="rect" href="class_c_collider.html#ae4524c7cc0069673c49d73ff16a1b68f" title="saves the component" alt="" coords="274,360,385,387"/>
-<area shape="rect" href="class_c_component.html#acd3219b90aa85de5d026d7d12bff7981" title="saves the component" alt="" coords="263,411,396,437"/>
+<area shape="rect" href="class_c_component.html#acd3219b90aa85de5d026d7d12bff7981" title=" " alt="" coords="263,411,396,437"/>
 <area shape="rect" href="class_c_script.html#a271450247c297dd454b235ee8c103a50" title="script mutator" alt="" coords="279,461,380,488"/>
-<area shape="rect" href="class_c_static_mesh.html#a410db97c2c01756b0d478049d44e7033" title="saves the component" alt="" coords="263,512,396,539"/>
+<area shape="rect" href="class_c_static_mesh.html#a410db97c2c01756b0d478049d44e7033" title="save the component" alt="" coords="263,512,396,539"/>
 <area shape="rect" href="class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="261,563,397,589"/>
 <area shape="rect" href="class_c_sound.html#aa29a578b102b123e836b34faddd8cdba" title="updates ongoing behaviour each frame" alt="" coords="271,613,388,640"/>
 <area shape="rect" href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,56,183,83"/>
@@ -341,10 +340,10 @@ Here is the caller graph for this function:</div>
 <map name="aclass_c_component_a3796546e2460ee6457af80534ddff0d5_icgraph" id="aclass_c_component_a3796546e2460ee6457af80534ddff0d5_icgraph">
 <area shape="rect" title="transform accessor" alt="" coords="519,107,701,133"/>
 <area shape="rect" href="class_c_collider.html#a74c40f1839119643222abcbf23ce5e4e" title="constructor taking parent as argument" alt="" coords="296,5,431,32"/>
-<area shape="rect" href="class_graphics_engine.html#a68f81b8f354a5d4538a47b5216efc12f" title=" " alt="" coords="278,56,449,83"/>
+<area shape="rect" href="class_graphics_engine.html#abb8d1a007f93f4fd57ec2fc981fbf06a" title="returns the current camera view position/direction" alt="" coords="278,56,449,83"/>
 <area shape="rect" href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="275,107,452,133"/>
 <area shape="rect" href="class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="295,157,431,184"/>
-<area shape="rect" href="class_graphics_engine.html#a54e3edb4d2869a986afba9598e16cc86" title=" " alt="" coords="256,208,471,235"/>
+<area shape="rect" href="class_graphics_engine.html#a54e3edb4d2869a986afba9598e16cc86" title="Updates view based on camera transform." alt="" coords="256,208,471,235"/>
 <area shape="rect" href="class_graphics_engine.html#ae3c7dbf362306dc1ecf0b6c4a3144fd3" title="Renders all visible objects." alt="" coords="5,56,208,83"/>
 </map>
 </div>
@@ -397,7 +396,7 @@ Here is the caller graph for this function:</div>
 
 <p>Displays the component after others are displayed. </p>
 
-<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00047">47</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00053">53</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
 
 </div>
 </div>
@@ -478,7 +477,7 @@ Here is the caller graph for this function:</div>
 
 <p>Reimplemented in <a class="el" href="class_c_static_mesh.html#a811c339becc8cff2323cfb0af8bf558c">CStaticMesh</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00042">42</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00047">47</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
 
 </div>
 </div>
@@ -505,8 +504,12 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>saves the component </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">j</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Reimplemented in <a class="el" href="class_c_static_mesh.html#a410db97c2c01756b0d478049d44e7033">CStaticMesh</a>, <a class="el" href="class_c_script.html#a271450247c297dd454b235ee8c103a50">CScript</a>, <a class="el" href="class_c_collider.html#ae4524c7cc0069673c49d73ff16a1b68f">CCollider</a>, and <a class="el" href="class_c_character.html#ae606109ebef5561fbda23cd95b57496c">CCharacter</a>.</p>
 
@@ -516,7 +519,7 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_component_acd3219b90aa85de5d026d7d12bff7981_cgraph.png" border="0" usemap="#aclass_c_component_acd3219b90aa85de5d026d7d12bff7981_cgraph" alt=""/></div>
 <map name="aclass_c_component_acd3219b90aa85de5d026d7d12bff7981_cgraph" id="aclass_c_component_acd3219b90aa85de5d026d7d12bff7981_cgraph">
-<area shape="rect" title="saves the component" alt="" coords="5,31,139,57"/>
+<area shape="rect" title=" " alt="" coords="5,31,139,57"/>
 <area shape="rect" href="class_game_object.html#a1777de44c00f8a04cad880a2fe65a51a" title="Factory key accessor." alt="" coords="194,5,382,32"/>
 <area shape="rect" href="class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9" title="parent object accessor" alt="" coords="187,56,389,83"/>
 </map>
@@ -526,7 +529,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_component_acd3219b90aa85de5d026d7d12bff7981_icgraph.png" border="0" usemap="#aclass_c_component_acd3219b90aa85de5d026d7d12bff7981_icgraph" alt=""/></div>
 <map name="aclass_c_component_acd3219b90aa85de5d026d7d12bff7981_icgraph" id="aclass_c_component_acd3219b90aa85de5d026d7d12bff7981_icgraph">
-<area shape="rect" title="saves the component" alt="" coords="176,5,309,32"/>
+<area shape="rect" title=" " alt="" coords="176,5,309,32"/>
 <area shape="rect" href="class_c_character.html#ae606109ebef5561fbda23cd95b57496c" title="saves the component" alt="" coords="5,5,128,32"/>
 </map>
 </div>
@@ -560,7 +563,7 @@ Here is the caller graph for this function:</div>
 
 <p>Reimplemented in <a class="el" href="class_c_script.html#a1bc70c343f6d5e8138157f05d8f07838">CScript</a>, <a class="el" href="class_c_collider.html#ab8fd6544bb2eb98523b7f27e60ac9e03">CCollider</a>, <a class="el" href="class_c_character.html#ab774064d1c84af41bcace35d81cc1fb5">CCharacter</a>, and <a class="el" href="class_c_camera.html#a0f43f3ad015152e60df26bd596a7eaef">CCamera</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00032">32</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00035">35</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
 
 </div>
 </div>
@@ -591,7 +594,7 @@ Here is the caller graph for this function:</div>
 
 <p>Reimplemented in <a class="el" href="class_c_sound.html#aa29a578b102b123e836b34faddd8cdba">CSound</a>, <a class="el" href="class_c_script.html#a26179a9c21a96af7bdb31b11894f64d7">CScript</a>, <a class="el" href="class_c_point_light.html#ae6a75621fe9a91e46e1471888a4e5009">CPointLight</a>, <a class="el" href="class_c_collider.html#a858c10f0e9fb3a6e73bd00fcfcdb99f1">CCollider</a>, and <a class="el" href="class_c_character.html#adc476a488c7157c7fc2b32381760b4e0">CCharacter</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00037">37</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00041">41</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
 
 </div>
 </div>
@@ -618,7 +621,7 @@ Here is the caller graph for this function:</div>
 
 <p>The object to which this component belongs. </p>
 
-<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00091">91</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00099">99</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
 
 </div>
 </div>
@@ -644,7 +647,7 @@ Here is the caller graph for this function:</div>
 
 <p>The transform for this component storing position data. </p>
 
-<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00087">87</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_component_8h_source.html#l00095">95</a> of file <a class="el" href="_c_component_8h_source.html">CComponent.h</a>.</p>
 
 </div>
 </div>

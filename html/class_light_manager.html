@@ -98,7 +98,7 @@ Collaboration diagram for LightManager:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_light_manager__coll__graph.png" border="0" usemap="#a_light_manager_coll__map" alt="Collaboration graph"/></div>
 <map name="a_light_manager_coll__map" id="a_light_manager_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,128,112"/>
+<area shape="rect" title=" " alt="" coords="5,5,128,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -108,12 +108,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1eee8eb276ec7f041d961a567389754a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adadb7adb2b90c20291350e32ee5fb8b4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4">AddPointLight</a> (<a class="el" href="class_c_point_light.html">CPointLight</a> *light)</td></tr>
 <tr class="separator:adadb7adb2b90c20291350e32ee5fb8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84028910a94635b5a011e05994953ca1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_light_manager.html#a84028910a94635b5a011e05994953ca1">Update</a> ()</td></tr>
-<tr class="separator:a84028910a94635b5a011e05994953ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_light_manager_8h_source.html#l00006">6</a> of file <a class="el" href="_light_manager_8h_source.html">LightManager.h</a>.</p>
+<div class="textblock"><p>this class doesnt seem to make much sense atm, but its planned to be expanded upon, and reduce the complexity of the graphics engine class. </p>
+
+<p class="definition">Definition at line <a class="el" href="_light_manager_8h_source.html#l00015">15</a> of file <a class="el" href="_light_manager_8h_source.html">LightManager.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1eee8eb276ec7f041d961a567389754a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1eee8eb276ec7f041d961a567389754a">&#9670;&nbsp;</a></span>LightManager()</h2>
@@ -129,6 +128,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>constructs the light manager with 0 lights. </p>
 
 <p class="definition">Definition at line <a class="el" href="_light_manager_8cpp_source.html#l00004">4</a> of file <a class="el" href="_light_manager_8cpp_source.html">LightManager.cpp</a>.</p>
 
@@ -150,36 +150,25 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Add a point light and count the total amount.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">light</td><td>new light to add </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>total number of lights after adding </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_light_manager_8cpp_source.html#l00009">9</a> of file <a class="el" href="_light_manager_8cpp_source.html">LightManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_light_manager_8cpp_source.html#l00008">8</a> of file <a class="el" href="_light_manager_8cpp_source.html">LightManager.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_light_manager_adadb7adb2b90c20291350e32ee5fb8b4_icgraph.png" border="0" usemap="#aclass_light_manager_adadb7adb2b90c20291350e32ee5fb8b4_icgraph" alt=""/></div>
 <map name="aclass_light_manager_adadb7adb2b90c20291350e32ee5fb8b4_icgraph" id="aclass_light_manager_adadb7adb2b90c20291350e32ee5fb8b4_icgraph">
 <area shape="rect" title=" " alt="" coords="228,13,417,39"/>
-<area shape="rect" href="class_graphics_engine.html#ac691c275727e8bd932d0145eebf0c773" title=" " alt="" coords="5,5,180,47"/>
+<area shape="rect" href="class_graphics_engine.html#ac691c275727e8bd932d0145eebf0c773" title="creates a point light" alt="" coords="5,5,180,47"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="a84028910a94635b5a011e05994953ca1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84028910a94635b5a011e05994953ca1">&#9670;&nbsp;</a></span>Update()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void LightManager::Update </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_light_manager_8cpp_source.html#l00016">16</a> of file <a class="el" href="_light_manager_8cpp_source.html">LightManager.cpp</a>.</p>
 
 </div>
 </div>

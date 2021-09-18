@@ -93,26 +93,18 @@ $(document).ready(function(){initNavTree('_light_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_light_manager.html#a1eee8eb276ec7f041d961a567389754a">    4</a></span>&#160;<a class="code" href="class_light_manager.html#a1eee8eb276ec7f041d961a567389754a">LightManager::LightManager</a>()</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    :m_pointLights{}</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;}</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4">    9</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4">LightManager::AddPointLight</a>(<a class="code" href="class_c_point_light.html">CPointLight</a>* light)</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    m_pointLights.push_back(light);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)m_pointLights.size();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_light_manager.html#a84028910a94635b5a011e05994953ca1">   16</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_light_manager.html#a84028910a94635b5a011e05994953ca1">LightManager::Update</a>()</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-<div class="ttc" id="a_graphics_engine_8h_html"><div class="ttname"><a href="_graphics_engine_8h.html">GraphicsEngine.h</a></div></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{}</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4">    8</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4">LightManager::AddPointLight</a>(<a class="code" href="class_c_point_light.html">CPointLight</a> *light)</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    m_pointLights.push_back(light);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)m_pointLights.size();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
+<div class="ttc" id="a_graphics_engine_8h_html"><div class="ttname"><a href="_graphics_engine_8h.html">GraphicsEngine.h</a></div><div class="ttdoc">Graphics and Rendering.</div></div>
 <div class="ttc" id="a_light_manager_8h_html"><div class="ttname"><a href="_light_manager_8h.html">LightManager.h</a></div></div>
-<div class="ttc" id="aclass_c_point_light_html"><div class="ttname"><a href="class_c_point_light.html">CPointLight</a></div><div class="ttdef"><b>Definition:</b> <a href="_c_point_light_8h_source.html#l00016">CPointLight.h:17</a></div></div>
+<div class="ttc" id="aclass_c_point_light_html"><div class="ttname"><a href="class_c_point_light.html">CPointLight</a></div><div class="ttdoc">Point light component class.</div><div class="ttdef"><b>Definition:</b> <a href="_c_point_light_8h_source.html#l00034">CPointLight.h:35</a></div></div>
 <div class="ttc" id="aclass_light_manager_html_a1eee8eb276ec7f041d961a567389754a"><div class="ttname"><a href="class_light_manager.html#a1eee8eb276ec7f041d961a567389754a">LightManager::LightManager</a></div><div class="ttdeci">LightManager()</div><div class="ttdef"><b>Definition:</b> <a href="_light_manager_8cpp_source.html#l00004">LightManager.cpp:4</a></div></div>
-<div class="ttc" id="aclass_light_manager_html_a84028910a94635b5a011e05994953ca1"><div class="ttname"><a href="class_light_manager.html#a84028910a94635b5a011e05994953ca1">LightManager::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> <a href="_light_manager_8cpp_source.html#l00016">LightManager.cpp:16</a></div></div>
-<div class="ttc" id="aclass_light_manager_html_adadb7adb2b90c20291350e32ee5fb8b4"><div class="ttname"><a href="class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4">LightManager::AddPointLight</a></div><div class="ttdeci">int AddPointLight(CPointLight *light)</div><div class="ttdef"><b>Definition:</b> <a href="_light_manager_8cpp_source.html#l00009">LightManager.cpp:9</a></div></div>
+<div class="ttc" id="aclass_light_manager_html_adadb7adb2b90c20291350e32ee5fb8b4"><div class="ttname"><a href="class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4">LightManager::AddPointLight</a></div><div class="ttdeci">int AddPointLight(CPointLight *light)</div><div class="ttdef"><b>Definition:</b> <a href="_light_manager_8cpp_source.html#l00008">LightManager.cpp:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

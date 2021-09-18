@@ -1,7 +1,0 @@
-<map id="Transform::Translate" name="Transform::Translate">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,145,83"/>
-<area shape="rect" id="node2" href="$class_vector3f.html#afbc2c6534b8ae613c08d93ccfdf8c1f6" title="Moves the vector by a relative amount." alt="" coords="193,56,324,83"/>
-<area shape="rect" id="node3" href="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="373,5,479,32"/>
-<area shape="rect" id="node4" href="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="372,56,480,83"/>
-<area shape="rect" id="node5" href="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="373,107,479,133"/>
-</map>

@@ -1,19 +1,18 @@
 <map id="GameObject::GetTransform" name="GameObject::GetTransform">
-<area shape="rect" id="node1" title="transform accessor" alt="" coords="1131,300,1312,327"/>
-<area shape="rect" id="node2" href="$class_level_loader.html#abfedb40032867527767815299aa75594" title=" " alt="" coords="898,5,1053,32"/>
-<area shape="rect" id="node3" href="$class_game_object_factory.html#a814d8aaad84d626a629a7d04677a3802" title="searches for the closest object to a given transform with a key containing a given substring" alt="" coords="902,57,1049,98"/>
-<area shape="rect" id="node4" href="$class_game_object.html#a45246aaee43206b87c40ef6fdc06111b" title="loads the object from saved state" alt="" coords="910,123,1041,149"/>
-<area shape="rect" id="node5" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="636,199,813,225"/>
-<area shape="rect" id="node6" href="$class_level_editor.html#a656a24e68242e1f8b24baa8ea5a5e2a9" title=" " alt="" coords="868,427,1083,453"/>
-<area shape="rect" id="node11" href="$class_level_editor.html#aa0a47b3d01e4374a4060ac8d1db30b91" title=" " alt="" coords="868,275,1083,301"/>
-<area shape="rect" id="node12" href="$class_game_object.html#aedc9f47690b6dab433843fccb736064f" title="saves the object" alt="" coords="910,325,1041,352"/>
-<area shape="rect" id="node13" href="$class_level_editor.html#a07d3584976205e962c0dffcb1e9d3ad0" title=" " alt="" coords="875,376,1075,403"/>
-<area shape="rect" id="node14" href="$class_game_object.html#a4ac94aacf4830634bcb1dff676d1c4f0" title=" " alt="" coords="876,224,1075,251"/>
-<area shape="rect" id="node15" href="$class_level_loader.html#a201799a503e97f7ede6f9b012633602f" title=" " alt="" coords="906,477,1045,504"/>
-<area shape="rect" id="node16" href="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="907,528,1043,555"/>
-<area shape="rect" id="node17" href="$class_c_sound.html#aa29a578b102b123e836b34faddd8cdba" title="updates ongoing behaviour each frame" alt="" coords="917,579,1034,605"/>
-<area shape="rect" id="node7" href="$class_level_editor.html#aac394ace767b605adef1afdfb0473046" title=" " alt="" coords="629,376,820,403"/>
-<area shape="rect" id="node8" href="$class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de" title=" " alt="" coords="409,376,581,403"/>
-<area shape="rect" id="node9" href="$class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0" title=" " alt="" coords="209,376,361,403"/>
-<area shape="rect" id="node10" href="$class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048" title=" " alt="" coords="5,376,161,403"/>
+<area shape="rect" id="node1" title="transform accessor" alt="" coords="1131,259,1312,285"/>
+<area shape="rect" id="node2" href="$class_level_loader.html#abfedb40032867527767815299aa75594" title="Read data from JSON &#45; DEPRECIATED." alt="" coords="898,5,1053,32"/>
+<area shape="rect" id="node3" href="$class_game_object.html#a45246aaee43206b87c40ef6fdc06111b" title="loads the object from saved state" alt="" coords="910,56,1041,83"/>
+<area shape="rect" id="node4" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="636,132,813,159"/>
+<area shape="rect" id="node5" href="$class_level_editor.html#a656a24e68242e1f8b24baa8ea5a5e2a9" title="displays the position fields in the transform editor" alt="" coords="868,309,1083,336"/>
+<area shape="rect" id="node10" href="$class_level_editor.html#aa0a47b3d01e4374a4060ac8d1db30b91" title="displays the (Euler) rotation fields in the transform editor" alt="" coords="868,360,1083,387"/>
+<area shape="rect" id="node11" href="$class_game_object.html#aedc9f47690b6dab433843fccb736064f" title="saves the object" alt="" coords="910,259,1041,285"/>
+<area shape="rect" id="node12" href="$class_level_editor.html#a07d3584976205e962c0dffcb1e9d3ad0" title="displays the scale fields in the transform editor" alt="" coords="875,208,1075,235"/>
+<area shape="rect" id="node13" href="$class_game_object.html#a4ac94aacf4830634bcb1dff676d1c4f0" title=" " alt="" coords="876,107,1075,133"/>
+<area shape="rect" id="node14" href="$class_level_loader.html#a201799a503e97f7ede6f9b012633602f" title="write game data to JSON &#45; DEPRECIATED" alt="" coords="906,411,1045,437"/>
+<area shape="rect" id="node15" href="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="907,461,1043,488"/>
+<area shape="rect" id="node16" href="$class_c_sound.html#aa29a578b102b123e836b34faddd8cdba" title="updates ongoing behaviour each frame" alt="" coords="917,512,1034,539"/>
+<area shape="rect" id="node6" href="$class_level_editor.html#aac394ace767b605adef1afdfb0473046" title="displays the gameobjects transform editor" alt="" coords="629,309,820,336"/>
+<area shape="rect" id="node7" href="$class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de" title="Creates the objects header using the current gameobject in the iterator." alt="" coords="409,309,581,336"/>
+<area shape="rect" id="node8" href="$class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0" title="fills in the object list" alt="" coords="209,309,361,336"/>
+<area shape="rect" id="node9" href="$class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048" title="Draws the editor to screen." alt="" coords="5,309,161,336"/>
 </map>

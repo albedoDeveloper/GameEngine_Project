@@ -88,27 +88,27 @@ $(document).ready(function(){initNavTree('_light_manager_8h_source.html',''); in
 <div class="title">LightManager.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_light_manager_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_c_point_light_8h.html">CPointLight.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_light_manager.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_light_manager.html">LightManager</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="class_light_manager.html#a1eee8eb276ec7f041d961a567389754a">LightManager</a>();</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4">AddPointLight</a>(<a class="code" href="class_c_point_light.html">CPointLight</a>* light);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_light_manager.html#a84028910a94635b5a011e05994953ca1">Update</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    std::vector&lt;CPointLight*&gt; m_pointLights;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
-<div class="ttc" id="a_c_point_light_8h_html"><div class="ttname"><a href="_c_point_light_8h.html">CPointLight.h</a></div></div>
-<div class="ttc" id="aclass_c_point_light_html"><div class="ttname"><a href="class_c_point_light.html">CPointLight</a></div><div class="ttdef"><b>Definition:</b> <a href="_c_point_light_8h_source.html#l00016">CPointLight.h:17</a></div></div>
-<div class="ttc" id="aclass_light_manager_html"><div class="ttname"><a href="class_light_manager.html">LightManager</a></div><div class="ttdef"><b>Definition:</b> <a href="_light_manager_8h_source.html#l00006">LightManager.h:7</a></div></div>
+<a href="_light_manager_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************/</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_c_point_light_8h.html">CPointLight.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_light_manager.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_light_manager.html">LightManager</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_light_manager.html#a1eee8eb276ec7f041d961a567389754a">LightManager</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4">AddPointLight</a>(<a class="code" href="class_c_point_light.html">CPointLight</a> *light);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    std::vector&lt;CPointLight *&gt; m_pointLights;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="ttc" id="a_c_point_light_8h_html"><div class="ttname"><a href="_c_point_light_8h.html">CPointLight.h</a></div><div class="ttdoc">Point Light Component.</div></div>
+<div class="ttc" id="aclass_c_point_light_html"><div class="ttname"><a href="class_c_point_light.html">CPointLight</a></div><div class="ttdoc">Point light component class.</div><div class="ttdef"><b>Definition:</b> <a href="_c_point_light_8h_source.html#l00034">CPointLight.h:35</a></div></div>
+<div class="ttc" id="aclass_light_manager_html"><div class="ttname"><a href="class_light_manager.html">LightManager</a></div><div class="ttdef"><b>Definition:</b> <a href="_light_manager_8h_source.html#l00015">LightManager.h:16</a></div></div>
 <div class="ttc" id="aclass_light_manager_html_a1eee8eb276ec7f041d961a567389754a"><div class="ttname"><a href="class_light_manager.html#a1eee8eb276ec7f041d961a567389754a">LightManager::LightManager</a></div><div class="ttdeci">LightManager()</div><div class="ttdef"><b>Definition:</b> <a href="_light_manager_8cpp_source.html#l00004">LightManager.cpp:4</a></div></div>
-<div class="ttc" id="aclass_light_manager_html_a84028910a94635b5a011e05994953ca1"><div class="ttname"><a href="class_light_manager.html#a84028910a94635b5a011e05994953ca1">LightManager::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> <a href="_light_manager_8cpp_source.html#l00016">LightManager.cpp:16</a></div></div>
-<div class="ttc" id="aclass_light_manager_html_adadb7adb2b90c20291350e32ee5fb8b4"><div class="ttname"><a href="class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4">LightManager::AddPointLight</a></div><div class="ttdeci">int AddPointLight(CPointLight *light)</div><div class="ttdef"><b>Definition:</b> <a href="_light_manager_8cpp_source.html#l00009">LightManager.cpp:9</a></div></div>
+<div class="ttc" id="aclass_light_manager_html_adadb7adb2b90c20291350e32ee5fb8b4"><div class="ttname"><a href="class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4">LightManager::AddPointLight</a></div><div class="ttdeci">int AddPointLight(CPointLight *light)</div><div class="ttdef"><b>Definition:</b> <a href="_light_manager_8cpp_source.html#l00008">LightManager.cpp:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

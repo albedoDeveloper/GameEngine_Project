@@ -1,9 +1,0 @@
-<map id="Vector3f::Translate" name="Vector3f::Translate">
-<area shape="rect" id="node1" title="Moves the vector by a relative amount." alt="" coords="864,50,995,76"/>
-<area shape="rect" id="node2" href="$class_transform.html#a8d4bc99e8363101097544e21ed942811" title=" " alt="" coords="671,24,811,51"/>
-<area shape="rect" id="node5" href="$class_transform.html#ae35917b7e99a724fc985d34bc7f74ffa" title="Changes the transform&#39;s position by a relative amount." alt="" coords="667,75,816,102"/>
-<area shape="rect" id="node3" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,24,183,51"/>
-<area shape="rect" id="node4" href="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="468,24,604,51"/>
-<area shape="rect" id="node6" href="$class_transform.html#adc0e9f3169de16736796fbcd8b268472" title="moves the transform towards another by a specified distance" alt="" coords="453,75,619,102"/>
-<area shape="rect" id="node7" href="$class_transform.html#aa404399a3a6b57b093923b7b043a0ef6" title="oves the transform towards a set of coordinates by a specified distance" alt="" coords="231,75,405,102"/>
-</map>

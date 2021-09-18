@@ -1,3 +1,9 @@
+/*****************************************************************//**
+ * \file   Color.h
+ * \brief  colours as vector 3's. normalized from 0.0f to 1.0f
+ * \date   September 2021
+ *********************************************************************/
+
 #pragma once
 
 namespace Colour

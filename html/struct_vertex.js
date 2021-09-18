@@ -1,8 +1,8 @@
 var struct_vertex =
 [
-    [ "Bitangent", "struct_vertex.html#af65a7edcbe784e73e9fb29fdf6368615", null ],
-    [ "Normal", "struct_vertex.html#a9ab4dc431b41509f0b1bb1a4bf09d4e2", null ],
-    [ "Position", "struct_vertex.html#abb3cfacd96b5955b0cec9359840ee49f", null ],
-    [ "Tangent", "struct_vertex.html#abfd8917796f41a3bd16441b2626e8212", null ],
-    [ "TexCoords", "struct_vertex.html#a921a513c1e6d1e63e99d477fa837a317", null ]
+    [ "Bitangent", "struct_vertex.html#ad66682d5ca458ba0376fefda2eed9826", null ],
+    [ "Normal", "struct_vertex.html#ab2583a2035d817b4350241e386466a40", null ],
+    [ "Position", "struct_vertex.html#aa19d462d76db2fb56c914c6b49ebbd61", null ],
+    [ "Tangent", "struct_vertex.html#aec1405b31305d92d5c0b38f689313542", null ],
+    [ "TexCoords", "struct_vertex.html#a45e126ac050737370679ed5bda9bda8d", null ]
 ];

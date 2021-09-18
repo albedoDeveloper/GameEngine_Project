@@ -65,9 +65,9 @@ void LevelLoader::ToJson(json &j, GameObject *g)
 
 	j[g->getFactoryKey()]["Scale"] =
 	{
-		{"x",g->GetTransform()->GetScale().GetX()},
-		{"y",g->GetTransform()->GetScale().GetY()},
-		{"z",g->GetTransform()->GetScale().GetZ()},
+		{"x",g->GetTransform()->GetRelativeScale().GetX()},
+		{"y",g->GetTransform()->GetRelativeScale().GetY()},
+		{"z",g->GetTransform()->GetRelativeScale().GetZ()},
 	};*/
 
 	//here is where we should get the componenet map and save to colliders, this will require each comp to have a tojson method
@@ -120,14 +120,11 @@ void LevelLoader::FromJson(json &j, GameObject *g)
 	//	v.SetY(j.at(g->getFactoryKey()).at("Scale").at("y"));
 	//	v.SetZ(j.at(g->getFactoryKey()).at("Scale").at("z"));
 
-	//	g->GetTransform()->SetScale(v);
+	//	g->GetTransform()->SetRelativeScale(v);
 	//}
 
 
 	//here is where we add in the componenets from the json, each comp will need it's own fromJson method
-
-
-
 }
 
 
@@ -163,11 +160,6 @@ void LevelLoader::LoadLevel()
 
 		GAMEOBJECT->SpawnGameObject(j.at(it.key()).at("key"));
 
-
-
-
-
-
 		//g->Load(j);
 	}
 
@@ -180,9 +172,6 @@ void LevelLoader::LoadLevel()
 		//FromJson(j, it->second);
 
 	}
-
-
-
 }
 
 void LevelLoader::SaveLevel()
@@ -221,9 +210,9 @@ void LevelLoader::SaveLevel()
 	//		"	 Is at rotation z = "<< it->second->GetTransform()->GetRotation().GetZ() << "\n" <<
 	//		"	 Is at rotation w = "<< it->second->GetTransform()->GetRotation().GetW() << "\n" <<
 	//		": "
-	//		"	 has scale x=" << it->second->GetTransform()->GetScale().GetX() << "\n" <<
-	//		"	 has scale y=" << it->second->GetTransform()->GetScale().GetY() << "\n" <<
-	//		"	 has scale z=" << it->second->GetTransform()->GetScale().GetZ() << "\n" <<
+	//		"	 has scale x=" << it->second->GetTransform()->GetRelativeScale().GetX() << "\n" <<
+	//		"	 has scale y=" << it->second->GetTransform()->GetRelativeScale().GetY() << "\n" <<
+	//		"	 has scale z=" << it->second->GetTransform()->GetRelativeScale().GetZ() << "\n" <<
 	//		": " << std::endl;
 
 	//	//Step 5 write each gameobject to JSON

@@ -137,22 +137,22 @@ void CCharacter::Update()
 			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * -mouseSens);
 		}
 
-		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX()) > 90.f ||
-			RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX()) < -90.f)
+		if (parentObj->GetComponent<CCamera>()->GetTransform().GetRelativeOrientation().GetEulerAnglesDegrees().GetX() > 90.f ||
+			parentObj->GetComponent<CCamera>()->GetTransform().GetRelativeOrientation().GetEulerAnglesDegrees().GetX() < -90.f)
 		{
-			Vector3f eulersInRads(
-				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX(),
-				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetY(),
-				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetZ()
+			Vector3f eulers(
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRelativeOrientation().GetEulerAnglesDegrees().GetX(),
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRelativeOrientation().GetEulerAnglesDegrees().GetY(),
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRelativeOrientation().GetEulerAnglesDegrees().GetZ()
 			);
 
-			if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX()) > 90.f)
+			if (parentObj->GetComponent<CCamera>()->GetTransform().GetRelativeOrientation().GetEulerAnglesDegrees().GetX() > 90.f)
 			{
-				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().SetEulerAngles(DegreesToRad(90.f), eulersInRads.GetY(), eulersInRads.GetZ());
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRelativeOrientation().SetEulerAnglesDegrees(90.f, eulers.GetY(), eulers.GetZ());
 			}
 			else
 			{
-				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().SetEulerAngles(DegreesToRad(-90.f), eulersInRads.GetY(), eulersInRads.GetZ());
+				parentObj->GetComponent<CCamera>()->GetTransform().GetRelativeOrientation().SetEulerAnglesDegrees(-90.f, eulers.GetY(), eulers.GetZ());
 			}
 		}
 	}
@@ -169,8 +169,8 @@ void CCharacter::Update()
 	}
 
 	//convert to world space
-	Vector3f newPos = m_transform.GetWorldTransform().GetPosition();
-	Vector3f worldVel = m_velocity * m_parent->GetTransform()->GetOrientation();
+	Vector3f newPos = m_transform.GetWorldTransform().GetRelativePosition();
+	Vector3f worldVel = m_velocity * m_parent->GetTransform()->GetRelativeOrientation();
 
 	m_parentTransform->Translate(worldVel.GetX(), 0, 0);
 	m_collider->UpdateCollider();

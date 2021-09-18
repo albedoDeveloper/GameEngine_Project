@@ -93,13 +93,16 @@ $(document).ready(function(){initNavTree('class_c_collider.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 
+<p>Collider Component.  
+ <a href="class_c_collider.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_c_collider_8h_source.html">CCollider.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for CCollider:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider__inherit__graph.png" border="0" usemap="#a_c_collider_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_c_collider_inherit__map" id="a_c_collider_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,307,163,721"/>
+<area shape="rect" title="Collider Component." alt="" coords="5,307,163,648"/>
 <area shape="rect" href="class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="7,5,161,259"/>
 </map>
 </div>
@@ -108,7 +111,7 @@ Collaboration diagram for CCollider:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider__coll__graph.png" border="0" usemap="#a_c_collider_coll__map" alt="Collaboration graph"/></div>
 <map name="a_c_collider_coll__map" id="a_c_collider_coll__map">
-<area shape="rect" title=" " alt="" coords="117,580,274,995"/>
+<area shape="rect" title="Collider Component." alt="" coords="117,580,274,921"/>
 <area shape="rect" href="class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="118,292,273,531"/>
 <area shape="rect" href="class_game_object.html" title="An object as represented in the game world containing all information on the object itself and its co..." alt="" coords="5,5,191,229"/>
 <area shape="rect" href="class_transform.html" title="Stores data about an object or componet&#39;s location in space." alt="" coords="215,5,370,229"/>
@@ -138,12 +141,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aafb37d9330706fa8ed0251a06ee6a7ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws to imgui.  <a href="class_c_collider.html#aafb37d9330706fa8ed0251a06ee6a7ab">More...</a><br /></td></tr>
 <tr class="separator:aafb37d9330706fa8ed0251a06ee6a7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae82b280aee96b0a2d6e532e0a663f256"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#ae82b280aee96b0a2d6e532e0a663f256">UpdateCollider</a> ()</td></tr>
+<tr class="memdesc:ae82b280aee96b0a2d6e532e0a663f256"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the colliders with any transformations changes based on the colliders model.  <a href="class_c_collider.html#ae82b280aee96b0a2d6e532e0a663f256">More...</a><br /></td></tr>
 <tr class="separator:ae82b280aee96b0a2d6e532e0a663f256"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac44996b225b212a06b6e57529e1109ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#ac44996b225b212a06b6e57529e1109ee">AddBoxCollider</a> (float x=0.2, float y=0.2, float z=0.2, float offsetX=0, float offsetY=0, float offsetZ=0, bool autoSize=false, int layer=1, bool allowRotation=true)</td></tr>
+<tr class="memdesc:ac44996b225b212a06b6e57529e1109ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a box collider around the object. Can either be automatically resized to fit the object, manually sized and placed, or statically placed.  <a href="class_c_collider.html#ac44996b225b212a06b6e57529e1109ee">More...</a><br /></td></tr>
 <tr class="separator:ac44996b225b212a06b6e57529e1109ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70bfbff53aeac17e1201dfe26a25d68b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#a70bfbff53aeac17e1201dfe26a25d68b">AddCapsuleCollider</a> (float radius, float height, int layer)</td></tr>
+<tr class="memdesc:a70bfbff53aeac17e1201dfe26a25d68b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a capsule collider around the objects model, currently not completed.  <a href="class_c_collider.html#a70bfbff53aeac17e1201dfe26a25d68b">More...</a><br /></td></tr>
 <tr class="separator:a70bfbff53aeac17e1201dfe26a25d68b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2a8bc9ee9bb4aba6f7237f029c31ad8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8">AddConvexCollider</a> ()</td></tr>
+<tr class="memdesc:af2a8bc9ee9bb4aba6f7237f029c31ad8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a convex/polygon collider around the object. Currently is not working.  <a href="class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8">More...</a><br /></td></tr>
 <tr class="separator:af2a8bc9ee9bb4aba6f7237f029c31ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3edc6cdc9cde55927ee1f3365e468fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#ac3edc6cdc9cde55927ee1f3365e468fe">AddConcaveCollider</a> (int layer)</td></tr>
 <tr class="separator:ac3edc6cdc9cde55927ee1f3365e468fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,25 +187,19 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:a14e94623cf3dccc1117760b547e22a45"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether the collider is registered with the collider manager  <a href="class_c_collider.html#a14e94623cf3dccc1117760b547e22a45">More...</a><br /></td></tr>
 <tr class="separator:a14e94623cf3dccc1117760b547e22a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed4eb91bc8a6b10c460f72e8d6894df8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#aed4eb91bc8a6b10c460f72e8d6894df8">m_allowRotation</a></td></tr>
+<tr class="memdesc:aed4eb91bc8a6b10c460f72e8d6894df8"><td class="mdescLeft">&#160;</td><td class="mdescRight">whether the collider is allowed to rotate  <a href="class_c_collider.html#aed4eb91bc8a6b10c460f72e8d6894df8">More...</a><br /></td></tr>
 <tr class="separator:aed4eb91bc8a6b10c460f72e8d6894df8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb84273cb4c402272ea229ec46cf992a"><td class="memItemLeft" align="right" valign="top">reactphysics3d::CollisionBody *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#adb84273cb4c402272ea229ec46cf992a">colBody</a> = nullptr</td></tr>
+<tr class="memdesc:adb84273cb4c402272ea229ec46cf992a"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the collisionbody which contains all the colliders on the model.  <a href="class_c_collider.html#adb84273cb4c402272ea229ec46cf992a">More...</a><br /></td></tr>
 <tr class="separator:adb84273cb4c402272ea229ec46cf992a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab169c0d4c6b95ee664f7da30c66b2b9e"><td class="memItemLeft" align="right" valign="top">reactphysics3d::BoxShape *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#ab169c0d4c6b95ee664f7da30c66b2b9e">boxCollider</a> = nullptr</td></tr>
-<tr class="separator:ab169c0d4c6b95ee664f7da30c66b2b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b1a7f432047b6342f28cbf266b0656f"><td class="memItemLeft" align="right" valign="top">reactphysics3d::TriangleMesh *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#a4b1a7f432047b6342f28cbf266b0656f">triangleMesh</a> = nullptr</td></tr>
-<tr class="separator:a4b1a7f432047b6342f28cbf266b0656f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41f23a000e9af546b6a03aeadf4adb89"><td class="memItemLeft" align="right" valign="top">reactphysics3d::ConcaveMeshShape *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#a41f23a000e9af546b6a03aeadf4adb89">concaveMesh</a> = nullptr</td></tr>
-<tr class="separator:a41f23a000e9af546b6a03aeadf4adb89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a411dd8c075a110b13360638056ce8e23"><td class="memItemLeft" align="right" valign="top">reactphysics3d::Collider *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#a411dd8c075a110b13360638056ce8e23">col</a> = nullptr</td></tr>
+<tr class="memdesc:a411dd8c075a110b13360638056ce8e23"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the currently used collider of the body.  <a href="class_c_collider.html#a411dd8c075a110b13360638056ce8e23">More...</a><br /></td></tr>
+<tr class="separator:a411dd8c075a110b13360638056ce8e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf688ecb529f6f811dbec37a1ea203d3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#aaf688ecb529f6f811dbec37a1ea203d3">concaveVertices</a></td></tr>
+<tr class="memdesc:aaf688ecb529f6f811dbec37a1ea203d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of the Vertices of the concave collider, if in use.  <a href="class_c_collider.html#aaf688ecb529f6f811dbec37a1ea203d3">More...</a><br /></td></tr>
 <tr class="separator:aaf688ecb529f6f811dbec37a1ea203d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea7d2b55212ecea15c8bbc6d9458dbe3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#aea7d2b55212ecea15c8bbc6d9458dbe3">concaveIndices</a></td></tr>
 <tr class="separator:aea7d2b55212ecea15c8bbc6d9458dbe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e79bdcaf9bf368a647181f0f9250a37"><td class="memItemLeft" align="right" valign="top">reactphysics3d::ConvexMeshShape *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#a7e79bdcaf9bf368a647181f0f9250a37">convexCollider</a> = nullptr</td></tr>
-<tr class="separator:a7e79bdcaf9bf368a647181f0f9250a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a411dd8c075a110b13360638056ce8e23"><td class="memItemLeft" align="right" valign="top">reactphysics3d::Collider *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#a411dd8c075a110b13360638056ce8e23">col</a></td></tr>
-<tr class="separator:a411dd8c075a110b13360638056ce8e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a633534c17b8204dbec4242235493f02b"><td class="memItemLeft" align="right" valign="top">reactphysics3d::PolygonVertexArray::PolygonFace *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_collider.html#a633534c17b8204dbec4242235493f02b">polyFace</a></td></tr>
-<tr class="separator:a633534c17b8204dbec4242235493f02b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -211,8 +212,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ab7c47531297d9f1b2f039f848591dd67 inherit pro_attribs_class_c_component"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00009">9</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
+<div class="textblock"><p>Collider Component. </p>
+
+<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00015">15</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a74c40f1839119643222abcbf23ce5e4e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a74c40f1839119643222abcbf23ce5e4e">&#9670;&nbsp;</a></span>CCollider()</h2>
@@ -255,33 +257,24 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_a74c40f1839119643222abcbf23ce5e4e_cgraph.png" border="0" usemap="#aclass_c_collider_a74c40f1839119643222abcbf23ce5e4e_cgraph" alt=""/></div>
 <map name="aclass_c_collider_a74c40f1839119643222abcbf23ce5e4e_cgraph" id="aclass_c_collider_a74c40f1839119643222abcbf23ce5e4e_cgraph">
-<area shape="rect" title="constructor taking parent as argument" alt="" coords="5,411,140,437"/>
-<area shape="rect" href="class_game_object.html#a5ba3b458e6bee6ea5aedd5c8cdeabf18" title="component accessor" alt="" coords="192,5,383,32"/>
-<area shape="rect" href="class_transform.html#a2bd3205164a8f8f64f1c738ab6cb365f" title="position accessor" alt="" coords="210,56,365,83"/>
-<area shape="rect" href="class_transform.html#a9fa5762d8b0ee8914b944dabe19e1bab" title="rotation accessor" alt="" coords="209,107,365,133"/>
-<area shape="rect" href="class_c_component.html#a3796546e2460ee6457af80534ddff0d5" title="transform accessor" alt="" coords="196,157,379,184"/>
-<area shape="rect" href="class_quaternion.html#aab6106f3b5d030da7cbc450151a88449" title="w value accessor" alt="" coords="647,247,774,273"/>
-<area shape="rect" href="class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space." alt="" coords="188,411,387,437"/>
-<area shape="rect" href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="657,335,764,361"/>
-<area shape="rect" href="class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93" title="x value accessor" alt="" coords="650,892,771,919"/>
-<area shape="rect" href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="657,436,765,463"/>
-<area shape="rect" href="class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a" title="y value accessor" alt="" coords="649,943,772,969"/>
-<area shape="rect" href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="657,385,764,412"/>
-<area shape="rect" href="class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c" title="z value accessor" alt="" coords="650,993,771,1020"/>
-<area shape="rect" href="class_transform.html#a1d7c9c033dedc293e326bd498a0529a5" title=" " alt="" coords="215,816,360,843"/>
-<area shape="rect" href="class_matrix4f.html#a0b71f43084503eec80a61747f897fa0d" title=" " alt="" coords="459,309,561,336"/>
-<area shape="rect" href="class_quaternion.html#aa5333ab28dbe4d5ae15ab5dbc36b90ca" title="Conjugation of a quaternian" alt="" coords="435,360,585,387"/>
-<area shape="rect" href="_math_library_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="465,613,555,640"/>
-<area shape="rect" href="class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229" title=" " alt="" coords="455,411,565,437"/>
-<area shape="rect" href="class_matrix4f.html#a7e95514a69d7d61a622eb2395aa2208a" title=" " alt="" coords="445,461,575,488"/>
-<area shape="rect" href="class_matrix4f.html#a54e3080a852329be44f8d0a5ae9a4b41" title=" " alt="" coords="633,841,788,868"/>
-<area shape="rect" href="class_quaternion.html#a1ebf115669b6eea34055c9ceabbab3c7" title="w value mutator" alt="" coords="647,487,774,513"/>
-<area shape="rect" href="class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="658,537,763,564"/>
-<area shape="rect" href="class_quaternion.html#a1bfc1782be552d9163706f772faab415" title="x value mutator" alt="" coords="651,588,771,615"/>
-<area shape="rect" href="class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="657,639,764,665"/>
-<area shape="rect" href="class_quaternion.html#a7bb167a496e76cd5dfeeff68cd22c143" title="y value mutator" alt="" coords="649,689,772,716"/>
-<area shape="rect" href="class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="658,740,763,767"/>
-<area shape="rect" href="class_quaternion.html#a68030fa2014f3d281ac8116722954661" title="z value mutator" alt="" coords="651,791,771,817"/>
+<area shape="rect" title="constructor taking parent as argument" alt="" coords="5,309,140,336"/>
+<area shape="rect" href="class_game_object.html#a5ba3b458e6bee6ea5aedd5c8cdeabf18" title="component accessor" alt="" coords="201,5,391,32"/>
+<area shape="rect" href="class_transform.html#a480af94b677d5c77a8c4cf8aeb3e2d4d" title="get orientation relative to parent transform" alt="" coords="188,56,404,83"/>
+<area shape="rect" href="class_transform.html#a07df84a85998644477081fc31d53e546" title="position accessor" alt="" coords="196,107,396,133"/>
+<area shape="rect" href="class_c_component.html#a3796546e2460ee6457af80534ddff0d5" title="transform accessor" alt="" coords="205,157,387,184"/>
+<area shape="rect" href="class_quaternion.html#aab6106f3b5d030da7cbc450151a88449" title="w value accessor" alt="" coords="233,208,359,235"/>
+<area shape="rect" href="class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space based on all its parents." alt="" coords="197,385,395,412"/>
+<area shape="rect" href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="651,335,758,361"/>
+<area shape="rect" href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="651,385,759,412"/>
+<area shape="rect" href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="651,461,758,488"/>
+<area shape="rect" href="class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93" title="x value accessor" alt="" coords="235,487,357,513"/>
+<area shape="rect" href="class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a" title="y value accessor" alt="" coords="235,537,357,564"/>
+<area shape="rect" href="class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c" title="z value accessor" alt="" coords="235,588,357,615"/>
+<area shape="rect" href="class_transform.html#a1d7c9c033dedc293e326bd498a0529a5" title=" " alt="" coords="223,639,369,665"/>
+<area shape="rect" href="class_quaternion.html#aa5333ab28dbe4d5ae15ab5dbc36b90ca" title=" " alt="" coords="452,512,603,539"/>
+<area shape="rect" href="_misc_math_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="482,411,573,437"/>
+<area shape="rect" href="class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229" title=" " alt="" coords="473,461,582,488"/>
+<area shape="rect" href="class_matrix4f.html#a7e95514a69d7d61a622eb2395aa2208a" title=" " alt="" coords="463,360,592,387"/>
 </map>
 </div>
 
@@ -310,7 +303,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00018">18</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00024">24</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
 
 </div>
 </div>
@@ -383,18 +376,34 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>Creates a box collider around the object. Can either be automatically resized to fit the object, manually sized and placed, or statically placed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td></td></tr>
+    <tr><td class="paramname">y</td><td></td></tr>
+    <tr><td class="paramname">z</td><td></td></tr>
+    <tr><td class="paramname">offsetX</td><td></td></tr>
+    <tr><td class="paramname">offsetY</td><td></td></tr>
+    <tr><td class="paramname">offsetZ</td><td></td></tr>
+    <tr><td class="paramname">autoSize</td><td></td></tr>
+    <tr><td class="paramname">layer</td><td></td></tr>
+    <tr><td class="paramname">allowRotation</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00101">101</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_ac44996b225b212a06b6e57529e1109ee_cgraph.png" border="0" usemap="#aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_cgraph" alt=""/></div>
 <map name="aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_cgraph" id="aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_cgraph">
-<area shape="rect" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" title="Creates a box collider around the object. Can either be automatically resized to fit the object,..." alt="" coords="5,107,176,133"/>
 <area shape="rect" href="class_game_object.html#a5ba3b458e6bee6ea5aedd5c8cdeabf18" title="component accessor" alt="" coords="230,5,421,32"/>
 <area shape="rect" href="class_game_object.html#ace4028c08027f5a8949ba9dac125b759" title=" " alt="" coords="226,56,425,83"/>
 <area shape="rect" href="class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9" title="parent object accessor" alt="" coords="224,107,427,133"/>
 <area shape="rect" href="class_a_model.html#a1363890857148e45337668981cc39322" title=" " alt="" coords="265,157,385,184"/>
-<area shape="rect" href="class_transform.html#a7c287f2ec371a1214df9fa7ad6a9718b" title=" " alt="" coords="248,208,403,235"/>
+<area shape="rect" href="class_transform.html#a306ec5e7b5b46e6a989097dd0927d447" title=" " alt="" coords="226,208,425,235"/>
 <area shape="rect" href="class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="475,157,581,184"/>
 <area shape="rect" href="class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="475,208,581,235"/>
 <area shape="rect" href="class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="475,259,581,285"/>
@@ -405,7 +414,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_ac44996b225b212a06b6e57529e1109ee_icgraph.png" border="0" usemap="#aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_icgraph" alt=""/></div>
 <map name="aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_icgraph" id="aclass_c_collider_ac44996b225b212a06b6e57529e1109ee_icgraph">
-<area shape="rect" title=" " alt="" coords="231,5,401,32"/>
+<area shape="rect" title="Creates a box collider around the object. Can either be automatically resized to fit the object,..." alt="" coords="231,5,401,32"/>
 <area shape="rect" href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,5,183,32"/>
 </map>
 </div>
@@ -444,13 +453,23 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>Adds a capsule collider around the objects model, currently not completed. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">radius</td><td></td></tr>
+    <tr><td class="paramname">height</td><td></td></tr>
+    <tr><td class="paramname">layer</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00138">138</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_a70bfbff53aeac17e1201dfe26a25d68b_icgraph.png" border="0" usemap="#aclass_c_collider_a70bfbff53aeac17e1201dfe26a25d68b_icgraph" alt=""/></div>
 <map name="aclass_c_collider_a70bfbff53aeac17e1201dfe26a25d68b_icgraph" id="aclass_c_collider_a70bfbff53aeac17e1201dfe26a25d68b_icgraph">
-<area shape="rect" title=" " alt="" coords="231,5,425,32"/>
+<area shape="rect" title="Adds a capsule collider around the objects model, currently not completed." alt="" coords="231,5,425,32"/>
 <area shape="rect" href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,5,183,32"/>
 </map>
 </div>
@@ -472,6 +491,13 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Creates a Concave/Mesh collider around the object.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00189">189</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
 <div class="dynheader">
@@ -512,13 +538,15 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>Creates a convex/polygon collider around the object. Currently is not working. </p>
+
 <p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00146">146</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_cgraph.png" border="0" usemap="#aclass_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_cgraph" alt=""/></div>
 <map name="aclass_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_cgraph" id="aclass_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_cgraph">
-<area shape="rect" title=" " alt="" coords="5,56,196,83"/>
+<area shape="rect" title="Creates a convex/polygon collider around the object. Currently is not working." alt="" coords="5,56,196,83"/>
 <area shape="rect" href="class_game_object.html#ace4028c08027f5a8949ba9dac125b759" title=" " alt="" coords="246,5,445,32"/>
 <area shape="rect" href="class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9" title="parent object accessor" alt="" coords="244,56,447,83"/>
 <area shape="rect" href="class_a_model.html#a78576c2dff8569ea8bdee87b16a64754" title=" " alt="" coords="277,107,414,133"/>
@@ -529,7 +557,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_icgraph.png" border="0" usemap="#aclass_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_icgraph" alt=""/></div>
 <map name="aclass_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_icgraph" id="aclass_c_collider_af2a8bc9ee9bb4aba6f7237f029c31ad8_icgraph">
-<area shape="rect" title=" " alt="" coords="231,5,421,32"/>
+<area shape="rect" title="Creates a convex/polygon collider around the object. Currently is not working." alt="" coords="231,5,421,32"/>
 <area shape="rect" href="class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,5,183,32"/>
 </map>
 </div>
@@ -551,8 +579,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Changes what other colliders the collider can collide with.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layerToCollideWith</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00222">222</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00223">223</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -721,31 +756,22 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_ab8fd6544bb2eb98523b7f27e60ac9e03_cgraph.png" border="0" usemap="#aclass_c_collider_ab8fd6544bb2eb98523b7f27e60ac9e03_cgraph" alt=""/></div>
 <map name="aclass_c_collider_ab8fd6544bb2eb98523b7f27e60ac9e03_cgraph" id="aclass_c_collider_ab8fd6544bb2eb98523b7f27e60ac9e03_cgraph">
-<area shape="rect" title="initialises the component at start of program" alt="" coords="5,360,116,387"/>
-<area shape="rect" href="class_c_collider.html#ae82b280aee96b0a2d6e532e0a663f256" title=" " alt="" coords="164,360,331,387"/>
-<area shape="rect" href="class_transform.html#a2bd3205164a8f8f64f1c738ab6cb365f" title="position accessor" alt="" coords="401,5,555,32"/>
-<area shape="rect" href="class_transform.html#a9fa5762d8b0ee8914b944dabe19e1bab" title="rotation accessor" alt="" coords="400,56,556,83"/>
-<area shape="rect" href="class_quaternion.html#aab6106f3b5d030da7cbc450151a88449" title="w value accessor" alt="" coords="838,144,965,171"/>
-<area shape="rect" href="class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space." alt="" coords="379,335,577,361"/>
-<area shape="rect" href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="848,233,955,260"/>
-<area shape="rect" href="class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93" title="x value accessor" alt="" coords="841,791,962,817"/>
-<area shape="rect" href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="847,335,955,361"/>
-<area shape="rect" href="class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a" title="y value accessor" alt="" coords="840,841,963,868"/>
-<area shape="rect" href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="848,284,955,311"/>
-<area shape="rect" href="class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c" title="z value accessor" alt="" coords="841,892,962,919"/>
-<area shape="rect" href="class_matrix4f.html#a0b71f43084503eec80a61747f897fa0d" title=" " alt="" coords="649,208,752,235"/>
-<area shape="rect" href="class_quaternion.html#aa5333ab28dbe4d5ae15ab5dbc36b90ca" title="Conjugation of a quaternian" alt="" coords="625,259,776,285"/>
-<area shape="rect" href="_math_library_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="655,512,746,539"/>
-<area shape="rect" href="class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229" title=" " alt="" coords="646,309,755,336"/>
-<area shape="rect" href="class_matrix4f.html#a7e95514a69d7d61a622eb2395aa2208a" title=" " alt="" coords="636,360,765,387"/>
-<area shape="rect" href="class_matrix4f.html#a54e3080a852329be44f8d0a5ae9a4b41" title=" " alt="" coords="824,740,979,767"/>
-<area shape="rect" href="class_quaternion.html#a1ebf115669b6eea34055c9ceabbab3c7" title="w value mutator" alt="" coords="838,385,965,412"/>
-<area shape="rect" href="class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="849,436,954,463"/>
-<area shape="rect" href="class_quaternion.html#a1bfc1782be552d9163706f772faab415" title="x value mutator" alt="" coords="841,487,961,513"/>
-<area shape="rect" href="class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="848,537,955,564"/>
-<area shape="rect" href="class_quaternion.html#a7bb167a496e76cd5dfeeff68cd22c143" title="y value mutator" alt="" coords="840,588,963,615"/>
-<area shape="rect" href="class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="849,639,954,665"/>
-<area shape="rect" href="class_quaternion.html#a68030fa2014f3d281ac8116722954661" title="z value mutator" alt="" coords="841,689,961,716"/>
+<area shape="rect" title="initialises the component at start of program" alt="" coords="5,259,116,285"/>
+<area shape="rect" href="class_c_collider.html#ae82b280aee96b0a2d6e532e0a663f256" title="Updates the colliders with any transformations changes based on the colliders model." alt="" coords="164,259,331,285"/>
+<area shape="rect" href="class_transform.html#a480af94b677d5c77a8c4cf8aeb3e2d4d" title="get orientation relative to parent transform" alt="" coords="379,5,595,32"/>
+<area shape="rect" href="class_transform.html#a07df84a85998644477081fc31d53e546" title="position accessor" alt="" coords="387,56,587,83"/>
+<area shape="rect" href="class_quaternion.html#aab6106f3b5d030da7cbc450151a88449" title="w value accessor" alt="" coords="423,107,550,133"/>
+<area shape="rect" href="class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space based on all its parents." alt="" coords="387,309,586,336"/>
+<area shape="rect" href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="842,233,949,260"/>
+<area shape="rect" href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="841,284,949,311"/>
+<area shape="rect" href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="842,360,949,387"/>
+<area shape="rect" href="class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93" title="x value accessor" alt="" coords="426,461,547,488"/>
+<area shape="rect" href="class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a" title="y value accessor" alt="" coords="425,512,548,539"/>
+<area shape="rect" href="class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c" title="z value accessor" alt="" coords="426,563,547,589"/>
+<area shape="rect" href="class_quaternion.html#aa5333ab28dbe4d5ae15ab5dbc36b90ca" title=" " alt="" coords="643,411,793,437"/>
+<area shape="rect" href="_misc_math_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="673,309,763,336"/>
+<area shape="rect" href="class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229" title=" " alt="" coords="663,360,773,387"/>
+<area shape="rect" href="class_matrix4f.html#a7e95514a69d7d61a622eb2395aa2208a" title=" " alt="" coords="653,259,783,285"/>
 </map>
 </div>
 
@@ -784,32 +810,23 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_a858c10f0e9fb3a6e73bd00fcfcdb99f1_cgraph.png" border="0" usemap="#aclass_c_collider_a858c10f0e9fb3a6e73bd00fcfcdb99f1_cgraph" alt=""/></div>
 <map name="aclass_c_collider_a858c10f0e9fb3a6e73bd00fcfcdb99f1_cgraph" id="aclass_c_collider_a858c10f0e9fb3a6e73bd00fcfcdb99f1_cgraph">
-<area shape="rect" title="updates ongoing behaviour each frame" alt="" coords="5,335,128,361"/>
-<area shape="rect" href="class_game_object.html#a099bb5cf5e235b48e22ce0aa61ef9bb6" title=" " alt="" coords="186,309,333,336"/>
-<area shape="rect" href="class_c_collider.html#ae82b280aee96b0a2d6e532e0a663f256" title=" " alt="" coords="176,360,343,387"/>
-<area shape="rect" href="class_transform.html#a2bd3205164a8f8f64f1c738ab6cb365f" title="position accessor" alt="" coords="413,5,567,32"/>
-<area shape="rect" href="class_transform.html#a9fa5762d8b0ee8914b944dabe19e1bab" title="rotation accessor" alt="" coords="412,56,568,83"/>
-<area shape="rect" href="class_quaternion.html#aab6106f3b5d030da7cbc450151a88449" title="w value accessor" alt="" coords="850,144,977,171"/>
-<area shape="rect" href="class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space." alt="" coords="391,335,589,361"/>
-<area shape="rect" href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="860,233,967,260"/>
-<area shape="rect" href="class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93" title="x value accessor" alt="" coords="853,791,974,817"/>
-<area shape="rect" href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="859,335,967,361"/>
-<area shape="rect" href="class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a" title="y value accessor" alt="" coords="852,841,975,868"/>
-<area shape="rect" href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="860,284,967,311"/>
-<area shape="rect" href="class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c" title="z value accessor" alt="" coords="853,892,974,919"/>
-<area shape="rect" href="class_matrix4f.html#a0b71f43084503eec80a61747f897fa0d" title=" " alt="" coords="661,208,764,235"/>
-<area shape="rect" href="class_quaternion.html#aa5333ab28dbe4d5ae15ab5dbc36b90ca" title="Conjugation of a quaternian" alt="" coords="637,259,788,285"/>
-<area shape="rect" href="_math_library_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="667,512,758,539"/>
-<area shape="rect" href="class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229" title=" " alt="" coords="658,309,767,336"/>
-<area shape="rect" href="class_matrix4f.html#a7e95514a69d7d61a622eb2395aa2208a" title=" " alt="" coords="648,360,777,387"/>
-<area shape="rect" href="class_matrix4f.html#a54e3080a852329be44f8d0a5ae9a4b41" title=" " alt="" coords="836,740,991,767"/>
-<area shape="rect" href="class_quaternion.html#a1ebf115669b6eea34055c9ceabbab3c7" title="w value mutator" alt="" coords="850,385,977,412"/>
-<area shape="rect" href="class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="861,436,966,463"/>
-<area shape="rect" href="class_quaternion.html#a1bfc1782be552d9163706f772faab415" title="x value mutator" alt="" coords="853,487,973,513"/>
-<area shape="rect" href="class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="860,537,967,564"/>
-<area shape="rect" href="class_quaternion.html#a7bb167a496e76cd5dfeeff68cd22c143" title="y value mutator" alt="" coords="852,588,975,615"/>
-<area shape="rect" href="class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="861,639,966,665"/>
-<area shape="rect" href="class_quaternion.html#a68030fa2014f3d281ac8116722954661" title="z value mutator" alt="" coords="853,689,973,716"/>
+<area shape="rect" title="updates ongoing behaviour each frame" alt="" coords="5,233,128,260"/>
+<area shape="rect" href="class_game_object.html#a099bb5cf5e235b48e22ce0aa61ef9bb6" title=" " alt="" coords="186,208,333,235"/>
+<area shape="rect" href="class_c_collider.html#ae82b280aee96b0a2d6e532e0a663f256" title="Updates the colliders with any transformations changes based on the colliders model." alt="" coords="176,259,343,285"/>
+<area shape="rect" href="class_transform.html#a480af94b677d5c77a8c4cf8aeb3e2d4d" title="get orientation relative to parent transform" alt="" coords="391,5,607,32"/>
+<area shape="rect" href="class_transform.html#a07df84a85998644477081fc31d53e546" title="position accessor" alt="" coords="399,56,599,83"/>
+<area shape="rect" href="class_quaternion.html#aab6106f3b5d030da7cbc450151a88449" title="w value accessor" alt="" coords="435,107,562,133"/>
+<area shape="rect" href="class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space based on all its parents." alt="" coords="399,309,598,336"/>
+<area shape="rect" href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="854,233,961,260"/>
+<area shape="rect" href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="853,284,961,311"/>
+<area shape="rect" href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="854,360,961,387"/>
+<area shape="rect" href="class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93" title="x value accessor" alt="" coords="438,461,559,488"/>
+<area shape="rect" href="class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a" title="y value accessor" alt="" coords="437,512,560,539"/>
+<area shape="rect" href="class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c" title="z value accessor" alt="" coords="438,563,559,589"/>
+<area shape="rect" href="class_quaternion.html#aa5333ab28dbe4d5ae15ab5dbc36b90ca" title=" " alt="" coords="655,411,805,437"/>
+<area shape="rect" href="_misc_math_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="685,309,775,336"/>
+<area shape="rect" href="class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229" title=" " alt="" coords="675,360,785,387"/>
+<area shape="rect" href="class_matrix4f.html#a7e95514a69d7d61a622eb2395aa2208a" title=" " alt="" coords="665,259,795,285"/>
 </map>
 </div>
 
@@ -830,36 +847,29 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p>Updates the colliders with any transformations changes based on the colliders model. </p>
+
 <p class="definition">Definition at line <a class="el" href="_c_collider_8cpp_source.html#l00074">74</a> of file <a class="el" href="_c_collider_8cpp_source.html">CCollider.cpp</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_ae82b280aee96b0a2d6e532e0a663f256_cgraph.png" border="0" usemap="#aclass_c_collider_ae82b280aee96b0a2d6e532e0a663f256_cgraph" alt=""/></div>
 <map name="aclass_c_collider_ae82b280aee96b0a2d6e532e0a663f256_cgraph" id="aclass_c_collider_ae82b280aee96b0a2d6e532e0a663f256_cgraph">
-<area shape="rect" title=" " alt="" coords="5,360,172,387"/>
-<area shape="rect" href="class_transform.html#a2bd3205164a8f8f64f1c738ab6cb365f" title="position accessor" alt="" coords="242,5,397,32"/>
-<area shape="rect" href="class_transform.html#a9fa5762d8b0ee8914b944dabe19e1bab" title="rotation accessor" alt="" coords="241,56,397,83"/>
-<area shape="rect" href="class_quaternion.html#aab6106f3b5d030da7cbc450151a88449" title="w value accessor" alt="" coords="679,144,806,171"/>
-<area shape="rect" href="class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space." alt="" coords="220,335,419,361"/>
-<area shape="rect" href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="689,233,796,260"/>
-<area shape="rect" href="class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93" title="x value accessor" alt="" coords="682,791,803,817"/>
-<area shape="rect" href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="689,335,797,361"/>
-<area shape="rect" href="class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a" title="y value accessor" alt="" coords="681,841,804,868"/>
-<area shape="rect" href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="689,284,796,311"/>
-<area shape="rect" href="class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c" title="z value accessor" alt="" coords="682,892,803,919"/>
-<area shape="rect" href="class_matrix4f.html#a0b71f43084503eec80a61747f897fa0d" title=" " alt="" coords="491,208,593,235"/>
-<area shape="rect" href="class_quaternion.html#aa5333ab28dbe4d5ae15ab5dbc36b90ca" title="Conjugation of a quaternian" alt="" coords="467,259,617,285"/>
-<area shape="rect" href="_math_library_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="497,512,587,539"/>
-<area shape="rect" href="class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229" title=" " alt="" coords="487,309,597,336"/>
-<area shape="rect" href="class_matrix4f.html#a7e95514a69d7d61a622eb2395aa2208a" title=" " alt="" coords="477,360,607,387"/>
-<area shape="rect" href="class_matrix4f.html#a54e3080a852329be44f8d0a5ae9a4b41" title=" " alt="" coords="665,740,820,767"/>
-<area shape="rect" href="class_quaternion.html#a1ebf115669b6eea34055c9ceabbab3c7" title="w value mutator" alt="" coords="679,385,806,412"/>
-<area shape="rect" href="class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="690,436,795,463"/>
-<area shape="rect" href="class_quaternion.html#a1bfc1782be552d9163706f772faab415" title="x value mutator" alt="" coords="683,487,803,513"/>
-<area shape="rect" href="class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="689,537,796,564"/>
-<area shape="rect" href="class_quaternion.html#a7bb167a496e76cd5dfeeff68cd22c143" title="y value mutator" alt="" coords="681,588,804,615"/>
-<area shape="rect" href="class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="690,639,795,665"/>
-<area shape="rect" href="class_quaternion.html#a68030fa2014f3d281ac8116722954661" title="z value mutator" alt="" coords="683,689,803,716"/>
+<area shape="rect" title="Updates the colliders with any transformations changes based on the colliders model." alt="" coords="5,259,172,285"/>
+<area shape="rect" href="class_transform.html#a480af94b677d5c77a8c4cf8aeb3e2d4d" title="get orientation relative to parent transform" alt="" coords="220,5,436,32"/>
+<area shape="rect" href="class_transform.html#a07df84a85998644477081fc31d53e546" title="position accessor" alt="" coords="228,56,428,83"/>
+<area shape="rect" href="class_quaternion.html#aab6106f3b5d030da7cbc450151a88449" title="w value accessor" alt="" coords="265,107,391,133"/>
+<area shape="rect" href="class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space based on all its parents." alt="" coords="229,309,427,336"/>
+<area shape="rect" href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="683,233,790,260"/>
+<area shape="rect" href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="683,284,791,311"/>
+<area shape="rect" href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="683,360,790,387"/>
+<area shape="rect" href="class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93" title="x value accessor" alt="" coords="267,461,389,488"/>
+<area shape="rect" href="class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a" title="y value accessor" alt="" coords="267,512,389,539"/>
+<area shape="rect" href="class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c" title="z value accessor" alt="" coords="267,563,389,589"/>
+<area shape="rect" href="class_quaternion.html#aa5333ab28dbe4d5ae15ab5dbc36b90ca" title=" " alt="" coords="484,411,635,437"/>
+<area shape="rect" href="_misc_math_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="514,309,605,336"/>
+<area shape="rect" href="class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229" title=" " alt="" coords="505,360,614,387"/>
+<area shape="rect" href="class_matrix4f.html#a7e95514a69d7d61a622eb2395aa2208a" title=" " alt="" coords="495,259,624,285"/>
 </map>
 </div>
 <div class="dynheader">
@@ -867,7 +877,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_c_collider_ae82b280aee96b0a2d6e532e0a663f256_icgraph.png" border="0" usemap="#aclass_c_collider_ae82b280aee96b0a2d6e532e0a663f256_icgraph" alt=""/></div>
 <map name="aclass_c_collider_ae82b280aee96b0a2d6e532e0a663f256_icgraph" id="aclass_c_collider_ae82b280aee96b0a2d6e532e0a663f256_icgraph">
-<area shape="rect" title=" " alt="" coords="189,56,356,83"/>
+<area shape="rect" title="Updates the colliders with any transformations changes based on the colliders model." alt="" coords="189,56,356,83"/>
 <area shape="rect" href="class_c_collider.html#ab8fd6544bb2eb98523b7f27e60ac9e03" title="initialises the component at start of program" alt="" coords="18,5,129,32"/>
 <area shape="rect" href="class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="5,56,141,83"/>
 <area shape="rect" href="class_c_collider.html#a858c10f0e9fb3a6e73bd00fcfcdb99f1" title="updates ongoing behaviour each frame" alt="" coords="12,107,135,133"/>
@@ -877,22 +887,6 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ab169c0d4c6b95ee664f7da30c66b2b9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab169c0d4c6b95ee664f7da30c66b2b9e">&#9670;&nbsp;</a></span>boxCollider</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">reactphysics3d::BoxShape* CCollider::boxCollider = nullptr</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00069">69</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
-
-</div>
-</div>
 <a id="a411dd8c075a110b13360638056ce8e23"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a411dd8c075a110b13360638056ce8e23">&#9670;&nbsp;</a></span>col</h2>
 
@@ -900,12 +894,14 @@ Here is the caller graph for this function:</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">reactphysics3d::Collider* CCollider::col</td>
+          <td class="memname">reactphysics3d::Collider* CCollider::col = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00077">77</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
+<p>A pointer to the currently used collider of the body. </p>
+
+<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00076">76</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
 
 </div>
 </div>
@@ -921,7 +917,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00067">67</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
+<p>A pointer to the collisionbody which contains all the colliders on the model. </p>
+
+<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00071">71</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
 
 </div>
 </div>
@@ -936,24 +934,9 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>list of indices of the concave collider, if in use. </p>
 
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00074">74</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
-
-</div>
-</div>
-<a id="a41f23a000e9af546b6a03aeadf4adb89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41f23a000e9af546b6a03aeadf4adb89">&#9670;&nbsp;</a></span>concaveMesh</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">reactphysics3d::ConcaveMeshShape* CCollider::concaveMesh = nullptr</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00072">72</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00086">86</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
 
 </div>
 </div>
@@ -969,23 +952,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00073">73</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
+<p>list of the Vertices of the concave collider, if in use. </p>
 
-</div>
-</div>
-<a id="a7e79bdcaf9bf368a647181f0f9250a37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e79bdcaf9bf368a647181f0f9250a37">&#9670;&nbsp;</a></span>convexCollider</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">reactphysics3d::ConvexMeshShape* CCollider::convexCollider = nullptr</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00076">76</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00081">81</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
 
 </div>
 </div>
@@ -1001,7 +970,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00065">65</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
+<p>whether the collider is allowed to rotate </p>
+
+<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00066">66</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
 
 </div>
 </div>
@@ -1034,40 +1005,9 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>The offset the colliders have off the model. </p>
 
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00057">57</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
-
-</div>
-</div>
-<a id="a633534c17b8204dbec4242235493f02b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a633534c17b8204dbec4242235493f02b">&#9670;&nbsp;</a></span>polyFace</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">reactphysics3d::PolygonVertexArray::PolygonFace* CCollider::polyFace</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00078">78</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
-
-</div>
-</div>
-<a id="a4b1a7f432047b6342f28cbf266b0656f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b1a7f432047b6342f28cbf266b0656f">&#9670;&nbsp;</a></span>triangleMesh</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">reactphysics3d::TriangleMesh* CCollider::triangleMesh = nullptr</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00071">71</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_c_collider_8h_source.html#l00059">59</a> of file <a class="el" href="_c_collider_8h_source.html">CCollider.h</a>.</p>
 
 </div>
 </div>

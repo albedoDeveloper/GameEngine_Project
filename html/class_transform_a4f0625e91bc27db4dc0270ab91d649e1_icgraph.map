@@ -1,0 +1,12 @@
+<map id="Transform::GetRelativeScale" name="Transform::GetRelativeScale">
+<area shape="rect" id="node1" title="get scale relative to parent transform" alt="" coords="1116,56,1303,83"/>
+<area shape="rect" id="node2" href="$class_graphics_engine.html#a750597125cf08bca414df5432daffa56" title="Draws a model asset on the screen." alt="" coords="875,5,1061,32"/>
+<area shape="rect" id="node3" href="$class_level_editor.html#a07d3584976205e962c0dffcb1e9d3ad0" title="displays the scale fields in the transform editor" alt="" coords="868,56,1068,83"/>
+<area shape="rect" id="node8" href="$class_transform.html#ab720c8e888790aa2a8f29ca4efc5c0cc" title="Saves the transform to JSON." alt="" coords="904,107,1032,133"/>
+<area shape="rect" id="node4" href="$class_level_editor.html#aac394ace767b605adef1afdfb0473046" title="displays the gameobjects transform editor" alt="" coords="629,56,820,83"/>
+<area shape="rect" id="node5" href="$class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de" title="Creates the objects header using the current gameobject in the iterator." alt="" coords="409,56,581,83"/>
+<area shape="rect" id="node6" href="$class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0" title="fills in the object list" alt="" coords="209,56,361,83"/>
+<area shape="rect" id="node7" href="$class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048" title="Draws the editor to screen." alt="" coords="5,56,161,83"/>
+<area shape="rect" id="node9" href="$class_game_object.html#aedc9f47690b6dab433843fccb736064f" title="saves the object" alt="" coords="659,107,790,133"/>
+<area shape="rect" id="node10" href="$class_level_loader.html#a201799a503e97f7ede6f9b012633602f" title="write game data to JSON &#45; DEPRECIATED" alt="" coords="655,157,794,184"/>
+</map>

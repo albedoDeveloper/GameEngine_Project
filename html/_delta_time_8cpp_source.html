@@ -99,10 +99,10 @@ $(document).ready(function(){initNavTree('_delta_time_8cpp_source.html',''); ini
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    deltaTime = 0;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_delta_time.html#aa7e68e4581f2d225d2edfa9b14eca60f">   12</a></span>&#160;<a class="code" href="class_delta_time.html">DeltaTime</a>* <a class="code" href="class_delta_time.html#aa7e68e4581f2d225d2edfa9b14eca60f">DeltaTime::Instance</a>()</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_delta_time.html#aa7e68e4581f2d225d2edfa9b14eca60f">   12</a></span>&#160;<a class="code" href="class_delta_time.html">DeltaTime</a> *<a class="code" href="class_delta_time.html#aa7e68e4581f2d225d2edfa9b14eca60f">DeltaTime::Instance</a>()</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_delta_time.html">DeltaTime</a> instance;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> &amp;instance; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> &amp;instance;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_delta_time.html#a2b4b3993488d658e318f2e29b385d24b">   18</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_delta_time.html#a2b4b3993488d658e318f2e29b385d24b">DeltaTime::UpdateDeltaTime</a>()</div>
@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('_delta_time_8cpp_source.html',''); ini
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    LAST = NOW;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    NOW = SDL_GetPerformanceCounter();</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    deltaTime = std::min&lt;double&gt;((<span class="keywordtype">double</span>)((NOW - LAST) / (<span class="keywordtype">double</span>)SDL_GetPerformanceFrequency()),0.29);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    deltaTime = (NOW - LAST) / (<span class="keywordtype">double</span>)SDL_GetPerformanceFrequency();</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_delta_time.html#ac094ba8e92921b96f93381499c387f3d">   26</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_delta_time.html#ac094ba8e92921b96f93381499c387f3d">DeltaTime::CatchupDeltaTime</a>()</div>
@@ -127,13 +127,13 @@ $(document).ready(function(){initNavTree('_delta_time_8cpp_source.html',''); ini
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">return</span> SDL_GetPerformanceCounter();</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
-<div class="ttc" id="a_delta_time_8h_html"><div class="ttname"><a href="_delta_time_8h.html">DeltaTime.h</a></div></div>
-<div class="ttc" id="aclass_delta_time_html"><div class="ttname"><a href="class_delta_time.html">DeltaTime</a></div><div class="ttdef"><b>Definition:</b> <a href="_delta_time_8h_source.html#l00005">DeltaTime.h:6</a></div></div>
+<div class="ttc" id="a_delta_time_8h_html"><div class="ttname"><a href="_delta_time_8h.html">DeltaTime.h</a></div><div class="ttdoc">Elapsed time since last update.</div></div>
+<div class="ttc" id="aclass_delta_time_html"><div class="ttname"><a href="class_delta_time.html">DeltaTime</a></div><div class="ttdoc">The elapsed time between frames.</div><div class="ttdef"><b>Definition:</b> <a href="_delta_time_8h_source.html#l00012">DeltaTime.h:13</a></div></div>
 <div class="ttc" id="aclass_delta_time_html_a16be81d4d9ef62ec4f19daa4f91d947e"><div class="ttname"><a href="class_delta_time.html#a16be81d4d9ef62ec4f19daa4f91d947e">DeltaTime::GetDeltaTime</a></div><div class="ttdeci">double GetDeltaTime()</div><div class="ttdoc">get current delta time</div><div class="ttdef"><b>Definition:</b> <a href="_delta_time_8cpp_source.html#l00031">DeltaTime.cpp:31</a></div></div>
 <div class="ttc" id="aclass_delta_time_html_a2b4b3993488d658e318f2e29b385d24b"><div class="ttname"><a href="class_delta_time.html#a2b4b3993488d658e318f2e29b385d24b">DeltaTime::UpdateDeltaTime</a></div><div class="ttdeci">void UpdateDeltaTime()</div><div class="ttdoc">call once a frame to update delta time value</div><div class="ttdef"><b>Definition:</b> <a href="_delta_time_8cpp_source.html#l00018">DeltaTime.cpp:18</a></div></div>
-<div class="ttc" id="aclass_delta_time_html_a9a5e0e793501193b432d4eff55a0f9a1"><div class="ttname"><a href="class_delta_time.html#a9a5e0e793501193b432d4eff55a0f9a1">DeltaTime::GetTimeElapsed</a></div><div class="ttdeci">float GetTimeElapsed() const</div><div class="ttdef"><b>Definition:</b> <a href="_delta_time_8cpp_source.html#l00036">DeltaTime.cpp:36</a></div></div>
+<div class="ttc" id="aclass_delta_time_html_a9a5e0e793501193b432d4eff55a0f9a1"><div class="ttname"><a href="class_delta_time.html#a9a5e0e793501193b432d4eff55a0f9a1">DeltaTime::GetTimeElapsed</a></div><div class="ttdeci">float GetTimeElapsed() const</div><div class="ttdoc">Gets elapsed time since last frame.</div><div class="ttdef"><b>Definition:</b> <a href="_delta_time_8cpp_source.html#l00036">DeltaTime.cpp:36</a></div></div>
 <div class="ttc" id="aclass_delta_time_html_aa7e68e4581f2d225d2edfa9b14eca60f"><div class="ttname"><a href="class_delta_time.html#aa7e68e4581f2d225d2edfa9b14eca60f">DeltaTime::Instance</a></div><div class="ttdeci">static DeltaTime * Instance()</div><div class="ttdoc">get singleton instance</div><div class="ttdef"><b>Definition:</b> <a href="_delta_time_8cpp_source.html#l00012">DeltaTime.cpp:12</a></div></div>
-<div class="ttc" id="aclass_delta_time_html_ac094ba8e92921b96f93381499c387f3d"><div class="ttname"><a href="class_delta_time.html#ac094ba8e92921b96f93381499c387f3d">DeltaTime::CatchupDeltaTime</a></div><div class="ttdeci">void CatchupDeltaTime()</div><div class="ttdef"><b>Definition:</b> <a href="_delta_time_8cpp_source.html#l00026">DeltaTime.cpp:26</a></div></div>
+<div class="ttc" id="aclass_delta_time_html_ac094ba8e92921b96f93381499c387f3d"><div class="ttname"><a href="class_delta_time.html#ac094ba8e92921b96f93381499c387f3d">DeltaTime::CatchupDeltaTime</a></div><div class="ttdeci">void CatchupDeltaTime()</div><div class="ttdoc">returns the current time if we are lagging behind</div><div class="ttdef"><b>Definition:</b> <a href="_delta_time_8cpp_source.html#l00026">DeltaTime.cpp:26</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

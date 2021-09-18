@@ -32,30 +32,30 @@ GameObject *GameObjectFactory::GetGameObject(std::string key)
 
 }
 
-GameObject *GameObjectFactory::getClosestObject(Transform *target, std::string partialKey)
-{
-	GameObject *closest = nullptr;
-
-	for (std::map<std::string, GameObject *>::iterator i = objectList.begin(); i != objectList.end(); i++)
-	{
-		if (i->second->getFactoryKey().find(partialKey) != std::string::npos)
-		{
-			if (closest == nullptr)
-			{
-				closest = i->second;
-			}
-			else
-			{
-				if (target->GetDistance(i->second->GetTransform()) < target->GetDistance(closest->GetTransform()) && i->second->GetTransform() != target)
-				{
-					closest = closest = i->second;
-				}
-			}
-		}
-	}
-
-	return closest;
-}
+//GameObject *GameObjectFactory::GetClosestObject(Transform *target, std::string partialKey)
+//{
+//	GameObject *closest = nullptr;
+//
+//	for (std::map<std::string, GameObject *>::iterator i = objectList.begin(); i != objectList.end(); i++)
+//	{
+//		if (i->second->getFactoryKey().find(partialKey) != std::string::npos)
+//		{
+//			if (closest == nullptr)
+//			{
+//				closest = i->second;
+//			}
+//			else
+//			{
+//				if (target->GetDistance(i->second->GetTransform()) < target->GetDistance(closest->GetTransform()) && i->second->GetTransform() != target)
+//				{
+//					closest = closest = i->second;
+//				}
+//			}
+//		}
+//	}
+//
+//	return closest;
+//}
 
 int GameObjectFactory::getNumObjects()
 {

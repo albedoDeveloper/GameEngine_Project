@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AScript.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCharacterComponent.cpp" />
@@ -90,10 +91,8 @@
     <ClInclude Include="ModernOpenGL\AModel.h" />
     <ClInclude Include="ModernOpenGL\Shader.h" />
     <ClInclude Include="Quaternion.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="ScriptingEngine.h" />
     <ClInclude Include="SkyBox.h" />
-    <ClInclude Include="SkyboxVerts.h" />
     <ClInclude Include="ThirdParty\imgui\imconfig.h" />
     <ClInclude Include="ThirdParty\imgui\imgui.h" />
     <ClInclude Include="ThirdParty\imgui\imgui_impl_opengl3.h" />
