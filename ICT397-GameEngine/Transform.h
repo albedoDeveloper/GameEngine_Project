@@ -1,8 +1,8 @@
 #pragma once
 
-#include "MathLibrary.h"
 #include <stack>
 #include <nlohmann/json.hpp>
+#include "Vector3f.h"
 #include "Quaternion.h"
 
 /**

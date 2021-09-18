@@ -10,6 +10,7 @@
 #include <sstream>
 #include <iostream>
 #include "../Transform.h"
+#include "../Matrix4f.h"
 
 class Shader
 {
@@ -33,21 +34,21 @@ public:
 	{
 		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 	}
-	void SetVec4(const std::string &name, const glm::vec4 &value) const
+	//void SetVec4(const std::string &name, const glm::vec4 &value) const
+	//{
+	//	glUniform4fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
+	//}
+	void SetVec3(const std::string &name, Vector3f value) const
 	{
-		glUniform4fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
+		//glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
+		glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, value.ValuePtr());
 	}
-	void SetVec3(const std::string &name, const glm::vec3 &value) const
+	void SetMat4(const std::string &name, Matrix4f mat) const
 	{
-		glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
-	}
-	void SetMat4(const std::string &name, const glm::mat4 &mat) const
-	{
-		glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+		glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, mat.ValuePtr());
 	}
 
 private:
-
 	void CreateShaders(unsigned int &shadername, const GLchar *const *actualShader, int typeOfShader);
 	void ShaderLinking(unsigned int &shadername, unsigned int &vertexShader);
 };

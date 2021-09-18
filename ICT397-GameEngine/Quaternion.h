@@ -1,76 +1,44 @@
 #pragma once
 
 #include <glm/glm/gtc/quaternion.hpp>
-#include "Vector3f.h"
-#include "Matrix4f.h"
+
+class Matrix4f;
+class Vector3f;
 
 class Quaternion
 {
 public:
-	Quaternion()
-		:m_quat(glm::identity<glm::quat>())
-	{}
+	Quaternion();
 
 		/// <summary>
 		/// dot product of two Quaternions
 		/// </summary>
 		/// <param name="oQuat"></param>
 		/// <returns></returns>
-	float DotProduct(Quaternion oQuat)
-	{
-		return glm::dot(m_quat, oQuat.m_quat);
-	}
+	float DotProduct(Quaternion oQuat);
 
 		/// <summary>
 		/// Conjugation of a quaternian
 		/// </summary>
 		/// <param name="oQuat"></param>
 		/// <returns></returns>
-	Quaternion Conjugate() const
-	{
-		return glm::conjugate(m_quat);
-	}
+	Quaternion Conjugate() const;
 
 		/**
 		 * @brief Rotates around a given axis
 		 * @param degrees number of degrees to turn
 		 * @param axis the axis to rotate around
 		*/
-	void Rotate(float degrees, const Vector3f &axis)
-	{
-		m_quat = glm::rotate(m_quat, glm::radians(degrees), glm::vec3(axis.GetX(), axis.GetY(), axis.GetZ()));
-	}
+	void Rotate(float degrees, const Vector3f &axis);
 
-	Vector3f GetAxis() const
-	{
-		glm::vec3 axis = glm::axis(m_quat);
-		return Vector3f(
-			axis.x,
-			axis.y,
-			axis.z
-		);
-	}
+	Vector3f GetAxis() const;
 
-	float GetAxisAngleRadians() const
-	{
-		return glm::angle(m_quat);
-	}
+	float GetAxisAngleRadians() const;
 
-	Vector3f GetEulerAngles() const
-	{
-		glm::vec3 axis = glm::eulerAngles(m_quat);
-		return Vector3f(
-			axis.x,
-			axis.y,
-			axis.z
-		);
-	}
+	Vector3f GetEulerAngles() const;
 
 	// x,y,z in rads
-	void SetEulerAngles(float x, float y, float z)
-	{
-		m_quat = glm::quat(glm::vec3(x, y, z));
-	}
+	void SetEulerAngles(float x, float y, float z);
 
 		/**
 		 * @brief x value accessor
@@ -144,19 +112,18 @@ public:
 		m_quat.w = w;
 	}
 
-	Quaternion GetInverse()
-	{
-		return glm::inverse(m_quat);
-	}
+	Quaternion GetInverse();
+
+	Matrix4f Mat4Cast() const;
 
 private:
+	friend class Vector3f;
+	friend class Matrix4f;
+
 		/// <summary>
 		/// Quaternion Member variable
 		/// </summary>
 	glm::quat m_quat;
-
-	friend Vector3f;
-	friend Matrix4f;
 
 		/// <summary>
 		/// Copy Constructor

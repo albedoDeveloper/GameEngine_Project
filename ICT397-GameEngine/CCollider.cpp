@@ -21,10 +21,10 @@ CCollider::CCollider(Transform *parent, GameObject *parentObj)
 	);
 
 	auto worldOrientation = reactphysics3d::Quaternion(
-		m_transform.GetWorldTransform().GetRotation().GetX(),
-		m_transform.GetWorldTransform().GetRotation().GetY(),
-		m_transform.GetWorldTransform().GetRotation().GetZ(),
-		m_transform.GetWorldTransform().GetRotation().GetW()
+		m_transform.GetWorldTransform().GetOrientation().GetX(),
+		m_transform.GetWorldTransform().GetOrientation().GetY(),
+		m_transform.GetWorldTransform().GetOrientation().GetZ(),
+		m_transform.GetWorldTransform().GetOrientation().GetW()
 	);
 
 	reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
@@ -85,10 +85,10 @@ void CCollider::UpdateCollider()
 		if (m_allowRotation)
 		{
 			worldOrientation = reactphysics3d::Quaternion(
-				m_transform.GetWorldTransform().GetRotation().GetX(),
-				m_transform.GetWorldTransform().GetRotation().GetY(),
-				m_transform.GetWorldTransform().GetRotation().GetZ(),
-				m_transform.GetWorldTransform().GetRotation().GetW()
+				m_transform.GetWorldTransform().GetOrientation().GetX(),
+				m_transform.GetWorldTransform().GetOrientation().GetY(),
+				m_transform.GetWorldTransform().GetOrientation().GetZ(),
+				m_transform.GetWorldTransform().GetOrientation().GetW()
 			);
 			worldOrientation.inverse();
 		}

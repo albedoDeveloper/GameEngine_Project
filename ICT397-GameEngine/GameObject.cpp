@@ -141,7 +141,7 @@ void GameObject::Start()
 
 	m_initTransform = new Transform();
 	m_initTransform.SetPositionV(m_transform.GetPosition());
-	m_initTransform.SetRotation(m_transform.GetRotation());
+	m_initTransform.SetOrientation(m_transform.GetOrientation());
 	m_initTransform.SetScale(m_transform.GetScale());
 
 	if (m_isActive)

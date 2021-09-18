@@ -2,17 +2,17 @@
 #include <cmath>
 #include <iostream>
 #include "DeltaTime.h"
-#include "Quaternion.h"
+#include "Matrix4f.h"
 
 const double pi = 2 * acos(0.0);
 
 Transform::Transform()
-	:m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_rotation{}, m_parent{ nullptr }
+	:m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_orientation{}, m_parent{ nullptr }
 {
 }
 
 Transform::Transform(Transform *parent)
-	: m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_rotation{}, m_parent{ parent }
+	: m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_orientation{}, m_parent{ parent }
 {
 }
 
@@ -35,10 +35,10 @@ void Transform::ToJson(nlohmann::json &j, std::string key)
 
 	j[key]["Transform"]["Rotation"] =
 	{
-		{"x",GetRotation().GetX()},
-		{"y",GetRotation().GetY()},
-		{"z",GetRotation().GetZ()},
-		{"w",GetRotation().GetW()},
+		{"x",GetOrientation().GetX()},
+		{"y",GetOrientation().GetY()},
+		{"z",GetOrientation().GetZ()},
+		{"w",GetOrientation().GetW()},
 	};
 
 	j[key]["Transform"]["Scale"] =
@@ -75,7 +75,7 @@ void Transform::FromJson(nlohmann::json &j, std::string key)
 			q.SetZ(j.at(key).at("Transform").at("Rotation").at("z"));
 			q.SetW(j.at(key).at("Transform").at("Rotation").at("w"));
 
-			SetRotation(q);
+			SetOrientation(q);
 		}
 
 
@@ -90,8 +90,6 @@ void Transform::FromJson(nlohmann::json &j, std::string key)
 			SetScale(v);
 		}
 	}
-
-
 }
 
 void Transform::SetPositionV(Vector3f newPosition)
@@ -149,14 +147,14 @@ Transform Transform::GetWorldTransform() const
 	while (!stack.empty())
 	{
 		worldMat.Translate(stack.top()->m_position);
-		worldMat = worldMat * Matrix4f::Cast(stack.top()->m_rotation.Conjugate());
+		worldMat = worldMat * stack.top()->m_orientation.Conjugate().Mat4Cast();
 		worldMat.Scale(stack.top()->m_scale);
 		stack.pop();
 	}
 
 	Transform t;
-	Decompose(worldMat, t.m_scale, t.m_rotation, t.m_position);
-	t.m_rotation = t.m_rotation.Conjugate();
+	Decompose(worldMat, t.m_scale, t.m_orientation, t.m_position);
+	t.m_orientation = t.m_orientation.Conjugate();
 
 	return t;
 }
@@ -173,27 +171,27 @@ void Transform::Translate(float x, float y, float z)
 
 void Transform::RotateLocalV(float degrees, const Vector3f &axis)
 {
-	m_rotation.Rotate(degrees, axis);
+	m_orientation.Rotate(degrees, axis);
 }
 
 void Transform::RotateLocal(float degrees, float axisX, float axisY, float axisZ)
 {
-	m_rotation.Rotate(degrees, Vector3f(axisX, axisY, axisZ));
+	m_orientation.Rotate(degrees, Vector3f(axisX, axisY, axisZ));
 }
 
 void Transform::RotateLocalX(float degrees)
 {
-	m_rotation.Rotate(degrees, Vector3f(1, 0, 0));
+	m_orientation.Rotate(degrees, Vector3f(1, 0, 0));
 }
 
 void Transform::RotateLocalY(float degrees)
 {
-	m_rotation.Rotate(degrees, Vector3f(0, 1, 0));
+	m_orientation.Rotate(degrees, Vector3f(0, 1, 0));
 }
 
 void Transform::RotateLocalZ(float degrees)
 {
-	m_rotation.Rotate(degrees, Vector3f(0, 0, 1));
+	m_orientation.Rotate(degrees, Vector3f(0, 0, 1));
 }
 
 void Transform::ScaleLocal(float x, float y, float z)
@@ -203,17 +201,17 @@ void Transform::ScaleLocal(float x, float y, float z)
 
 Vector3f Transform::GetForward() const
 {
-	return Vector3f(0, 0, -1) * m_rotation;
+	return Vector3f(0, 0, -1) * m_orientation;
 }
 
 Vector3f Transform::GetUp() const
 {
-	return Vector3f(0, 1, 0) * m_rotation;
+	return Vector3f(0, 1, 0) * m_orientation;
 }
 
 Vector3f Transform::GetRight() const
 {
-	return Vector3f(1, 0, 0) * m_rotation;
+	return Vector3f(1, 0, 0) * m_orientation;
 }
 
 float Transform::GetDistance(Transform other) const
@@ -259,7 +257,9 @@ void Transform::RotateTowards(Vector3f target, double angle)
 	right = right.Normalise(right);
 	float rightCos = right.dotProduct(directionTo);
 	if (rightCos < 0)
+	{
 		fullAngle *= -1;
+	}
 
 	fullAngle = glm::radians(fullAngle);
 	RotateLocalY(fullAngle * angle);

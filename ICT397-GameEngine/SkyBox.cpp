@@ -35,14 +35,14 @@ void SkyBox::CreateSkybox(std::vector<std::string> skyBoxFaces)
 	CreateVAOandVBO();
 }
 
-void SkyBox::DrawSkybox(const glm::mat4 &persepective, const glm::mat4 &view)
+void SkyBox::DrawSkybox(Matrix4f persepective, Matrix4f view)
 {
 	glDepthMask(GL_FALSE);
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_FILL);
 	skyBoxShader->Use();
 	skyBoxShader->SetMat4("projection", persepective);
-	skyBoxShader->SetMat4("view", glm::mat4(glm::mat3(view)));
+	skyBoxShader->SetMat4("view", view);
 
 	glBindVertexArray(VAO);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, texID);
@@ -65,6 +65,3 @@ void SkyBox::CreateVAOandVBO()
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
 	glBindVertexArray(0);
 }
-
-
-

@@ -2,8 +2,8 @@
 
 #include <glm/glm/glm.hpp>
 #include <glm/glm/gtc/constants.hpp>
-
-class Quaternion;
+#include <glm/glm/gtc/type_ptr.hpp>
+#include "Quaternion.h"
 
 	/**
 	 * @brief Stores information about a vector or point in three dimensions as floats
@@ -37,6 +37,11 @@ public:
 	void Translate(const Vector3f &v)
 	{
 		m_vec += glm::vec3(v.GetX(), v.GetY(), v.GetZ());
+	}
+
+	float *ValuePtr()
+	{
+		return glm::value_ptr(m_vec);
 	}
 
 		/**
@@ -222,7 +227,10 @@ public:
 	}
 
 
-	Vector3f operator*(const Quaternion &quat);
+	Vector3f operator*(const Quaternion &quat)
+	{
+		return m_vec * quat.m_quat;
+	}
 
 private:
 		/// <summary>
@@ -237,4 +245,6 @@ private:
 	Vector3f(glm::vec3 v)
 		:m_vec(v)
 	{}
+
+	friend Matrix4f LookAt(const Vector3f &eye, const Vector3f &centre, const Vector3f &up);
 };

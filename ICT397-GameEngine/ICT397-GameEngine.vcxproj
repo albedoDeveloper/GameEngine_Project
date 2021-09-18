@@ -41,10 +41,12 @@
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="LightManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MathLibrary.cpp" />
+    <ClCompile Include="MiscMath.cpp" />
+    <ClCompile Include="Matrix4f.cpp" />
     <ClCompile Include="ModernOpenGL\Mesh.cpp" />
     <ClCompile Include="ModernOpenGL\AModel.cpp" />
     <ClCompile Include="ModernOpenGL\Shader.cpp" />
+    <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="ScriptingEngine.cpp" />
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="ThirdParty\imgui\imgui.cpp" />
@@ -55,6 +57,8 @@
     <ClCompile Include="ThirdParty\imgui\imgui_tables.cpp" />
     <ClCompile Include="ThirdParty\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Vector2f.cpp" />
+    <ClCompile Include="Vector3f.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AScript.h" />
@@ -80,7 +84,7 @@
     <ClInclude Include="LevelEditor.h" />
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="LightManager.h" />
-    <ClInclude Include="MathLibrary.h" />
+    <ClInclude Include="MiscMath.h" />
     <ClInclude Include="Matrix4f.h" />
     <ClInclude Include="ModernOpenGL\Mesh.h" />
     <ClInclude Include="ModernOpenGL\AModel.h" />
@@ -100,6 +104,7 @@
     <ClInclude Include="ThirdParty\imgui\imstb_textedit.h" />
     <ClInclude Include="ThirdParty\imgui\imstb_truetype.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="Vector2f.h" />
     <ClInclude Include="Vector3f.h" />
   </ItemGroup>
   <ItemGroup>

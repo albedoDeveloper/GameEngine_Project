@@ -111,9 +111,9 @@ public:
 		SDL_UpdateWindowSurface(m_window);
 	}
 
-	glm::mat4 GetProjection();
+	Matrix4f GetProjection();
 
-	glm::mat4 GetView();
+	Matrix4f GetView();
 
 	Shader *m_litShader;
 

@@ -10,6 +10,7 @@
 #include "./ThirdParty/imgui/imgui_impl_opengl3.h"
 #include "Vector3f.h"
 #include "Matrix4f.h"
+#include "MiscMath.h"
 
 extern "C"
 {
@@ -95,7 +96,7 @@ void GraphicsEngine::UpdateViewPos() const
 	GRAPHICS->m_litShader->Use();
 	GRAPHICS->m_litShader->SetVec3(
 		"viewPos",
-		glm::vec3(
+		Vector3f(
 			viewPosVec.GetX(),
 			viewPosVec.GetY(),
 			viewPosVec.GetZ()
@@ -105,7 +106,7 @@ void GraphicsEngine::UpdateViewPos() const
 	GRAPHICS->m_debugShader->Use();
 	GRAPHICS->m_debugShader->SetVec3(
 		"viewPos",
-		glm::vec3(
+		Vector3f(
 			viewPosVec.GetX(),
 			viewPosVec.GetY(),
 			viewPosVec.GetZ()
@@ -120,7 +121,7 @@ int GraphicsEngine::AddPointLight(CPointLight *light)
 	m_litShader->Use();
 	m_litShader->SetInt("numOfPointLights", numpointLights);
 	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
-	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(numpointLights - 1) + "].colour", glm::vec3(
+	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(numpointLights - 1) + "].colour", Vector3f(
 		light->LightInfo.colour.GetX(),
 		light->LightInfo.colour.GetY(),
 		light->LightInfo.colour.GetZ()
@@ -197,13 +198,15 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	Matrix4f trans;
 	trans.Translate(worldTrans.GetPosition());
 
-	trans *= Quaternion(worldTrans.GetRotation())
+	trans *= Quaternion(worldTrans.GetOrientation());
 
 	//trans = trans * glm::mat4_cast(glm::conjugate(
 	//	glm::quat(worldTrans.GetRotation().GetW(), worldTrans.GetRotation().GetX(), worldTrans.GetRotation().GetY(), worldTrans.GetRotation().GetZ())
 	//));
 
-		trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+	//trans = glm::scale(trans, glm::vec3(worldTrans.GetScale().GetX(), worldTrans.GetScale().GetY(), worldTrans.GetScale().GetZ()));
+
+	trans.Scale(worldTrans.GetScale());
 
 	shader->Use();
 	shader->SetMat4("model", trans);
@@ -352,8 +355,8 @@ void GraphicsEngine::DrawDebug()
 
 	m_debugShader->SetMat4("view", GetView());
 
-	m_debugShader->SetMat4("model", glm::mat4(1.0f));
-	m_debugShader->SetVec4("ourColour", glm::vec4(1, 0, 0, 1));
+	m_debugShader->SetMat4("model", Matrix4f());
+	m_debugShader->SetVec3("ourColour", Vector3f(1, 0, 0));
 
 	glDisable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_LINE);
@@ -390,9 +393,9 @@ void GraphicsEngine::DrawDebug()
 	glBindVertexArray(0);
 }
 
-glm::mat4 GraphicsEngine::GetProjection()
+Matrix4f GraphicsEngine::GetProjection()
 {
-	return glm::perspective(
+	return Perspective(
 		m_camera->GetCamera().FOV,
 		((float)GRAPHICS->m_windowWidth / GRAPHICS->m_windowHeight),
 		m_camera->GetCamera().NearClip,
@@ -400,27 +403,11 @@ glm::mat4 GraphicsEngine::GetProjection()
 	);
 }
 
-glm::mat4 GraphicsEngine::GetView()
+Matrix4f GraphicsEngine::GetView()
 {
-	return glm::lookAt(
-		glm::vec3(
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(),
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(),
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()
-		),
-		glm::vec3(
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetX(),
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetY(),
-			m_camera->GetTransform().GetWorldTransform().GetPosition().GetZ()) +
-				glm::vec3(
-					m_camera->GetTransform().GetWorldTransform().GetForward().GetX(),
-					m_camera->GetTransform().GetWorldTransform().GetForward().GetY(),
-					m_camera->GetTransform().GetWorldTransform().GetForward().GetZ()
-				),
-		glm::vec3(
-			m_camera->GetTransform().GetWorldTransform().GetUp().GetX(),
-			m_camera->GetTransform().GetWorldTransform().GetUp().GetY(),
-			m_camera->GetTransform().GetWorldTransform().GetUp().GetZ()
-		)
+	return LookAt(
+		m_camera->GetTransform().GetWorldTransform().GetPosition(),
+		m_camera->GetTransform().GetWorldTransform().GetPosition() + m_camera->GetTransform().GetWorldTransform().GetForward(),
+		m_camera->GetTransform().GetWorldTransform().GetUp()
 	);
 }

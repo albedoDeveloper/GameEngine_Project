@@ -46,9 +46,6 @@
     <ClCompile Include="SkyBox.cpp">
       <Filter>Source\Misc\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Source\Misc\Source</Filter>
-    </ClCompile>
     <ClCompile Include="ModernOpenGL\Mesh.cpp">
       <Filter>Source\Misc\Source</Filter>
     </ClCompile>
@@ -103,8 +100,25 @@
     <ClCompile Include="ScriptingEngine.cpp">
       <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
-    <ClCompile Include="AScript.cpp" />
-    <ClCompile Include="MathLibrary.cpp">
+    <ClCompile Include="MiscMath.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix4f.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AScript.cpp">
+      <Filter>Source\AssetClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3f.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2f.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
       <Filter>Source\Math\Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -172,9 +186,6 @@
     <ClInclude Include="SkyboxVerts.h">
       <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Source\Misc\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="CCamera.h">
       <Filter>Source\ComponentClasses\Headers</Filter>
     </ClInclude>
@@ -229,7 +240,7 @@
     <ClInclude Include="ScriptingEngine.h">
       <Filter>Source\Singletons\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="MathLibrary.h">
+    <ClInclude Include="MiscMath.h">
       <Filter>Source\Math\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Vector3f.h">
@@ -239,6 +250,12 @@
       <Filter>Source\Math\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Quaternion.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2f.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
       <Filter>Source\Math\Headers</Filter>
     </ClInclude>
   </ItemGroup>
