@@ -6,13 +6,13 @@
 #include "Quaternion.h"
 
 	/**
-	 * @brief Stores information about a vector or point in three dimensions as floats
+	* @brief Stores information about a vector or point in three dimensions as floats
 	*/
 class Vector3f
 {
 public:
 		/**
-		 * @brief Default constructor
+		* @brief Default constructor
 		*/
 	Vector3f()
 		:m_vec(1, 1, 1)
@@ -31,8 +31,8 @@ public:
 	}
 
 		/**
-		 * @brief Moves the vector by a relative amount
-		 * @param v The vector to add to this vector
+		* @brief Moves the vector by a relative amount
+		* @param v The vector to add to this vector
 		*/
 	void Translate(const Vector3f &v)
 	{
@@ -45,10 +45,10 @@ public:
 	}
 
 		/**
-		 * @brief Scales the vector by a relative amount
-		 * @param x X component of the scaling factor
-		 * @param y Y component of the scaling factor
-		 * @param z Z component of the scaling factor
+		* @brief Scales the vector by a relative amount
+		* @param x X component of the scaling factor
+		* @param y Y component of the scaling factor
+		* @param z Z component of the scaling factor
 		*/
 	void Scale(float x, float y, float z)
 	{
@@ -197,9 +197,9 @@ public:
 	}
 
 		/**
-		 * @brief division operator
-		 * @param oVec the vector to divide by
-		 * @return result of division
+		* @brief division operator
+		* @param oVec the vector to divide by
+		* @return result of division
 		*/
 	Vector3f operator/(const Vector3f &oVec)
 	{
@@ -217,16 +217,21 @@ public:
 	}
 
 		/**
-		 * @brief assignment operator
-		 * @param oVec the vector to set this vector to
-		 * @return the value of the vector
+		* @brief assignment operator
+		* @param oVec the vector to set this vector to
+		* @return the value of the vector
 		*/
 	Vector3f operator=(const Vector3f &oVec)
 	{
 		return m_vec = oVec.m_vec;
 	}
 
-
+		/**
+		* .
+		*
+		* \param quat
+		* \return
+		*/
 	Vector3f operator*(const Quaternion &quat)
 	{
 		return m_vec * quat.m_quat;

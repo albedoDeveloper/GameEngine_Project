@@ -7,8 +7,8 @@ void Decompose(const Matrix4f &m, Vector3f &scaleOut, Quaternion &rotationOut, V
 	glm::vec3 scale(scaleOut.GetX(), scaleOut.GetY(), scaleOut.GetZ());
 	glm::quat rot(rotationOut.GetW(), rotationOut.GetX(), rotationOut.GetY(), rotationOut.GetZ());
 	glm::vec3 pos(positionOut.GetX(), positionOut.GetY(), positionOut.GetZ());
-	glm::vec3 temp1;
-	glm::vec4 temp2;
+	glm::fvec3 temp1;
+	glm::fvec4 temp2;
 
 	glm::decompose(
 		mat,
