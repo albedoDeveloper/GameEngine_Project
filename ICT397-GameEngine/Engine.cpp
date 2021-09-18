@@ -170,9 +170,6 @@ void Engine::Render()
 	GRAPHICS->m_unlitShader->SetMat4("projection", GRAPHICS->GetProjection());
 	GRAPHICS->m_unlitShader->SetMat4("view", GRAPHICS->GetView());
 
-	GRAPHICS->m_unlitShader->Use();
-	GRAPHICS->m_debugShader->SetMat4("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_debugShader->SetMat4("view", GRAPHICS->GetView());
 
 	GRAPHICS->newFrame(m_debugMenu);
 	GRAPHICS->renderObjects();

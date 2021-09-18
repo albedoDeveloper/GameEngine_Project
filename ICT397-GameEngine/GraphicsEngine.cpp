@@ -104,6 +104,7 @@ void GraphicsEngine::UpdateViewPos() const
 	);
 
 
+
 }
 
 int GraphicsEngine::AddPointLight(CPointLight *light)
@@ -376,6 +377,7 @@ void GraphicsEngine::DrawDebug()
 	glBindVertexArray(VAODebug);
 	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3);
 	glBindVertexArray(0);
+
 }
 
 Matrix4f GraphicsEngine::GetProjection()
