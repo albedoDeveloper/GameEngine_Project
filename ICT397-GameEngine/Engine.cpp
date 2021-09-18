@@ -6,17 +6,17 @@
 #include "InputManager.h"
 #include "GameObjectFactory.h"
 #include "DeltaTime.h"
-#include "imgui/imgui_impl_sdl.h"
-#include "imgui/imgui_impl_opengl3.h"
+#include "./ThirdParty/imgui/imgui_impl_sdl.h"
+#include "./ThirdParty/imgui/imgui_impl_opengl3.h"
 #include <glm/glm/gtc/matrix_transform.hpp>
 
 Engine::Engine()
-	:m_isRunning{ true }, m_saveState{ false }, m_loadState{false}, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
-	m_debugMenu{ false }, m_editMenu{true}, m_drawColliders{ false }
+	:m_isRunning{ true }, m_saveState{ false }, m_loadState{ false }, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
+	m_debugMenu{ false }, m_editMenu{ true }, m_drawColliders{ false }
 {
 }
 
-Engine* Engine::Instance()
+Engine *Engine::Instance()
 {
 	static Engine engine;
 	return &engine;
@@ -56,11 +56,11 @@ int Engine::Execute(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 			OnEvent(&event);
 		}
 
-		OnLoop();
-		OnRender();
+		Update();
+		Render();
 	}
 
-	OnCleanup();
+	Cleanup();
 
 	return 0;
 }
@@ -92,29 +92,29 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	COLLISION; //init collision manager // TODO make init func
+	// set up physics world
+	COLLISION->Init();
 
-	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
+	if (!GRAPHICS->Init(renderer, windowWidth, windowHeight))
 	{
 		return false;
 	}
 
-	SCRIPT->Initialise(*this);
+	SCRIPT->Initialise();
 	SCRIPT->RunInitScript();
 
 	// temporarily creating player controller here
 	// TODO move to init
 	GAMEOBJECT->GetGameObject("player")->AddCSound()->LoadSound("milkyway.wav");
-	GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav",-1,false);
+	GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav", -1, false);
 
 	GAMEOBJECT->Start();
-	INPUT->Initialise(this);
 	INPUT->LockCursor(true);
 
 	return true;
 }
 
-void Engine::OnEvent(SDL_Event* e)
+void Engine::OnEvent(SDL_Event *e)
 {
 	switch (e->type)
 	{
@@ -126,7 +126,7 @@ void Engine::OnEvent(SDL_Event* e)
 	INPUT->CheckKey(e);
 }
 
-void Engine::OnLoop()
+void Engine::Update()
 {
 	GAMEOBJECT->Update();
 	if (INPUT->GetKeyDown('`'))
@@ -157,7 +157,7 @@ void Engine::OnLoop()
 	}
 }
 
-void Engine::OnRender()
+void Engine::Render()
 {
 	GRAPHICS->UpdateViewPos();
 
@@ -195,8 +195,8 @@ void Engine::OnRender()
 
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-		m_saveState = ImGui::Button("Save", ImVec2(100,30));
-		m_loadState = ImGui::Button("Load", ImVec2(100,30));
+		m_saveState = ImGui::Button("Save", ImVec2(100, 30));
+		m_loadState = ImGui::Button("Load", ImVec2(100, 30));
 
 		ImGui::End();
 	}
@@ -204,7 +204,7 @@ void Engine::OnRender()
 	GRAPHICS->endFrame(m_debugMenu);
 }
 
-void Engine::OnCleanup()
+void Engine::Cleanup()
 {
 	SCRIPT->Close();
 	GRAPHICS->Close();

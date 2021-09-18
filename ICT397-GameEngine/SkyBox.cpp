@@ -8,7 +8,7 @@ void SkyBox::CreateSkybox(std::vector<std::string> skyBoxFaces)
 	int width, height, nrChannels;
 	for (unsigned int i = 0; i < skyBoxFaces.size(); i++)
 	{
-		unsigned char* data = stbi_load(skyBoxFaces[i].c_str(), &width, &height, &nrChannels, 0);
+		unsigned char *data = stbi_load(skyBoxFaces[i].c_str(), &width, &height, &nrChannels, 0);
 		if (data)
 		{
 			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
@@ -31,19 +31,19 @@ void SkyBox::CreateSkybox(std::vector<std::string> skyBoxFaces)
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
-	skyBoxShader = new Shader("./shaders/skyBoxVertexShader.vs", "./shaders/skyBoxColourShader.fs");
+	skyBoxShader = new Shader("./shaders/skyBox.vert", "./shaders/skyBox.frag");
 	CreateVAOandVBO();
 }
 
-void SkyBox::DrawSkybox(const glm::mat4& persepective, const glm::mat4& view)
+void SkyBox::DrawSkybox(Matrix4f persepective, Matrix4f view)
 {
 	glDepthMask(GL_FALSE);
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_FILL);
 	skyBoxShader->Use();
 	skyBoxShader->SetMat4("projection", persepective);
-	skyBoxShader->SetMat4("view", glm::mat4(glm::mat3(view)));
-	
+	skyBoxShader->SetMat4("view", view);
+
 	glBindVertexArray(VAO);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, texID);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -62,9 +62,6 @@ void SkyBox::CreateVAOandVBO()
 	glBufferData(GL_ARRAY_BUFFER, skyboxVertices.size() * sizeof(float), &skyboxVertices.data()[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3* sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
 	glBindVertexArray(0);
 }
-
-
-

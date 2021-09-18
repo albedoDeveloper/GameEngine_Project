@@ -1,0 +1,26 @@
+<map id="LevelEditor::ObjectList" name="LevelEditor::ObjectList">
+<area shape="rect" id="node1" title=" " alt="" coords="5,208,157,235"/>
+<area shape="rect" id="node2" href="$class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de" title=" " alt="" coords="205,208,377,235"/>
+<area shape="rect" id="node3" href="$class_level_editor.html#ab1e226e2c9be2a33e3d73cfcc6dc9358" title=" " alt="" coords="429,157,613,184"/>
+<area shape="rect" id="node5" href="$class_game_object.html#a1777de44c00f8a04cad880a2fe65a51a" title="Factory key accessor." alt="" coords="427,208,615,235"/>
+<area shape="rect" id="node6" href="$class_level_editor.html#aac394ace767b605adef1afdfb0473046" title=" " alt="" coords="425,259,616,285"/>
+<area shape="rect" id="node4" href="$class_game_object.html#a37a34c80df10b55fe3a4429add79eefe" title="retrieves component map" alt="" coords="664,157,879,184"/>
+<area shape="rect" id="node7" href="$class_level_editor.html#a656a24e68242e1f8b24baa8ea5a5e2a9" title=" " alt="" coords="664,208,879,235"/>
+<area shape="rect" id="node17" href="$class_level_editor.html#aa0a47b3d01e4374a4060ac8d1db30b91" title=" " alt="" coords="664,360,879,387"/>
+<area shape="rect" id="node22" href="$class_level_editor.html#a07d3584976205e962c0dffcb1e9d3ad0" title=" " alt="" coords="671,259,871,285"/>
+<area shape="rect" id="node8" href="$class_transform.html#a2bd3205164a8f8f64f1c738ab6cb365f" title="position accessor" alt="" coords="941,5,1096,32"/>
+<area shape="rect" id="node9" href="$class_game_object.html#ad4de114a5ac23de244bcfbf1947e041a" title="transform accessor" alt="" coords="928,208,1109,235"/>
+<area shape="rect" id="node10" href="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="965,259,1072,285"/>
+<area shape="rect" id="node11" href="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="965,309,1073,336"/>
+<area shape="rect" id="node12" href="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="965,360,1072,387"/>
+<area shape="rect" id="node13" href="$class_transform.html#a7c287f2ec371a1214df9fa7ad6a9718b" title=" " alt="" coords="941,56,1096,83"/>
+<area shape="rect" id="node14" href="$class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="1159,5,1265,32"/>
+<area shape="rect" id="node15" href="$class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="1159,56,1265,83"/>
+<area shape="rect" id="node16" href="$class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="1159,107,1265,133"/>
+<area shape="rect" id="node18" href="$class_quaternion.html#a68f4a6dd194c963f9207d51ec8560cbc" title=" " alt="" coords="927,512,1111,539"/>
+<area shape="rect" id="node19" href="$class_transform.html#a9fa5762d8b0ee8914b944dabe19e1bab" title="rotation accessor" alt="" coords="941,563,1097,589"/>
+<area shape="rect" id="node20" href="$class_quaternion.html#ad10089770afcc4c424985554f2adf6e6" title=" " alt="" coords="927,411,1110,437"/>
+<area shape="rect" id="node21" href="$class_transform.html#a3d139f847d5b34aae0577413f6d6b85d" title="rotation accessor" alt="" coords="941,461,1096,488"/>
+<area shape="rect" id="node23" href="$class_transform.html#add9a8eede0d4e807c66fc4dcd440c99b" title="scale accessor" alt="" coords="948,107,1089,133"/>
+<area shape="rect" id="node24" href="$class_transform.html#a8b98e302647f18d2a33caf13d1f85bfb" title="scale mutator" alt="" coords="949,157,1089,184"/>
+</map>

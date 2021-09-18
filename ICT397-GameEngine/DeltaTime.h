@@ -8,7 +8,7 @@ public:
 	/**
 	 * @brief get singleton instance
 	*/
-	static DeltaTime* Instance();
+	static DeltaTime *Instance();
 
 	/**
 	 * @brief call once a frame to update delta time value
@@ -24,13 +24,9 @@ public:
 
 	float GetTimeElapsed() const;
 
-
-	/**
-	 * @brief default constructor
-	*/
+private:
 	DeltaTime();
 
-private:
 	Uint64 NOW;
 	Uint64 LAST;
 	double deltaTime;

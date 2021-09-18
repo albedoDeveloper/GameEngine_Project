@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Component.h"
+#include "CComponent.h"
 #include "AScript.h"
 #include "GameAssetFactory.h"
 
 struct lua_State;
 
-class CScript : public Component
+class CScript : public CComponent
 {
 public:
 	/**
@@ -14,11 +14,13 @@ public:
 	 * @param parent the parent transform for this component
 	 * @param parentObj the parent object of this component
 	*/
-	CScript(Transform* parent, GameObject* parentObj);
+	CScript(Transform *parent, GameObject *parentObj);
+
 	/**
 	 * @brief Initiates the script at program start
 	*/
 	virtual void Start();
+
 	/**
 	 * @brief Updates ongoing behaviour each frame
 	*/
@@ -32,19 +34,19 @@ public:
 	/**
 	 * @brief saves the component
 	*/
-	virtual void Save(nlohmann::json& j);
+	virtual void Save(nlohmann::json &j);
 
 	/**
 	 * @brief loads the component from saved state
 	*/
-	virtual void Load(nlohmann::json& j);
+	virtual void Load(nlohmann::json &j);
 
 	/**
 	 * @brief Draws to imgui
 	*/
 	virtual void DrawToImGui();
 
-	void AssignScript(AScript* script);
+	void AssignScript(AScript &script);
 	/**
 	 * @brief script mutator using factory key
 	 * @param assetKey the key by which the script is stored in the asset factory
@@ -55,10 +57,10 @@ protected:
 	/**
 	 * @brief The script asset storing information on the script
 	*/
-	AScript* m_script;
+	AScript *m_script;
 
 	/**
 	 * @brief lua state object for this component
 	*/
-	lua_State* m_L;
+	lua_State *m_L;
 };

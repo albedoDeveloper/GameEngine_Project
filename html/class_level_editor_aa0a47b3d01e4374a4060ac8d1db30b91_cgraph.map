@@ -1,0 +1,11 @@
+<map id="LevelEditor::RotationManipulators" name="LevelEditor::RotationManipulators">
+<area shape="rect" id="node1" title=" " alt="" coords="5,183,220,209"/>
+<area shape="rect" id="node2" href="$class_quaternion.html#a68f4a6dd194c963f9207d51ec8560cbc" title=" " alt="" coords="268,5,452,32"/>
+<area shape="rect" id="node3" href="$class_transform.html#a9fa5762d8b0ee8914b944dabe19e1bab" title="rotation accessor" alt="" coords="282,56,438,83"/>
+<area shape="rect" id="node4" href="$class_game_object.html#ad4de114a5ac23de244bcfbf1947e041a" title="transform accessor" alt="" coords="269,107,451,133"/>
+<area shape="rect" id="node5" href="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="307,157,413,184"/>
+<area shape="rect" id="node6" href="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="306,208,414,235"/>
+<area shape="rect" id="node7" href="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="307,259,413,285"/>
+<area shape="rect" id="node8" href="$class_quaternion.html#ad10089770afcc4c424985554f2adf6e6" title=" " alt="" coords="269,309,451,336"/>
+<area shape="rect" id="node9" href="$class_transform.html#a3d139f847d5b34aae0577413f6d6b85d" title="rotation accessor" alt="" coords="283,360,437,387"/>
+</map>

@@ -1,15 +1,13 @@
 #pragma once
 
 #include "Camera.h"
-#include "ModernOpenGL/Model.h"
-#include "AModel.h"
+#include "ModernOpenGL/AModel.h"
 #include "Color.h"
-
 #include <SDL2/SDL.h>
 #include "GraphicsLibraryEnum.h"
 #include <string>
 #include <map>
-#include "imgui/imgui.h"
+#include "./ThirdParty/imgui/imgui.h"
 #include "SkyBox.h"
 #include "LightManager.h"
 
@@ -30,15 +28,117 @@ class CCamera;
 */
 class GraphicsEngine
 {
+public:
+	/**
+	 * @brief Generates pointer to instance of singleton
+	 * @return Pointer to the graphics engine
+	*/
+	static GraphicsEngine *instance();
+
+	/**
+	 * @brief Initialises the graphics
+	 * @param renderer - which graphics api to use
+	 * @return Whether initialisation succeeded
+	*/
+	bool Init(GraphicsLibrary renderer, int windowWidth, int windowHeight);
+	/**
+	 * @brief initialises lighting
+	 * @return whether operation succeeded
+	*/
+	bool initLighting();
+
+	/**
+	 * @brief Function to be called at the start of every frame for rendering
+	*/
+	void newFrame(bool debugMenu);
+
+	void UpdateViewPos() const;
+
+	int AddPointLight(CPointLight *light);
+
+	/**
+	 * @brief Renders all visible objects
+	*/
+	void renderObjects();
+	/**
+	 * @brief Function to be called at the end of every frame for rendering
+	*/
+	void endFrame(bool debugMenu);
+	/**
+	 * @brief generates a texture for the graphics library
+	 * @param key the texture key
+	 * @param image the texture image data
+	 * @param width the width of the texture
+	 * @param height the height of the texture
+	*/
+	void GenerateTexture(std::string key, unsigned char *image, int width, int height);
+	/**
+	 * @brief deletes a texture from the graphics library
+	 * @param key factory storage key of the texture
+	*/
+	void DeleteTexture(std::string key);
+	/**
+	 * @brief changes the current camera displaying to the screen
+	 * @param camera the camera to use
+	*/
+	void SetDisplayCamera(CCamera *camera);
+	/**
+	 * @brief current camera accessor
+	 * @return the camerca currently in use
+	*/
+	CCamera *GetDisplayCamera();
+	/**
+	 * @brief Draws a model asset on the screen
+	 * @param model The model to draw
+	 * @param trans Transform of the model
+	*/
+	void DrawModel(AModel *model, const Transform &trans, const Shader *m_shader);
+	/**
+	 * @brief retrieves the ID by which a texture is stored in the graphics library
+	 * @param key the key by which it's stored by the asset factory
+	 * @return the key of the texture
+	*/
+	unsigned GetTexID(std::string key) const;
+
+	void GetScreenSize(int &w, int &h);
+
+	void Close();
+
+	void GoFullscreen() const
+	{
+		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
+		SDL_Surface *surface = SDL_GetWindowSurface(m_window);
+		SDL_UpdateWindowSurface(m_window);
+	}
+
+	Matrix4f GetProjection();
+
+	Matrix4f GetView();
+
+	Shader *m_litShader;
+
+	Shader *m_unlitShader;
+
+	Shader *m_debugShader;
+
+	bool m_drawDebug = false;
+
 private:
+	/**
+	 * @brief default constructor
+	*/
+	GraphicsEngine();
+
+	~GraphicsEngine();
+
 	/**
 	 * @brief The SDL window
 	*/
-	SDL_Window* m_window;
+	SDL_Window *m_window;
 	/**
 	 * @brief The SDL renderer
 	*/
-	SDL_Renderer* m_renderer;
+	SDL_Renderer *m_renderer;
 
 	/**
 	 * @brief The openGL context used for SDL
@@ -48,7 +148,7 @@ private:
 	/**
 	 * @brief the camera in use
 	*/
-	CCamera* m_camera;
+	CCamera *m_camera;
 
 	/**
 	 * @brief The graphics library in use
@@ -84,109 +184,6 @@ private:
 
 	SkyBox skybox;
 
-public:
-	/**
-	 * @brief default constructor
-	*/
-	GraphicsEngine();
-
-	~GraphicsEngine();
-
-	/**
-	 * @brief Generates pointer to instance of singleton
-	 * @return Pointer to the graphics engine
-	*/
-	static GraphicsEngine* instance();
-
-	/**
-	 * @brief Initialises the graphics
-	 * @param renderer - which graphics api to use
-	 * @return Whether initialisation succeeded
-	*/
-	bool initialise(GraphicsLibrary renderer, int windowWidth, int windowHeight);
-	/**
-	 * @brief initialises lighting
-	 * @return whether operation succeeded
-	*/
-	bool initLighting();
-
-	/**
-	 * @brief Function to be called at the start of every frame for rendering
-	*/
-	void newFrame(bool debugMenu);
-
-	void UpdateViewPos() const;
-
-	int AddPointLight(CPointLight* light);
-
-	/**
-	 * @brief Renders all visible objects
-	*/
-	void renderObjects();
-	/**
-	 * @brief Function to be called at the end of every frame for rendering
-	*/
-	void endFrame(bool debugMenu);
-	/**
-	 * @brief generates a texture for the graphics library
-	 * @param key the texture key
-	 * @param image the texture image data
-	 * @param width the width of the texture
-	 * @param height the height of the texture
-	*/
-	void GenerateTexture(std::string key, unsigned char* image, int width, int height);
-	/**
-	 * @brief deletes a texture from the graphics library
-	 * @param key factory storage key of the texture
-	*/
-	void DeleteTexture(std::string key);
-	/**
-	 * @brief changes the current camera displaying to the screen
-	 * @param camera the camera to use
-	*/
-	void SetDisplayCamera(CCamera* camera);
-	/**
-	 * @brief current camera accessor
-	 * @return the camerca currently in use
-	*/
-	CCamera* GetDisplayCamera();
-	/**
-	 * @brief Draws a model asset on the screen
-	 * @param model The model to draw
-	 * @param trans Transform of the model
-	*/
-	void DrawModel(Model* model, const Transform& trans, const Shader* m_shader);
-	/**
-	 * @brief retrieves the ID by which a texture is stored in the graphics library
-	 * @param key the key by which it's stored by the asset factory
-	 * @return the key of the texture
-	*/
-	unsigned GetTexID(std::string key) const;
-
-	void GetScreenSize(int&w, int&h);
-
-	void Close();
-
-	void GoFullscreen() const
-	{
-		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
-		SDL_Surface* surface = SDL_GetWindowSurface(m_window);
-		SDL_UpdateWindowSurface(m_window);
-	}
-
-	glm::mat4 GetProjection();
-
-	glm::mat4 GetView();
-
-	Shader* m_litShader;
-
-	Shader* m_unlitShader;
-	
-	Shader* m_debugShader;
-
-	bool m_drawDebug = false;
-
-private:
 	/**
 	 * @brief initialises openGL
 	 * @return whether operation succeeded
@@ -201,12 +198,11 @@ private:
 	*/
 	bool InitDirectX();
 
-	
 	/**
 	 * @brief Setups the debug rendering of collider boxes
 	*/
-	void InitDebug(std::vector <float>& tempVector);
-	
+	void InitDebug(std::vector <float> &tempVector);
+
 	/*
 	 * @brief Renders debug colliders
 	*/

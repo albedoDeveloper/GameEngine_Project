@@ -1,0 +1,11 @@
+<map id="CCollider::AddBoxCollider" name="CCollider::AddBoxCollider">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,176,133"/>
+<area shape="rect" id="node2" href="$class_game_object.html#a5ba3b458e6bee6ea5aedd5c8cdeabf18" title="component accessor" alt="" coords="230,5,421,32"/>
+<area shape="rect" id="node3" href="$class_game_object.html#ace4028c08027f5a8949ba9dac125b759" title=" " alt="" coords="226,56,425,83"/>
+<area shape="rect" id="node4" href="$class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9" title="parent object accessor" alt="" coords="224,107,427,133"/>
+<area shape="rect" id="node5" href="$class_a_model.html#a1363890857148e45337668981cc39322" title=" " alt="" coords="265,157,385,184"/>
+<area shape="rect" id="node6" href="$class_transform.html#a7c287f2ec371a1214df9fa7ad6a9718b" title=" " alt="" coords="248,208,403,235"/>
+<area shape="rect" id="node7" href="$class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="475,157,581,184"/>
+<area shape="rect" id="node8" href="$class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="475,208,581,235"/>
+<area shape="rect" id="node9" href="$class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="475,259,581,285"/>
+</map>

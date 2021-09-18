@@ -1,0 +1,18 @@
+digraph "ImGuiNextItemData::ClearFlags"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ImGuiNextItemData::\lClearFlags",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ImGui::ColorEdit4",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#ac3f45e2aa0b1d591cc8a2cdf8b566a45",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ImGui::ColorEdit3",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a5afe76ba1c91f07363e40396e7df656e",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="MyDocument::DisplayContents",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_my_document.html#aa51e0b8e6c95b7109a507603599c05d9",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ImGui::ColorPicker4",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a3d5aae9e0a14aa051d5a799abbe97b32",tooltip=" "];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="ImGui::ColorPicker3",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a2a2a98cb9a17b18702be6b954670b388",tooltip=" "];
+}

@@ -1,0 +1,4 @@
+<map id="LevelLoader::SaveLevel" name="LevelLoader::SaveLevel">
+<area shape="rect" id="node1" title="test function" alt="" coords="187,5,341,32"/>
+<area shape="rect" id="node2" href="$class_engine.html#a38ab2010499784f54fee99a3ce2880ab" title="saves the game" alt="" coords="5,5,139,32"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="GameObject::SetDifficulty" name="GameObject::SetDifficulty">
+<area shape="rect" id="node1" title="changes the difficulty an object is running at" alt="" coords="5,132,177,159"/>
+<area shape="rect" id="node2" href="$class_game_object.html#aa27714b4172ebff2f7cddcf63b325ac7" title="Calls the start function of every component." alt="" coords="225,132,356,159"/>
+<area shape="rect" id="node3" href="$class_transform.html#a2bd3205164a8f8f64f1c738ab6cb365f" title="position accessor" alt="" coords="408,5,563,32"/>
+<area shape="rect" id="node4" href="$class_transform.html#a9fa5762d8b0ee8914b944dabe19e1bab" title="rotation accessor" alt="" coords="407,56,563,83"/>
+<area shape="rect" id="node5" href="$class_transform.html#add9a8eede0d4e807c66fc4dcd440c99b" title="scale accessor" alt="" coords="415,107,556,133"/>
+<area shape="rect" id="node6" href="$class_transform.html#a1156a92a433ebcf2ad61165d1b76d4b2" title="position mutator" alt="" coords="404,157,567,184"/>
+<area shape="rect" id="node7" href="$class_transform.html#a3d139f847d5b34aae0577413f6d6b85d" title="rotation accessor" alt="" coords="408,208,563,235"/>
+<area shape="rect" id="node8" href="$class_transform.html#a8b98e302647f18d2a33caf13d1f85bfb" title="scale mutator" alt="" coords="415,259,555,285"/>
+</map>

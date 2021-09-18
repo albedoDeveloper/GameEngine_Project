@@ -1,0 +1,13 @@
+<map id="Transform::SetPosition" name="Transform::SetPosition">
+<area shape="rect" id="node1" title=" " alt="" coords="1131,81,1285,108"/>
+<area shape="rect" id="node2" href="$class_c_collider.html#ac44996b225b212a06b6e57529e1109ee" title=" " alt="" coords="890,5,1061,32"/>
+<area shape="rect" id="node3" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="636,5,813,32"/>
+<area shape="rect" id="node4" href="$class_transform.html#a55390da2160d0cac9951401756e752b7" title="loads the transform from JSON" alt="" coords="903,107,1047,133"/>
+<area shape="rect" id="node7" href="$class_level_editor.html#a656a24e68242e1f8b24baa8ea5a5e2a9" title=" " alt="" coords="868,157,1083,184"/>
+<area shape="rect" id="node5" href="$class_level_loader.html#abfedb40032867527767815299aa75594" title=" " alt="" coords="647,56,802,83"/>
+<area shape="rect" id="node6" href="$class_game_object.html#a45246aaee43206b87c40ef6fdc06111b" title="loads the object from saved state" alt="" coords="659,107,790,133"/>
+<area shape="rect" id="node8" href="$class_level_editor.html#aac394ace767b605adef1afdfb0473046" title=" " alt="" coords="629,157,820,184"/>
+<area shape="rect" id="node9" href="$class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de" title=" " alt="" coords="409,157,581,184"/>
+<area shape="rect" id="node10" href="$class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0" title=" " alt="" coords="209,157,361,184"/>
+<area shape="rect" id="node11" href="$class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048" title=" " alt="" coords="5,157,161,184"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="GameAssetFactory::UnloadTexture" name="GameAssetFactory::UnloadTexture">
+<area shape="rect" id="node1" title="unload a texture from memory" alt="" coords="5,5,188,47"/>
+<area shape="rect" id="node2" href="$class_game_asset_factory.html#a976d3d345587b20c91e6de8d8323b72f" title="cheks whether a storage key already has an asset" alt="" coords="236,13,451,39"/>
+</map>

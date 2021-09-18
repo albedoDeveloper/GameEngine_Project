@@ -11,6 +11,64 @@
 */
 class Engine
 {
+public:
+	static Engine *Instance();
+
+	/**
+	 * @brief The main function to execute all behaviour of the game engine
+	 * @param renderer - which graphics library you want to be used to render
+	 * @return An integer representing program completion status
+	*/
+	int Execute(GraphicsLibrary renderer, int windowWidth, int windowHeight);
+	/**
+	 * @brief ends the game
+	*/
+	void QuitGame();
+	/**
+	 * @brief saves the game
+	*/
+	void SaveGame();
+	/**
+	 * @brief loads the game from saved state
+	*/
+	void LoadGame();
+	/**
+	 * @brief checks whether there's a saved game
+	 * @return save state
+	*/
+	bool CheckSaveState();
+
+private:
+	Engine();
+
+	/**
+	 * @brief Intialisation function to set all parts of the engine up
+	 * @param renderer - which graphics api you want to be used to render
+	 * @return Whether intialisation succeeded
+	*/
+	bool OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight);
+
+	/**
+	 * @brief Event handler to be called when an SDL event occurs
+	 * @param event The event that occurred
+	*/
+	void OnEvent(SDL_Event *event);
+
+	/**
+	 * @brief Function to be called every iteration of the program and handle ongoing behaviour
+	*/
+	void Update();
+
+	/**
+	 * @brief Function to render all of the visible objects in the program
+	*/
+	void Render();
+
+	/**
+	 * @brief Cleans up the program on its conclusion before quitting
+	*/
+	void Cleanup();
+
 private:
 	/**
 	 * @brief Whether the engine is running
@@ -40,64 +98,6 @@ private:
 
 	bool m_drawColliders;
 
-public:
-	static Engine* Instance();
-
-	/**
-	 * @brief The main function to execute all behaviour of the game engine
-	 * @param renderer - which graphics library you want to be used to render
-	 * @return An integer representing program completion status
-	*/
-	int Execute(GraphicsLibrary renderer, int windowWidth, int windowHeight);
-	/**
-	 * @brief ends the game
-	*/
-	void QuitGame();
-	/**
-	 * @brief saves the game
-	*/
-	void SaveGame();
-	/**
-	 * @brief loads the game from saved state
-	*/
-	void LoadGame();
-	/**
-	 * @brief checks whether there's a saved game
-	 * @return save state
-	*/
-	bool CheckSaveState();
-
-private:
-
-	Engine();
-
-	/**
-	 * @brief Intialisation function to set all parts of the engine up
-	 * @param renderer - which graphics api you want to be used to render
-	 * @return Whether intialisation succeeded
-	*/
-	bool OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight);
-
-	/**
-	 * @brief Event handler to be called when an SDL event occurs
-	 * @param event The event that occurred
-	*/
-	void OnEvent(SDL_Event* event);
-
-	/**
-	 * @brief Function to be called every iteration of the program and handle ongoing behaviour
-	*/
-	void OnLoop();
-
-	/**
-	 * @brief Function to render all of the visible objects in the program
-	*/
-	void OnRender();
-
-	/**
-	 * @brief Cleans up the program on its conclusion before quitting
-	*/
-	void OnCleanup();
 };
 
 #define ENGINE Engine::Instance()

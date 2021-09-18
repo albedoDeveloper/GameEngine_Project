@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Component.h"
+#include "CComponent.h"
 #include "CollisionManager.h"
 #include "CCollider.h"
 
 /**
  * @brief A component representing a character capable of moving
 */
-class CCharacter : public Component
+class CCharacter : public CComponent
 {
 public:
 	/**
@@ -15,13 +15,13 @@ public:
 	 * @param parent The parent transform for this component's transform
 	 * @param parentObj The parent object for this component
 	*/
-	CCharacter(Transform* parent, GameObject* parentObj);
+	CCharacter(Transform *parent, GameObject *parentObj);
 
 	/**
 	 * @brief Moves the character by altering its acceleration
 	 * @param acceleration the acceleration to add
 	*/
-	void Move(float x, float y, float z);
+	//void Move(float x, float y, float z);
 
 	/**
 	 * @brief constructor taking parent as argument
@@ -67,11 +67,11 @@ public:
 	/**
 	 * @brief saves the component
 	*/
-	void Save(nlohmann::json& j);
+	void Save(nlohmann::json &j);
 	/**
 	 * @brief loads the component from saved state
 	*/
-	void Load(nlohmann::json& j);
+	void Load(nlohmann::json &j);
 
 	/**
 	 * @brief Draws to imgui
@@ -125,7 +125,7 @@ private:
 	/**
 	 * @brief The character's acceleration, how much and in what direction its velocity changes over time
 	*/
-	Vector3f m_acceleration;
+	//Vector3f m_acceleration;
 
 	bool m_playerControlled;
 
@@ -135,7 +135,7 @@ private:
 
 	bool m_endscreenUp;
 
-	CCollider* m_collider;
+	CCollider *m_collider;
 
-	Transform* m_parentTransform;
+	Transform *m_parentTransform;
 };

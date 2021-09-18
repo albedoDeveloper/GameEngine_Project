@@ -1,0 +1,5 @@
+<map id="Vector3f::Scale" name="Vector3f::Scale">
+<area shape="rect" id="node1" title="Scales the vector by a relative amount." alt="" coords="429,5,540,32"/>
+<area shape="rect" id="node2" href="$class_transform.html#a881e6e4e6150534678fa13be731ad4e1" title="Scales the transform relative to its current scale." alt="" coords="231,5,381,32"/>
+<area shape="rect" id="node3" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,5,183,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="CScript::AssignScript" name="CScript::AssignScript">
+<area shape="rect" id="node1" title=" " alt="" coords="465,31,612,57"/>
+<area shape="rect" id="node2" href="$class_c_script.html#a6dbae7090411b8b06124f054680ef991" title="script mutator using factory key" alt="" coords="231,31,417,57"/>
+<area shape="rect" id="node3" href="$class_game_object.html#a45246aaee43206b87c40ef6fdc06111b" title="loads the object from saved state" alt="" coords="29,5,159,32"/>
+<area shape="rect" id="node4" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,56,183,83"/>
+</map>

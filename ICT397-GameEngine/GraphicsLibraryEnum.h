@@ -1,3 +1,6 @@
 #pragma once
 
-enum class GraphicsLibrary { OPENGL, DIRECTX };
+enum class GraphicsLibrary
+{
+	OPENGL, DIRECTX
+};

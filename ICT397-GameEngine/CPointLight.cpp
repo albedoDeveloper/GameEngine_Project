@@ -1,8 +1,9 @@
 #include "CPointLight.h"
 #include "GraphicsEngine.h"
+#include "Vector3f.h"
 
-CPointLight::CPointLight(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj },
+CPointLight::CPointLight(Transform *parent, GameObject *parentObj)
+	:CComponent{ parent, parentObj },
 	LightInfo{}
 {
 	LightInfo.ambientStrength = 0.2f;
@@ -17,7 +18,7 @@ void CPointLight::Update()
 {
 	Vector3f worldPos = m_transform.GetWorldTransform().GetPosition();
 	GRAPHICS->m_litShader->Use();
-	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(m_litShaderIndex) + "].position", glm::vec3(
+	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(m_litShaderIndex) + "].position", Vector3f(
 		worldPos.GetX(),
 		worldPos.GetY(),
 		worldPos.GetZ()
@@ -30,7 +31,7 @@ void CPointLight::AssignColour(float r, float g, float b)
 	LightInfo.colour.SetY(g);
 	LightInfo.colour.SetZ(b);
 	GRAPHICS->m_litShader->Use();
-	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(m_litShaderIndex) + "].colour", glm::vec3(
+	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(m_litShaderIndex) + "].colour", Vector3f(
 		r,
 		g,
 		b

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "CCollider.h"
 #include <vector>
 #include "DeltaTime.h"
@@ -22,7 +23,7 @@ private:
 	/**
 	 * @brief Vector containing all of the colliders in the game
 	*/
-	std::vector<CCollider*> m_colliderArray;
+	std::vector<CCollider *> m_colliderArray;
 
 	bool m_collision;
 
@@ -30,11 +31,11 @@ public:
 	/*
 @brief Physics World that allows collisions to occur between collision bodies
 */
-	reactphysics3d::PhysicsWorld* physicsWorld;
+	reactphysics3d::PhysicsWorld *physicsWorld;
 
 	reactphysics3d::PhysicsCommon physicsCommon;
 
-	reactphysics3d::DebugRenderer* debugRender;
+	reactphysics3d::DebugRenderer *debugRender;
 
 	int waitTime = 0;
 
@@ -43,23 +44,29 @@ public:
 	 * @brief default constructor
 	*/
 	CollisionManager();
+
+	void Init();
+
 	/**
 	 * @brief Singleton instance accessor
 	 * @return the single instance of this manager
 	*/
-	static CollisionManager* Instance();
+	static CollisionManager *Instance();
 
 	/**
 	 * @brief check if a AABB is colliding with any other AABB's
 	*/
-	bool CheckCollision(CCollider& myCollider);
-	
-	void onContact(const CallbackData& callbackData);
+	bool CheckCollision(CCollider &myCollider);
+
+	void onContact(const CallbackData &callbackData);
 
 	/**
 	 * @Get the static collision world, to either add collisonbody or test for colliders
 	*/
-	reactphysics3d::PhysicsWorld* GetPhysicsWorld() { return physicsWorld; };
+	reactphysics3d::PhysicsWorld *GetPhysicsWorld()
+	{
+		return physicsWorld;
+	};
 
 private:
 

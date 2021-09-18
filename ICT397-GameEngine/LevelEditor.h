@@ -1,6 +1,6 @@
 #pragma once
-#include "imgui/imgui_impl_sdl.h"
-#include "imgui/imgui_impl_opengl3.h"
+#include "./ThirdParty/imgui/imgui_impl_sdl.h"
+#include "./ThirdParty/imgui/imgui_impl_opengl3.h"
 #include "GameObject.h"
 #include <SDL2/SDL.h>
 #include <string> 
@@ -8,31 +8,27 @@
 
 class LevelEditor
 {
-	private:
+private:
 
-	public:
-		/**
-		* @brief default constructor
-		*/
-		LevelEditor();
+public:
+	/**
+	* @brief default constructor
+	*/
+	LevelEditor();
 
-		void DrawEditor();
+	void DrawEditor();
 
-		void ObjectList();
+	void ObjectList();
 
-		void ObjectHeader(GameObject* g);
+	void ObjectHeader(GameObject *g);
 
-		void TransformHeader(GameObject* g);
+	void TransformHeader(GameObject *g);
 
-		void PositionManipulators(GameObject* g);
+	void PositionManipulators(GameObject *g);
 
-		void RotationManipulators(GameObject* g);
+	void RotationManipulators(GameObject *g);
 
-		void ScaleManipulators(GameObject* g);
+	void ScaleManipulators(GameObject *g);
 
-		void ComponentTree(GameObject* g);
-
-
-
+	void ComponentTree(GameObject *g);
 };
-

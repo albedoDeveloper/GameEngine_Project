@@ -1,0 +1,6 @@
+<map id="Shader::SetMat4" name="Shader::SetMat4">
+<area shape="rect" id="node1" title=" " alt="" coords="491,31,611,57"/>
+<area shape="rect" id="node2" href="$class_graphics_engine.html#a750597125cf08bca414df5432daffa56" title="Draws a model asset on the screen." alt="" coords="256,5,443,32"/>
+<area shape="rect" id="node3" href="$class_sky_box.html#afc48f952a1b9bb4777d4ef4c47eb99af" title=" " alt="" coords="275,56,424,83"/>
+<area shape="rect" id="node4" href="$class_graphics_engine.html#ae3c7dbf362306dc1ecf0b6c4a3144fd3" title="Renders all visible objects." alt="" coords="5,56,208,83"/>
+</map>

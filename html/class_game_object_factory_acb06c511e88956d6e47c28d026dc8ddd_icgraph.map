@@ -1,0 +1,4 @@
+<map id="GameObjectFactory::GameObjectFactory" name="GameObjectFactory::GameObjectFactory">
+<area shape="rect" id="node1" title="default constructor" alt="" coords="200,5,347,47"/>
+<area shape="rect" id="node2" href="$class_game_object_factory.html#a17052b959edb1a964ecbed795cbc41e3" title="Returns an instance of this singleton for consistent access across disconnected classes." alt="" coords="5,5,152,47"/>
+</map>

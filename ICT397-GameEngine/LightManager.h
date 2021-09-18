@@ -7,9 +7,9 @@ class LightManager
 {
 public:
 	LightManager();
-	int AddPointLight(CPointLight* light);
+	int AddPointLight(CPointLight *light);
 	void Update();
 
 private:
-	std::vector<CPointLight*> m_pointLights;
+	std::vector<CPointLight *> m_pointLights;
 };

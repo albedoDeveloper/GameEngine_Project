@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Component.h"
-#include "ModernOpenGL/Model.h"
+#include "CComponent.h"
+#include "ModernOpenGL/AModel.h"
 #include <string>
 
 /**
  * @brief A static mesh containing information on a model
 */
-class CStaticMesh : public Component 
+class CStaticMesh : public CComponent
 {
 public:
 	/**
@@ -15,22 +15,20 @@ public:
 	 * @param parent The parent transform for this component's transform
 	 * @param parentObj The object to which this component belongs
 	*/
-	CStaticMesh(Transform* parent, GameObject* parentObj);
-
-	~CStaticMesh();
+	CStaticMesh(Transform *parent, GameObject *parentObj);
 
 	/**
 	 * @brief constructor taking parent as argument
 	 * @param parent pointer to parent transform for this component's transform
 	 * @param parentObj pointer to parent object of this component
 	*/
-	Model* GetModel();
+	AModel &GetModel();
 
 	/**
 	 * @brief model mutator taking factory key
 	 * @param modelKey the asset factory key of the model to assign
 	*/
-	Model* AssignModelByKey(std::string modelKey);
+	AModel &AssignModelByKey(std::string modelKey);
 
 	void AssignShader(std::string);
 
@@ -42,12 +40,12 @@ public:
 	/**
 	 * @brief saves the component
 	*/
-	virtual void Save(nlohmann::json& j);
+	virtual void Save(nlohmann::json &j);
 
 	/**
 	 * @brief loads the component from saved state
 	*/
-	virtual void Load(nlohmann::json& j);
+	virtual void Load(nlohmann::json &j);
 
 	/**
 	 * @brief Draws to imgui
@@ -57,7 +55,7 @@ public:
 	/**
  * @brief the model this mesh is storing
 */
-	Model* m_model;
+	AModel *m_model;
 
 	Shader *m_shader;
 };

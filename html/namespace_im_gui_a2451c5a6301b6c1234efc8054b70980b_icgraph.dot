@@ -1,0 +1,18 @@
+digraph "ImGui::SetWindowClipRectBeforeSetChannel"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ImGui::SetWindowClipRect\lBeforeSetChannel",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ImGui::NextColumn",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a8f97746d6a9d59c8400c26fb7613a2ff",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ImGui::PopColumnsBackground",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a27c737fa1fc79164fc7d840e858b1845",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ImGui::PushColumnsBackground",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a39f557bf00d94069a41b0d40bd72c522",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ImGui::TablePopBackground\lChannel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a4fe11c430ad1b6597d4ffbde7cdf257e",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="ImGui::TablePushBackground\lChannel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#a6b6e0c511477248e9dd485c359f52eeb",tooltip=" "];
+}

@@ -1,0 +1,14 @@
+digraph "ImVector::index_from_ptr"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="ImVector::index_from_ptr",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ImGuiTabBar::GetTabOrder",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_im_gui_tab_bar.html#aced33dc6164509331b3430239bd7dcbd",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="ImGui::TabBarProcessReorder",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#aabf7c33f50ff3dc01b14fb19578252ee",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="ImGui::TabBarQueueReorder\lFromMousePos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespace_im_gui.html#af2003678c224a700962f99e02b273a86",tooltip=" "];
+}

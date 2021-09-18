@@ -1,12 +1,12 @@
 #pragma once
-#include "Component.h"
+#include "CComponent.h"
 #include <reactphysics3d/reactphysics3d.h>
 #include <memory>
 
 /**
- * @brief 
+ * @brief
 */
-class CCollider : public Component 
+class CCollider : public CComponent
 {
 public:
 	/**
@@ -14,12 +14,12 @@ public:
 	 * @param parent pointer to parent transform for this component's transform
 	 * @param parentObj pointer to parent object of this component
 	*/
-	CCollider(Transform* parent, GameObject* parentObj);
+	CCollider(Transform *parent, GameObject *parentObj);
 	~CCollider()
 	{
 		colBody = nullptr;
 		delete colBody;
-		
+
 		boxCollider = nullptr;
 
 		colBody = nullptr;
@@ -43,11 +43,11 @@ public:
 	/**
 	 * @brief saves the component
 	*/
-	void Save(nlohmann::json& j);
+	void Save(nlohmann::json &j);
 	/**
 	 * @brief loads the component from saved state
 	*/
-	void Load(nlohmann::json& j);
+	void Load(nlohmann::json &j);
 
 	/**
 	 * @brief Draws to imgui
@@ -64,21 +64,22 @@ public:
 
 	bool m_allowRotation;
 
-	reactphysics3d::CollisionBody* colBody = nullptr;
+	reactphysics3d::CollisionBody *colBody = nullptr;
 
-	reactphysics3d::BoxShape* boxCollider = nullptr;
-	
-	reactphysics3d::TriangleMesh* triangleMesh = nullptr;
-	reactphysics3d::ConcaveMeshShape* concaveMesh = nullptr;
+	reactphysics3d::BoxShape *boxCollider = nullptr;
+
+	reactphysics3d::TriangleMesh *triangleMesh = nullptr;
+	reactphysics3d::ConcaveMeshShape *concaveMesh = nullptr;
 	std::vector<float> concaveVertices;
 	std::vector<int> concaveIndices;
 
-	reactphysics3d::ConvexMeshShape* convexCollider = nullptr;
-	reactphysics3d::Collider* col;
-	reactphysics3d::PolygonVertexArray::PolygonFace* polyFace;
+	reactphysics3d::ConvexMeshShape *convexCollider = nullptr;
+	reactphysics3d::Collider *col;
+	reactphysics3d::PolygonVertexArray::PolygonFace *polyFace;
 
 	void UpdateCollider();
-	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2 , float offsetX = 0, float offsetY = 0, float offsetZ = 0, bool autoSize = false, int layer = 1, bool allowRotation = true);
+	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2, float offsetX = 0, float offsetY = 0, float offsetZ = 0, bool autoSize = false, int layer = 1, bool allowRotation = true);
+	void AddCapsuleCollider(float radius, float height, int layer);
 	void AddConvexCollider();
 	void AddConcaveCollider(int layer);
 	void CollideWith(int layerToCollideWith);

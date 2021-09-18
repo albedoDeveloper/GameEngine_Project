@@ -1,7 +1,8 @@
 #include "LevelEditor.h"
 #include "GameObjectFactory.h"
+#include "Quaternion.h"
 
-LevelEditor::LevelEditor() 
+LevelEditor::LevelEditor()
 {
 
 }
@@ -9,22 +10,22 @@ LevelEditor::LevelEditor()
 void LevelEditor::DrawEditor()
 {
 	ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
-	
+
 	if (ImGui::CollapsingHeader("Level Editor"))
 	{
 		ObjectList();
 	}
 }
 
-void LevelEditor::ObjectList() 
+void LevelEditor::ObjectList()
 {
 	//retrieval
-	std::map<std::string, GameObject*>* objectList;
+	std::map<std::string, GameObject *> *objectList;
 
 	objectList = GAMEOBJECT->GetObjectMap();
 
 	//iteration
-	std::map<std::string, GameObject*>::iterator it;
+	std::map<std::string, GameObject *>::iterator it;
 	for (it = objectList->begin(); it != objectList->end(); it++)
 	{
 		//population
@@ -32,11 +33,11 @@ void LevelEditor::ObjectList()
 	}
 }
 
-void LevelEditor::ObjectHeader(GameObject* g)
+void LevelEditor::ObjectHeader(GameObject *g)
 {
 	ImGui::AlignTextToFramePadding();
 
-	if (ImGui::TreeNode((char*)g->getFactoryKey().c_str()))
+	if (ImGui::TreeNode((char *)g->getFactoryKey().c_str()))
 	{
 		ImGui::AlignTextToFramePadding();
 
@@ -48,19 +49,19 @@ void LevelEditor::ObjectHeader(GameObject* g)
 	}
 }
 
-void LevelEditor::TransformHeader(GameObject* g)
+void LevelEditor::TransformHeader(GameObject *g)
 {
-	if (ImGui::CollapsingHeader("Transform") )
+	if (ImGui::CollapsingHeader("Transform"))
 	{
-		
+
 		ImGui::Indent(); ImGui::Indent(); ImGui::Indent();
 		ImGui::Text("X"); ImGui::SameLine(150); ImGui::Text("Y"); ImGui::SameLine(210); ImGui::Text("Z");
 		ImGui::Unindent(); ImGui::Unindent(); ImGui::Unindent();
 
 		//<<<<<<<<<<<<<<<<<<POSITION>>>>>>>>>>>>>>>>>>>//
-		
+
 		PositionManipulators(g);
-			
+
 		//<<<<<<<<<<<<<<<<<<ROTATION>>>>>>>>>>>>>>>>>>>//
 		RotationManipulators(g);
 
@@ -69,10 +70,10 @@ void LevelEditor::TransformHeader(GameObject* g)
 
 	}
 
-	
+
 }
 
-void LevelEditor::PositionManipulators(GameObject* g)
+void LevelEditor::PositionManipulators(GameObject *g)
 {
 	ImGuiSliderFlags flagPosX = ImGuiSliderFlags_None;
 	ImGuiSliderFlags flagPosY = ImGuiSliderFlags_None;
@@ -96,14 +97,14 @@ void LevelEditor::PositionManipulators(GameObject* g)
 	g->GetTransform()->SetPosition(drag_x_pos, drag_y_pos, drag_z_pos);
 }
 
-void LevelEditor::RotationManipulators(GameObject* g)
+void LevelEditor::RotationManipulators(GameObject *g)
 {
 
 	ImGuiSliderFlags flagRotX = ImGuiSliderFlags_None;
 	ImGuiSliderFlags flagRotY = ImGuiSliderFlags_None;
 	ImGuiSliderFlags flagRotZ = ImGuiSliderFlags_None;
 	// Drags
-	Vector3f eulerRot = g->GetTransform()->GetRotation().GetEulerAngles();
+	Vector3f eulerRot = g->GetTransform()->GetOrientation().GetEulerAngles();
 	float drag_x_rot = eulerRot.GetX();
 	float drag_y_rot = eulerRot.GetY();
 	float drag_z_rot = eulerRot.GetZ();
@@ -120,10 +121,10 @@ void LevelEditor::RotationManipulators(GameObject* g)
 	Quaternion newQuat;
 	newQuat.SetEulerAngles(drag_x_rot, drag_y_rot, drag_z_rot);
 
-	g->GetTransform()->SetRotation(newQuat);
+	g->GetTransform()->SetOrientation(newQuat);
 }
 
-void LevelEditor::ScaleManipulators(GameObject* g)
+void LevelEditor::ScaleManipulators(GameObject *g)
 {
 
 	ImGuiSliderFlags flagScaleX = ImGuiSliderFlags_None;
@@ -149,17 +150,17 @@ void LevelEditor::ScaleManipulators(GameObject* g)
 
 }
 
-void LevelEditor::ComponentTree(GameObject* g) 
+void LevelEditor::ComponentTree(GameObject *g)
 {
 	if (ImGui::CollapsingHeader("Components"))
 	{
-		std::unordered_map<std::type_index, std::list<Component*>*> compMap = g->GetComponentMap();
+		std::unordered_map<std::type_index, std::list<CComponent *> *> compMap = g->GetComponentMap();
 
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = compMap.begin(); mapIterator != compMap.end(); ++mapIterator)
+		for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = compMap.begin(); mapIterator != compMap.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->DrawToImGui();
 			}

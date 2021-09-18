@@ -6,26 +6,22 @@
 #include <iostream>
 #include "Engine.h"
 #include "GameObjectFactory.h"
+#include "Vector3f.h"
+#include "MiscMath.h"
 
-CCharacter::CCharacter(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj }, 
-	m_parentTransform{m_parent->GetTransform()},
-	m_velocity{ 0,0,0 }, 
-	m_maxSpeed{ 10 }, 
-	m_acceleration{ 0,0,0 }, 
-	m_lastTime{ 0 }, 
-	m_currentTime{ 0 }, 
-	m_updateInterval{1.f/60},
+CCharacter::CCharacter(Transform *parent, GameObject *parentObj)
+	:CComponent{ parent, parentObj },
+	m_parentTransform{ m_parent->GetTransform() },
+	m_velocity{ 0,0,0 },
+	m_maxSpeed{ 10 },
+	m_lastTime{ 0 },
+	m_currentTime{ 0 },
+	m_updateInterval{ 1.f / 60 },
 	m_playerControlled{ false },
 	m_mouseEnabled{ true },
 	m_moveEnabled{ true },
 	m_endscreenUp{ false }
 {
-}
-
-void CCharacter::Move(float x, float y, float z)
-{
-	m_acceleration = Vector3f(x, y, z);
 }
 
 void CCharacter::Jump(float x, float y, float z)
@@ -63,7 +59,7 @@ void CCharacter::SetPlayerControlled(bool playerControlled)
 	m_playerControlled = playerControlled;
 }
 
-void CCharacter::Start() 
+void CCharacter::Start()
 {
 	m_initialHitpoints = m_hitpoints;
 	m_collider = m_parent->GetComponent<CCollider>();
@@ -78,7 +74,7 @@ void CCharacter::Update()
 {
 	double deltaTime = TIME->GetDeltaTime();
 	float mouseSens = 0.1f;
-	Vector3f moveVector(0, 0, 0);
+	Vector3f accel(0, 0, 0);
 
 	if (m_playerControlled)
 	{
@@ -86,29 +82,29 @@ void CCharacter::Update()
 		{
 			if (INPUT->GetKey('s'))
 			{
-				moveVector.SetZ(0.5f * deltaTime);
+				accel.SetZ(0.5f * deltaTime);
 			}
 			else if (INPUT->GetKey('w'))
 			{
-				moveVector.SetZ(-0.5f * deltaTime);
+				accel.SetZ(-0.5f * deltaTime);
 			}
 
 			if (INPUT->GetKey('a'))
 			{
-				moveVector.SetX(-0.5f * deltaTime);
+				accel.SetX(-0.5f * deltaTime);
 			}
 			else if (INPUT->GetKey('d'))
 			{
-				moveVector.SetX(0.5f * deltaTime);
+				accel.SetX(0.5f * deltaTime);
 			}
 
 			if (INPUT->GetKey(' '))
 			{
-				moveVector.SetY(0.5f * deltaTime);
+				accel.SetY(0.5f * deltaTime);
 			}
 			else if (INPUT->GetKey('c'))
 			{
-				moveVector.SetY(-0.5f * deltaTime);
+				accel.SetY(-0.5f * deltaTime);
 			}
 		}
 
@@ -118,7 +114,7 @@ void CCharacter::Update()
 			m_moveEnabled = false;
 			m_endscreenUp = true;
 			INPUT->LockCursor(false);
-			GameObject* end = GAMEOBJECT->GetGameObject("endscreen");
+			GameObject *end = GAMEOBJECT->GetGameObject("endscreen");
 			if (end)
 			{
 				end->SetActive(true);
@@ -134,42 +130,39 @@ void CCharacter::Update()
 		}
 
 		GameObject *parentObj = GetParentObject();
-		
+
 		if (m_mouseEnabled)
 		{
 			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * mouseSens);
 			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * -mouseSens);
 		}
 
-		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f ||
-			RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) < -90.f)
+		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX()) > 90.f ||
+			RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX()) < -90.f)
 		{
 			Vector3f eulersInRads(
-				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX(),
-				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetY(),
-				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetZ()
+				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX(),
+				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetY(),
+				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetZ()
 			);
 
-			if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().GetEulerAngles().GetX()) > 90.f)
+			if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX()) > 90.f)
 			{
-				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().SetEulerAngles(DegreesToRad(90.f), eulersInRads.GetY(), eulersInRads.GetZ());
+				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().SetEulerAngles(DegreesToRad(90.f), eulersInRads.GetY(), eulersInRads.GetZ());
 			}
 			else
 			{
-				parentObj->GetComponent<CCamera>()->GetTransform().GetRotation().SetEulerAngles(DegreesToRad(-90.f), eulersInRads.GetY(), eulersInRads.GetZ());
+				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().SetEulerAngles(DegreesToRad(-90.f), eulersInRads.GetY(), eulersInRads.GetZ());
 			}
 		}
-
-		Move(moveVector.GetX(), moveVector.GetY(), moveVector.GetZ());
 	}
 
 	static const float GRAVITY = 0;
 
 	//newtonian calculations
-	m_velocity = m_velocity * 0.8f; // apply damping factor
+	m_velocity = m_velocity * 0.9f; // apply damping factor
 	m_velocity = m_velocity + Vector3f(0, GRAVITY * deltaTime, 0); // gravity
-	m_velocity = m_velocity + m_acceleration;
-	m_acceleration = Vector3f(0, 0, 0);
+	m_velocity = m_velocity + accel;
 	if (m_velocity.Magnitude() > m_maxSpeed)
 	{
 		m_velocity.SetMagnitude(m_maxSpeed);
@@ -177,7 +170,7 @@ void CCharacter::Update()
 
 	//convert to world space
 	Vector3f newPos = m_transform.GetWorldTransform().GetPosition();
-	Vector3f worldVel = m_velocity * m_parent->GetTransform()->GetRotation();
+	Vector3f worldVel = m_velocity * m_parent->GetTransform()->GetOrientation();
 
 	m_parentTransform->Translate(worldVel.GetX(), 0, 0);
 	m_collider->UpdateCollider();
@@ -204,22 +197,22 @@ void CCharacter::Update()
 	}
 }
 
-void CCharacter::Save(nlohmann::json& j)
+void CCharacter::Save(nlohmann::json &j)
 {
 	m_savedHitpoints = m_hitpoints;
-	Component::Save(j);
+	CComponent::Save(j);
 }
 
-void CCharacter::Load(nlohmann::json& j)
+void CCharacter::Load(nlohmann::json &j)
 {
 	m_hitpoints = m_savedHitpoints;
-	Component::Load(j);
+	CComponent::Load(j);
 }
 
 void CCharacter::DrawToImGui()
 {
 	//ImGui::Text("staticMesh TREE");
-	if (ImGui::TreeNode("Character Component"))
+	if (ImGui::TreeNode("Character CComponent"))
 	{
 		ImGui::Text("Character info : ");
 		ImGui::Text("Velocity : x = "); ImGui::SameLine(); ImGui::Text(std::to_string(m_velocity.GetX()).c_str());

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Component.h"
+#include "CComponent.h"
 
 struct PointLight
 {
@@ -13,10 +13,10 @@ struct PointLight
 	float quadratic;
 };
 
-class CPointLight : public Component
+class CPointLight : public CComponent
 {
 public:
-	CPointLight(Transform* parent, GameObject* parentObj);
+	CPointLight(Transform *parent, GameObject *parentObj);
 
 	void Update();
 

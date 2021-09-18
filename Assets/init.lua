@@ -22,11 +22,14 @@ LoadModel("tavern_glass_door_wall_long_2", "tavern_glass_door_wall_long_2/tavern
 LoadModel("toilet_block", "toilet_block/toilet_block.fbx")
 LoadModel("waitress", "waitress/waitress.fbx")
 LoadModel("endscreen", "endscreen/endscreen.fbx")
-
+LoadModel("sheika", "sheika/sheika.fbx")
 LoadScript("rotate", "rotate.lua")
 
 SpawnGameObject("spiked_door_toilet"):SetStatic(true)
 GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_toilet")
+
+SpawnGameObject("sheika"):SetStatic(true)
+GetGameObject("sheika"):AddCStaticMesh():AssignModel("sheika")
 
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
@@ -82,6 +85,8 @@ GetGameObject("pool-table"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("main_bar_bench"):SetStatic(true)
 GetGameObject("main_bar_bench"):AddCStaticMesh():AssignModel("main_bar_bench")
+GetGameObject("main_bar_bench"):AddCCollider():AddConcaveCollider(1)
+GetGameObject("main_bar_bench"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("graffiti_block"):SetStatic(true)
 GetGameObject("graffiti_block"):AddCStaticMesh():AssignModel("graffiti_block")
@@ -122,8 +127,6 @@ GetGameObject("light1"):GetTransform():SetPosition(-8.354999542236328,
 1.0);
 GetGameObject("light1"):AddCStaticMesh():AssignModel("axis")
 
-
-
 SpawnGameObject("light2"):SetStatic(false)
 GetGameObject("light2"):AddCPointLight()
 GetGameObject("light2"):GetCPointLight():AssignColour(0,0,1)
@@ -138,6 +141,7 @@ GetGameObject("player"):AddCCollider():AddBoxCollider(0.5, 1.4, 0.5, 0 ,0, 0, fa
 GetGameObject("player"):GetCCollider():CollideWith(1);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
+GetGameObject("player"):GetCCamera():GetTransform():Translate(0,0.5,0);
 
 SpawnGameObject("endscreen"):SetActive(false)
 GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")
