@@ -33,7 +33,7 @@ public:
 		/** @brief Physics World that allows collisions to occur between collision bodies */
 	reactphysics3d::PhysicsWorld *physicsWorld;
 
-		/** @brief Common Physics world */
+		/** @brief Common Physics factory class for all colliders*/
 	reactphysics3d::PhysicsCommon physicsCommon;
 
 		/** @brief Allows rendering of collision boxes in debug mode */
