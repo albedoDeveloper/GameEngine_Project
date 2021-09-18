@@ -10,9 +10,3 @@ int LightManager::AddPointLight(CPointLight *light)
 	m_pointLights.push_back(light);
 	return (int)m_pointLights.size();
 }
-
-
-void LightManager::Update()
-{
-
-}

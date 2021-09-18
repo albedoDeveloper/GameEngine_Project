@@ -74,7 +74,4 @@ public:
 		 * \param g pointer to the current gameobject in the iterator
 		 */
 	void ComponentTree(GameObject *g);
-
-private:
-
 };

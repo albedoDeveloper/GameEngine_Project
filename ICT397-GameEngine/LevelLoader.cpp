@@ -125,9 +125,6 @@ void LevelLoader::FromJson(json &j, GameObject *g)
 
 
 	//here is where we add in the componenets from the json, each comp will need it's own fromJson method
-
-
-
 }
 
 
@@ -163,11 +160,6 @@ void LevelLoader::LoadLevel()
 
 		GAMEOBJECT->SpawnGameObject(j.at(it.key()).at("key"));
 
-
-
-
-
-
 		//g->Load(j);
 	}
 
@@ -180,9 +172,6 @@ void LevelLoader::LoadLevel()
 		//FromJson(j, it->second);
 
 	}
-
-
-
 }
 
 void LevelLoader::SaveLevel()
