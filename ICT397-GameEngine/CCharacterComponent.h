@@ -4,8 +4,8 @@
  *
  * \date   September 2021
  *********************************************************************/
+#pragma once
 
-#include "CComponent.h"
 #include "CollisionManager.h"
 #include "CCollider.h"
 

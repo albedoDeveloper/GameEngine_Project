@@ -137,22 +137,22 @@ void CCharacter::Update()
 			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * -mouseSens);
 		}
 
-		if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX()) > 90.f ||
-			RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX()) < -90.f)
+		if (parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAnglesDegrees().GetX() > 90.f ||
+			parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAnglesDegrees().GetX() < -90.f)
 		{
-			Vector3f eulersInRads(
-				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX(),
-				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetY(),
-				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetZ()
+			Vector3f eulers(
+				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAnglesDegrees().GetX(),
+				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAnglesDegrees().GetY(),
+				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAnglesDegrees().GetZ()
 			);
 
-			if (RadToDegrees(parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAngles().GetX()) > 90.f)
+			if (parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().GetEulerAnglesDegrees().GetX() > 90.f)
 			{
-				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().SetEulerAngles(DegreesToRad(90.f), eulersInRads.GetY(), eulersInRads.GetZ());
+				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().SetEulerAnglesDegrees(90.f, eulers.GetY(), eulers.GetZ());
 			}
 			else
 			{
-				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().SetEulerAngles(DegreesToRad(-90.f), eulersInRads.GetY(), eulersInRads.GetZ());
+				parentObj->GetComponent<CCamera>()->GetTransform().GetOrientation().SetEulerAnglesDegrees(-90.f, eulers.GetY(), eulers.GetZ());
 			}
 		}
 	}

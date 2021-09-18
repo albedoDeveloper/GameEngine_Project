@@ -5,8 +5,7 @@
 
 Quaternion::Quaternion()
 	:m_quat(glm::identity<glm::quat>())
-{
-}
+{}
 
 float Quaternion::DotProduct(Quaternion oQuat)
 {
@@ -38,9 +37,9 @@ float Quaternion::GetAxisAngleRadians() const
 	return glm::angle(m_quat);
 }
 
-Vector3f Quaternion::GetEulerAngles() const
+Vector3f Quaternion::GetEulerAnglesDegrees() const
 {
-	glm::vec3 axis = glm::eulerAngles(m_quat);
+	glm::vec3 axis = glm::degrees(glm::eulerAngles(m_quat));
 	return Vector3f(
 		axis.x,
 		axis.y,
@@ -48,9 +47,53 @@ Vector3f Quaternion::GetEulerAngles() const
 	);
 }
 
-void Quaternion::SetEulerAngles(float x, float y, float z)
+void Quaternion::SetEulerAnglesDegrees(float x, float y, float z)
 {
-	m_quat = glm::quat(glm::vec3(x, y, z));
+	m_quat = glm::quat(glm::vec3(
+		glm::radians(x),
+		glm::radians(y),
+		glm::radians(z)
+	));
+}
+
+float Quaternion::GetX() const
+{
+	return m_quat.x;
+}
+
+float Quaternion::GetY() const
+{
+	return m_quat.x;
+}
+
+float Quaternion::GetZ() const
+{
+	return m_quat.z;
+}
+
+float Quaternion::GetW() const
+{
+	return m_quat.w;
+}
+
+void Quaternion::SetX(float x)
+{
+	m_quat.x = x;
+}
+
+void Quaternion::SetY(float y)
+{
+	m_quat.y = y;
+}
+
+void Quaternion::SetZ(float z)
+{
+	m_quat.z = z;
+}
+
+void Quaternion::SetW(float w)
+{
+	m_quat.w = w;
 }
 
 Quaternion Quaternion::GetInverse()

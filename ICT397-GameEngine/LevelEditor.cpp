@@ -104,7 +104,7 @@ void LevelEditor::RotationManipulators(GameObject *g)
 	ImGuiSliderFlags flagRotY = ImGuiSliderFlags_None;
 	ImGuiSliderFlags flagRotZ = ImGuiSliderFlags_None;
 	// Drags
-	Vector3f eulerRot = g->GetTransform()->GetOrientation().GetEulerAngles();
+	Vector3f eulerRot = g->GetTransform()->GetOrientation().GetEulerAnglesDegrees();
 	float drag_x_rot = eulerRot.GetX();
 	float drag_y_rot = eulerRot.GetY();
 	float drag_z_rot = eulerRot.GetZ();
@@ -119,7 +119,7 @@ void LevelEditor::RotationManipulators(GameObject *g)
 	ImGui::DragFloat("##RotZ", &drag_z_rot, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flagRotZ);
 
 	Quaternion newQuat;
-	newQuat.SetEulerAngles(drag_x_rot, drag_y_rot, drag_z_rot);
+	newQuat.SetEulerAnglesDegrees(drag_x_rot, drag_y_rot, drag_z_rot);
 
 	g->GetTransform()->SetOrientation(newQuat);
 }

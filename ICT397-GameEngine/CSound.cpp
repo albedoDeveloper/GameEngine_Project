@@ -75,7 +75,7 @@ void CSound::Update()
 			bool centred = false;
 
 
-			int rotation = glm::degrees(rawRotation.GetEulerAngles().GetY());
+			int rotation = glm::degrees(rawRotation.GetEulerAnglesDegrees().GetY());
 
 			if (rotation < 0)
 				rotation += 360.0;*/
