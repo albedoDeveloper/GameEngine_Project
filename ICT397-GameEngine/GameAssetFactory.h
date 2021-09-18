@@ -3,6 +3,7 @@
  * \brief  Creates and handles GameObjects using a map
  * \date   September 2021
  *********************************************************************/
+ 
 #pragma once
 
 #include "ModernOpenGL/AModel.h"
@@ -95,7 +96,6 @@ private:
 	std::map<std::string, AScript> m_scriptAssets;
 		/** @brief map of models stored by key */
 	std::map<std::string, AModel> m_modelAssets;
-
 };
 
 #define ASSET GameAssetFactory::Instance()

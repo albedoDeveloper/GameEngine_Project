@@ -177,16 +177,10 @@
     <ClInclude Include="ModernOpenGL\Mesh.h">
       <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Source\Misc\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="ModernOpenGL\Shader.h">
       <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="SkyBox.h">
-      <Filter>Source\Misc\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="SkyboxVerts.h">
       <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
     <ClInclude Include="CCamera.h">

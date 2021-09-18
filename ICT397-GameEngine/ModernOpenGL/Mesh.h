@@ -1,13 +1,12 @@
 /*****************************************************************//**
  * \file   Mesh.h
- * \brief  The Mesh information of a model
  *
- * \date   August 2021
+ * \date   September 2021
  *********************************************************************/
+
 #pragma once
 
 #include "Shader.h"
-
 #include <string>
 #include <vector> 
 #include "../Vector3f.h"
@@ -22,7 +21,7 @@ struct Vertex
 		/// The vertexs positon in the space
 		/// </summary>
 	Vector3f Position;
-	
+
 		/// <summary>
 		/// The vertexs normal
 		/// </summary>
@@ -46,16 +45,16 @@ struct Vertex
 	Vector3f Bitangent;
 };
 
-/// <summary>
-/// Texture point information, such as the the textures ID, its path and its type
-/// </summary>
+	/// <summary>
+	/// Texture point information, such as the the textures ID, its path and its type
+	/// </summary>
 struct Texture
 {
 		/// <summary>
 		/// The id of the texture
 		/// </summary>
 	unsigned int id;
-		
+
 		/// <summary>
 		///  Describes the type of the texture
 		/// </summary>
@@ -70,12 +69,12 @@ struct Texture
 class Mesh
 {
 public:
-	
+
 		/// <summary>
 		/// All the vertices that mesh has
 		/// </summary>
 	std::vector<Vertex>  vertices;
-	
+
 		/// <summary>
 		/// All the indices the mesh has (to determine the order of line drawing between vertices)
 		/// </summary>

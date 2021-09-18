@@ -902,7 +902,7 @@ static void             ImeSetInputScreenPosFn_DefaultImpl(int x, int y);
 
 namespace ImGui
 {
-// Navigation
+	// Navigation
 	static void             NavUpdate();
 	static void             NavUpdateWindowing();
 	static void             NavUpdateWindowingOverlay();
@@ -2033,8 +2033,8 @@ void **ImGuiStorage::GetVoidPtrRef(ImGuiID key, void *default_val)
 	return &it->val_p;
 }
 
-// FIXME-OPT: Need a way to reuse the result of lower_bound when doing GetInt()/SetInt() - not too bad because it only happens on explicit interaction (maximum one a frame)
-void ImGuiStorage::SetInt(ImGuiID key, int val)
+// FIXME-OPT: Need a way to reuse the result of lower_bound when doing GetInt()/SetIntUniform() - not too bad because it only happens on explicit interaction (maximum one a frame)
+void ImGuiStorage::SetIntUniform(ImGuiID key, int val)
 {
 	ImGuiStoragePair *it = LowerBound(Data, key);
 	if (it == Data.end() || it->key != key)
@@ -2045,12 +2045,12 @@ void ImGuiStorage::SetInt(ImGuiID key, int val)
 	it->val_i = val;
 }
 
-void ImGuiStorage::SetBool(ImGuiID key, bool val)
+void ImGuiStorage::SetBoolUniform(ImGuiID key, bool val)
 {
-	SetInt(key, val ? 1 : 0);
+	SetIntUniform(key, val ? 1 : 0);
 }
 
-void ImGuiStorage::SetFloat(ImGuiID key, float val)
+void ImGuiStorage::SetFloatUniform(ImGuiID key, float val)
 {
 	ImGuiStoragePair *it = LowerBound(Data, key);
 	if (it == Data.end() || it->key != key)
@@ -9885,9 +9885,9 @@ static void ImGui::NavUpdateWindowing()
 		// Move to parent menu if necessary
 		ImGuiWindow *new_nav_window = g.NavWindow;
 		while (new_nav_window->ParentWindow
-			&& (new_nav_window->DC.NavLayersActiveMask & (1 << ImGuiNavLayer_Menu)) == 0
-			&& (new_nav_window->Flags & ImGuiWindowFlags_ChildWindow) != 0
-			&& (new_nav_window->Flags & (ImGuiWindowFlags_Popup | ImGuiWindowFlags_ChildMenu)) == 0)
+			   && (new_nav_window->DC.NavLayersActiveMask & (1 << ImGuiNavLayer_Menu)) == 0
+			   && (new_nav_window->Flags & ImGuiWindowFlags_ChildWindow) != 0
+			   && (new_nav_window->Flags & (ImGuiWindowFlags_Popup | ImGuiWindowFlags_ChildMenu)) == 0)
 			new_nav_window = new_nav_window->ParentWindow;
 		if (new_nav_window != g.NavWindow)
 		{
@@ -11026,7 +11026,8 @@ static void ImeSetInputScreenPosFn_DefaultImpl(int x, int y)
 #else
 
 static void ImeSetInputScreenPosFn_DefaultImpl(int, int)
-{}
+{
+}
 
 #endif
 
@@ -11631,8 +11632,8 @@ void ImGui::DebugNodeDrawList(ImGuiWindow *window, const ImDrawList *draw_list, 
 
 		char buf[300];
 		ImFormatString(buf, IM_ARRAYSIZE(buf), "DrawCmd:%5d tris, Tex 0x%p, ClipRect (%4.0f,%4.0f)-(%4.0f,%4.0f)",
-			pcmd->ElemCount / 3, (void *)(intptr_t)pcmd->TextureId,
-			pcmd->ClipRect.x, pcmd->ClipRect.y, pcmd->ClipRect.z, pcmd->ClipRect.w);
+					   pcmd->ElemCount / 3, (void *)(intptr_t)pcmd->TextureId,
+					   pcmd->ClipRect.x, pcmd->ClipRect.y, pcmd->ClipRect.z, pcmd->ClipRect.w);
 		bool pcmd_node_open = TreeNode((void *)(pcmd - draw_list->CmdBuffer.begin()), "%s", buf);
 		if (IsItemHovered() && (cfg->ShowDrawCmdMesh || cfg->ShowDrawCmdBoundingBoxes) && fg_draw_list)
 			DebugNodeDrawCmdShowMeshAndBoundingBox(fg_draw_list, draw_list, pcmd, cfg->ShowDrawCmdMesh, cfg->ShowDrawCmdBoundingBoxes);
@@ -11671,7 +11672,7 @@ void ImGui::DebugNodeDrawList(ImGuiWindow *window, const ImDrawList *draw_list, 
 					const ImDrawVert &v = vtx_buffer[idx_buffer ? idx_buffer[idx_i] : idx_i];
 					triangle[n] = v.pos;
 					buf_p += ImFormatString(buf_p, buf_end - buf_p, "%s %04d: pos (%8.2f,%8.2f), uv (%.6f,%.6f), col %08X\n",
-						(n == 0) ? "Vert:" : "     ", idx_i, v.pos.x, v.pos.y, v.uv.x, v.uv.y, v.col);
+											(n == 0) ? "Vert:" : "     ", idx_i, v.pos.x, v.pos.y, v.uv.x, v.uv.y, v.col);
 				}
 
 				Selectable(buf, false);
@@ -11722,7 +11723,7 @@ void ImGui::DebugNodeDrawCmdShowMeshAndBoundingBox(ImDrawList *out_draw_list, co
 void ImGui::DebugNodeFont(ImFont *font)
 {
 	bool opened = TreeNode(font, "Font: \"%s\"\n%.2f px, %d glyphs, %d file(s)",
-		font->ConfigData ? font->ConfigData[0].Name : "", font->FontSize, font->Glyphs.Size, font->ConfigDataCount);
+						   font->ConfigData ? font->ConfigData[0].Name : "", font->FontSize, font->Glyphs.Size, font->ConfigDataCount);
 	SameLine();
 	if (SmallButton("Set as default"))
 		GetIO().FontDefault = font;
@@ -11753,7 +11754,7 @@ void ImGui::DebugNodeFont(ImFont *font)
 		if (font->ConfigData)
 			if (const ImFontConfig *cfg = &font->ConfigData[config_i])
 				BulletText("Input %d: \'%s\', Oversample: (%d,%d), PixelSnapH: %d, Offset: (%.1f,%.1f)",
-					config_i, cfg->Name, cfg->OversampleH, cfg->OversampleV, cfg->PixelSnapH, cfg->GlyphOffset.x, cfg->GlyphOffset.y);
+						   config_i, cfg->Name, cfg->OversampleH, cfg->OversampleV, cfg->PixelSnapH, cfg->GlyphOffset.x, cfg->GlyphOffset.y);
 
 	// Display all glyphs of the fonts in separate pages of 256 characters
 	if (TreeNode("Glyphs", "Glyphs (%d)", font->Glyphs.Size))
@@ -11841,7 +11842,7 @@ void ImGui::DebugNodeTabBar(ImGuiTabBar *tab_bar, const char *label)
 	{
 		ImGuiTabItem *tab = &tab_bar->Tabs[tab_n];
 		p += ImFormatString(p, buf_end - p, "%s'%s'",
-			tab_n > 0 ? ", " : "", (tab->NameOffset != -1) ? tab_bar->GetTabName(tab) : "???");
+							tab_n > 0 ? ", " : "", (tab->NameOffset != -1) ? tab_bar->GetTabName(tab) : "???");
 	}
 	p += ImFormatString(p, buf_end - p, (tab_bar->Tabs.Size > 3) ? " ... }" : " } ");
 	if (!is_active)
@@ -11875,7 +11876,7 @@ void ImGui::DebugNodeTabBar(ImGuiTabBar *tab_bar, const char *label)
 				TabBarQueueReorder(tab_bar, tab, +1);
 			} SameLine();
 			Text("%02d%c Tab 0x%08X '%s' Offset: %.1f, Width: %.1f/%.1f",
-				tab_n, (tab->ID == tab_bar->SelectedTabId) ? '*' : ' ', tab->ID, (tab->NameOffset != -1) ? tab_bar->GetTabName(tab) : "???", tab->Offset, tab->Width, tab->ContentWidth);
+				 tab_n, (tab->ID == tab_bar->SelectedTabId) ? '*' : ' ', tab->ID, (tab->NameOffset != -1) ? tab_bar->GetTabName(tab) : "???", tab->Offset, tab->Width, tab->ContentWidth);
 			PopID();
 		}
 		TreePop();
@@ -11889,12 +11890,12 @@ void ImGui::DebugNodeViewport(ImGuiViewportP *viewport)
 	{
 		ImGuiWindowFlags flags = viewport->Flags;
 		BulletText("Main Pos: (%.0f,%.0f), Size: (%.0f,%.0f)\nWorkArea Offset Left: %.0f Top: %.0f, Right: %.0f, Bottom: %.0f",
-			viewport->Pos.x, viewport->Pos.y, viewport->Size.x, viewport->Size.y,
-			viewport->WorkOffsetMin.x, viewport->WorkOffsetMin.y, viewport->WorkOffsetMax.x, viewport->WorkOffsetMax.y);
+				   viewport->Pos.x, viewport->Pos.y, viewport->Size.x, viewport->Size.y,
+				   viewport->WorkOffsetMin.x, viewport->WorkOffsetMin.y, viewport->WorkOffsetMax.x, viewport->WorkOffsetMax.y);
 		BulletText("Flags: 0x%04X =%s%s%s", viewport->Flags,
-			(flags & ImGuiViewportFlags_IsPlatformWindow) ? " IsPlatformWindow" : "",
-			(flags & ImGuiViewportFlags_IsPlatformMonitor) ? " IsPlatformMonitor" : "",
-			(flags & ImGuiViewportFlags_OwnedByApp) ? " OwnedByApp" : "");
+				   (flags & ImGuiViewportFlags_IsPlatformWindow) ? " IsPlatformWindow" : "",
+				   (flags & ImGuiViewportFlags_IsPlatformMonitor) ? " IsPlatformMonitor" : "",
+				   (flags & ImGuiViewportFlags_OwnedByApp) ? " OwnedByApp" : "");
 		for (int layer_i = 0; layer_i < IM_ARRAYSIZE(viewport->DrawDataBuilder.Layers); layer_i++)
 			for (int draw_list_i = 0; draw_list_i < viewport->DrawDataBuilder.Layers[layer_i].Size; draw_list_i++)
 				DebugNodeDrawList(NULL, viewport->DrawDataBuilder.Layers[layer_i][draw_list_i], "DrawList");
@@ -11934,9 +11935,9 @@ void ImGui::DebugNodeWindow(ImGuiWindow *window, const char *label)
 	DebugNodeDrawList(window, window->DrawList, "DrawList");
 	BulletText("Pos: (%.1f,%.1f), Size: (%.1f,%.1f), ContentSize (%.1f,%.1f) Ideal (%.1f,%.1f)", window->Pos.x, window->Pos.y, window->Size.x, window->Size.y, window->ContentSize.x, window->ContentSize.y, window->ContentSizeIdeal.x, window->ContentSizeIdeal.y);
 	BulletText("Flags: 0x%08X (%s%s%s%s%s%s%s%s%s..)", flags,
-		(flags & ImGuiWindowFlags_ChildWindow) ? "Child " : "", (flags & ImGuiWindowFlags_Tooltip) ? "Tooltip " : "", (flags & ImGuiWindowFlags_Popup) ? "Popup " : "",
-		(flags & ImGuiWindowFlags_Modal) ? "Modal " : "", (flags & ImGuiWindowFlags_ChildMenu) ? "ChildMenu " : "", (flags & ImGuiWindowFlags_NoSavedSettings) ? "NoSavedSettings " : "",
-		(flags & ImGuiWindowFlags_NoMouseInputs) ? "NoMouseInputs" : "", (flags & ImGuiWindowFlags_NoNavInputs) ? "NoNavInputs" : "", (flags & ImGuiWindowFlags_AlwaysAutoResize) ? "AlwaysAutoResize" : "");
+			   (flags & ImGuiWindowFlags_ChildWindow) ? "Child " : "", (flags & ImGuiWindowFlags_Tooltip) ? "Tooltip " : "", (flags & ImGuiWindowFlags_Popup) ? "Popup " : "",
+			   (flags & ImGuiWindowFlags_Modal) ? "Modal " : "", (flags & ImGuiWindowFlags_ChildMenu) ? "ChildMenu " : "", (flags & ImGuiWindowFlags_NoSavedSettings) ? "NoSavedSettings " : "",
+			   (flags & ImGuiWindowFlags_NoMouseInputs) ? "NoMouseInputs" : "", (flags & ImGuiWindowFlags_NoNavInputs) ? "NoNavInputs" : "", (flags & ImGuiWindowFlags_AlwaysAutoResize) ? "AlwaysAutoResize" : "");
 	BulletText("Scroll: (%.2f/%.2f,%.2f/%.2f) Scrollbar:%s%s", window->Scroll.x, window->ScrollMax.x, window->Scroll.y, window->ScrollMax.y, window->ScrollbarX ? "X" : "", window->ScrollbarY ? "Y" : "");
 	BulletText("Active: %d/%d, WriteAccessed: %d, BeginOrderWithinContext: %d", window->Active, window->WasActive, window->WriteAccessed, (window->Active || window->WasActive) ? window->BeginOrderWithinContext : -1);
 	BulletText("Appearing: %d, Hidden: %d (CanSkip %d Cannot %d), SkipItems: %d", window->Appearing, window->Hidden, window->HiddenFramesCanSkipItems, window->HiddenFramesCannotSkipItems, window->SkipItems);
@@ -11978,7 +11979,7 @@ void ImGui::DebugNodeWindow(ImGuiWindow *window, const char *label)
 void ImGui::DebugNodeWindowSettings(ImGuiWindowSettings *settings)
 {
 	Text("0x%08X \"%s\" Pos (%d,%d) Size (%d,%d) Collapsed=%d",
-		settings->ID, settings->GetName(), settings->Pos.x, settings->Pos.y, settings->Size.x, settings->Size.y, settings->Collapsed);
+		 settings->ID, settings->GetName(), settings->Pos.x, settings->Pos.y, settings->Size.x, settings->Size.y, settings->Collapsed);
 }
 
 void ImGui::DebugNodeWindowsList(ImVector<ImGuiWindow *> *windows, const char *label)
@@ -11998,29 +11999,41 @@ void ImGui::DebugNodeWindowsList(ImVector<ImGuiWindow *> *windows, const char *l
 #else
 
 void ImGui::ShowMetricsWindow(bool *)
-{}
+{
+}
 void ImGui::ShowFontAtlas(ImFontAtlas *)
-{}
+{
+}
 void ImGui::DebugNodeColumns(ImGuiOldColumns *)
-{}
+{
+}
 void ImGui::DebugNodeDrawList(ImGuiWindow *, const ImDrawList *, const char *)
-{}
+{
+}
 void ImGui::DebugNodeDrawCmdShowMeshAndBoundingBox(ImDrawList *, const ImDrawList *, const ImDrawCmd *, bool, bool)
-{}
+{
+}
 void ImGui::DebugNodeFont(ImFont *)
-{}
+{
+}
 void ImGui::DebugNodeStorage(ImGuiStorage *, const char *)
-{}
+{
+}
 void ImGui::DebugNodeTabBar(ImGuiTabBar *, const char *)
-{}
+{
+}
 void ImGui::DebugNodeWindow(ImGuiWindow *, const char *)
-{}
+{
+}
 void ImGui::DebugNodeWindowSettings(ImGuiWindowSettings *)
-{}
+{
+}
 void ImGui::DebugNodeWindowsList(ImVector<ImGuiWindow *> *, const char *)
-{}
+{
+}
 void ImGui::DebugNodeViewport(ImGuiViewportP *)
-{}
+{
+}
 
 #endif
 

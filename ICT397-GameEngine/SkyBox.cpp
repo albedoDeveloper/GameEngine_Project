@@ -1,25 +1,25 @@
 #include "SkyBox.h"
 #include <stbi_image/stb_image.h>
 
-void SkyBox::CreateSkybox(std::vector<std::string> skyBoxFaces)
+void SkyBox::CreateSkybox(std::vector<std::string> textures)
 {
-	glGenTextures(1, &texID);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, texID);
+	glGenTextures(1, &m_texID);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, m_texID);
 	int width, height, nrChannels;
-	for (unsigned int i = 0; i < skyBoxFaces.size(); i++)
+	for (unsigned int i = 0; i < textures.size(); i++)
 	{
-		unsigned char *data = stbi_load(skyBoxFaces[i].c_str(), &width, &height, &nrChannels, 0);
+		unsigned char *data = stbi_load(textures[i].c_str(), &width, &height, &nrChannels, 0);
 		if (data)
 		{
 			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
-				0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data
+						 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data
 			);
 			stbi_image_free(data);
 		}
 
 		else
 		{
-			std::cout << "Failed to load skybox texture: " << skyBoxFaces[i] << std::endl;
+			std::cout << "Failed to load skybox texture: " << textures[i] << std::endl;
 			stbi_image_free(data);
 		}
 
@@ -35,29 +35,29 @@ void SkyBox::CreateSkybox(std::vector<std::string> skyBoxFaces)
 	CreateVAOandVBO();
 }
 
-void SkyBox::DrawSkybox(Matrix4f persepective, Matrix4f view)
+void SkyBox::DrawSkybox(Matrix4f projection, Matrix4f view)
 {
 	glDepthMask(GL_FALSE);
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_FILL);
 	skyBoxShader->Use();
-	skyBoxShader->SetMat4("projection", persepective);
-	skyBoxShader->SetMat4("view", view);
+	skyBoxShader->SetMat4Uniform("projection", projection);
+	skyBoxShader->SetMat4Uniform("view", view);
 
-	glBindVertexArray(VAO);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, texID);
+	glBindVertexArray(m_VAO);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, m_texID);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glDepthMask(GL_TRUE);
 }
 
 void SkyBox::CreateVAOandVBO()
 {
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
+	glGenVertexArrays(1, &m_VAO);
+	glGenBuffers(1, &m_VBO);
 
-	glBindVertexArray(VAO);
+	glBindVertexArray(m_VAO);
 	// load data into vertex buffers
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 
 	glBufferData(GL_ARRAY_BUFFER, skyboxVertices.size() * sizeof(float), &skyboxVertices.data()[0], GL_STATIC_DRAW);
 

@@ -66,10 +66,10 @@ void Mesh::Draw(const Shader *shader, int text) const
 		else if (name == "texture_height")
 			number = std::to_string(heightNr++);
 
-		shader->SetInt(("material." + name + number).c_str(), i);
+		shader->SetIntUniform(("material." + name + number).c_str(), i);
 		glBindTexture(GL_TEXTURE_2D, textures[i].id);
 	}
-	
+
 	glActiveTexture(GL_TEXTURE0);
 
 	glBindVertexArray(VAO);
