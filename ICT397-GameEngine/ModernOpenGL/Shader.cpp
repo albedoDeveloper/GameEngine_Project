@@ -62,7 +62,7 @@ Shader::Shader(const char *vertexPath, const char *fragmentPath)
 void Shader::CreateShaders(unsigned int &shadername, const GLchar *const *actualShader, int typeOfShader)
 {
 	int  success;
-	char infoLog[512];
+	std::string infoLog;
 
 	//Determine the type of shader
 	if (typeOfShader == 0)
@@ -76,7 +76,7 @@ void Shader::CreateShaders(unsigned int &shadername, const GLchar *const *actual
 
 	if (!success)
 	{
-		glGetShaderInfoLog(shadername, 512, NULL, infoLog);
+		glGetShaderInfoLog(shadername, 512, NULL, infoLog.data());
 		std::cout << "ERROR::SHADER::" << typeOfShader << "::COMPILATION_FAILED\n" << infoLog << std::endl;
 	}
 }

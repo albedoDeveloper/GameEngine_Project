@@ -18,7 +18,7 @@ const std::string &AModel::Key() const
 void AModel::Draw(const Shader *shader) const
 {
 	for (unsigned int i = 0; i < m_meshes.size(); i++)
-		m_meshes[i].Draw(shader, m_text);
+		m_meshes[i].Draw(shader, m_texture);
 }
 
 int AModel::NumFaces() const
@@ -33,11 +33,13 @@ const std::vector<float> &AModel::MinMax() const
 
 void AModel::LoadModel(std::string path)
 {
-	// read file via ASSIMP
+	// read file via assimp
 	Assimp::Importer importer;
 	const aiScene *scene = importer.ReadFile(path, aiProcess_FlipUVs | aiProcess_Triangulate | aiProcess_CalcTangentSpace | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph | aiProcess_GenNormals | aiProcess_JoinIdenticalVertices);
 
-	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) // if is Not Zero
+
+	//Check that assimp imported correctly
+	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 	{
 		std::cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << std::endl;
 		return;
@@ -47,37 +49,35 @@ void AModel::LoadModel(std::string path)
 	m_directory = path.substr(0, path.find_last_of('/'));
 
 	// process ASSIMP's root node recursively
-	processNode(scene->mRootNode, scene);
+	ProcessNode(scene->mRootNode, scene);
 }
 
-void  AModel::processNode(aiNode *node, const aiScene *scene)
+void  AModel::ProcessNode(aiNode *node, const aiScene *scene)
 {
 	for (unsigned int i = 0; i < node->mNumMeshes; i++)
 	{
-		// the node object only contains indices to index the actual objects in the scene. 
-		// the scene contains all the data, node is just to keep stuff organized (like relations between nodes).
 		aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
 
 		if (m_minMax.empty())
 		{
-			m_minMax.emplace_back((mesh->mVertices[i].x * m_info.size) + m_info.translation.x);
-			m_minMax.emplace_back((mesh->mVertices[i].x * m_info.size) + m_info.translation.x);
-			m_minMax.emplace_back((mesh->mVertices[i].y * m_info.size) + m_info.translation.y);
-			m_minMax.emplace_back((mesh->mVertices[i].y * m_info.size) + m_info.translation.y);
-			m_minMax.emplace_back((mesh->mVertices[i].z * m_info.size) + m_info.translation.z);
-			m_minMax.emplace_back((mesh->mVertices[i].z * m_info.size) + m_info.translation.z);
+			m_minMax.emplace_back((mesh->mVertices[i].x * m_info.size) + m_info.translation.GetX());
+			m_minMax.emplace_back((mesh->mVertices[i].x * m_info.size) + m_info.translation.GetX());
+			m_minMax.emplace_back((mesh->mVertices[i].y * m_info.size) + m_info.translation.GetY());
+			m_minMax.emplace_back((mesh->mVertices[i].y * m_info.size) + m_info.translation.GetY());
+			m_minMax.emplace_back((mesh->mVertices[i].z * m_info.size) + m_info.translation.GetZ());
+			m_minMax.emplace_back((mesh->mVertices[i].z * m_info.size) + m_info.translation.GetZ());
 		}
 
-		processMesh(mesh, scene);
+		ProcessMesh(mesh, scene);
 	}
 
 	for (unsigned int i = 0; i < node->mNumChildren; i++)
 	{
-		processNode(node->mChildren[i], scene);
+		ProcessNode(node->mChildren[i], scene);
 	}
 }
 
-void AModel::processMesh(aiMesh *mesh, const aiScene *scene)
+void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 {
 	// data to fill
 	std::vector<Vertex> vertices;
@@ -87,50 +87,52 @@ void AModel::processMesh(aiMesh *mesh, const aiScene *scene)
 	for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 	{
 		Vertex vertex;
-		glm::vec3 vector;
+		Vector3f vector;
 		// positions
-		vector.x = (mesh->mVertices[i].x * m_info.size) + m_info.translation.x;
+		vector.SetX((mesh->mVertices[i].x * m_info.size) + m_info.translation.GetX());
 
-		if (vector.x < m_minMax[0])
-			m_minMax[0] = vector.x;
-		else  if (vector.x > m_minMax[1])
-			m_minMax[1] = vector.x;
+		if (vector.GetX() < m_minMax[0])
+			m_minMax[0] = vector.GetX();
+		else  if (vector.GetX() > m_minMax[1])
+			m_minMax[1] = vector.GetX();
 
-		vector.y = (mesh->mVertices[i].y * m_info.size) + m_info.translation.y;
+		vector.SetY((mesh->mVertices[i].y * m_info.size) + m_info.translation.GetY());
 
-		if (vector.y < m_minMax[2])
-			m_minMax[2] = vector.y;
-		else  if (vector.y > m_minMax[3])
-			m_minMax[3] = vector.y;
+		if (vector.GetY() < m_minMax[2])
+			m_minMax[2] = vector.GetY();
+		else  if (vector.GetY() > m_minMax[3])
+			m_minMax[3] = vector.GetY();
 
-		vector.z = (mesh->mVertices[i].z * m_info.size) + m_info.translation.z;
+		vector.SetZ((mesh->mVertices[i].z * m_info.size) + m_info.translation.GetZ());
 
-		if (vector.z < m_minMax[4])
-			m_minMax[4] = vector.z;
-		else  if (vector.z > m_minMax[5])
-			m_minMax[5] = vector.z;
+		if (vector.GetZ() < m_minMax[4])
+			m_minMax[4] = vector.GetZ();
+		else  if (vector.GetZ() > m_minMax[5])
+			m_minMax[5] = vector.GetZ();
 
 		vertex.Position = vector;
+		
 		// normals
 		if (mesh->HasNormals())
 		{
-			vector.x = mesh->mNormals[i].x;
-			vector.y = mesh->mNormals[i].y;
-			vector.z = mesh->mNormals[i].z;
+			vector.SetX(mesh->mNormals[i].x);
+			vector.SetY(mesh->mNormals[i].y);
+			vector.SetZ(mesh->mNormals[i].z);
 			vertex.Normal = vector;
 		}
 		// texture coordinates
 		if (mesh->mTextureCoords[0])
 		{
-			glm::vec2 vec;
+			Vector2f vec;
 
-			vec.x = mesh->mTextureCoords[0][i].x;
-			vec.y = mesh->mTextureCoords[0][i].y;
+			vec.SetX(mesh->mTextureCoords[0][i].x);
+			vec.SetY(mesh->mTextureCoords[0][i].y);
 			vertex.TexCoords = vec;
 		}
+		//if not texture coordinates, set it to base.
 		else
 		{
-			vertex.TexCoords = glm::vec2(0.0f, 0.0f);
+			vertex.TexCoords = Vector2f(0.0f, 0.0f);
 		}
 
 		vertices.push_back(vertex);
@@ -153,14 +155,16 @@ void AModel::processMesh(aiMesh *mesh, const aiScene *scene)
 		aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
 
 		// 1. diffuse maps
-		std::vector<Texture> diffuseMaps = loadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+		std::vector<Texture> diffuseMaps = LoadMaterialTextures(material, aiTextureType_DIFFUSE, "texture_diffuse");
 		textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
 		// 2. specular maps
-		std::vector<Texture> specularMaps = loadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
+		std::vector<Texture> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+		
 		/*// 3. normal maps
 		std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
 		textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+		
 		// 4. height maps
 		std::vector<Texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
 		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());*/
@@ -169,7 +173,7 @@ void AModel::processMesh(aiMesh *mesh, const aiScene *scene)
 	m_meshes.push_back(Mesh(vertices, indices, textures));
 }
 
-std::vector<Texture> AModel::loadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName)
+std::vector<Texture> AModel::LoadMaterialTextures(aiMaterial *mat, aiTextureType type, std::string typeName)
 {
 	std::vector<Texture> textures;
 
@@ -210,7 +214,7 @@ unsigned int AModel::TextureFromFile(const char *path, const std::string &direct
 			format = GL_RGBA;
 
 		glBindTexture(GL_TEXTURE_2D, textureID);
-		m_text = textureID;
+		m_texture = textureID;
 		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 
