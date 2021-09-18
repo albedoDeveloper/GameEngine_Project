@@ -76,6 +76,16 @@ public:
 	reactphysics3d::Collider *col = nullptr;
 
 		/**
+		 * @brief list of the Vertices of the concave collider, if in use.
+		 */
+		std::vector<float> concaveVertices;
+
+		/**
+		 * list of indices of the concave collider, if in use.
+		 */
+		std::vector<int> concaveIndices;
+
+		/**
 		 * @brief Updates the colliders with any transformations changes based on the colliders model
 		 * 
 		 */

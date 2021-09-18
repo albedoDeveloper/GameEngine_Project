@@ -190,8 +190,7 @@ void CCollider::AddConcaveCollider(int layer)
 {
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
 	auto totalFaces = model->NumFaces();
-	std::vector<float> concaveVertices;
-	std::vector<int> concaveIndices;
+
 
 	for (int i = 0; i < model->GetMeshes()[0].vertices.size(); i++)
 	{
