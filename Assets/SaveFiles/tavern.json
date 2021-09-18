@@ -1,6 +1,7 @@
 {
     "back_wall": {
         "Components": {
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "back_wall"
             }
@@ -53,6 +54,7 @@
     },
     "barrel1": {
         "Components": {
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "barrel1"
             }
@@ -79,6 +81,7 @@
     },
     "barrel2": {
         "Components": {
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "barrel2"
             }
@@ -103,8 +106,35 @@
         },
         "key": "barrel2"
     },
+    "beertap1": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "beertap"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 4.195000171661377,
+                "y": 1.4199999570846558,
+                "z": 4.454999923706055
+            },
+            "Rotation": {
+                "w": 0.999933123588562,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 0.699999988079071,
+                "y": 0.699999988079071,
+                "z": 0.699999988079071
+            }
+        },
+        "key": "beertap1"
+    },
     "behind_bar_block": {
         "Components": {
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "behind_bar_block"
             }
@@ -145,10 +175,10 @@
                 "z": -0.4449999928474426
             },
             "Rotation": {
-                "w": -0.7793415784835815,
-                "x": -0.3228096067905426,
-                "y": -0.3228096067905426,
-                "z": -0.2056654989719391
+                "w": -0.9246881008148193,
+                "x": -0.3829999268054962,
+                "y": -0.3829999268054962,
+                "z": -0.0029587852768599987
             },
             "Scale": {
                 "x": 1.0,
@@ -186,6 +216,7 @@
     },
     "graffiti_block": {
         "Components": {
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "graffiti_block"
             }
@@ -277,7 +308,7 @@
                 "z": 5.275000095367432
             },
             "Rotation": {
-                "w": -0.8435569405555725,
+                "w": -1.0008783340454102,
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
@@ -324,12 +355,12 @@
         },
         "Transform": {
             "Position": {
-                "x": -7.9489827156066895,
+                "x": 4.120930194854736,
                 "y": 1.3381983041763306,
-                "z": -2.8305139541625977
+                "z": 2.2304341793060303
             },
             "Rotation": {
-                "w": -0.9981896877288818,
+                "w": 0.038388460874557495,
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
@@ -503,6 +534,7 @@
     },
     "spiked_door_bar": {
         "Components": {
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "spiked_door_bar"
             }

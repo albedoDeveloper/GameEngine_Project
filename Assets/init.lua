@@ -1,4 +1,3 @@
-
 LoadModel("crate", "crate/crate.fbx")
 LoadModel("tavern_floor", "tavern_floor/tavern_floor.fbx")
 LoadModel("axis", "axis/axis.fbx")
@@ -23,20 +22,37 @@ LoadModel("toilet_block", "toilet_block/toilet_block.fbx")
 LoadModel("waitress", "waitress/waitress.fbx")
 LoadModel("endscreen", "endscreen/endscreen.fbx")
 LoadModel("sheika", "sheika/sheika.fbx")
+LoadModel("beertap1", "beertap1/beertap1.fbx")
+LoadModel("beertap2", "beertap2/beertap2.fbx")
+LoadModel("fridge1", "fridge1/fridge1.fbx")
+LoadModel("fridge2", "fridge2/fridge2.fbx")
 LoadScript("rotate", "rotate.lua")
+
+SpawnGameObject("fridge1"):SetStatic(true)
+GetGameObject("fridge1"):AddCStaticMesh():AssignModel("fridge1")
+GetGameObject("fridge1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("fridge1"):GetCCollider():CollideWith(2)
+
+SpawnGameObject("fridge2"):SetStatic(true)
+GetGameObject("fridge2"):AddCStaticMesh():AssignModel("fridge2")
+GetGameObject("fridge2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("fridge2"):GetCCollider():CollideWith(2)
+
+SpawnGameObject("beertap1"):SetStatic(true)
+GetGameObject("beertap1"):AddCStaticMesh():AssignModel("beertap1")
+
+SpawnGameObject("beertap2"):SetStatic(true)
+GetGameObject("beertap2"):AddCStaticMesh():AssignModel("beertap2")
 
 SpawnGameObject("spiked_door_toilet"):SetStatic(true)
 GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_toilet")
-
-SpawnGameObject("sheika"):SetStatic(true)
-GetGameObject("sheika"):AddCStaticMesh():AssignModel("sheika")
 
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
-GetGameObject("toilet_block"):AddCCollider():AddConcaveCollider(1)
+GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("toilet_block"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
@@ -56,6 +72,8 @@ GetGameObject("tavern_glass_door_wall"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("spiked_door_bar"):SetStatic(true)
 GetGameObject("spiked_door_bar"):AddCStaticMesh():AssignModel("spiked_door_bar")
+GetGameObject("spiked_door_bar"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("spiked_door_bar"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("south_bar_wall"):SetStatic(true)
 GetGameObject("south_bar_wall"):AddCStaticMesh():AssignModel("south_bar_wall")
@@ -90,18 +108,26 @@ GetGameObject("main_bar_bench"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("graffiti_block"):SetStatic(true)
 GetGameObject("graffiti_block"):AddCStaticMesh():AssignModel("graffiti_block")
+GetGameObject("graffiti_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("graffiti_block"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("behind_bar_block"):SetStatic(true)
 GetGameObject("behind_bar_block"):AddCStaticMesh():AssignModel("behind_bar_block")
+GetGameObject("behind_bar_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("behind_bar_block"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("bar_floor_rod"):SetStatic(true)
 GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
 
 SpawnGameObject("barrel1"):SetStatic(true)
 GetGameObject("barrel1"):AddCStaticMesh():AssignModel("barrel1")
+GetGameObject("barrel1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("barrel1"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("barrel2"):SetStatic(true)
 GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
+GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("barrel2"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("crate"):SetStatic(false)
 GetGameObject("crate"):AddCStaticMesh():AssignModel("crate")
@@ -111,6 +137,8 @@ GetGameObject("crate"):AddCScript():AssignScript("rotate")
 
 SpawnGameObject("back_wall"):SetStatic(true)
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
+GetGameObject("back_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("back_wall"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("lightAnchor"):SetStatic(false)
 GetGameObject("lightAnchor"):GetTransform():SetRelativePosition(4.954999923706055,
