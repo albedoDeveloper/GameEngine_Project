@@ -1,3 +1,9 @@
+/*****************************************************************//**
+ * \file   GameObject.h
+ *
+ * \date   September 2021
+ *********************************************************************/
+
 #pragma once
 
 #include "CComponent.h"
@@ -15,179 +21,235 @@
 #include "CPointLight.h"
 #include <iostream>
 
-/**
- * @brief An object as represented in the game world containing all information on the object itself and its components
-*/
+	/**
+	 * @brief An object as represented in the game world containing all information on the object itself and its components
+	*/
 class GameObject
 {
 public:
+		/**
+		 * default constructor. no components, empty key, starts as active, and non static
+		 */
 	GameObject();
 
-	/**
-	 * @brief Adds a component to the object
-	 * @tparam T The class of the desired component
-	 * @tparam ...Targs Extra arguments for the component constructor
-	 * @param ...args Extra arguments for the component constructor
-	 * @return The created component
-	*/
+		/**
+		 * @brief Adds a component to the object
+		 * @tparam T The class of the desired component
+		 * @tparam ...Targs Extra arguments for the component constructor
+		 * @param ...args Extra arguments for the component constructor
+		 * @return The created component
+		*/
 	template<class T, class... Targs>
 	inline T *AddComponent(Targs &&... args);
 
-	/**
-	 * @brief Adds a static mesh component
-	 * @return The created mesh
-	*/
+		/**
+		 * @brief Adds a static mesh component
+		 * @return The created mesh
+		*/
 	CStaticMesh *AddCStaticMesh();
-	/**
-	 * @brief Adds a script component
-	 * @return the created script
-	*/
+
+		/**
+		 * @brief Adds a script component
+		 * @return the created script
+		*/
 	CScript *AddCScript();
 
+		/**
+		 * retreive a static mesh component, or nullptr if none.
+		 * lua can't use the template version so this one is needed
+		 *
+		 * \return CstaticMesh or nullptr
+		 */
 	CStaticMesh *GetCStaticMesh();
 
-	/**
-	 * @brief Adds a character component
-	 * @return the created character
-	*/
+		/**
+		 * @brief Adds a character component
+		 *
+		 * @return the created character
+		*/
 	CCharacter *AddCCharacter();
-	/**
-	 * @brief Adds a camera component
-	 * @return the created camera
-	*/
+
+		/**
+		 * @brief Adds a camera component
+		 * @return the created camera
+		*/
 	CCamera *AddCCameraComponent();
 
+		/**
+		 * add a CPointLight component to this object.
+		 * lua can't use the template version so this one is needed
+		 *
+		 * \return point light component added
+		 */
 	CPointLight *AddCPointLight();
 
+		/**
+		 * get a CpointLight component or nullptr if the object doesnt have one.
+		 *
+		 * \return point light component or nullptr
+		 */
 	CPointLight *GetCPointLight();
 
-	/**
-	 * @brief Adds a collider component
-	 * @return the created collider
-	*/
+		/**
+		 * @brief Adds a collider component to this game object.
+		 * lua cant use template version. this one is needed
+		 * @return the created collider
+		*/
 	CCollider *AddCCollider();
 
+		/**
+		 * get camera component if there is one.
+		 * lua cant use template version, needs this one
+		 *
+		 * \return camera first found camera component of this object or nullptr if not found
+		 */
 	CCamera *GetCCamera();
 
+		/**
+		 * check if this object is marked as static.
+		 *
+		 * \return if static
+		 */
 	bool IsStatic() const;
 
+		/**
+		 * add a sound component to this game object.
+		 * lua cant use template version
+		 *
+		 * \return added sound component or null if not found
+		 */
 	CSound *AddCSound();
 
+		/**
+		 * get first found sound component if there is one.
+		 *
+		 * \return first found sound comp or nullptr if none
+		 */
 	CSound *GetCSound();
 
+		/**
+		 * set this game objects static state.
+		 *
+		 * \param isStatic if static
+		 */
 	void SetStatic(bool isStatic);
 
+		/**
+		 * get first found character component if found.
+		 * lua cant use template version
+		 * \return first found character component or nullptr if none
+		 */
 	CCharacter *GetCCharacter();
 
+		/**
+		 * get first found collider component.
+		 * lua cant use template version
+		 * \return first found collider component if found or nullptr
+		 */
 	CCollider *GetCCollider();
 
+		/**
+		 * make this game objects transform a child of anothers.
+		 *
+		 * \param newParent parent to make this object a child of
+		 */
 	void SetParentObject(std::string newParent);
 
-	/**
-	 * @brief component accessor
-	 * @tparam T The class of the component
-	 * @return Components of the given type
-	*/
+		/**
+		 * @brief component accessor
+		 * @tparam T The class of the component
+		 * @return Components of the given type
+		*/
 	template <class T>
 	T *GetComponent();
 
-	/**
-	 * @brief transform accessor
-	 * @return Pointer to the object's transform
-	*/
+		/**
+		 * @brief transform accessor
+		 * @return Pointer to the object's transform
+		*/
 	Transform *GetTransform();
 
-	/**
-	 * @brief Factory key accessor
-	 * @return this object's storage key for the game object factory
-	*/
+		/**
+		 * @brief Factory key accessor
+		 * @return this object's storage key for the game object factory
+		*/
 	std::string getFactoryKey();
-	/**
-	 * @brief Factory key mutator
-	 * @param key key to store this object with
-	*/
+
+		/**
+		 * @brief Factory key mutator
+		 * @param key key to store this object with
+		*/
 	void setFactoryKey(std::string key);
 
+		/**
+		 * set active state.
+		 *
+		 * \param activeStatus new active state
+		 */
 	void SetActive(bool activeStatus);
-	/**
-	 * @brief changes the difficulty an object is running at
-	 * @param difficulty the new difficulty
-	*/
+
+		/**
+		 * @brief changes the difficulty an object is running at
+		 * @param difficulty the new difficulty
+		*/
 	void SetDifficulty(std::string difficulty);
-	/**
-	 * @brief difficulty accessor
-	 * @return current difficulty
-	*/
+
+		/**
+		 * @brief difficulty accessor
+		 * @return current difficulty
+		*/
 	std::string GetDifficulty();
 
-	/**
-	 * @brief Calls the start function of every component
-	*/
+		/**
+		 * @brief Calls the start function of every component
+		*/
 	void Start();
-	/**
-	 * @brief Calls the update function of every component
-	*/
+
+		/**
+		 * @brief Calls the update function of every component
+		*/
 	void Update();
-	/**
-	 * @brief Calls the render function of every component
-	*/
+
+		/**
+		 * @brief Calls the render function of every component
+		*/
 	void Render();
-	/**
-	 * @brief Calls the render function of every component after others
-	*/
+
+		/**
+		 * @brief Calls the render function of every component after others
+		*/
 	void LateRender();
-	/**
-	 * @brief saves the object
-	*/
+
+		/**
+		 * @brief saves the object
+		*/
 	void Save(nlohmann::json &j);
-	/**
-	 * @brief loads the object from saved state
-	*/
+
+		/**
+		 * @brief loads the object from saved state
+		*/
 	void Load(nlohmann::json &j);
 
-	/**
-	 * @brief retrieves component map
-	*/
+		/**
+		 * @brief retrieves component map
+		*/
 	std::unordered_map<std::type_index, std::list<CComponent *> *> GetComponentMap();
 
 private:
-	/**
-	 * @brief All of this object's components, stored in a map of lists, organised by type
-	*/
-	std::unordered_map<std::type_index, std::list<CComponent *> *> m_components;
-	/**
-	 * @brief This object's key in the game object factory
-	*/
-	std::string m_factoryKey;
-	/**
-	 * @brief This object's transform; its position, rotation, and scale in space
-	*/
-	Transform m_transform;
-	/**
-	 * @brief The transform this object began with
-	*/
-	Transform m_initTransform;
-	/**
-	 * @brief The transform this object is saved with
-	*/
-	Transform m_savedTransform;
-	/**
-	 * @brief whether the object is active
-	*/
-	bool m_isActive;
-	/**
-	 * @brief whether the object was initially active
-	*/
-	bool m_initialActivation;
-	/**
-	 * @brief whether the object is saved as active
-	*/
-	bool m_savedActivation;
-	/**
-	 * @brief the difficulty of the game for this object
-	*/
-	std::string m_difficulty;
 
+		/** All of this object's components, stored in a map of lists, organised by type */
+	std::unordered_map<std::type_index, std::list<CComponent *> *> m_components;
+
+		/** This object's key in the game object factory */
+	std::string m_factoryKey;
+
+		/** This object's transform; its position, rotation, and scale in space */
+	Transform m_transform;
+
+		/** whether the object is active. if not then dont call its update, render funcs */
+	bool m_isActive;
+
+		/** if this objects position should be updated and polled */
 	bool m_static;
 };
 

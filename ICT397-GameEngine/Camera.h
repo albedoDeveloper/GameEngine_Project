@@ -1,14 +1,14 @@
+/*****************************************************************//**
+ * \file   Camera.h
+ *
+ * \date   September 2021
+ *********************************************************************/
+
 #pragma once
+
 #include "ModernOpenGL/Shader.h"
 #include "Transform.h"
-/**
- * @brief Defines whether the camera is operating in perspective or orthographic mode
-*/
-enum class CameraProjection
-{
-	PERSPECTIVE,
-	ORTHOGRAPHIC
-};
+
 
 	/**
 	 * @brief Data on a camera to view the game from
@@ -16,7 +16,16 @@ enum class CameraProjection
 struct Camera
 {
 		/**
-		 * @brief The field of view of the camera, ie the angle of its width
+		* @brief Defines whether the camera is operating in perspective or orthographic mode
+		*/
+	enum class CameraProjection
+	{
+		PERSPECTIVE,
+		ORTHOGRAPHIC
+	};
+
+		/**
+			* @brief The field of view of the camera, ie the angle of its width
 		*/
 	float FOV;
 
@@ -38,12 +47,5 @@ struct Camera
 		/**
 		 * @brief default constructor
 		*/
-	Camera()
-		:
-		FOV{ 80.f },
-		NearClip{ 0.02f },
-		FarClip{ 2000 },
-		Projection{ CameraProjection::PERSPECTIVE }
-	{
-	}
+	Camera();
 };

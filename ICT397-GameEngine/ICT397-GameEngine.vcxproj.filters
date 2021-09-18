@@ -121,6 +121,9 @@
     <ClCompile Include="Vector2f.cpp">
       <Filter>Source\Math\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">

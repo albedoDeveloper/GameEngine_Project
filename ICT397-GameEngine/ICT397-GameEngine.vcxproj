@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AScript.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCharacterComponent.cpp" />

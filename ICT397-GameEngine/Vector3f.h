@@ -96,7 +96,6 @@ public:
 		 */
 	void SetMagnitude(float length);
 
-
 		/**
 		 * cross profuct between this and another vector. Left value is this vector, right is other
 		 *
