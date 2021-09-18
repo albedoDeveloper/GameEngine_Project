@@ -147,7 +147,7 @@ void CCollider::AddConvexCollider()
 {
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
 	auto totalFaces = model->NumFaces();
-	polyFace = new reactphysics3d::PolygonVertexArray::PolygonFace[model->NumFaces()];
+	auto polyFace = new reactphysics3d::PolygonVertexArray::PolygonFace[model->NumFaces()];
 	reactphysics3d::PolygonVertexArray::PolygonFace *faces = polyFace;
 	std::vector<float> vertices;
 	std::vector<int> indices;
@@ -182,7 +182,7 @@ void CCollider::AddConvexCollider()
 
 	reactphysics3d::PolyhedronMesh *polyMesh2 = COLLISION->physicsCommon.createPolyhedronMesh(polyVertexes);
 
-	convexCollider = COLLISION->physicsCommon.createConvexMeshShape(polyMesh2);
+	auto convexCollider = COLLISION->physicsCommon.createConvexMeshShape(polyMesh2);
 	col = colBody->addCollider(convexCollider, reactphysics3d::Transform::identity());
 }
 
@@ -190,6 +190,8 @@ void CCollider::AddConcaveCollider(int layer)
 {
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
 	auto totalFaces = model->NumFaces();
+	std::vector<float> concaveVertices;
+	std::vector<int> concaveIndices;
 
 	for (int i = 0; i < model->GetMeshes()[0].vertices.size(); i++)
 	{
@@ -206,11 +208,11 @@ void CCollider::AddConcaveCollider(int layer)
 	reactphysics3d::TriangleVertexArray *triangleArray = new reactphysics3d::TriangleVertexArray(concaveVertices.size(), concaveVertices.data(), 3 * sizeof(float), totalFaces, concaveIndices.data(),
 		3 * sizeof(int), reactphysics3d::TriangleVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::TriangleVertexArray::IndexDataType::INDEX_INTEGER_TYPE);
 
-	triangleMesh = COLLISION->physicsCommon.createTriangleMesh();
+	auto triangleMesh = COLLISION->physicsCommon.createTriangleMesh();
 
 	triangleMesh->addSubpart(triangleArray);
 
-	concaveMesh = COLLISION->physicsCommon.createConcaveMeshShape(triangleMesh);
+	auto concaveMesh = COLLISION->physicsCommon.createConcaveMeshShape(triangleMesh);
 
 	col = colBody->addCollider(concaveMesh, reactphysics3d::Transform::identity());
 
