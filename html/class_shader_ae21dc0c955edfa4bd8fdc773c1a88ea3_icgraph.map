@@ -1,0 +1,5 @@
+<map id="Shader::SetIntUniform" name="Shader::SetIntUniform">
+<area shape="rect" id="node1" title="Sets a global int uniform in the shader" alt="" coords="228,42,377,69"/>
+<area shape="rect" id="node2" href="$class_graphics_engine.html#ac691c275727e8bd932d0145eebf0c773" title="creates a point light" alt="" coords="5,5,180,47"/>
+<area shape="rect" id="node3" href="$class_mesh.html#a51f2f2475300ac2854b28015f79d8c19" title="Draw the mesh based upon the given shaders parameters" alt="" coords="47,71,138,98"/>
+</map>

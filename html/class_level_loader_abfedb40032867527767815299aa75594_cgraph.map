@@ -1,0 +1,16 @@
+<map id="LevelLoader::FromJson" name="LevelLoader::FromJson">
+<area shape="rect" id="node1" title="Read data from JSON &#45; DEPRECIATED." alt="" coords="5,284,160,311"/>
+<area shape="rect" id="node2" href="$class_transform.html#a55390da2160d0cac9951401756e752b7" title="loads the transform from JSON" alt="" coords="230,233,374,260"/>
+<area shape="rect" id="node13" href="$class_game_object.html#a1777de44c00f8a04cad880a2fe65a51a" title="Factory key accessor." alt="" coords="208,284,396,311"/>
+<area shape="rect" id="node14" href="$class_game_object.html#ad4de114a5ac23de244bcfbf1947e041a" title="transform accessor" alt="" coords="211,335,393,361"/>
+<area shape="rect" id="node3" href="$class_transform.html#a4121c99f3f30ed799595d48d4b5927d8" title="set orientation relative to parent transform" alt="" coords="444,5,659,32"/>
+<area shape="rect" id="node4" href="$class_transform.html#a306ec5e7b5b46e6a989097dd0927d447" title=" " alt="" coords="452,107,651,133"/>
+<area shape="rect" id="node5" href="$class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="707,69,813,96"/>
+<area shape="rect" id="node6" href="$class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="707,132,813,159"/>
+<area shape="rect" id="node7" href="$class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="707,183,813,209"/>
+<area shape="rect" id="node8" href="$class_transform.html#adaa3d0142cba26aa7467fa5afdcbcbc4" title="set scale relative to parent transform" alt="" coords="459,259,644,285"/>
+<area shape="rect" id="node9" href="$class_quaternion.html#a1ebf115669b6eea34055c9ceabbab3c7" title="w value mutator" alt="" coords="488,309,615,336"/>
+<area shape="rect" id="node10" href="$class_quaternion.html#a1bfc1782be552d9163706f772faab415" title="x value mutator" alt="" coords="491,360,611,387"/>
+<area shape="rect" id="node11" href="$class_quaternion.html#a7bb167a496e76cd5dfeeff68cd22c143" title="y value mutator" alt="" coords="490,411,613,437"/>
+<area shape="rect" id="node12" href="$class_quaternion.html#a68030fa2014f3d281ac8116722954661" title="z value mutator" alt="" coords="491,461,611,488"/>
+</map>

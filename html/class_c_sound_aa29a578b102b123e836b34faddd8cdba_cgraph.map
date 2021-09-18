@@ -1,0 +1,5 @@
+<map id="CSound::Update" name="CSound::Update">
+<area shape="rect" id="node1" title="updates ongoing behaviour each frame" alt="" coords="5,31,123,57"/>
+<area shape="rect" id="node2" href="$class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9" title="parent object accessor" alt="" coords="171,5,373,32"/>
+<area shape="rect" id="node3" href="$class_game_object.html#ad4de114a5ac23de244bcfbf1947e041a" title="transform accessor" alt="" coords="181,56,363,83"/>
+</map>

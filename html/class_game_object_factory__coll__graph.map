@@ -1,0 +1,3 @@
+<map id="GameObjectFactory" name="GameObjectFactory">
+<area shape="rect" id="node1" title="A singleton factory class to produce all GameObjects, store them in memory, and allow access to them." alt="" coords="5,5,160,244"/>
+</map>

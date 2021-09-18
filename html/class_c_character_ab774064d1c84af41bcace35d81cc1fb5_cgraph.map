@@ -1,0 +1,4 @@
+<map id="CCharacter::Start" name="CCharacter::Start">
+<area shape="rect" id="node1" title="Initialises the component at program start." alt="" coords="5,5,128,32"/>
+<area shape="rect" id="node2" href="$class_game_object.html#a5ba3b458e6bee6ea5aedd5c8cdeabf18" title="component accessor" alt="" coords="176,5,367,32"/>
+</map>
