@@ -26,15 +26,8 @@ public:
 		colBody = nullptr;
 		delete colBody;
 
-		boxCollider = nullptr;
-
-		colBody = nullptr;
+		col = nullptr;
 		delete colBody;
-
-		triangleMesh = nullptr;
-		delete triangleMesh;
-
-		concaveMesh = nullptr;
 	}
 
 		/**
@@ -60,6 +53,9 @@ public:
 		*/
 	virtual void DrawToImGui();
 
+	/**
+	 * The offset the colliders have off the model.
+	 */
 	glm::vec3 m_offset;
 
 public:
@@ -69,32 +65,73 @@ public:
 		/** @brief whether the collider is allowed to rotate */
 	bool m_allowRotation;
 
-		/** @brief pointer to the collision body */
+		/**
+		 * @brief A pointer to the collisionbody which contains all the colliders on the model
+		 */
 	reactphysics3d::CollisionBody *colBody = nullptr;
 
-		/** @brief pointer to the boxCollider */
-	reactphysics3d::BoxShape *boxCollider = nullptr;
+		/**
+		 * @brief A pointer to the currently used collider of the body.
+		 */
+	reactphysics3d::Collider *col = nullptr;
 
-		/** @brief pointer to the triangleMesh */
-	reactphysics3d::TriangleMesh *triangleMesh = nullptr;
+		/**
+		 * @brief list of the Vertices of the concave collider, if in use.
+		 */
+		std::vector<float> concaveVertices;
 
-		/** @brief pointer to the concaveMesh */
-	reactphysics3d::ConcaveMeshShape *concaveMesh = nullptr;
+		/**
+		 * list of indices of the concave collider, if in use.
+		 */
+		std::vector<int> concaveIndices;
 
-		/** @brief list of the Vertices of the concave collider */
-	std::vector<float> concaveVertices;
-
-		/** @brief  */
-	std::vector<int> concaveIndices;
-
-	reactphysics3d::ConvexMeshShape *convexCollider = nullptr;
-	reactphysics3d::Collider *col;
-	reactphysics3d::PolygonVertexArray::PolygonFace *polyFace;
-
+		/**
+		 * @brief Updates the colliders with any transformations changes based on the colliders model
+		 * 
+		 */
 	void UpdateCollider();
+
+	/**
+	 * @brief Creates a box collider around the object. Can either be automatically resized to fit the object, manually sized and placed, or statically placed.
+	 * 
+	 * \param x
+	 * \param y
+	 * \param z
+	 * \param offsetX
+	 * \param offsetY
+	 * \param offsetZ
+	 * \param autoSize
+	 * \param layer
+	 * \param allowRotation
+	 */
 	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2, float offsetX = 0, float offsetY = 0, float offsetZ = 0, bool autoSize = false, int layer = 1, bool allowRotation = true);
+	
+	/**
+	 * @brief Adds a capsule collider around the objects model, currently not completed.
+	 * 
+	 * \param radius
+	 * \param height
+	 * \param layer
+	 */
 	void AddCapsuleCollider(float radius, float height, int layer);
+	
+	/**
+	 * @brief Creates a convex/polygon collider around the object. Currently is not working.
+	 * 
+	 */
 	void AddConvexCollider();
+
+	/**
+	 * Creates a Concave/Mesh collider around the object.
+	 * 
+	 * \param layer
+	 */
 	void AddConcaveCollider(int layer);
+
+	/**
+	 * Changes what other colliders the collider can collide with.
+	 * 
+	 * \param layerToCollideWith
+	 */
 	void CollideWith(int layerToCollideWith);
 };
