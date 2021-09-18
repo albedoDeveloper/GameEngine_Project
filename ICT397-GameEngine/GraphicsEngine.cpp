@@ -188,7 +188,7 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	}
 
 	Matrix4f modelTrans;
-	
+
 	modelTrans.Translate(worldTrans.GetPosition());
 	modelTrans *= worldTrans.GetOrientation().Conjugate().Mat4Cast();
 	modelTrans.Scale(worldTrans.GetScale());
@@ -279,7 +279,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 
 	m_litShader = new Shader("./shaders/vertexShader.vert", "./shaders/lit.frag");
 	m_unlitShader = new Shader("./shaders/vertexShader.vert", "./shaders/unlit.frag");
-	m_debugShader = new Shader("./shaders/skyBox.vert", "./shaders/debug.frag");
+	m_debugShader = new Shader("./shaders/simple.vert", "./shaders/debug.frag");
 
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",
