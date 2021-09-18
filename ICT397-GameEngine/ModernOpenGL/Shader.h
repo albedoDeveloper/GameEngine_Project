@@ -44,6 +44,7 @@ public:
 	/// <param name="value"></param>
 	void SetBool(const std::string &name, bool value) const
 	{
+		glUseProgram(ID);
 		glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);
 	}
 	
@@ -54,6 +55,7 @@ public:
 	/// <param name="value"></param>
 	void SetInt(const std::string &name, int value) const
 	{
+		glUseProgram(ID);
 		glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
 	}
 	
@@ -64,6 +66,7 @@ public:
 	/// <param name="value"></param>
 	void SetFloat(const std::string &name, float value) const
 	{
+		glUseProgram(ID);
 		glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 	}
 	
@@ -79,6 +82,7 @@ public:
 	/// <param name="value"></param>
 	void SetVec3(const std::string &name, Vector3f value) const
 	{
+		glUseProgram(ID);
 		glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, value.ValuePtr());
 	}
 	
@@ -89,6 +93,7 @@ public:
 	/// <param name="value"></param>
 	void SetMat4(const std::string &name, Matrix4f mat) const
 	{
+		glUseProgram(ID);
 		glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, mat.ValuePtr());
 	}
 
@@ -99,5 +104,11 @@ private:
 	/// <param name="name"></param>
 	/// <param name="value"></param>
 	void CreateShaders(unsigned int &shadername, const GLchar *const *actualShader, int typeOfShader);
+	
+	/// <summary>
+	/// Sets a global vector uniform in the shader
+	/// </summary>
+	/// <param name="name"></param>
+	/// <param name="value"></param>
 	void ShaderLinking(unsigned int &shadername, unsigned int &vertexShader);
 };

@@ -84,16 +84,14 @@ void GraphicsEngine::newFrame(bool debugMenu)
 
 	GRAPHICS->UpdateViewPos();
 
-	GRAPHICS->m_litShader->Use();
 	GRAPHICS->m_litShader->SetMat4("projection", GRAPHICS->GetProjection());
 	GRAPHICS->m_litShader->SetMat4("view", GRAPHICS->GetView());
 	GRAPHICS->m_litShader->SetFloat("material.shininess", 16); // TODO move somewhere else
 
-	GRAPHICS->m_unlitShader->Use();
 	GRAPHICS->m_unlitShader->SetMat4("projection", GRAPHICS->GetProjection());
 	GRAPHICS->m_unlitShader->SetMat4("view", GRAPHICS->GetView());
 
-	GRAPHICS->m_debugShader->Use();
+
 	GRAPHICS->m_debugShader->SetMat4("projection", GRAPHICS->GetProjection());
 	GRAPHICS->m_debugShader->SetMat4("view", GRAPHICS->GetView());
 
@@ -210,7 +208,6 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	modelTrans *= worldTrans.GetOrientation().Conjugate().Mat4Cast();
 	modelTrans.Scale(worldTrans.GetScale());
 
-	shader->Use();
 	shader->SetMat4("model", modelTrans);
 
 	glEnable(GL_CULL_FACE);
