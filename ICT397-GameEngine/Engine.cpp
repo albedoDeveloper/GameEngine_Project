@@ -159,20 +159,6 @@ void Engine::Update()
 
 void Engine::Render()
 {
-	GRAPHICS->UpdateViewPos();
-
-	GRAPHICS->m_litShader->Use();
-	GRAPHICS->m_litShader->SetMat4("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_litShader->SetMat4("view", GRAPHICS->GetView());
-	GRAPHICS->m_litShader->SetFloat("material.shininess", 16); // TODO move somewhere else
-
-	GRAPHICS->m_unlitShader->Use();
-	GRAPHICS->m_unlitShader->SetMat4("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_unlitShader->SetMat4("view", GRAPHICS->GetView());
-
-	GRAPHICS->m_unlitShader->Use();
-	GRAPHICS->m_debugShader->SetMat4("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_debugShader->SetMat4("view", GRAPHICS->GetView());
 
 	GRAPHICS->newFrame(m_debugMenu);
 	GRAPHICS->renderObjects();
