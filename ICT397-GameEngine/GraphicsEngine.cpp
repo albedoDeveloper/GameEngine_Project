@@ -103,15 +103,7 @@ void GraphicsEngine::UpdateViewPos() const
 		)
 	);
 
-	GRAPHICS->m_debugShader->Use();
-	GRAPHICS->m_debugShader->SetVec3(
-		"viewPos",
-		Vector3f(
-			viewPosVec.GetX(),
-			viewPosVec.GetY(),
-			viewPosVec.GetZ()
-		)
-	);
+
 }
 
 int GraphicsEngine::AddPointLight(CPointLight *light)
@@ -195,15 +187,14 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 		return;
 	}
 
-	Matrix4f trans;
-	trans.Translate(worldTrans.GetPosition());
-
-	trans *= worldTrans.GetOrientation().Conjugate().Mat4Cast();
-
-	trans.Scale(worldTrans.GetScale());
+	Matrix4f modelTrans;
+	
+	modelTrans.Translate(worldTrans.GetPosition());
+	modelTrans *= worldTrans.GetOrientation().Conjugate().Mat4Cast();
+	modelTrans.Scale(worldTrans.GetScale());
 
 	shader->Use();
-	shader->SetMat4("model", trans);
+	shader->SetMat4("model", modelTrans);
 
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_FILL);
