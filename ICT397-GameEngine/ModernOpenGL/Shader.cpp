@@ -59,18 +59,18 @@ Shader::Shader(const char *vertexPath, const char *fragmentPath)
 	}
 }
 
-void Shader::SetBool(const std::string &name, bool value) const
+void Shader::SetBoolUniform(const std::string &name, bool value) const
 {
 	glUseProgram(m_ID);
 	glUniform1i(glGetUniformLocation(m_ID, name.c_str()), (int)value);
 }
 
-void Shader::SetInt(const std::string &name, int value) const
+void Shader::SetIntUniform(const std::string &name, int value) const
 {
 	glUseProgram(m_ID);
 	glUniform1i(glGetUniformLocation(m_ID, name.c_str()), value);
 }
-void Shader::SetFloat(const std::string &name, float value) const
+void Shader::SetFloatUniform(const std::string &name, float value) const
 {
 	glUseProgram(m_ID);
 	glUniform1f(glGetUniformLocation(m_ID, name.c_str()), value);

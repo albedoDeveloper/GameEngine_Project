@@ -42,5 +42,5 @@ void CPointLight::AssignAmbientStrength(float strength)
 {
 	LightInfo.ambientStrength = strength;
 	GRAPHICS->m_litShader->Use();
-	GRAPHICS->m_litShader->SetInt("pointLights[" + std::to_string(m_litShaderIndex) + "].ambientStrength", strength);
+	GRAPHICS->m_litShader->SetIntUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].ambientStrength", strength);
 }

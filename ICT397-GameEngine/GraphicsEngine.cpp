@@ -86,7 +86,7 @@ void GraphicsEngine::newFrame(bool debugMenu)
 
 	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
 	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetView());
-	GRAPHICS->m_litShader->SetFloat("material.shininess", 16); // TODO move somewhere else
+	GRAPHICS->m_litShader->SetFloatUniform("material.shininess", 16); // TODO move somewhere else
 
 	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
 	GRAPHICS->m_unlitShader->SetMat4Uniform("view", GRAPHICS->GetView());
@@ -123,16 +123,16 @@ int GraphicsEngine::AddPointLight(CPointLight *light)
 	int numpointLights = m_lightManager.AddPointLight(light);
 
 	m_litShader->Use();
-	m_litShader->SetInt("numOfPointLights", numpointLights);
-	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
+	m_litShader->SetIntUniform("numOfPointLights", numpointLights);
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
 	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(numpointLights - 1) + "].colour", Vector3f(
 		light->LightInfo.colour.GetX(),
 		light->LightInfo.colour.GetY(),
 		light->LightInfo.colour.GetZ()
 	));
-	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights - 1) + "].constant", light->LightInfo.constant);
-	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights - 1) + "].linear", light->LightInfo.linear);
-	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights - 1) + "].quadratic", light->LightInfo.quadratic);
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].constant", light->LightInfo.constant);
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].linear", light->LightInfo.linear);
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].quadratic", light->LightInfo.quadratic);
 
 	return numpointLights;
 }
