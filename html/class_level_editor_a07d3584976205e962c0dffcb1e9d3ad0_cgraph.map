@@ -1,9 +1,0 @@
-<map id="LevelEditor::ScaleManipulators" name="LevelEditor::ScaleManipulators">
-<area shape="rect" id="node1" title=" " alt="" coords="5,132,205,159"/>
-<area shape="rect" id="node2" href="$class_transform.html#add9a8eede0d4e807c66fc4dcd440c99b" title="scale accessor" alt="" coords="273,5,415,32"/>
-<area shape="rect" id="node3" href="$class_game_object.html#ad4de114a5ac23de244bcfbf1947e041a" title="transform accessor" alt="" coords="253,56,435,83"/>
-<area shape="rect" id="node4" href="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="291,107,397,133"/>
-<area shape="rect" id="node5" href="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="290,157,398,184"/>
-<area shape="rect" id="node6" href="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="291,208,397,235"/>
-<area shape="rect" id="node7" href="$class_transform.html#a8b98e302647f18d2a33caf13d1f85bfb" title="scale mutator" alt="" coords="274,259,414,285"/>
-</map>

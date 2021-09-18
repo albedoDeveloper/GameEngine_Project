@@ -1,6 +1,0 @@
-<map id="Transform::SetPosition" name="Transform::SetPosition">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,160,83"/>
-<area shape="rect" id="node2" href="$class_vector3f.html#aaa6791fa256647707bcf41017f498bcf" title="x value mutator" alt="" coords="209,5,314,32"/>
-<area shape="rect" id="node3" href="$class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b" title="y value mutator" alt="" coords="208,56,315,83"/>
-<area shape="rect" id="node4" href="$class_vector3f.html#afb24d616af2e75cce9af632c870141ac" title="z value mutator" alt="" coords="209,107,314,133"/>
-</map>

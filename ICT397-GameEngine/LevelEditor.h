@@ -5,11 +5,8 @@
 #include <SDL2/SDL.h>
 #include <string> 
 
-
 class LevelEditor
 {
-private:
-
 public:
 	/**
 	* @brief default constructor

@@ -31,6 +31,11 @@ const std::vector<float> &AModel::MinMax() const
 	return m_minMax;
 }
 
+std::vector<Mesh> &AModel::GetMeshes()
+{
+	return m_meshes;
+}
+
 void AModel::LoadModel(std::string path)
 {
 	// read file via ASSIMP

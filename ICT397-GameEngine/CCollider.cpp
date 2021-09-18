@@ -153,21 +153,21 @@ void CCollider::AddConvexCollider()
 	std::vector<int> indices;
 	float breaktime = false;
 
-	for (int i = 0; i < model->GetMesh()[0].vertices.size(); i++)
+	for (int i = 0; i < model->GetMeshes()[0].vertices.size(); i++)
 	{
 		if (!breaktime)
 		{
-			vertices.emplace_back(model->GetMesh()[0].vertices[i].Position.x);
-			vertices.emplace_back(model->GetMesh()[0].vertices[i].Position.y);
-			vertices.emplace_back(model->GetMesh()[0].vertices[i].Position.z);
+			vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.x);
+			vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.y);
+			vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.z);
 		}
 
 		breaktime = false;
 	}
 
-	for (int i = 0; i < model->GetMesh()[0].indices.size(); i++)
+	for (int i = 0; i < model->GetMeshes()[0].indices.size(); i++)
 	{
-		indices.emplace_back(model->GetMesh()[0].indices[i]);
+		indices.emplace_back(model->GetMeshes()[0].indices[i]);
 	}
 
 	for (unsigned int i = 0; i < model->NumFaces(); i++)
@@ -191,16 +191,16 @@ void CCollider::AddConcaveCollider(int layer)
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
 	auto totalFaces = model->NumFaces();
 
-	for (int i = 0; i < model->GetMesh()[0].vertices.size(); i++)
+	for (int i = 0; i < model->GetMeshes()[0].vertices.size(); i++)
 	{
-		concaveVertices.emplace_back(model->GetMesh()[0].vertices[i].Position.x);
-		concaveVertices.emplace_back(model->GetMesh()[0].vertices[i].Position.y);
-		concaveVertices.emplace_back(model->GetMesh()[0].vertices[i].Position.z);
+		concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.x);
+		concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.y);
+		concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.z);
 	}
 
-	for (int i = 0; i < model->GetMesh()[0].indices.size(); i++)
+	for (int i = 0; i < model->GetMeshes()[0].indices.size(); i++)
 	{
-		concaveIndices.emplace_back(model->GetMesh()[0].indices[i]);
+		concaveIndices.emplace_back(model->GetMeshes()[0].indices[i]);
 	}
 
 	reactphysics3d::TriangleVertexArray *triangleArray = new reactphysics3d::TriangleVertexArray(concaveVertices.size(), concaveVertices.data(), 3 * sizeof(float), totalFaces, concaveIndices.data(),

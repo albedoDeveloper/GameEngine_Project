@@ -1,7 +1,0 @@
-<map id="GameObject::GetCStaticMesh" name="GameObject::GetCStaticMesh">
-<area shape="rect" id="node1" title=" " alt="" coords="476,81,675,108"/>
-<area shape="rect" id="node2" href="$class_c_collider.html#ac44996b225b212a06b6e57529e1109ee" title=" " alt="" coords="244,5,415,32"/>
-<area shape="rect" id="node3" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,81,183,108"/>
-<area shape="rect" id="node4" href="$class_c_collider.html#ac3edc6cdc9cde55927ee1f3365e468fe" title=" " alt="" coords="231,107,428,133"/>
-<area shape="rect" id="node5" href="$class_c_collider.html#af2a8bc9ee9bb4aba6f7237f029c31ad8" title=" " alt="" coords="234,157,425,184"/>
-</map>

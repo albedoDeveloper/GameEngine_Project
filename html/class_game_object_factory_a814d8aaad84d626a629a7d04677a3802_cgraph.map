@@ -1,6 +1,0 @@
-<map id="GameObjectFactory::getClosestObject" name="GameObjectFactory::getClosestObject">
-<area shape="rect" id="node1" title="searches for the closest object to a given transform with a key containing a given substring" alt="" coords="5,23,152,65"/>
-<area shape="rect" id="node2" href="$class_transform.html#a19aaf61ebb28048705c9554de15285ef" title="calculates the distance to another transform" alt="" coords="211,5,370,32"/>
-<area shape="rect" id="node4" href="$class_game_object.html#ad4de114a5ac23de244bcfbf1947e041a" title="transform accessor" alt="" coords="200,56,381,83"/>
-<area shape="rect" id="node3" href="$class_vector3f.html#afb1763cca9cabe61674bdff20efcc81f" title=" " alt="" coords="429,5,568,32"/>
-</map>

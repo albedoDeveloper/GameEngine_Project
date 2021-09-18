@@ -1,7 +1,0 @@
-<map id="Transform::GetDistance3f" name="Transform::GetDistance3f">
-<area shape="rect" id="node1" title="calculates the distance to a set of coordinates" alt="" coords="5,56,175,83"/>
-<area shape="rect" id="node2" href="$class_transform.html#a19aaf61ebb28048705c9554de15285ef" title="calculates the distance to another transform" alt="" coords="225,5,383,32"/>
-<area shape="rect" id="node4" href="$class_transform.html#a1156a92a433ebcf2ad61165d1b76d4b2" title="position mutator" alt="" coords="223,56,385,83"/>
-<area shape="rect" id="node5" href="$class_transform.html#aa08ca4266efabc768973cdeea51945ab" title="default constructor" alt="" coords="232,107,376,133"/>
-<area shape="rect" id="node3" href="$class_vector3f.html#afb1763cca9cabe61674bdff20efcc81f" title=" " alt="" coords="433,5,572,32"/>
-</map>

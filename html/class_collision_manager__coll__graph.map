@@ -1,4 +1,0 @@
-<map id="CollisionManager" name="CollisionManager">
-<area shape="rect" id="node1" title="A singleton that manages collisions between objects." alt="" coords="17,145,161,340"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,172,97"/>
-</map>
