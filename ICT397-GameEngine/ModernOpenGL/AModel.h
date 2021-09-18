@@ -85,7 +85,6 @@ private:
 		/// The meshes that make up the model
 		/// </summary>
 	std::string m_directory;
-	std::vector<Mesh> m_meshes;
 
 		/// <summary>
 		/// The meshes that make up the model
