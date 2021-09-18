@@ -1,3 +1,9 @@
+/*****************************************************************//**
+ * \file   CComponent.h
+ * \brief  Default Component, Other Components derive from this
+ *
+ * \date   September 2021
+ *********************************************************************/
 #pragma once
 
 #include "Transform.h"
@@ -93,8 +99,8 @@ protected:
 	GameObject *m_parent;
 
 private:
-	/**
-	 * @brief The position, rotation, and scale of the component in world space
-	*/
+		/**
+		 * @brief The position, rotation, and scale of the component in world space
+		*/
 	Transform *transform;
 };
