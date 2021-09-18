@@ -1,4 +1,9 @@
-#pragma once
+/*****************************************************************//**
+ * \file   CCharacterComponent.h
+ * \brief  Controls the player character
+ *
+ * \date   September 2021
+ *********************************************************************/
 
 #include "CComponent.h"
 #include "CollisionManager.h"
@@ -129,13 +134,19 @@ private:
 
 	bool m_playerControlled;
 
+	/**  @brief if mouse is enabled */
+
 	bool m_mouseEnabled;
 
+	/** @brief if movement is enabled */
 	bool m_moveEnabled;
 
+	/** @brief if the end screen is displayed */
 	bool m_endscreenUp;
 
+	/** @brief pointer to the current collider */
 	CCollider *m_collider;
 
+	/** @brief pointer to the parent transform */
 	Transform *m_parentTransform;
 };

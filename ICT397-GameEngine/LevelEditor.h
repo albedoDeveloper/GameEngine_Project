@@ -1,3 +1,10 @@
+/*****************************************************************//**
+ * \file   LevelEditor.h
+ * \brief  Displays Ediotr Gui, Allows Player to Edit Gameobject variables
+ *
+ * \date   17 September 2021
+ *********************************************************************/
+
 #pragma once
 #include "./ThirdParty/imgui/imgui_impl_sdl.h"
 #include "./ThirdParty/imgui/imgui_impl_opengl3.h"

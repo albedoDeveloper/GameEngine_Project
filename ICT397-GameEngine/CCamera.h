@@ -1,3 +1,9 @@
+/*****************************************************************//**
+ * \file   CCamera.h
+ * \brief  Camera Gameobject, Displays viewport from current transform
+ *
+ * \date   September 2021
+ *********************************************************************/
 #pragma once
 
 #include "CComponent.h"
