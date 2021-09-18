@@ -76,8 +76,6 @@ private:
 	std::map<std::string, AScript> m_scriptAssets;
 
 	std::map<std::string, AModel> m_modelAssets;
-
-	bool oneTimeShader = false;
 };
 
 #define ASSET GameAssetFactory::Instance()

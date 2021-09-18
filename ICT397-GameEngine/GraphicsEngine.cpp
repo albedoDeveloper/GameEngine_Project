@@ -3,7 +3,6 @@
 #include <iostream>
 #include "Color.h"
 #include "CCamera.h"
-#include "SkyboxVerts.h"
 #include "InputManager.h"
 #include "./ThirdParty/imgui/imgui.h"
 #include "./ThirdParty/imgui/imgui_impl_sdl.h"
@@ -85,16 +84,16 @@ void GraphicsEngine::newFrame(bool debugMenu)
 
 	GRAPHICS->UpdateViewPos();
 
-	GRAPHICS->m_litShader->SetMat4("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_litShader->SetMat4("view", GRAPHICS->GetView());
+	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetView());
 	GRAPHICS->m_litShader->SetFloat("material.shininess", 16); // TODO move somewhere else
 
-	GRAPHICS->m_unlitShader->SetMat4("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_unlitShader->SetMat4("view", GRAPHICS->GetView());
+	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_unlitShader->SetMat4Uniform("view", GRAPHICS->GetView());
 
 
-	GRAPHICS->m_debugShader->SetMat4("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_debugShader->SetMat4("view", GRAPHICS->GetView());
+	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetView());
 
 
 	if (debugMenu)
@@ -109,7 +108,7 @@ void GraphicsEngine::UpdateViewPos() const
 {
 	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetRelativePosition();
 	GRAPHICS->m_litShader->Use();
-	GRAPHICS->m_litShader->SetVec3(
+	GRAPHICS->m_litShader->SetVec3Uniform(
 		"viewPos",
 		Vector3f(
 			viewPosVec.GetX(),
@@ -126,7 +125,7 @@ int GraphicsEngine::AddPointLight(CPointLight *light)
 	m_litShader->Use();
 	m_litShader->SetInt("numOfPointLights", numpointLights);
 	GRAPHICS->m_litShader->SetFloat("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
-	GRAPHICS->m_litShader->SetVec3("pointLights[" + std::to_string(numpointLights - 1) + "].colour", Vector3f(
+	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(numpointLights - 1) + "].colour", Vector3f(
 		light->LightInfo.colour.GetX(),
 		light->LightInfo.colour.GetY(),
 		light->LightInfo.colour.GetZ()
@@ -206,7 +205,7 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	modelTrans *= worldTrans.GetRelativeOrientation().Conjugate().Mat4Cast();
 	modelTrans.Scale(worldTrans.GetRelativeScale());
 
-	shader->SetMat4("model", modelTrans);
+	shader->SetMat4Uniform("model", modelTrans);
 
 	glEnable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_FILL);
@@ -348,8 +347,8 @@ void GraphicsEngine::DrawDebug()
 {
 	m_debugShader->Use();
 
-	m_debugShader->SetMat4("model", Matrix4f());
-	m_debugShader->SetVec3("ourColour", Vector3f(1, 0, 0));
+	m_debugShader->SetMat4Uniform("model", Matrix4f());
+	m_debugShader->SetVec3Uniform("ourColour", Vector3f(1, 0, 0));
 
 	glDisable(GL_CULL_FACE);
 	glPolygonMode(GL_FRONT, GL_LINE);
