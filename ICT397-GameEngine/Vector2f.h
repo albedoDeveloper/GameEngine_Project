@@ -1,108 +1,92 @@
+/*****************************************************************//**
+ * \file   Vector2f.h
+ *
+ * \date   September 2021
+ *********************************************************************/
+
 #pragma once
 
 #include <glm/glm/vec2.hpp>
 
-/**
- * @brief A point or vector in 2d space, stored with float data
-*/
+	/**
+	 * @brief A point or vector in 2d space, stored with float data
+	*/
 class Vector2f
 {
+public:
+		/**
+		 * @brief default constructor. default value of 0,0 in x,y
+		*/
+	Vector2f();
+
+		/**
+		 * constructor set x and y
+		 *
+		 * \param x
+		 * \param y
+		 */
+	Vector2f(float x, float y);
+
+		/**
+		 * get x value
+		 *
+		 * \return
+		 */
+	float GetX() const;
+
+		/**
+		 * get y value
+		 *
+		 * \return
+		 */
+	float GetY() const;
+
+		/**
+		 * set x value
+		 *
+		 * \param x
+		 */
+	void SetX(float x);
+
+		/**
+		 * set y value
+		 *
+		 * \param y
+		 */
+	void SetY(float y);
+
+		/**
+		 * add another vector to this one and get the new value
+		 *
+		 * \param oVec other vector
+		 * \return new value of added vectors
+		 */
+	Vector2f operator+(const Vector2f &oVec);
+
+		/**
+		 * multiply another vector to this one and get the result value
+		 *
+		 * \param oVec other vector
+		 * \return value of mulitplication
+		 */
+	Vector2f operator*(const Vector2f &oVec);
+
+	/**
+	 * subtract another vector from this one and get the result value.
+	 *
+	 * \param oVec other vector
+	 * \return result value of subtraction
+	 */
+	Vector2f operator-(const Vector2f &oVec);
+
 private:
-	/// <summary>
-	/// Member Variable vector
-	/// </summary>
+		/** vector 2 value */
 	glm::vec2 m_vec;
 
-	/// <summary>
-	/// Copy Constructor
-	/// </summary>
-	/// <param name="v"></param>
-	Vector2f(glm::vec2 v)
-		:m_vec(v)
-	{}
-
-public:
-	/**
-	 * @brief default constructor
-	*/
-	Vector2f()
-		:m_vec(0.f, 0.f)
-	{}
-
-	/// <summary>
-	/// Non-default Constructor
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <param name="z"></param>
-	Vector2f(float x, float y)
-		:m_vec(x, y)
-	{}
-
-/**
- * @brief x accessor
- * @return value of X
-*/
-	float GetX() const
-	{
-		return m_vec.x;
-	}
-	/**
-	 * @brief y accessor
-	 * @return value of Y
-	*/
-	float GetY() const
-	{
-		return m_vec.y;
-	}
-	/**
-	 * @brief x mutator
-	 * @param x desired value of X
-	*/
-	void SetX(float x)
-	{
-		m_vec.x = x;
-	}
-	/**
-	 * @brief y mutator
-	 * @param y desired value of Y
-	*/
-	void SetY(float y)
-	{
-		m_vec.y = y;
-	}
-
-	/// <summary>
-	/// Operator + overload
-	/// </summary>
-	/// <param name="oVec"></param>
-	/// <returns></returns>
-	Vector2f operator+(const Vector2f &oVec)
-	{
-		Vector2f addedVec(m_vec + oVec.m_vec);
-
-		return addedVec;
-	}
-
-	/// <summary>
-	/// Operator * overload
-	/// </summary>
-	/// <param name="oVec"></param>
-	/// <returns></returns>
-	Vector2f operator*(const Vector2f &oVec)
-	{
-		Vector2f multipliedVec(m_vec * oVec.m_vec);
-
-		return multipliedVec;
-	}
-
-	/// <summary>
-	/// Operator - overload
-	/// </summary>
-	/// <param name="oVec"></param>
-	/// <returns></returns>
-	Vector2f operator-(const Vector2f &oVec)
-	{
-		return (m_vec - oVec.m_vec);
-	}
+		/**
+		 * made private to prevent clients know about glm type.
+		 *
+		 * \param v vector to copy the values from
+		 */
+	Vector2f(glm::vec2 v);
 };
