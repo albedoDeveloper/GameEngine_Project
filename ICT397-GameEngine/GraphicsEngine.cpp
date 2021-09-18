@@ -36,7 +36,8 @@ GraphicsEngine::GraphicsEngine()
 	m_windowWidth{},
 	m_windowHeight{},
 	m_litShader{ nullptr },
-	m_debugShader{ nullptr }
+	m_debugShader{ nullptr },
+	m_unlitShader{ nullptr }
 {
 }
 
