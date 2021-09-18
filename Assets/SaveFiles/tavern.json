@@ -109,28 +109,54 @@
     "beertap1": {
         "Components": {
             "StaticMeshComponent": {
-                "AModel": "beertap"
+                "AModel": "beertap1"
             }
         },
         "Transform": {
             "Position": {
-                "x": 4.195000171661377,
-                "y": 1.4199999570846558,
-                "z": 4.454999923706055
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.999933123588562,
+                "w": 1.0,
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
             },
             "Scale": {
-                "x": 0.699999988079071,
-                "y": 0.699999988079071,
-                "z": 0.699999988079071
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         },
         "key": "beertap1"
+    },
+    "beertap2": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "beertap2"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "beertap2"
     },
     "behind_bar_block": {
         "Components": {
@@ -175,10 +201,10 @@
                 "z": -0.4449999928474426
             },
             "Rotation": {
-                "w": -0.9246881008148193,
-                "x": -0.3829999268054962,
-                "y": -0.3829999268054962,
-                "z": -0.0029587852768599987
+                "w": -0.30953696370124817,
+                "x": -0.37782788276672363,
+                "y": -0.7485474944114685,
+                "z": -0.06074279919266701
             },
             "Scale": {
                 "x": 1.0,
@@ -213,6 +239,60 @@
             }
         },
         "key": "endscreen"
+    },
+    "fridge1": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "fridge1"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "fridge1"
+    },
+    "fridge2": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "fridge2"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "fridge2"
     },
     "graffiti_block": {
         "Components": {
@@ -308,9 +388,9 @@
                 "z": 5.275000095367432
             },
             "Rotation": {
-                "w": -1.0008783340454102,
+                "w": -0.5724295377731323,
                 "x": 0.0,
-                "y": 0.0,
+                "y": -0.5731112360954285,
                 "z": 0.0
             },
             "Scale": {
@@ -355,14 +435,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 4.120930194854736,
-                "y": 1.3381983041763306,
-                "z": 2.2304341793060303
+                "x": 6.018098831176758,
+                "y": 2.0,
+                "z": 0.9315010905265808
             },
             "Rotation": {
-                "w": 0.038388460874557495,
+                "w": 0.8690654635429382,
                 "x": 0.0,
-                "y": 0.0,
+                "y": 0.4947011172771454,
                 "z": 0.0
             },
             "Scale": {
@@ -425,32 +505,6 @@
             }
         },
         "key": "roof_interior"
-    },
-    "sheika": {
-        "Components": {
-            "StaticMeshComponent": {
-                "AModel": "sheika"
-            }
-        },
-        "Transform": {
-            "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        "key": "sheika"
     },
     "south_bar_barrier": {
         "Components": {

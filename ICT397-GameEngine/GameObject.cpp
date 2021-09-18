@@ -192,8 +192,6 @@ void GameObject::Save(nlohmann::json &j)
 
 	GetTransform()->ToJson(j, getFactoryKey());
 
-	std::cout << "SAVED" << std::endl;
-
 	// iterate through all component lists
 	for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 	{

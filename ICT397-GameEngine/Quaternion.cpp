@@ -63,7 +63,7 @@ float Quaternion::GetX() const
 
 float Quaternion::GetY() const
 {
-	return m_quat.x;
+	return m_quat.y;
 }
 
 float Quaternion::GetZ() const
