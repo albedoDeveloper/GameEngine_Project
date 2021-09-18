@@ -112,9 +112,6 @@
     <ClCompile Include="Vector3f.cpp">
       <Filter>Source\Math\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2f.cpp">
-      <Filter>Source\Math\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>Source\Math\Source</Filter>
     </ClCompile>
@@ -250,9 +247,6 @@
       <Filter>Source\Math\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Quaternion.h">
-      <Filter>Source\Math\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2f.h">
       <Filter>Source\Math\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
