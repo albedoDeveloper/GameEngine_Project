@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * \file   CComponent.h
- * \brief  Default Component, Other Components derive from this
+ * \brief  Default Component, Components derive from this
  *
  * \date   September 2021
  *********************************************************************/

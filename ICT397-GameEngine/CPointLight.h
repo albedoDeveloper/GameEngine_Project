@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * \file   CPointLight.h
- * \brief  Creates a point light over the parent gameObject
+ * \brief  Point Light Component
  *
  * \date   September 2021
  *********************************************************************/
