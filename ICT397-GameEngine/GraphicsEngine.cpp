@@ -102,16 +102,6 @@ void GraphicsEngine::UpdateViewPos() const
 			viewPosVec.GetZ()
 		)
 	);
-
-	GRAPHICS->m_debugShader->Use();
-	GRAPHICS->m_debugShader->SetVec3(
-		"viewPos",
-		Vector3f(
-			viewPosVec.GetX(),
-			viewPosVec.GetY(),
-			viewPosVec.GetZ()
-		)
-	);
 }
 
 int GraphicsEngine::AddPointLight(CPointLight *light)
