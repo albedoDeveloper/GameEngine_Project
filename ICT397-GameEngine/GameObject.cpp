@@ -121,29 +121,9 @@ void GameObject::SetActive(bool activeStatus)
 	}
 }
 
-void GameObject::SetDifficulty(std::string difficulty)
-{
-	m_difficulty = difficulty;
-	if (m_isActive)
-	{
-		Start();
-	}
-}
-
-std::string GameObject::GetDifficulty()
-{
-	return m_difficulty;
-}
 
 void GameObject::Start()
 {
-	m_initialActivation = m_isActive;
-
-	m_initTransform = new Transform();
-	m_initTransform.SetRelativePositionV(m_transform.GetRelativePosition());
-	m_initTransform.SetRelativeOrientation(m_transform.GetRelativeOrientation());
-	m_initTransform.SetRelativeScale(m_transform.GetRelativeScale());
-
 	if (m_isActive)
 	{
 		// iterate through all component lists
