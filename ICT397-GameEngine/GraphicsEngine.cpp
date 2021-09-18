@@ -337,9 +337,7 @@ void GraphicsEngine::DrawDebug()
 	m_debugShader->Use();
 
 	m_debugShader->SetMat4("projection", GetProjection());
-
 	m_debugShader->SetMat4("view", GetView());
-
 	m_debugShader->SetMat4("model", Matrix4f());
 	m_debugShader->SetVec3("ourColour", Vector3f(1, 0, 0));
 

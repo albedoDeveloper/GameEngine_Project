@@ -26,13 +26,13 @@ public:
 	Vector3f(float x, float y, float z);
 
 		/**
-		* @brief Moves the vector by a relative amount
-		* @param v The vector to add to this vector
+		* @brief adds another vector to this one
+		* @param v The vector to add to this vector by
 		*/
-	void Translate(const Vector3f &v);
+	Vector3f &operator+= (const Vector3f &v);
 
 		/**
-		 * .
+		 * get first element of vector array of floats
 		 *
 		 * \return
 		 */
@@ -62,10 +62,7 @@ public:
 		 * @brief z value accessor
 		 * @return the value of Z
 		*/
-	float GetZ() const
-	{
-		return m_vec.z;
-	}
+	float GetZ() const;
 
 		/**
 		 * @brief x value mutator
@@ -85,32 +82,43 @@ public:
 		*/
 	void SetZ(float z);
 
+		/**
+		 * get vectors magnitude
+		 *
+		 * \return
+		 */
 	float Magnitude() const;
 
+		/**
+		 * set vectors length
+		 *
+		 * \param length
+		 */
 	void SetMagnitude(float length);
 
-		/// <summary>
-		/// Cross product of two vectors
-		/// </summary>
-		/// <param name="oVec"></param>
-		/// <returns></returns>
+
+		/**
+		 * cross profuct between this and another vector. Left value is this vector, right is other
+		 *
+		 * \param oVec other vector
+		 * \return cross product value
+		 */
 	Vector3f crossProduct(Vector3f oVec);
 
-		/// <summary>
-		/// Dot Product of two vectors
-		/// </summary>
-		/// <param name="oVec"></param>
-		/// <returns></returns>
+		/**
+		 * dot product between two vectors
+		 *
+		 * \param oVec other vector
+		 * \return dot product
+		 */
 	float dotProduct(Vector3f oVec);
 
-		/// <summary>
-		/// Normalise a vector
-		/// </summary>
-		/// <param name="oVec"></param>
-		/// <returns></returns>
-	Vector3f Normalise(Vector3f oVec);
-
-	float Rad2Deg(float rad);
+		/**
+		 * get a normalised version of this vector
+		 *
+		 * \return value of normalised vector
+		 */
+	Vector3f Normalised();
 
 	Vector3f Rad2Deg();
 

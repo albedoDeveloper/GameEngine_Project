@@ -161,12 +161,12 @@ Transform Transform::GetWorldTransform() const
 
 void Transform::TranslateV(const Vector3f &v)
 {
-	m_position.Translate(v);
+	m_position += v;
 }
 
 void Transform::Translate(float x, float y, float z)
 {
-	m_position.Translate(Vector3f(x, y, z));
+	m_position += Vector3f(x, y, z);
 }
 
 void Transform::RotateLocalV(float degrees, const Vector3f &axis)

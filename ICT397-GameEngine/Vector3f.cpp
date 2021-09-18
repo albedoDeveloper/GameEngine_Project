@@ -8,9 +8,10 @@ Vector3f::Vector3f(float x, float y, float z)
 	: m_vec(x, y, z)
 {}
 
-void Vector3f::Translate(const Vector3f &v)
+Vector3f &Vector3f::operator+=(const Vector3f &v)
 {
-	m_vec += glm::vec3(v.GetX(), v.GetY(), v.GetZ());
+	m_vec += v.m_vec;
+	return *this;
 }
 
 float *Vector3f::ValuePtr()
@@ -33,6 +34,11 @@ float Vector3f::GetX() const
 float Vector3f::GetY() const
 {
 	return m_vec.y;
+}
+
+float Vector3f::GetZ() const
+{
+	return m_vec.z;
 }
 
 void Vector3f::SetX(float x)
@@ -70,14 +76,9 @@ float Vector3f::dotProduct(Vector3f oVec)
 	return glm::dot(m_vec, oVec.m_vec);
 }
 
-Vector3f Vector3f::Normalise(Vector3f oVec)
+Vector3f Vector3f::Normalised()
 {
-	return glm::normalize(oVec.m_vec);
-}
-
-float Vector3f::Rad2Deg(float rad)
-{
-	return rad * 180 / glm::pi<float>();
+	return glm::normalize(m_vec);
 }
 
 Vector3f Vector3f::Rad2Deg()

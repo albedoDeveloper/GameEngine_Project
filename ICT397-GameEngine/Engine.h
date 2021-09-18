@@ -91,13 +91,11 @@ private:
 	*/
 	LevelEditor levelEditor;
 
-
 	bool m_debugMenu;
 
 	bool m_editMenu;
 
 	bool m_drawColliders;
-
 };
 
 #define ENGINE Engine::Instance()
