@@ -112,12 +112,12 @@ void GameObject::SetParentObject(std::string newParent)
 	m_transform.SetParent(otherObject->GetTransform());
 }
 
-std::string GameObject::getFactoryKey()
+std::string GameObject::GetFactoryKey()
 {
 	return m_factoryKey;
 }
 
-void GameObject::setFactoryKey(std::string key)
+void GameObject::SetFactoryKey(std::string key)
 {
 	this->m_factoryKey = key;
 }
@@ -198,9 +198,9 @@ void GameObject::LateRender()
 
 void GameObject::Save(nlohmann::json &j)
 {
-	j[getFactoryKey()]["key"] = getFactoryKey();
+	j[GetFactoryKey()]["key"] = GetFactoryKey();
 
-	GetTransform()->ToJson(j, getFactoryKey());
+	GetTransform()->ToJson(j, GetFactoryKey());
 
 	// iterate through all component lists
 	for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
@@ -215,12 +215,12 @@ void GameObject::Save(nlohmann::json &j)
 
 void GameObject::Load(nlohmann::json &j)
 {
-	std::cout << getFactoryKey() << std::endl;
-	GetTransform()->FromJson(j, getFactoryKey());
+	//std::cout << getFactoryKey() << std::endl;
+	GetTransform()->FromJson(j, GetFactoryKey());
 
-	std::cout << j.at(getFactoryKey()).at("Components").size() << std::endl;
+	std::cout << j.at(GetFactoryKey()).at("Components").size() << std::endl;
 
-	for (auto it : j.at(getFactoryKey()).at("Components").items())
+	for (auto it : j.at(GetFactoryKey()).at("Components").items())
 	{
 		std::cout << "GO TEST" << it.key() << " | " << it.value() << std::endl;
 
@@ -230,11 +230,11 @@ void GameObject::Load(nlohmann::json &j)
 		{
 			if (GetComponent<CScript>())
 			{
-				GetComponent<CScript>()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
+				GetComponent<CScript>()->AssignScriptByKey(j.at(GetFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
 			}
 			else
 			{
-				AddCScript()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
+				AddCScript()->AssignScriptByKey(j.at(GetFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
 			}
 		}
 
@@ -242,11 +242,11 @@ void GameObject::Load(nlohmann::json &j)
 		{
 			if (GetComponent<CStaticMesh>())
 			{
-				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
+				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(GetFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
 			}
 			else
 			{
-				AddCStaticMesh()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
+				AddCStaticMesh()->AssignModelByKey(j.at(GetFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
 			}
 		}
 

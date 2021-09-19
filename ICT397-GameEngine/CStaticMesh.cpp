@@ -66,7 +66,7 @@ void CStaticMesh::Render()
 void CStaticMesh::Save(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
-	j[g->getFactoryKey()]["Components"]["StaticMeshComponent"]["AModel"] = m_model->Key();
+	j[g->GetFactoryKey()]["Components"]["StaticMeshComponent"]["AModel"] = m_model->Key();
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }

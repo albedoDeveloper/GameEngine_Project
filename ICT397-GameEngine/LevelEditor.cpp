@@ -37,7 +37,7 @@ void LevelEditor::ObjectHeader(GameObject *g)
 {
 	ImGui::AlignTextToFramePadding();
 
-	if (ImGui::TreeNode((char *)g->getFactoryKey().c_str()))
+	if (ImGui::TreeNode((char *)g->GetFactoryKey().c_str()))
 	{
 		ImGui::AlignTextToFramePadding();
 

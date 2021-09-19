@@ -29,6 +29,11 @@ public:
 	void Close();
 
 		/**
+		 * @brief deletes all gameobjects in level
+		 */
+	void ClearCurrentLevel();
+
+		/**
 		 * @brief Accessor for the map of objects created by the factory
 		 * @return A pointer to the object Map
 		*/

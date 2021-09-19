@@ -28,7 +28,7 @@ void CScript::Update()
 void CScript::Save(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
-	j[g->getFactoryKey()]["Components"]["ScriptComponent"]["Script"] = m_script->Key();
+	j[g->GetFactoryKey()]["Components"]["ScriptComponent"]["Script"] = m_script->Key();
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }

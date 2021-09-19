@@ -42,11 +42,11 @@ void LevelLoader::JsonFilepath()
 void LevelLoader::ToJson(json &j, GameObject *g)
 {
 
-	j[g->getFactoryKey()]["key"] = g->getFactoryKey();
+	j[g->GetFactoryKey()]["key"] = g->GetFactoryKey();
 
 	//this transofrm stuff can be moved to the transform componenet instead
 
-	g->GetTransform()->ToJson(j, g->getFactoryKey());
+	g->GetTransform()->ToJson(j, g->GetFactoryKey());
 
 	/*j[g->getFactoryKey()]["Position"] =
 	{
@@ -88,7 +88,7 @@ void LevelLoader::FromJson(json &j, GameObject *g)
 		//////ERROR HANDLING///////
 	//////Need to figure out a way to check if the field in json is filled or not before calling from
 
-	g->GetTransform()->FromJson(j, g->getFactoryKey());
+	g->GetTransform()->FromJson(j, g->GetFactoryKey());
 
 	////move to position
 	//if (j.at(g->getFactoryKey()).contains("Position"))
@@ -131,46 +131,63 @@ void LevelLoader::FromJson(json &j, GameObject *g)
 void LevelLoader::LoadLevel()
 {
 	//Step 1 read filestream into json object
-	std::ifstream ifs("../Assets/SaveFiles/tavern.json");
-	json j = json::parse(ifs);
-
-	//std::cout << j << std::endl;
-
-	//Step 2 retrieve and populate map
-	std::map<std::string, GameObject *>::iterator it;
-
-	int i = 0;
-
-
-
-	std::cout << "Loading level" << std::endl;
-
-
-
-	//Step 3
-	//This is the more robust method
-	//We test for how many objects there are 
-	int numOfObjects = j.size();
-	std::cout << "NUM OF OBJECT == " << numOfObjects << std::endl;
-
-	for (auto it : j.items())
+		//first we check if files exists
+	if (!fs::exists("../Assets//SaveFiles/tavern.json"))
 	{
-		//std::cout << "TEST " << j.at(el.key()).at("key") << std::endl;
-		//std::cout << "TEST " << j.at(el.key()).at("Position").at("x") << std::endl;
-
-		GAMEOBJECT->SpawnGameObject(j.at(it.key()).at("key"));
-
-		//g->Load(j);
+		std::cout << "FAILURE TO READ FILE" << std::endl;
 	}
-
-	//this iterator only works if we already have all objects in GO factory
-		//need a more robust method
-	for (it = objectList->begin(); it != objectList->end(); it++)
+	else
 	{
-		//we read each gameobject from JSON
-		it->second->Load(j);
-		//FromJson(j, it->second);
 
+		std::ifstream ifs("../Assets/SaveFiles/tavern.json");
+		json j = json::parse(ifs);
+
+		//std::cout << j << std::endl;
+
+		//Step 1.5 Delete Current level
+
+		GAMEOBJECT->ClearCurrentLevel();
+
+
+		//Step 2 retrieve and populate map
+		std::map<std::string, GameObject *>::iterator it;
+
+		int i = 0;
+
+
+
+
+		std::cout << "Loading level" << std::endl;
+
+
+
+		//Step 3
+		//This is the more robust method
+		//We test for how many objects there are 
+		int numOfObjects = j.size();
+		std::cout << "NUM OF OBJECT == " << numOfObjects << std::endl;
+
+		for (auto it : j.items())
+		{
+			//std::cout << "TEST " << j.at(el.key()).at("key") << std::endl;
+			//std::cout << "TEST " << j.at(el.key()).at("Position").at("x") << std::endl;
+
+			GameObject *go = GAMEOBJECT->SpawnGameObject(j.at(it.key()).at("key"));
+
+			//go->Load(j);
+
+			//g->Load(j);
+		}
+
+		//this iterator only works if we already have all objects in GO factory
+			//need a more robust method
+		for (it = objectList->begin(); it != objectList->end(); it++)
+		{
+			//we read each gameobject from JSON
+			it->second->Load(j);
+			//FromJson(j, it->second);
+
+		}
 	}
 }
 
@@ -225,3 +242,4 @@ void LevelLoader::SaveLevel()
 	o << std::setw(4) << j << std::endl;
 
 }
+

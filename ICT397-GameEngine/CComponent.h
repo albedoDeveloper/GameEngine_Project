@@ -8,6 +8,8 @@
 
 #include "Transform.h"
 #include <nlohmann/json.hpp>
+#include <iostream>
+
 
 class GameObject;
 
@@ -23,6 +25,14 @@ public:
 		 * @param parentObject The parent object of this component
 		*/
 	CComponent(Transform *parentTrans, GameObject *parentObject);
+
+	~CComponent()
+	{
+		m_parent = nullptr;
+		delete m_parent;
+
+		std::cout << "Componenet Destroyed" << std::endl;
+	}
 
 		/**
 			* @brief called at start of game
