@@ -28,7 +28,7 @@ public:
 		 * \param persepective
 		 * \param view
 		 */
-	void DrawSkybox(Matrix4f projection, Matrix4f view, Matrix4f camera);
+	void DrawSkybox(Matrix4f projection, Matrix4f view);
 
 private:
 	unsigned m_texID, m_VAO, m_VBO;

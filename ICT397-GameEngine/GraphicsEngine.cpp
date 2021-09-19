@@ -140,7 +140,7 @@ void GraphicsEngine::RenderObjects(Shader &shader)
 
 void GraphicsEngine::RenderObjects()
 {
-	skybox.DrawSkybox(GetCameraProjection(), GetCameraView(), m_camera->GetTransform().GetWorldTransform().GetMat4());
+	skybox.DrawSkybox(GetCameraProjection(), GetCameraView());
 	GAMEOBJECT->Render();
 
 	if (m_drawDebug)

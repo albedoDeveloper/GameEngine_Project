@@ -50,6 +50,8 @@ public:
 		 */
 	float *ValuePtr();
 
+	void RemoveTranslation();
+
 		/**
 		 * multiply 2 matrix4f's together
 		 *

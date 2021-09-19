@@ -49,6 +49,11 @@ float *Matrix4f::ValuePtr()
 	return glm::value_ptr(m_mat);
 }
 
+void Matrix4f::RemoveTranslation()
+{
+	m_mat = glm::mat4(glm::mat3(m_mat));
+}
+
 Matrix4f Matrix4f::operator*(const Matrix4f &other)
 {
 	return m_mat * other.m_mat;

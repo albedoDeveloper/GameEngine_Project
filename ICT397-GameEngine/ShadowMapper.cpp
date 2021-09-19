@@ -3,7 +3,7 @@
 #include "MiscMath.h"
 
 ShadowMapper::ShadowMapper()
-	:m_depthMapFBO{}, m_depthMapTexObj{}, m_shadowWidth{ 5012 }, m_shadowHeight{ 5012 }, m_light{ nullptr }, m_initialised{ false }, m_projection{}
+	:m_depthMapFBO{}, m_depthMapTexObj{}, m_shadowWidth{ 16384 }, m_shadowHeight{ 16384 }, m_light{ nullptr }, m_initialised{ false }, m_projection{}
 {
 	m_projection = Ortho(-20.f, 20.f, -20.f, 20.f, 2.f, 30.f);
 }
