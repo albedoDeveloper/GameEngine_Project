@@ -93,6 +93,9 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 	{
 		Vertex vertex;
 		Vector3f vector;
+
+		///Assimp::Importer::getglm
+		
 		// positions
 		vector.SetX((mesh->mVertices[i].x * m_info.size) + m_info.translation.GetX());
 
@@ -237,4 +240,13 @@ unsigned int AModel::TextureFromFile(const char *path, const std::string &direct
 	}
 
 	return textureID;
+}
+
+void AModel::SetVertexBoneDataToDefault(Vertex& vertex)
+{
+	for (int i = 0; i < 4 ; i++)
+	{
+		vertex.boneIDs.push_back(-1);
+		vertex.boneWeights.push_back(0.0f);
+	}
 }

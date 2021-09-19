@@ -71,6 +71,16 @@ private:
 		float size = 1;
 	};
 
+	struct BoneInfo
+	{
+		/*id is index in finalBoneMatrices*/
+		int id;
+
+		/*offset matrix transforms vertex from model space to bone space*/
+		glm::mat4 offset;
+
+	};
+
 		/// <summary>
 		/// The models key value for identifiying it between models
 		/// </summary>
@@ -116,6 +126,12 @@ private:
 		/// </summary>
 	std::string m_texturePath;
 
+	std::map<std::string, BoneInfo> m_BoneInfoMap; //
+	int m_BoneCounter = 0;
+
+	std::map<std::string, AModel::BoneInfo> GetBoneInfoMap() { return m_BoneInfoMap; }
+	int& GetBoneCount() { return m_BoneCounter; }
+
 		/// <summary>
 		/// Load a model into the engine based upon its path
 		/// </summary>
@@ -152,4 +168,6 @@ private:
 		/// <param name="directory"></param>
 		/// <returns></returns>
 	unsigned int TextureFromFile(const char *path, const std::string &directory);
+
+	void SetVertexBoneDataToDefault(Vertex& vertex)
 };

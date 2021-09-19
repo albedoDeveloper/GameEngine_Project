@@ -43,6 +43,11 @@ struct Vertex
 		/// The vertexs bitangent coordinates
 		/// </summary>
 	Vector3f Bitangent;
+
+	//Change this if its not drawing
+	std::vector<int>boneIDs;
+
+	std::vector<float>boneWeights;
 };
 
 	/// <summary>
