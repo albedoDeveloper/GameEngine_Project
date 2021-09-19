@@ -160,12 +160,10 @@ void Engine::Update()
 void Engine::Render()
 {
 	// 1. directional light shadow map render pass
-	//glCullFace(GL_FRONT);
 	GRAPHICS->ShadowMapRender();
 	GRAPHICS->m_shadowMapShader->SetMat4Uniform("lightSpaceMatrix", GRAPHICS->GetShadowMapperMatrix());
 	GRAPHICS->RenderObjects(*GRAPHICS->m_shadowMapShader);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-	glCullFace(GL_BACK);
 
 	// 2. camera render pass
 	GRAPHICS->m_litShader->Use();

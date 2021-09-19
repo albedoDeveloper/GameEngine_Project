@@ -93,8 +93,8 @@ GetGameObject("tavern_floor"):AddCStaticMesh():AssignModel("tavern_floor")
 GetGameObject("tavern_floor"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("tavern_floor"):GetCCollider():CollideWith(2)
 
---SpawnGameObject("roof_interior"):SetStatic(true)
---GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
+SpawnGameObject("roof_interior"):SetStatic(true)
+GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
 
 SpawnGameObject("pool-table"):SetStatic(true)
 GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
