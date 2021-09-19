@@ -58,12 +58,12 @@ public:
 		/**
 		 * @brief Function to be called at the start of every frame for rendering
 		*/
-	void newFrame(bool debugMenu);
+	void NewFrame(bool debugMenu);
 
 		/**
 		 * @brief Updates view based on camera transform
 		 */
-	void UpdateViewPos() const;
+	void UpdateCamViewPos() const;
 
 		/**
 		 * @brief creates a point light
@@ -77,7 +77,7 @@ public:
 		/**
 		 * @brief Renders all visible objects
 		*/
-	void renderObjects();
+	void RenderObjects();
 
 		/**
 		 * @brief Function to be called at the end of every frame for rendering
@@ -148,16 +148,16 @@ public:
 	}
 
 		/**
-		 * @brief Accessor for the projection matrix
+		 * @brief Accessor for the projection matrix of the active camera
 		 * \return 4f projection matrix
 		 */
-	Matrix4f GetProjection();
+	Matrix4f GetCameraProjection();
 
 		/**
 		 * @brief returns the current camera view position/direction
 		 * \return 4f view matrix
 		 */
-	Matrix4f GetView();
+	Matrix4f GetCameraView();
 
 		/** @brief pointer to lit shader */
 	Shader *m_litShader;

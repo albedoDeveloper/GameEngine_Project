@@ -1,9 +1,12 @@
 #include "ShadowMapper.h"
 #include <iostream> // debug
+#include "MiscMath.h"
 
 ShadowMapper::ShadowMapper()
-	:m_depthMapFBO{}, m_depthMap{}, m_shadowWidth{ 1024 }, m_shadowHeight{ 1024 }, m_light{ nullptr }, m_initialised{ false }
-{}
+	:m_depthMapFBO{}, m_depthMap{}, m_shadowWidth{ 1024 }, m_shadowHeight{ 1024 }, m_light{ nullptr }, m_initialised{ false }, m_projection{}
+{
+	m_projection = Ortho(-10.f, 10.f, 10.f, 10.f, 1.f, 7.5f);
+}
 
 void ShadowMapper::Init()
 {

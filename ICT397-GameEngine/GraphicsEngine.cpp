@@ -78,23 +78,9 @@ bool GraphicsEngine::initLighting()
 	return true;
 }
 
-void GraphicsEngine::newFrame(bool debugMenu)
+void GraphicsEngine::NewFrame(bool debugMenu)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	GRAPHICS->UpdateViewPos();
-
-	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetView());
-	GRAPHICS->m_litShader->SetFloatUniform("material.shininess", 16); // TODO move somewhere else
-
-	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_unlitShader->SetMat4Uniform("view", GRAPHICS->GetView());
-
-
-	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetView());
-
 
 	if (debugMenu)
 	{
@@ -104,7 +90,7 @@ void GraphicsEngine::newFrame(bool debugMenu)
 	}
 }
 
-void GraphicsEngine::UpdateViewPos() const
+void GraphicsEngine::UpdateCamViewPos() const
 {
 	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetRelativePosition();
 	GRAPHICS->m_litShader->Use();
@@ -148,10 +134,10 @@ void GraphicsEngine::AddDirectionalLight(const CDirectionalLight &light)
 	m_shadowMapper.AssignLight(&light);
 }
 
-void GraphicsEngine::renderObjects()
+void GraphicsEngine::RenderObjects()
 {
-	skybox.DrawSkybox(GetProjection(), GetView());
-	GAMEOBJECT->render();
+	skybox.DrawSkybox(GetCameraProjection(), GetCameraView());
+	GAMEOBJECT->Render();
 
 	if (m_drawDebug)
 	{
@@ -399,7 +385,7 @@ void GraphicsEngine::DrawDebug()
 
 }
 
-Matrix4f GraphicsEngine::GetProjection()
+Matrix4f GraphicsEngine::GetCameraProjection()
 {
 	return Perspective(
 		m_camera->GetCamera().FOV,
@@ -409,7 +395,7 @@ Matrix4f GraphicsEngine::GetProjection()
 	);
 }
 
-Matrix4f GraphicsEngine::GetView()
+Matrix4f GraphicsEngine::GetCameraView()
 {
 	return LookAt(
 		m_camera->GetTransform().GetWorldTransform().GetRelativePosition(),

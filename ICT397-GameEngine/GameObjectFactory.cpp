@@ -127,7 +127,7 @@ void GameObjectFactory::Update()
 	}
 }
 
-void GameObjectFactory::render()
+void GameObjectFactory::Render()
 {
 	std::map<std::string, GameObject *>::iterator it;
 	for (it = objectList.begin(); it != objectList.end(); it++)

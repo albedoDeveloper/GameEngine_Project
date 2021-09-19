@@ -73,7 +73,7 @@ public:
 		/**
 		 * @brief Calls the render function of each GameObject in storage
 		*/
-	void render();
+	void Render();
 
 		/**
 		 * @brief saves the game

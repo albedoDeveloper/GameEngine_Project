@@ -159,23 +159,24 @@ void Engine::Update()
 
 void Engine::Render()
 {
-	GRAPHICS->UpdateViewPos();
+	GRAPHICS->UpdateCamViewPos();
 
 	GRAPHICS->m_litShader->Use();
-	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetView());
+	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
+	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
 	GRAPHICS->m_litShader->SetFloatUniform("material.shininess", 16); // TODO move somewhere else
 
 	GRAPHICS->m_unlitShader->Use();
-	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_unlitShader->SetMat4Uniform("view", GRAPHICS->GetView());
+	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
+	GRAPHICS->m_unlitShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
 
 	GRAPHICS->m_debugShader->Use();
-	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetView());
+	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
+	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
 
-	GRAPHICS->newFrame(m_debugMenu);
-	GRAPHICS->renderObjects();
+	GRAPHICS->NewFrame(m_debugMenu);
+
+	GRAPHICS->RenderObjects();
 
 	if (m_debugMenu) // TEST WINDOW
 	{

@@ -2,6 +2,7 @@
 
 #include <glew/GL/glew.h>
 #include "CDirectionalLight.h"
+#include "Matrix4f.h"
 
 class ShadowMapper
 {
@@ -19,4 +20,5 @@ private:
 	unsigned int m_shadowWidth;
 	unsigned int m_shadowHeight;
 	const CDirectionalLight *m_light;
+	Matrix4f m_projection;
 };

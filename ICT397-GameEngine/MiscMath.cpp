@@ -62,3 +62,8 @@ Matrix4f LookAt(const Vector3f &eye, const Vector3f &centre, const Vector3f &up)
 {
 	return glm::lookAt(eye.m_vec, centre.m_vec, up.m_vec);
 }
+
+Matrix4f Ortho(float left, float right, float bottom, float top, float near, float far)
+{
+	return glm::ortho(left, right, bottom, top, near, far);
+}

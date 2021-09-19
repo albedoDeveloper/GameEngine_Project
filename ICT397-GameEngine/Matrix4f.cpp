@@ -10,7 +10,7 @@ Matrix4f &Matrix4f::operator*=(Matrix4f other)
 }
 
 Matrix4f::Matrix4f(glm::mat4 m)
-	: m_mat{ m }
+	:m_mat{ m }
 {
 }
 
