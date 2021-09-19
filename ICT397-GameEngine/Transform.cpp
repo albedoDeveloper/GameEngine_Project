@@ -21,9 +21,9 @@ void Transform::SetParent(Transform *newParent)
 	m_parent = newParent;
 }
 
-	/**
-	 * @brief Saves the transform to JSON
-	*/
+/**
+ * @brief Saves the transform to JSON
+*/
 void Transform::ToJson(nlohmann::json &j, std::string key)
 {
 	j[key]["Transform"]["Position"] =
@@ -61,8 +61,8 @@ void Transform::FromJson(nlohmann::json &j, std::string key)
 		if (j.at(key).at("Transform").contains("Position"))
 		{
 			SetRelativePosition(j.at(key).at("Transform").at("Position").at("x"),
-				j.at(key).at("Transform").at("Position").at("y"),
-				j.at(key).at("Transform").at("Position").at("z"));
+								j.at(key).at("Transform").at("Position").at("y"),
+								j.at(key).at("Transform").at("Position").at("z"));
 		}
 
 		//set rotation, might need new keyword here i don't like declaring this temporary value
@@ -157,6 +157,15 @@ Transform Transform::GetWorldTransform() const
 	t.m_orientation = t.m_orientation.Conjugate();
 
 	return t;
+}
+
+Matrix4f Transform::GetMat4() const
+{
+	Matrix4f m;
+	m = m.GetTranslate(m_position);
+	m = m.GetRotate(m_orientation);
+	m = m.GetScale(m_scale);
+	return m;
 }
 
 void Transform::TranslateV(const Vector3f &v)

@@ -4,6 +4,7 @@
 void SkyBox::CreateSkybox(std::vector<std::string> textures)
 {
 	glGenTextures(1, &m_texID);
+	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, m_texID);
 	int width, height, nrChannels;
 	for (unsigned int i = 0; i < textures.size(); i++)
@@ -11,8 +12,10 @@ void SkyBox::CreateSkybox(std::vector<std::string> textures)
 		unsigned char *data = stbi_load(textures[i].c_str(), &width, &height, &nrChannels, 0);
 		if (data)
 		{
-			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
-						 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data
+			glTexImage2D(
+				GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
+				0, GL_RGB, width, height, 0, GL_RGBA,
+				GL_UNSIGNED_BYTE, data
 			);
 			stbi_image_free(data);
 		}
@@ -35,22 +38,7 @@ void SkyBox::CreateSkybox(std::vector<std::string> textures)
 	CreateVAOandVBO();
 }
 
-void SkyBox::DrawSkybox(Matrix4f projection, Matrix4f view, Shader &shader)
-{
-	glDepthMask(GL_FALSE);
-	glEnable(GL_CULL_FACE);
-	glPolygonMode(GL_FRONT, GL_FILL);
-	shader.Use();
-	shader.SetMat4Uniform("projection", projection);
-	shader.SetMat4Uniform("view", view);
-
-	glBindVertexArray(m_VAO);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, m_texID);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-	glDepthMask(GL_TRUE);
-}
-
-void SkyBox::DrawSkybox(Matrix4f projection, Matrix4f view)
+void SkyBox::DrawSkybox(Matrix4f projection, Matrix4f view, Matrix4f camera)
 {
 	glDepthMask(GL_FALSE);
 	glEnable(GL_CULL_FACE);
@@ -58,8 +46,10 @@ void SkyBox::DrawSkybox(Matrix4f projection, Matrix4f view)
 	skyBoxShader->Use();
 	skyBoxShader->SetMat4Uniform("projection", projection);
 	skyBoxShader->SetMat4Uniform("view", view);
+	skyBoxShader->SetMat4Uniform("model", camera);
 
 	glBindVertexArray(m_VAO);
+	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, m_texID);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glDepthMask(GL_TRUE);

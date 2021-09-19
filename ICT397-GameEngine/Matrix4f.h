@@ -28,7 +28,11 @@ public:
 		 *
 		 * \param v translation to apply
 		 */
-	void Translate(Vector3f v);
+	void Translate(const Vector3f &v);
+
+	Matrix4f GetTranslate(const Vector3f &v) const;
+
+	Matrix4f GetRotate(const Quaternion &q) const;
 
 		/**
 		 * apply scale to this matrix
@@ -36,6 +40,8 @@ public:
 		 * \param v scale to apply
 		 */
 	void Scale(Vector3f v);
+
+	Matrix4f GetScale(const Vector3f &v) const;
 
 		/**
 		 * get value pointer of this matrix, essentially pointer to the first element of this matrix array

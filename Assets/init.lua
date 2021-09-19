@@ -146,12 +146,19 @@ GetGameObject("lightAnchor"):GetTransform():SetRelativePosition(4.95499992370605
 5.275000095367432);
 GetGameObject("lightAnchor"):AddCScript():AssignScript("rotate")
 
+SpawnGameObject("sunanchor")
+--GetGameObject("sunanchor"):AddCScript():AssignScript("rotate")
+GetGameObject("sunanchor"):AddCStaticMesh():AssignModel("axis")
+
 SpawnGameObject("sun"):SetStatic(false)
 GetGameObject("sun"):GetTransform():SetRelativePosition(0,10,10)
 GetGameObject("sun"):GetTransform():RotateLocalX(45)
+GetGameObject("sun"):GetTransform():RotateLocalY(10)
 GetGameObject("sun"):AddCDirectionalLight()
 GetGameObject("sun"):GetCDirectionalLight():AssignColour(0.7,0.7,0.7)
 GetGameObject("sun"):AddCStaticMesh():AssignModel("axis")
+GetGameObject("sun"):SetParentObject("sunanchor")
+
 
 SpawnGameObject("light1"):SetStatic(false)
 --GetGameObject("light1"):AddCPointLight()

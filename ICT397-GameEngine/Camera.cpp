@@ -4,7 +4,7 @@ Camera::Camera()
 	:
 	FOV{ 80.f },
 	NearClip{ 0.1f },
-	FarClip{ 100 },
+	FarClip{ 30 },
 	Projection{ CameraProjection::PERSPECTIVE }
 {
 }
