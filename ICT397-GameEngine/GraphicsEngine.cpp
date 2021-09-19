@@ -124,15 +124,15 @@ int GraphicsEngine::AddPointLight(CPointLight *light)
 
 	m_litShader->Use();
 	m_litShader->SetIntUniform("numOfPointLights", numpointLights);
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->LightInfo.ambientStrength);
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->GetAmbientStrength());
 	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(numpointLights - 1) + "].colour", Vector3f(
-		light->LightInfo.colour.GetX(),
-		light->LightInfo.colour.GetY(),
-		light->LightInfo.colour.GetZ()
+		light->GetColour().GetX(),
+		light->GetColour().GetY(),
+		light->GetColour().GetZ()
 	));
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].constant", light->LightInfo.constant);
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].linear", light->LightInfo.linear);
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].quadratic", light->LightInfo.quadratic);
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].constant", light->GetAttenConstant());
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].linear", light->GetLinearAttenutation());
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].quadratic", light->GetQuadraticAttenuation());
 
 	return numpointLights;
 }

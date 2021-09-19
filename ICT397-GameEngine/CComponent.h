@@ -18,11 +18,6 @@ class CComponent
 {
 public:
 		/**
-		 * @brief default constructor
-		*/
-	CComponent();
-
-		/**
 		 * @brief constructor taking parent data
 		 * @param parentTrans The parent transform for this component's transform
 		 * @param parentObject The parent object of this component
@@ -97,10 +92,4 @@ protected:
 		 * @brief The object to which this component belongs
 		*/
 	GameObject *m_parent;
-
-private:
-		/**
-		 * @brief The position, rotation, and scale of the component in world space
-		*/
-	Transform *transform;
 };

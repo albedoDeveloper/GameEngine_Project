@@ -51,9 +51,19 @@ CPointLight *GameObject::AddCPointLight()
 	return AddComponent<CPointLight>();
 }
 
+CDirectionalLight *GameObject::AddCDirectionalLight()
+{
+	return AddComponent<CDirectionalLight>();
+}
+
 CPointLight *GameObject::GetCPointLight()
 {
 	return GetComponent<CPointLight>();
+}
+
+CDirectionalLight *GameObject::GetCDirectionalLight()
+{
+	return GetComponent<CDirectionalLight>();
 }
 
 CCamera *GameObject::GetCCamera()

@@ -9,65 +9,43 @@
 #include "CComponent.h"
 
 	/**
-	 * @brief This struct is made to be used only by this poitn light
-	*/
-struct PointLight
-{
-	/** @brief light strength */
-	float ambientStrength;
-
-	/** @brief colour RGB values */
-	Vector3f colour;
-
-	// attenuation
-	/** @brief constant attentuation */
-	float constant;
-	/** @brief linear attentuation */
-	float linear;
-	/** @brief quadratic attentuation */
-	float quadratic;
-};
-
-	/**
 	* @brief Point light component class
 	*/
 class CPointLight : public CComponent
 {
 public:
-		/**
-		* @brief default constructor taking parent as argument
-		* @param parent pointer to parent transform for this component's transform
-		* @param parentObj pointer to parent object of this component
-		*/
-	CPointLight(Transform *parent, GameObject *parentObj);
+	CPointLight(Transform *parentTrans, GameObject *parentObject);
 
-		/**
-		* @brief updates ongoing behaviour for the component
-		*
-		*/
 	void Update();
 
-		/**
-		* @brief Assigns RGB colour values
-		*
-		* \param r red
-		* \param g green
-		* \param b blue
-		*/
 	void AssignColour(float r, float g, float b);
 
-		/**
-		* @brief Changes light strength 0-1
-		*
-		* \param strength 0 to 1
-		*/
 	void AssignAmbientStrength(float strength);
 
-		/** @brief Light Struct */
-	PointLight LightInfo;
+	const Vector3f &GetColour() const;
+
+	float GetAmbientStrength() const;
 
 		/**
-		* @brief index in the shader array of point lights. TODO make this more robust later
-		*/
-	int m_litShaderIndex; // index in the shader array of point lights. TODO make this more robust later
+		 * \return get the lights attenuation constant.
+		 */
+	float GetAttenConstant() const;
+
+		/**
+		 * \return linear attenuation value
+		 */
+	float GetLinearAttenutation() const;
+
+		/**
+		 * \return quadtraic attenuation value
+		 */
+	float GetQuadraticAttenuation() const;
+
+private:
+	Vector3f m_colour;
+	float m_ambientStrength;
+	float m_attenConstant;
+	float m_attenLinear;
+	float m_attenQuad;
+	int m_litShaderIndex;
 };

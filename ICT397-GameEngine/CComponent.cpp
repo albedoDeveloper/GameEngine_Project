@@ -3,12 +3,6 @@
 
 #include <iostream>
 
-CComponent::CComponent()
-	:m_parent{ nullptr }
-{
-	transform = new Transform();
-}
-
 CComponent::CComponent(Transform *parentTrans, GameObject *parentObject)
 	: m_transform{ parentTrans }, m_parent{ parentObject }
 {
