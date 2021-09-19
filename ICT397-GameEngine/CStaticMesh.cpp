@@ -2,100 +2,87 @@
 #include "GraphicsEngine.h"
 #include "GameAssetFactory.h"
 #include "GameObject.h"
-
-
-
-#if _DEBUG
 #include <iostream>
-#endif
+#include "InputManager.h" // debug
 
-CStaticMesh::CStaticMesh(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj}, m_model{ nullptr }
+CStaticMesh::CStaticMesh(Transform *parent, GameObject *parentObj)
+	:CComponent{ parent, parentObj },
+	m_shader{ GRAPHICS->m_litShader },
+	m_model{ nullptr }
 {
 }
 
-Model* CStaticMesh::GetModel()
+AModel &CStaticMesh::GetModel()
 {
-	return m_model;
+	return *m_model;
 }
 
-Model* CStaticMesh::AssignModelByKey(std::string modelKey)
+AModel &CStaticMesh::AssignModelByKey(std::string modelKey)
 {
-	Model* model = static_cast<Model*>(ASSET->GetAsset(modelKey));
+	AModel *model = ASSET->GetModelAsset(modelKey);
 	if (model == nullptr)
 	{
 		std::cout << "ERROR ASSIGNING MODEL BY KEY : " << modelKey << std::endl;
-		exit(-23);
+		exit(-23); // TODO find a better way to handle error codes
 	}
 	m_model = model;
-	return m_model;
+	return *m_model;
 }
 
-void CStaticMesh::Start()
+void CStaticMesh::AssignShader(std::string shader)
 {
-}
-
-void CStaticMesh::Update()
-{
-	//if (m_parent->getFactoryKey().compare("goblin 1") == 0)
+	if (!shader.compare("lit"))
 	{
-	//std::cout << m_parent->getFactoryKey() << ": ";
-	//std::cout << RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetX()) << " " <<
-	//	RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetY()) << " " <<
-	//		RadToDegrees(m_transform.GetWorldTransform().GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
-
-		//std::cout << m_parent->getFactoryKey() << ": ";
-		//std::cout << m_parent->GetTransform()->GetPosition().GetX() << " " <<
-		//	m_parent->GetTransform()->GetPosition().GetY() << " " <<
-		//	m_parent->GetTransform()->GetPosition().GetZ() << " " << std::endl;
-
-		//std::cout << m_parent->getFactoryKey() << ": ";
-		//std::cout << m_transform.GetPosition().GetX() << " " <<
-		//	m_transform.GetPosition().GetY() << " " <<
-		//	m_transform.GetPosition().GetZ() << " " << std::endl;
-
-//		std::cout << m_parent->getFactoryKey() << ": ";
-//std::cout << RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetX()) << " " <<
-//	RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetY()) << " " <<
-//		RadToDegrees(m_transform.GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
-
-	//		std::cout << m_parent->getFactoryKey() << ": ";
-	//std::cout << RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetX()) << " " <<
-	//	RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetY()) << " " <<
-	//		RadToDegrees(m_parent->GetTransform()->GetRotation().GetEulerAngles().GetZ()) << " " << std::endl;
-
+		m_shader = GRAPHICS->m_litShader;
+	}
+	else if (!shader.compare("unlit"))
+	{
+		m_shader = GRAPHICS->m_unlitShader;
+	}
+	else if (!shader.compare("debug"))
+	{
+		m_shader = GRAPHICS->m_debugShader;
+	}
+	else
+	{
+		std::cout << "ERROR: CStaticMesh::AssignShader ... invalid shader string entered\n";
 	}
 }
 
 void CStaticMesh::Render()
 {
-	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform());
+	if (INPUT->GetKeyDownByCode(KeyCode::T) && m_shader == GRAPHICS->m_unlitShader)
+	{
+		m_shader = GRAPHICS->m_litShader;
+	}
+	else if (INPUT->GetKeyDownByCode(KeyCode::T) && m_shader == GRAPHICS->m_litShader)
+	{
+		m_shader = GRAPHICS->m_unlitShader;
+	}
+
+	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), m_shader);
 }
 
-void CStaticMesh::LateRender()
-{}
-
-void CStaticMesh::Save(nlohmann::json& j)
+void CStaticMesh::Save(nlohmann::json &j)
 {
-	GameObject* g = GetParentObject();
-	j[g->getFactoryKey()]["Components"]["StaticMeshComponent"]["Model"] = m_model->key;
+	GameObject *g = GetParentObject();
+	j[g->getFactoryKey()]["Components"]["StaticMeshComponent"]["AModel"] = m_model->Key();
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }
 
-void CStaticMesh::Load(nlohmann::json& j)
+void CStaticMesh::Load(nlohmann::json &j)
 {
-	GameObject* g = GetParentObject();
+	GameObject *g = GetParentObject();
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
 
 void CStaticMesh::DrawToImGui()
 {
 	//ImGui::Text("staticMesh TREE");
-	if (ImGui::TreeNode("StaticMesh Component"))
+	if (ImGui::TreeNode("StaticMesh CComponent"))
 	{
-		ImGui::Text("Model Name : "); ImGui::SameLine(); ImGui::Text(m_model->key.c_str());
+		ImGui::Text("AModel Name : "); ImGui::SameLine(); ImGui::Text(m_model->Key().c_str());
 		ImGui::TreePop();
-
 	}
 }

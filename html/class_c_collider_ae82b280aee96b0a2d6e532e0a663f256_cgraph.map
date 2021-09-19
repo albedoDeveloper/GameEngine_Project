@@ -1,0 +1,17 @@
+<map id="CCollider::UpdateCollider" name="CCollider::UpdateCollider">
+<area shape="rect" id="node1" title="Updates the colliders with any transformations changes based on the colliders model." alt="" coords="5,259,172,285"/>
+<area shape="rect" id="node2" href="$class_transform.html#a480af94b677d5c77a8c4cf8aeb3e2d4d" title="get orientation relative to parent transform" alt="" coords="220,5,436,32"/>
+<area shape="rect" id="node3" href="$class_transform.html#a07df84a85998644477081fc31d53e546" title="position accessor" alt="" coords="228,56,428,83"/>
+<area shape="rect" id="node4" href="$class_quaternion.html#aab6106f3b5d030da7cbc450151a88449" title="w value accessor" alt="" coords="265,107,391,133"/>
+<area shape="rect" id="node5" href="$class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space based on all its parents." alt="" coords="229,309,427,336"/>
+<area shape="rect" id="node9" href="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="683,233,790,260"/>
+<area shape="rect" id="node10" href="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="683,284,791,311"/>
+<area shape="rect" id="node11" href="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="683,360,790,387"/>
+<area shape="rect" id="node13" href="$class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93" title="x value accessor" alt="" coords="267,461,389,488"/>
+<area shape="rect" id="node14" href="$class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a" title="y value accessor" alt="" coords="267,512,389,539"/>
+<area shape="rect" id="node15" href="$class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c" title="z value accessor" alt="" coords="267,563,389,589"/>
+<area shape="rect" id="node6" href="$class_quaternion.html#aa5333ab28dbe4d5ae15ab5dbc36b90ca" title=" " alt="" coords="484,411,635,437"/>
+<area shape="rect" id="node7" href="$_misc_math_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="514,309,605,336"/>
+<area shape="rect" id="node8" href="$class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229" title=" " alt="" coords="505,360,614,387"/>
+<area shape="rect" id="node12" href="$class_matrix4f.html#a7e95514a69d7d61a622eb2395aa2208a" title=" " alt="" coords="495,259,624,285"/>
+</map>

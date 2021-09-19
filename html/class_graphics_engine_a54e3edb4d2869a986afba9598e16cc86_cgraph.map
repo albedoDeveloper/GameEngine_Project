@@ -1,0 +1,13 @@
+<map id="GraphicsEngine::UpdateViewPos" name="GraphicsEngine::UpdateViewPos">
+<area shape="rect" id="node1" title="Updates view based on camera transform." alt="" coords="5,132,220,159"/>
+<area shape="rect" id="node2" href="$class_transform.html#a07df84a85998644477081fc31d53e546" title="position accessor" alt="" coords="268,5,468,32"/>
+<area shape="rect" id="node3" href="$class_c_component.html#a3796546e2460ee6457af80534ddff0d5" title="transform accessor" alt="" coords="277,56,459,83"/>
+<area shape="rect" id="node4" href="$class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space based on all its parents." alt="" coords="269,259,467,285"/>
+<area shape="rect" id="node8" href="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="715,183,822,209"/>
+<area shape="rect" id="node9" href="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="715,233,823,260"/>
+<area shape="rect" id="node10" href="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="715,309,822,336"/>
+<area shape="rect" id="node5" href="$class_quaternion.html#aa5333ab28dbe4d5ae15ab5dbc36b90ca" title=" " alt="" coords="516,360,667,387"/>
+<area shape="rect" id="node6" href="$_misc_math_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="546,259,637,285"/>
+<area shape="rect" id="node7" href="$class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229" title=" " alt="" coords="537,309,646,336"/>
+<area shape="rect" id="node11" href="$class_matrix4f.html#a7e95514a69d7d61a622eb2395aa2208a" title=" " alt="" coords="527,208,656,235"/>
+</map>

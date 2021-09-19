@@ -1,0 +1,6 @@
+<map id="Quaternion::SetZ" name="Quaternion::SetZ">
+<area shape="rect" id="node1" title="z value mutator" alt="" coords="400,31,520,57"/>
+<area shape="rect" id="node2" href="$class_transform.html#a55390da2160d0cac9951401756e752b7" title="loads the transform from JSON" alt="" coords="208,31,352,57"/>
+<area shape="rect" id="node3" href="$class_level_loader.html#abfedb40032867527767815299aa75594" title="Read data from JSON &#45; DEPRECIATED." alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node4" href="$class_game_object.html#a45246aaee43206b87c40ef6fdc06111b" title="loads the object from saved state" alt="" coords="17,56,148,83"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="LevelEditor::ScaleManipulators" name="LevelEditor::ScaleManipulators">
+<area shape="rect" id="node1" title="displays the scale fields in the transform editor" alt="" coords="868,5,1068,32"/>
+<area shape="rect" id="node2" href="$class_level_editor.html#aac394ace767b605adef1afdfb0473046" title="displays the gameobjects transform editor" alt="" coords="629,5,820,32"/>
+<area shape="rect" id="node3" href="$class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de" title="Creates the objects header using the current gameobject in the iterator." alt="" coords="409,5,581,32"/>
+<area shape="rect" id="node4" href="$class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0" title="fills in the object list" alt="" coords="209,5,361,32"/>
+<area shape="rect" id="node5" href="$class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048" title="Draws the editor to screen." alt="" coords="5,5,161,32"/>
+</map>

@@ -1,54 +1,135 @@
+/*****************************************************************//**
+ * \file   Shader.h
+ *
+ * \date   September 2021
+ *********************************************************************/
+
 #pragma once
+
 #include <glew/GL/glew.h>
 #include <glm/glm/glm.hpp>
-
-
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include "../Transform.h"
+#include "../Matrix4f.h"
 
-
-
+	/**
+	 * shader class.
+	 */
 class Shader
 {
+public:
+		/// <summary>
+		/// Sets this shader object to the current opengl shader instance
+		/// </summary>
+	virtual void Use() const;
 
-    void CreateShaders(unsigned int& shadername, const GLchar* const* actualShader, int typeOfShader);
-    void ShaderLinking(unsigned int& shadername, unsigned int& vertexShader);
-    
-    public:
-        std::string shaderName;
-        unsigned int ID;
-        bool useShaderForLoop();
-        Shader(const char* vertexPath, const char* fragmentPath);
+		/// /// <summary>
+		/// Creates the shader and sets the vertex shader file and the fragment shader file to it, based upon the user
+		/// </summary>
+		/// <param name="vertexPath"></param>
+		/// <param name="fragmentPath"></param>
+	Shader(const char *vertexPath, const char *fragmentPath);
 
-        void setShaderBool(const std::string& name, bool value) const
-        {
-            glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);
-        }
-        void setShaderInt(const std::string& name, int value) const
-        {
-            glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
-        }
-        void setShaderFloat(const std::string& name, float value) const
-        {
-            glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
-        }
-        void setVec4(const std::string& name, const glm::vec4& value) const
-        {
-            glUniform4fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
-        }        
-        void setVec3(const std::string& name, const glm::vec3& value) const
-        {
-            glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
-        }
-        void setMat4(const std::string& name, const glm::mat4& mat) const
-        {
-            glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
-        }
+		/// <summary>
+		/// Sets a global bool uniform in the shader
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="value"></param>
+	void SetBoolUniform(const std::string &name, bool value) const;
+
+		/// <summary>
+		/// Sets a global int uniform in the shader
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="value"></param>
+	void SetIntUniform(const std::string &name, int value) const;
+
+		/// <summary>
+		/// Sets a global vector4 uniform in the shader
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="value"></param>
+	void SetFloatUniform(const std::string &name, float value) const;
+
+		/**
+		 * sec vec4 uniform for this shader program.
+		 *
+		 * \param name
+		 * \param value
+		 */
+	void SetVec4Uniform(const std::string &name, const glm::vec4 &value) const;
+
+		/**
+		 * sec vec3 uniform for this shader program.
+		 *
+		 * \param name
+		 * \param value
+		 */
+	void SetVec3Uniform(const std::string &name, Vector3f value) const;
+
+		/// <summary>
+		/// Sets a global matrix 4x4 uniform in the shader
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="value"></param>
+	void SetMat4Uniform(const std::string &name, Matrix4f mat) const;
+
+		/**
+		 * get shader name.
+		 *
+		 * \return
+		 */
+	std::string GetShaderName() const;
+
+		/**
+		 * set shader name.
+		 *
+		 * \param shaderName
+		 */
+	void SetShaderName(const std::string &shaderName);
+
+		/**
+		 * get id.
+		 *
+		 * \return
+		 */
+	unsigned int GetID() const;
+
+		/**
+		 * set id.
+		 *
+		 * \param ID
+		 */
+	void SetID(unsigned int ID);
+
+private:
+		/// <summary>
+		/// Sets a global vector uniform in the shader
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="value"></param>
+	void CreateShaders(unsigned int &shadername, const GLchar *const *actualShader, int typeOfShader);
+
+		/// <summary>
+		/// Sets a global vector uniform in the shader
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="value"></param>
+	void ShaderLinking(unsigned int &shadername, unsigned int &vertexShader);
+
+		/// <summary>
+		/// The shadername id of the shader
+		/// </summary>
+	std::string m_shaderName;
+
+		/// <summary>
+		/// Contains the opengl ID of the shader
+		/// </summary>
+	unsigned int m_ID;
 };
-

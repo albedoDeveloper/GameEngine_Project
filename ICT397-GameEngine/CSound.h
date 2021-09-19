@@ -1,3 +1,9 @@
+/*****************************************************************//**
+ * \file   CSound.h
+ * \brief  Sound Component for audio sources
+ *
+ * \date   September 2021
+ *********************************************************************/
 #pragma once
 #include <SDL2/SDL_mixer.h>
 #include <iostream>
@@ -6,46 +12,60 @@
 #include <unordered_map>
 #include <memory>
 #include <vector>
-#include "Component.h"
+#include "CComponent.h"
 
-
-
-class CSound : public Component
+/** @brief Sound Component Class */
+class CSound : public CComponent
 {
 public:
-	CSound(Transform* parent, GameObject* parentObj);
+
+		/**
+		* @brief Constructor based on parent GameObject
+		* @param parent the parent transform for this component
+		* @param parentObj the parent object of this component
+		*/
+	CSound(Transform *parent, GameObject *parentObj);
+
+		/**
+		* @brief Loads sound
+		*
+		* \param soundName name of the sound
+		*/
 	void LoadSound(std::string soundName);
-	void PlaySound(std::string soundName, int length,bool positional);
 
-    /**
-    * @brief initialises component at program start
-   */
-    virtual void Start();
-    /**
-     * @brief updates ongoing behaviour each frame
-    */
-    virtual void Update();
-    /**
-     * @brief renders the component to the screen if visible
-    */
-    virtual void Render();
-    /**
-     * @brief renders the component after others have been rendered
-    */
-    virtual void LateRender();
+		/**
+		* @brief Play Sound
+		*
+		* \param soundName name of the sound
+		* \param length length to play
+		* \param positional is sound positional?
+		*/
+	void PlaySound(std::string soundName, int length, bool positional);
 
+		/**
+		* @brief updates ongoing behaviour each frame
+		*/
+	virtual void Update();
 
 private:
-    struct SoundInfo
-    {
-        std::string soundName;
-        bool isPositional = false;
-        int channel = -1;
-    };
+		/**
+		* @brief Sound variables struct
+		*/
+	struct SoundInfo
+	{
+			/** @brief name of the sound */
+		std::string soundName;
 
-    std::unordered_map<std::string, Mix_Chunk*> soundList;
-    std::vector<SoundInfo> soundinfo;
+			/** @brief is sound positional */
+		bool isPositional = false;
 
+			/** @brief sound channel */
+		int channel = -1;
+	};
 
+		/** @brief soundlist map */
+	std::unordered_map<std::string, Mix_Chunk *> soundList;
+
+		/** @brief sound information */
+	std::vector<SoundInfo> soundinfo;
 };
-

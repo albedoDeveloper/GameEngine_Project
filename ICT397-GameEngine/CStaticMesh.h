@@ -1,73 +1,73 @@
+/*****************************************************************//**
+ * \file   CStaticMesh.h
+ * \brief  Static Mesh Component
+ *
+ * \date   September 2021
+ *********************************************************************/
 #pragma once
 
-#include "Component.h"
-#include "ModernOpenGL/Model.h"
+#include "CComponent.h"
+#include "ModernOpenGL/AModel.h"
 #include <string>
 
-/**
- * @brief A static mesh containing information on a model
-*/
-class CStaticMesh : public Component 
+	/**
+	 * @brief A static mesh containing information on a model
+	*/
+class CStaticMesh : public CComponent
 {
 public:
-	/**
-	 * @brief constructor taking parent data
-	 * @param parent The parent transform for this component's transform
-	 * @param parentObj The object to which this component belongs
-	*/
-	CStaticMesh(Transform* parent, GameObject* parentObj);
+		/**
+		* @brief constructor taking parent data
+		* @param parent The parent transform for this component's transform
+		* @param parentObj The object to which this component belongs
+		*/
+	CStaticMesh(Transform *parent, GameObject *parentObj);
 
-	/**
-	 * @brief constructor taking parent as argument
-	 * @param parent pointer to parent transform for this component's transform
-	 * @param parentObj pointer to parent object of this component
-	*/
-	Model* GetModel();
+		/**
+		* @brief constructor taking parent as argument
+		* @param parent pointer to parent transform for this component's transform
+		* @param parentObj pointer to parent object of this component
+		*/
+	AModel &GetModel();
 
-	/**
-	 * @brief model mutator taking factory key
-	 * @param modelKey the asset factory key of the model to assign
-	*/
-	Model* AssignModelByKey(std::string modelKey);
+		/**
+		* @brief model mutator taking factory key
+		* @param modelKey the asset factory key of the model to assign
+		*/
+	AModel &AssignModelByKey(std::string modelKey);
 
-	/**
-	 * @brief initialises the mesh at program start
-	*/
-	virtual void Start();
-	/**
-	 * @brief updates ongoing behaviour for the mesh each frame
-	*/
-	virtual void Update();
-	/**
-	 * @brief displays the mesh's model on the screen
-	*/
+		/**
+		* @brief assigns shader
+		*
+		* \param shader Shader name
+		*/
+	void AssignShader(std::string shader);
+
+		/**
+		* @brief displays the mesh's model on the screen
+		*/
 	virtual void Render();
 
-	/**
-	 * @brief render called after the first render
-	*/
-	virtual void LateRender();
+		/**
+		* @brief save the component
+		* \param j json to save to
+		*/
+	virtual void Save(nlohmann::json &j);
 
-	/**
-	 * @brief saves the component
-	*/
-	virtual void Save(nlohmann::json& j);
+		/**
+		* @brief loads the component from saved state
+		* \param j json to save to
+		*/
+	virtual void Load(nlohmann::json &j);
 
-	/**
-	 * @brief loads the component from saved state
-	*/
-	virtual void Load(nlohmann::json& j);
-
-	/**
-	 * @brief Draws to imgui
-	*/
+		/**
+		* @brief Draws to imgui
+		*/
 	virtual void DrawToImGui();
 
-	/**
- * @brief the model this mesh is storing
-*/
-	Model* m_model;
+		/** @brief the model this mesh is storing */
+	AModel *m_model;
 
-protected:
-
+		/** @brief pointer to the shader */
+	Shader *m_shader;
 };

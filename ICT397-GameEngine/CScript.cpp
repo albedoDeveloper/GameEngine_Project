@@ -5,8 +5,8 @@
 
 using namespace luabridge;
 
-CScript::CScript(Transform* parent, GameObject* parentObj)
-	:Component{ parent, parentObj }, m_script{ nullptr }
+CScript::CScript(Transform *parent, GameObject *parentObj)
+	:CComponent{ parent, parentObj }, m_script{ nullptr }
 {
 	m_L = SCRIPT->NewState();
 }
@@ -19,56 +19,46 @@ void CScript::Start()
 
 void CScript::Update()
 {
-	// TODO real delta time
-	float fakeDeltaTime = 0.5f;
 	double deltaTime = TIME->GetDeltaTime();
 
 	LuaRef update = getGlobal(m_L, "Update");
 	update(m_parent, deltaTime, INPUT);
 }
 
-void CScript::Render()
+void CScript::Save(nlohmann::json &j)
 {
-}
-
-void CScript::LateRender()
-{
-}
-
-void CScript::Save(nlohmann::json& j)
-{
-	GameObject* g = GetParentObject();
-	j[g->getFactoryKey()]["Components"]["ScriptComponent"]["Script"] = m_script->key;
+	GameObject *g = GetParentObject();
+	j[g->getFactoryKey()]["Components"]["ScriptComponent"]["Script"] = m_script->Key();
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }
 
-void CScript::Load(nlohmann::json& j)
+void CScript::Load(nlohmann::json &j)
 {
-	GameObject* g = GetParentObject();
+	GameObject *g = GetParentObject();
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
 
 void CScript::DrawToImGui()
 {
 	//ImGui::Text("staticMesh TREE");
-	if (ImGui::TreeNode("Script Component"))
+	if (ImGui::TreeNode("Script CComponent"))
 	{
-		ImGui::Text("Script Info : "); ImGui::SameLine(); ImGui::Text(m_script->key.c_str());
+		ImGui::Text("Script Info : "); ImGui::SameLine(); ImGui::Text(m_script->Key().c_str());
 		ImGui::TreePop();
 
 	}
 }
 
-void CScript::AssignScript(AScript* script)
+void CScript::AssignScript(AScript &script)
 {
-	m_script = script;
-	luaL_dostring(m_L, script->Script.c_str());
+	m_script = &script;
+	luaL_dostring(m_L, script.Source().c_str());
 }
 
 void CScript::AssignScriptByKey(std::string assetKey)
 {
 	AssignScript(
-		static_cast<AScript*>(ASSET->GetAsset(assetKey))
+		*(ASSET->GetScriptAsset(assetKey))
 	);
-} 
+}

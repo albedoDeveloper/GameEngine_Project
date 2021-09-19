@@ -1,38 +1,77 @@
+/*****************************************************************//**
+ * \file   LevelEditor.h
+ * \brief  Displays Ediotr Gui, Allows Player to Edit Gameobject variables
+ *
+ * \date   17 September 2021
+ *********************************************************************/
+
 #pragma once
-#include "imgui/imgui_impl_sdl.h"
-#include "imgui/imgui_impl_opengl3.h"
+#include "./ThirdParty/imgui/imgui_impl_sdl.h"
+#include "./ThirdParty/imgui/imgui_impl_opengl3.h"
 #include "GameObject.h"
 #include <SDL2/SDL.h>
 #include <string> 
 
-
 class LevelEditor
 {
-	private:
+public:
 
-	public:
 		/**
 		* @brief default constructor
 		*/
-		LevelEditor();
+	LevelEditor();
 
-		void DrawEditor();
+		/**
+		 * @brief Draws the editor to screen
+		 *
+		 */
+	void DrawEditor();
 
-		void ObjectList();
+		/**
+		 * @brief fills in the object list
+		 *
+		 */
+	void ObjectList();
 
-		void ObjectHeader(GameObject* g);
+		/**
+		 * @brief Creates the objects header using the current gameobject in the iterator
+		 *
+		 * \param g pointer to the current gameobject in the iterator
+		 */
+	void ObjectHeader(GameObject *g);
 
-		void TransformHeader(GameObject* g);
+		/**
+		 * @brief displays the gameobjects transform editor
+		 *
+		 * \param g pointer to the current gameobject in the iterator
+		 */
+	void TransformHeader(GameObject *g);
 
-		void PositionManipulators(GameObject* g);
+		/**
+		 * @brief displays the position fields in the transform editor
+		 *
+		 * \param g pointer to the current gameobject in the iterator
+		 */
+	void PositionManipulators(GameObject *g);
 
-		void RotationManipulators(GameObject* g);
+		/**
+		 * @brief displays the (Euler) rotation fields in the transform editor
+		 *
+		 * \param g pointer to the current gameobject in the iterator
+		 */
+	void RotationManipulators(GameObject *g);
 
-		void ScaleManipulators(GameObject* g);
+		/**
+		 * @brief displays the scale fields in the transform editor
+		 *
+		 * \param g pointer to the current gameobject in the iterator
+		 */
+	void ScaleManipulators(GameObject *g);
 
-		void ComponentTree(GameObject* g);
-
-
-
+		/**
+		 * @brief displays the components of the gameobject
+		 *
+		 * \param g pointer to the current gameobject in the iterator
+		 */
+	void ComponentTree(GameObject *g);
 };
-

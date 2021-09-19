@@ -1,0 +1,24 @@
+<map id="GraphicsEngine::renderObjects" name="GraphicsEngine::renderObjects">
+<area shape="rect" id="node1" title="Renders all visible objects." alt="" coords="5,132,208,159"/>
+<area shape="rect" id="node2" href="$class_sky_box.html#acdb120b43fa970aaecb43c460e688f51" title=" " alt="" coords="282,56,431,83"/>
+<area shape="rect" id="node6" href="$class_graphics_engine.html#aff1f2550db7cf60367164cce5b289eec" title="Accessor for the projection matrix." alt="" coords="256,132,457,159"/>
+<area shape="rect" id="node9" href="$class_graphics_engine.html#abb8d1a007f93f4fd57ec2fc981fbf06a" title="returns the current camera view position/direction" alt="" coords="271,309,442,336"/>
+<area shape="rect" id="node3" href="$class_shader.html#af3c9771992ec0ec23433713bebb4ee79" title="Sets a global matrix 4x4 uniform in the shader" alt="" coords="523,5,687,32"/>
+<area shape="rect" id="node5" href="$class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1" title="Sets this shader object to the current opengl shader instance" alt="" coords="558,56,653,83"/>
+<area shape="rect" id="node4" href="$class_matrix4f.html#a2e3678454ddd2063fff3f21dfac85a45" title=" " alt="" coords="765,5,892,32"/>
+<area shape="rect" id="node7" href="$class_c_camera.html#a0e2ace71b0702c64078e5cf997026247" title="camera accessor" alt="" coords="530,107,681,133"/>
+<area shape="rect" id="node8" href="$_misc_math_8cpp.html#adab621185cf6bcd31d66155a90eb1f0e" title=" " alt="" coords="561,157,650,184"/>
+<area shape="rect" id="node10" href="$class_transform.html#acdae6b71a7ab33739288c07e5876bc40" title="Retrieves the forward direction of this vector relative to parent transform." alt="" coords="506,208,705,235"/>
+<area shape="rect" id="node11" href="$class_transform.html#a07df84a85998644477081fc31d53e546" title="position accessor" alt="" coords="505,259,705,285"/>
+<area shape="rect" id="node12" href="$class_transform.html#a6b845db08255a6fa05d94bfeefc7ef9f" title="Retrieves the up direction of this vector relative to parent transform." alt="" coords="521,309,690,336"/>
+<area shape="rect" id="node13" href="$class_c_component.html#a3796546e2460ee6457af80534ddff0d5" title="transform accessor" alt="" coords="514,360,697,387"/>
+<area shape="rect" id="node14" href="$class_transform.html#ac84077749121c7c7192d3ffa47db49c9" title="Gets this transform&#39;s absolute value in world space based on all its parents." alt="" coords="506,411,705,437"/>
+<area shape="rect" id="node22" href="$_misc_math_8cpp.html#a84fdff132c6f3a334dbb0146e255b072" title=" " alt="" coords="574,461,637,488"/>
+<area shape="rect" id="node15" href="$class_quaternion.html#aa5333ab28dbe4d5ae15ab5dbc36b90ca" title=" " alt="" coords="753,487,904,513"/>
+<area shape="rect" id="node16" href="$_misc_math_8cpp.html#a5333ad52717a28c5234329908023c296" title=" " alt="" coords="783,335,874,361"/>
+<area shape="rect" id="node17" href="$class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229" title=" " alt="" coords="774,436,883,463"/>
+<area shape="rect" id="node21" href="$class_matrix4f.html#a7e95514a69d7d61a622eb2395aa2208a" title=" " alt="" coords="764,385,893,412"/>
+<area shape="rect" id="node18" href="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="953,360,1059,387"/>
+<area shape="rect" id="node19" href="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="952,411,1060,437"/>
+<area shape="rect" id="node20" href="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="953,461,1059,488"/>
+</map>

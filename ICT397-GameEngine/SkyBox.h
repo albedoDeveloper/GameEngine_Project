@@ -1,60 +1,88 @@
+/*****************************************************************//**
+ * \file   SkyBox.h
+ * \author ProcrastoWare
+ * \date   September 2021
+ *********************************************************************/
+
 #pragma once
-#include "ModernOpenGL/Model.h"
+
+#include "ModernOpenGL/AModel.h"
 #include "ModernOpenGL/Shader.h"
 
+	/**
+	 * skybox class.
+	 */
 class SkyBox
 {
+public:
+		/**
+		 * creates skybox graphics related stuff.
+		 *
+		 * \param skyBoxFaces
+		 */
+	void CreateSkybox(std::vector<std::string> textures);
 
-	public:
-		void CreateSkybox(std::vector<std::string> skyBoxFaces);
-		void DrawSkybox(const glm::mat4& persepective, const glm::mat4& view);
-		void CreateVAOandVBO();
+		/**
+		 * draw skybox.
+		 *
+		 * \param persepective
+		 * \param view
+		 */
+	void DrawSkybox(Matrix4f projection, Matrix4f view);
 
-	private:
-		unsigned texID, VAO, VBO;
-		Shader* skyBoxShader = nullptr;
-        std::vector<float> skyboxVertices = {         
-            -1000.0f,  1000.0f, -1000.0f,
-            -1000.0f, -1000.0f, -1000.0f,
-             1000.0f, -1000.0f, -1000.0f,
-             1000.0f, -1000.0f, -1000.0f,
-             1000.0f,  1000.0f, -1000.0f,
-            -1000.0f,  1000.0f, -1000.0f,
+private:
+	unsigned m_texID, m_VAO, m_VBO;
 
-            -1000.0f, -1000.0f,  1000.0f,
-            -1000.0f, -1000.0f, -1000.0f,
-            -1000.0f,  1000.0f, -1000.0f,
-            -1000.0f,  1000.0f, -1000.0f,
-            -1000.0f,  1000.0f,  1000.0f,
-            -1000.0f, -1000.0f,  1000.0f,
+		/** shader program to use for rendering */
+	Shader *skyBoxShader = nullptr;
 
-             1000.0f, -1000.0f, -1000.0f,
-             1000.0f, -1000.0f,  1000.0f,
-             1000.0f,  1000.0f,  1000.0f,
-             1000.0f,  1000.0f,  1000.0f,
-             1000.0f,  1000.0f, -1000.0f,
-             1000.0f, -1000.0f, -1000.0f,
+		/**
+		 * graphics specific setup. TODO move this to graphics engine
+		 */
+	void CreateVAOandVBO();
 
-            -1000.0f, -1000.0f,  1000.0f,
-            -1000.0f,  1000.0f,  1000.0f,
-             1000.0f,  1000.0f,  1000.0f,
-             1000.0f,  1000.0f,  1000.0f,
-             1000.0f, -1000.0f,  1000.0f,
-            -1000.0f, -1000.0f,  1000.0f,
+		/** skybox verts */
+	std::vector<float> skyboxVertices = {
+		-1000.0f,  1000.0f, -1000.0f,
+		-1000.0f, -1000.0f, -1000.0f,
+		1000.0f, -1000.0f, -1000.0f,
+		1000.0f, -1000.0f, -1000.0f,
+		1000.0f,  1000.0f, -1000.0f,
+		-1000.0f,  1000.0f, -1000.0f,
 
-            -1000.0f,  1000.0f, -1000.0f,
-             1000.0f,  1000.0f, -1000.0f,
-             1000.0f,  1000.0f,  1000.0f,
-             1000.0f,  1000.0f,  1000.0f,
-            -1000.0f,  1000.0f,  1000.0f,
-            -1000.0f,  1000.0f, -1000.0f,
+		-1000.0f, -1000.0f,  1000.0f,
+		-1000.0f, -1000.0f, -1000.0f,
+		-1000.0f,  1000.0f, -1000.0f,
+		-1000.0f,  1000.0f, -1000.0f,
+		-1000.0f,  1000.0f,  1000.0f,
+		-1000.0f, -1000.0f,  1000.0f,
 
-            -1000.0f, -1000.0f, -1000.0f,
-            -1000.0f, -1000.0f,  1000.0f,
-             1000.0f, -1000.0f, -1000.0f,
-             1000.0f, -1000.0f, -1000.0f,
-            -1000.0f, -1000.0f,  1000.0f,
-             1000.0f, -1000.0f,  1000.0f
-        };
+		1000.0f, -1000.0f, -1000.0f,
+		1000.0f, -1000.0f,  1000.0f,
+		1000.0f,  1000.0f,  1000.0f,
+		1000.0f,  1000.0f,  1000.0f,
+		1000.0f,  1000.0f, -1000.0f,
+		1000.0f, -1000.0f, -1000.0f,
+
+		-1000.0f, -1000.0f,  1000.0f,
+		-1000.0f,  1000.0f,  1000.0f,
+		1000.0f,  1000.0f,  1000.0f,
+		1000.0f,  1000.0f,  1000.0f,
+		1000.0f, -1000.0f,  1000.0f,
+		-1000.0f, -1000.0f,  1000.0f,
+
+		-1000.0f,  1000.0f, -1000.0f,
+		1000.0f,  1000.0f, -1000.0f,
+		1000.0f,  1000.0f,  1000.0f,
+		1000.0f,  1000.0f,  1000.0f,
+		-1000.0f,  1000.0f,  1000.0f,
+		-1000.0f,  1000.0f, -1000.0f,
+
+		-1000.0f, -1000.0f, -1000.0f,
+		-1000.0f, -1000.0f,  1000.0f,
+		1000.0f, -1000.0f, -1000.0f,
+		1000.0f, -1000.0f, -1000.0f,
+		-1000.0f, -1000.0f,  1000.0f,
+		1000.0f, -1000.0f,  1000.0f
+	};
 };
-

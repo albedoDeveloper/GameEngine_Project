@@ -1,0 +1,6 @@
+<map id="CCollider::UpdateCollider" name="CCollider::UpdateCollider">
+<area shape="rect" id="node1" title="Updates the colliders with any transformations changes based on the colliders model." alt="" coords="189,56,356,83"/>
+<area shape="rect" id="node2" href="$class_c_collider.html#ab8fd6544bb2eb98523b7f27e60ac9e03" title="initialises the component at start of program" alt="" coords="18,5,129,32"/>
+<area shape="rect" id="node3" href="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="5,56,141,83"/>
+<area shape="rect" id="node4" href="$class_c_collider.html#a858c10f0e9fb3a6e73bd00fcfcdb99f1" title="updates ongoing behaviour each frame" alt="" coords="12,107,135,133"/>
+</map>

@@ -1,57 +1,113 @@
+/*****************************************************************//**
+ * \file   Mesh.h
+ *
+ * \date   September 2021
+ *********************************************************************/
+
 #pragma once
 
 #include "Shader.h"
-
 #include <string>
 #include <vector> 
+#include "../Vector3f.h"
+#include "../Vector2f.h"
+
+	/// <summary>
+	///  Vertex struct for the mesh, containing information about the vertex point, such as its position, normal and texture coordinates
+	/// </summary>
+struct Vertex
+{
+		/// <summary>
+		/// The vertexs positon in the space
+		/// </summary>
+	Vector3f Position;
+
+		/// <summary>
+		/// The vertexs normal
+		/// </summary>
+	Vector3f Normal;
+
+		/// <summary>
+		/// The vertexs texture coordinates
+		/// </summary>
+	Vector2f TexCoords;
 
 
+		/// <summary>
+		/// The vertexs tangent coordinates
+		/// </summary>
+	Vector3f Tangent;
 
-struct Vertex {
-    glm::vec3 Position;
-    glm::vec3 Normal;
-    glm::vec2 TexCoords;
-    glm::vec3 Tangent;
-    glm::vec3 Bitangent;
+
+		/// <summary>
+		/// The vertexs bitangent coordinates
+		/// </summary>
+	Vector3f Bitangent;
 };
 
-struct Texture {
-    unsigned int id;
-    std::string type;
-    std::string path;  // we store the path of the texture to compare with other textures
+	/// <summary>
+	/// Texture point information, such as the the textures ID, its path and its type
+	/// </summary>
+struct Texture
+{
+		/// <summary>
+		/// The id of the texture
+		/// </summary>
+	unsigned int id;
+
+		/// <summary>
+		///  Describes the type of the texture
+		/// </summary>
+	std::string type;
+
+		/// <summary>
+		///  The textures filepath
+		/// </summary>
+	std::string path;
 };
+
 class Mesh
 {
+public:
 
-    public:
-        // mesh data
-        std::vector<Vertex>       vertices;
-        std::vector<unsigned int> indices;
-        std::vector<Texture>      textures;
+		/// <summary>
+		/// All the vertices that mesh has
+		/// </summary>
+	std::vector<Vertex>  vertices;
 
-        Mesh(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices, const std::vector<Texture>& textures)
-        {
-            this->vertices = vertices;
-            this->indices = indices;
-            this->textures = textures;
+		/// <summary>
+		/// All the indices the mesh has (to determine the order of line drawing between vertices)
+		/// </summary>
+	std::vector<unsigned int> indices;
 
-            SetupMesh();
-        };
-    
-        Mesh(const std::vector<Vertex>& vertices)
-        {
+		/// <summary>
+		/// Every points texture ID
+		/// </summary>
+	std::vector<Texture> textures;
 
+		/// <summary>
+		/// Creates a new mesh for the model
+		/// </summary>
+		/// <param name="vertices"></param>
+		/// <param name="indices"></param>
+		/// <param name="textures"></param>
+	Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> &indices, const std::vector<Texture> &textures);
 
-        }
+		/// <summary>
+		/// Draw the mesh based upon the given shaders parameters
+		/// </summary>
+		/// <param name="shader"></param>
+		/// <param name="text"></param>
+	void Draw(const Shader *shader, int text) const;
 
-        void Draw(Shader& shader, int text);
-    
-    private:
-    
-    //  render data
-        unsigned int VAO, VBO, EBO;
+private:
+		/// <summary>
+		/// The VAO, VBO, EBO for modern opengl rendering
+		/// </summary>
+	unsigned int VAO, VBO, EBO;
 
-        void SetupMesh();
-
-        void SetupMeshVertexOnly();
+		/// <summary>
+		/// Adds the Mesh data from the Model - Mesh creation
+		/// </summary>
+	void SetupMesh();
 };

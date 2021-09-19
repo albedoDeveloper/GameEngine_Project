@@ -1,0 +1,5 @@
+<map id="Vertex" name="Vertex">
+<area shape="rect" id="node1" title="Vertex struct for the mesh, containing information about the vertex point, such as its position,..." alt="" coords="91,336,151,413"/>
+<area shape="rect" id="node2" href="$class_vector3f.html" title="Stores information about a vector or point in three dimensions as floats." alt="" coords="5,5,112,229"/>
+<area shape="rect" id="node3" href="$class_vector2f.html" title="A point or vector in 2d space, stored with float data." alt="" coords="137,20,234,215"/>
+</map>

@@ -6,47 +6,27 @@ GameObject::GameObject()
 {
 }
 
-CStaticMesh* GameObject::AddCStaticMesh()
+CStaticMesh *GameObject::AddCStaticMesh()
 {
 	return AddComponent<CStaticMesh>();
 }
 
-CScript* GameObject::AddCScript()
+CScript *GameObject::AddCScript()
 {
 	return AddComponent<CScript>();
 }
 
-CStateMachineAI* GameObject::AddCStateMachineAI()
-{
-	return AddComponent<CStateMachineAI>();
-}
-
-CStateMachineAI* GameObject::GetCStateMachineAI()
-{
-	return GetComponent<CStateMachineAI>();
-}
-
-CUserInterface* GameObject::AddCUserInterface()
-{
-	return AddComponent<CUserInterface>();
-}
-
-CUserInterface* GameObject::GetCUserInterface()
-{
-	return GetComponent<CUserInterface>();
-}
-
-CStaticMesh* GameObject::GetCStaticMesh()
+CStaticMesh *GameObject::GetCStaticMesh()
 {
 	return GetComponent<CStaticMesh>();
 }
 
-CSound* GameObject::AddCSound()
+CSound *GameObject::AddCSound()
 {
 	return AddComponent<CSound>();
 }
 
-CSound* GameObject::GetCSound()
+CSound *GameObject::GetCSound()
 {
 	return GetComponent<CSound>();
 }
@@ -56,44 +36,37 @@ void GameObject::SetStatic(bool isStatic)
 	m_static = isStatic;
 }
 
-CCharacter* GameObject::AddCCharacter()
+CCharacter *GameObject::AddCCharacter()
 {
 	return AddComponent<CCharacter>();
 }
 
-CCamera* GameObject::AddCCameraComponent()
+CCamera *GameObject::AddCCameraComponent()
 {
 	return AddComponent<CCamera>();
 }
 
-CPointLight* GameObject::AddCPointLight()
+CPointLight *GameObject::AddCPointLight()
 {
 	return AddComponent<CPointLight>();
 }
 
-CPointLight* GameObject::GetCPointLight()
+CDirectionalLight *GameObject::AddCDirectionalLight()
+{
+	return AddComponent<CDirectionalLight>();
+}
+
+CPointLight *GameObject::GetCPointLight()
 {
 	return GetComponent<CPointLight>();
 }
 
-CGridComponent* GameObject::AddCGridComponent() 
+CDirectionalLight *GameObject::GetCDirectionalLight()
 {
-	return AddComponent<CGridComponent>();
+	return GetComponent<CDirectionalLight>();
 }
 
-CTerrainBruteForce* GameObject::AddCTerrainBruteForce(float xScale, float yScale, float zScale)
-{
-	CTerrainBruteForce* t = AddComponent<CTerrainBruteForce>();
-	t->GetTransform().SetScale(Vector3f(xScale, yScale, zScale));
-	return t;
-}
-
-CTerrainBruteForce* GameObject::GetCTerrainBruteForce()
-{
-	return GetComponent<CTerrainBruteForce>();
-}
-
-CCamera* GameObject::GetCCamera()
+CCamera *GameObject::GetCCamera()
 {
 	return GetComponent<CCamera>();
 }
@@ -103,44 +76,34 @@ bool GameObject::IsStatic() const
 	return m_static;
 }
 
-CCharacter* GameObject::GetCCharacter()
+CCharacter *GameObject::GetCCharacter()
 {
 	return GetComponent<CCharacter>();
 }
 
-CCollider* GameObject::GetCCollider()
+CCollider *GameObject::GetCCollider()
 {
 	return GetComponent<CCollider>();
 }
 
-Transform* GameObject::GetTransform()
+Transform *GameObject::GetTransform()
 {
 	return &m_transform;
 }
 
-GameObject* GameObject::GetClosestObject(std::string partialKey)
-{
-	return GAMEOBJECT->getClosestObject(&m_transform, partialKey);
-}
+//GameObject *GameObject::GetClosestObject(std::string partialKey)
+//{
+//	return GAMEOBJECT->GetClosestObject(&m_transform, partialKey);
+//}
 
-CCollider* GameObject::AddCCollider()
+CCollider *GameObject::AddCCollider()
 {
 	return AddComponent<CCollider>();
 }
 
-CSpotlight* GameObject::AddCSpotlight()
-{
-	return AddComponent<CSpotlight>();
-}
-
-CSpotlight* GameObject::GetCSpotlight()
-{
-	return GetComponent<CSpotlight>();
-}
-
 void GameObject::SetParentObject(std::string newParent)
 {
-	GameObject* otherObject = GAMEOBJECT->GetGameObject(newParent);
+	GameObject *otherObject = GAMEOBJECT->GetGameObject(newParent);
 	if (otherObject == nullptr)
 	{
 		std::cout << "ERROR SetParentObject(). Cannot find object by ID: " << newParent << std::endl;
@@ -149,16 +112,13 @@ void GameObject::SetParentObject(std::string newParent)
 	m_transform.SetParent(otherObject->GetTransform());
 }
 
-CWater* GameObject::AddCWaterComponent()
+std::string GameObject::getFactoryKey()
 {
-	return AddComponent<CWater>();
-}
-
-std::string GameObject::getFactoryKey() {
 	return m_factoryKey;
 }
 
-void GameObject::setFactoryKey(std::string key) {
+void GameObject::setFactoryKey(std::string key)
+{
 	this->m_factoryKey = key;
 }
 
@@ -171,36 +131,16 @@ void GameObject::SetActive(bool activeStatus)
 	}
 }
 
-void GameObject::SetDifficulty(std::string difficulty)
-{
-	m_difficulty = difficulty;
-	if (m_isActive)
-	{
-		Start();
-	}
-}
-
-std::string GameObject::GetDifficulty()
-{
-	return m_difficulty;
-}
 
 void GameObject::Start()
 {
-	m_initialActivation = m_isActive;
-	
-	m_initTransform = new Transform();
-	m_initTransform.SetPositionV(m_transform.GetPosition());
-	m_initTransform.SetRotation(m_transform.GetRotation());
-	m_initTransform.SetScale(m_transform.GetScale());
-
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->Start();
 			}
@@ -213,10 +153,10 @@ void GameObject::Update()
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->Update();
 			}
@@ -229,10 +169,10 @@ void GameObject::Render()
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (auto mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->Render();
 			}
@@ -245,10 +185,10 @@ void GameObject::LateRender()
 	if (m_isActive)
 	{
 		// iterate through all component lists
-		for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		for (auto mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 		{
 			// iterate through all components in list
-			for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
 				(*listIterator)->LateRender();
 			}
@@ -256,26 +196,24 @@ void GameObject::LateRender()
 	}
 }
 
-void GameObject::Save(nlohmann::json& j)
+void GameObject::Save(nlohmann::json &j)
 {
 	j[getFactoryKey()]["key"] = getFactoryKey();
 
 	GetTransform()->ToJson(j, getFactoryKey());
 
-	std::cout << "SAVED" << std::endl;
-
 	// iterate through all component lists
-	for (std::unordered_map<std::type_index, std::list<Component*>*>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+	for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
 	{
 		// iterate through all components in list
-		for (std::list<Component*>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+		for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 		{
 			(*listIterator)->Save(j);
 		}
 	}
 }
 
-void GameObject::Load(nlohmann::json& j)
+void GameObject::Load(nlohmann::json &j)
 {
 	std::cout << getFactoryKey() << std::endl;
 	GetTransform()->FromJson(j, getFactoryKey());
@@ -286,15 +224,15 @@ void GameObject::Load(nlohmann::json& j)
 	{
 		std::cout << "GO TEST" << it.key() << " | " << it.value() << std::endl;
 
-		
+
 
 		if (it.key() == "ScriptComponent")
 		{
-			if (GetComponent<CScript>()) 
+			if (GetComponent<CScript>())
 			{
 				GetComponent<CScript>()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
 			}
-			else 
+			else
 			{
 				AddCScript()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
 			}
@@ -304,32 +242,32 @@ void GameObject::Load(nlohmann::json& j)
 		{
 			if (GetComponent<CStaticMesh>())
 			{
-				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("Model"));
+				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
 			}
-			else 
+			else
 			{
-				AddCStaticMesh()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("Model"));
+				AddCStaticMesh()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
 			}
 		}
 
 		if (it.key() == "AABBComponent")
 		{
-			if (GetComponent<CCollider>()) 
+			if (GetComponent<CCollider>())
 			{
 				std::cout << "collider already exists" << std::endl;
 				GetComponent<CCollider>()->UpdateCollider();
 			}
 			else
 			{
-				CCollider* col = AddCCollider();
-				
+				CCollider *col = AddCCollider();
+
 				col->Load(j);
 			}
 		}
 	}
 }
 
-std::unordered_map<std::type_index, std::list<Component*>*> GameObject::GetComponentMap() 
+std::unordered_map<std::type_index, std::list<CComponent *> *> GameObject::GetComponentMap()
 {
 	return m_components;
 }

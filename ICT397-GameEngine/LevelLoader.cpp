@@ -16,7 +16,7 @@ LevelLoader::LevelLoader()
 	objectList = GAMEOBJECT->GetObjectMap();
 }
 
-void LevelLoader::JsonFilepath() 
+void LevelLoader::JsonFilepath()
 {
 
 	fs::path myPath = fs::current_path();
@@ -39,11 +39,11 @@ void LevelLoader::JsonFilepath()
 
 }
 
-void LevelLoader::ToJson(json& j, GameObject* g) 
+void LevelLoader::ToJson(json &j, GameObject *g)
 {
 
 	j[g->getFactoryKey()]["key"] = g->getFactoryKey();
-	
+
 	//this transofrm stuff can be moved to the transform componenet instead
 
 	g->GetTransform()->ToJson(j, g->getFactoryKey());
@@ -65,9 +65,9 @@ void LevelLoader::ToJson(json& j, GameObject* g)
 
 	j[g->getFactoryKey()]["Scale"] =
 	{
-		{"x",g->GetTransform()->GetScale().GetX()},
-		{"y",g->GetTransform()->GetScale().GetY()},
-		{"z",g->GetTransform()->GetScale().GetZ()},
+		{"x",g->GetTransform()->GetRelativeScale().GetX()},
+		{"y",g->GetTransform()->GetRelativeScale().GetY()},
+		{"z",g->GetTransform()->GetRelativeScale().GetZ()},
 	};*/
 
 	//here is where we should get the componenet map and save to colliders, this will require each comp to have a tojson method
@@ -75,14 +75,14 @@ void LevelLoader::ToJson(json& j, GameObject* g)
 
 }
 
-void LevelLoader::FromJson(json& j, GameObject* g) 
+void LevelLoader::FromJson(json &j, GameObject *g)
 {
 	//debug to console
 	/*std::cout << "load object" << j.at(g->getFactoryKey()).at("key") << std::endl;
 	std::cout << " X = " << j.at(g->getFactoryKey()).at("Position").at("x") << std::endl;
 	std::cout << " Y = " << j.at(g->getFactoryKey()).at("Position").at("y") << std::endl;
 	std::cout << " Z = " << j.at(g->getFactoryKey()).at("Position").at("z") << std::endl;*/
-	
+
 	//NEED HERE instantiate the object (or at least in the load statement right before calling this method )
 
 		//////ERROR HANDLING///////
@@ -120,18 +120,15 @@ void LevelLoader::FromJson(json& j, GameObject* g)
 	//	v.SetY(j.at(g->getFactoryKey()).at("Scale").at("y"));
 	//	v.SetZ(j.at(g->getFactoryKey()).at("Scale").at("z"));
 
-	//	g->GetTransform()->SetScale(v);
+	//	g->GetTransform()->SetRelativeScale(v);
 	//}
-	
-	
+
+
 	//here is where we add in the componenets from the json, each comp will need it's own fromJson method
-	
-
-
 }
 
 
-void LevelLoader::LoadLevel() 
+void LevelLoader::LoadLevel()
 {
 	//Step 1 read filestream into json object
 	std::ifstream ifs("../Assets/SaveFiles/tavern.json");
@@ -140,7 +137,7 @@ void LevelLoader::LoadLevel()
 	//std::cout << j << std::endl;
 
 	//Step 2 retrieve and populate map
-	std::map<std::string, GameObject*>::iterator it;
+	std::map<std::string, GameObject *>::iterator it;
 
 	int i = 0;
 
@@ -148,7 +145,7 @@ void LevelLoader::LoadLevel()
 
 	std::cout << "Loading level" << std::endl;
 
-	
+
 
 	//Step 3
 	//This is the more robust method
@@ -163,11 +160,6 @@ void LevelLoader::LoadLevel()
 
 		GAMEOBJECT->SpawnGameObject(j.at(it.key()).at("key"));
 
-
-		
-
-
-
 		//g->Load(j);
 	}
 
@@ -180,12 +172,9 @@ void LevelLoader::LoadLevel()
 		//FromJson(j, it->second);
 
 	}
-
-	
-
 }
 
-void LevelLoader::SaveLevel() 
+void LevelLoader::SaveLevel()
 {
 	// Step 1 make json
 	json j;
@@ -197,7 +186,7 @@ void LevelLoader::SaveLevel()
 	///Step 3 now we need to generate the JSON
 	//we need to make this universally accessible
 	std::ofstream o("../Assets/SaveFiles/tavern.json");
-	
+
 
 	//STEP 4 CHANGE
 	GAMEOBJECT->Save(j);
@@ -221,9 +210,9 @@ void LevelLoader::SaveLevel()
 	//		"	 Is at rotation z = "<< it->second->GetTransform()->GetRotation().GetZ() << "\n" <<
 	//		"	 Is at rotation w = "<< it->second->GetTransform()->GetRotation().GetW() << "\n" <<
 	//		": "
-	//		"	 has scale x=" << it->second->GetTransform()->GetScale().GetX() << "\n" <<
-	//		"	 has scale y=" << it->second->GetTransform()->GetScale().GetY() << "\n" <<
-	//		"	 has scale z=" << it->second->GetTransform()->GetScale().GetZ() << "\n" <<
+	//		"	 has scale x=" << it->second->GetTransform()->GetRelativeScale().GetX() << "\n" <<
+	//		"	 has scale y=" << it->second->GetTransform()->GetRelativeScale().GetY() << "\n" <<
+	//		"	 has scale z=" << it->second->GetTransform()->GetRelativeScale().GetZ() << "\n" <<
 	//		": " << std::endl;
 
 	//	//Step 5 write each gameobject to JSON
@@ -234,5 +223,5 @@ void LevelLoader::SaveLevel()
 
 	//Step 6 save json to file
 	o << std::setw(4) << j << std::endl;
-	
+
 }

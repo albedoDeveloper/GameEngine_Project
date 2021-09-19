@@ -1,0 +1,8 @@
+<map id="CPointLight" name="CPointLight">
+<area shape="rect" id="node1" title="Point light component class." alt="" coords="279,593,458,715"/>
+<area shape="rect" id="node2" href="$class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="209,292,363,531"/>
+<area shape="rect" id="node3" href="$class_game_object.html" title="An object as represented in the game world containing all information on the object itself and its co..." alt="" coords="5,5,191,229"/>
+<area shape="rect" id="node4" href="$class_transform.html" title="Stores data about an object or componet&#39;s location in space." alt="" coords="215,5,370,229"/>
+<area shape="rect" id="node5" href="$struct_point_light.html" title="This struct is made to be used only by this poitn light." alt="" coords="388,351,517,472"/>
+<area shape="rect" id="node6" href="$class_vector3f.html" title="Stores information about a vector or point in three dimensions as floats." alt="" coords="399,5,506,229"/>
+</map>

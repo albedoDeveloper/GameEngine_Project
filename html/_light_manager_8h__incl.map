@@ -1,0 +1,15 @@
+<map id="LightManager.h" name="LightManager.h">
+<area shape="rect" id="node1" title=" " alt="" coords="277,5,388,32"/>
+<area shape="rect" id="node2" href="$_c_point_light_8h.html" title="Point Light Component." alt="" coords="232,80,332,107"/>
+<area shape="rect" id="node13" title=" " alt="" coords="357,80,413,107"/>
+<area shape="rect" id="node3" href="$_c_component_8h.html" title="Default Component, Components derive from this." alt="" coords="228,155,336,181"/>
+<area shape="rect" id="node4" href="$_transform_8h.html" title=" " alt="" coords="295,229,386,256"/>
+<area shape="rect" id="node6" title=" " alt="" coords="158,304,289,331"/>
+<area shape="rect" id="node5" title=" " alt="" coords="313,304,368,331"/>
+<area shape="rect" id="node7" href="$_vector3f_8h.html" title=" " alt="" coords="392,304,473,331"/>
+<area shape="rect" id="node11" href="$_quaternion_8h.html" title=" " alt="" coords="541,379,637,405"/>
+<area shape="rect" id="node8" title=" " alt="" coords="5,379,124,405"/>
+<area shape="rect" id="node9" title=" " alt="" coords="149,379,325,405"/>
+<area shape="rect" id="node10" title=" " alt="" coords="349,379,516,405"/>
+<area shape="rect" id="node12" title=" " alt="" coords="499,453,678,480"/>
+</map>

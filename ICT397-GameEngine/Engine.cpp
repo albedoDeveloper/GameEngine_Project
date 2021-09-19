@@ -6,16 +6,23 @@
 #include "InputManager.h"
 #include "GameObjectFactory.h"
 #include "DeltaTime.h"
-#include "imgui/imgui_impl_sdl.h"
-#include "imgui/imgui_impl_opengl3.h"
+#include "./ThirdParty/imgui/imgui_impl_sdl.h"
+#include "./ThirdParty/imgui/imgui_impl_opengl3.h"
+#include <glm/glm/gtc/matrix_transform.hpp>
 
 Engine::Engine()
-	:m_isRunning{ true }, m_saveState{ false }, m_loadState{false}, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
-	m_debugMenu{ false }, m_editMenu{true}, m_drawColliders{ false }
+	:m_isRunning{ true }, m_saveState{ false }, m_loadState{ false }, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
+	m_debugMenu{ false }, m_editMenu{ true }, m_drawColliders{ false }
 {
 }
 
-int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeight)
+Engine *Engine::Instance()
+{
+	static Engine engine;
+	return &engine;
+}
+
+int Engine::Execute(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
 	if (OnInit(renderer, windowWidth, windowHeight) == false)
 	{
@@ -23,7 +30,6 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 	}
 
 	SDL_Event event;
-	DeltaTime delta;
 
 	while (m_isRunning)
 	{
@@ -50,11 +56,11 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 			OnEvent(&event);
 		}
 
-		OnLoop();
-		OnRender();
+		Update();
+		Render();
 	}
 
-	OnCleanup();
+	Cleanup();
 
 	return 0;
 }
@@ -62,6 +68,7 @@ int Engine::OnExecute(GraphicsLibrary renderer, int windowWidth, int windowHeigh
 void Engine::QuitGame()
 {
 	m_isRunning = false;
+	std::cout << "Hope you enjoyed your stay...\n";
 }
 
 void Engine::SaveGame()
@@ -85,41 +92,29 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	COLLISION;
-	if (!GRAPHICS->initialise(renderer, windowWidth, windowHeight)) 
+	// set up physics world
+	COLLISION->Init();
+
+	if (!GRAPHICS->Init(renderer, windowWidth, windowHeight))
 	{
 		return false;
 	}
 
-	auto gL_version = glGetString(GL_VERSION);
-
-	std::cout << gL_version << std::endl;
-
-	SCRIPT->Initialise(*this);
+	SCRIPT->Initialise();
 	SCRIPT->RunInitScript();
 
 	// temporarily creating player controller here
-	// TODO move to level loader class
-	GAMEOBJECT->SpawnGameObject("player");
-	GAMEOBJECT->GetGameObject("player")->GetTransform()->SetPosition(0, 2, 0);
-	GAMEOBJECT->GetGameObject("player")->AddCCollider()->AddBoxCollider(0.5, 1.4, 0.5, 0 ,0, 0, false, 2, false);
-	GAMEOBJECT->GetGameObject("player")->GetCCollider()->CollideWith(1);
-	GAMEOBJECT->GetGameObject("player")->AddCCharacter()->SetPlayerControlled(true);
-	GAMEOBJECT->GetGameObject("player")->AddCCameraComponent()->SetAsCurrentCamera();
+	// TODO move to init
 	GAMEOBJECT->GetGameObject("player")->AddCSound()->LoadSound("milkyway.wav");
-	GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav",-1,false);
+	GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav", -1, false);
 
 	GAMEOBJECT->Start();
-	INPUT->Initialise(this);
 	INPUT->LockCursor(true);
-
-	//levelLoader.SaveTest();
-
 
 	return true;
 }
 
-void Engine::OnEvent(SDL_Event* e)
+void Engine::OnEvent(SDL_Event *e)
 {
 	switch (e->type)
 	{
@@ -131,7 +126,7 @@ void Engine::OnEvent(SDL_Event* e)
 	INPUT->CheckKey(e);
 }
 
-void Engine::OnLoop()
+void Engine::Update()
 {
 	GAMEOBJECT->Update();
 	if (INPUT->GetKeyDown('`'))
@@ -162,13 +157,22 @@ void Engine::OnLoop()
 	}
 }
 
-void Engine::OnRender()
+void Engine::Render()
 {
-	/*GRAPHICS->newFrame(m_editMenu);
-	
-	levelEditor.DrawInspector();
+	GRAPHICS->UpdateViewPos();
 
-	GRAPHICS->endFrame(m_editMenu);*/
+	GRAPHICS->m_litShader->Use();
+	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetView());
+	GRAPHICS->m_litShader->SetFloatUniform("material.shininess", 16); // TODO move somewhere else
+
+	GRAPHICS->m_unlitShader->Use();
+	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_unlitShader->SetMat4Uniform("view", GRAPHICS->GetView());
+
+	GRAPHICS->m_debugShader->Use();
+	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
+	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetView());
 
 	GRAPHICS->newFrame(m_debugMenu);
 	GRAPHICS->renderObjects();
@@ -179,12 +183,10 @@ void Engine::OnRender()
 
 		levelEditor.DrawEditor();
 
-
 		ImGui::Begin("Debug Menu");                          // Create a window called "Hello, world!" and append into it.
 
 		ImGui::Checkbox("Draw Colliders", &m_drawColliders);      // Edit bools storing our window open/close state
 		GRAPHICS->m_drawDebug = m_drawColliders;
-
 
 		//if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
 		//	counter++;
@@ -193,8 +195,8 @@ void Engine::OnRender()
 
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
-		m_saveState = ImGui::Button("Save", ImVec2(100,30));
-		m_loadState = ImGui::Button("Load", ImVec2(100,30));
+		m_saveState = ImGui::Button("Save", ImVec2(100, 30));
+		m_loadState = ImGui::Button("Load", ImVec2(100, 30));
 
 		ImGui::End();
 	}
@@ -202,7 +204,7 @@ void Engine::OnRender()
 	GRAPHICS->endFrame(m_debugMenu);
 }
 
-void Engine::OnCleanup()
+void Engine::Cleanup()
 {
 	SCRIPT->Close();
 	GRAPHICS->Close();

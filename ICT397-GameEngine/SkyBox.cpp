@@ -1,25 +1,25 @@
 #include "SkyBox.h"
 #include <stbi_image/stb_image.h>
 
-void SkyBox::CreateSkybox(std::vector<std::string> skyBoxFaces)
+void SkyBox::CreateSkybox(std::vector<std::string> textures)
 {
-	glGenTextures(1, &texID);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, texID);
+	glGenTextures(1, &m_texID);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, m_texID);
 	int width, height, nrChannels;
-	for (unsigned int i = 0; i < skyBoxFaces.size(); i++)
+	for (unsigned int i = 0; i < textures.size(); i++)
 	{
-		unsigned char* data = stbi_load(skyBoxFaces[i].c_str(), &width, &height, &nrChannels, 0);
+		unsigned char *data = stbi_load(textures[i].c_str(), &width, &height, &nrChannels, 0);
 		if (data)
 		{
 			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
-				0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data
+						 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data
 			);
 			stbi_image_free(data);
 		}
 
 		else
 		{
-			std::cout << "Failed to load skybox texture: " << skyBoxFaces[i] << std::endl;
+			std::cout << "Failed to load skybox texture: " << textures[i] << std::endl;
 			stbi_image_free(data);
 		}
 
@@ -31,39 +31,37 @@ void SkyBox::CreateSkybox(std::vector<std::string> skyBoxFaces)
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
-	skyBoxShader = new Shader("../ICT397-GameEngine/ModernOpenGL/skyBoxVertexShader.vs", "../ICT397-GameEngine/ModernOpenGL/skyBoxColourShader.fs");
+	skyBoxShader = new Shader("./shaders/simple.vert", "./shaders/skyBox.frag");
 	CreateVAOandVBO();
 }
 
-void SkyBox::DrawSkybox(const glm::mat4& persepective, const glm::mat4& view)
+void SkyBox::DrawSkybox(Matrix4f projection, Matrix4f view)
 {
 	glDepthMask(GL_FALSE);
-	skyBoxShader->useShaderForLoop();
-	skyBoxShader->setMat4("projection", persepective);
-	skyBoxShader->setMat4("view", glm::mat4(glm::mat3(view)));
-	
-	glBindVertexArray(VAO);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, texID);
+	glEnable(GL_CULL_FACE);
+	glPolygonMode(GL_FRONT, GL_FILL);
+	skyBoxShader->Use();
+	skyBoxShader->SetMat4Uniform("projection", projection);
+	skyBoxShader->SetMat4Uniform("view", view);
+
+	glBindVertexArray(m_VAO);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, m_texID);
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glDepthMask(GL_TRUE);
-
 }
 
 void SkyBox::CreateVAOandVBO()
 {
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
+	glGenVertexArrays(1, &m_VAO);
+	glGenBuffers(1, &m_VBO);
 
-	glBindVertexArray(VAO);
+	glBindVertexArray(m_VAO);
 	// load data into vertex buffers
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
 
 	glBufferData(GL_ARRAY_BUFFER, skyboxVertices.size() * sizeof(float), &skyboxVertices.data()[0], GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3* sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
 	glBindVertexArray(0);
 }
-
-
-

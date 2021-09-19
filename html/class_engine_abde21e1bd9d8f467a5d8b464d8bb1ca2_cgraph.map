@@ -1,0 +1,4 @@
+<map id="Engine::LoadGame" name="Engine::LoadGame">
+<area shape="rect" id="node1" title="loads the game from saved state" alt="" coords="5,5,139,32"/>
+<area shape="rect" id="node2" href="$class_level_loader.html#ac733be25eccf37abb958dd8e9547599b" title="Load Current Level." alt="" coords="187,5,341,32"/>
+</map>
