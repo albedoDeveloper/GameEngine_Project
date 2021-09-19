@@ -12,6 +12,7 @@ CDirectionalLight::CDirectionalLight(Transform *parentTrans, GameObject *parentO
 	}
 	else
 	{
+		GRAPHICS->AddDirectionalLight(*this);
 		m_constructed = true;
 		GRAPHICS->m_litShader->SetFloatUniform("dirLight.ambientStrength", m_ambientStrength);
 		GRAPHICS->m_litShader->SetVec3Uniform("dirLight.colour", m_colour);

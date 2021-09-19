@@ -35,6 +35,21 @@ void SkyBox::CreateSkybox(std::vector<std::string> textures)
 	CreateVAOandVBO();
 }
 
+void SkyBox::DrawSkybox(Matrix4f projection, Matrix4f view, Shader &shader)
+{
+	glDepthMask(GL_FALSE);
+	glEnable(GL_CULL_FACE);
+	glPolygonMode(GL_FRONT, GL_FILL);
+	shader.Use();
+	shader.SetMat4Uniform("projection", projection);
+	shader.SetMat4Uniform("view", view);
+
+	glBindVertexArray(m_VAO);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, m_texID);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+	glDepthMask(GL_TRUE);
+}
+
 void SkyBox::DrawSkybox(Matrix4f projection, Matrix4f view)
 {
 	glDepthMask(GL_FALSE);

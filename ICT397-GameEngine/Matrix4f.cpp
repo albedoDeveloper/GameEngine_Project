@@ -34,7 +34,12 @@ float *Matrix4f::ValuePtr()
 	return glm::value_ptr(m_mat);
 }
 
-Matrix4f Matrix4f::operator*(Matrix4f other)
+Matrix4f Matrix4f::operator*(const Matrix4f &other)
+{
+	return m_mat * other.m_mat;
+}
+
+Matrix4f Matrix4f::operator*(const Matrix4f &other) const
 {
 	return m_mat * other.m_mat;
 }

@@ -275,25 +275,34 @@
     <None Include="..\Assets\Scripts\rotate.lua">
       <Filter>Scripts</Filter>
     </None>
-    <None Include="shaders\debug.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="shaders\lit.frag">
-      <Filter>Shaders</Filter>
-    </None>
-    <None Include="shaders\skyBox.frag">
-      <Filter>Shaders</Filter>
+    <None Include="..\codestyle_config\.editorconfig" />
+    <None Include="shaders\depthMap.vert">
+      <Filter>Shaders\VertexShaders</Filter>
     </None>
     <None Include="shaders\simple.vert">
-      <Filter>Shaders</Filter>
+      <Filter>Shaders\VertexShaders</Filter>
     </None>
     <None Include="shaders\vertexShader.vert">
-      <Filter>Shaders</Filter>
+      <Filter>Shaders\VertexShaders</Filter>
+    </None>
+    <None Include="shaders\debug.frag">
+      <Filter>Shaders\FragmentShaders</Filter>
+    </None>
+    <None Include="shaders\depth.frag">
+      <Filter>Shaders\FragmentShaders</Filter>
+    </None>
+    <None Include="shaders\empty.frag">
+      <Filter>Shaders\FragmentShaders</Filter>
+    </None>
+    <None Include="shaders\lit.frag">
+      <Filter>Shaders\FragmentShaders</Filter>
+    </None>
+    <None Include="shaders\skyBox.frag">
+      <Filter>Shaders\FragmentShaders</Filter>
     </None>
     <None Include="shaders\unlit.frag">
-      <Filter>Shaders</Filter>
+      <Filter>Shaders\FragmentShaders</Filter>
     </None>
-    <None Include="..\codestyle_config\.editorconfig" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ThirdParty">
@@ -355,6 +364,12 @@
     </Filter>
     <Filter Include="Source\Math\Source">
       <UniqueIdentifier>{980c5b3f-ba8b-4808-a504-140790bb979f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\VertexShaders">
+      <UniqueIdentifier>{86493ef3-3b47-489a-9375-5be3ccf49f0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\FragmentShaders">
+      <UniqueIdentifier>{3315cc27-64b9-4853-a75a-cd0fb1263654}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

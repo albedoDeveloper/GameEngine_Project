@@ -50,7 +50,9 @@ public:
 		 * \param other right hand side matrix
 		 * \return value of result matrix
 		 */
-	Matrix4f operator*(Matrix4f other);
+	Matrix4f operator*(const Matrix4f &other);
+
+	Matrix4f operator*(const Matrix4f &other) const;
 
 		/**
 		 * multiply this matrix by another and assign the value to this matrix

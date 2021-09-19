@@ -20,13 +20,13 @@ void LevelEditor::DrawEditor()
 void LevelEditor::ObjectList()
 {
 	//retrieval
-	std::map<std::string, GameObject *> *objectList;
+	std::map<std::string, GameObject *> *m_objects;
 
-	objectList = GAMEOBJECT->GetObjectMap();
+	m_objects = GAMEOBJECT->GetObjectMap();
 
 	//iteration
 	std::map<std::string, GameObject *>::iterator it;
-	for (it = objectList->begin(); it != objectList->end(); it++)
+	for (it = m_objects->begin(); it != m_objects->end(); it++)
 	{
 		//population
 		ObjectHeader(it->second);

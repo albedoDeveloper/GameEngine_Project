@@ -13,7 +13,7 @@ namespace fs = std::filesystem;
 
 LevelLoader::LevelLoader()
 {
-	objectList = GAMEOBJECT->GetObjectMap();
+	m_objects = GAMEOBJECT->GetObjectMap();
 }
 
 void LevelLoader::JsonFilepath()
@@ -165,7 +165,7 @@ void LevelLoader::LoadLevel()
 
 	//this iterator only works if we already have all objects in GO factory
 		//need a more robust method
-	for (it = objectList->begin(); it != objectList->end(); it++)
+	for (it = m_objects->begin(); it != m_objects->end(); it++)
 	{
 		//we read each gameobject from JSON
 		it->second->Load(j);
@@ -196,10 +196,10 @@ void LevelLoader::SaveLevel()
 
 	//int i = 0;
 
-	//for (it = objectList->begin(); it != objectList->end(); it++)
+	//for (it = m_objects->begin(); it != m_objects->end(); it++)
 	//{
 	//	//console logs, can delete later but useful for now
-	//	std::cout << "Object " << i << " Of " << objectList->size() << "\n" <<
+	//	std::cout << "Object " << i << " Of " << m_objects->size() << "\n" <<
 	//		"	 has Key " << it->second->getFactoryKey() << "\n" <<
 	//		"	 Is at position x=" << it->second->GetTransform()->GetPosition().GetX() << "\n" <<
 	//		"	 Is at position y=" << it->second->GetTransform()->GetPosition().GetY() << "\n" <<

@@ -93,7 +93,6 @@ void GraphicsEngine::NewFrame(bool debugMenu)
 void GraphicsEngine::UpdateCamViewPos() const
 {
 	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetRelativePosition();
-	GRAPHICS->m_litShader->Use();
 	GRAPHICS->m_litShader->SetVec3Uniform(
 		"viewPos",
 		Vector3f(
@@ -134,6 +133,11 @@ void GraphicsEngine::AddDirectionalLight(const CDirectionalLight &light)
 	m_shadowMapper.AssignLight(&light);
 }
 
+void GraphicsEngine::RenderObjects(Shader &shader)
+{
+	GAMEOBJECT->Render(shader);
+}
+
 void GraphicsEngine::RenderObjects()
 {
 	skybox.DrawSkybox(GetCameraProjection(), GetCameraView());
@@ -143,6 +147,11 @@ void GraphicsEngine::RenderObjects()
 	{
 		DrawDebug();
 	}
+}
+
+void GraphicsEngine::SetViewportToWindowSize() const
+{
+	glViewport(0, 0, m_windowWidth, m_windowHeight);
 }
 
 void GraphicsEngine::endFrame(bool debugMenu)
@@ -288,6 +297,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	m_litShader = new Shader("./shaders/vertexShader.vert", "./shaders/lit.frag");
 	m_unlitShader = new Shader("./shaders/vertexShader.vert", "./shaders/unlit.frag");
 	m_debugShader = new Shader("./shaders/simple.vert", "./shaders/debug.frag");
+	m_shadowMapShader = new Shader("./shaders/depthMap.vert", "./shaders/empty.frag");
 
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",
@@ -385,6 +395,16 @@ void GraphicsEngine::DrawDebug()
 
 }
 
+void GraphicsEngine::ShadowMapRender()
+{
+	m_shadowMapper.Render();
+}
+
+void GraphicsEngine::BindDepthMapTexture() const
+{
+	m_shadowMapper.BindDepthMapTexture();
+}
+
 Matrix4f GraphicsEngine::GetCameraProjection()
 {
 	return Perspective(
@@ -402,4 +422,9 @@ Matrix4f GraphicsEngine::GetCameraView()
 		m_camera->GetTransform().GetWorldTransform().GetRelativePosition() + m_camera->GetTransform().GetWorldTransform().GetRelativeForward(),
 		m_camera->GetTransform().GetWorldTransform().GetRelativeUp()
 	);
+}
+
+Matrix4f GraphicsEngine::GetShadowMapperMatrix()
+{
+	return m_shadowMapper.GetProjViewMat();
 }

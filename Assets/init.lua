@@ -93,8 +93,8 @@ GetGameObject("tavern_floor"):AddCStaticMesh():AssignModel("tavern_floor")
 GetGameObject("tavern_floor"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("tavern_floor"):GetCCollider():CollideWith(2)
 
-SpawnGameObject("roof_interior"):SetStatic(true)
-GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
+--SpawnGameObject("roof_interior"):SetStatic(true)
+--GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
 
 SpawnGameObject("pool-table"):SetStatic(true)
 GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
@@ -146,9 +146,12 @@ GetGameObject("lightAnchor"):GetTransform():SetRelativePosition(4.95499992370605
 5.275000095367432);
 GetGameObject("lightAnchor"):AddCScript():AssignScript("rotate")
 
-SpawnGameObject("sun"):SetStatic(true)
+SpawnGameObject("sun"):SetStatic(false)
+GetGameObject("sun"):GetTransform():SetRelativePosition(0,10,10)
+GetGameObject("sun"):GetTransform():RotateLocalX(45)
 GetGameObject("sun"):AddCDirectionalLight()
-GetGameObject("sun"):GetCDirectionalLight():AssignColour(0.5,0.5,0.5)
+GetGameObject("sun"):GetCDirectionalLight():AssignColour(0.7,0.7,0.7)
+GetGameObject("sun"):AddCStaticMesh():AssignModel("axis")
 
 SpawnGameObject("light1"):SetStatic(false)
 --GetGameObject("light1"):AddCPointLight()

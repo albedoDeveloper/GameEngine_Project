@@ -3,8 +3,8 @@
 Camera::Camera()
 	:
 	FOV{ 80.f },
-	NearClip{ 0.02f },
-	FarClip{ 2000 },
+	NearClip{ 0.1f },
+	FarClip{ 100 },
 	Projection{ CameraProjection::PERSPECTIVE }
 {
 }

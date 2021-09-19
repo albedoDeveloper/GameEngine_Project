@@ -35,6 +35,7 @@ class CCamera;
 	*/
 class GraphicsEngine
 {
+	friend class Mesh;
 public:
 		/**
 		 * @brief Generates pointer to instance of singleton
@@ -77,7 +78,11 @@ public:
 		/**
 		 * @brief Renders all visible objects
 		*/
+	void RenderObjects(Shader &shader);
+
 	void RenderObjects();
+
+	void SetViewportToWindowSize() const;
 
 		/**
 		 * @brief Function to be called at the end of every frame for rendering
@@ -137,6 +142,10 @@ public:
 		 */
 	void Close();
 
+	void ShadowMapRender();
+
+	void BindDepthMapTexture() const;
+
 		/**
 		 * Enables fullscreen mode
 		 */
@@ -159,6 +168,8 @@ public:
 		 */
 	Matrix4f GetCameraView();
 
+	Matrix4f GetShadowMapperMatrix();
+
 		/** @brief pointer to lit shader */
 	Shader *m_litShader;
 
@@ -167,6 +178,8 @@ public:
 
 		/** @brief pointer to debug shader */
 	Shader *m_debugShader;
+
+	Shader *m_shadowMapShader;
 
 		/** @brief draw debug colliders */
 	bool m_drawDebug = false;

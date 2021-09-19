@@ -3,16 +3,17 @@
 #include "MiscMath.h"
 
 ShadowMapper::ShadowMapper()
-	:m_depthMapFBO{}, m_depthMap{}, m_shadowWidth{ 1024 }, m_shadowHeight{ 1024 }, m_light{ nullptr }, m_initialised{ false }, m_projection{}
+	:m_depthMapFBO{}, m_depthMapTexObj{}, m_shadowWidth{ 5012 }, m_shadowHeight{ 5012 }, m_light{ nullptr }, m_initialised{ false }, m_projection{}
 {
-	m_projection = Ortho(-10.f, 10.f, 10.f, 10.f, 1.f, 7.5f);
+	m_projection = Ortho(-20.f, 20.f, -20.f, 20.f, 2.f, 30.f);
 }
 
 void ShadowMapper::Init()
 {
 	glGenFramebuffers(1, &m_depthMapFBO);
-	glGenTextures(1, &m_depthMap);
-	glBindTexture(GL_TEXTURE_2D, m_depthMap);
+	glGenTextures(1, &m_depthMapTexObj);
+	glActiveTexture(GL_TEXTURE3);
+	glBindTexture(GL_TEXTURE_2D, m_depthMapTexObj);
 	glTexImage2D(
 		GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT,
 		m_shadowWidth, m_shadowHeight, 0, GL_DEPTH_COMPONENT,
@@ -24,29 +25,20 @@ void ShadowMapper::Init()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 	glBindFramebuffer(GL_FRAMEBUFFER, m_depthMapFBO);
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_depthMap, 0);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_depthMapTexObj, 0);
 	glDrawBuffer(GL_NONE);
 	glReadBuffer(GL_NONE);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	m_initialised = true;
 }
 
 void ShadowMapper::Render()
 {
-	//// 1. first render to depth map
-	//glViewport(0, 0, m_shadowWidth, m_shadowHeight);
-	//glBindFramebuffer(GL_FRAMEBUFFER, m_depthMapFBO);
-	//glClear(GL_DEPTH_BUFFER_BIT);
-	//ConfigureShaderAndMatrices();
-	//RenderScene();
-	//glBindFramebuffer(GL_FRAMEBUFFER, 0);
-	//// 2. then render scene as normal with shadow mapping (using depth map)
-	//glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT);
-	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	//ConfigureShaderAndMatrices();
-	//glBindTexture(GL_TEXTURE_2D, depthMap);
-	//RenderScene();
+	glViewport(0, 0, m_shadowWidth, m_shadowHeight);
+	glBindFramebuffer(GL_FRAMEBUFFER, m_depthMapFBO);
+	glClear(GL_DEPTH_BUFFER_BIT);
 }
 
 void ShadowMapper::AssignLight(const CDirectionalLight *light)
@@ -57,4 +49,27 @@ void ShadowMapper::AssignLight(const CDirectionalLight *light)
 bool ShadowMapper::IsInitialised() const
 {
 	return m_initialised;
+}
+
+void ShadowMapper::BindDepthMapTexture() const
+{
+	glBindTexture(GL_TEXTURE_2D, m_depthMapTexObj);
+}
+
+Matrix4f ShadowMapper::GetProjViewMat()
+{
+	ConfigureShaderAndMatrices();
+	return m_projection * m_view;
+}
+
+void ShadowMapper::ConfigureShaderAndMatrices()
+{
+	if (m_light)
+	{
+		m_view = LookAt(
+			m_light->GetTransformConst().GetWorldTransform().GetRelativePosition(),
+			m_light->GetTransformConst().GetWorldTransform().GetRelativePosition() + m_light->GetTransformConst().GetWorldTransform().GetRelativeForward(),
+			m_light->GetTransformConst().GetWorldTransform().GetRelativeUp()
+		);
+	}
 }

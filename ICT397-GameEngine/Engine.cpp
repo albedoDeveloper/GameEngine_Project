@@ -159,11 +159,19 @@ void Engine::Update()
 
 void Engine::Render()
 {
-	GRAPHICS->UpdateCamViewPos();
+	// 1. directional light shadow map render pass
+	//glCullFace(GL_FRONT);
+	GRAPHICS->ShadowMapRender();
+	GRAPHICS->m_shadowMapShader->SetMat4Uniform("lightSpaceMatrix", GRAPHICS->GetShadowMapperMatrix());
+	GRAPHICS->RenderObjects(*GRAPHICS->m_shadowMapShader);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glCullFace(GL_BACK);
 
+	// 2. camera render pass
 	GRAPHICS->m_litShader->Use();
 	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
 	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
+	GRAPHICS->m_litShader->SetMat4Uniform("lightSpaceMatrix", GRAPHICS->GetShadowMapperMatrix());
 	GRAPHICS->m_litShader->SetFloatUniform("material.shininess", 16); // TODO move somewhere else
 
 	GRAPHICS->m_unlitShader->Use();
@@ -174,8 +182,11 @@ void Engine::Render()
 	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
 	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
 
-	GRAPHICS->NewFrame(m_debugMenu);
+	GRAPHICS->UpdateCamViewPos();
 
+	GRAPHICS->SetViewportToWindowSize();
+	GRAPHICS->NewFrame(m_debugMenu);
+	GRAPHICS->BindDepthMapTexture();
 	GRAPHICS->RenderObjects();
 
 	if (m_debugMenu) // TEST WINDOW

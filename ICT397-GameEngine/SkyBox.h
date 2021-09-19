@@ -28,6 +28,8 @@ public:
 		 * \param persepective
 		 * \param view
 		 */
+	void DrawSkybox(Matrix4f projection, Matrix4f view, Shader &shader);
+
 	void DrawSkybox(Matrix4f projection, Matrix4f view);
 
 private:
