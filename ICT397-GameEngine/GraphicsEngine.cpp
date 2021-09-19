@@ -137,6 +137,17 @@ int GraphicsEngine::AddPointLight(CPointLight *light)
 	return numpointLights;
 }
 
+void GraphicsEngine::AddDirectionalLight(const CDirectionalLight &light)
+{
+	if (!m_shadowMapper.IsInitialised())
+	{
+		std::cout << "[Error] Cannot add directional light because shadow mapper is not initialised\n";
+		return;
+	}
+
+	m_shadowMapper.AssignLight(&light);
+}
+
 void GraphicsEngine::renderObjects()
 {
 	skybox.DrawSkybox(GetProjection(), GetView());
@@ -240,7 +251,7 @@ void GraphicsEngine::Close()
 
 bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_AUDIO) < 0)
 	{
 		std::cout << "SDL could not initialize! SDL Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -300,6 +311,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 			"../Assets/skybox/front.png",
 			"../Assets/skybox/back.png"}
 	);
+
+	m_shadowMapper.Init();
 
 	return true;
 }

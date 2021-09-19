@@ -16,6 +16,7 @@
 #include "./ThirdParty/imgui/imgui.h"
 #include "SkyBox.h"
 #include "LightManager.h"
+#include "ShadowMapper.h"
 
 class CCamera;
 
@@ -70,6 +71,8 @@ public:
 		 * \return
 		 */
 	int AddPointLight(CPointLight *light);
+
+	void AddDirectionalLight(const CDirectionalLight &light);
 
 		/**
 		 * @brief Renders all visible objects
@@ -240,6 +243,8 @@ private:
 
 		/** @brief the ingame Skybox */
 	SkyBox skybox;
+
+	ShadowMapper m_shadowMapper;
 
 		/**
 		 * @brief initialises openGL

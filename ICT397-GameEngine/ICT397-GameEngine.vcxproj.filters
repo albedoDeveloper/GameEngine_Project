@@ -127,6 +127,9 @@
     <ClCompile Include="CDirectionalLight.cpp">
       <Filter>Source\ComponentClasses\Source</Filter>
     </ClCompile>
+    <ClCompile Include="ShadowMapper.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">
@@ -260,6 +263,9 @@
     </ClInclude>
     <ClInclude Include="CDirectionalLight.h">
       <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadowMapper.h">
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
