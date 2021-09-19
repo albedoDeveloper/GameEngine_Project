@@ -23,7 +23,7 @@ AModel &CStaticMesh::AssignModelByKey(std::string modelKey)
 	if (model == nullptr)
 	{
 		std::cout << "ERROR ASSIGNING MODEL BY KEY : " << modelKey << std::endl;
-		exit(-23); // find a better way to handle error codes
+		exit(-23); // TODO find a better way to handle error codes
 	}
 	m_model = model;
 	return *m_model;

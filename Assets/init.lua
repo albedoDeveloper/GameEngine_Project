@@ -146,6 +146,9 @@ GetGameObject("lightAnchor"):GetTransform():SetRelativePosition(4.95499992370605
 5.275000095367432);
 GetGameObject("lightAnchor"):AddCScript():AssignScript("rotate")
 
+--SpawnGameObject("sun"):SetStatic(true)
+--GetGameObject("sun"):AddCDirectionalLight()
+
 SpawnGameObject("light1"):SetStatic(false)
 GetGameObject("light1"):AddCPointLight()
 GetGameObject("light1"):GetCPointLight():AssignColour(0.8,0.8,0.8)

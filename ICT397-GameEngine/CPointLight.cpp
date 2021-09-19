@@ -3,21 +3,21 @@
 #include "Vector3f.h"
 
 CPointLight::CPointLight(Transform *parent, GameObject *parentObj)
-	:CComponent{ parent, parentObj },
-	LightInfo{}
+	:CComponent{ parent, parentObj }, m_litShaderIndex{}, m_attenConstant{ 1 }, m_attenLinear{ 0.09f }, m_attenQuad{ 0.032f },
+	m_colour{ 0.8f,0.8f,0.8f }, m_ambientStrength{ 0.2f }
 {
-	LightInfo.ambientStrength = 0.2f;
-	LightInfo.colour = Vector3f(0.8f, 0.8f, 0.8f);
-	LightInfo.constant = 1;
-	LightInfo.linear = 0.09f;
-	LightInfo.quadratic = 0.032f;
 	m_litShaderIndex = GRAPHICS->AddPointLight(this) - 1;
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].ambientStrength", m_ambientStrength);
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].constant", m_attenConstant);
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].linear", m_attenLinear);
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].quadtratic", m_attenQuad);
+	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(m_litShaderIndex) + "].colour", m_colour);
+	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(m_litShaderIndex) + "].position", m_transform.GetWorldTransform().GetRelativePosition());
 }
 
 void CPointLight::Update()
 {
 	Vector3f worldPos = m_transform.GetWorldTransform().GetRelativePosition();
-	GRAPHICS->m_litShader->Use();
 	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(m_litShaderIndex) + "].position", Vector3f(
 		worldPos.GetX(),
 		worldPos.GetY(),
@@ -27,10 +27,7 @@ void CPointLight::Update()
 
 void CPointLight::AssignColour(float r, float g, float b)
 {
-	LightInfo.colour.SetX(r);
-	LightInfo.colour.SetY(g);
-	LightInfo.colour.SetZ(b);
-	GRAPHICS->m_litShader->Use();
+	m_colour = Vector3f(r, g, b);
 	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(m_litShaderIndex) + "].colour", Vector3f(
 		r,
 		g,
@@ -40,7 +37,31 @@ void CPointLight::AssignColour(float r, float g, float b)
 
 void CPointLight::AssignAmbientStrength(float strength)
 {
-	LightInfo.ambientStrength = strength;
-	GRAPHICS->m_litShader->Use();
-	GRAPHICS->m_litShader->SetIntUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].ambientStrength", strength);
+	m_ambientStrength = strength;
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].ambientStrength", m_ambientStrength);
+}
+
+const Vector3f &CPointLight::GetColour() const
+{
+	return m_colour;
+}
+
+float CPointLight::GetAmbientStrength() const
+{
+	return m_ambientStrength;
+}
+
+float CPointLight::GetAttenConstant() const
+{
+	return m_attenConstant;
+}
+
+float CPointLight::GetLinearAttenutation() const
+{
+	return m_attenLinear;
+}
+
+float CPointLight::GetQuadraticAttenuation() const
+{
+	return m_attenQuad;
 }

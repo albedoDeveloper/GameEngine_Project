@@ -19,6 +19,7 @@
 #include "CSound.h"
 #include <nlohmann/json.hpp>
 #include "CPointLight.h"
+#include "CDirectionalLight.h"
 #include <iostream>
 
 	/**
@@ -83,12 +84,16 @@ public:
 		 */
 	CPointLight *AddCPointLight();
 
+	CDirectionalLight *AddCDirectionalLight();
+
 		/**
 		 * get a CpointLight component or nullptr if the object doesnt have one.
 		 *
 		 * \return point light component or nullptr
 		 */
 	CPointLight *GetCPointLight();
+
+	CDirectionalLight *GetCDirectionalLight();
 
 		/**
 		 * @brief Adds a collider component to this game object.
