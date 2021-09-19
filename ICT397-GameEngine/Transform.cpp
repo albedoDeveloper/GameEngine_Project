@@ -1,4 +1,5 @@
 #include "Transform.h"
+#include "GameObject.h"
 #include <cmath>
 #include <iostream>
 #include "DeltaTime.h"
@@ -7,18 +8,45 @@
 const double pi = 2 * acos(0.0);
 
 Transform::Transform()
-	:m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_orientation{}, m_parent{ nullptr }
+	:m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_orientation{}, m_parent{ nullptr }, m_gameObject{ nullptr }
+{
+}
+
+Transform::Transform(GameObject *gameObject)
+	: m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_orientation{}, m_parent{ nullptr }, m_gameObject{ gameObject }
 {
 }
 
 Transform::Transform(Transform *parent)
-	: m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_orientation{}, m_parent{ parent }
+	: m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_orientation{}, m_parent{ parent }, m_gameObject{ nullptr }
+{
+}
+
+Transform::Transform(Transform *parent, GameObject *gameObject)
+	: m_position{ 0,0,0 }, m_scale{ 1,1,1 }, m_orientation{}, m_parent{ parent }, m_gameObject{ gameObject }
 {
 }
 
 void Transform::SetParent(Transform *newParent)
 {
 	m_parent = newParent;
+}
+
+Transform *Transform::GetParent()
+{
+	return m_parent;
+}
+
+
+void Transform::SetGameObject(GameObject *newGameObject)
+{
+	m_gameObject = newGameObject;
+}
+
+
+GameObject *Transform::GetGameObject()
+{
+	return m_gameObject;
 }
 
 	/**

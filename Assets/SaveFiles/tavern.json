@@ -1,830 +1,833 @@
 {
-  "back_wall": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "back_wall"
-      }
+    "back_wall": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "back_wall"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "back_wall",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "bar_floor_rod": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "bar_floor_rod"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "bar_floor_rod",
+        "parent": "TEST"
     },
-    "key": "back_wall"
-  },
-  "bar_floor_rod": {
-    "Components": {
-      "StaticMeshComponent": {
-        "AModel": "bar_floor_rod"
-      }
+    "barrel1": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "barrel1"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "barrel1",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "barrel2": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "barrel2"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "barrel2",
+        "parent": "TEST"
     },
-    "key": "bar_floor_rod"
-  },
-  "barrel1": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "barrel1"
-      }
+    "beertap1": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "beertap1"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "beertap1",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "beertap2": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "beertap2"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "beertap2",
+        "parent": "TEST"
     },
-    "key": "barrel1"
-  },
-  "barrel2": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "barrel2"
-      }
+    "behind_bar_block": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "behind_bar_block"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "behind_bar_block",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "crate": {
+        "Components": {
+            "ScriptComponent": {
+                "Script": "rotate"
+            },
+            "StaticMeshComponent": {
+                "AModel": "crate"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": -7.744999885559082,
+                "y": 1.315000057220459,
+                "z": -0.4449999928474426
+            },
+            "Rotation": {
+                "w": -0.18043076992034912,
+                "x": -0.07473650574684143,
+                "y": 0.9060907959938049,
+                "z": 0.3753141760826111
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "crate",
+        "parent": "TEST"
     },
-    "key": "barrel2"
-  },
-  "beertap1": {
-    "Components": {
-      "StaticMeshComponent": {
-        "AModel": "beertap1"
-      }
+    "endscreen": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "endscreen"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -0.05000000074505806
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "endscreen",
+        "parent": "player"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "fridge1": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "fridge1"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "fridge1",
+        "parent": "TEST"
     },
-    "key": "beertap1"
-  },
-  "beertap2": {
-    "Components": {
-      "StaticMeshComponent": {
-        "AModel": "beertap2"
-      }
+    "fridge2": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "fridge2"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "fridge2",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "graffiti_block": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "graffiti_block"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "graffiti_block",
+        "parent": "TEST"
     },
-    "key": "beertap2"
-  },
-  "behind_bar_block": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "behind_bar_block"
-      }
+    "light1": {
+        "Components": {
+            "CComponent": "CComponent",
+            "StaticMeshComponent": {
+                "AModel": "axis"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": -8.354999542236328,
+                "y": 2.6700000762939453,
+                "z": 1.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "light1",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "light2": {
+        "Components": {
+            "CComponent": "CComponent",
+            "StaticMeshComponent": {
+                "AModel": "axis"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.5,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "light2",
+        "parent": "lightAnchor"
     },
-    "key": "behind_bar_block"
-  },
-  "crate": {
-    "Components": {
-      "ScriptComponent": {
-        "Script": "rotate"
-      },
-      "StaticMeshComponent": {
-        "AModel": "crate"
-      }
+    "lightAnchor": {
+        "Components": {
+            "ScriptComponent": {
+                "Script": "rotate"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 4.954999923706055,
+                "y": 1.9049999713897705,
+                "z": 5.275000095367432
+            },
+            "Rotation": {
+                "w": -0.19529569149017334,
+                "x": 0.0,
+                "y": 0.9807431101799011,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "lightAnchor",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": -7.744999885559082,
-        "y": 1.315000057220459,
-        "z": -0.4449999928474426
-      },
-      "Rotation": {
-        "w": -0.8446921706199646,
-        "x": -0.34987711906433105,
-        "y": -0.3742508292198181,
-        "z": -0.15501797199249268
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "main_bar_bench": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "main_bar_bench"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "main_bar_bench",
+        "parent": "TEST"
     },
-    "key": "crate"
-  },
-  "endscreen": {
-    "Components": {
-      "StaticMeshComponent": {
-        "AModel": "endscreen"
-      }
+    "player": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "CComponent": "CComponent"
+        },
+        "Transform": {
+            "Position": {
+                "x": 4.70619010925293,
+                "y": 2.0,
+                "z": 2.8529834747314453
+            },
+            "Rotation": {
+                "w": 0.4909037947654724,
+                "x": 0.0,
+                "y": 0.8712138533592224,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "player",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": -0.05000000074505806
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "pool-table": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "pool-table"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "pool-table",
+        "parent": "TEST"
     },
-    "key": "endscreen"
-  },
-  "fridge1": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "fridge1"
-      }
+    "roof_interior": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "roof_interior"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "roof_interior",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "south_bar_barrier": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "south_bar_barrier"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "south_bar_barrier",
+        "parent": "TEST"
     },
-    "key": "fridge1"
-  },
-  "fridge2": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "fridge2"
-      }
+    "south_bar_barrier_2": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "south_bar_barrier_2"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "south_bar_barrier_2",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "south_bar_wall": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "south_bar_wall"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "south_bar_wall",
+        "parent": "TEST"
     },
-    "key": "fridge2"
-  },
-  "fridge3": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "fridge1"
-      }
+    "spiked_door_bar": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "spiked_door_bar"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "spiked_door_bar",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 2.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "spiked_door_toilet": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "spiked_door_toilet"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "spiked_door_toilet",
+        "parent": "TEST"
     },
-    "key": "fridge3"
-  },
-  "graffiti_block": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "graffiti_block"
-      }
+    "tavern_floor": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "tavern_floor"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "tavern_floor",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "tavern_glass_door_wall": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "tavern_glass_door_wall"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "tavern_glass_door_wall",
+        "parent": "TEST"
     },
-    "key": "graffiti_block"
-  },
-  "light1": {
-    "Components": {
-      "CComponent": "CComponent",
-      "StaticMeshComponent": {
-        "AModel": "axis"
-      }
+    "tavern_glass_door_wall_long": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "tavern_glass_door_wall_long"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "tavern_glass_door_wall_long",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": -8.354999542236328,
-        "y": 2.6700000762939453,
-        "z": 1.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
+    "tavern_glass_door_wall_long_2": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "tavern_glass_door_wall_long_2"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "tavern_glass_door_wall_long_2",
+        "parent": "TEST"
     },
-    "key": "light1"
-  },
-  "light2": {
-    "Components": {
-      "CComponent": "CComponent",
-      "StaticMeshComponent": {
-        "AModel": "axis"
-      }
+    "toilet_block": {
+        "Components": {
+            "AABBComponent": "AABBComponent",
+            "StaticMeshComponent": {
+                "AModel": "toilet_block"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "toilet_block",
+        "parent": "TEST"
     },
-    "Transform": {
-      "Position": {
-        "x": 0.5,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "light2"
-  },
-  "lightAnchor": {
-    "Components": {
-      "ScriptComponent": {
-        "Script": "rotate"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 4.954999923706055,
-        "y": 1.9049999713897705,
-        "z": 5.275000095367432
-      },
-      "Rotation": {
-        "w": -0.9142772555351257,
-        "x": 0.0,
-        "y": -0.40508216619491577,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "lightAnchor"
-  },
-  "main_bar_bench": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "main_bar_bench"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "main_bar_bench"
-  },
-  "player": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "CComponent": "CComponent"
-    },
-    "Transform": {
-      "Position": {
-        "x": 7.3824615478515625,
-        "y": 2.0,
-        "z": 1.2802003622055054
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "player"
-  },
-  "pool-table": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "pool-table"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "pool-table"
-  },
-  "roof_interior": {
-    "Components": {
-      "StaticMeshComponent": {
-        "AModel": "roof_interior"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "roof_interior"
-  },
-  "south_bar_barrier": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "south_bar_barrier"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "south_bar_barrier"
-  },
-  "south_bar_barrier_2": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "south_bar_barrier_2"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "south_bar_barrier_2"
-  },
-  "south_bar_wall": {
-    "Components": {
-      "StaticMeshComponent": {
-        "AModel": "south_bar_wall"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "south_bar_wall"
-  },
-  "spiked_door_bar": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "spiked_door_bar"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "spiked_door_bar"
-  },
-  "spiked_door_toilet": {
-    "Components": {
-      "StaticMeshComponent": {
-        "AModel": "spiked_door_toilet"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "spiked_door_toilet"
-  },
-  "tavern_floor": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "tavern_floor"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "tavern_floor"
-  },
-  "tavern_glass_door_wall": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "tavern_glass_door_wall"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "tavern_glass_door_wall"
-  },
-  "tavern_glass_door_wall_long": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "tavern_glass_door_wall_long"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "tavern_glass_door_wall_long"
-  },
-  "tavern_glass_door_wall_long_2": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "tavern_glass_door_wall_long_2"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "tavern_glass_door_wall_long_2"
-  },
-  "toilet_block": {
-    "Components": {
-      "AABBComponent": "AABBComponent",
-      "StaticMeshComponent": {
-        "AModel": "toilet_block"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "toilet_block"
-  },
-  "waitress": {
-    "Components": {
-      "StaticMeshComponent": {
-        "AModel": "waitress"
-      }
-    },
-    "Transform": {
-      "Position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Rotation": {
-        "w": 1.0,
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "Scale": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-      }
-    },
-    "key": "waitress"
-  }
+    "waitress": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "waitress"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "waitress",
+        "parent": "TEST"
+    }
 }

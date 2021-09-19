@@ -6,6 +6,7 @@
 CComponent::CComponent(Transform *parentTrans, GameObject *parentObject)
 	: m_transform{ parentTrans }, m_parent{ parentObject }
 {
+	m_transform.SetGameObject(parentObject);
 }
 
 Transform &CComponent::GetTransform()

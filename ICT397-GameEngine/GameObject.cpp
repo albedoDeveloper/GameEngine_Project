@@ -2,7 +2,7 @@
 #include "GameObjectFactory.h"
 
 GameObject::GameObject()
-	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ }, m_static{ false }
+	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ this }, m_static{ false }
 {
 }
 
@@ -211,6 +211,17 @@ void GameObject::Save(nlohmann::json &j)
 			(*listIterator)->Save(j);
 		}
 	}
+
+
+	//assign parent if we have one
+	if (GetTransform()->GetParent() != nullptr)
+	{
+		j[GetFactoryKey()]["parent"] = GetTransform()->GetParent()->GetGameObject()->GetFactoryKey();
+	}
+	else
+	{
+		j[GetFactoryKey()]["parent"] = "TEST";
+	}
 }
 
 void GameObject::Load(nlohmann::json &j)
@@ -265,6 +276,15 @@ void GameObject::Load(nlohmann::json &j)
 			}
 		}
 	}
+
+
+	//Assign parent
+	if (j.at(GetFactoryKey()).at("parent") != "TEST")
+	{
+		GameObject *myParent = GAMEOBJECT->GetGameObject(j.at(GetFactoryKey()).at("parent"));
+		GetTransform()->SetParent(myParent->GetTransform());
+	}
+
 }
 
 std::unordered_map<std::type_index, std::list<CComponent *> *> GameObject::GetComponentMap()
