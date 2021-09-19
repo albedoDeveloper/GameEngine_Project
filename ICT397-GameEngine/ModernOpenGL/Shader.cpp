@@ -51,6 +51,7 @@ Shader::Shader(const char *vertexPath, const char *fragmentPath)
 		CreateShaders(vertexShader, &vShaderCode, 0);
 		CreateShaders(fragmentShader, &fShaderCode, 1);
 		ShaderLinking(vertexShader, fragmentShader);
+		SetBoolUniform("dirLightActive", false);
 	}
 
 	catch (std::ifstream::failure e)

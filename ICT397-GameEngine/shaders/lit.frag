@@ -33,8 +33,10 @@ vec3 CalcDirectionaLight(DirectionalLight light, vec3 normal, vec3 fragPos, vec3
 
 #define NR_POINT_LIGHTS 3 
 uniform PointLight pointLights[NR_POINT_LIGHTS];
+uniform int numOfPointLights;
 
 uniform DirectionalLight dirLight;
+uniform bool dirLightActive;
 
 layout(location = 0) out vec4 FragColor;
 
@@ -44,7 +46,6 @@ in vec3 FragPos;
   
 uniform Material material;
 uniform vec3 viewPos;
-uniform int numOfPointLights;
 
 void main()
 {
@@ -56,7 +57,8 @@ void main()
     for(int i = 0; i < numOfPointLights; i++)
         result += CalcPointLight(pointLights[i], norm, FragPos, viewDir); 
     
-    result += CalcDirectionaLight(dirLight, norm, FragPos, viewDir);
+    if (dirLightActive)
+        result += CalcDirectionaLight(dirLight, norm, FragPos, viewDir);
 
     FragColor = vec4(result, texture(material.texture_diffuse1, TexCoords).w);
 } 
