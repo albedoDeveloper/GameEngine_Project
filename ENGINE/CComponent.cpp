@@ -6,6 +6,7 @@
 CComponent::CComponent(Transform *parentTrans, GameObject *parentObject)
 	: m_transform{ parentTrans }, m_parent{ parentObject }
 {
+	m_transform.SetGameObject(m_parent);
 }
 
 Transform &CComponent::GetTransform()
@@ -26,7 +27,7 @@ GameObject *CComponent::GetParentObject()
 void CComponent::Save(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
-	j[g->getFactoryKey()]["Components"]["CComponent"] = "CComponent";
+	j[g->GetFactoryKey()]["Components"]["CComponent"] = "CComponent";
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }

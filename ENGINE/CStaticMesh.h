@@ -1,19 +1,34 @@
 /*****************************************************************//**
- * \file   CStaticMesh.h
- * \brief  Static Mesh Component
- *
- * \date   September 2021
- *********************************************************************/
+*\file   CStaticMesh.h
+*\brief  Static Mesh Component
+*
+*\date   September 2021
+* ********************************************************************/
 #pragma once
 
 #include "CComponent.h"
 #include "ModernOpenGL/AModel.h"
 #include <string>
 
+
+	/**
+	 * @brief Enum Declaration
+	*/
+enum ShaderSelection
+{
+	lit, unlit, debug
+};
+
+	/**
+	 * @brief To covnert Enum to string
+	*/
+static const char *enum_str[] =
+{ "lit", "unlit", "debug" };
+
 	/**
 	 * @brief A static mesh containing information on a model
 	*/
-class CStaticMesh : public CComponent
+	class CStaticMesh : public CComponent
 {
 public:
 		/**
@@ -72,4 +87,10 @@ public:
 
 		/** @brief pointer to the shader */
 	Shader *m_shader;
+
+	/** @brief shader index */
+	int m_shaderSelect = 0;
+
+	/** @brief current shader enum */
+	ShaderSelection m_selectedShader;
 };

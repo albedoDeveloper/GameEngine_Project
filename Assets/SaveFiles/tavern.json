@@ -24,7 +24,9 @@
                 "z": 1.0
             }
         },
-        "key": "back_wall"
+        "active": true,
+        "key": "back_wall",
+        "parent": "TEST"
     },
     "bar_floor_rod": {
         "Components": {
@@ -50,7 +52,9 @@
                 "z": 1.0
             }
         },
-        "key": "bar_floor_rod"
+        "active": true,
+        "key": "bar_floor_rod",
+        "parent": "TEST"
     },
     "barrel1": {
         "Components": {
@@ -77,7 +81,9 @@
                 "z": 1.0
             }
         },
-        "key": "barrel1"
+        "active": true,
+        "key": "barrel1",
+        "parent": "TEST"
     },
     "barrel2": {
         "Components": {
@@ -104,7 +110,9 @@
                 "z": 1.0
             }
         },
-        "key": "barrel2"
+        "active": true,
+        "key": "barrel2",
+        "parent": "TEST"
     },
     "beertap1": {
         "Components": {
@@ -130,7 +138,9 @@
                 "z": 1.0
             }
         },
-        "key": "beertap1"
+        "active": true,
+        "key": "beertap1",
+        "parent": "TEST"
     },
     "beertap2": {
         "Components": {
@@ -156,7 +166,9 @@
                 "z": 1.0
             }
         },
-        "key": "beertap2"
+        "active": true,
+        "key": "beertap2",
+        "parent": "TEST"
     },
     "behind_bar_block": {
         "Components": {
@@ -183,7 +195,9 @@
                 "z": 1.0
             }
         },
-        "key": "behind_bar_block"
+        "active": true,
+        "key": "behind_bar_block",
+        "parent": "TEST"
     },
     "crate": {
         "Components": {
@@ -201,10 +215,10 @@
                 "z": -0.4449999928474426
             },
             "Rotation": {
-                "w": -0.12952232360839844,
-                "x": -0.05365036427974701,
-                "y": -0.9147290587425232,
-                "z": -0.3789040744304657
+                "w": 0.7321141362190247,
+                "x": 0.30325713753700256,
+                "y": -0.563502848148346,
+                "z": -0.23341256380081177
             },
             "Scale": {
                 "x": 1.0,
@@ -212,7 +226,9 @@
                 "z": 1.0
             }
         },
-        "key": "crate"
+        "active": true,
+        "key": "crate",
+        "parent": "TEST"
     },
     "endscreen": {
         "Components": {
@@ -238,7 +254,9 @@
                 "z": 5.0
             }
         },
-        "key": "endscreen"
+        "active": false,
+        "key": "endscreen",
+        "parent": "player"
     },
     "fridge1": {
         "Components": {
@@ -265,7 +283,9 @@
                 "z": 1.0
             }
         },
-        "key": "fridge1"
+        "active": true,
+        "key": "fridge1",
+        "parent": "TEST"
     },
     "fridge2": {
         "Components": {
@@ -292,7 +312,9 @@
                 "z": 1.0
             }
         },
-        "key": "fridge2"
+        "active": true,
+        "key": "fridge2",
+        "parent": "TEST"
     },
     "graffiti_block": {
         "Components": {
@@ -319,7 +341,9 @@
                 "z": 1.0
             }
         },
-        "key": "graffiti_block"
+        "active": true,
+        "key": "graffiti_block",
+        "parent": "TEST"
     },
     "light1": {
         "Components": {
@@ -345,7 +369,9 @@
                 "z": 1.0
             }
         },
-        "key": "light1"
+        "active": true,
+        "key": "light1",
+        "parent": "TEST"
     },
     "light2": {
         "Components": {
@@ -371,7 +397,9 @@
                 "z": 1.0
             }
         },
-        "key": "light2"
+        "active": true,
+        "key": "light2",
+        "parent": "lightAnchor"
     },
     "lightAnchor": {
         "Components": {
@@ -386,9 +414,9 @@
                 "z": 5.275000095367432
             },
             "Rotation": {
-                "w": -0.1401933878660202,
+                "w": 0.9677498936653137,
                 "x": 0.0,
-                "y": -0.9900996088981628,
+                "y": 0.2518273591995239,
                 "z": 0.0
             },
             "Scale": {
@@ -397,7 +425,9 @@
                 "z": 1.0
             }
         },
-        "key": "lightAnchor"
+        "active": true,
+        "key": "lightAnchor",
+        "parent": "TEST"
     },
     "main_bar_bench": {
         "Components": {
@@ -424,7 +454,9 @@
                 "z": 1.0
             }
         },
-        "key": "main_bar_bench"
+        "active": true,
+        "key": "main_bar_bench",
+        "parent": "TEST"
     },
     "player": {
         "Components": {
@@ -433,14 +465,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 8.352985382080078,
-                "y": 1.3381983041763306,
-                "z": -0.7856888175010681
+                "x": -5.659904956817627,
+                "y": 2.0,
+                "z": -2.2204854488372803
             },
             "Rotation": {
-                "w": -0.6915162205696106,
+                "w": 0.6665331721305847,
                 "x": 0.0,
-                "y": 0.7223668098449707,
+                "y": 0.7454764246940613,
                 "z": 0.0
             },
             "Scale": {
@@ -449,7 +481,9 @@
                 "z": 1.0
             }
         },
-        "key": "player"
+        "active": true,
+        "key": "player",
+        "parent": "TEST"
     },
     "pool-table": {
         "Components": {
@@ -476,7 +510,37 @@
                 "z": 1.0
             }
         },
-        "key": "pool-table"
+        "active": true,
+        "key": "pool-table",
+        "parent": "TEST"
+    },
+    "roof_interior": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "roof_interior"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "active": true,
+        "key": "roof_interior",
+        "parent": "TEST"
     },
     "south_bar_barrier": {
         "Components": {
@@ -503,7 +567,9 @@
                 "z": 1.0
             }
         },
-        "key": "south_bar_barrier"
+        "active": true,
+        "key": "south_bar_barrier",
+        "parent": "TEST"
     },
     "south_bar_barrier_2": {
         "Components": {
@@ -530,7 +596,9 @@
                 "z": 1.0
             }
         },
-        "key": "south_bar_barrier_2"
+        "active": true,
+        "key": "south_bar_barrier_2",
+        "parent": "TEST"
     },
     "south_bar_wall": {
         "Components": {
@@ -556,7 +624,9 @@
                 "z": 1.0
             }
         },
-        "key": "south_bar_wall"
+        "active": true,
+        "key": "south_bar_wall",
+        "parent": "TEST"
     },
     "spiked_door_bar": {
         "Components": {
@@ -583,7 +653,9 @@
                 "z": 1.0
             }
         },
-        "key": "spiked_door_bar"
+        "active": true,
+        "key": "spiked_door_bar",
+        "parent": "TEST"
     },
     "spiked_door_toilet": {
         "Components": {
@@ -609,11 +681,12 @@
                 "z": 1.0
             }
         },
-        "key": "spiked_door_toilet"
+        "active": true,
+        "key": "spiked_door_toilet",
+        "parent": "TEST"
     },
     "sun": {
         "Components": {
-            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis"
             }
@@ -636,7 +709,9 @@
                 "z": 1.0
             }
         },
-        "key": "sun"
+        "active": true,
+        "key": "sun",
+        "parent": "sunanchor"
     },
     "sunanchor": {
         "Components": {
@@ -662,7 +737,9 @@
                 "z": 1.0
             }
         },
-        "key": "sunanchor"
+        "active": true,
+        "key": "sunanchor",
+        "parent": "TEST"
     },
     "tavern_floor": {
         "Components": {
@@ -689,7 +766,9 @@
                 "z": 1.0
             }
         },
-        "key": "tavern_floor"
+        "active": true,
+        "key": "tavern_floor",
+        "parent": "TEST"
     },
     "tavern_glass_door_wall": {
         "Components": {
@@ -716,7 +795,9 @@
                 "z": 1.0
             }
         },
-        "key": "tavern_glass_door_wall"
+        "active": true,
+        "key": "tavern_glass_door_wall",
+        "parent": "TEST"
     },
     "tavern_glass_door_wall_long": {
         "Components": {
@@ -743,7 +824,9 @@
                 "z": 1.0
             }
         },
-        "key": "tavern_glass_door_wall_long"
+        "active": true,
+        "key": "tavern_glass_door_wall_long",
+        "parent": "TEST"
     },
     "tavern_glass_door_wall_long_2": {
         "Components": {
@@ -770,7 +853,9 @@
                 "z": 1.0
             }
         },
-        "key": "tavern_glass_door_wall_long_2"
+        "active": true,
+        "key": "tavern_glass_door_wall_long_2",
+        "parent": "TEST"
     },
     "toilet_block": {
         "Components": {
@@ -797,7 +882,9 @@
                 "z": 1.0
             }
         },
-        "key": "toilet_block"
+        "active": true,
+        "key": "toilet_block",
+        "parent": "TEST"
     },
     "waitress": {
         "Components": {
@@ -823,6 +910,8 @@
                 "z": 1.0
             }
         },
-        "key": "waitress"
+        "active": true,
+        "key": "waitress",
+        "parent": "TEST"
     }
 }

@@ -44,7 +44,7 @@ void CCollider::Update()
 void CCollider::Save(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
-	j[g->getFactoryKey()]["Components"]["AABBComponent"] = "AABBComponent";
+	j[g->GetFactoryKey()]["Components"]["AABBComponent"] = "AABBComponent";
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }

@@ -72,7 +72,7 @@ void CStaticMesh::Render(Shader &shaderOveride)
 void CStaticMesh::Save(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
-	j[g->getFactoryKey()]["Components"]["StaticMeshComponent"]["AModel"] = m_model->Key();
+	j[g->GetFactoryKey()]["Components"]["StaticMeshComponent"]["AModel"] = m_model->Key();
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }
@@ -85,9 +85,34 @@ void CStaticMesh::Load(nlohmann::json &j)
 
 void CStaticMesh::DrawToImGui()
 {
+	const char *items[] = { enum_str[lit], enum_str[unlit], enum_str[debug] };
+	//int item_current = 0;
+
+
+
 	//ImGui::Text("staticMesh TREE");
 	if (ImGui::TreeNode("StaticMesh CComponent"))
 	{
+		//Shader select
+
+		ImGui::PushItemWidth(125); ImGui::Combo("Shader Select", &m_shaderSelect, items, IM_ARRAYSIZE(items));
+
+		switch (m_shaderSelect)
+		{
+		case 0:
+			m_shader = GRAPHICS->m_litShader;
+			m_selectedShader = ShaderSelection::lit;
+			break;
+		case 1:
+			m_shader = GRAPHICS->m_unlitShader;
+			m_selectedShader = ShaderSelection::unlit;
+			break;
+		case 2:
+			m_shader = GRAPHICS->m_debugShader;
+			m_selectedShader = ShaderSelection::debug;
+			break;
+		}
+
 		ImGui::Text("AModel Name : "); ImGui::SameLine(); ImGui::Text(m_model->Key().c_str());
 		ImGui::TreePop();
 	}
