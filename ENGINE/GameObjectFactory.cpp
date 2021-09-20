@@ -83,7 +83,7 @@ GameObject *GameObjectFactory::SpawnGameObject()
 		iterateKey(key);
 	}
 	m_objects.emplace(key, object);
-	object->setFactoryKey(key);
+	object->SetFactoryKey(key);
 
 	return object;
 }
@@ -117,7 +117,7 @@ GameObject *GameObjectFactory::SpawnGameObject(std::string key)
 		return nullptr;
 	}
 	m_objects.emplace(key, object);
-	object->setFactoryKey(key);
+	object->SetFactoryKey(key);
 
 	return object;
 }
@@ -187,4 +187,40 @@ void GameObjectFactory::Load(nlohmann::json &j)
 void GameObjectFactory::Close()
 {
 	m_objects = *new std::map<std::string, GameObject *>();
+}
+
+void GameObjectFactory::ClearCurrentLevel()
+{
+
+	//std::map<std::string, GameObject *> *gameObjects = GAMEOBJECT->GetObjectMap();
+
+	std::map<std::string, GameObject *>::iterator it;
+
+	//int i = 0;
+
+
+	for (auto it = m_objects.cbegin(); it != m_objects.cend(); it++)
+	{
+		if (it->second->GetFactoryKey() == "player")
+		{
+			std::cout << "PLAYER IS HERER" << std::endl;
+			it++;
+		}
+		else if (m_objects.find(it->first) != m_objects.cend())
+		{
+			std::cout << "delete level test: go =" << it->second->GetFactoryKey() << std::endl;
+
+			//delete it->second;
+			m_objects.erase(it++);
+		}
+		else
+		{
+			std::cout << "Player or End =" << std::endl;
+
+			it++;
+		}
+
+		std::cout << "LIST SIZE == " << m_objects.size() << std::endl;
+
+	}
 }
