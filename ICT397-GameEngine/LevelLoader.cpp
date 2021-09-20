@@ -181,7 +181,7 @@ void LevelLoader::LoadLevel()
 
 		//this iterator only works if we already have all objects in GO factory
 			//need a more robust method
-		for (it = objectList->begin(); it != objectList->end(); it++)
+		for (it = m_objects->begin(); it != m_objects->end(); it++)
 		{
 			//we read each gameobject from JSON
 			it->second->Load(j);
