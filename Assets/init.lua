@@ -170,9 +170,9 @@ GetGameObject("light1"):GetTransform():SetRelativePosition(-8.354999542236328,
 GetGameObject("light1"):AddCStaticMesh():AssignModel("axis")
 
 SpawnGameObject("light2"):SetStatic(false)
---GetGameObject("light2"):AddCPointLight()
---GetGameObject("light2"):GetCPointLight():AssignColour(0,0,1)
---GetGameObject("light2"):GetCPointLight():AssignAmbientStrength(0.1)
+GetGameObject("light2"):AddCPointLight()
+GetGameObject("light2"):GetCPointLight():AssignColour(0,0,1)
+GetGameObject("light2"):GetCPointLight():AssignAmbientStrength(0.1)
 GetGameObject("light2"):SetParentObject("lightAnchor")
 GetGameObject("light2"):AddCStaticMesh():AssignModel("axis")
 GetGameObject("light2"):GetTransform():Translate(0.5,0,0)

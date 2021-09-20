@@ -396,9 +396,14 @@ void GraphicsEngine::DrawDebug()
 
 }
 
-void GraphicsEngine::SetupShadowMapFBO()
+void GraphicsEngine::SetupDirLightFBO()
 {
-	m_shadowMapper.SetupFBO();
+	m_shadowMapper.SetupDirLightFBO();
+}
+
+void GraphicsEngine::SetupPointLightFBO()
+{
+	m_shadowMapper.SetupPointLightFBO();
 }
 
 void GraphicsEngine::BindDepthMapTexture() const

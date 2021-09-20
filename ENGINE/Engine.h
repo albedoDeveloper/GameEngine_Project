@@ -79,7 +79,7 @@ private:
 		*/
 	void Cleanup();
 
-	void ShadowMapRenderPass();
+	void DirLightShadowPass();
 
 	void CameraRenderPass();
 

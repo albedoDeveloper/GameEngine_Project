@@ -9,7 +9,8 @@ class ShadowMapper
 public:
 	ShadowMapper();
 	void Init();
-	void SetupFBO();
+	void SetupDirLightFBO();
+	void SetupPointLightFBO();
 	void AssignLight(const CDirectionalLight *light);
 	bool IsInitialised() const;
 	void BindDepthMapTexture() const;
@@ -20,6 +21,7 @@ private:
 
 	bool m_initialised;
 	unsigned int m_depthMapFBO;
+	unsigned int m_depthCubeFBO;
 	unsigned int m_depthMapTexObj;
 	unsigned int m_depthCubemap;
 	unsigned int m_dirShadowRes;

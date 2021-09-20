@@ -142,7 +142,8 @@ public:
 		 */
 	void Close();
 
-	void SetupShadowMapFBO();
+	void SetupDirLightFBO();
+	void SetupPointLightFBO();
 
 	void BindDepthMapTexture() const;
 

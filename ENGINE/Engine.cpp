@@ -161,7 +161,8 @@ void Engine::Update()
 
 void Engine::Render()
 {
-	ShadowMapRenderPass();
+	DirLightShadowPass();
+
 	CameraRenderPass();
 
 	if (m_debugMenu) // TEST WINDOW
@@ -197,9 +198,9 @@ void Engine::Cleanup()
 	GRAPHICS->Close();
 }
 
-void Engine::ShadowMapRenderPass()
+void Engine::DirLightShadowPass()
 {
-	GRAPHICS->SetupShadowMapFBO();
+	GRAPHICS->SetupDirLightFBO();
 	GRAPHICS->m_shadowMapShader->SetMat4Uniform("lightSpaceMatrix", GRAPHICS->GetShadowMapperMatrix());
 	GRAPHICS->RenderObjects(*GRAPHICS->m_shadowMapShader);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
