@@ -2,7 +2,7 @@
 #include "MiscMath.h"
 
 ShadowMapper::ShadowMapper()
-	:m_depthMapFBO{}, m_depthMapTexObj{}, m_dirShadowRes{ 16384 }, m_light{ nullptr }, m_initialised{ false },
+	:m_depthMapFBO{}, m_depthMapTexObj{}, m_dirShadowRes{ 16384 }, m_dirLight{ nullptr }, m_initialised{ false },
 	m_directionalProjection{}, m_depthCubemap{}, m_pointShadowRes{ 4096 }
 {
 	m_directionalProjection = Ortho(-20.f, 20.f, -20.f, 20.f, 2.f, 30.f);
@@ -73,9 +73,14 @@ void ShadowMapper::SetupPointLightFBO()
 	glClear(GL_DEPTH_BUFFER_BIT);
 }
 
-void ShadowMapper::AssignLight(const CDirectionalLight *light)
+void ShadowMapper::AssignDirLight(const CDirectionalLight *light)
 {
-	m_light = light;
+	m_dirLight = light;
+}
+
+void ShadowMapper::AddPointLight(CPointLight *light)
+{
+	m_pointLights.push_back(light);
 }
 
 bool ShadowMapper::IsInitialised() const
@@ -96,12 +101,12 @@ Matrix4f ShadowMapper::GetProjViewMat()
 
 void ShadowMapper::ConfigureShaderAndMatrices()
 {
-	if (m_light)
+	if (m_dirLight)
 	{
 		m_view = LookAt(
-			m_light->GetTransformConst().GetWorldTransform().GetRelativePosition(),
-			m_light->GetTransformConst().GetWorldTransform().GetRelativePosition() + m_light->GetTransformConst().GetWorldTransform().GetRelativeForward(),
-			m_light->GetTransformConst().GetWorldTransform().GetRelativeUp()
+			m_dirLight->GetTransformConst().GetWorldTransform().GetRelativePosition(),
+			m_dirLight->GetTransformConst().GetWorldTransform().GetRelativePosition() + m_dirLight->GetTransformConst().GetWorldTransform().GetRelativeForward(),
+			m_dirLight->GetTransformConst().GetWorldTransform().GetRelativeUp()
 		);
 	}
 }

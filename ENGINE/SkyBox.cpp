@@ -34,7 +34,7 @@ void SkyBox::CreateSkybox(std::vector<std::string> textures)
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
-	skyBoxShader = new Shader("./shaders/simple.vert", "./shaders/skyBox.frag");
+	skyBoxShader = new Shader("../Assets/Shaders/debug_skybox.vert", "../Assets/Shaders/skybox.frag");
 	CreateVAOandVBO();
 }
 

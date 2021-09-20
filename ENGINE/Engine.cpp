@@ -162,7 +162,7 @@ void Engine::Update()
 void Engine::Render()
 {
 	DirLightShadowPass();
-
+	//GRAPHICS->SetupPointLightFBO();
 	CameraRenderPass();
 
 	if (m_debugMenu) // TEST WINDOW
@@ -201,8 +201,8 @@ void Engine::Cleanup()
 void Engine::DirLightShadowPass()
 {
 	GRAPHICS->SetupDirLightFBO();
-	GRAPHICS->m_shadowMapShader->SetMat4Uniform("lightSpaceMatrix", GRAPHICS->GetShadowMapperMatrix());
-	GRAPHICS->RenderObjects(*GRAPHICS->m_shadowMapShader);
+	GRAPHICS->m_dirShadowMapShader->SetMat4Uniform("lightSpaceMatrix", GRAPHICS->GetShadowMapperMatrix());
+	GRAPHICS->RenderObjects(*GRAPHICS->m_dirShadowMapShader);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 

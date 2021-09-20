@@ -9,11 +9,54 @@ void Shader::Use() const
 
 Shader::Shader(const char *vertexPath, const char *fragmentPath)
 {
-	GLenum err = glewInit();
-	if (GLEW_OK != err)
+	//Variables to open the shader file
+	std::string vertexShaderCode;
+	std::string fragmentShaderCode;
+	std::ifstream vShaderFile;
+	std::ifstream fShaderFile;
+
+	vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+	fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+
+	try
 	{
-		std::cerr << "Error: " << glewGetErrorString(err) << std::endl;
+		// open files
+		vShaderFile.open(vertexPath);
+		fShaderFile.open(fragmentPath);
+		std::stringstream vShaderStream, fShaderStream;
+
+		// read file's buffer contents into streams
+		vShaderStream << vShaderFile.rdbuf();
+		fShaderStream << fShaderFile.rdbuf();
+
+		// close file handlers
+		vShaderFile.close();
+		fShaderFile.close();
+
+		// convert stream into string
+		vertexShaderCode = vShaderStream.str();
+		fragmentShaderCode = fShaderStream.str();
+
+		const char *vShaderCode = vertexShaderCode.c_str();
+		const char *fShaderCode = fragmentShaderCode.c_str();
+
+		unsigned int fragmentShader;
+		unsigned int vertexShader;
+
+		CreateShaders(vertexShader, &vShaderCode, 0);
+		CreateShaders(fragmentShader, &fShaderCode, 1);
+		ShaderLinking(vertexShader, fragmentShader);
+		SetBoolUniform("dirLightActive", false);
 	}
+
+	catch (std::ifstream::failure e)
+	{
+		std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+	}
+}
+
+Shader::Shader(const char *vertexPath, const char *geometryPath, const char *fragmentPath)
+{
 	//Variables to open the shader file
 	std::string vertexShaderCode;
 	std::string fragmentShaderCode;

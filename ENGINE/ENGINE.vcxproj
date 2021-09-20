@@ -113,16 +113,18 @@
   <ItemGroup>
     <None Include="..\Assets\init.lua" />
     <None Include="..\Assets\Scripts\rotate.lua" />
+    <None Include="..\Assets\Shaders\debug.frag" />
+    <None Include="..\Assets\Shaders\dirShadowMap.vert" />
+    <None Include="..\Assets\Shaders\lit.frag" />
+    <None Include="..\Assets\Shaders\lit_unlit.vert" />
+    <None Include="..\Assets\Shaders\pointShadowMap.frag" />
+    <None Include="..\Assets\Shaders\pointShadowMap.geom" />
+    <None Include="..\Assets\Shaders\pointShadowMap.vert" />
+    <None Include="..\Assets\Shaders\shadowMap.frag" />
+    <None Include="..\Assets\Shaders\skybox.frag" />
+    <None Include="..\Assets\Shaders\debug_skybox.vert" />
+    <None Include="..\Assets\Shaders\unlit.frag" />
     <None Include="..\codestyle_config\.editorconfig" />
-    <None Include="shaders\debug.frag" />
-    <None Include="shaders\depth.frag" />
-    <None Include="shaders\depthMap.vert" />
-    <None Include="shaders\empty.frag" />
-    <None Include="shaders\lit.frag" />
-    <None Include="shaders\skyBox.frag" />
-    <None Include="shaders\simple.vert" />
-    <None Include="shaders\unlit.frag" />
-    <None Include="shaders\vertexShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ENGINE.rc" />

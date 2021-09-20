@@ -24,17 +24,19 @@
 class Shader
 {
 public:
-		/// <summary>
-		/// Sets this shader object to the current opengl shader instance
-		/// </summary>
-	virtual void Use() const;
-
 		/// /// <summary>
 		/// Creates the shader and sets the vertex shader file and the fragment shader file to it, based upon the user
 		/// </summary>
 		/// <param name="vertexPath"></param>
 		/// <param name="fragmentPath"></param>
 	Shader(const char *vertexPath, const char *fragmentPath);
+
+	Shader(const char *vertexPath, const char *geometryPath, const char *fragmentPath);
+
+		/// <summary>
+		/// Sets this shader object to the current opengl shader instance
+		/// </summary>
+	virtual void Use() const;
 
 		/// <summary>
 		/// Sets a global bool uniform in the shader

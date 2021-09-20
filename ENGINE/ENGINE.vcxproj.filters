@@ -276,31 +276,37 @@
       <Filter>Scripts</Filter>
     </None>
     <None Include="..\codestyle_config\.editorconfig" />
-    <None Include="shaders\depthMap.vert">
+    <None Include="..\Assets\Shaders\debug.frag">
+      <Filter>Shaders\FragmentShaders</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\lit.frag">
+      <Filter>Shaders\FragmentShaders</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\shadowMap.frag">
+      <Filter>Shaders\FragmentShaders</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\skybox.frag">
+      <Filter>Shaders\FragmentShaders</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\unlit.frag">
+      <Filter>Shaders\FragmentShaders</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\pointShadowMap.geom">
+      <Filter>Shaders\GeometryShaders</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\dirShadowMap.vert">
       <Filter>Shaders\VertexShaders</Filter>
     </None>
-    <None Include="shaders\simple.vert">
+    <None Include="..\Assets\Shaders\lit_unlit.vert">
       <Filter>Shaders\VertexShaders</Filter>
     </None>
-    <None Include="shaders\vertexShader.vert">
+    <None Include="..\Assets\Shaders\debug_skybox.vert">
       <Filter>Shaders\VertexShaders</Filter>
     </None>
-    <None Include="shaders\debug.frag">
-      <Filter>Shaders\FragmentShaders</Filter>
+    <None Include="..\Assets\Shaders\pointShadowMap.vert">
+      <Filter>Shaders\VertexShaders</Filter>
     </None>
-    <None Include="shaders\depth.frag">
-      <Filter>Shaders\FragmentShaders</Filter>
-    </None>
-    <None Include="shaders\empty.frag">
-      <Filter>Shaders\FragmentShaders</Filter>
-    </None>
-    <None Include="shaders\lit.frag">
-      <Filter>Shaders\FragmentShaders</Filter>
-    </None>
-    <None Include="shaders\skyBox.frag">
-      <Filter>Shaders\FragmentShaders</Filter>
-    </None>
-    <None Include="shaders\unlit.frag">
+    <None Include="..\Assets\Shaders\pointShadowMap.frag">
       <Filter>Shaders\FragmentShaders</Filter>
     </None>
   </ItemGroup>
@@ -370,6 +376,9 @@
     </Filter>
     <Filter Include="Shaders\FragmentShaders">
       <UniqueIdentifier>{3315cc27-64b9-4853-a75a-cd0fb1263654}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\GeometryShaders">
+      <UniqueIdentifier>{ef6fdec5-2196-472a-937e-a15d4a086c87}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

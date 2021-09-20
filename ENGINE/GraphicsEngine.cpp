@@ -106,6 +106,7 @@ void GraphicsEngine::UpdateCamViewPos() const
 int GraphicsEngine::AddPointLight(CPointLight *light)
 {
 	int numpointLights = m_lightManager.AddPointLight(light);
+	m_shadowMapper.AddPointLight(light);
 
 	m_litShader->Use();
 	m_litShader->SetIntUniform("numOfPointLights", numpointLights);
@@ -130,7 +131,18 @@ void GraphicsEngine::AddDirectionalLight(const CDirectionalLight &light)
 		return;
 	}
 
-	m_shadowMapper.AssignLight(&light);
+	m_shadowMapper.AssignDirLight(&light);
+}
+
+void GraphicsEngine::AddPointLight(CPointLight &light)
+{
+	if (!m_shadowMapper.IsInitialised())
+	{
+		std::cout << "[Error] Cannot add point light because shadow mapper is not initialised\n";
+		return;
+	}
+
+	m_shadowMapper.AddPointLight(&light);
 }
 
 void GraphicsEngine::RenderObjects(Shader &shader)
@@ -280,6 +292,12 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
 
+	GLenum err = glewInit();
+	if (GLEW_OK != err)
+	{
+		std::cerr << "Error: " << glewGetErrorString(err) << std::endl;
+	}
+
 	// init imgui
 	InitImGui();
 
@@ -295,10 +313,11 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	std::cout << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
 	std::cout << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl;
 
-	m_litShader = new Shader("./shaders/vertexShader.vert", "./shaders/lit.frag");
-	m_unlitShader = new Shader("./shaders/vertexShader.vert", "./shaders/unlit.frag");
-	m_debugShader = new Shader("./shaders/simple.vert", "./shaders/debug.frag");
-	m_shadowMapShader = new Shader("./shaders/depthMap.vert", "./shaders/empty.frag");
+	m_litShader = new Shader("../Assets/Shaders/lit_unlit.vert", "../Assets/Shaders/lit.frag");
+	m_unlitShader = new Shader("../Assets/Shaders/lit_unlit.vert", "../Assets/Shaders/unlit.frag");
+	m_debugShader = new Shader("../Assets/Shaders/debug_skybox.vert", "../Assets/Shaders/debug.frag");
+	m_dirShadowMapShader = new Shader("../Assets/Shaders/dirShadowMap.vert", "../Assets/Shaders/shadowMap.frag");
+	m_pointShadowMapShader = new Shader("../Assets/Shaders/pointShadowMap.vert", "../Assets/Shaders/pointShadowMap.geom", "../Assets/Shaders/pointShadowMap.frag");
 
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",

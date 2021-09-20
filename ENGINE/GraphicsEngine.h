@@ -75,6 +75,8 @@ public:
 
 	void AddDirectionalLight(const CDirectionalLight &light);
 
+	void AddPointLight(CPointLight &light);
+
 		/**
 		 * @brief Renders all visible objects
 		*/
@@ -180,7 +182,9 @@ public:
 		/** @brief pointer to debug shader */
 	Shader *m_debugShader;
 
-	Shader *m_shadowMapShader;
+	Shader *m_dirShadowMapShader;
+
+	Shader *m_pointShadowMapShader;
 
 		/** @brief draw debug colliders */
 	bool m_drawDebug = false;
