@@ -109,38 +109,11 @@ void LevelLoader::SaveLevel()
 	std::ofstream o("../Assets/SaveFiles/tavern.json");
 
 
-	//STEP 4 CHANGE
+	//Step 4 retrieve and populate Gameobject data
 	GAMEOBJECT->Save(j);
 
-	//Step 4 retrieve and populate Gameobject data
-	//std::map<std::string, GameObject*>::iterator it;
 
-	//int i = 0;
 
-	//for (it = objectList->begin(); it != objectList->end(); it++)
-	//{
-	//	//console logs, can delete later but useful for now
-	//	std::cout << "Object " << i << " Of " << objectList->size() << "\n" <<
-	//		"	 has Key " << it->second->getFactoryKey() << "\n" <<
-	//		"	 Is at position x=" << it->second->GetTransform()->GetPosition().GetX() << "\n" <<
-	//		"	 Is at position y=" << it->second->GetTransform()->GetPosition().GetY() << "\n" <<
-	//		"	 Is at position z=" << it->second->GetTransform()->GetPosition().GetZ() << "\n" <<
-	//		": " <<
-	//		"	 Is at rotation x = "<< it->second->GetTransform()->GetRotation().GetX() << "\n" <<
-	//		"	 Is at rotation y = "<< it->second->GetTransform()->GetRotation().GetY() << "\n" <<
-	//		"	 Is at rotation z = "<< it->second->GetTransform()->GetRotation().GetZ() << "\n" <<
-	//		"	 Is at rotation w = "<< it->second->GetTransform()->GetRotation().GetW() << "\n" <<
-	//		": "
-	//		"	 has scale x=" << it->second->GetTransform()->GetRelativeScale().GetX() << "\n" <<
-	//		"	 has scale y=" << it->second->GetTransform()->GetRelativeScale().GetY() << "\n" <<
-	//		"	 has scale z=" << it->second->GetTransform()->GetRelativeScale().GetZ() << "\n" <<
-	//		": " << std::endl;
-
-	//	//Step 5 write each gameobject to JSON
-	//	ToJson(j, it->second);
-
-	//	i++;
-	//}
 
 	//Step 6 save json to file
 	o << std::setw(4) << j << std::endl;
