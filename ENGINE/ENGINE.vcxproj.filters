@@ -376,6 +376,6 @@
     <Image Include="..\Resources\frankengine.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ICT397-GameEngine.rc" />
+    <ResourceCompile Include="ENGINE.rc" />
   </ItemGroup>
 </Project>

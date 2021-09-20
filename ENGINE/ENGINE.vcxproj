@@ -125,7 +125,7 @@
     <None Include="shaders\vertexShader.vert" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ICT397-GameEngine.rc" />
+    <ResourceCompile Include="ENGINE.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Resources\frankengine.ico" />
@@ -134,7 +134,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{ae72bb04-4060-4381-9ed9-3b79389b10d1}</ProjectGuid>
-    <RootNamespace>ICT397GameEngine</RootNamespace>
+    <RootNamespace>ENGINE</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
