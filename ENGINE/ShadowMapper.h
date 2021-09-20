@@ -21,9 +21,11 @@ private:
 	bool m_initialised;
 	unsigned int m_depthMapFBO;
 	unsigned int m_depthMapTexObj;
-	unsigned int m_shadowWidth;
-	unsigned int m_shadowHeight;
+	unsigned int m_depthCubemap;
+	unsigned int m_dirShadowRes;
+	unsigned int m_pointShadowRes;
 	const CDirectionalLight *m_light;
-	Matrix4f m_projection;
+	Matrix4f m_directionalProjection;
+	Matrix4f m_pointProjection;
 	Matrix4f m_view;
 };

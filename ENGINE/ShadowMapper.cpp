@@ -2,20 +2,22 @@
 #include "MiscMath.h"
 
 ShadowMapper::ShadowMapper()
-	:m_depthMapFBO{}, m_depthMapTexObj{}, m_shadowWidth{ 16384 }, m_shadowHeight{ 16384 }, m_light{ nullptr }, m_initialised{ false }, m_projection{}
+	:m_depthMapFBO{}, m_depthMapTexObj{}, m_dirShadowRes{ 16384 }, m_light{ nullptr }, m_initialised{ false },
+	m_directionalProjection{}, m_depthCubemap{}, m_pointShadowRes{ 4096 }
 {
-	m_projection = Ortho(-20.f, 20.f, -20.f, 20.f, 2.f, 30.f);
+	m_directionalProjection = Ortho(-20.f, 20.f, -20.f, 20.f, 2.f, 30.f);
+	//m_pointProjection = Perspective(90, 1, )
 }
 
 void ShadowMapper::Init()
 {
+	// directional depthmap
 	glGenFramebuffers(1, &m_depthMapFBO);
 	glGenTextures(1, &m_depthMapTexObj);
-	glActiveTexture(GL_TEXTURE3);
 	glBindTexture(GL_TEXTURE_2D, m_depthMapTexObj);
 	glTexImage2D(
 		GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT,
-		m_shadowWidth, m_shadowHeight, 0, GL_DEPTH_COMPONENT,
+		m_dirShadowRes, m_dirShadowRes, 0, GL_DEPTH_COMPONENT,
 		GL_FLOAT, nullptr
 	);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -24,6 +26,23 @@ void ShadowMapper::Init()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
 	float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+
+	// point depthcube
+	glGenTextures(1, &m_depthCubemap);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, m_depthCubemap);
+	for (unsigned int i = 0; i < 6; ++i)
+	{
+		glTexImage2D(
+			GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_DEPTH_COMPONENT,
+			m_pointShadowRes, m_pointShadowRes, 0, GL_DEPTH_COMPONENT,
+			GL_FLOAT, NULL
+		);
+	}
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
 	glBindFramebuffer(GL_FRAMEBUFFER, m_depthMapFBO);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_depthMapTexObj, 0);
@@ -37,7 +56,7 @@ void ShadowMapper::Init()
 
 void ShadowMapper::SetupFBO()
 {
-	glViewport(0, 0, m_shadowWidth, m_shadowHeight);
+	glViewport(0, 0, m_dirShadowRes, m_dirShadowRes);
 	glBindFramebuffer(GL_FRAMEBUFFER, m_depthMapFBO);
 	glClear(GL_DEPTH_BUFFER_BIT);
 }
@@ -60,7 +79,7 @@ void ShadowMapper::BindDepthMapTexture() const
 Matrix4f ShadowMapper::GetProjViewMat()
 {
 	ConfigureShaderAndMatrices();
-	return m_projection * m_view;
+	return m_directionalProjection * m_view;
 }
 
 void ShadowMapper::ConfigureShaderAndMatrices()

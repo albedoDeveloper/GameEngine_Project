@@ -48,11 +48,11 @@ void Mesh::Draw(const Shader *shader) const
 	unsigned int normalNr = 1;
 	unsigned int heightNr = 1;
 
-	for (unsigned int i = 0; i < textures.size(); i++)
+	for (unsigned int textureUnit = 0; textureUnit < textures.size(); textureUnit++)
 	{
-		glActiveTexture(GL_TEXTURE0 + i);
+		glActiveTexture(GL_TEXTURE0 + textureUnit);
 		std::string number;
-		std::string name = textures[i].type;
+		std::string name = textures[textureUnit].type;
 		if (name == "texture_diffuse")
 		{
 			number = std::to_string(diffuseNr++);
@@ -62,12 +62,16 @@ void Mesh::Draw(const Shader *shader) const
 			number = std::to_string(specularNr++);
 		}
 		else if (name == "texture_normal")
+		{
 			number = std::to_string(normalNr++);
+		}
 		else if (name == "texture_height")
+		{
 			number = std::to_string(heightNr++);
+		}
 
-		shader->SetIntUniform(("material." + name + number).c_str(), i);
-		glBindTexture(GL_TEXTURE_2D, textures[i].id);
+		shader->SetIntUniform(("material." + name + number).c_str(), textureUnit);
+		glBindTexture(GL_TEXTURE_2D, textures[textureUnit].id);
 	}
 
 	// send shadowMap to shader

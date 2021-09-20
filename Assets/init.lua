@@ -161,9 +161,9 @@ GetGameObject("sun"):SetParentObject("sunanchor")
 
 
 SpawnGameObject("light1"):SetStatic(false)
---GetGameObject("light1"):AddCPointLight()
---GetGameObject("light1"):GetCPointLight():AssignColour(0.8,0.8,0.8)
---GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(0.2)
+GetGameObject("light1"):AddCPointLight()
+GetGameObject("light1"):GetCPointLight():AssignColour(0.8,0.8,0.8)
+GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(0.2)
 GetGameObject("light1"):GetTransform():SetRelativePosition(-8.354999542236328,
 2.6700000762939453,
 1.0);
