@@ -275,6 +275,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 		return false;
 	}
 
+	SDL_SetWindowResizable(m_window, SDL_TRUE);
 	SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
@@ -290,9 +291,9 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	//glEnable(GL_FRAMEBUFFER_SRGB); // gamma correction. looks too washed out
 	glClearColor(0.4, 0.2, 0.7, 1);
 	std::cout << glGetString(GL_VENDOR) << " : " << glGetString(GL_RENDERER) << std::endl; // GPU used
-	std::cerr << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
-	std::cerr << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
-	std::cerr << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl;
+	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+	std::cout << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
+	std::cout << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl;
 
 	m_litShader = new Shader("./shaders/vertexShader.vert", "./shaders/lit.frag");
 	m_unlitShader = new Shader("./shaders/vertexShader.vert", "./shaders/unlit.frag");
@@ -395,9 +396,9 @@ void GraphicsEngine::DrawDebug()
 
 }
 
-void GraphicsEngine::ShadowMapRender()
+void GraphicsEngine::SetupShadowMapFBO()
 {
-	m_shadowMapper.Render();
+	m_shadowMapper.SetupFBO();
 }
 
 void GraphicsEngine::BindDepthMapTexture() const

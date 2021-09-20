@@ -1,5 +1,4 @@
 #include "GameObjectFactory.h"
-#include <iostream>
 
 GameObjectFactory::GameObjectFactory()
 {
@@ -119,10 +118,6 @@ GameObject *GameObjectFactory::SpawnGameObject(std::string key)
 	}
 	m_objects.emplace(key, object);
 	object->setFactoryKey(key);
-
-#if _DEBUG
-	//std::cout << "Game Object Created. Key = " << key << "\n";
-#endif
 
 	return object;
 }

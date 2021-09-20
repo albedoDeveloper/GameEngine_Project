@@ -1,5 +1,4 @@
 #include "ShadowMapper.h"
-#include <iostream> // debug
 #include "MiscMath.h"
 
 ShadowMapper::ShadowMapper()
@@ -36,7 +35,7 @@ void ShadowMapper::Init()
 	m_initialised = true;
 }
 
-void ShadowMapper::Render()
+void ShadowMapper::SetupFBO()
 {
 	glViewport(0, 0, m_shadowWidth, m_shadowHeight);
 	glBindFramebuffer(GL_FRAMEBUFFER, m_depthMapFBO);

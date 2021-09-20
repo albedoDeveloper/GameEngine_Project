@@ -79,7 +79,10 @@ private:
 		*/
 	void Cleanup();
 
-private:
+	void ShadowMapRenderPass();
+
+	void CameraRenderPass();
+
 		/**
 		 * @brief Whether the engine is running
 		*/

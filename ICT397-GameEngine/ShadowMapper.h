@@ -6,11 +6,10 @@
 
 class ShadowMapper
 {
-	friend class Mesh;
 public:
 	ShadowMapper();
 	void Init();
-	void Render();
+	void SetupFBO();
 	void AssignLight(const CDirectionalLight *light);
 	bool IsInitialised() const;
 	void BindDepthMapTexture() const;

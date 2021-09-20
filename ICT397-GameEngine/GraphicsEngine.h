@@ -142,7 +142,7 @@ public:
 		 */
 	void Close();
 
-	void ShadowMapRender();
+	void SetupShadowMapFBO();
 
 	void BindDepthMapTexture() const;
 
