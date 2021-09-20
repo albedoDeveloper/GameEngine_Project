@@ -59,6 +59,13 @@ public:
 	void AssignShader(std::string shader);
 
 		/**
+		* @brief assigns shader
+		*
+		* \param shader Shader enum
+		*/
+	void AssignShaderEnum(ShaderSelection shader);
+
+		/**
 		* @brief displays the mesh's model on the screen
 		*/
 	virtual void Render();
