@@ -45,8 +45,8 @@ Mesh::Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> 
 
 	SetupMesh();
 };
-
-void Mesh::Draw(const Shader *shader, int text) const
+#include "../GraphicsEngine.h" //debug
+void Mesh::Draw(const Shader *shader) const
 {
 	// bind appropriate textures
 	unsigned int diffuseNr = 1;
@@ -76,7 +76,10 @@ void Mesh::Draw(const Shader *shader, int text) const
 		glBindTexture(GL_TEXTURE_2D, textures[i].id);
 	}
 
-	glActiveTexture(GL_TEXTURE0);
+	// send shadowMap to shader
+	glActiveTexture(GL_TEXTURE2);
+	GRAPHICS->BindDepthMapTexture();
+	shader->SetIntUniform("shadowMap", 2);
 
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);

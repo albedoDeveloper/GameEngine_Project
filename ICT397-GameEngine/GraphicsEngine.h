@@ -16,6 +16,7 @@
 #include "./ThirdParty/imgui/imgui.h"
 #include "SkyBox.h"
 #include "LightManager.h"
+#include "ShadowMapper.h"
 
 class CCamera;
 
@@ -34,6 +35,7 @@ class CCamera;
 	*/
 class GraphicsEngine
 {
+	friend class Mesh;
 public:
 		/**
 		 * @brief Generates pointer to instance of singleton
@@ -57,12 +59,12 @@ public:
 		/**
 		 * @brief Function to be called at the start of every frame for rendering
 		*/
-	void newFrame(bool debugMenu);
+	void NewFrame(bool debugMenu);
 
 		/**
 		 * @brief Updates view based on camera transform
 		 */
-	void UpdateViewPos() const;
+	void UpdateCamViewPos() const;
 
 		/**
 		 * @brief creates a point light
@@ -71,10 +73,16 @@ public:
 		 */
 	int AddPointLight(CPointLight *light);
 
+	void AddDirectionalLight(const CDirectionalLight &light);
+
 		/**
 		 * @brief Renders all visible objects
 		*/
-	void renderObjects();
+	void RenderObjects(Shader &shader);
+
+	void RenderObjects();
+
+	void SetViewportToWindowSize() const;
 
 		/**
 		 * @brief Function to be called at the end of every frame for rendering
@@ -134,6 +142,10 @@ public:
 		 */
 	void Close();
 
+	void SetupShadowMapFBO();
+
+	void BindDepthMapTexture() const;
+
 		/**
 		 * Enables fullscreen mode
 		 */
@@ -145,16 +157,18 @@ public:
 	}
 
 		/**
-		 * @brief Accessor for the projection matrix
+		 * @brief Accessor for the projection matrix of the active camera
 		 * \return 4f projection matrix
 		 */
-	Matrix4f GetProjection();
+	Matrix4f GetCameraProjection();
 
 		/**
 		 * @brief returns the current camera view position/direction
 		 * \return 4f view matrix
 		 */
-	Matrix4f GetView();
+	Matrix4f GetCameraView();
+
+	Matrix4f GetShadowMapperMatrix();
 
 		/** @brief pointer to lit shader */
 	Shader *m_litShader;
@@ -164,6 +178,8 @@ public:
 
 		/** @brief pointer to debug shader */
 	Shader *m_debugShader;
+
+	Shader *m_shadowMapShader;
 
 		/** @brief draw debug colliders */
 	bool m_drawDebug = false;
@@ -240,6 +256,8 @@ private:
 
 		/** @brief the ingame Skybox */
 	SkyBox skybox;
+
+	ShadowMapper m_shadowMapper;
 
 		/**
 		 * @brief initialises openGL

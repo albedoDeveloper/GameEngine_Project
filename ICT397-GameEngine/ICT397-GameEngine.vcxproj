@@ -50,6 +50,7 @@
     <ClCompile Include="ModernOpenGL\Shader.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="ScriptingEngine.cpp" />
+    <ClCompile Include="ShadowMapper.cpp" />
     <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="ThirdParty\imgui\imgui.cpp" />
     <ClCompile Include="ThirdParty\imgui\imgui_demo.cpp" />
@@ -94,6 +95,7 @@
     <ClInclude Include="ModernOpenGL\Shader.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="ScriptingEngine.h" />
+    <ClInclude Include="ShadowMapper.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="ThirdParty\imgui\imconfig.h" />
     <ClInclude Include="ThirdParty\imgui\imgui.h" />
@@ -113,6 +115,9 @@
     <None Include="..\Assets\Scripts\rotate.lua" />
     <None Include="..\codestyle_config\.editorconfig" />
     <None Include="shaders\debug.frag" />
+    <None Include="shaders\depth.frag" />
+    <None Include="shaders\depthMap.vert" />
+    <None Include="shaders\empty.frag" />
     <None Include="shaders\lit.frag" />
     <None Include="shaders\skyBox.frag" />
     <None Include="shaders\simple.vert" />

@@ -21,7 +21,7 @@ private:
 	const static int m_initialSize = 50;
 
 		/** @brief The current index to which the collider array is filled */
-	int m_fill = 0;
+	int m_fill;
 
 		/** @brief Vector containing all of the colliders in the game */
 	std::vector<CCollider *> m_colliderArray;
@@ -40,7 +40,7 @@ public:
 	reactphysics3d::DebugRenderer *debugRender;
 
 		/** @brief wait tiem for collisions */
-	int waitTime = 0;
+	int m_waitTime;
 
 public:
 		/**

@@ -51,6 +51,8 @@ public:
 		*/
 	Transform GetWorldTransform() const;
 
+	Matrix4f GetMat4() const;
+
 		/**
 		 * @brief Changes the transform's position by a relative amount
 		 * lua can't handle overloaded function so V is added

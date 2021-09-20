@@ -103,7 +103,7 @@ public:
 		/// </summary>
 		/// <param name="shader"></param>
 		/// <param name="text"></param>
-	void Draw(const Shader *shader, int text) const;
+	void Draw(const Shader *shader) const;
 
 private:
 		/// <summary>

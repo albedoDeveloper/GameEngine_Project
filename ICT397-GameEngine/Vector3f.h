@@ -185,4 +185,5 @@ private:
 
 		// friendship decleration
 	friend Matrix4f LookAt(const Vector3f &eye, const Vector3f &centre, const Vector3f &up);
+	friend class Matrix4f;
 };
