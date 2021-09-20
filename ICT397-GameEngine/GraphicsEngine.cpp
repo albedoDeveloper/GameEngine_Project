@@ -78,23 +78,9 @@ bool GraphicsEngine::initLighting()
 	return true;
 }
 
-void GraphicsEngine::newFrame(bool debugMenu)
+void GraphicsEngine::NewFrame(bool debugMenu)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	GRAPHICS->UpdateViewPos();
-
-	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetView());
-	GRAPHICS->m_litShader->SetFloatUniform("material.shininess", 16); // TODO move somewhere else
-
-	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_unlitShader->SetMat4Uniform("view", GRAPHICS->GetView());
-
-
-	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetView());
-
 
 	if (debugMenu)
 	{
@@ -104,10 +90,9 @@ void GraphicsEngine::newFrame(bool debugMenu)
 	}
 }
 
-void GraphicsEngine::UpdateViewPos() const
+void GraphicsEngine::UpdateCamViewPos() const
 {
 	Vector3f viewPosVec = m_camera->GetTransform().GetWorldTransform().GetRelativePosition();
-	GRAPHICS->m_litShader->Use();
 	GRAPHICS->m_litShader->SetVec3Uniform(
 		"viewPos",
 		Vector3f(
@@ -137,15 +122,36 @@ int GraphicsEngine::AddPointLight(CPointLight *light)
 	return numpointLights;
 }
 
-void GraphicsEngine::renderObjects()
+void GraphicsEngine::AddDirectionalLight(const CDirectionalLight &light)
 {
-	skybox.DrawSkybox(GetProjection(), GetView());
-	GAMEOBJECT->render();
+	if (!m_shadowMapper.IsInitialised())
+	{
+		std::cout << "[Error] Cannot add directional light because shadow mapper is not initialised\n";
+		return;
+	}
+
+	m_shadowMapper.AssignLight(&light);
+}
+
+void GraphicsEngine::RenderObjects(Shader &shader)
+{
+	GAMEOBJECT->Render(shader);
+}
+
+void GraphicsEngine::RenderObjects()
+{
+	skybox.DrawSkybox(GetCameraProjection(), GetCameraView());
+	GAMEOBJECT->Render();
 
 	if (m_drawDebug)
 	{
 		DrawDebug();
 	}
+}
+
+void GraphicsEngine::SetViewportToWindowSize() const
+{
+	glViewport(0, 0, m_windowWidth, m_windowHeight);
 }
 
 void GraphicsEngine::endFrame(bool debugMenu)
@@ -240,7 +246,7 @@ void GraphicsEngine::Close()
 
 bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_AUDIO) < 0)
 	{
 		std::cout << "SDL could not initialize! SDL Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -269,6 +275,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 		return false;
 	}
 
+	SDL_SetWindowResizable(m_window, SDL_TRUE);
 	SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
@@ -284,13 +291,14 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	//glEnable(GL_FRAMEBUFFER_SRGB); // gamma correction. looks too washed out
 	glClearColor(0.4, 0.2, 0.7, 1);
 	std::cout << glGetString(GL_VENDOR) << " : " << glGetString(GL_RENDERER) << std::endl; // GPU used
-	std::cerr << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
-	std::cerr << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
-	std::cerr << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl;
+	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+	std::cout << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
+	std::cout << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl;
 
 	m_litShader = new Shader("./shaders/vertexShader.vert", "./shaders/lit.frag");
 	m_unlitShader = new Shader("./shaders/vertexShader.vert", "./shaders/unlit.frag");
 	m_debugShader = new Shader("./shaders/simple.vert", "./shaders/debug.frag");
+	m_shadowMapShader = new Shader("./shaders/depthMap.vert", "./shaders/empty.frag");
 
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",
@@ -300,6 +308,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 			"../Assets/skybox/front.png",
 			"../Assets/skybox/back.png"}
 	);
+
+	m_shadowMapper.Init();
 
 	return true;
 }
@@ -386,7 +396,17 @@ void GraphicsEngine::DrawDebug()
 
 }
 
-Matrix4f GraphicsEngine::GetProjection()
+void GraphicsEngine::SetupShadowMapFBO()
+{
+	m_shadowMapper.SetupFBO();
+}
+
+void GraphicsEngine::BindDepthMapTexture() const
+{
+	m_shadowMapper.BindDepthMapTexture();
+}
+
+Matrix4f GraphicsEngine::GetCameraProjection()
 {
 	return Perspective(
 		m_camera->GetCamera().FOV,
@@ -396,11 +416,16 @@ Matrix4f GraphicsEngine::GetProjection()
 	);
 }
 
-Matrix4f GraphicsEngine::GetView()
+Matrix4f GraphicsEngine::GetCameraView()
 {
 	return LookAt(
 		m_camera->GetTransform().GetWorldTransform().GetRelativePosition(),
 		m_camera->GetTransform().GetWorldTransform().GetRelativePosition() + m_camera->GetTransform().GetWorldTransform().GetRelativeForward(),
 		m_camera->GetTransform().GetWorldTransform().GetRelativeUp()
 	);
+}
+
+Matrix4f GraphicsEngine::GetShadowMapperMatrix()
+{
+	return m_shadowMapper.GetProjViewMat();
 }

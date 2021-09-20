@@ -10,6 +10,7 @@
 #include <nlohmann/json.hpp>
 
 class GameObject;
+class Shader;
 
 	/**
 	 * @brief A component of a game object with its own assets and/or behaviour
@@ -40,6 +41,9 @@ public:
 			* @brief To be called every frame to display the component on the screen, if visible
 		*/
 	virtual void Render()
+	{};
+
+	virtual void Render(Shader &shaderOveride)
 	{};
 
 		/**
