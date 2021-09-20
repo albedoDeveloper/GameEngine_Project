@@ -24,8 +24,7 @@
                 "z": 1.0
             }
         },
-        "key": "back_wall",
-        "parent": "TEST"
+        "key": "back_wall"
     },
     "bar_floor_rod": {
         "Components": {
@@ -51,8 +50,7 @@
                 "z": 1.0
             }
         },
-        "key": "bar_floor_rod",
-        "parent": "TEST"
+        "key": "bar_floor_rod"
     },
     "barrel1": {
         "Components": {
@@ -79,8 +77,7 @@
                 "z": 1.0
             }
         },
-        "key": "barrel1",
-        "parent": "TEST"
+        "key": "barrel1"
     },
     "barrel2": {
         "Components": {
@@ -107,8 +104,7 @@
                 "z": 1.0
             }
         },
-        "key": "barrel2",
-        "parent": "TEST"
+        "key": "barrel2"
     },
     "beertap1": {
         "Components": {
@@ -134,8 +130,7 @@
                 "z": 1.0
             }
         },
-        "key": "beertap1",
-        "parent": "TEST"
+        "key": "beertap1"
     },
     "beertap2": {
         "Components": {
@@ -161,8 +156,7 @@
                 "z": 1.0
             }
         },
-        "key": "beertap2",
-        "parent": "TEST"
+        "key": "beertap2"
     },
     "behind_bar_block": {
         "Components": {
@@ -189,8 +183,7 @@
                 "z": 1.0
             }
         },
-        "key": "behind_bar_block",
-        "parent": "TEST"
+        "key": "behind_bar_block"
     },
     "crate": {
         "Components": {
@@ -208,10 +201,10 @@
                 "z": -0.4449999928474426
             },
             "Rotation": {
-                "w": -0.18043076992034912,
-                "x": -0.07473650574684143,
-                "y": 0.9060907959938049,
-                "z": 0.3753141760826111
+                "w": -0.12952232360839844,
+                "x": -0.05365036427974701,
+                "y": -0.9147290587425232,
+                "z": -0.3789040744304657
             },
             "Scale": {
                 "x": 1.0,
@@ -219,8 +212,7 @@
                 "z": 1.0
             }
         },
-        "key": "crate",
-        "parent": "TEST"
+        "key": "crate"
     },
     "endscreen": {
         "Components": {
@@ -232,7 +224,7 @@
             "Position": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": -0.05000000074505806
+                "z": -0.20000000298023224
             },
             "Rotation": {
                 "w": 1.0,
@@ -241,13 +233,12 @@
                 "z": 0.0
             },
             "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
+                "x": 5.0,
+                "y": 5.0,
+                "z": 5.0
             }
         },
-        "key": "endscreen",
-        "parent": "player"
+        "key": "endscreen"
     },
     "fridge1": {
         "Components": {
@@ -274,8 +265,7 @@
                 "z": 1.0
             }
         },
-        "key": "fridge1",
-        "parent": "TEST"
+        "key": "fridge1"
     },
     "fridge2": {
         "Components": {
@@ -302,8 +292,7 @@
                 "z": 1.0
             }
         },
-        "key": "fridge2",
-        "parent": "TEST"
+        "key": "fridge2"
     },
     "graffiti_block": {
         "Components": {
@@ -330,12 +319,10 @@
                 "z": 1.0
             }
         },
-        "key": "graffiti_block",
-        "parent": "TEST"
+        "key": "graffiti_block"
     },
     "light1": {
         "Components": {
-            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis"
             }
@@ -358,12 +345,10 @@
                 "z": 1.0
             }
         },
-        "key": "light1",
-        "parent": "TEST"
+        "key": "light1"
     },
     "light2": {
         "Components": {
-            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis"
             }
@@ -386,8 +371,7 @@
                 "z": 1.0
             }
         },
-        "key": "light2",
-        "parent": "lightAnchor"
+        "key": "light2"
     },
     "lightAnchor": {
         "Components": {
@@ -402,9 +386,9 @@
                 "z": 5.275000095367432
             },
             "Rotation": {
-                "w": -0.19529569149017334,
+                "w": -0.1401933878660202,
                 "x": 0.0,
-                "y": 0.9807431101799011,
+                "y": -0.9900996088981628,
                 "z": 0.0
             },
             "Scale": {
@@ -413,8 +397,7 @@
                 "z": 1.0
             }
         },
-        "key": "lightAnchor",
-        "parent": "TEST"
+        "key": "lightAnchor"
     },
     "main_bar_bench": {
         "Components": {
@@ -441,8 +424,7 @@
                 "z": 1.0
             }
         },
-        "key": "main_bar_bench",
-        "parent": "TEST"
+        "key": "main_bar_bench"
     },
     "player": {
         "Components": {
@@ -451,14 +433,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 4.70619010925293,
-                "y": 2.0,
-                "z": 2.8529834747314453
+                "x": 8.352985382080078,
+                "y": 1.3381983041763306,
+                "z": -0.7856888175010681
             },
             "Rotation": {
-                "w": 0.4909037947654724,
+                "w": -0.6915162205696106,
                 "x": 0.0,
-                "y": 0.8712138533592224,
+                "y": 0.7223668098449707,
                 "z": 0.0
             },
             "Scale": {
@@ -467,8 +449,7 @@
                 "z": 1.0
             }
         },
-        "key": "player",
-        "parent": "TEST"
+        "key": "player"
     },
     "pool-table": {
         "Components": {
@@ -495,35 +476,7 @@
                 "z": 1.0
             }
         },
-        "key": "pool-table",
-        "parent": "TEST"
-    },
-    "roof_interior": {
-        "Components": {
-            "StaticMeshComponent": {
-                "AModel": "roof_interior"
-            }
-        },
-        "Transform": {
-            "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        "key": "roof_interior",
-        "parent": "TEST"
+        "key": "pool-table"
     },
     "south_bar_barrier": {
         "Components": {
@@ -550,8 +503,7 @@
                 "z": 1.0
             }
         },
-        "key": "south_bar_barrier",
-        "parent": "TEST"
+        "key": "south_bar_barrier"
     },
     "south_bar_barrier_2": {
         "Components": {
@@ -578,8 +530,7 @@
                 "z": 1.0
             }
         },
-        "key": "south_bar_barrier_2",
-        "parent": "TEST"
+        "key": "south_bar_barrier_2"
     },
     "south_bar_wall": {
         "Components": {
@@ -605,8 +556,7 @@
                 "z": 1.0
             }
         },
-        "key": "south_bar_wall",
-        "parent": "TEST"
+        "key": "south_bar_wall"
     },
     "spiked_door_bar": {
         "Components": {
@@ -633,8 +583,7 @@
                 "z": 1.0
             }
         },
-        "key": "spiked_door_bar",
-        "parent": "TEST"
+        "key": "spiked_door_bar"
     },
     "spiked_door_toilet": {
         "Components": {
@@ -660,8 +609,60 @@
                 "z": 1.0
             }
         },
-        "key": "spiked_door_toilet",
-        "parent": "TEST"
+        "key": "spiked_door_toilet"
+    },
+    "sun": {
+        "Components": {
+            "CComponent": "CComponent",
+            "StaticMeshComponent": {
+                "AModel": "axis"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 10.0,
+                "z": 10.0
+            },
+            "Rotation": {
+                "w": 0.9203639030456543,
+                "x": 0.3812272250652313,
+                "y": 0.08052139729261398,
+                "z": 0.033353060483932495
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "sun"
+    },
+    "sunanchor": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "axis"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "sunanchor"
     },
     "tavern_floor": {
         "Components": {
@@ -688,8 +689,7 @@
                 "z": 1.0
             }
         },
-        "key": "tavern_floor",
-        "parent": "TEST"
+        "key": "tavern_floor"
     },
     "tavern_glass_door_wall": {
         "Components": {
@@ -716,8 +716,7 @@
                 "z": 1.0
             }
         },
-        "key": "tavern_glass_door_wall",
-        "parent": "TEST"
+        "key": "tavern_glass_door_wall"
     },
     "tavern_glass_door_wall_long": {
         "Components": {
@@ -744,8 +743,7 @@
                 "z": 1.0
             }
         },
-        "key": "tavern_glass_door_wall_long",
-        "parent": "TEST"
+        "key": "tavern_glass_door_wall_long"
     },
     "tavern_glass_door_wall_long_2": {
         "Components": {
@@ -772,8 +770,7 @@
                 "z": 1.0
             }
         },
-        "key": "tavern_glass_door_wall_long_2",
-        "parent": "TEST"
+        "key": "tavern_glass_door_wall_long_2"
     },
     "toilet_block": {
         "Components": {
@@ -800,8 +797,7 @@
                 "z": 1.0
             }
         },
-        "key": "toilet_block",
-        "parent": "TEST"
+        "key": "toilet_block"
     },
     "waitress": {
         "Components": {
@@ -827,7 +823,6 @@
                 "z": 1.0
             }
         },
-        "key": "waitress",
-        "parent": "TEST"
+        "key": "waitress"
     }
 }
