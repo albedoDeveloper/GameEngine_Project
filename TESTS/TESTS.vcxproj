@@ -174,7 +174,7 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ICT397-GameEngine\ICT397-GameEngine.vcxproj">
+    <ProjectReference Include="..\ENGINE\ENGINE.vcxproj">
       <Project>{ae72bb04-4060-4381-9ed9-3b79389b10d1}</Project>
     </ProjectReference>
   </ItemGroup>
