@@ -9,7 +9,7 @@
 
 #include "CCollider.h"
 #include <vector>
-#include "DeltaTime.h"
+#include "Time.h"
 
 /**
  * @brief A singleton that manages collisions between objects

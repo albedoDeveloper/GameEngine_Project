@@ -1,7 +1,7 @@
 #include "CScript.h"
 #include "InputManager.h"
 #include "ScriptingEngine.h"
-#include "DeltaTime.h"
+#include "Time.h"
 
 using namespace luabridge;
 

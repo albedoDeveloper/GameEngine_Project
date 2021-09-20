@@ -519,7 +519,7 @@ bool ImGui::ButtonBehavior(const ImRect &bb, ImGuiID id, bool *out_hovered, bool
 		{
 			hovered = true;
 			SetHoveredID(id);
-			if (g.HoveredIdTimer - g.IO.DeltaTime <= DRAGDROP_HOLD_TO_OPEN_TIMER && g.HoveredIdTimer >= DRAGDROP_HOLD_TO_OPEN_TIMER)
+			if (g.HoveredIdTimer - g.IO.Time <= DRAGDROP_HOLD_TO_OPEN_TIMER && g.HoveredIdTimer >= DRAGDROP_HOLD_TO_OPEN_TIMER)
 			{
 				pressed = true;
 				g.DragDropHoldJustPressedId = id;
@@ -4901,7 +4901,7 @@ bool ImGui::InputTextEx(const char *label, const char *hint, char *buf, int buf_
 		// Draw blinking cursor
 		if (render_cursor)
 		{
-			state->CursorAnim += io.DeltaTime;
+			state->CursorAnim += io.Time;
 			bool cursor_is_visible = (!g.IO.ConfigInputTextCursorBlink) || (state->CursorAnim <= 0.0f) || ImFmod(state->CursorAnim, 1.20f) <= 0.80f;
 			ImVec2 cursor_screen_pos = ImFloor(draw_pos + cursor_offset - draw_scroll);
 			ImRect cursor_screen_rect(cursor_screen_pos.x, cursor_screen_pos.y - g.FontSize + 0.5f, cursor_screen_pos.x + 1.0f, cursor_screen_pos.y - 1.5f);
@@ -7723,7 +7723,7 @@ static void ImGui::TabBarLayout(ImGuiTabBar *tab_bar)
 		tab_bar->ScrollingSpeed = ImMax(tab_bar->ScrollingSpeed, 70.0f * g.FontSize);
 		tab_bar->ScrollingSpeed = ImMax(tab_bar->ScrollingSpeed, ImFabs(tab_bar->ScrollingTarget - tab_bar->ScrollingAnim) / 0.3f);
 		const bool teleport = (tab_bar->PrevFrameVisible + 1 < g.FrameCount) || (tab_bar->ScrollingTargetDistToVisibility > 10.0f * g.FontSize);
-		tab_bar->ScrollingAnim = teleport ? tab_bar->ScrollingTarget : ImLinearSweep(tab_bar->ScrollingAnim, tab_bar->ScrollingTarget, g.IO.DeltaTime * tab_bar->ScrollingSpeed);
+		tab_bar->ScrollingAnim = teleport ? tab_bar->ScrollingTarget : ImLinearSweep(tab_bar->ScrollingAnim, tab_bar->ScrollingTarget, g.IO.Time * tab_bar->ScrollingSpeed);
 	}
 	else
 	{

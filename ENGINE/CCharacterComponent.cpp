@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "GraphicsEngine.h"
 #include "InputManager.h"
-#include "DeltaTime.h"
+#include "Time.h"
 #include <iostream>
 #include "Engine.h"
 #include "GameObjectFactory.h"

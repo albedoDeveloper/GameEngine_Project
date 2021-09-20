@@ -247,7 +247,7 @@ CODE
 	 {
 		// Setup low-level inputs, e.g. on Win32: calling GetKeyboardState(), or write to those fields from your Windows message handlers, etc.
 		// (In the examples/ app this is usually done within the ImGui_ImplXXX_NewFrame() function from one of the demo Platform Backends)
-		io.DeltaTime = 1.0f/60.0f;              // set the time elapsed since the previous frame (in seconds)
+		io.Time = 1.0f/60.0f;              // set the time elapsed since the previous frame (in seconds)
 		io.DisplaySize.x = 1920.0f;             // set the current display width
 		io.DisplaySize.y = 1280.0f;             // set the current display height here
 		io.MousePos = my_mouse_pos;             // set the mouse position
@@ -1084,7 +1084,7 @@ ImGuiIO::ImGuiIO()
 	ConfigFlags = ImGuiConfigFlags_None;
 	BackendFlags = ImGuiBackendFlags_None;
 	DisplaySize = ImVec2(-1.0f, -1.0f);
-	DeltaTime = 1.0f / 60.0f;
+	Time = 1.0f / 60.0f;
 	IniSavingRate = 5.0f;
 	IniFilename = "imgui.ini"; // Important: "imgui.ini" is relative to current working dir, most apps will want to lock this to an absolute path (e.g. same path as executables).
 	LogFilename = "imgui_log.txt";
@@ -3734,7 +3734,7 @@ static void ImGui::UpdateMouseInputs()
 		g.IO.MouseClicked[i] = g.IO.MouseDown[i] && g.IO.MouseDownDuration[i] < 0.0f;
 		g.IO.MouseReleased[i] = !g.IO.MouseDown[i] && g.IO.MouseDownDuration[i] >= 0.0f;
 		g.IO.MouseDownDurationPrev[i] = g.IO.MouseDownDuration[i];
-		g.IO.MouseDownDuration[i] = g.IO.MouseDown[i] ? (g.IO.MouseDownDuration[i] < 0.0f ? 0.0f : g.IO.MouseDownDuration[i] + g.IO.DeltaTime) : -1.0f;
+		g.IO.MouseDownDuration[i] = g.IO.MouseDown[i] ? (g.IO.MouseDownDuration[i] < 0.0f ? 0.0f : g.IO.MouseDownDuration[i] + g.IO.Time) : -1.0f;
 		g.IO.MouseDoubleClicked[i] = false;
 		if (g.IO.MouseClicked[i])
 		{
@@ -3786,7 +3786,7 @@ void ImGui::UpdateMouseWheel()
 	// Reset the locked window if we move the mouse or after the timer elapses
 	if (g.WheelingWindow != NULL)
 	{
-		g.WheelingWindowTimer -= g.IO.DeltaTime;
+		g.WheelingWindowTimer -= g.IO.Time;
 		if (IsMousePosValid() && ImLengthSqr(g.IO.MousePos - g.WheelingWindowRefMousePos) > g.IO.MouseDragThreshold * g.IO.MouseDragThreshold)
 			g.WheelingWindowTimer = 0.0f;
 		if (g.WheelingWindowTimer <= 0.0f)
@@ -4007,7 +4007,7 @@ void ImGui::NewFrame()
 	// Load settings on first frame, save settings when modified (after a delay)
 	UpdateSettings();
 
-	g.Time += g.IO.DeltaTime;
+	g.Time += g.IO.Time;
 	g.WithinFrameScope = true;
 	g.FrameCount += 1;
 	g.TooltipOverrideCount = 0;
@@ -4015,8 +4015,8 @@ void ImGui::NewFrame()
 	g.MenusIdSubmittedThisFrame.resize(0);
 
 	// Calculate frame-rate for the user, as a purely luxurious feature
-	g.FramerateSecPerFrameAccum += g.IO.DeltaTime - g.FramerateSecPerFrame[g.FramerateSecPerFrameIdx];
-	g.FramerateSecPerFrame[g.FramerateSecPerFrameIdx] = g.IO.DeltaTime;
+	g.FramerateSecPerFrameAccum += g.IO.Time - g.FramerateSecPerFrame[g.FramerateSecPerFrameIdx];
+	g.FramerateSecPerFrame[g.FramerateSecPerFrameIdx] = g.IO.Time;
 	g.FramerateSecPerFrameIdx = (g.FramerateSecPerFrameIdx + 1) % IM_ARRAYSIZE(g.FramerateSecPerFrame);
 	g.FramerateSecPerFrameCount = ImMin(g.FramerateSecPerFrameCount + 1, IM_ARRAYSIZE(g.FramerateSecPerFrame));
 	g.IO.Framerate = (g.FramerateSecPerFrameAccum > 0.0f) ? (1.0f / (g.FramerateSecPerFrameAccum / (float)g.FramerateSecPerFrameCount)) : FLT_MAX;
@@ -4060,9 +4060,9 @@ void ImGui::NewFrame()
 	if (!g.HoveredIdPreviousFrame || (g.HoveredId && g.ActiveId == g.HoveredId))
 		g.HoveredIdNotActiveTimer = 0.0f;
 	if (g.HoveredId)
-		g.HoveredIdTimer += g.IO.DeltaTime;
+		g.HoveredIdTimer += g.IO.Time;
 	if (g.HoveredId && g.ActiveId != g.HoveredId)
-		g.HoveredIdNotActiveTimer += g.IO.DeltaTime;
+		g.HoveredIdNotActiveTimer += g.IO.Time;
 	g.HoveredIdPreviousFrame = g.HoveredId;
 	g.HoveredIdPreviousFrameUsingMouseWheel = g.HoveredIdUsingMouseWheel;
 	g.HoveredId = 0;
@@ -4074,8 +4074,8 @@ void ImGui::NewFrame()
 	if (g.ActiveIdIsAlive != g.ActiveId && g.ActiveIdPreviousFrame == g.ActiveId && g.ActiveId != 0)
 		ClearActiveID();
 	if (g.ActiveId)
-		g.ActiveIdTimer += g.IO.DeltaTime;
-	g.LastActiveIdTimer += g.IO.DeltaTime;
+		g.ActiveIdTimer += g.IO.Time;
+	g.LastActiveIdTimer += g.IO.Time;
 	g.ActiveIdPreviousFrame = g.ActiveId;
 	g.ActiveIdPreviousFrameWindow = g.ActiveIdWindow;
 	g.ActiveIdPreviousFrameHasBeenEditedBefore = g.ActiveIdHasBeenEditedBefore;
@@ -4105,7 +4105,7 @@ void ImGui::NewFrame()
 	g.IO.KeyMods = GetMergedKeyModFlags();
 	memcpy(g.IO.KeysDownDurationPrev, g.IO.KeysDownDuration, sizeof(g.IO.KeysDownDuration));
 	for (int i = 0; i < IM_ARRAYSIZE(g.IO.KeysDown); i++)
-		g.IO.KeysDownDuration[i] = g.IO.KeysDown[i] ? (g.IO.KeysDownDuration[i] < 0.0f ? 0.0f : g.IO.KeysDownDuration[i] + g.IO.DeltaTime) : -1.0f;
+		g.IO.KeysDownDuration[i] = g.IO.KeysDown[i] ? (g.IO.KeysDownDuration[i] < 0.0f ? 0.0f : g.IO.KeysDownDuration[i] + g.IO.Time) : -1.0f;
 
 	// Update gamepad/keyboard navigation
 	NavUpdate();
@@ -4122,9 +4122,9 @@ void ImGui::NewFrame()
 
 	// Background darkening/whitening
 	if (GetTopMostPopupModal() != NULL || (g.NavWindowingTarget != NULL && g.NavWindowingHighlightAlpha > 0.0f))
-		g.DimBgRatio = ImMin(g.DimBgRatio + g.IO.DeltaTime * 6.0f, 1.0f);
+		g.DimBgRatio = ImMin(g.DimBgRatio + g.IO.Time * 6.0f, 1.0f);
 	else
-		g.DimBgRatio = ImMax(g.DimBgRatio - g.IO.DeltaTime * 10.0f, 0.0f);
+		g.DimBgRatio = ImMax(g.DimBgRatio - g.IO.Time * 10.0f, 0.0f);
 
 	g.MouseCursor = ImGuiMouseCursor_Arrow;
 	g.WantCaptureMouseNextFrame = g.WantCaptureKeyboardNextFrame = g.WantTextInputNextFrame = -1;
@@ -4729,7 +4729,7 @@ bool ImGui::IsKeyDown(int user_key_index)
 	return g.IO.KeysDown[user_key_index];
 }
 
-// t0 = previous time (e.g.: g.Time - g.IO.DeltaTime)
+// t0 = previous time (e.g.: g.Time - g.IO.Time)
 // t1 = current time (e.g.: g.Time)
 // An event is triggered at:
 //  t = 0.0f     t = repeat_delay,    t = repeat_delay + repeat_rate*N
@@ -4754,7 +4754,7 @@ int ImGui::GetKeyPressedAmount(int key_index, float repeat_delay, float repeat_r
 		return 0;
 	IM_ASSERT(key_index >= 0 && key_index < IM_ARRAYSIZE(g.IO.KeysDown));
 	const float t = g.IO.KeysDownDuration[key_index];
-	return CalcTypematicRepeatAmount(t - g.IO.DeltaTime, t, repeat_delay, repeat_rate);
+	return CalcTypematicRepeatAmount(t - g.IO.Time, t, repeat_delay, repeat_rate);
 }
 
 bool ImGui::IsKeyPressed(int user_key_index, bool repeat)
@@ -4797,7 +4797,7 @@ bool ImGui::IsMouseClicked(ImGuiMouseButton button, bool repeat)
 	if (repeat && t > g.IO.KeyRepeatDelay)
 	{
 		// FIXME: 2019/05/03: Our old repeat code was wrong here and led to doubling the repeat rate, which made it an ok rate for repeat on mouse hold.
-		int amount = CalcTypematicRepeatAmount(t - g.IO.DeltaTime, t, g.IO.KeyRepeatDelay, g.IO.KeyRepeatRate * 0.50f);
+		int amount = CalcTypematicRepeatAmount(t - g.IO.Time, t, g.IO.KeyRepeatDelay, g.IO.KeyRepeatRate * 0.50f);
 		if (amount > 0)
 			return true;
 	}
@@ -5571,7 +5571,7 @@ static bool ImGui::UpdateWindowManualResize(ImGuiWindow *window, const ImVec2 &s
 		if (nav_resize_delta.x != 0.0f || nav_resize_delta.y != 0.0f)
 		{
 			const float NAV_RESIZE_SPEED = 600.0f;
-			nav_resize_delta *= ImFloor(NAV_RESIZE_SPEED * g.IO.DeltaTime * ImMin(g.IO.DisplayFramebufferScale.x, g.IO.DisplayFramebufferScale.y));
+			nav_resize_delta *= ImFloor(NAV_RESIZE_SPEED * g.IO.Time * ImMin(g.IO.DisplayFramebufferScale.x, g.IO.DisplayFramebufferScale.y));
 			nav_resize_delta = ImMax(nav_resize_delta, visibility_rect.Min - window->Pos - window->Size);
 			g.NavWindowingToggleLayer = false;
 			g.NavDisableMouseHover = true;
@@ -7308,7 +7308,7 @@ static void ImGui::ErrorCheckNewFrameSanityChecks()
 	// Check user data
 	// (We pass an error message in the assert expression to make it visible to programmers who are not using a debugger, as most assert handlers display their argument)
 	IM_ASSERT(g.Initialized);
-	IM_ASSERT((g.IO.DeltaTime > 0.0f || g.FrameCount == 0) && "Need a positive DeltaTime!");
+	IM_ASSERT((g.IO.Time > 0.0f || g.FrameCount == 0) && "Need a positive Time!");
 	IM_ASSERT((g.FrameCount == 0 || g.FrameCountEnded == g.FrameCount) && "Forgot to call Render() or EndFrame() at the end of the previous frame?");
 	IM_ASSERT(g.IO.DisplaySize.x >= 0.0f && g.IO.DisplaySize.y >= 0.0f && "Invalid DisplaySize value!");
 	IM_ASSERT(g.IO.Fonts->IsBuilt() && "Font Atlas not built! Make sure you called ImGui_ImplXXXX_NewFrame() function for renderer backend, which should call io.Fonts->GetTexDataAsRGBA32() / GetTexDataAsAlpha8()");
@@ -9167,11 +9167,11 @@ float ImGui::GetNavInputAmount(ImGuiNavInput n, ImGuiInputReadMode mode)
 	if (mode == ImGuiInputReadMode_Pressed)               // Return 1.0f when just pressed, no repeat, ignore analog input.
 		return (t == 0.0f) ? 1.0f : 0.0f;
 	if (mode == ImGuiInputReadMode_Repeat)
-		return (float)CalcTypematicRepeatAmount(t - g.IO.DeltaTime, t, g.IO.KeyRepeatDelay * 0.72f, g.IO.KeyRepeatRate * 0.80f);
+		return (float)CalcTypematicRepeatAmount(t - g.IO.Time, t, g.IO.KeyRepeatDelay * 0.72f, g.IO.KeyRepeatRate * 0.80f);
 	if (mode == ImGuiInputReadMode_RepeatSlow)
-		return (float)CalcTypematicRepeatAmount(t - g.IO.DeltaTime, t, g.IO.KeyRepeatDelay * 1.25f, g.IO.KeyRepeatRate * 2.00f);
+		return (float)CalcTypematicRepeatAmount(t - g.IO.Time, t, g.IO.KeyRepeatDelay * 1.25f, g.IO.KeyRepeatRate * 2.00f);
 	if (mode == ImGuiInputReadMode_RepeatFast)
-		return (float)CalcTypematicRepeatAmount(t - g.IO.DeltaTime, t, g.IO.KeyRepeatDelay * 0.72f, g.IO.KeyRepeatRate * 0.30f);
+		return (float)CalcTypematicRepeatAmount(t - g.IO.Time, t, g.IO.KeyRepeatDelay * 0.72f, g.IO.KeyRepeatRate * 0.30f);
 	return 0.0f;
 }
 
@@ -9233,7 +9233,7 @@ static void ImGui::NavUpdate()
 	}
 	memcpy(io.NavInputsDownDurationPrev, io.NavInputsDownDuration, sizeof(io.NavInputsDownDuration));
 	for (int i = 0; i < IM_ARRAYSIZE(io.NavInputs); i++)
-		io.NavInputsDownDuration[i] = (io.NavInputs[i] > 0.0f) ? (io.NavInputsDownDuration[i] < 0.0f ? 0.0f : io.NavInputsDownDuration[i] + io.DeltaTime) : -1.0f;
+		io.NavInputsDownDuration[i] = (io.NavInputs[i] > 0.0f) ? (io.NavInputsDownDuration[i] < 0.0f ? 0.0f : io.NavInputsDownDuration[i] + io.Time) : -1.0f;
 
 	// Process navigation init request (select first/default focus)
 	if (g.NavInitResultId != 0)
@@ -9415,7 +9415,7 @@ static void ImGui::NavUpdate()
 	{
 		// *Fallback* manual-scroll with Nav directional keys when window has no navigable item
 		ImGuiWindow *window = g.NavWindow;
-		const float scroll_speed = IM_ROUND(window->CalcFontSize() * 100 * io.DeltaTime); // We need round the scrolling speed because sub-pixel scroll isn't reliably supported.
+		const float scroll_speed = IM_ROUND(window->CalcFontSize() * 100 * io.Time); // We need round the scrolling speed because sub-pixel scroll isn't reliably supported.
 		if (window->DC.NavLayersActiveMask == 0x00 && window->DC.NavHasScroll && g.NavMoveRequest)
 		{
 			if (g.NavMoveDir == ImGuiDir_Left || g.NavMoveDir == ImGuiDir_Right)
@@ -9752,7 +9752,7 @@ static void ImGui::NavUpdateWindowing()
 	// Fade out
 	if (g.NavWindowingTargetAnim && g.NavWindowingTarget == NULL)
 	{
-		g.NavWindowingHighlightAlpha = ImMax(g.NavWindowingHighlightAlpha - io.DeltaTime * 10.0f, 0.0f);
+		g.NavWindowingHighlightAlpha = ImMax(g.NavWindowingHighlightAlpha - io.Time * 10.0f, 0.0f);
 		if (g.DimBgRatio <= 0.0f && g.NavWindowingHighlightAlpha <= 0.0f)
 			g.NavWindowingTargetAnim = NULL;
 	}
@@ -9770,7 +9770,7 @@ static void ImGui::NavUpdateWindowing()
 		}
 
 	// Gamepad update
-	g.NavWindowingTimer += io.DeltaTime;
+	g.NavWindowingTimer += io.Time;
 	if (g.NavWindowingTarget && g.NavInputSource == ImGuiInputSource_Gamepad)
 	{
 		// Highlight only appears after a brief time holding the button, so that a fast tap on PadMenu (to toggle NavLayer) doesn't add visual noise
@@ -9844,7 +9844,7 @@ static void ImGui::NavUpdateWindowing()
 		if (move_delta.x != 0.0f || move_delta.y != 0.0f)
 		{
 			const float NAV_MOVE_SPEED = 800.0f;
-			const float move_speed = ImFloor(NAV_MOVE_SPEED * io.DeltaTime * ImMin(io.DisplayFramebufferScale.x, io.DisplayFramebufferScale.y)); // FIXME: Doesn't handle variable framerate very well
+			const float move_speed = ImFloor(NAV_MOVE_SPEED * io.Time * ImMin(io.DisplayFramebufferScale.x, io.DisplayFramebufferScale.y)); // FIXME: Doesn't handle variable framerate very well
 			ImGuiWindow *moving_window = g.NavWindowingTarget->RootWindow;
 			SetWindowPos(moving_window, moving_window->Pos + move_delta * move_speed, ImGuiCond_Always);
 			MarkIniSettingsDirty(moving_window);
@@ -10537,7 +10537,7 @@ void ImGui::UpdateSettings()
 	// Save settings (with a delay after the last modification, so we don't spam disk too much)
 	if (g.SettingsDirtyTimer > 0.0f)
 	{
-		g.SettingsDirtyTimer -= g.IO.DeltaTime;
+		g.SettingsDirtyTimer -= g.IO.Time;
 		if (g.SettingsDirtyTimer <= 0.0f)
 		{
 			if (g.IO.IniFilename != NULL)
@@ -11026,8 +11026,7 @@ static void ImeSetInputScreenPosFn_DefaultImpl(int x, int y)
 #else
 
 static void ImeSetInputScreenPosFn_DefaultImpl(int, int)
-{
-}
+{}
 
 #endif
 
@@ -11999,41 +11998,29 @@ void ImGui::DebugNodeWindowsList(ImVector<ImGuiWindow *> *windows, const char *l
 #else
 
 void ImGui::ShowMetricsWindow(bool *)
-{
-}
+{}
 void ImGui::ShowFontAtlas(ImFontAtlas *)
-{
-}
+{}
 void ImGui::DebugNodeColumns(ImGuiOldColumns *)
-{
-}
+{}
 void ImGui::DebugNodeDrawList(ImGuiWindow *, const ImDrawList *, const char *)
-{
-}
+{}
 void ImGui::DebugNodeDrawCmdShowMeshAndBoundingBox(ImDrawList *, const ImDrawList *, const ImDrawCmd *, bool, bool)
-{
-}
+{}
 void ImGui::DebugNodeFont(ImFont *)
-{
-}
+{}
 void ImGui::DebugNodeStorage(ImGuiStorage *, const char *)
-{
-}
+{}
 void ImGui::DebugNodeTabBar(ImGuiTabBar *, const char *)
-{
-}
+{}
 void ImGui::DebugNodeWindow(ImGuiWindow *, const char *)
-{
-}
+{}
 void ImGui::DebugNodeWindowSettings(ImGuiWindowSettings *)
-{
-}
+{}
 void ImGui::DebugNodeWindowsList(ImVector<ImGuiWindow *> *, const char *)
-{
-}
+{}
 void ImGui::DebugNodeViewport(ImGuiViewportP *)
-{
-}
+{}
 
 #endif
 

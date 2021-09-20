@@ -79,7 +79,7 @@
     <ClCompile Include="CollisionManager.cpp">
       <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
-    <ClCompile Include="DeltaTime.cpp">
+    <ClCompile Include="Time.cpp">
       <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
@@ -222,7 +222,7 @@
     <ClInclude Include="CollisionManager.h">
       <Filter>Source\Singletons\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="DeltaTime.h">
+    <ClInclude Include="Time.h">
       <Filter>Source\Singletons\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
