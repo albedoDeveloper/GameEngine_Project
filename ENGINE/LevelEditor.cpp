@@ -20,13 +20,13 @@ void LevelEditor::DrawEditor()
 void LevelEditor::ObjectList()
 {
 	//retrieval
-	std::map<std::string, GameObject *> *m_objects;
+	std::map<std::string, GameObject *> *objectList;
 
-	m_objects = GAMEOBJECT->GetObjectMap();
+	objectList = GAMEOBJECT->GetObjectMap();
 
 	//iteration
 	std::map<std::string, GameObject *>::iterator it;
-	for (it = m_objects->begin(); it != m_objects->end(); it++)
+	for (it = objectList->begin(); it != objectList->end(); it++)
 	{
 		//population
 		ObjectHeader(it->second);
@@ -37,9 +37,17 @@ void LevelEditor::ObjectHeader(GameObject *g)
 {
 	ImGui::AlignTextToFramePadding();
 
-	if (ImGui::TreeNode((char *)g->getFactoryKey().c_str()))
+	//is the gameobject active?
+	bool isActive = g->GetActive();
+
+	if (ImGui::TreeNode((char *)g->GetFactoryKey().c_str()))
 	{
+
 		ImGui::AlignTextToFramePadding();
+
+		ImGui::Checkbox("Active", &isActive);
+
+		g->SetActive(isActive);
 
 		TransformHeader(g);
 

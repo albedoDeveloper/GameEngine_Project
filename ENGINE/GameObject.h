@@ -178,13 +178,20 @@ public:
 		 * @brief Factory key accessor
 		 * @return this object's storage key for the game object factory
 		*/
-	std::string getFactoryKey();
+	std::string GetFactoryKey();
 
 		/**
 		 * @brief Factory key mutator
 		 * @param key key to store this object with
 		*/
-	void setFactoryKey(std::string key);
+	void SetFactoryKey(std::string key);
+
+		/**
+		 * accesses active state.
+		 *
+		 * \param activeStatus new active state
+		 */
+	bool GetActive();
 
 		/**
 		 * set active state.
@@ -192,6 +199,8 @@ public:
 		 * \param activeStatus new active state
 		 */
 	void SetActive(bool activeStatus);
+
+
 
 		/**
 		 * @brief Calls the start function of every component
