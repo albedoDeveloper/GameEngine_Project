@@ -180,6 +180,22 @@ void GameObject::Render()
 	}
 }
 
+void GameObject::Render(Shader &shaderOveride)
+{
+	if (m_isActive)
+	{
+		// iterate through all component lists
+		for (auto mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		{
+			// iterate through all components in list
+			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			{
+				(*listIterator)->Render(shaderOveride);
+			}
+		}
+	}
+}
+
 void GameObject::LateRender()
 {
 	if (m_isActive)
@@ -281,8 +297,11 @@ void GameObject::Load(nlohmann::json &j)
 	//Assign parent
 	if (j.at(GetFactoryKey()).at("parent") != "TEST")
 	{
+
 		GameObject *myParent = GAMEOBJECT->GetGameObject(j.at(GetFactoryKey()).at("parent"));
 		GetTransform()->SetParent(myParent->GetTransform());
+
+		std::cout << GetFactoryKey() << " PARENT = " << GetTransform()->GetParent()->GetGameObject()->GetFactoryKey() << std::endl;
 	}
 
 }

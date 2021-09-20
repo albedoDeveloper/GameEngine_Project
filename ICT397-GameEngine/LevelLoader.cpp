@@ -13,7 +13,7 @@ namespace fs = std::filesystem;
 
 LevelLoader::LevelLoader()
 {
-	objectList = GAMEOBJECT->GetObjectMap();
+	m_objects = GAMEOBJECT->GetObjectMap();
 }
 
 void LevelLoader::JsonFilepath()
@@ -38,95 +38,6 @@ void LevelLoader::JsonFilepath()
 	//////end file pathing
 
 }
-
-void LevelLoader::ToJson(json &j, GameObject *g)
-{
-
-	j[g->GetFactoryKey()]["key"] = g->GetFactoryKey();
-
-	//this transofrm stuff can be moved to the transform componenet instead
-
-	g->GetTransform()->ToJson(j, g->GetFactoryKey());
-
-	/*j[g->getFactoryKey()]["Position"] =
-	{
-		{"x",g->GetTransform()->GetPosition().GetX()},
-		{"y",g->GetTransform()->GetPosition().GetY()},
-		{"z",g->GetTransform()->GetPosition().GetZ()},
-	};
-
-	j[g->getFactoryKey()]["Rotation"] =
-	{
-		{"x",g->GetTransform()->GetRotation().GetX()},
-		{"y",g->GetTransform()->GetRotation().GetY()},
-		{"z",g->GetTransform()->GetRotation().GetZ()},
-		{"w",g->GetTransform()->GetRotation().GetW()},
-	};
-
-	j[g->getFactoryKey()]["Scale"] =
-	{
-		{"x",g->GetTransform()->GetRelativeScale().GetX()},
-		{"y",g->GetTransform()->GetRelativeScale().GetY()},
-		{"z",g->GetTransform()->GetRelativeScale().GetZ()},
-	};*/
-
-	//here is where we should get the componenet map and save to colliders, this will require each comp to have a tojson method
-
-
-}
-
-void LevelLoader::FromJson(json &j, GameObject *g)
-{
-	//debug to console
-	/*std::cout << "load object" << j.at(g->getFactoryKey()).at("key") << std::endl;
-	std::cout << " X = " << j.at(g->getFactoryKey()).at("Position").at("x") << std::endl;
-	std::cout << " Y = " << j.at(g->getFactoryKey()).at("Position").at("y") << std::endl;
-	std::cout << " Z = " << j.at(g->getFactoryKey()).at("Position").at("z") << std::endl;*/
-
-	//NEED HERE instantiate the object (or at least in the load statement right before calling this method )
-
-		//////ERROR HANDLING///////
-	//////Need to figure out a way to check if the field in json is filled or not before calling from
-
-	g->GetTransform()->FromJson(j, g->GetFactoryKey());
-
-	////move to position
-	//if (j.at(g->getFactoryKey()).contains("Position"))
-	//{
-	//	g->GetTransform()->SetPosition(j.at(g->getFactoryKey()).at("Position").at("x"),
-	//		j.at(g->getFactoryKey()).at("Position").at("y"),
-	//		j.at(g->getFactoryKey()).at("Position").at("z"));
-	//}
-	//
-	////set rotation, might need new keyword here i don't like declaring this temporary value
-	//if (j.at(g->getFactoryKey()).contains("Rotation"))
-	//{
-	//	Quaternion q;
-
-	//	q.SetX(j.at(g->getFactoryKey()).at("Rotation").at("x"));
-	//	q.SetY(j.at(g->getFactoryKey()).at("Rotation").at("y"));
-	//	q.SetZ(j.at(g->getFactoryKey()).at("Rotation").at("z"));
-	//	q.SetW(j.at(g->getFactoryKey()).at("Rotation").at("w"));
-
-	//	g->GetTransform()->SetRotation(q);
-	//}
-	//
-
-	////change scale
-	//if (j.at(g->getFactoryKey()).contains("Scale") )
-	//{
-	//	Vector3f v;
-	//	v.SetX(j.at(g->getFactoryKey()).at("Scale").at("x"));
-	//	v.SetY(j.at(g->getFactoryKey()).at("Scale").at("y"));
-	//	v.SetZ(j.at(g->getFactoryKey()).at("Scale").at("z"));
-
-	//	g->GetTransform()->SetRelativeScale(v);
-	//}
-
-
-	//here is where we add in the componenets from the json, each comp will need it's own fromJson method
-}
-
 
 void LevelLoader::LoadLevel()
 {
@@ -154,12 +65,7 @@ void LevelLoader::LoadLevel()
 
 		int i = 0;
 
-
-
-
 		std::cout << "Loading level" << std::endl;
-
-
 
 		//Step 3
 		//This is the more robust method
@@ -175,8 +81,6 @@ void LevelLoader::LoadLevel()
 			GameObject *go = GAMEOBJECT->SpawnGameObject(j.at(it.key()).at("key"));
 
 			//go->Load(j);
-
-			//g->Load(j);
 		}
 
 		//this iterator only works if we already have all objects in GO factory

@@ -59,5 +59,5 @@ private:
 		* @brief The list of all GameObjects, stored in a map with a string as the key.
 		* Objects can be inserted with a chosen key or an automatic key
 		*/
-	std::map<std::string, GameObject *> *objectList;
+	std::map<std::string, GameObject *> *m_objects;
 };

@@ -208,6 +208,8 @@ public:
 		*/
 	void Render();
 
+	void Render(Shader &shaderOveride);
+
 		/**
 		 * @brief Calls the render function of every component after others
 		*/

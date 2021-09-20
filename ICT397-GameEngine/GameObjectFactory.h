@@ -53,6 +53,14 @@ public:
 	int getNumObjects();
 
 		/**
+		 * @brief searches for gameobject with key
+		 *
+		 * \param key to search for
+		 * \return if key exists
+		 */
+	bool CheckKey(const std::string &key);
+
+		/**
 		 * @brief Creates an object in the object list using an automatically allocated key
 		 * @return A pointer to the spawned object
 		*/
@@ -78,7 +86,9 @@ public:
 		/**
 		 * @brief Calls the render function of each GameObject in storage
 		*/
-	void render();
+	void Render();
+
+	void Render(Shader &shaderOveride);
 
 		/**
 		 * @brief saves the game
@@ -99,7 +109,7 @@ private:
 		/**
 		 * @brief The list of all GameObjects, stored in a map with a string as the key. Objects can be inserted with a chosen key or an automatic key
 		*/
-	std::map<std::string, GameObject *> objectList;
+	std::map<std::string, GameObject *> m_objects;
 
 		/**
 		 * @brief A utility function function designed to increment an alphabetic key through combinations of letters
