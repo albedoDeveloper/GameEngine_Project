@@ -37,9 +37,17 @@ void LevelEditor::ObjectHeader(GameObject *g)
 {
 	ImGui::AlignTextToFramePadding();
 
+	//is the gameobject active?
+	bool isActive = g->GetActive();
+
 	if (ImGui::TreeNode((char *)g->GetFactoryKey().c_str()))
 	{
+
 		ImGui::AlignTextToFramePadding();
+
+		ImGui::Checkbox("Active", &isActive);
+
+		g->SetActive(isActive);
 
 		TransformHeader(g);
 

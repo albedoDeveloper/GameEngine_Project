@@ -114,6 +114,7 @@ private:
 
 		/** are collider boxes being drawn? */
 	bool m_drawColliders;
+
 };
 
 #define ENGINE Engine::Instance()

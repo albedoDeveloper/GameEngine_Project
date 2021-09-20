@@ -8,7 +8,9 @@
 CStaticMesh::CStaticMesh(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj },
 	m_shader{ GRAPHICS->m_litShader },
-	m_model{ nullptr }
+	m_model{ nullptr },
+	m_shaderSelect{ 0 },
+	m_selectedShader{ lit }
 {
 }
 
@@ -34,18 +36,46 @@ void CStaticMesh::AssignShader(std::string shader)
 	if (!shader.compare("lit"))
 	{
 		m_shader = GRAPHICS->m_litShader;
+		m_selectedShader = ShaderSelection::lit;
+		m_shaderSelect = 0;
 	}
 	else if (!shader.compare("unlit"))
 	{
 		m_shader = GRAPHICS->m_unlitShader;
+		m_selectedShader = ShaderSelection::unlit;
+		m_shaderSelect = 1;
 	}
 	else if (!shader.compare("debug"))
 	{
 		m_shader = GRAPHICS->m_debugShader;
+		m_selectedShader = ShaderSelection::debug;
+		m_shaderSelect = 2;
 	}
 	else
 	{
 		std::cout << "ERROR: CStaticMesh::AssignShader ... invalid shader string entered\n";
+	}
+}
+
+void CStaticMesh::AssignShaderEnum(ShaderSelection shader)
+{
+	switch (m_shaderSelect)
+	{
+	case lit:
+		m_shader = GRAPHICS->m_litShader;
+		m_selectedShader = ShaderSelection::lit;
+		m_shaderSelect = 0;
+		break;
+	case unlit:
+		m_shader = GRAPHICS->m_unlitShader;
+		m_selectedShader = ShaderSelection::unlit;
+		m_shaderSelect = 1;
+		break;
+	case debug:
+		m_shader = GRAPHICS->m_debugShader;
+		m_selectedShader = ShaderSelection::debug;
+		m_shaderSelect = 2;
+		break;
 	}
 }
 
@@ -67,6 +97,7 @@ void CStaticMesh::Save(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
 	j[g->GetFactoryKey()]["Components"]["StaticMeshComponent"]["AModel"] = m_model->Key();
+	j[g->GetFactoryKey()]["Components"]["StaticMeshComponent"]["Shader"] = enum_str[m_selectedShader];
 
 	//m_transform.ToJson(j, g->getFactoryKey());
 }
@@ -74,14 +105,41 @@ void CStaticMesh::Save(nlohmann::json &j)
 void CStaticMesh::Load(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
+	//AssignModelByKey(j.at(m_parent->GetFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
+	AssignShader(j.at(m_parent->GetFactoryKey()).at("Components").at("StaticMeshComponent").at("Shader"));
 	//m_transform.FromJson(j, g->getFactoryKey());
 }
 
 void CStaticMesh::DrawToImGui()
 {
+	const char *items[] = { enum_str[lit], enum_str[unlit], enum_str[debug] };
+	//int item_current = 0;
+
+
+
 	//ImGui::Text("staticMesh TREE");
 	if (ImGui::TreeNode("StaticMesh CComponent"))
 	{
+		//Shader select
+
+		ImGui::PushItemWidth(125); ImGui::Combo("Shader Select", &m_shaderSelect, items, IM_ARRAYSIZE(items));
+
+		switch (m_shaderSelect)
+		{
+		case 0:
+			m_shader = GRAPHICS->m_litShader;
+			m_selectedShader = ShaderSelection::lit;
+			break;
+		case 1:
+			m_shader = GRAPHICS->m_unlitShader;
+			m_selectedShader = ShaderSelection::unlit;
+			break;
+		case 2:
+			m_shader = GRAPHICS->m_debugShader;
+			m_selectedShader = ShaderSelection::debug;
+			break;
+		}
+
 		ImGui::Text("AModel Name : "); ImGui::SameLine(); ImGui::Text(m_model->Key().c_str());
 		ImGui::TreePop();
 	}

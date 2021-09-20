@@ -140,6 +140,7 @@ int GraphicsEngine::AddPointLight(CPointLight *light)
 void GraphicsEngine::renderObjects()
 {
 	skybox.DrawSkybox(GetProjection(), GetView());
+
 	GAMEOBJECT->Render();
 
 	if (m_drawDebug)

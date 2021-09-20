@@ -122,6 +122,11 @@ void GameObject::SetFactoryKey(std::string key)
 	this->m_factoryKey = key;
 }
 
+bool GameObject::GetActive()
+{
+	return m_isActive;
+}
+
 void GameObject::SetActive(bool activeStatus)
 {
 	m_isActive = activeStatus;
@@ -214,9 +219,13 @@ void GameObject::LateRender()
 
 void GameObject::Save(nlohmann::json &j)
 {
+	//first we store the name/key of the object
 	j[GetFactoryKey()]["key"] = GetFactoryKey();
 
 	GetTransform()->ToJson(j, GetFactoryKey());
+
+	//then we store whether it is active or inactive
+	j[GetFactoryKey()]["active"] = m_isActive;
 
 	// iterate through all component lists
 	for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
@@ -245,6 +254,10 @@ void GameObject::Load(nlohmann::json &j)
 	//std::cout << getFactoryKey() << std::endl;
 	GetTransform()->FromJson(j, GetFactoryKey());
 
+	//then we check whether it is active or inactive
+	m_isActive = j.at(GetFactoryKey()).at("active");
+
+	//we get teh number of components
 	std::cout << j.at(GetFactoryKey()).at("Components").size() << std::endl;
 
 	for (auto it : j.at(GetFactoryKey()).at("Components").items())
@@ -270,10 +283,14 @@ void GameObject::Load(nlohmann::json &j)
 			if (GetComponent<CStaticMesh>())
 			{
 				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(GetFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
+				GetComponent<CStaticMesh>()->Load(j);
+
 			}
 			else
 			{
 				AddCStaticMesh()->AssignModelByKey(j.at(GetFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
+				GetComponent<CStaticMesh>()->Load(j);
+
 			}
 		}
 

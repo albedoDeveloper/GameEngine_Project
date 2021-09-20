@@ -10,6 +10,15 @@
 #include "ModernOpenGL/AModel.h"
 #include <string>
 
+//enum declare
+enum ShaderSelection
+{
+	lit, unlit, debug
+};
+
+static const char *enum_str[] =
+{ "lit", "unlit", "debug" };
+
 	/**
 	 * @brief A static mesh containing information on a model
 	*/
@@ -43,6 +52,8 @@ public:
 		*/
 	void AssignShader(std::string shader);
 
+	void AssignShaderEnum(ShaderSelection shader);
+
 		/**
 		* @brief displays the mesh's model on the screen
 		*/
@@ -70,4 +81,11 @@ public:
 
 		/** @brief pointer to the shader */
 	Shader *m_shader;
+
+	/** @brief shader index */
+	int m_shaderSelect = 0;
+
+	ShaderSelection m_selectedShader;
+
+
 };

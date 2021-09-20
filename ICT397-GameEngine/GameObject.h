@@ -187,11 +187,20 @@ public:
 	void SetFactoryKey(std::string key);
 
 		/**
+		 * accesses active state.
+		 *
+		 * \param activeStatus new active state
+		 */
+	bool GetActive();
+
+		/**
 		 * set active state.
 		 *
 		 * \param activeStatus new active state
 		 */
 	void SetActive(bool activeStatus);
+
+
 
 		/**
 		 * @brief Calls the start function of every component
