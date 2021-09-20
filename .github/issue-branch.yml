@@ -1,3 +1,2 @@
 defaultBranch: 'Development'
 branchName: '${issue.title}'
-mode: chatops
