@@ -11,6 +11,10 @@
 #include "Vector3f.h"
 #include "Quaternion.h"
 
+
+//forward declaration of gameobject
+class GameObject;
+
 	/**
 	 * @brief Stores data about an object or componet's location in space
 	 */
@@ -24,9 +28,21 @@ public:
 
 		/**
 		 * @brief constructor, calls the default constructor
+		 * \param reference to the gameObject this is attached to
+		 */
+	Transform(GameObject *gameObject);
+
+		/**
+		 * @brief constructor, calls the default constructor
 		 * @param parent the parent transform of this transform, which this will be relative to
 		*/
 	Transform(Transform *parent);
+
+		/**
+		 * @brief constructor, calls the default constructor
+		 * @param parent the parent transform of this transform, which this will be relative to
+		*/
+	Transform(Transform *parent, GameObject *gameObject);
 
 		/**
 		 * set parent transform of this transorm
@@ -34,6 +50,27 @@ public:
 		 * \param newParent
 		 */
 	void SetParent(Transform *newParent);
+
+		/**
+		 * @Retrieves a pointer to the parent transform
+		 *
+		 * \return parent transform
+		 */
+	Transform *GetParent();
+
+		/**
+		 * set gameObject of this transorm
+		 *
+		 * \param newGameObject
+		 */
+	void SetGameObject(GameObject *newGameObject);
+
+		/**
+		 * @Retrieves a pointer to the gameObject
+		 *
+		 * \return GameObject
+		 */
+	GameObject *GetGameObject();
 
 		/**
 		 * @brief Saves the transform to JSON
@@ -50,8 +87,6 @@ public:
 		 * @return
 		*/
 	Transform GetWorldTransform() const;
-
-	Matrix4f GetMat4() const;
 
 		/**
 		 * @brief Changes the transform's position by a relative amount
@@ -210,4 +245,7 @@ private:
 
 	/** parent transform */
 	Transform *m_parent;
+
+	/** attached to this gameobject */
+	GameObject *m_gameObject;
 };

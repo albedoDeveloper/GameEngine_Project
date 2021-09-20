@@ -2,7 +2,7 @@
 #include "GameObjectFactory.h"
 
 GameObject::GameObject()
-	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ }, m_static{ false }
+	:m_components{}, m_factoryKey{}, m_isActive{ true }, m_transform{ this }, m_static{ false }
 {
 }
 
@@ -112,14 +112,19 @@ void GameObject::SetParentObject(std::string newParent)
 	m_transform.SetParent(otherObject->GetTransform());
 }
 
-std::string GameObject::getFactoryKey()
+std::string GameObject::GetFactoryKey()
 {
 	return m_factoryKey;
 }
 
-void GameObject::setFactoryKey(std::string key)
+void GameObject::SetFactoryKey(std::string key)
 {
 	this->m_factoryKey = key;
+}
+
+bool GameObject::GetActive()
+{
+	return m_isActive;
 }
 
 void GameObject::SetActive(bool activeStatus)
@@ -214,9 +219,13 @@ void GameObject::LateRender()
 
 void GameObject::Save(nlohmann::json &j)
 {
-	j[getFactoryKey()]["key"] = getFactoryKey();
+	//first we store the name/key of the object
+	j[GetFactoryKey()]["key"] = GetFactoryKey();
 
-	GetTransform()->ToJson(j, getFactoryKey());
+	GetTransform()->ToJson(j, GetFactoryKey());
+
+	//then we store whether it is active or inactive
+	j[GetFactoryKey()]["active"] = m_isActive;
 
 	// iterate through all component lists
 	for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
@@ -227,16 +236,32 @@ void GameObject::Save(nlohmann::json &j)
 			(*listIterator)->Save(j);
 		}
 	}
+
+
+	//assign parent if we have one
+	if (GetTransform()->GetParent() != nullptr)
+	{
+		j[GetFactoryKey()]["parent"] = GetTransform()->GetParent()->GetGameObject()->GetFactoryKey();
+		//j[GetFactoryKey()]["parent"] = "PARENT";
+	}
+	else
+	{
+		j[GetFactoryKey()]["parent"] = "TEST";
+	}
 }
 
 void GameObject::Load(nlohmann::json &j)
 {
-	std::cout << getFactoryKey() << std::endl;
-	GetTransform()->FromJson(j, getFactoryKey());
+	//std::cout << getFactoryKey() << std::endl;
+	GetTransform()->FromJson(j, GetFactoryKey());
 
-	std::cout << j.at(getFactoryKey()).at("Components").size() << std::endl;
+	//then we check whether it is active or inactive
+	m_isActive = j.at(GetFactoryKey()).at("active");
 
-	for (auto it : j.at(getFactoryKey()).at("Components").items())
+	//we get teh number of components
+	std::cout << j.at(GetFactoryKey()).at("Components").size() << std::endl;
+
+	for (auto it : j.at(GetFactoryKey()).at("Components").items())
 	{
 		std::cout << "GO TEST" << it.key() << " | " << it.value() << std::endl;
 
@@ -246,11 +271,11 @@ void GameObject::Load(nlohmann::json &j)
 		{
 			if (GetComponent<CScript>())
 			{
-				GetComponent<CScript>()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
+				GetComponent<CScript>()->AssignScriptByKey(j.at(GetFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
 			}
 			else
 			{
-				AddCScript()->AssignScriptByKey(j.at(getFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
+				AddCScript()->AssignScriptByKey(j.at(GetFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
 			}
 		}
 
@@ -258,11 +283,15 @@ void GameObject::Load(nlohmann::json &j)
 		{
 			if (GetComponent<CStaticMesh>())
 			{
-				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
+				GetComponent<CStaticMesh>()->AssignModelByKey(j.at(GetFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
+				GetComponent<CStaticMesh>()->Load(j);
+
 			}
 			else
 			{
-				AddCStaticMesh()->AssignModelByKey(j.at(getFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
+				AddCStaticMesh()->AssignModelByKey(j.at(GetFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
+				GetComponent<CStaticMesh>()->Load(j);
+
 			}
 		}
 
@@ -281,6 +310,18 @@ void GameObject::Load(nlohmann::json &j)
 			}
 		}
 	}
+
+
+	//Assign parent
+	if (j.at(GetFactoryKey()).at("parent") != "TEST")
+	{
+
+		GameObject *myParent = GAMEOBJECT->GetGameObject(j.at(GetFactoryKey()).at("parent"));
+		GetTransform()->SetParent(myParent->GetTransform());
+
+		std::cout << GetFactoryKey() << " PARENT = " << GetTransform()->GetParent()->GetGameObject()->GetFactoryKey() << std::endl;
+	}
+
 }
 
 std::unordered_map<std::type_index, std::list<CComponent *> *> GameObject::GetComponentMap()
