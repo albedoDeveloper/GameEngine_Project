@@ -51,6 +51,7 @@ void CStaticMesh::AssignShader(std::string shader)
 
 void CStaticMesh::Render()
 {
+	// TODO get this input code outta here
 	if (INPUT->GetKeyDownByCode(KeyCode::T) && m_shader == GRAPHICS->m_unlitShader)
 	{
 		m_shader = GRAPHICS->m_litShader;
@@ -61,6 +62,11 @@ void CStaticMesh::Render()
 	}
 
 	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), m_shader);
+}
+
+void CStaticMesh::Render(Shader &shaderOveride)
+{
+	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), &shaderOveride);
 }
 
 void CStaticMesh::Save(nlohmann::json &j)

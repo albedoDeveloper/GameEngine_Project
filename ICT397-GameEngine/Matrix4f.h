@@ -28,7 +28,11 @@ public:
 		 *
 		 * \param v translation to apply
 		 */
-	void Translate(Vector3f v);
+	void Translate(const Vector3f &v);
+
+	Matrix4f GetTranslate(const Vector3f &v) const;
+
+	Matrix4f GetRotate(const Quaternion &q) const;
 
 		/**
 		 * apply scale to this matrix
@@ -37,6 +41,8 @@ public:
 		 */
 	void Scale(Vector3f v);
 
+	Matrix4f GetScale(const Vector3f &v) const;
+
 		/**
 		 * get value pointer of this matrix, essentially pointer to the first element of this matrix array
 		 *
@@ -44,13 +50,17 @@ public:
 		 */
 	float *ValuePtr();
 
+	void RemoveTranslation();
+
 		/**
 		 * multiply 2 matrix4f's together
 		 *
 		 * \param other right hand side matrix
 		 * \return value of result matrix
 		 */
-	Matrix4f operator*(Matrix4f other);
+	Matrix4f operator*(const Matrix4f &other);
+
+	Matrix4f operator*(const Matrix4f &other) const;
 
 		/**
 		 * multiply this matrix by another and assign the value to this matrix
@@ -61,11 +71,13 @@ public:
 	Matrix4f &operator*=(Matrix4f other);
 
 private:
-	Matrix4f(glm::mat4);
+	Matrix4f(glm::mat4 m);
+
 	glm::mat4 m_mat;
 
 	friend void Decompose(const Matrix4f &m, Vector3f &scaleOut, Quaternion &rotationOut, Vector3f &positionOut);
 	friend Matrix4f Perspective(float fovyDegrees, float aspect, float near, float far);
 	friend Matrix4f LookAt(const Vector3f &eye, const Vector3f &centre, const Vector3f &up);
+	friend Matrix4f Ortho(float left, float right, float bottom, float top, float near, float far);
 	friend class Quaternion;
 };

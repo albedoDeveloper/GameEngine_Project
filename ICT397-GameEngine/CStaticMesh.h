@@ -48,6 +48,8 @@ public:
 		*/
 	virtual void Render();
 
+	virtual void Render(Shader &shaderOveride);
+
 		/**
 		* @brief save the component
 		* \param j json to save to

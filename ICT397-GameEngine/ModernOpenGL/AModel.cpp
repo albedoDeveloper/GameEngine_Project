@@ -18,7 +18,7 @@ const std::string &AModel::Key() const
 void AModel::Draw(const Shader *shader) const
 {
 	for (unsigned int i = 0; i < m_meshes.size(); i++)
-		m_meshes[i].Draw(shader, m_texture);
+		m_meshes[i].Draw(shader);
 }
 
 int AModel::NumFaces() const

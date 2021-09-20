@@ -201,10 +201,10 @@
                 "z": -0.4449999928474426
             },
             "Rotation": {
-                "w": -0.30953696370124817,
-                "x": -0.37782788276672363,
-                "y": -0.7485474944114685,
-                "z": -0.06074279919266701
+                "w": -0.12952232360839844,
+                "x": -0.05365036427974701,
+                "y": -0.9147290587425232,
+                "z": -0.3789040744304657
             },
             "Scale": {
                 "x": 1.0,
@@ -224,7 +224,7 @@
             "Position": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": -0.05000000074505806
+                "z": -0.20000000298023224
             },
             "Rotation": {
                 "w": 1.0,
@@ -233,9 +233,9 @@
                 "z": 0.0
             },
             "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
+                "x": 5.0,
+                "y": 5.0,
+                "z": 5.0
             }
         },
         "key": "endscreen"
@@ -323,7 +323,6 @@
     },
     "light1": {
         "Components": {
-            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis"
             }
@@ -350,7 +349,6 @@
     },
     "light2": {
         "Components": {
-            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis"
             }
@@ -388,9 +386,9 @@
                 "z": 5.275000095367432
             },
             "Rotation": {
-                "w": -0.5724295377731323,
+                "w": -0.1401933878660202,
                 "x": 0.0,
-                "y": -0.5731112360954285,
+                "y": -0.9900996088981628,
                 "z": 0.0
             },
             "Scale": {
@@ -435,14 +433,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 6.018098831176758,
-                "y": 2.0,
-                "z": 0.9315010905265808
+                "x": 8.352985382080078,
+                "y": 1.3381983041763306,
+                "z": -0.7856888175010681
             },
             "Rotation": {
-                "w": 0.8690654635429382,
+                "w": -0.6915162205696106,
                 "x": 0.0,
-                "y": 0.4947011172771454,
+                "y": 0.7223668098449707,
                 "z": 0.0
             },
             "Scale": {
@@ -479,32 +477,6 @@
             }
         },
         "key": "pool-table"
-    },
-    "roof_interior": {
-        "Components": {
-            "StaticMeshComponent": {
-                "AModel": "roof_interior"
-            }
-        },
-        "Transform": {
-            "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        "key": "roof_interior"
     },
     "south_bar_barrier": {
         "Components": {
@@ -638,6 +610,59 @@
             }
         },
         "key": "spiked_door_toilet"
+    },
+    "sun": {
+        "Components": {
+            "CComponent": "CComponent",
+            "StaticMeshComponent": {
+                "AModel": "axis"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 10.0,
+                "z": 10.0
+            },
+            "Rotation": {
+                "w": 0.9203639030456543,
+                "x": 0.3812272250652313,
+                "y": 0.08052139729261398,
+                "z": 0.033353060483932495
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "sun"
+    },
+    "sunanchor": {
+        "Components": {
+            "StaticMeshComponent": {
+                "AModel": "axis"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Rotation": {
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "key": "sunanchor"
     },
     "tavern_floor": {
         "Components": {

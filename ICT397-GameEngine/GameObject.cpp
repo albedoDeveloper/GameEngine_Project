@@ -180,6 +180,22 @@ void GameObject::Render()
 	}
 }
 
+void GameObject::Render(Shader &shaderOveride)
+{
+	if (m_isActive)
+	{
+		// iterate through all component lists
+		for (auto mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+		{
+			// iterate through all components in list
+			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+			{
+				(*listIterator)->Render(shaderOveride);
+			}
+		}
+	}
+}
+
 void GameObject::LateRender()
 {
 	if (m_isActive)

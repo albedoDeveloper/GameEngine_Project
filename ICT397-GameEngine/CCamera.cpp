@@ -3,8 +3,7 @@
 #include "GraphicsEngine.h"
 
 CCamera::CCamera(Transform *parent, GameObject *parentObj)
-	:CComponent{ parent, parentObj }
-	, m_camera{}
+	:CComponent{ parent, parentObj }, m_camera{}
 {
 }
 
@@ -21,7 +20,6 @@ void CCamera::DrawToImGui()
 	{
 		ImGui::Text("Camera info : ");
 		ImGui::TreePop();
-
 	}
 }
 

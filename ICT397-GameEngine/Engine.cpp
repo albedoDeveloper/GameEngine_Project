@@ -46,6 +46,9 @@ int Engine::Execute(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 				case SDL_WINDOWEVENT_MOVED:
 					TIME->CatchupDeltaTime();
 					break;
+				case SDL_WINDOWEVENT_RESIZED:
+					GRAPHICS->SetViewportToWindowSize();
+					break;
 				}
 			}
 
@@ -92,7 +95,6 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	// set up physics world
 	COLLISION->Init();
 
 	if (!GRAPHICS->Init(renderer, windowWidth, windowHeight))
@@ -159,23 +161,8 @@ void Engine::Update()
 
 void Engine::Render()
 {
-	GRAPHICS->UpdateViewPos();
-
-	GRAPHICS->m_litShader->Use();
-	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetView());
-	GRAPHICS->m_litShader->SetFloatUniform("material.shininess", 16); // TODO move somewhere else
-
-	GRAPHICS->m_unlitShader->Use();
-	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_unlitShader->SetMat4Uniform("view", GRAPHICS->GetView());
-
-	GRAPHICS->m_debugShader->Use();
-	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetProjection());
-	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetView());
-
-	GRAPHICS->newFrame(m_debugMenu);
-	GRAPHICS->renderObjects();
+	ShadowMapRenderPass();
+	CameraRenderPass();
 
 	if (m_debugMenu) // TEST WINDOW
 	{
@@ -208,4 +195,36 @@ void Engine::Cleanup()
 {
 	SCRIPT->Close();
 	GRAPHICS->Close();
+}
+
+void Engine::ShadowMapRenderPass()
+{
+	GRAPHICS->SetupShadowMapFBO();
+	GRAPHICS->m_shadowMapShader->SetMat4Uniform("lightSpaceMatrix", GRAPHICS->GetShadowMapperMatrix());
+	GRAPHICS->RenderObjects(*GRAPHICS->m_shadowMapShader);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
+void Engine::CameraRenderPass()
+{
+	GRAPHICS->m_litShader->Use();
+	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
+	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
+	GRAPHICS->m_litShader->SetMat4Uniform("lightSpaceMatrix", GRAPHICS->GetShadowMapperMatrix());
+	GRAPHICS->m_litShader->SetFloatUniform("material.shininess", 16); // TODO move somewhere else
+
+	GRAPHICS->m_unlitShader->Use();
+	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
+	GRAPHICS->m_unlitShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
+
+	GRAPHICS->m_debugShader->Use();
+	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
+	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
+
+	GRAPHICS->UpdateCamViewPos();
+
+	GRAPHICS->SetViewportToWindowSize();
+	GRAPHICS->NewFrame(m_debugMenu);
+	GRAPHICS->BindDepthMapTexture();
+	GRAPHICS->RenderObjects();
 }

@@ -2,6 +2,7 @@
 #include "GameObject.h"
 
 CollisionManager::CollisionManager()
+	:m_colliderArray{}, m_collision{}, m_fill{ 0 }, m_waitTime{ 0 }
 {}
 
 void CollisionManager::Init()

@@ -46,3 +46,5 @@ Matrix4f Perspective(float fovyDegrees, float aspect, float near, float far);
 	 * create a look at view matrix from eye position lookat point and up vector
 	 */
 Matrix4f LookAt(const Vector3f &eyePos, const Vector3f &lookAtPoint, const Vector3f &upVec);
+
+Matrix4f Ortho(float left, float right, float bottom, float top, float near, float far);
