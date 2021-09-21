@@ -1,6 +1,6 @@
 #include <glew/GL/glew.h>
 #include "Shader.h"
-
+#include "../Utility.h"
 
 void Shader::Use() const
 {
@@ -46,8 +46,8 @@ Shader::Shader(const char *vertexPath, const char *fragmentPath)
 		CreateShaders(vertexShader, &vShaderCode, 0);
 		CreateShaders(fragmentShader, &fShaderCode, 1);
 		ShaderLinking(vertexShader, fragmentShader);
-		SetBoolUniform("dirLightActive", false);
 	}
+
 
 	catch (std::ifstream::failure e)
 	{
@@ -94,7 +94,6 @@ Shader::Shader(const char *vertexPath, const char *geometryPath, const char *fra
 		CreateShaders(vertexShader, &vShaderCode, 0);
 		CreateShaders(fragmentShader, &fShaderCode, 1);
 		ShaderLinking(vertexShader, fragmentShader);
-		SetBoolUniform("dirLightActive", false);
 	}
 
 	catch (std::ifstream::failure e)
@@ -106,36 +105,73 @@ Shader::Shader(const char *vertexPath, const char *geometryPath, const char *fra
 void Shader::SetBoolUniform(const std::string &name, bool value) const
 {
 	glUseProgram(m_ID);
-	glUniform1i(glGetUniformLocation(m_ID, name.c_str()), (int)value);
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str());
+	CHECK_GL_ERROR;
+	if (uniformLoc == -1)
+	{
+		std::cerr << "[ERROR] SetBoolUniform(): invalid uniform name: " << name << std::endl;
+	}
+	glUniform1i(uniformLoc, (int)value);
 }
 
 void Shader::SetIntUniform(const std::string &name, int value) const
 {
 	glUseProgram(m_ID);
-	glUniform1i(glGetUniformLocation(m_ID, name.c_str()), value);
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str());
+	CHECK_GL_ERROR;
+	if (uniformLoc == -1)
+	{
+		std::cerr << "[ERROR] SetIntUniform(): invalid uniform name: " << name << std::endl;
+	}
+	glUniform1i(uniformLoc, value);
 }
+
 void Shader::SetFloatUniform(const std::string &name, float value) const
 {
 	glUseProgram(m_ID);
-	glUniform1f(glGetUniformLocation(m_ID, name.c_str()), value);
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str());
+	CHECK_GL_ERROR;
+	if (uniformLoc == -1)
+	{
+		std::cerr << "[ERROR] SetFloatUniform(): invalid uniform name: " << name << std::endl;
+	}
+	glUniform1f(uniformLoc, value);
 }
 
 void Shader::SetVec4Uniform(const std::string &name, const glm::vec4 &value) const
 {
 	glUseProgram(m_ID);
-	glUniform4fv(glGetUniformLocation(m_ID, name.c_str()), 1, &value[0]);
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str());
+	CHECK_GL_ERROR;
+	if (uniformLoc == -1)
+	{
+		std::cerr << "[ERROR] SetVec4Uniform(): invalid uniform name: " << name << std::endl;
+	}
+	glUniform4fv(uniformLoc, 1, &value[0]);
 }
 
 void Shader::SetVec3Uniform(const std::string &name, Vector3f value) const
 {
 	glUseProgram(m_ID);
-	glUniform3fv(glGetUniformLocation(m_ID, name.c_str()), 1, value.ValuePtr());
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str());
+	CHECK_GL_ERROR;
+	if (uniformLoc == -1)
+	{
+		std::cerr << "[ERROR] SetVec3Uniform(): invalid uniform name: " << name << std::endl;
+	}
+	glUniform3fv(uniformLoc, 1, value.ValuePtr());
 }
 
 void Shader::SetMat4Uniform(const std::string &name, Matrix4f mat) const
 {
 	glUseProgram(m_ID);
-	glUniformMatrix4fv(glGetUniformLocation(m_ID, name.c_str()), 1, GL_FALSE, mat.ValuePtr());
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str());
+	CHECK_GL_ERROR;
+	if (uniformLoc == -1)
+	{
+		std::cerr << "[ERROR] SetMat4Uniform(): invalid uniform name: " << name << std::endl;
+	}
+	glUniformMatrix4fv(uniformLoc, 1, GL_FALSE, mat.ValuePtr());
 }
 
 void Shader::CreateShaders(unsigned int &shadername, const GLchar *const *actualShader, int typeOfShader)

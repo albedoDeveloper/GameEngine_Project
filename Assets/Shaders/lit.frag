@@ -9,6 +9,7 @@ struct Material
 
 struct PointLight 
 {
+    samplerCube depthCubeMap;
     vec3 position;
   
     float ambientStrength;
@@ -22,6 +23,7 @@ struct PointLight
 
 struct DirectionalLight
 {
+    sampler2D dirShadowMap;
     float ambientStrength;
     vec3 colour;
     vec3 direction;
@@ -47,7 +49,6 @@ in vec3 FragPos;
 in vec4 FragPosLightSpace;
   
 uniform Material material;
-uniform sampler2D shadowMap;
 uniform vec3 viewPos;
 
 void main()
@@ -77,7 +78,7 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir)
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
 
     projCoords = projCoords * 0.5 + 0.5; 
-    float closestDepth = texture(shadowMap, projCoords.xy).r;   
+    float closestDepth = texture(dirLight.dirShadowMap, projCoords.xy).r;   
     float currentDepth = projCoords.z;
     float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;
 
@@ -85,12 +86,12 @@ float ShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir)
         shadow = 0.0;
 
     // soft shadow PCF
-    vec2 texelSize = 1.0 / textureSize(shadowMap, 0);
+    vec2 texelSize = 1.0 / textureSize(dirLight.dirShadowMap, 0);
     for(int x = -1; x <= 1; ++x)
     {
         for(int y = -1; y <= 1; ++y)
         {
-            float pcfDepth = texture(shadowMap, projCoords.xy + vec2(x, y) * texelSize).r; 
+            float pcfDepth = texture(dirLight.dirShadowMap, projCoords.xy + vec2(x, y) * texelSize).r; 
             shadow += currentDepth - bias > pcfDepth ? 1.0 : 0.0;        
         }    
     }

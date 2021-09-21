@@ -74,11 +74,28 @@ void Mesh::Draw(const Shader *shader) const
 		glBindTexture(GL_TEXTURE_2D, textures[textureUnit].id);
 	}
 
-	// send shadowMap to shader
-	glActiveTexture(GL_TEXTURE2);
-	GRAPHICS->BindDepthMapTexture();
-	shader->SetIntUniform("shadowMap", 2);
+	// send shadowMap to shader 
+	glActiveTexture(GL_TEXTURE2); //TODO  prototype code. using GL_TEXTURE2 wont work once the mesh contains more than 2 textures
+	GRAPHICS->BindDirShadowDepthMapTexture();
+	shader->SetIntUniform("dirLight.dirShadowMap", 2);
 
+	//unsigned numPointLights = GRAPHICS->NumPointLights();
+	//for (int i = 0; i < numPointLights; i++)
+	//{
+	//	glActiveTexture(GL_TEXTURE3); // TODO same kinda thing as above ^^^
+	//	GRAPHICS->BindPointDepthCubeMapTexture(i);
+	//	shader->SetIntUniform("pointLights[" + std::to_string(i) + "].depthCubeMap", 3 + i); // yeah .... dirty prototype code
+	//}
+
+	glBindVertexArray(VAO);
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
+
+	glDisable(GL_TEXTURE_2D);
+}
+
+void Mesh::DrawNoTexture() const
+{
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);

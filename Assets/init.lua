@@ -177,6 +177,7 @@ GetGameObject("light2"):SetParentObject("lightAnchor")
 GetGameObject("light2"):AddCStaticMesh():AssignModel("axis")
 GetGameObject("light2"):GetTransform():Translate(0.5,0,0)
 
+
 SpawnGameObject("player");
 GetGameObject("player"):GetTransform():SetRelativePosition(0, 2, 0);
 GetGameObject("player"):AddCCollider():AddBoxCollider(0.25, 1.4, 0.25, 0 ,0, 0, false, 2, false);

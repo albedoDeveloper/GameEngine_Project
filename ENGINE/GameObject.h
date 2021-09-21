@@ -217,7 +217,7 @@ public:
 		*/
 	void Render();
 
-	void Render(Shader &shaderOveride);
+	void Render(Shader &shaderOveride, bool noTexture);
 
 		/**
 		 * @brief Calls the render function of every component after others

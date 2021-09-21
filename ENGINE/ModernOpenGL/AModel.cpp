@@ -21,6 +21,12 @@ void AModel::Draw(const Shader *shader) const
 		m_meshes[i].Draw(shader);
 }
 
+void AModel::DrawNoTexture() const
+{
+	for (unsigned int i = 0; i < m_meshes.size(); i++)
+		m_meshes[i].DrawNoTexture();
+}
+
 int AModel::NumFaces() const
 {
 	return m_numberOfFaces;

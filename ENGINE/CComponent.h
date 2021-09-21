@@ -43,7 +43,7 @@ public:
 	virtual void Render()
 	{};
 
-	virtual void Render(Shader &shaderOveride)
+	virtual void Render(Shader &shaderOverid, bool noTexture)
 	{};
 
 		/**

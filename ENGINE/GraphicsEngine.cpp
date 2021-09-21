@@ -10,6 +10,7 @@
 #include "Vector3f.h"
 #include "Matrix4f.h"
 #include "MiscMath.h"
+#include "Utility.h"
 
 extern "C"
 {
@@ -105,20 +106,18 @@ void GraphicsEngine::UpdateCamViewPos() const
 
 int GraphicsEngine::AddPointLight(CPointLight *light)
 {
-	int numpointLights = m_lightManager.AddPointLight(light);
+	if (!m_shadowMapper.IsInitialised())
+	{
+		std::cout << "[Error] Cannot add point light because shadow mapper is not initialised\n";
+		return m_lightManager.NumPointLights();
+	}
+
 	m_shadowMapper.AddPointLight(light);
+
+	int numpointLights = m_lightManager.AddPointLight(light);
 
 	m_litShader->Use();
 	m_litShader->SetIntUniform("numOfPointLights", numpointLights);
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->GetAmbientStrength());
-	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(numpointLights - 1) + "].colour", Vector3f(
-		light->GetColour().GetX(),
-		light->GetColour().GetY(),
-		light->GetColour().GetZ()
-	));
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].constant", light->GetAttenConstant());
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].linear", light->GetLinearAttenutation());
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].quadratic", light->GetQuadraticAttenuation());
 
 	return numpointLights;
 }
@@ -134,20 +133,9 @@ void GraphicsEngine::AddDirectionalLight(const CDirectionalLight &light)
 	m_shadowMapper.AssignDirLight(&light);
 }
 
-void GraphicsEngine::AddPointLight(CPointLight &light)
+void GraphicsEngine::RenderObjects(Shader &shader, bool noTexture)
 {
-	if (!m_shadowMapper.IsInitialised())
-	{
-		std::cout << "[Error] Cannot add point light because shadow mapper is not initialised\n";
-		return;
-	}
-
-	m_shadowMapper.AddPointLight(&light);
-}
-
-void GraphicsEngine::RenderObjects(Shader &shader)
-{
-	GAMEOBJECT->Render(shader);
+	GAMEOBJECT->Render(shader, noTexture);
 }
 
 void GraphicsEngine::RenderObjects()
@@ -210,7 +198,7 @@ void GraphicsEngine::DeleteTexture(std::string key)
 	glDeleteTextures(1, texId);
 }
 
-void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const Shader *shader)
+void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const Shader *shader, bool noTexture)
 {
 	if (!model)
 	{
@@ -229,7 +217,14 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
 
-	model->Draw(shader);
+	if (noTexture)
+	{
+		model->DrawNoTexture();
+	}
+	else
+	{
+		model->Draw(shader);
+	}
 }
 
 unsigned GraphicsEngine::GetTexID(std::string key) const
@@ -314,6 +309,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	std::cout << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl;
 
 	m_litShader = new Shader("../Assets/Shaders/lit_unlit.vert", "../Assets/Shaders/lit.frag");
+	m_litShader->SetIntUniform("numOfPointLights", 0);
+	m_litShader->SetBoolUniform("dirLightActive", false);
 	m_unlitShader = new Shader("../Assets/Shaders/lit_unlit.vert", "../Assets/Shaders/unlit.frag");
 	m_debugShader = new Shader("../Assets/Shaders/debug_skybox.vert", "../Assets/Shaders/debug.frag");
 	m_dirShadowMapShader = new Shader("../Assets/Shaders/dirShadowMap.vert", "../Assets/Shaders/shadowMap.frag");
@@ -412,7 +409,6 @@ void GraphicsEngine::DrawDebug()
 	glBindVertexArray(VAODebug);
 	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3);
 	glBindVertexArray(0);
-
 }
 
 void GraphicsEngine::SetupDirLightFBO()
@@ -420,14 +416,19 @@ void GraphicsEngine::SetupDirLightFBO()
 	m_shadowMapper.SetupDirLightFBO();
 }
 
-void GraphicsEngine::SetupPointLightFBO()
+void GraphicsEngine::SetupPointLightFBO(unsigned lightIndex)
 {
-	m_shadowMapper.SetupPointLightFBO();
+	m_shadowMapper.SetupPointLightFBO(lightIndex);
 }
 
-void GraphicsEngine::BindDepthMapTexture() const
+void GraphicsEngine::BindDirShadowDepthMapTexture() const
 {
-	m_shadowMapper.BindDepthMapTexture();
+	m_shadowMapper.BindDirShadowDepthMapTexture();
+}
+
+void GraphicsEngine::BindPointDepthCubeMapTexture(unsigned lightIndex) const
+{
+	m_shadowMapper.BindPointDepthCubeMapTexture(lightIndex);
 }
 
 Matrix4f GraphicsEngine::GetCameraProjection()
@@ -440,6 +441,16 @@ Matrix4f GraphicsEngine::GetCameraProjection()
 	);
 }
 
+Matrix4f GraphicsEngine::GetDirProjViewMat() const
+{
+	return m_shadowMapper.GetDirProjViewMat();
+}
+
+std::vector<Matrix4f> GraphicsEngine::GetPointProjViewMat(unsigned lightIndex) const
+{
+	return m_shadowMapper.GetPointProjViewMat(lightIndex);
+}
+
 Matrix4f GraphicsEngine::GetCameraView()
 {
 	return LookAt(
@@ -449,7 +460,34 @@ Matrix4f GraphicsEngine::GetCameraView()
 	);
 }
 
-Matrix4f GraphicsEngine::GetShadowMapperMatrix()
+unsigned GraphicsEngine::NumPointLights() const
 {
-	return m_shadowMapper.GetProjViewMat();
+	return m_lightManager.NumPointLights();
+}
+
+void GraphicsEngine::DirLightShadowPass()
+{
+	m_shadowMapper.SetupDirLightFBO();
+	m_dirShadowMapShader->SetMat4Uniform("dirLightSpaceMatrix", GetDirProjViewMat());
+	RenderObjects(*m_dirShadowMapShader, true);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
+void GraphicsEngine::PointLightShadowPass()
+{
+	unsigned numLights = m_lightManager.NumPointLights();
+
+	for (int lightIndex = 0; lightIndex < numLights; lightIndex++)
+	{
+		std::vector<Matrix4f> mats = GetPointProjViewMat(lightIndex);
+		assert(mats.size() == 6);
+		m_shadowMapper.SetupPointLightFBO(lightIndex);
+		for (int matIndex = 0; matIndex < mats.size(); matIndex++)
+		{
+			m_pointShadowMapShader->SetMat4Uniform("shadowMatrices[" + std::to_string(matIndex) + "]", mats[matIndex]);
+			CHECK_GL_ERROR;
+		}
+		RenderObjects(*m_pointShadowMapShader, true);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	}
 }

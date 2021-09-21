@@ -4,9 +4,9 @@
 
 Time::Time()
 {
-	NOW = SDL_GetPerformanceCounter();
-	LAST = 0;
-	deltaTime = 0;
+	m_now = SDL_GetPerformanceCounter();
+	m_last = 0;
+	m_deltaTime = 0;
 }
 
 Time *Time::Instance()
@@ -17,20 +17,20 @@ Time *Time::Instance()
 
 void Time::UpdateDeltaTime()
 {
-	LAST = NOW;
-	NOW = SDL_GetPerformanceCounter();
+	m_last = m_now;
+	m_now = SDL_GetPerformanceCounter();
 
-	deltaTime = (NOW - LAST) / (double)SDL_GetPerformanceFrequency();
+	m_deltaTime = (m_now - m_last) / (double)SDL_GetPerformanceFrequency();
 }
 
 void Time::CatchupDeltaTime()
 {
-	NOW = SDL_GetPerformanceCounter();
+	m_now = SDL_GetPerformanceCounter();
 }
 
 double Time::GetDeltaTime()
 {
-	return deltaTime;
+	return m_deltaTime;
 }
 
 float Time::GetTimeElapsed() const

@@ -10,7 +10,7 @@ CPointLight::CPointLight(Transform *parent, GameObject *parentObj)
 	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].ambientStrength", m_ambientStrength);
 	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].constant", m_attenConstant);
 	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].linear", m_attenLinear);
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].quadtratic", m_attenQuad);
+	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].quadratic", m_attenQuad);
 	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(m_litShaderIndex) + "].colour", m_colour);
 	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(m_litShaderIndex) + "].position", m_transform.GetWorldTransform().GetRelativePosition());
 }

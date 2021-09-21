@@ -47,11 +47,11 @@ private:
 	Time();
 
 		/** @brief the current time */
-	Uint64 NOW;
+	Uint64 m_now;
 		/** @brief the previous time */
-	Uint64 LAST;
+	Uint64 m_last;
 		/** @brief delta time */
-	double deltaTime;
+	double m_deltaTime;
 };
 
 #define TIME Time::Instance()

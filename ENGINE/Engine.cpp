@@ -161,8 +161,8 @@ void Engine::Update()
 
 void Engine::Render()
 {
-	DirLightShadowPass();
-	//GRAPHICS->SetupPointLightFBO();
+	GRAPHICS->DirLightShadowPass();
+	GRAPHICS->PointLightShadowPass();
 	CameraRenderPass();
 
 	if (m_debugMenu) // TEST WINDOW
@@ -198,21 +198,18 @@ void Engine::Cleanup()
 	GRAPHICS->Close();
 }
 
-void Engine::DirLightShadowPass()
-{
-	GRAPHICS->SetupDirLightFBO();
-	GRAPHICS->m_dirShadowMapShader->SetMat4Uniform("lightSpaceMatrix", GRAPHICS->GetShadowMapperMatrix());
-	GRAPHICS->RenderObjects(*GRAPHICS->m_dirShadowMapShader);
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-}
-
 void Engine::CameraRenderPass()
 {
-	GRAPHICS->m_litShader->Use();
 	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
 	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
-	GRAPHICS->m_litShader->SetMat4Uniform("lightSpaceMatrix", GRAPHICS->GetShadowMapperMatrix());
+	GRAPHICS->m_litShader->SetMat4Uniform("dirLightSpaceMatrix", GRAPHICS->GetDirProjViewMat());
 	GRAPHICS->m_litShader->SetFloatUniform("material.shininess", 16); // TODO move somewhere else
+	GRAPHICS->UpdateCamViewPos();
+	//unsigned numPointLights = GRAPHICS->NumPointLights();
+	//for (int i = 0; i < numPointLights; i++)
+	//{
+
+	//}
 
 	GRAPHICS->m_unlitShader->Use();
 	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
@@ -222,10 +219,7 @@ void Engine::CameraRenderPass()
 	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
 	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
 
-	GRAPHICS->UpdateCamViewPos();
-
 	GRAPHICS->SetViewportToWindowSize();
 	GRAPHICS->NewFrame(m_debugMenu);
-	GRAPHICS->BindDepthMapTexture();
 	GRAPHICS->RenderObjects();
 }

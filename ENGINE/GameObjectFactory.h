@@ -88,7 +88,7 @@ public:
 		*/
 	void Render();
 
-	void Render(Shader &shaderOveride);
+	void Render(Shader &shaderOveride, bool noTexture);
 
 		/**
 		 * @brief saves the game

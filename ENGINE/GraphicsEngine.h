@@ -20,16 +20,6 @@
 
 class CCamera;
 
-#define CHECK_GL_ERROR \
-	if (glGetError() == GL_NO_ERROR){printf("GL_NO_ERROR\n");} \
-	else if(glGetError() == GL_INVALID_ENUM){printf("GL_INVALID_ENUM\n");} \
-	else if(glGetError() == GL_INVALID_VALUE){printf("GL_INVALID_VALUE\n");} \
-	else if(glGetError() == GL_INVALID_OPERATION){printf("GL_INVALID_OPERATION\n");} \
-	else if(glGetError() == GL_INVALID_FRAMEBUFFER_OPERATION){printf("GL_INVALID_FRAMEBUFFER_OPERATION\n");} \
-	else if(glGetError() == GL_OUT_OF_MEMORY){printf("GL_OUT_OF_MEMORY\n");} \
-	else if(glGetError() == GL_STACK_UNDERFLOW){printf("GL_STACK_UNDERFLOW\n");} \
-	else if(glGetError() == GL_STACK_OVERFLOW){printf("GL_STACK_OVERFLOW\n");}
-
 	/**
 	 * @brief A singleton that handles all of the engine graphics
 	*/
@@ -75,12 +65,10 @@ public:
 
 	void AddDirectionalLight(const CDirectionalLight &light);
 
-	void AddPointLight(CPointLight &light);
-
 		/**
 		 * @brief Renders all visible objects
 		*/
-	void RenderObjects(Shader &shader);
+	void RenderObjects(Shader &shader, bool noTexture);
 
 	void RenderObjects();
 
@@ -123,7 +111,7 @@ public:
 		 * @param model The model to draw
 		 * @param trans Transform of the model
 		*/
-	void DrawModel(AModel *model, const Transform &trans, const Shader *m_shader);
+	void DrawModel(AModel *model, const Transform &trans, const Shader *m_shader, bool noTexture);
 
 		/**
 		 * @brief retrieves the ID by which a texture is stored in the graphics library
@@ -145,9 +133,11 @@ public:
 	void Close();
 
 	void SetupDirLightFBO();
-	void SetupPointLightFBO();
+	void SetupPointLightFBO(unsigned lightIndex);
 
-	void BindDepthMapTexture() const;
+	void BindDirShadowDepthMapTexture() const;
+
+	void BindPointDepthCubeMapTexture(unsigned lightIndex) const;
 
 		/**
 		 * Enables fullscreen mode
@@ -165,13 +155,21 @@ public:
 		 */
 	Matrix4f GetCameraProjection();
 
+	Matrix4f GetDirProjViewMat() const;
+
+	std::vector<Matrix4f> GetPointProjViewMat(unsigned lightIndex) const;
+
 		/**
 		 * @brief returns the current camera view position/direction
 		 * \return 4f view matrix
 		 */
 	Matrix4f GetCameraView();
 
-	Matrix4f GetShadowMapperMatrix();
+	unsigned NumPointLights() const;
+
+	void DirLightShadowPass();
+
+	void PointLightShadowPass();
 
 		/** @brief pointer to lit shader */
 	Shader *m_litShader;
@@ -262,8 +260,6 @@ private:
 		/** @brief the ingame Skybox */
 	SkyBox skybox;
 
-	ShadowMapper m_shadowMapper;
-
 		/**
 		 * @brief initialises openGL
 		 * @return whether operation succeeded
@@ -291,6 +287,8 @@ private:
 
 		/** @brief lighManager reference */
 	LightManager m_lightManager;
+
+	ShadowMapper m_shadowMapper;
 };
 
 #define GRAPHICS GraphicsEngine::instance()

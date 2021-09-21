@@ -73,7 +73,7 @@ void CCharacter::Start()
 void CCharacter::Update()
 {
 	double deltaTime = TIME->GetDeltaTime();
-	float mouseSens = 100.f;
+	float mouseSens = 0.5f;
 	Vector3f accel(0, 0, 0);
 
 	if (m_playerControlled)
@@ -131,11 +131,10 @@ void CCharacter::Update()
 
 		GameObject *parentObj = GetParentObject();
 
-		std::cout << deltaTime << std::endl;
 		if (m_mouseEnabled)
 		{
-			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * mouseSens * deltaTime);
-			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * -mouseSens * deltaTime);
+			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * mouseSens);
+			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * -mouseSens);
 		}
 
 		if (parentObj->GetComponent<CCamera>()->GetTransform().GetRelativeOrientation().GetEulerAnglesDegrees().GetX() > 90.f ||

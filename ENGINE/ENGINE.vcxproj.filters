@@ -267,6 +267,9 @@
     <ClInclude Include="ShadowMapper.h">
       <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\init.lua">

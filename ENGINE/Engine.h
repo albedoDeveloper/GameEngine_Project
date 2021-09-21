@@ -79,8 +79,6 @@ private:
 		*/
 	void Cleanup();
 
-	void DirLightShadowPass();
-
 	void CameraRenderPass();
 
 		/**
