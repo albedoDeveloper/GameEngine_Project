@@ -61,6 +61,8 @@ public:
 
 	void AddDirectionalLight(const CDirectionalLight &light);
 
+	void WarpMouseCentreWindow() const;
+
 		/**
 		 * @brief Renders all visible objects
 		*/

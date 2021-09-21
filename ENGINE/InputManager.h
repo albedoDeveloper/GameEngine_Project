@@ -97,6 +97,8 @@ public:
 		*/
 	void CheckMouseMovement(SDL_Event *e);
 
+	void CalcDeltaMouse();
+
 		/**
 		 * @brief resets all input values to their original data
 		*/

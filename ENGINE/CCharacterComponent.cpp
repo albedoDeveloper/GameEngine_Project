@@ -73,7 +73,7 @@ void CCharacter::Start()
 void CCharacter::Update()
 {
 	double deltaTime = TIME->GetDeltaTime();
-	float mouseSens = 0.5f;
+	float mouseSens = 0.1f;
 	Vector3f accel(0, 0, 0);
 
 	if (m_playerControlled)

@@ -6,8 +6,10 @@
 #include <iostream>
 
 InputManager::InputManager()
-	:m_Event{ nullptr }, m_cursorLocked{ true }
+	:m_Event{ nullptr }, m_cursorLocked{ true },
+	mouseXAbsolute{ 0 }, mouseYAbsolute{ 0 }, mouseX{ 0 }, mouseY{ 0 }, prevMouseX{ 0 }, prevMouseY{ 0 }
 {
+	LockCursor(true);
 }
 
 InputManager *InputManager::Instance()
@@ -312,12 +314,23 @@ void InputManager::CheckMouseMovement(SDL_Event *e)
 	mouseXAbsolute = e->motion.x;
 	mouseYAbsolute = e->motion.y;
 
-	mouseX = -(prevMouseX - e->motion.x);
-	prevMouseX = e->motion.x;
+	//mouseX = -(prevMouseX - e->motion.x);
+	//prevMouseX = e->motion.x;
 
+	//mouseY = prevMouseY - e->motion.y;
+	//prevMouseY = e->motion.y;
+}
 
-	mouseY = prevMouseY - e->motion.y;
-	prevMouseY = e->motion.y;
+void InputManager::CalcDeltaMouse()
+{
+	static int w, h;
+	GRAPHICS->GetScreenSize(w, h);
+	mouseX = mouseXAbsolute - w / 2;
+	mouseY = -(mouseYAbsolute - h / 2);
+	if (m_cursorLocked)
+	{
+		GRAPHICS->WarpMouseCentreWindow();
+	}
 }
 
 void InputManager::ResetInputValues()
@@ -760,14 +773,17 @@ void InputManager::LockCursor(bool state)
 	if (state)
 	{
 		SDL_CaptureMouse(SDL_TRUE);
-		SDL_SetRelativeMouseMode(SDL_TRUE);
 		SDL_ShowCursor(SDL_FALSE);
 		m_cursorLocked = true;
+		GRAPHICS->WarpMouseCentreWindow();
+		int w, h;
+		GRAPHICS->GetScreenSize(w, h);
+		mouseXAbsolute = w / 2;
+		mouseYAbsolute = h / 2;
 	}
 	else
 	{
 		SDL_CaptureMouse(SDL_FALSE);
-		SDL_SetRelativeMouseMode(SDL_FALSE);
 		SDL_ShowCursor(SDL_TRUE);
 		m_cursorLocked = false;
 	}

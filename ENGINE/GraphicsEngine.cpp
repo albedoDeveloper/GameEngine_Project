@@ -127,6 +127,11 @@ void GraphicsEngine::AddDirectionalLight(const CDirectionalLight &light)
 	m_shadowMapper.AssignDirLight(&light);
 }
 
+void GraphicsEngine::WarpMouseCentreWindow() const
+{
+	SDL_WarpMouseInWindow(m_window, m_windowWidth / 2, m_windowHeight / 2);
+}
+
 void GraphicsEngine::RenderObjects(Shader &shader, bool noTexture)
 {
 	GAMEOBJECT->Render(shader, noTexture);
@@ -263,7 +268,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
 		windowWidth, windowHeight,
-		SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
+		SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_MOUSE_FOCUS | SDL_WINDOW_ALLOW_HIGHDPI |
+		SDL_WINDOW_MOUSE_CAPTURE)) == nullptr)
 	{
 		std::cout << "Window could not be created! SDL Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -277,8 +283,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 
 	gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress);
 
-	SDL_SetWindowResizable(m_window, SDL_TRUE);
-	SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
+	//SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
 

@@ -58,7 +58,7 @@ int Engine::Execute(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 			}
 			OnEvent(&event);
 		}
-
+		INPUT->CalcDeltaMouse();
 		Update();
 		Render();
 	}
@@ -111,7 +111,6 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 	GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav", -1, false);
 
 	GAMEOBJECT->Start();
-	INPUT->LockCursor(true);
 
 	return true;
 }
