@@ -73,15 +73,9 @@ bool GraphicsEngine::Init(GraphicsLibrary renderer, int windowWidth, int windowH
 	}
 }
 
-bool GraphicsEngine::initLighting()
-{
-	glDisable(GL_LIGHTING);
-	return true;
-}
-
 void GraphicsEngine::NewFrame(bool debugMenu)
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); CHECK_GL_ERROR;
 
 	if (debugMenu)
 	{
@@ -151,7 +145,7 @@ void GraphicsEngine::RenderObjects()
 
 void GraphicsEngine::SetViewportToWindowSize() const
 {
-	glViewport(0, 0, m_windowWidth, m_windowHeight);
+	glViewport(0, 0, m_windowWidth, m_windowHeight); CHECK_GL_ERROR;
 }
 
 void GraphicsEngine::endFrame(bool debugMenu)
@@ -159,7 +153,7 @@ void GraphicsEngine::endFrame(bool debugMenu)
 	if (debugMenu)
 	{
 		ImGui::Render();
-		glViewport(0, 0, (int)m_imgui_io.DisplaySize.x, (int)m_imgui_io.DisplaySize.y);
+		glViewport(0, 0, (int)m_imgui_io.DisplaySize.x, (int)m_imgui_io.DisplaySize.y); CHECK_GL_ERROR;
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 	SDL_GL_SwapWindow(m_window);
@@ -195,7 +189,7 @@ void GraphicsEngine::DeleteTexture(std::string key)
 	}
 
 	unsigned int texId[] = { m_textureIDs.at(key) };
-	glDeleteTextures(1, texId);
+	glDeleteTextures(1, texId); CHECK_GL_ERROR;
 }
 
 void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const Shader *shader, bool noTexture)
@@ -213,9 +207,8 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 
 	shader->SetMat4Uniform("model", modelTrans);
 
-	glEnable(GL_CULL_FACE);
-	glPolygonMode(GL_FRONT, GL_FILL);
-	glPolygonMode(GL_BACK, GL_FILL);
+	glEnable(GL_CULL_FACE); CHECK_GL_ERROR;
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); CHECK_GL_ERROR;
 
 	if (noTexture)
 	{
@@ -261,7 +254,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 
@@ -296,17 +289,17 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	// init imgui
 	InitImGui();
 
-	glEnable(GL_MULTISAMPLE);
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_MULTISAMPLE); CHECK_GL_ERROR;
+	glEnable(GL_DEPTH_TEST); CHECK_GL_ERROR;
+	glEnable(GL_CULL_FACE); CHECK_GL_ERROR;
+	glEnable(GL_BLEND); CHECK_GL_ERROR;
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); CHECK_GL_ERROR;
 	//glEnable(GL_FRAMEBUFFER_SRGB); // gamma correction. looks too washed out
-	glClearColor(0.4, 0.2, 0.7, 1);
-	std::cout << glGetString(GL_VENDOR) << " : " << glGetString(GL_RENDERER) << std::endl; // GPU used
-	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
-	std::cout << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
-	std::cout << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl;
+	glClearColor(0.4, 0.2, 0.7, 1); CHECK_GL_ERROR;
+	std::cout << glGetString(GL_VENDOR) << " : " << glGetString(GL_RENDERER) << std::endl; CHECK_GL_ERROR;
+	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl; CHECK_GL_ERROR;
+	std::cout << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl; CHECK_GL_ERROR;
+	std::cout << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl; CHECK_GL_ERROR;
 
 	m_litShader = new Shader("../Assets/Shaders/lit_unlit.vert", "../Assets/Shaders/lit.frag");
 	m_litShader->SetIntUniform("numOfPointLights", 0);
@@ -352,18 +345,20 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 	if (!tempVector.empty())
 	{
 		// create buffers/arrays
-		glGenVertexArrays(1, &VAODebug);
+		glGenVertexArrays(1, &VAODebug); CHECK_GL_ERROR;
 		if (VBODebug == 0)
-			glGenBuffers(1, &VBODebug);
-		glBindVertexArray(VAODebug);
+		{
+			glGenBuffers(1, &VBODebug); CHECK_GL_ERROR;
+		}
+		glBindVertexArray(VAODebug); CHECK_GL_ERROR;
 		// load data into vertex buffers
-		glBindBuffer(GL_ARRAY_BUFFER, VBODebug);
+		glBindBuffer(GL_ARRAY_BUFFER, VBODebug); CHECK_GL_ERROR;
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR;
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
-		glEnableVertexAttribArray(0);
-		glBindVertexArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0); CHECK_GL_ERROR;
+		glEnableVertexAttribArray(0); CHECK_GL_ERROR;
+		glBindVertexArray(0); CHECK_GL_ERROR;
 
 		initDebug = false;
 	}
@@ -376,9 +371,9 @@ void GraphicsEngine::DrawDebug()
 	m_debugShader->SetMat4Uniform("model", Matrix4f());
 	m_debugShader->SetVec3Uniform("ourColour", Vector3f(1, 0, 0));
 
-	glDisable(GL_CULL_FACE);
-	glPolygonMode(GL_FRONT, GL_LINE);
-	glPolygonMode(GL_BACK, GL_LINE);
+	glDisable(GL_CULL_FACE); CHECK_GL_ERROR;
+	glPolygonMode(GL_FRONT, GL_LINE); CHECK_GL_ERROR;
+	glPolygonMode(GL_BACK, GL_LINE); CHECK_GL_ERROR;
 
 	std::vector <float> tempVector;
 
@@ -403,12 +398,12 @@ void GraphicsEngine::DrawDebug()
 	}
 	else
 	{
-		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR;
 	}
 
-	glBindVertexArray(VAODebug);
-	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3);
-	glBindVertexArray(0);
+	glBindVertexArray(VAODebug); CHECK_GL_ERROR;
+	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3); CHECK_GL_ERROR;
+	glBindVertexArray(0); CHECK_GL_ERROR;
 }
 
 void GraphicsEngine::SetupDirLightFBO()
@@ -470,7 +465,7 @@ void GraphicsEngine::DirLightShadowPass()
 	m_shadowMapper.SetupDirLightFBO();
 	m_dirShadowMapShader->SetMat4Uniform("dirLightSpaceMatrix", GetDirProjViewMat());
 	RenderObjects(*m_dirShadowMapShader, true);
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0); CHECK_GL_ERROR;
 }
 
 void GraphicsEngine::PointLightShadowPass()
@@ -485,9 +480,8 @@ void GraphicsEngine::PointLightShadowPass()
 		for (int matIndex = 0; matIndex < mats.size(); matIndex++)
 		{
 			m_pointShadowMapShader->SetMat4Uniform("shadowMatrices[" + std::to_string(matIndex) + "]", mats[matIndex]);
-			CHECK_GL_ERROR;
 		}
 		RenderObjects(*m_pointShadowMapShader, true);
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0); CHECK_GL_ERROR;
 	}
 }

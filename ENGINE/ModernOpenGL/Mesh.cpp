@@ -1,4 +1,5 @@
 #include "mesh.h"
+#include "../Utility.h"
 
 void Mesh::SetupMesh()
 {
@@ -71,11 +72,12 @@ void Mesh::Draw(const Shader *shader) const
 		}
 
 		shader->SetIntUniform(("material." + name + number).c_str(), textureUnit);
-		glBindTexture(GL_TEXTURE_2D, textures[textureUnit].id);
+		glBindTexture(GL_TEXTURE_2D, textures[textureUnit].id); CHECK_GL_ERROR;
 	}
 
 	// send shadowMap to shader 
 	glActiveTexture(GL_TEXTURE2); //TODO  prototype code. using GL_TEXTURE2 wont work once the mesh contains more than 2 textures
+	CHECK_GL_ERROR;
 	GRAPHICS->BindDirShadowDepthMapTexture();
 	shader->SetIntUniform("dirLight.dirShadowMap", 2);
 
@@ -87,18 +89,18 @@ void Mesh::Draw(const Shader *shader) const
 	//	shader->SetIntUniform("pointLights[" + std::to_string(i) + "].depthCubeMap", 3 + i); // yeah .... dirty prototype code
 	//}
 
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
+	glBindVertexArray(VAO); CHECK_GL_ERROR;
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0); CHECK_GL_ERROR;
+	glBindVertexArray(0); CHECK_GL_ERROR;
 
-	glDisable(GL_TEXTURE_2D);
+	//glDisable(GL_TEXTURE_2D); CHECK_GL_ERROR; // why is this giving a GL error?
 }
 
 void Mesh::DrawNoTexture() const
 {
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
+	glBindVertexArray(VAO); CHECK_GL_ERROR;
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0); CHECK_GL_ERROR;
+	glBindVertexArray(0); CHECK_GL_ERROR;
 
-	glDisable(GL_TEXTURE_2D);
+	//glDisable(GL_TEXTURE_2D); CHECK_GL_ERROR; // Why is this calling a GL error???
 }

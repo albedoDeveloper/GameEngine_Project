@@ -4,7 +4,7 @@
 
 void Shader::Use() const
 {
-	glUseProgram(m_ID);
+	glUseProgram(m_ID); CHECK_GL_ERROR;
 }
 
 Shader::Shader(const char *vertexPath, const char *fragmentPath)
@@ -104,26 +104,24 @@ Shader::Shader(const char *vertexPath, const char *geometryPath, const char *fra
 
 void Shader::SetBoolUniform(const std::string &name, bool value) const
 {
-	glUseProgram(m_ID);
-	int uniformLoc = glGetUniformLocation(m_ID, name.c_str());
-	CHECK_GL_ERROR;
+	glUseProgram(m_ID); CHECK_GL_ERROR;
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str()); CHECK_GL_ERROR;
 	if (uniformLoc == -1)
 	{
 		std::cerr << "[ERROR] SetBoolUniform(): invalid uniform name: " << name << std::endl;
 	}
-	glUniform1i(uniformLoc, (int)value);
+	glUniform1i(uniformLoc, (int)value); CHECK_GL_ERROR;
 }
 
 void Shader::SetIntUniform(const std::string &name, int value) const
 {
-	glUseProgram(m_ID);
-	int uniformLoc = glGetUniformLocation(m_ID, name.c_str());
-	CHECK_GL_ERROR;
+	glUseProgram(m_ID); CHECK_GL_ERROR;
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str()); CHECK_GL_ERROR;
 	if (uniformLoc == -1)
 	{
 		std::cerr << "[ERROR] SetIntUniform(): invalid uniform name: " << name << std::endl;
 	}
-	glUniform1i(uniformLoc, value);
+	glUniform1i(uniformLoc, value); CHECK_GL_ERROR;
 }
 
 void Shader::SetFloatUniform(const std::string &name, float value) const
@@ -136,6 +134,7 @@ void Shader::SetFloatUniform(const std::string &name, float value) const
 		std::cerr << "[ERROR] SetFloatUniform(): invalid uniform name: " << name << std::endl;
 	}
 	glUniform1f(uniformLoc, value);
+	CHECK_GL_ERROR
 }
 
 void Shader::SetVec4Uniform(const std::string &name, const glm::vec4 &value) const
@@ -148,30 +147,29 @@ void Shader::SetVec4Uniform(const std::string &name, const glm::vec4 &value) con
 		std::cerr << "[ERROR] SetVec4Uniform(): invalid uniform name: " << name << std::endl;
 	}
 	glUniform4fv(uniformLoc, 1, &value[0]);
+	CHECK_GL_ERROR
 }
 
 void Shader::SetVec3Uniform(const std::string &name, Vector3f value) const
 {
-	glUseProgram(m_ID);
-	int uniformLoc = glGetUniformLocation(m_ID, name.c_str());
-	CHECK_GL_ERROR;
+	glUseProgram(m_ID); CHECK_GL_ERROR;
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str()); CHECK_GL_ERROR;
 	if (uniformLoc == -1)
 	{
 		std::cerr << "[ERROR] SetVec3Uniform(): invalid uniform name: " << name << std::endl;
 	}
-	glUniform3fv(uniformLoc, 1, value.ValuePtr());
+	glUniform3fv(uniformLoc, 1, value.ValuePtr()); CHECK_GL_ERROR
 }
 
 void Shader::SetMat4Uniform(const std::string &name, Matrix4f mat) const
 {
-	glUseProgram(m_ID);
-	int uniformLoc = glGetUniformLocation(m_ID, name.c_str());
-	CHECK_GL_ERROR;
+	glUseProgram(m_ID); CHECK_GL_ERROR;
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str()); CHECK_GL_ERROR;
 	if (uniformLoc == -1)
 	{
 		std::cerr << "[ERROR] SetMat4Uniform(): invalid uniform name: " << name << std::endl;
 	}
-	glUniformMatrix4fv(uniformLoc, 1, GL_FALSE, mat.ValuePtr());
+	glUniformMatrix4fv(uniformLoc, 1, GL_FALSE, mat.ValuePtr()); CHECK_GL_ERROR;
 }
 
 void Shader::CreateShaders(unsigned int &shadername, const GLchar *const *actualShader, int typeOfShader)
@@ -181,17 +179,21 @@ void Shader::CreateShaders(unsigned int &shadername, const GLchar *const *actual
 
 	//Determine the type of shader
 	if (typeOfShader == 0)
-		shadername = glCreateShader(GL_VERTEX_SHADER);
+	{
+		shadername = glCreateShader(GL_VERTEX_SHADER); CHECK_GL_ERROR;
+	}
 	else if (typeOfShader == 1)
-		shadername = glCreateShader(GL_FRAGMENT_SHADER);
+	{
+		shadername = glCreateShader(GL_FRAGMENT_SHADER); CHECK_GL_ERROR;
+	}
 
-	glShaderSource(shadername, 1, actualShader, NULL);
-	glCompileShader(shadername);
-	glGetShaderiv(shadername, GL_COMPILE_STATUS, &success);
+	glShaderSource(shadername, 1, actualShader, NULL); CHECK_GL_ERROR;
+	glCompileShader(shadername); CHECK_GL_ERROR;
+	glGetShaderiv(shadername, GL_COMPILE_STATUS, &success); CHECK_GL_ERROR;
 
 	if (!success)
 	{
-		glGetShaderInfoLog(shadername, 512, NULL, infoLog.data());
+		glGetShaderInfoLog(shadername, 512, NULL, infoLog.data()); CHECK_GL_ERROR;
 		std::cout << "ERROR::SHADER::" << typeOfShader << "::COMPILATION_FAILED\n" << infoLog << std::endl;
 	}
 }
@@ -201,16 +203,16 @@ void Shader::ShaderLinking(unsigned int &vertexShader, unsigned int &fragmentSha
 	int  success;
 	char infoLog[512];
 
-	m_ID = glCreateProgram();
+	m_ID = glCreateProgram(); CHECK_GL_ERROR;
 
-	glAttachShader(m_ID, vertexShader);
-	glAttachShader(m_ID, fragmentShader);
-	glLinkProgram(m_ID);
-	glGetProgramiv(m_ID, GL_LINK_STATUS, &success);
+	glAttachShader(m_ID, vertexShader); CHECK_GL_ERROR;
+	glAttachShader(m_ID, fragmentShader); CHECK_GL_ERROR;
+	glLinkProgram(m_ID); CHECK_GL_ERROR;
+	glGetProgramiv(m_ID, GL_LINK_STATUS, &success); CHECK_GL_ERROR;
 
 	if (!success)
 	{
-		glGetShaderInfoLog(m_ID, 512, NULL, infoLog);
+		glGetShaderInfoLog(m_ID, 512, NULL, infoLog); CHECK_GL_ERROR;
 		std::cout << "ERROR::SHADER::LINKER::COMPILATION_FAILED\n" << infoLog << std::endl;
 	}
 }

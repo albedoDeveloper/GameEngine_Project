@@ -40,11 +40,6 @@ public:
 		*/
 	bool Init(GraphicsLibrary renderer, int windowWidth, int windowHeight);
 
-		/**
-		 * @brief initialises lighting
-		 * @return whether operation succeeded
-		*/
-	bool initLighting();
 
 		/**
 		 * @brief Function to be called at the start of every frame for rendering
