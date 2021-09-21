@@ -54,7 +54,7 @@ void CCollider::Update()
 	{
 		if (col != nullptr)
 		{
-			//colBody->removeCollider(col);
+			colBody->removeCollider(col);
 		}
 	}
 
