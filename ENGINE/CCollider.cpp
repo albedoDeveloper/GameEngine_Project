@@ -37,6 +37,9 @@ void CCollider::Update()
 {
 	if (m_active)
 	{
+		if (!colBody->isActive())
+			colBody->setIsActive(true);
+
 		if (col != nullptr)
 		{
 			if (!m_parent->IsStatic())
@@ -46,14 +49,16 @@ void CCollider::Update()
 		}
 		else
 		{
-			AddBoxCollider(0, 0, 0, 0, 0, 0, true, 1);
+			//AddBoxCollider(0, 0, 0, 0, 0, 0, true, 1);
 		}
 
 	}
 	else
 	{
+
 		if (col != nullptr)
 		{
+			colBody->setIsActive(false);
 			//colBody->removeCollider(col);
 		}
 	}
