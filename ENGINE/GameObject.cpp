@@ -134,6 +134,7 @@ void GameObject::SetActive(bool activeStatus)
 	{
 		Start();
 	}
+
 }
 
 

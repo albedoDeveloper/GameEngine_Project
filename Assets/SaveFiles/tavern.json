@@ -63,7 +63,7 @@
             "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "barrel1",
-                "Shader": "unlit"
+                "Shader": "lit"
             }
         },
         "Transform": {
@@ -84,7 +84,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "barrel1",
         "parent": "TEST"
     },
@@ -223,10 +223,10 @@
                 "z": -0.4449999928474426
             },
             "Rotation": {
-                "w": -0.7786494493484497,
-                "x": -0.3225257992744446,
-                "y": 0.49725356698036194,
-                "z": 0.2059679925441742
+                "w": -0.9189872145652771,
+                "x": -0.3806574046611786,
+                "y": -0.09494493156671524,
+                "z": -0.03932769224047661
             },
             "Scale": {
                 "x": 1.0,
@@ -272,7 +272,7 @@
             "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "fridge1",
-                "Shader": "unlit"
+                "Shader": "lit"
             }
         },
         "Transform": {
@@ -428,9 +428,9 @@
                 "z": 5.275000095367432
             },
             "Rotation": {
-                "w": -0.8427832722663879,
+                "w": -0.9947044849395752,
                 "x": 0.0,
-                "y": 0.5382089614868164,
+                "y": -0.1027679517865181,
                 "z": 0.0
             },
             "Scale": {
@@ -480,14 +480,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.6147330403327942,
+                "x": 0.0,
                 "y": 2.0,
-                "z": -0.27032560110092163
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6059884428977966,
+                "w": 0.7396312355995178,
                 "x": 0.0,
-                "y": 0.7954736948013306,
+                "y": 0.6730127334594727,
                 "z": 0.0
             },
             "Scale": {
@@ -709,6 +709,7 @@
     },
     "sun": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis",
                 "Shader": "lit"

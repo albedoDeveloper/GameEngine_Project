@@ -4,7 +4,7 @@
 #include <iostream>
 
 CCollider::CCollider(Transform *parent, GameObject *parentObj)
-	:CComponent{ parent, parentObj }, m_allowRotation{ true }
+	:CComponent{ parent, parentObj }, m_allowRotation{ true }, m_active{ true }
 {
 	CStaticMesh *meshComp = m_parent->GetComponent<CStaticMesh>();
 	Transform *meshTrans = nullptr;
@@ -35,10 +35,29 @@ CCollider::CCollider(Transform *parent, GameObject *parentObj)
 
 void CCollider::Update()
 {
-	if (!m_parent->IsStatic())
+	if (m_active)
 	{
-		UpdateCollider();
+		if (col != nullptr)
+		{
+			if (!m_parent->IsStatic())
+			{
+				UpdateCollider();
+			}
+		}
+		else
+		{
+			AddBoxCollider(0, 0, 0, 0, 0, 0, true, 1);
+		}
+
 	}
+	else
+	{
+		if (col != nullptr)
+		{
+			colBody->removeCollider(col);
+		}
+	}
+
 }
 
 void CCollider::Save(nlohmann::json &j)
@@ -58,10 +77,16 @@ void CCollider::Load(nlohmann::json &j)
 
 void CCollider::DrawToImGui()
 {
+	m_active = m_parent->GetActive();
+
+
 	//ImGui::Text("staticMesh TREE");
 	if (ImGui::TreeNode("Collider CComponent"))
 	{
-		ImGui::Text("Collider Info : ");
+		ImGui::Text("Collider Info : "); ImGui::SameLine(); ImGui::Text((std::to_string(m_active)).c_str());
+
+		ImGui::Checkbox("Active", &m_active);
+
 		ImGui::TreePop();
 	}
 }

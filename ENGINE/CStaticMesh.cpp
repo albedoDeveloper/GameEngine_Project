@@ -117,9 +117,6 @@ void CStaticMesh::Load(nlohmann::json &j)
 void CStaticMesh::DrawToImGui()
 {
 	const char *items[] = { enum_str[lit], enum_str[unlit], enum_str[debug] };
-	//int item_current = 0;
-
-
 
 	//ImGui::Text("staticMesh TREE");
 	if (ImGui::TreeNode("StaticMesh CComponent"))
