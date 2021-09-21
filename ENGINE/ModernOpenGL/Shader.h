@@ -123,7 +123,9 @@ private:
 		/// </summary>
 		/// <param name="name"></param>
 		/// <param name="value"></param>
-	void ShaderLinking(unsigned int &shadername, unsigned int &vertexShader);
+	void ShaderLinking(unsigned int &vertexShader, unsigned int &fragShader);
+
+	void ShaderLinking(unsigned int &vertexShader, unsigned &geometryShader, unsigned int &fragShader);
 
 		/// <summary>
 		/// The shadername id of the shader

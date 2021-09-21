@@ -92,8 +92,6 @@ void Mesh::Draw(const Shader *shader) const
 	glBindVertexArray(VAO); CHECK_GL_ERROR;
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0); CHECK_GL_ERROR;
 	glBindVertexArray(0); CHECK_GL_ERROR;
-
-	//glDisable(GL_TEXTURE_2D); CHECK_GL_ERROR; // why is this giving a GL error?
 }
 
 void Mesh::DrawNoTexture() const
@@ -101,6 +99,4 @@ void Mesh::DrawNoTexture() const
 	glBindVertexArray(VAO); CHECK_GL_ERROR;
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0); CHECK_GL_ERROR;
 	glBindVertexArray(0); CHECK_GL_ERROR;
-
-	//glDisable(GL_TEXTURE_2D); CHECK_GL_ERROR; // Why is this calling a GL error???
 }
