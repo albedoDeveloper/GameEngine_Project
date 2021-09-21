@@ -11,7 +11,6 @@
 #include "MiscMath.h"
 #include "Utility.h"
 
-
 extern "C"
 {
 	__declspec(dllexport) unsigned long NvOptimusEnablement = 0x00000001;
@@ -296,9 +295,9 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	std::cout << glGetString(GL_VENDOR) << " : " << glGetString(GL_RENDERER) << std::endl; CHECK_GL_ERROR;
 	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl; CHECK_GL_ERROR;
 	std::cout << "GLSL Version: " << glGetString(GL_VERSION) << std::endl; CHECK_GL_ERROR;
-	int numUniforms = 0;
-	//glGetIntegerv(GL_MAX_UNIFORM_LOCATIONS, &numUniforms); CHECK_GL_ERROR;
-	std::cout << "Max Uniforms: " << numUniforms << std::endl; CHECK_GL_ERROR;
+	//int numUniforms = 0;
+	//glGetIntegerv(GL_MAX_UNIFORM_LOCATIONS, &numUniforms); CHECK_GL_ERROR; // Why is GL_MAX_UNIFORM_LOCATIONS undefined??
+	//std::cout << "Max Uniforms: " << numUniforms << std::endl; CHECK_GL_ERROR;
 
 	m_litShader = new Shader("../Assets/Shaders/lit_unlit.vert", "../Assets/Shaders/lit.frag");
 	m_litShader->SetIntUniform("numOfPointLights", 0);

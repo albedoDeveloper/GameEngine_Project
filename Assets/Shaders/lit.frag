@@ -60,9 +60,25 @@ void main()
 
     float shadow = ShadowCalculation(FragPosLightSpace, norm, dirLight.direction);
 
-    for(int i = 0; i < numOfPointLights; i++)
-        result += CalcPointLight(pointLights[i], norm, FragPos, viewDir); 
-    
+// DRIVER BUG?!?!?!? for loop doesn't seem to work properly
+//    for(int i = 0; i < numOfPointLights; i++)
+//    {
+//        result += CalcPointLight(pointLights[i], norm, FragPos, viewDir); 
+//    }
+
+    if (numOfPointLights > 0)
+    {
+        result += CalcPointLight(pointLights[0], norm, FragPos, viewDir); 
+    }
+    if (numOfPointLights > 1)
+    {
+        result += CalcPointLight(pointLights[1], norm, FragPos, viewDir); 
+    }
+    if (numOfPointLights > 2)
+    {
+        result += CalcPointLight(pointLights[2], norm, FragPos, viewDir); 
+    }
+
     if (dirLightActive)
         result += CalcDirectionaLight(dirLight, norm, FragPos, viewDir, shadow);
 
