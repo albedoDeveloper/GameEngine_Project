@@ -1,6 +1,7 @@
 #include <glew/GL/glew.h>
 #include "Shader.h"
 #include "../Utility.h"
+#include <iostream>
 
 void Shader::Use() const
 {
@@ -44,7 +45,7 @@ Shader::Shader(const char *vertexPath, const char *fragmentPath)
 		unsigned int vertexShader;
 
 		CreateShaders(vertexShader, &vShaderCode, 0);
-		CreateShaders(fragmentShader, &fShaderCode, 3);
+		CreateShaders(fragmentShader, &fShaderCode, 2);
 		ShaderLinking(vertexShader, fragmentShader);
 	}
 
@@ -199,6 +200,10 @@ void Shader::CreateShaders(unsigned int &shadername, const GLchar *const *actual
 	else if (typeOfShader == 2)
 	{
 		shadername = glCreateShader(GL_FRAGMENT_SHADER); CHECK_GL_ERROR;
+	}
+	else
+	{
+		std::cerr << "[Error] in function Shader::CreateShader | typeOfShader invalid\n";
 	}
 
 	glShaderSource(shadername, 1, actualShader, NULL); CHECK_GL_ERROR;

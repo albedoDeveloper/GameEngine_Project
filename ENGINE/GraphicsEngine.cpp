@@ -298,7 +298,10 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	glClearColor(0.4, 0.2, 0.7, 1); CHECK_GL_ERROR;
 	std::cout << glGetString(GL_VENDOR) << " : " << glGetString(GL_RENDERER) << std::endl; CHECK_GL_ERROR;
 	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl; CHECK_GL_ERROR;
-	std::cout << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl; CHECK_GL_ERROR;
+	std::cout << "GLSL Version: " << glGetString(GL_VERSION) << std::endl; CHECK_GL_ERROR;
+	int numUniforms;
+	glGetIntegerv(GL_MAX_UNIFORM_LOCATIONS, &numUniforms); CHECK_GL_ERROR;
+	std::cout << "Max Uniforms: " << numUniforms << std::endl; CHECK_GL_ERROR;
 	std::cout << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl; CHECK_GL_ERROR;
 
 	m_litShader = new Shader("../Assets/Shaders/lit_unlit.vert", "../Assets/Shaders/lit.frag");
@@ -372,8 +375,7 @@ void GraphicsEngine::DrawDebug()
 	m_debugShader->SetVec3Uniform("ourColour", Vector3f(1, 0, 0));
 
 	glDisable(GL_CULL_FACE); CHECK_GL_ERROR;
-	glPolygonMode(GL_FRONT, GL_LINE); CHECK_GL_ERROR;
-	glPolygonMode(GL_BACK, GL_LINE); CHECK_GL_ERROR;
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); CHECK_GL_ERROR;
 
 	std::vector <float> tempVector;
 
