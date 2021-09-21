@@ -54,6 +54,11 @@ void Matrix4f::RemoveTranslation()
 	m_mat = glm::mat4(glm::mat3(m_mat));
 }
 
+float& Matrix4f::SetMatrixElement(unsigned int row, unsigned int column)
+{
+	return m_mat[row][column];
+}
+
 Matrix4f Matrix4f::operator*(const Matrix4f &other)
 {
 	return m_mat * other.m_mat;
