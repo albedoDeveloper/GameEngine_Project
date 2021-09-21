@@ -2,7 +2,6 @@
 #include "GameObjectFactory.h"
 #include <iostream>
 #include "Color.h"
-#include "CCamera.h"
 #include "InputManager.h"
 #include "./ThirdParty/imgui/imgui.h"
 #include "./ThirdParty/imgui/imgui_impl_sdl.h"
@@ -11,6 +10,7 @@
 #include "Matrix4f.h"
 #include "MiscMath.h"
 #include "Utility.h"
+
 
 extern "C"
 {
@@ -276,16 +276,12 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 		return false;
 	}
 
+	gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress);
+
 	SDL_SetWindowResizable(m_window, SDL_TRUE);
 	SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
-
-	GLenum err = glewInit();
-	if (GLEW_OK != err)
-	{
-		std::cerr << "Error: " << glewGetErrorString(err) << std::endl;
-	}
 
 	// init imgui
 	InitImGui();
@@ -300,10 +296,9 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	std::cout << glGetString(GL_VENDOR) << " : " << glGetString(GL_RENDERER) << std::endl; CHECK_GL_ERROR;
 	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl; CHECK_GL_ERROR;
 	std::cout << "GLSL Version: " << glGetString(GL_VERSION) << std::endl; CHECK_GL_ERROR;
-	int numUniforms;
-	glGetIntegerv(GL_MAX_UNIFORM_LOCATIONS, &numUniforms); CHECK_GL_ERROR;
+	int numUniforms = 0;
+	//glGetIntegerv(GL_MAX_UNIFORM_LOCATIONS, &numUniforms); CHECK_GL_ERROR;
 	std::cout << "Max Uniforms: " << numUniforms << std::endl; CHECK_GL_ERROR;
-	std::cout << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl; CHECK_GL_ERROR;
 
 	m_litShader = new Shader("../Assets/Shaders/lit_unlit.vert", "../Assets/Shaders/lit.frag");
 	m_litShader->SetIntUniform("numOfPointLights", 0);
@@ -427,6 +422,13 @@ void GraphicsEngine::BindDirShadowDepthMapTexture() const
 void GraphicsEngine::BindPointDepthCubeMapTexture(unsigned lightIndex) const
 {
 	m_shadowMapper.BindPointDepthCubeMapTexture(lightIndex);
+}
+
+void GraphicsEngine::GoFullscreen() const
+{
+	SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
+	SDL_Surface *surface = SDL_GetWindowSurface(m_window);
+	SDL_UpdateWindowSurface(m_window);
 }
 
 Matrix4f GraphicsEngine::GetCameraProjection()

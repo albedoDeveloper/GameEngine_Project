@@ -4,7 +4,7 @@
  * \date   September 2021
  *********************************************************************/
 
-#include <SDL2/SDL.h>
+#include <SDL2/SDL_events.h>
 #include <string>
 #include "GraphicsEngine.h"
 

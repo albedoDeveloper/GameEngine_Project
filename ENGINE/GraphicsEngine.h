@@ -9,7 +9,6 @@
 #include "Camera.h"
 #include "ModernOpenGL/AModel.h"
 #include "Color.h"
-#include <SDL2/SDL.h>
 #include "GraphicsLibraryEnum.h"
 #include <string>
 #include <map>
@@ -17,6 +16,8 @@
 #include "SkyBox.h"
 #include "LightManager.h"
 #include "ShadowMapper.h"
+#include <SDL2/SDL.h>
+#include <glad/glad.h>
 
 class CCamera;
 
@@ -137,12 +138,7 @@ public:
 		/**
 		 * Enables fullscreen mode
 		 */
-	void GoFullscreen() const
-	{
-		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
-		SDL_Surface *surface = SDL_GetWindowSurface(m_window);
-		SDL_UpdateWindowSurface(m_window);
-	}
+	void GoFullscreen() const;
 
 		/**
 		 * @brief Accessor for the projection matrix of the active camera

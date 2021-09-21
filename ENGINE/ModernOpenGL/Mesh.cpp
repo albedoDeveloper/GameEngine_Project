@@ -1,5 +1,6 @@
 #include "mesh.h"
 #include "../Utility.h"
+#include <glad/glad.h>
 
 void Mesh::SetupMesh()
 {

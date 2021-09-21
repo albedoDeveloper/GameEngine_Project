@@ -130,6 +130,9 @@
     <ClCompile Include="ShadowMapper.cpp">
       <Filter>Source\Misc\Source</Filter>
     </ClCompile>
+    <ClCompile Include="ThirdParty\glad\src\glad.c">
+      <Filter>ThirdParty\glad</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">
@@ -270,6 +273,12 @@
     <ClInclude Include="Utility.h">
       <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="ThirdParty\glad\include\glad\glad.h">
+      <Filter>ThirdParty\glad</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\glad\include\KHR\khrplatform.h">
+      <Filter>ThirdParty\glad</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\init.lua">
@@ -382,6 +391,9 @@
     </Filter>
     <Filter Include="Shaders\GeometryShaders">
       <UniqueIdentifier>{ef6fdec5-2196-472a-937e-a15d4a086c87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\glad">
+      <UniqueIdentifier>{20b06efa-a0b7-429f-b187-7720b1af7d21}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

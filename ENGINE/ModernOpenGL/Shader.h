@@ -6,7 +6,6 @@
 
 #pragma once
 
-#include <glew/GL/glew.h>
 #include <glm/glm/glm.hpp>
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
@@ -116,7 +115,7 @@ private:
 		/// </summary>
 		/// <param name="name"></param>
 		/// <param name="value"></param>
-	void CreateShaders(unsigned int &shadername, const GLchar *const *actualShader, int typeOfShader);
+	void CreateShaders(unsigned int &shadername, const char *const *actualShader, int typeOfShader);
 
 		/// <summary>
 		/// Sets a global vector uniform in the shader

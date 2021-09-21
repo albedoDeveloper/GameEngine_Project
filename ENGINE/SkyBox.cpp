@@ -1,6 +1,7 @@
 #include "SkyBox.h"
 #include <stbi_image/stb_image.h>
 #include "Utility.h"
+#include <glad/glad.h>
 
 void SkyBox::CreateSkybox(std::vector<std::string> textures)
 {

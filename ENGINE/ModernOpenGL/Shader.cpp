@@ -1,7 +1,7 @@
-#include <glew/GL/glew.h>
 #include "Shader.h"
 #include "../Utility.h"
 #include <iostream>
+#include <glad/glad.h>
 
 void Shader::Use() const
 {
@@ -183,7 +183,7 @@ void Shader::SetMat4Uniform(const std::string &name, Matrix4f mat) const
 	glUniformMatrix4fv(uniformLoc, 1, GL_FALSE, mat.ValuePtr()); CHECK_GL_ERROR;
 }
 
-void Shader::CreateShaders(unsigned int &shadername, const GLchar *const *actualShader, int typeOfShader)
+void Shader::CreateShaders(unsigned int &shadername, const char *const *actualShader, int typeOfShader)
 {
 	int  success;
 	std::string infoLog;

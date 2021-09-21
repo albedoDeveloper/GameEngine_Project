@@ -1,6 +1,5 @@
 #pragma once
 
-#include <glew/GL/glew.h>
 #include "CDirectionalLight.h"
 #include "CPointLight.h"
 #include "Matrix4f.h"

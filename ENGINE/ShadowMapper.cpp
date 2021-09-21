@@ -1,5 +1,6 @@
 #include "ShadowMapper.h"
 #include "MiscMath.h"
+#include <glad/glad.h>
 
 ShadowMapper::ShadowMapper()
 	:m_dirLightFBO{}, m_dirDepthMapTexObj{}, m_dirShadowRes{ 16384 }, m_dirLight{ nullptr }, m_initialised{ false },

@@ -1,7 +1,8 @@
 #include "AModel.h"
-
+#include <glad/glad.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include <stbi_image/stb_image.h>
+
 
 AModel::AModel(std::string path, std::string key)
 	:m_key{ key }

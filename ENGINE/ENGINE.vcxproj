@@ -24,6 +24,7 @@
     <ClCompile Include="CScript.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CStaticMesh.cpp" />
+    <ClCompile Include="ThirdParty\glad\src\glad.c" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameAssetFactory.cpp" />
@@ -69,6 +70,8 @@
     <ClInclude Include="CScript.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CStaticMesh.h" />
+    <ClInclude Include="ThirdParty\glad\include\glad\glad.h" />
+    <ClInclude Include="ThirdParty\glad\include\KHR\khrplatform.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameAssetFactory.h" />
@@ -174,14 +177,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\ThirdParty\glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc142-mtd.lib;zlibd.lib;glew32.lib;reactphysics3d_d.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc142-mtd.lib;zlibd.lib;reactphysics3d_d.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -193,6 +196,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>.\ThirdParty\glad\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
