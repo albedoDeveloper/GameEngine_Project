@@ -2,6 +2,7 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 #include <stbi_image/stb_image.h>
+#include <assimp/vector3.h>
 
 AModel::AModel(std::string path, std::string key)
 	:m_key{ key }
@@ -94,7 +95,12 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		Vertex vertex;
 		Vector3f vector;
 
-		///Assimp::Importer::getglm
+		Vertex vertex;
+
+		SetVertexBoneDataToDefault(vertex);
+
+		vertex.Position = Vector3f (mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
+		vertex.Normal = Vector3f (mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z);
 		
 		// positions
 		vector.SetX((mesh->mVertices[i].x * m_info.size) + m_info.translation.GetX());
@@ -178,6 +184,8 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());*/
 	}
 
+	ExtractBoneWeightForVertices(vertices, mesh, scene);
+
 	m_meshes.push_back(Mesh(vertices, indices, textures));
 }
 
@@ -250,3 +258,53 @@ void AModel::SetVertexBoneDataToDefault(Vertex& vertex)
 		vertex.boneWeights.push_back(0.0f);
 	}
 }
+
+void AModel::ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh* mesh, const aiScene* scene)
+{
+	for (int boneIndex = 0; boneIndex < mesh->mNumBones; ++boneIndex)
+	{
+		int boneID = -1;
+		std::string boneName = mesh->mBones[boneIndex]->mName.C_Str();
+		if (m_BoneInfoMap.find(boneName) == m_BoneInfoMap.end())
+		{
+			BoneInfo newBoneInfo;
+			newBoneInfo.id = m_BoneCounter;
+			newBoneInfo.offset = ConvertAiMatrixToMatrix4f(
+				mesh->mBones[boneIndex]->mOffsetMatrix);
+			m_BoneInfoMap[boneName] = newBoneInfo;
+			boneID = m_BoneCounter;
+			m_BoneCounter++;
+		}
+		else
+		{
+			boneID = m_BoneInfoMap[boneName].id;
+		}
+		assert(boneID != -1);
+		auto weights = mesh->mBones[boneIndex]->mWeights;
+		int numWeights = mesh->mBones[boneIndex]->mNumWeights;
+
+		for (int weightIndex = 0; weightIndex < numWeights; ++weightIndex)
+		{
+			int vertexId = weights[weightIndex].mVertexId;
+			float weight = weights[weightIndex].mWeight;
+			assert(vertexId <= vertices.size());
+			//SetVertexBoneData(vertices[vertexId], boneID, weight);
+		}
+
+
+	}
+
+}
+	
+Matrix4f AModel::ConvertAiMatrixToMatrix4f(const aiMatrix4x4 & from)
+{
+	Matrix4f aiToMatrix;
+	
+	//the a,b,c,d in assimp is the row ; the 1,2,3,4 is the column
+	aiToMatrix[0][0] = from.a1; aiToMatrix[1][0] = from.a2; aiToMatrix[2][0] = from.a3; aiToMatrix[3][0] = from.a4;
+	aiToMatrix[0][1] = from.b1; aiToMatrix[1][1] = from.b2; aiToMatrix[2][1] = from.b3; aiToMatrix[3][1] = from.b4;
+	aiToMatrix[0][2] = from.c1; aiToMatrix[1][2] = from.c2; aiToMatrix[2][2] = from.c3; aiToMatrix[3][2] = from.c4;
+	aiToMatrix[0][3] = from.d1; aiToMatrix[1][3] = from.d2; aiToMatrix[2][3] = from.d3; aiToMatrix[3][3] = from.d4;
+	return aiToMatrix;
+}
+

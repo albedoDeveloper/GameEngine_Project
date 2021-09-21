@@ -77,7 +77,7 @@ private:
 		int id;
 
 		/*offset matrix transforms vertex from model space to bone space*/
-		glm::mat4 offset;
+		Matrix4f offset;
 
 	};
 
@@ -169,5 +169,7 @@ private:
 		/// <returns></returns>
 	unsigned int TextureFromFile(const char *path, const std::string &directory);
 
-	void SetVertexBoneDataToDefault(Vertex& vertex)
+	void SetVertexBoneDataToDefault(Vertex& vertex);
+	void ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh* mesh, const aiScene* scene);
+	Matrix4f ConvertAiMatrixToMatrix4f(const aiMatrix4x4& from);
 };
