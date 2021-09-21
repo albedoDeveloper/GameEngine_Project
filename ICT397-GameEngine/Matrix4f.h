@@ -52,6 +52,8 @@ public:
 
 	void RemoveTranslation();
 
+	float& SetMatrixElement(unsigned int row, unsigned int column);
+	
 		/**
 		 * multiply 2 matrix4f's together
 		 *

@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AScript.cpp" />
+    <ClCompile Include="Bone.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CCamera.cpp" />
@@ -65,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AScript.h" />
+    <ClInclude Include="Bone.h" />
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CCamera.h" />

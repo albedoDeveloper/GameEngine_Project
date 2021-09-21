@@ -301,10 +301,10 @@ Matrix4f AModel::ConvertAiMatrixToMatrix4f(const aiMatrix4x4 & from)
 	Matrix4f aiToMatrix;
 	
 	//the a,b,c,d in assimp is the row ; the 1,2,3,4 is the column
-	aiToMatrix[0][0] = from.a1; aiToMatrix[1][0] = from.a2; aiToMatrix[2][0] = from.a3; aiToMatrix[3][0] = from.a4;
-	aiToMatrix[0][1] = from.b1; aiToMatrix[1][1] = from.b2; aiToMatrix[2][1] = from.b3; aiToMatrix[3][1] = from.b4;
-	aiToMatrix[0][2] = from.c1; aiToMatrix[1][2] = from.c2; aiToMatrix[2][2] = from.c3; aiToMatrix[3][2] = from.c4;
-	aiToMatrix[0][3] = from.d1; aiToMatrix[1][3] = from.d2; aiToMatrix[2][3] = from.d3; aiToMatrix[3][3] = from.d4;
+	aiToMatrix.SetMatrixElement(0,0) = from.a1; aiToMatrix.SetMatrixElement(1,0) = from.a2; aiToMatrix.SetMatrixElement(2,0) = from.a3; aiToMatrix.SetMatrixElement(3,0) = from.a4;
+	aiToMatrix.SetMatrixElement(0,1) = from.b1; aiToMatrix.SetMatrixElement(1,1) = from.b2; aiToMatrix.SetMatrixElement(2,1) = from.b3;  aiToMatrix.SetMatrixElement(3,1) = from.b4;
+	aiToMatrix.SetMatrixElement(0,2) = from.c1; aiToMatrix.SetMatrixElement(1,2) = from.c2;  aiToMatrix.SetMatrixElement(2,3) = from.c3; aiToMatrix.SetMatrixElement(3,2) = from.c4;
+	aiToMatrix.SetMatrixElement(0,3) = from.d1; aiToMatrix.SetMatrixElement(1,3) = from.d2;  aiToMatrix.SetMatrixElement(2,3) = from.d3; aiToMatrix.SetMatrixElement(3,3) = from.d4;
 	return aiToMatrix;
 }
 
