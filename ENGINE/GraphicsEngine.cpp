@@ -37,7 +37,9 @@ GraphicsEngine::GraphicsEngine()
 	m_windowHeight{},
 	m_litShader{ nullptr },
 	m_debugShader{ nullptr },
-	m_unlitShader{ nullptr }
+	m_unlitShader{ nullptr },
+	m_dirShadowMapShader{ nullptr },
+	m_pointShadowMapShader{ nullptr }
 {
 }
 
@@ -110,7 +112,6 @@ int GraphicsEngine::AddPointLight(CPointLight *light)
 
 	int numpointLights = m_lightManager.AddPointLight(light);
 
-	m_litShader->Use();
 	m_litShader->SetIntUniform("numOfPointLights", numpointLights);
 
 	return numpointLights;
