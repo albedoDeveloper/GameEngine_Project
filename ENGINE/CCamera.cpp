@@ -11,7 +11,6 @@ CCamera::CCamera(Transform *parent, GameObject *parentObj)
 void CCamera::Start()
 {
 	m_camera = Camera();
-	//SetAsCurrentCamera();
 }
 
 void CCamera::DrawToImGui()

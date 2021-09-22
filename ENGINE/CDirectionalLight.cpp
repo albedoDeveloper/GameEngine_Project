@@ -4,7 +4,10 @@
 bool CDirectionalLight::m_constructed = false;
 
 CDirectionalLight::CDirectionalLight(Transform *parentTrans, GameObject *parentObject)
-	:CComponent{ parentTrans, parentObject }, m_ambientStrength{ 0.2f }, m_colour{ 0.8f,0.8f,0.8f }, m_direction{ -0.2f, -1.0f, -0.3f }
+	:CComponent{ parentTrans, parentObject },
+	m_ambientStrength{ 0.2f },
+	m_colour{ 0.8f,0.8f,0.8f },
+	m_direction{ -0.2f, -1.0f, -0.3f }
 {
 	if (m_constructed)
 	{
@@ -17,7 +20,7 @@ CDirectionalLight::CDirectionalLight(Transform *parentTrans, GameObject *parentO
 		GRAPHICS->m_litShader->SetFloatUniform("dirLight.ambientStrength", m_ambientStrength);
 		GRAPHICS->m_litShader->SetVec3Uniform("dirLight.colour", m_colour);
 		GRAPHICS->m_litShader->SetVec3Uniform("dirLight.direction", m_direction);
-		GRAPHICS->m_litShader->SetBoolUniform("dirLightActive", true);
+		GRAPHICS->m_litShader->SetBoolUniform("dirLight.isActive", true);
 	}
 }
 

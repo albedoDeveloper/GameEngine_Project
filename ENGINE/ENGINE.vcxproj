@@ -112,14 +112,16 @@
     <None Include="..\Assets\Shaders\debug.frag" />
     <None Include="..\Assets\Shaders\dirShadowMap.vert" />
     <None Include="..\Assets\Shaders\lit.frag" />
-    <None Include="..\Assets\Shaders\lit_unlit.vert" />
+    <None Include="..\Assets\Shaders\lit.vert" />
     <None Include="..\Assets\Shaders\pointShadowMap.frag" />
     <None Include="..\Assets\Shaders\pointShadowMap.geom" />
     <None Include="..\Assets\Shaders\pointShadowMap.vert" />
-    <None Include="..\Assets\Shaders\shadowMap.frag" />
+    <None Include="..\Assets\Shaders\dirShadowMap.frag" />
     <None Include="..\Assets\Shaders\skybox.frag" />
-    <None Include="..\Assets\Shaders\debug_skybox.vert" />
+    <None Include="..\Assets\Shaders\debug.vert" />
+    <None Include="..\Assets\Shaders\skybox.vert" />
     <None Include="..\Assets\Shaders\unlit.frag" />
+    <None Include="..\Assets\Shaders\unlit.vert" />
     <None Include="..\codestyle_config\.editorconfig" />
   </ItemGroup>
   <ItemGroup>

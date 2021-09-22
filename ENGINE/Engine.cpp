@@ -197,32 +197,7 @@ void Engine::Cleanup()
 	GRAPHICS->Close();
 }
 
-void Engine::CameraRenderPass()
+void Engine::CameraRenderPass() const
 {
-	GRAPHICS->m_litShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
-	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
-	GRAPHICS->m_litShader->SetMat4Uniform("dirLightSpaceMatrix", GRAPHICS->GetDirProjViewMat());
-	GRAPHICS->m_litShader->SetFloatUniform("material.shininess", 16); // TODO move somewhere else
-	GRAPHICS->UpdateCamViewPos();
-	unsigned numPointLights = GRAPHICS->NumPointLights();
-	for (int i = 0; i < numPointLights; i++)
-	{
-		const CPointLight &light = GRAPHICS->GetPointLight(i);
-		GRAPHICS->m_litShader->SetVec3Uniform(
-			"pointLights[" + std::to_string(i) + "].position",
-			light.GetTransformConst().GetWorldTransform().GetRelativePosition()
-		);
-	}
-
-	GRAPHICS->m_unlitShader->Use();
-	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
-	GRAPHICS->m_unlitShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
-
-	GRAPHICS->m_debugShader->Use();
-	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
-	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
-
-	GRAPHICS->SetViewportToWindowSize();
-	GRAPHICS->NewFrame(m_debugMenu);
-	GRAPHICS->RenderObjects();
+	GRAPHICS->CameraRenderPass(m_debugMenu);
 }

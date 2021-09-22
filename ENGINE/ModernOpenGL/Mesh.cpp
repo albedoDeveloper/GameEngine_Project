@@ -74,30 +74,30 @@ void Mesh::Draw(const Shader *shader) const
 		}
 
 		shader->SetIntUniform(("material." + name + number).c_str(), textureUnit);
-		glBindTexture(GL_TEXTURE_2D, textures[textureUnit].id); CHECK_GL_ERROR;
+		glBindTexture(GL_TEXTURE_2D, textures[textureUnit].id); CHECK_GL_ERROR();
 	}
 
 	// send shadowMap to shader 
-	glActiveTexture(GL_TEXTURE2);  CHECK_GL_ERROR; //TODO  prototype code. using GL_TEXTURE2 wont work once the mesh contains more than 2 textures
+	glActiveTexture(GL_TEXTURE2);  CHECK_GL_ERROR(); //TODO  prototype code. using GL_TEXTURE2 wont work once the mesh contains more than 2 textures
 	GRAPHICS->BindDirShadowDepthMapTexture();
 	shader->SetIntUniform("dirLight.dirShadowMap", 2);
 
 	unsigned numPointLights = GRAPHICS->NumPointLights();
 	for (int i = 0; i < numPointLights; i++)
 	{
-		glActiveTexture(GL_TEXTURE3 + i); CHECK_GL_ERROR; // TODO same kinda thing as above ^^^
+		glActiveTexture(GL_TEXTURE3 + i); CHECK_GL_ERROR(); // TODO same kinda thing as above ^^^
 		GRAPHICS->BindPointDepthCubeMapTexture(i);
 		shader->SetIntUniform("pointLights[" + std::to_string(i) + "].depthCubeMap", 3 + i); // yeah .... dirty prototype code
 	}
 
-	glBindVertexArray(VAO); CHECK_GL_ERROR;
-	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0); CHECK_GL_ERROR;
-	glBindVertexArray(0); CHECK_GL_ERROR;
+	glBindVertexArray(VAO); CHECK_GL_ERROR();
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0); CHECK_GL_ERROR();
+	glBindVertexArray(0); CHECK_GL_ERROR();
 }
 
 void Mesh::DrawNoTexture() const
 {
-	glBindVertexArray(VAO); CHECK_GL_ERROR;
-	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0); CHECK_GL_ERROR;
-	glBindVertexArray(0); CHECK_GL_ERROR;
+	glBindVertexArray(VAO); CHECK_GL_ERROR();
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0); CHECK_GL_ERROR();
+	glBindVertexArray(0); CHECK_GL_ERROR();
 }

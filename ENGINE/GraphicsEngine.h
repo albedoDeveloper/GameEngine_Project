@@ -164,6 +164,8 @@ public:
 
 	void PointLightShadowPass();
 
+	void CameraRenderPass(bool debugMenu) const;
+
 	CPointLight &GetPointLight(unsigned index);
 
 	float GetPointLightFarPlane() const;

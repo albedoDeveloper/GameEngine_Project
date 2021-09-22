@@ -24,9 +24,9 @@ public:
 private:
 	bool m_initialised;
 	unsigned int m_dirLightFBO;
-	std::vector<unsigned int> m_pointLightFBOs;
+	std::vector<unsigned> m_pointLightFBOs;
 	unsigned int m_dirDepthMapTexObj;
-	std::vector<unsigned int> m_pointDepthCubeMapTexObjs;
+	std::vector<unsigned> m_pointDepthCubeMapTexObjs;
 	unsigned int m_dirShadowRes;
 	unsigned int m_pointShadowRes;
 	const CDirectionalLight *m_dirLight;

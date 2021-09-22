@@ -79,7 +79,7 @@ private:
 		*/
 	void Cleanup();
 
-	void CameraRenderPass();
+	void CameraRenderPass() const;
 
 		/**
 		 * @brief Whether the engine is running

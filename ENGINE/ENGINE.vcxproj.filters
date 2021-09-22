@@ -288,38 +288,44 @@
       <Filter>Scripts</Filter>
     </None>
     <None Include="..\codestyle_config\.editorconfig" />
-    <None Include="..\Assets\Shaders\debug.frag">
-      <Filter>Shaders\FragmentShaders</Filter>
+    <None Include="..\Assets\Shaders\lit.vert">
+      <Filter>Shaders\lit</Filter>
     </None>
     <None Include="..\Assets\Shaders\lit.frag">
-      <Filter>Shaders\FragmentShaders</Filter>
-    </None>
-    <None Include="..\Assets\Shaders\shadowMap.frag">
-      <Filter>Shaders\FragmentShaders</Filter>
-    </None>
-    <None Include="..\Assets\Shaders\skybox.frag">
-      <Filter>Shaders\FragmentShaders</Filter>
-    </None>
-    <None Include="..\Assets\Shaders\unlit.frag">
-      <Filter>Shaders\FragmentShaders</Filter>
-    </None>
-    <None Include="..\Assets\Shaders\pointShadowMap.geom">
-      <Filter>Shaders\GeometryShaders</Filter>
+      <Filter>Shaders\lit</Filter>
     </None>
     <None Include="..\Assets\Shaders\dirShadowMap.vert">
-      <Filter>Shaders\VertexShaders</Filter>
+      <Filter>Shaders\dirShadowMap</Filter>
     </None>
-    <None Include="..\Assets\Shaders\lit_unlit.vert">
-      <Filter>Shaders\VertexShaders</Filter>
-    </None>
-    <None Include="..\Assets\Shaders\debug_skybox.vert">
-      <Filter>Shaders\VertexShaders</Filter>
-    </None>
-    <None Include="..\Assets\Shaders\pointShadowMap.vert">
-      <Filter>Shaders\VertexShaders</Filter>
+    <None Include="..\Assets\Shaders\dirShadowMap.frag">
+      <Filter>Shaders\dirShadowMap</Filter>
     </None>
     <None Include="..\Assets\Shaders\pointShadowMap.frag">
-      <Filter>Shaders\FragmentShaders</Filter>
+      <Filter>Shaders\pointShadowMap</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\pointShadowMap.geom">
+      <Filter>Shaders\pointShadowMap</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\pointShadowMap.vert">
+      <Filter>Shaders\pointShadowMap</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\unlit.vert">
+      <Filter>Shaders\unlit</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\unlit.frag">
+      <Filter>Shaders\unlit</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\debug.frag">
+      <Filter>Shaders\debug</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\debug.vert">
+      <Filter>Shaders\debug</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\skybox.vert">
+      <Filter>Shaders\skybox</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\skybox.frag">
+      <Filter>Shaders\skybox</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -383,17 +389,26 @@
     <Filter Include="Source\Math\Source">
       <UniqueIdentifier>{980c5b3f-ba8b-4808-a504-140790bb979f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Shaders\VertexShaders">
-      <UniqueIdentifier>{86493ef3-3b47-489a-9375-5be3ccf49f0a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\FragmentShaders">
-      <UniqueIdentifier>{3315cc27-64b9-4853-a75a-cd0fb1263654}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shaders\GeometryShaders">
-      <UniqueIdentifier>{ef6fdec5-2196-472a-937e-a15d4a086c87}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ThirdParty\glad">
       <UniqueIdentifier>{20b06efa-a0b7-429f-b187-7720b1af7d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\lit">
+      <UniqueIdentifier>{2aa8fa6e-9b93-46dc-8bf6-c5e99f4cae7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\dirShadowMap">
+      <UniqueIdentifier>{7fd372c1-b338-4d3f-8786-a17487723da3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\pointShadowMap">
+      <UniqueIdentifier>{32af4a10-8ad6-4162-a02e-925fbef5b943}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\unlit">
+      <UniqueIdentifier>{f1bfeb13-3375-4b89-abd2-2643b618fb21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\debug">
+      <UniqueIdentifier>{091e6d75-aff1-425e-a447-0f8aac52b878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\skybox">
+      <UniqueIdentifier>{8f9ea584-b9ac-4f30-b2b7-5208489ed979}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
