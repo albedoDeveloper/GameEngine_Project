@@ -494,3 +494,14 @@ void GraphicsEngine::PointLightShadowPass()
 		glBindFramebuffer(GL_FRAMEBUFFER, 0); CHECK_GL_ERROR;
 	}
 }
+
+CPointLight &GraphicsEngine::GetPointLight(unsigned index)
+{
+	assert(index < m_lightManager.NumPointLights());
+	return m_lightManager.GetPointLight(index);
+}
+
+float GraphicsEngine::GetPointLightFarPlane() const
+{
+	return m_shadowMapper.GetPointLightFarPlane();
+}

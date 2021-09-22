@@ -138,14 +138,12 @@ void Shader::SetIntUniform(const std::string &name, int value) const
 void Shader::SetFloatUniform(const std::string &name, float value) const
 {
 	glUseProgram(m_ID);
-	int uniformLoc = glGetUniformLocation(m_ID, name.c_str());
-	CHECK_GL_ERROR;
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str()); CHECK_GL_ERROR;
 	if (uniformLoc == -1)
 	{
 		std::cerr << "[ERROR] SetFloatUniform(): invalid uniform name: " << name << std::endl;
 	}
-	glUniform1f(uniformLoc, value);
-	CHECK_GL_ERROR
+	glUniform1f(uniformLoc, value); CHECK_GL_ERROR;
 }
 
 void Shader::SetVec4Uniform(const std::string &name, const glm::vec4 &value) const

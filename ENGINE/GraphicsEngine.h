@@ -164,6 +164,10 @@ public:
 
 	void PointLightShadowPass();
 
+	CPointLight &GetPointLight(unsigned index);
+
+	float GetPointLightFarPlane() const;
+
 		/** @brief pointer to lit shader */
 	Shader *m_litShader;
 

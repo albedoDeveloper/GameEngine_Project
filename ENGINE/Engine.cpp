@@ -204,11 +204,15 @@ void Engine::CameraRenderPass()
 	GRAPHICS->m_litShader->SetMat4Uniform("dirLightSpaceMatrix", GRAPHICS->GetDirProjViewMat());
 	GRAPHICS->m_litShader->SetFloatUniform("material.shininess", 16); // TODO move somewhere else
 	GRAPHICS->UpdateCamViewPos();
-	//unsigned numPointLights = GRAPHICS->NumPointLights();
-	//for (int i = 0; i < numPointLights; i++)
-	//{
-
-	//}
+	unsigned numPointLights = GRAPHICS->NumPointLights();
+	for (int i = 0; i < numPointLights; i++)
+	{
+		const CPointLight &light = GRAPHICS->GetPointLight(i);
+		GRAPHICS->m_litShader->SetVec3Uniform(
+			"pointLights[" + std::to_string(i) + "].position",
+			light.GetTransformConst().GetWorldTransform().GetRelativePosition()
+		);
+	}
 
 	GRAPHICS->m_unlitShader->Use();
 	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());

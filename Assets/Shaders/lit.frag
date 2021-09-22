@@ -11,6 +11,7 @@ struct PointLight
 {
     samplerCube depthCubeMap;
     vec3 position;
+    float farPlane;
   
     float ambientStrength;
     vec3 colour;
@@ -80,7 +81,9 @@ void main()
     }
 
     if (dirLightActive)
+    {
         result += CalcDirectionaLight(dirLight, norm, FragPos, viewDir, shadow);
+    }
 
     FragColor = vec4(result, texture(material.texture_diffuse1, TexCoords).w);
 } 

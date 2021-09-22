@@ -3,8 +3,7 @@
 
 LightManager::LightManager()
 	:m_pointLights{}
-{
-}
+{}
 
 int LightManager::AddPointLight(CPointLight *light)
 {
@@ -15,4 +14,10 @@ int LightManager::AddPointLight(CPointLight *light)
 unsigned LightManager::NumPointLights() const
 {
 	return m_pointLights.size();
+}
+
+CPointLight &LightManager::GetPointLight(unsigned index)
+{
+	assert(index < m_pointLights.size());
+	return *(m_pointLights[index]);
 }

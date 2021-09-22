@@ -19,6 +19,7 @@ public:
 	void BindPointDepthCubeMapTexture(unsigned lightIndex) const;
 	Matrix4f GetDirProjViewMat() const;
 	std::vector<Matrix4f> GetPointProjViewMat(unsigned lightIndex) const;
+	float GetPointLightFarPlane() const;
 
 private:
 	bool m_initialised;
@@ -32,4 +33,5 @@ private:
 	std::vector<CPointLight *> m_pointLights;
 	Matrix4f m_directionalProjection;
 	Matrix4f m_pointProjection;
+	float m_pointLightFarPlane;
 };
