@@ -53,6 +53,21 @@ public:
 		*/
 	virtual void DrawToImGui();
 
+		/**
+		 * @brief accesses active state
+		*/
+	bool GetActive();
+
+		/**
+		 * @brief mutates active state
+		*/
+	void SetActive(bool activeStatus);
+
+		/**
+		* @ brief enables or disables collider similar to Set active but doesn't affect saved condition
+		*/
+	void EnableDisable(bool activeStatus);
+
 	/**
 	 * The offset the colliders have off the model.
 	 */

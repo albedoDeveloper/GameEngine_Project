@@ -166,7 +166,7 @@ void Engine::Render()
 
 	if (m_debugMenu) // TEST WINDOW
 	{
-		//ImGui::ShowDemoWindow();
+		ImGui::ShowDemoWindow();
 
 		levelEditor.DrawEditor();
 
