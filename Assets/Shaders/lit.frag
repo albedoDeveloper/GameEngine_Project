@@ -32,9 +32,9 @@ struct DirectionalLight
 };
 
 // function declarations
-vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
-vec3 CalcDirectionaLight(DirectionalLight light, vec3 normal, vec3 fragPos, vec3 viewDir, float shadow);
-float DirShadowCalculation(vec4 fragPosLightSpacen, vec3 normal, vec3 lightDir);
+vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, vec2 texCoords);
+vec3 CalcDirectionaLight(DirectionalLight light, vec3 normal, vec3 fragPos, vec3 viewDir, float shadow, vec2 texCoords);
+float DirShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir);
 float PointShadowCalculation(vec3 fragPos);
 
 // uniforms
@@ -75,20 +75,20 @@ void main()
 
     if (numOfPointLights > 0)
     {
-        result += CalcPointLight(pointLights[0], norm, vs_in.FragPos, viewDir); 
+        result += CalcPointLight(pointLights[0], norm, vs_in.FragPos, viewDir, vs_in.TexCoords); 
     }
     if (numOfPointLights > 1)
     {
-        result += CalcPointLight(pointLights[1], norm, vs_in.FragPos, viewDir); 
+        result += CalcPointLight(pointLights[1], norm, vs_in.FragPos, viewDir, vs_in.TexCoords); 
     }
     if (numOfPointLights > 2)
     {
-        result += CalcPointLight(pointLights[2], norm, vs_in.FragPos, viewDir); 
+        result += CalcPointLight(pointLights[2], norm, vs_in.FragPos, viewDir, vs_in.TexCoords); 
     }
 
     if (dirLight.isActive)
     {
-        result += CalcDirectionaLight(dirLight, norm, vs_in.FragPos, viewDir, shadow);
+        result += CalcDirectionaLight(dirLight, norm, vs_in.FragPos, viewDir, shadow, vs_in.TexCoords);
     }
 
     FragColor = vec4(result, texture(material.texture_diffuse1, vs_in.TexCoords).w);
@@ -158,7 +158,7 @@ float DirShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir)
 }
 
 
-vec3 CalcDirectionaLight(DirectionalLight light, vec3 normal, vec3 fragPos, vec3 viewDir, float shadow)
+vec3 CalcDirectionaLight(DirectionalLight light, vec3 normal, vec3 fragPos, vec3 viewDir, float shadow, vec2 texCoords)
 {
     vec3 lightDir = normalize(-light.direction);
 
@@ -171,14 +171,14 @@ vec3 CalcDirectionaLight(DirectionalLight light, vec3 normal, vec3 fragPos, vec3
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
 
     // combine results
-    vec3 ambient  = ambientColour * vec3(texture(material.texture_diffuse1, vs_in.TexCoords));
-    vec3 diffuse  = light.colour  * diff * vec3(texture(material.texture_diffuse1, vs_in.TexCoords));
-    vec3 specular = light.colour * spec * vec3(texture(material.texture_specular1, vs_in.TexCoords));
+    vec3 ambient  = ambientColour * vec3(texture(material.texture_diffuse1, texCoords));
+    vec3 diffuse  = light.colour  * diff * vec3(texture(material.texture_diffuse1, texCoords));
+    vec3 specular = light.colour * spec * vec3(texture(material.texture_specular1, texCoords));
     return (ambient + (diffuse + specular) * (1.0 - shadow));
 }
 
 
-vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
+vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, vec2 texCoords)
 {
     // ambient
     vec3 ambientColour = light.colour * light.ambientStrength;
@@ -194,9 +194,9 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
     float attenuation = 1.0 / (light.constant + light.linear * distance + 
   			     light.quadratic * (distance * distance));    
     // combine results
-    vec3 ambient  = ambientColour * vec3(texture(material.texture_diffuse1, vs_in.TexCoords));
-    vec3 diffuse  = light.colour  * diff * vec3(texture(material.texture_diffuse1, vs_in.TexCoords));
-    vec3 specular = light.colour * spec * vec3(texture(material.texture_specular1, vs_in.TexCoords));
+    vec3 ambient  = ambientColour * vec3(texture(material.texture_diffuse1, texCoords));
+    vec3 diffuse  = light.colour  * diff * vec3(texture(material.texture_diffuse1, texCoords));
+    vec3 specular = light.colour * spec * vec3(texture(material.texture_specular1, texCoords));
     ambient  *= attenuation;
     diffuse  *= attenuation;
     specular *= attenuation;

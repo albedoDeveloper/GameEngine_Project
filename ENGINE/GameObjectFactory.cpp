@@ -1,9 +1,7 @@
 #include "GameObjectFactory.h"
 
 GameObjectFactory::GameObjectFactory()
-{
-	m_objects = *new std::map<std::string, GameObject *>();
-}
+{}
 
 GameObjectFactory *GameObjectFactory::instance()
 {
