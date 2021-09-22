@@ -43,17 +43,14 @@ void CCollider::Update()
 void CCollider::Save(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
-	j[g->GetFactoryKey()]["Components"]["AABBComponent"] = "AABBComponent";
-	j[g->GetFactoryKey()]["Components"]["AABBComponent"]["Active"] = m_active;
-
-	//m_transform.ToJson(j, g->getFactoryKey());
+	j[g->GetFactoryKey()]["Components"]["AABBComponent"]["colActive"] = m_active;
 }
 
 void CCollider::Load(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
-
-	//m_transform.FromJson(j, g->getFactoryKey());
+	UpdateCollider();
+	SetActive((j.at(m_parent->GetFactoryKey()).at("Components").at("AABBComponent").at("colActive")));
 }
 
 void CCollider::DrawToImGui()
@@ -133,10 +130,6 @@ void CCollider::EnableDisable(bool activeStatus)
 			{
 				UpdateCollider();
 			}
-		}
-		else
-		{
-			//AddBoxCollider(0, 0, 0, 0, 0, 0, true, 1);
 		}
 
 	}
