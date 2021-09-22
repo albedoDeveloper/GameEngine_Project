@@ -7,6 +7,10 @@ Quaternion::Quaternion()
 	:m_quat(glm::identity<glm::quat>())
 {}
 
+Quaternion::Quaternion(float w, float x, float y, float z)
+	:m_quat(glm::quat(w,x,y,z))
+{}
+
 float Quaternion::DotProduct(Quaternion oQuat)
 {
 	return glm::dot(m_quat, oQuat.m_quat);
@@ -105,3 +109,4 @@ Matrix4f Quaternion::Mat4Cast() const
 {
 	return glm::mat4_cast(m_quat);
 }
+

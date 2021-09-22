@@ -22,6 +22,12 @@ public:
 		 */
 	Quaternion();
 
+	/**
+	 * constructs an identity quaternion using individual w,x,y,z values
+	 */
+	Quaternion(float w, float x, float y, float z);
+
+
 		/**
 		 * dot product of two Quaternions
 		 *
