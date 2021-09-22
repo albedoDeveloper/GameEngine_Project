@@ -20,6 +20,7 @@ public:
 	Matrix4f GetDirProjViewMat() const;
 	std::vector<Matrix4f> GetPointProjViewMat(unsigned lightIndex) const;
 	float GetPointLightFarPlane() const;
+	bool DirLightAcive() const;
 
 private:
 	bool m_initialised;

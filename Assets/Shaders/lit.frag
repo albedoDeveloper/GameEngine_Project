@@ -32,18 +32,18 @@ struct DirectionalLight
 };
 
 // function declarations
-vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, vec2 texCoords);
+vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, vec2 texCoords, float shadow);
 vec3 CalcDirectionaLight(DirectionalLight light, vec3 normal, vec3 fragPos, vec3 viewDir, float shadow, vec2 texCoords);
 float DirShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir);
-float PointShadowCalculation(vec3 fragPos);
+float PointShadowCalculation(vec3 fragPos, PointLight light);
 
 // uniforms
-#define NR_POINT_LIGHTS 3 
+#define NR_POINT_LIGHTS 2 
 uniform PointLight pointLights[NR_POINT_LIGHTS];
-uniform int numOfPointLights;
+uniform int numOfPointLights = 0;
 uniform DirectionalLight dirLight;
 uniform Material material;
-uniform vec3 viewPos;
+uniform vec3 viewPos = vec3(0,0,0);
 
 // out
 layout(location = 0) out vec4 FragColor;
@@ -64,65 +64,35 @@ void main()
     vec3 viewDir = normalize(viewPos - vs_in.FragPos);
     vec3 result = vec3(0,0,0);
 
-    float shadow = DirShadowCalculation(vs_in.DirFragPosLightSpace, norm, dirLight.direction);
-    shadow += PointShadowCalculation(vs_in.FragPos);
-
-// DRIVER BUG?!?!?!? for loop doesn't seem to work properly
-//    for(int i = 0; i < numOfPointLights; i++)
-//    {
-//        result += CalcPointLight(pointLights[i], norm, FragPos, viewDir); 
-//    }
-
     if (numOfPointLights > 0)
     {
-        result += CalcPointLight(pointLights[0], norm, vs_in.FragPos, viewDir, vs_in.TexCoords); 
+        float p1Shadow = PointShadowCalculation(vs_in.FragPos, pointLights[0]);
+        result += CalcPointLight(pointLights[0], norm, vs_in.FragPos, viewDir, vs_in.TexCoords, p1Shadow); 
     }
     if (numOfPointLights > 1)
     {
-        result += CalcPointLight(pointLights[1], norm, vs_in.FragPos, viewDir, vs_in.TexCoords); 
-    }
-    if (numOfPointLights > 2)
-    {
-        result += CalcPointLight(pointLights[2], norm, vs_in.FragPos, viewDir, vs_in.TexCoords); 
+        float p2Shadow = PointShadowCalculation(vs_in.FragPos, pointLights[1]);
+        result += CalcPointLight(pointLights[1], norm, vs_in.FragPos, viewDir, vs_in.TexCoords, p2Shadow); 
     }
 
     if (dirLight.isActive)
     {
-        result += CalcDirectionaLight(dirLight, norm, vs_in.FragPos, viewDir, shadow, vs_in.TexCoords);
+        float dirShadow = DirShadowCalculation(vs_in.DirFragPosLightSpace, norm, dirLight.direction);
+        result += CalcDirectionaLight(dirLight, norm, vs_in.FragPos, viewDir, dirShadow, vs_in.TexCoords);
     }
 
     FragColor = vec4(result, texture(material.texture_diffuse1, vs_in.TexCoords).w);
 } 
 
-float PointShadowCalculation(vec3 fragPos)
+float PointShadowCalculation(vec3 fragPos, PointLight light)
 {
-    float shadowSum = 0.f;
-    float bias = 0.05; 
+    float bias = 0.05;
 
-    if (numOfPointLights > 0)
-    {
-        vec3 fragToLight = fragPos - pointLights[0].position; 
-        float closestDepth = texture(pointLights[0].depthCubeMap, fragToLight).r;
-        closestDepth *= pointLights[0].farPlane;  
-        float currentDepth = length(fragToLight); 
-        shadowSum += currentDepth -  bias > closestDepth ? 1.0 : 0.0; 
-    }
-    if (numOfPointLights > 1)
-    {
-        vec3 fragToLight = fragPos - pointLights[1].position; 
-        float closestDepth = texture(pointLights[1].depthCubeMap, fragToLight).r;
-        closestDepth *= pointLights[1].farPlane;  
-        float currentDepth = length(fragToLight); 
-        shadowSum += currentDepth -  bias > closestDepth ? 1.0 : 0.0; 
-    }
-    if (numOfPointLights > 2)
-    {
-        vec3 fragToLight = fragPos - pointLights[2].position; 
-        float closestDepth = texture(pointLights[2].depthCubeMap, fragToLight).r;
-        closestDepth *= pointLights[2].farPlane;  
-        float currentDepth = length(fragToLight); 
-        shadowSum += currentDepth -  bias > closestDepth ? 1.0 : 0.0; 
-    }
+    vec3 fragToLight = fragPos - light.position; 
+    float closestDepth = texture(light.depthCubeMap, fragToLight).r;
+    closestDepth *=light.farPlane;  
+    float currentDepth = length(fragToLight); 
+    float shadowSum = currentDepth -  bias > closestDepth ? 1.0 : 0.0; 
 
     return shadowSum;
 }
@@ -178,7 +148,7 @@ vec3 CalcDirectionaLight(DirectionalLight light, vec3 normal, vec3 fragPos, vec3
 }
 
 
-vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, vec2 texCoords)
+vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, vec2 texCoords, float shadow)
 {
     // ambient
     vec3 ambientColour = light.colour * light.ambientStrength;
@@ -200,5 +170,5 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, v
     ambient  *= attenuation;
     diffuse  *= attenuation;
     specular *= attenuation;
-    return (ambient + diffuse + specular);
+    return (ambient + (diffuse + specular) * (1.0 - shadow));
 } 

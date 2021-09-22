@@ -314,6 +314,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	m_debugShader = new Shader("../Assets/Shaders/debug.vert", "../Assets/Shaders/debug.frag");
 	m_dirShadowMapShader = new Shader("../Assets/Shaders/dirShadowMap.vert", "../Assets/Shaders/dirShadowMap.frag");
 	m_pointShadowMapShader = new Shader("../Assets/Shaders/pointShadowMap.vert", "../Assets/Shaders/pointShadowMap.geom", "../Assets/Shaders/pointShadowMap.frag");
+	m_pointShadowMapShader->SetFloatUniform("far_plane", m_shadowMapper.GetPointLightFarPlane());
 
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",
@@ -474,6 +475,10 @@ unsigned GraphicsEngine::NumPointLights() const
 
 void GraphicsEngine::DirLightShadowPass()
 {
+	if (!m_shadowMapper.DirLightAcive())
+	{
+		return;
+	}
 	m_shadowMapper.SetupDirLightFBO();
 	m_dirShadowMapShader->SetMat4Uniform("dirLightSpaceMatrix", GetDirProjViewMat());
 	RenderObjects(*m_dirShadowMapShader, true);
@@ -493,6 +498,10 @@ void GraphicsEngine::PointLightShadowPass()
 		{
 			m_pointShadowMapShader->SetMat4Uniform("shadowMatrices[" + std::to_string(matIndex) + "]", mats[matIndex]);
 		}
+		m_pointShadowMapShader->SetVec3Uniform(
+			"lightPos",
+			m_lightManager.GetPointLight(lightIndex).GetTransform().GetWorldTransform().GetRelativePosition()
+		);
 		RenderObjects(*m_pointShadowMapShader, true);
 		glBindFramebuffer(GL_FRAMEBUFFER, 0); CHECK_GL_ERROR();
 	}

@@ -121,7 +121,7 @@ void Shader::SetBoolUniform(const std::string &name, bool value) const
 	{
 		std::cerr << "[ERROR] SetBoolUniform(): invalid uniform name: " << name << std::endl;
 	}
-	assert(uniformLoc != -1);
+	//assert(uniformLoc != -1);
 	glUniform1i(uniformLoc, (int)value); CHECK_GL_ERROR();
 }
 
@@ -133,7 +133,7 @@ void Shader::SetIntUniform(const std::string &name, int value) const
 	{
 		std::cerr << "[ERROR] SetIntUniform(): invalid uniform name: " << name << std::endl;
 	}
-	assert(uniformLoc != -1);
+	//assert(uniformLoc != -1);
 	glUniform1i(uniformLoc, value); CHECK_GL_ERROR();
 }
 
@@ -145,7 +145,7 @@ void Shader::SetFloatUniform(const std::string &name, float value) const
 	{
 		std::cerr << "[ERROR] SetFloatUniform(): invalid uniform name: " << name << std::endl;
 	}
-	assert(uniformLoc != -1);
+	//assert(uniformLoc != -1);
 	glUniform1f(uniformLoc, value); CHECK_GL_ERROR();
 }
 
@@ -157,7 +157,7 @@ void Shader::SetVec4Uniform(const std::string &name, const glm::vec4 &value) con
 	{
 		std::cerr << "[ERROR] SetVec4Uniform(): invalid uniform name: " << name << std::endl;
 	}
-	assert(uniformLoc != -1);
+	//assert(uniformLoc != -1);
 	glUniform4fv(uniformLoc, 1, &value[0]); CHECK_GL_ERROR()
 }
 
@@ -169,7 +169,7 @@ void Shader::SetVec3Uniform(const std::string &name, Vector3f value) const
 	{
 		std::cerr << "[ERROR] SetVec3Uniform(): invalid uniform name: " << name << std::endl;
 	}
-	assert(uniformLoc != -1);
+	//assert(uniformLoc != -1);
 	glUniform3fv(uniformLoc, 1, value.ValuePtr()); CHECK_GL_ERROR()
 }
 
@@ -181,7 +181,7 @@ void Shader::SetMat4Uniform(const std::string &name, Matrix4f mat) const
 	{
 		std::cerr << "[ERROR] SetMat4Uniform(): invalid uniform name: " << name << std::endl;
 	}
-	assert(uniformLoc != -1);
+	//assert(uniformLoc != -1);
 	glUniformMatrix4fv(uniformLoc, 1, GL_FALSE, mat.ValuePtr()); CHECK_GL_ERROR();
 }
 
