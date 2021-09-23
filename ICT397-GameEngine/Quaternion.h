@@ -143,6 +143,19 @@ public:
 		 */
 	Matrix4f Mat4Cast() const;
 
+
+	/**
+	 * Spherical interperolation between 2 quaternions.
+	 * 
+	 * \param one
+	 * \param two
+	 * \param scaleFactor
+	 * \return 
+	 */
+	Quaternion Slerp(const Quaternion& two, float scaleFactor);
+
+	Quaternion Normalize();
+
 private:
 	friend class Vector3f;
 	friend class Matrix4f;

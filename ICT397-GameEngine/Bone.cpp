@@ -112,22 +112,17 @@ Matrix4f Bone::InterpolatePosition(float animationTime)
 Matrix4f Bone::InterpolateRotation(float animationTime)
 {
 	Matrix4f tempMatrix;
-	
+
 	if (1 == m_NumRotations)
 	{
-		auto rotation = glm::normalize(m_Rotations[0].orientation);
-		return glm::toMat4(rotation);
+		return m_Rotations[0].orientation.Normalize().Mat4Cast();
 	}
 
 	int p0Index = GetRotationIndex(animationTime);
 	int p1Index = p0Index + 1;
-	float scaleFactor = GetScaleFactor(m_Rotations[p0Index].timeStamp,m_Rotations[p1Index].timeStamp, animationTime);
-	Quaternion finalRotation = glm::slerp(m_Rotations[p0Index].orientation, m_Rotations[p1Index].orientation, scaleFactor);
-	finalRotation = glm::normalize(finalRotation);
-	tempMatrix.
-	
-	return glm::toMat4(finalRotation);
-
+	float scaleFactor = GetScaleFactor(m_Rotations[p0Index].timeStamp, m_Rotations[p1Index].timeStamp, animationTime);
+	Quaternion finalRotation = m_Rotations[p0Index].orientation.Slerp(m_Rotations[p1Index].orientation, scaleFactor);
+	return finalRotation.Normalize().Mat4Cast();
 }
 
 Matrix4f Bone::InterpolateScaling(float animationTime)
@@ -140,7 +135,6 @@ Matrix4f Bone::InterpolateScaling(float animationTime)
 		
 		return tempMatrix;
 	}
-		
 
 	int p0Index = GetScaleIndex(animationTime);
 	int p1Index = p0Index + 1;

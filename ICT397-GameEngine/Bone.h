@@ -34,7 +34,7 @@ private:
 	int m_NumRotations;
 	int m_NumScalings;
 
-	glm::mat4 m_LocalTransform;
+	Matrix4f m_LocalTransform;
 	std::string m_Name;
 	int m_ID;
 	
