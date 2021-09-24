@@ -4,7 +4,7 @@
 
 CPointLight::CPointLight(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj }, m_litShaderIndex{}, m_attenConstant{ 1.f }, m_attenLinear{ 0.09f }, m_attenQuad{ 0.032f },
-	m_colour{ 0.8f,0.8f,0.8f }, m_ambientStrength{ 0.2f }
+	m_colour{ 0.8f,0.8f,0.8f }, m_ambientStrength{ 0.8f }
 {
 	m_litShaderIndex = GRAPHICS->AddPointLight(this) - 1;
 	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].ambientStrength", m_ambientStrength);
