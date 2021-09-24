@@ -50,7 +50,8 @@ private:
 
 		Matrix4f InterpolatePosition(float animationTime);
 		Matrix4f InterpolateRotation(float animationTime);
-		Matrix4f InterpolateScaling(float animationTime)
+		Matrix4f InterpolateScaling(float animationTime);
+		std::string GetBoneName() { return m_Name; }
 
 };
 

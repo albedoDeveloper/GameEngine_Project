@@ -18,6 +18,17 @@
 class AModel
 {
 public:
+		
+	struct BoneInfo
+	{
+		/*id is index in finalBoneMatrices*/
+		int id;
+
+		/*offset matrix transforms vertex from model space to bone space*/
+		Matrix4f offset;
+
+	};
+	
 		/**
 		 * Constructs model with a unique key and the pathname of the model file to be loaded
 		 *
@@ -59,6 +70,14 @@ public:
 		 */
 	std::vector<Mesh> &GetMeshes();
 
+	std::map<std::string, BoneInfo> m_BoneInfoMap; //
+	int m_BoneCounter = 0;
+
+	std::map<std::string, AModel::BoneInfo> GetBoneInfoMap() { return m_BoneInfoMap; }
+	int& GetBoneCount() { return m_BoneCounter; }
+	
+	static Matrix4f ConvertAiMatrixToMatrix4f(const aiMatrix4x4& from);
+
 private:
 
 		/// <summary>
@@ -71,15 +90,6 @@ private:
 		float size = 1;
 	};
 
-	struct BoneInfo
-	{
-		/*id is index in finalBoneMatrices*/
-		int id;
-
-		/*offset matrix transforms vertex from model space to bone space*/
-		Matrix4f offset;
-
-	};
 
 		/// <summary>
 		/// The models key value for identifiying it between models
@@ -126,11 +136,7 @@ private:
 		/// </summary>
 	std::string m_texturePath;
 
-	std::map<std::string, BoneInfo> m_BoneInfoMap; //
-	int m_BoneCounter = 0;
 
-	std::map<std::string, AModel::BoneInfo> GetBoneInfoMap() { return m_BoneInfoMap; }
-	int& GetBoneCount() { return m_BoneCounter; }
 
 		/// <summary>
 		/// Load a model into the engine based upon its path
@@ -171,5 +177,5 @@ private:
 
 	void SetVertexBoneDataToDefault(Vertex& vertex);
 	void ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh* mesh, const aiScene* scene);
-	Matrix4f ConvertAiMatrixToMatrix4f(const aiMatrix4x4& from);
+
 };
