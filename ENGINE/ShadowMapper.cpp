@@ -5,7 +5,7 @@
 
 ShadowMapper::ShadowMapper()
 	:m_dirLightFBO{}, m_dirDepthMapTexObj{}, m_dirShadowRes{ 16384 }, m_dirLight{ nullptr }, m_initialised{ false },
-	m_directionalProjection{}, m_pointShadowRes{ 2048 }, m_pointLightFBOs{}, m_pointLightFarPlane{ 20.f }
+	m_directionalProjection{}, m_pointShadowRes{ 2048 }, m_pointLightFBOs{}, m_pointLightFarPlane{ 30.f }
 {
 	m_directionalProjection = Ortho(-20.f, 20.f, -20.f, 20.f, 2.f, 30.f);
 	m_pointProjection = Perspective(90, 1, 0.1f, m_pointLightFarPlane);

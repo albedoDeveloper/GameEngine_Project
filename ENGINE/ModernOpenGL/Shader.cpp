@@ -151,7 +151,7 @@ void Shader::SetFloatUniform(const std::string &name, float value) const
 
 void Shader::SetVec4Uniform(const std::string &name, const glm::vec4 &value) const
 {
-	glUseProgram(m_ID);
+	glUseProgram(m_ID); CHECK_GL_ERROR();
 	int uniformLoc = glGetUniformLocation(m_ID, name.c_str()); CHECK_GL_ERROR();
 	if (uniformLoc == -1)
 	{

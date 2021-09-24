@@ -63,7 +63,7 @@
             "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "barrel1",
-                "Shader": "debug"
+                "Shader": "lit"
             }
         },
         "Transform": {
@@ -98,14 +98,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": 4.119999885559082,
+                "y": -0.03999999910593033,
+                "z": -0.7749999761581421
             },
             "Rotation": {
-                "w": 1.0,
+                "w": 0.9963527321815491,
                 "x": 0.0,
-                "y": 0.0,
+                "y": 0.08532997220754623,
                 "z": 0.0
             },
             "Scale": {
@@ -122,7 +122,7 @@
         "Components": {
             "StaticMeshComponent": {
                 "AModel": "beertap1",
-                "Shader": "debug"
+                "Shader": "lit"
             }
         },
         "Transform": {
@@ -223,10 +223,10 @@
                 "z": -0.4449999928474426
             },
             "Rotation": {
-                "w": -0.6221751570701599,
-                "x": -0.25771060585975647,
-                "y": 0.6829507946968079,
-                "z": 0.2828972339630127
+                "w": 0.6621717214584351,
+                "x": 0.2742801010608673,
+                "y": 0.6442762017250061,
+                "z": 0.26686346530914307
             },
             "Scale": {
                 "x": 1.0,
@@ -359,6 +359,7 @@
     },
     "light1": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis",
                 "Shader": "lit"
@@ -366,14 +367,14 @@
         },
         "Transform": {
             "Position": {
-                "x": -8.354999542236328,
-                "y": 2.6700000762939453,
-                "z": 1.0
+                "x": 2.565000057220459,
+                "y": 2.305000066757202,
+                "z": -3.375
             },
             "Rotation": {
-                "w": 1.0,
+                "w": 0.9999813437461853,
                 "x": 0.0,
-                "y": 0.0,
+                "y": 0.006108613219112158,
                 "z": 0.0
             },
             "Scale": {
@@ -388,6 +389,7 @@
     },
     "light2": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis",
                 "Shader": "lit"
@@ -428,9 +430,9 @@
                 "z": 5.275000095367432
             },
             "Rotation": {
-                "w": 0.6733613610267639,
+                "w": 0.7166944742202759,
                 "x": 0.0,
-                "y": -0.7391570210456848,
+                "y": 0.6973148584365845,
                 "z": 0.0
             },
             "Scale": {
@@ -448,7 +450,7 @@
             "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "main_bar_bench",
-                "Shader": "unlit"
+                "Shader": "lit"
             }
         },
         "Transform": {
@@ -480,14 +482,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 1.7974543571472168,
+                "x": 4.469545364379883,
                 "y": 1.3381983041763306,
-                "z": 1.2140311002731323
+                "z": 1.4158213138580322
             },
             "Rotation": {
-                "w": 0.011347603984177113,
+                "w": 0.9275335669517517,
                 "x": 0.0,
-                "y": -0.999984622001648,
+                "y": 0.37380513548851013,
                 "z": 0.0
             },
             "Scale": {
@@ -706,35 +708,6 @@
         "active": true,
         "key": "spiked_door_toilet",
         "parent": "TEST"
-    },
-    "sun": {
-        "Components": {
-            "StaticMeshComponent": {
-                "AModel": "axis",
-                "Shader": "lit"
-            }
-        },
-        "Transform": {
-            "Position": {
-                "x": 0.0,
-                "y": 10.0,
-                "z": 10.0
-            },
-            "Rotation": {
-                "w": 0.9203639030456543,
-                "x": 0.3812272250652313,
-                "y": 0.08052139729261398,
-                "z": 0.033353060483932495
-            },
-            "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        "active": true,
-        "key": "sun",
-        "parent": "sunanchor"
     },
     "sunanchor": {
         "Components": {

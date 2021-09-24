@@ -3,7 +3,7 @@
 #include "Vector3f.h"
 
 CPointLight::CPointLight(Transform *parent, GameObject *parentObj)
-	:CComponent{ parent, parentObj }, m_litShaderIndex{}, m_attenConstant{ 1 }, m_attenLinear{ 0.09f }, m_attenQuad{ 0.032f },
+	:CComponent{ parent, parentObj }, m_litShaderIndex{}, m_attenConstant{ 1.f }, m_attenLinear{ 0.09f }, m_attenQuad{ 0.032f },
 	m_colour{ 0.8f,0.8f,0.8f }, m_ambientStrength{ 0.2f }
 {
 	m_litShaderIndex = GRAPHICS->AddPointLight(this) - 1;
