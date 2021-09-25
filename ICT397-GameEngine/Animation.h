@@ -19,6 +19,10 @@ class Animation
 
 		Animation(const std::string& animationPath, AModel* model);
 		Bone* FindBone(const std::string& name);
+		float GetTicksPerSecond() { return m_TicksPerSecond; }
+		float GetDuration() { return m_Duration; }
+		AssimpNodeData& GetRootNode() { return m_RootNode; }
+		const std::map<std::string, AModel::BoneInfo>& GetBoneIDMap(){ return m_BoneInfoMap; }
 
 	private:
 

@@ -52,6 +52,7 @@ private:
 		Matrix4f InterpolateRotation(float animationTime);
 		Matrix4f InterpolateScaling(float animationTime);
 		std::string GetBoneName() { return m_Name; }
+		Matrix4f GetLocalTransform() { return m_LocalTransform; }
 
 };
 
