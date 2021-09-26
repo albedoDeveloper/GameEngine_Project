@@ -57,6 +57,7 @@ void Animation::ReadHeirarchyData(AssimpNodeData& dest, const aiNode* src)
 {
 	if (src != nullptr)
 	{
+		
 		dest.name = src->mName.data;
 		dest.transformation = AModel::ConvertAiMatrixToMatrix4f(src->mTransformation);
 		dest.childrenCount = src->mNumChildren;
@@ -69,3 +70,4 @@ void Animation::ReadHeirarchyData(AssimpNodeData& dest, const aiNode* src)
 		}
 	}
 }
+

@@ -171,6 +171,8 @@ public:
 		*/
 	Vector3f operator*(const Quaternion &quat);
 
+	Vector3f Mix(Vector3f oVec, float scale);
+
 private:
 		/// <summary>
 		/// Member Variable vector

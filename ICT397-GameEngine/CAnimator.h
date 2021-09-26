@@ -2,12 +2,18 @@
 #include "Animation.h"
 #include "ModernOpenGL/AModel.h"
 #include <map>
+#include "CComponent.h"
 
-class CAnimator
+
+class CAnimator : public CComponent
 {
 	public:
 		
-		CAnimator(Animation* animation);
+		CAnimator(Transform* parent, GameObject* parentObj);
+		~CAnimator(){
+			delete  m_CurrentAnimation;
+			m_CurrentAnimation = nullptr;
+		}
 		void AddAnimation(std::string name, std::string filePath);
 		void UpdateAnimation(float deltaTime);
 		void CalculateBoneTransform(const Animation::AssimpNodeData* node, Matrix4f parentTransform);

@@ -24,6 +24,7 @@ class Animation
 		AssimpNodeData& GetRootNode() { return m_RootNode; }
 		const std::map<std::string, AModel::BoneInfo>& GetBoneIDMap(){ return m_BoneInfoMap; }
 
+
 	private:
 
 		void ReadMissingBones(const aiAnimation* animation, AModel& model);

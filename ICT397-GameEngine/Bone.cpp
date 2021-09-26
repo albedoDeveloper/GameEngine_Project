@@ -101,7 +101,7 @@ Matrix4f Bone::InterpolatePosition(float animationTime)
 	int p0Index = GetPositionIndex(animationTime);
 	int p1Index = p0Index + 1;
 	float scaleFactor = GetScaleFactor(m_Positions[p0Index].timeStamp,m_Positions[p1Index].timeStamp, animationTime);
-	Vector3f finalPosition = glm::mix(m_Positions[p0Index].position, m_Positions[p1Index].position, scaleFactor);
+	Vector3f finalPosition = m_Positions[p0Index].position.Mix(m_Positions[p1Index].position, scaleFactor);
 	tempMatrix.Translate(finalPosition);
 	
 	return tempMatrix;
@@ -139,7 +139,7 @@ Matrix4f Bone::InterpolateScaling(float animationTime)
 	int p0Index = GetScaleIndex(animationTime);
 	int p1Index = p0Index + 1;
 	float scaleFactor = GetScaleFactor(m_Scales[p0Index].timeStamp, m_Scales[p1Index].timeStamp, animationTime);
-	Vector3f finalScale = glm::mix(m_Scales[p0Index].scale, m_Scales[p1Index].scale, scaleFactor);
+	Vector3f finalScale = m_Scales[p0Index].scale.Mix( m_Scales[p1Index].scale, scaleFactor);
 	tempMatrix.Scale(finalScale);
 	return tempMatrix;
 }

@@ -73,7 +73,7 @@ public:
 	std::map<std::string, BoneInfo> m_BoneInfoMap; //
 	int m_BoneCounter = 0;
 
-	std::map<std::string, AModel::BoneInfo>& GetBoneInfoMap() { return m_BoneInfoMap; }
+	std::map<std::string, BoneInfo>& GetBoneInfoMap() { return m_BoneInfoMap; }
 	int& GetBoneCount() { return m_BoneCounter; }
 	
 	static Matrix4f ConvertAiMatrixToMatrix4f(const aiMatrix4x4& from);

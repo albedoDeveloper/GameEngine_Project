@@ -95,12 +95,12 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		Vertex vertex;
 		Vector3f vector;
 
-		Vertex vertex;
+		Vertex boneVertex;
 
-		SetVertexBoneDataToDefault(vertex);
+		SetVertexBoneDataToDefault(boneVertex);
 
-		vertex.Position = Vector3f (mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
-		vertex.Normal = Vector3f (mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z);
+		boneVertex.Position = Vector3f (mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
+		boneVertex.Normal = Vector3f (mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z);
 		
 		// positions
 		vector.SetX((mesh->mVertices[i].x * m_info.size) + m_info.translation.GetX());

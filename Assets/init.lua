@@ -70,6 +70,7 @@ GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_gla
 GetGameObject("tavern_glass_door_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("tavern_glass_door_wall"):GetCCollider():CollideWith(2)
 
+
 SpawnGameObject("spiked_door_bar"):SetStatic(true)
 GetGameObject("spiked_door_bar"):AddCStaticMesh():AssignModel("spiked_door_bar")
 GetGameObject("spiked_door_bar"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)

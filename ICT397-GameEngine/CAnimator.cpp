@@ -1,9 +1,11 @@
 #include "CAnimator.h"
 
-CAnimator::CAnimator(Animation* animation)
+CAnimator::CAnimator(Transform* parent, GameObject* parentObj)
+	:CComponent{ parent, parentObj }
 {
 	m_CurrentTime = 0.0;
-	m_CurrentAnimation = animation;
+	m_DeltaTime = 0;
+	//m_CurrentAnimation = animation;
 
 	//m_FinalBoneMatrices.reserve(100);
 
