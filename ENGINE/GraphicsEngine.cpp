@@ -2,7 +2,6 @@
 #include "GameObjectFactory.h"
 #include <iostream>
 #include "Color.h"
-#include "CCamera.h"
 #include "InputManager.h"
 #include "./ThirdParty/imgui/imgui.h"
 #include "./ThirdParty/imgui/imgui_impl_sdl.h"
@@ -10,6 +9,7 @@
 #include "Vector3f.h"
 #include "Matrix4f.h"
 #include "MiscMath.h"
+#include "Utility.h"
 
 extern "C"
 {
@@ -36,7 +36,9 @@ GraphicsEngine::GraphicsEngine()
 	m_windowHeight{},
 	m_litShader{ nullptr },
 	m_debugShader{ nullptr },
-	m_unlitShader{ nullptr }
+	m_unlitShader{ nullptr },
+	m_dirShadowMapShader{ nullptr },
+	m_pointShadowMapShader{ nullptr }
 {
 }
 
@@ -72,15 +74,9 @@ bool GraphicsEngine::Init(GraphicsLibrary renderer, int windowWidth, int windowH
 	}
 }
 
-bool GraphicsEngine::initLighting()
-{
-	glDisable(GL_LIGHTING);
-	return true;
-}
-
 void GraphicsEngine::NewFrame(bool debugMenu)
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); CHECK_GL_ERROR();
 
 	if (debugMenu)
 	{
@@ -105,19 +101,15 @@ void GraphicsEngine::UpdateCamViewPos() const
 
 int GraphicsEngine::AddPointLight(CPointLight *light)
 {
-	int numpointLights = m_lightManager.AddPointLight(light);
+	if (!m_shadowMapper.IsInitialised())
+	{
+		std::cout << "[Error] Cannot add point light because shadow mapper is not initialised\n";
+		return m_lightManager.NumPointLights();
+	}
 
-	m_litShader->Use();
-	m_litShader->SetIntUniform("numOfPointLights", numpointLights);
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].ambientStrength", light->GetAmbientStrength());
-	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(numpointLights - 1) + "].colour", Vector3f(
-		light->GetColour().GetX(),
-		light->GetColour().GetY(),
-		light->GetColour().GetZ()
-	));
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].constant", light->GetAttenConstant());
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].linear", light->GetLinearAttenutation());
-	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(numpointLights - 1) + "].quadratic", light->GetQuadraticAttenuation());
+	m_shadowMapper.AddPointLight(light);
+
+	int numpointLights = m_lightManager.AddPointLight(light);
 
 	return numpointLights;
 }
@@ -130,12 +122,17 @@ void GraphicsEngine::AddDirectionalLight(const CDirectionalLight &light)
 		return;
 	}
 
-	m_shadowMapper.AssignLight(&light);
+	m_shadowMapper.AssignDirLight(&light);
 }
 
-void GraphicsEngine::RenderObjects(Shader &shader)
+void GraphicsEngine::WarpMouseCentreWindow() const
 {
-	GAMEOBJECT->Render(shader);
+	SDL_WarpMouseInWindow(m_window, m_windowWidth / 2, m_windowHeight / 2);
+}
+
+void GraphicsEngine::RenderObjects(Shader &shader, bool noTexture)
+{
+	GAMEOBJECT->Render(shader, noTexture);
 }
 
 void GraphicsEngine::RenderObjects()
@@ -151,7 +148,7 @@ void GraphicsEngine::RenderObjects()
 
 void GraphicsEngine::SetViewportToWindowSize() const
 {
-	glViewport(0, 0, m_windowWidth, m_windowHeight);
+	glViewport(0, 0, m_windowWidth, m_windowHeight); CHECK_GL_ERROR();
 }
 
 void GraphicsEngine::endFrame(bool debugMenu)
@@ -159,7 +156,7 @@ void GraphicsEngine::endFrame(bool debugMenu)
 	if (debugMenu)
 	{
 		ImGui::Render();
-		glViewport(0, 0, (int)m_imgui_io.DisplaySize.x, (int)m_imgui_io.DisplaySize.y);
+		glViewport(0, 0, (int)m_imgui_io.DisplaySize.x, (int)m_imgui_io.DisplaySize.y); CHECK_GL_ERROR();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 	SDL_GL_SwapWindow(m_window);
@@ -168,6 +165,7 @@ void GraphicsEngine::endFrame(bool debugMenu)
 void GraphicsEngine::SetDisplayCamera(CCamera *camera)
 {
 	m_camera = camera;
+	m_litShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
 }
 
 CCamera *GraphicsEngine::GetDisplayCamera()
@@ -195,10 +193,10 @@ void GraphicsEngine::DeleteTexture(std::string key)
 	}
 
 	unsigned int texId[] = { m_textureIDs.at(key) };
-	glDeleteTextures(1, texId);
+	glDeleteTextures(1, texId); CHECK_GL_ERROR();
 }
 
-void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const Shader *shader)
+void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const Shader *shader, bool noTexture)
 {
 	if (!model)
 	{
@@ -213,11 +211,17 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 
 	shader->SetMat4Uniform("model", modelTrans);
 
-	glEnable(GL_CULL_FACE);
-	glPolygonMode(GL_FRONT, GL_FILL);
-	glPolygonMode(GL_BACK, GL_FILL);
+	glEnable(GL_CULL_FACE); CHECK_GL_ERROR();
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); CHECK_GL_ERROR();
 
-	model->Draw(shader);
+	if (noTexture)
+	{
+		model->DrawNoTexture();
+	}
+	else
+	{
+		model->Draw(shader);
+	}
 }
 
 unsigned GraphicsEngine::GetTexID(std::string key) const
@@ -254,7 +258,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
 	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 
@@ -263,7 +267,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
 		windowWidth, windowHeight,
-		SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN)) == nullptr)
+		SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_INPUT_FOCUS | SDL_WINDOW_MOUSE_FOCUS | SDL_WINDOW_ALLOW_HIGHDPI |
+		SDL_WINDOW_MOUSE_CAPTURE)) == nullptr)
 	{
 		std::cout << "Window could not be created! SDL Error: " << SDL_GetError() << std::endl;
 		return false;
@@ -275,30 +280,40 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 		return false;
 	}
 
-	SDL_SetWindowResizable(m_window, SDL_TRUE);
-	SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
+	gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress);
+
+	//SDL_WarpMouseInWindow(m_window, windowWidth / 2, windowHeight / 2);
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
 
 	// init imgui
 	InitImGui();
 
-	glEnable(GL_MULTISAMPLE);
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_MULTISAMPLE); CHECK_GL_ERROR();
+	glEnable(GL_DEPTH_TEST); CHECK_GL_ERROR();
+	glEnable(GL_CULL_FACE); CHECK_GL_ERROR();
+	glEnable(GL_BLEND); CHECK_GL_ERROR();
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); CHECK_GL_ERROR();
 	//glEnable(GL_FRAMEBUFFER_SRGB); // gamma correction. looks too washed out
-	glClearColor(0.4, 0.2, 0.7, 1);
-	std::cout << glGetString(GL_VENDOR) << " : " << glGetString(GL_RENDERER) << std::endl; // GPU used
-	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
-	std::cout << "GLSL Version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
-	std::cout << "GLEW Version: " << glewGetString(GLEW_VERSION) << std::endl;
+	glClearColor(0.4, 0.2, 0.7, 1); CHECK_GL_ERROR();
+	std::cout << glGetString(GL_VENDOR) << " : " << glGetString(GL_RENDERER) << std::endl; CHECK_GL_ERROR();
+	std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl; CHECK_GL_ERROR();
+	std::cout << "GLSL Version: " << glGetString(GL_VERSION) << std::endl; CHECK_GL_ERROR();
+	//int numUniforms = 0;
+	//glGetIntegerv(GL_MAX_UNIFORM_LOCATIONS, &numUniforms); CHECK_GL_ERROR(); // Why is GL_MAX_UNIFORM_LOCATIONS undefined??
+	//std::cout << "Max Uniforms: " << numUniforms << std::endl; CHECK_GL_ERROR();
 
-	m_litShader = new Shader("./shaders/vertexShader.vert", "./shaders/lit.frag");
-	m_unlitShader = new Shader("./shaders/vertexShader.vert", "./shaders/unlit.frag");
-	m_debugShader = new Shader("./shaders/simple.vert", "./shaders/debug.frag");
-	m_shadowMapShader = new Shader("./shaders/depthMap.vert", "./shaders/empty.frag");
+	m_litShader = new Shader("../Assets/Shaders/lit.vert", "../Assets/Shaders/lit.frag");
+	m_litShader->SetBoolUniform("pointLights[0].isActive", false);
+	m_litShader->SetBoolUniform("pointLights[1].isActive", false);
+	m_litShader->SetBoolUniform("dirLight.isActive", false);
+	m_litShader->SetFloatUniform("material.shininess", 16);
+
+	m_unlitShader = new Shader("../Assets/Shaders/unlit.vert", "../Assets/Shaders/unlit.frag");
+	m_debugShader = new Shader("../Assets/Shaders/debug.vert", "../Assets/Shaders/debug.frag");
+	m_dirShadowMapShader = new Shader("../Assets/Shaders/dirShadowMap.vert", "../Assets/Shaders/dirShadowMap.frag");
+	m_pointShadowMapShader = new Shader("../Assets/Shaders/pointShadowMap.vert", "../Assets/Shaders/pointShadowMap.geom", "../Assets/Shaders/pointShadowMap.frag");
+	m_pointShadowMapShader->SetFloatUniform("far_plane", m_shadowMapper.GetPointLightFarPlane());
 
 	skybox.CreateSkybox(std::vector<std::string>{
 		"../Assets/skybox/right.png",
@@ -336,18 +351,20 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 	if (!tempVector.empty())
 	{
 		// create buffers/arrays
-		glGenVertexArrays(1, &VAODebug);
+		glGenVertexArrays(1, &VAODebug); CHECK_GL_ERROR();
 		if (VBODebug == 0)
-			glGenBuffers(1, &VBODebug);
-		glBindVertexArray(VAODebug);
+		{
+			glGenBuffers(1, &VBODebug); CHECK_GL_ERROR();
+		}
+		glBindVertexArray(VAODebug); CHECK_GL_ERROR();
 		// load data into vertex buffers
-		glBindBuffer(GL_ARRAY_BUFFER, VBODebug);
+		glBindBuffer(GL_ARRAY_BUFFER, VBODebug); CHECK_GL_ERROR();
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
-		glEnableVertexAttribArray(0);
-		glBindVertexArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0); CHECK_GL_ERROR();
+		glEnableVertexAttribArray(0); CHECK_GL_ERROR();
+		glBindVertexArray(0); CHECK_GL_ERROR();
 
 		initDebug = false;
 	}
@@ -360,9 +377,8 @@ void GraphicsEngine::DrawDebug()
 	m_debugShader->SetMat4Uniform("model", Matrix4f());
 	m_debugShader->SetVec3Uniform("ourColour", Vector3f(1, 0, 0));
 
-	glDisable(GL_CULL_FACE);
-	glPolygonMode(GL_FRONT, GL_LINE);
-	glPolygonMode(GL_BACK, GL_LINE);
+	glDisable(GL_CULL_FACE); CHECK_GL_ERROR();
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); CHECK_GL_ERROR();
 
 	std::vector <float> tempVector;
 
@@ -387,23 +403,39 @@ void GraphicsEngine::DrawDebug()
 	}
 	else
 	{
-		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
 	}
 
-	glBindVertexArray(VAODebug);
-	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3);
-	glBindVertexArray(0);
-
+	glBindVertexArray(VAODebug); CHECK_GL_ERROR();
+	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3); CHECK_GL_ERROR();
+	glBindVertexArray(0); CHECK_GL_ERROR();
 }
 
-void GraphicsEngine::SetupShadowMapFBO()
+void GraphicsEngine::SetupDirLightFBO()
 {
-	m_shadowMapper.SetupFBO();
+	m_shadowMapper.SetupDirLightFBO();
 }
 
-void GraphicsEngine::BindDepthMapTexture() const
+void GraphicsEngine::SetupPointLightFBO(unsigned lightIndex)
 {
-	m_shadowMapper.BindDepthMapTexture();
+	m_shadowMapper.SetupPointLightFBO(lightIndex);
+}
+
+void GraphicsEngine::BindDirShadowDepthMapTexture() const
+{
+	m_shadowMapper.BindDirShadowDepthMapTexture();
+}
+
+void GraphicsEngine::BindPointDepthCubeMapTexture(unsigned lightIndex) const
+{
+	m_shadowMapper.BindPointDepthCubeMapTexture(lightIndex);
+}
+
+void GraphicsEngine::GoFullscreen() const
+{
+	SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
+	SDL_Surface *surface = SDL_GetWindowSurface(m_window);
+	SDL_UpdateWindowSurface(m_window);
 }
 
 Matrix4f GraphicsEngine::GetCameraProjection()
@@ -416,6 +448,16 @@ Matrix4f GraphicsEngine::GetCameraProjection()
 	);
 }
 
+Matrix4f GraphicsEngine::GetDirProjViewMat() const
+{
+	return m_shadowMapper.GetDirProjViewMat();
+}
+
+std::vector<Matrix4f> GraphicsEngine::GetPointProjViewMat(unsigned lightIndex) const
+{
+	return m_shadowMapper.GetPointProjViewMat(lightIndex);
+}
+
 Matrix4f GraphicsEngine::GetCameraView()
 {
 	return LookAt(
@@ -425,7 +467,87 @@ Matrix4f GraphicsEngine::GetCameraView()
 	);
 }
 
-Matrix4f GraphicsEngine::GetShadowMapperMatrix()
+unsigned GraphicsEngine::NumPointLights() const
 {
-	return m_shadowMapper.GetProjViewMat();
+	return m_lightManager.NumPointLights();
+}
+
+void GraphicsEngine::DirLightShadowPass()
+{
+	if (!m_shadowMapper.DirLightAcive())
+	{
+		return;
+	}
+	m_shadowMapper.SetupDirLightFBO();
+	m_dirShadowMapShader->SetMat4Uniform("dirLightSpaceMatrix", GetDirProjViewMat());
+	RenderObjects(*m_dirShadowMapShader, true);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0); CHECK_GL_ERROR();
+}
+
+void GraphicsEngine::PointLightShadowPass()
+{
+	unsigned numLights = m_lightManager.NumPointLights();
+	if (numLights < 1)
+	{
+		return;
+	}
+
+	for (int lightIndex = 0; lightIndex < numLights; lightIndex++)
+	{
+		std::vector<Matrix4f> mats = GetPointProjViewMat(lightIndex);
+		assert(mats.size() == 6);
+		m_shadowMapper.SetupPointLightFBO(lightIndex);
+		for (int matIndex = 0; matIndex < mats.size(); matIndex++)
+		{
+			m_pointShadowMapShader->SetMat4Uniform("shadowMatrices[" + std::to_string(matIndex) + "]", mats[matIndex]);
+		}
+		m_pointShadowMapShader->SetVec3Uniform(
+			"lightPos",
+			m_lightManager.GetPointLight(lightIndex).GetTransform().GetWorldTransform().GetRelativePosition()
+		);
+		RenderObjects(*m_pointShadowMapShader, true);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0); CHECK_GL_ERROR();
+	}
+}
+
+void GraphicsEngine::CameraRenderPass(bool debugMenu) const
+{
+	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
+	if (m_shadowMapper.DirLightAcive())
+	{
+		GRAPHICS->m_litShader->SetMat4Uniform("dirLight.dirLightSpaceMatrix", GRAPHICS->GetDirProjViewMat());
+	}
+	GRAPHICS->UpdateCamViewPos();
+	unsigned numPointLights = GRAPHICS->NumPointLights();
+	for (int i = 0; i < numPointLights; i++)
+	{
+		const CPointLight &light = GRAPHICS->GetPointLight(i);
+		GRAPHICS->m_litShader->SetVec3Uniform(
+			"pointLights[" + std::to_string(i) + "].position",
+			light.GetTransformConst().GetWorldTransform().GetRelativePosition()
+		);
+	}
+
+	GRAPHICS->m_unlitShader->Use();
+	GRAPHICS->m_unlitShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
+	GRAPHICS->m_unlitShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
+
+	GRAPHICS->m_debugShader->Use();
+	GRAPHICS->m_debugShader->SetMat4Uniform("projection", GRAPHICS->GetCameraProjection());
+	GRAPHICS->m_debugShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
+
+	GRAPHICS->SetViewportToWindowSize();
+	GRAPHICS->NewFrame(debugMenu);
+	GRAPHICS->RenderObjects();
+}
+
+CPointLight &GraphicsEngine::GetPointLight(unsigned index)
+{
+	assert(index < m_lightManager.NumPointLights());
+	return m_lightManager.GetPointLight(index);
+}
+
+float GraphicsEngine::GetPointLightFarPlane() const
+{
+	return m_shadowMapper.GetPointLightFarPlane();
 }

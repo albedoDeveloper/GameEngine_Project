@@ -8,7 +8,7 @@
 CStaticMesh::CStaticMesh(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj },
 	m_shader{ GRAPHICS->m_litShader },
-	m_model{ nullptr }
+	m_model{ nullptr }, m_selectedShader{ lit }
 {
 }
 
@@ -57,23 +57,23 @@ void CStaticMesh::AssignShader(std::string shader)
 
 void CStaticMesh::AssignShaderEnum(ShaderSelection shader)
 {
-	switch (m_shaderSelect)
+	if (shader == ShaderSelection::lit)
 	{
-	case lit:
 		m_shader = GRAPHICS->m_litShader;
 		m_selectedShader = ShaderSelection::lit;
 		m_shaderSelect = 0;
-		break;
-	case unlit:
+	}
+	else if (shader == ShaderSelection::unlit)
+	{
 		m_shader = GRAPHICS->m_unlitShader;
 		m_selectedShader = ShaderSelection::unlit;
 		m_shaderSelect = 1;
-		break;
-	case debug:
+	}
+	else if (shader == ShaderSelection::debug)
+	{
 		m_shader = GRAPHICS->m_debugShader;
 		m_selectedShader = ShaderSelection::debug;
 		m_shaderSelect = 2;
-		break;
 	}
 }
 
@@ -89,12 +89,12 @@ void CStaticMesh::Render()
 		m_shader = GRAPHICS->m_unlitShader;
 	}
 
-	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), m_shader);
+	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), m_shader, false);
 }
 
-void CStaticMesh::Render(Shader &shaderOveride)
+void CStaticMesh::Render(Shader &shaderOveride, bool noTexture)
 {
-	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), &shaderOveride);
+	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), &shaderOveride, noTexture);
 }
 
 void CStaticMesh::Save(nlohmann::json &j)

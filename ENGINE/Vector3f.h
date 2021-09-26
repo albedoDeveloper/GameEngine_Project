@@ -128,6 +128,7 @@ public:
 		/// <returns></returns>
 	Vector3f operator+(Vector3f oVec);
 
+
 		/// <summary>
 		/// Operator * overload
 		/// </summary>
@@ -155,6 +156,8 @@ public:
 		/// <param name="oVec"></param>
 		/// <returns></returns>
 	Vector3f operator-(const Vector3f &oVec);
+
+	Vector3f &operator-=(const Vector3f &oVec);
 
 		/**
 		* @brief assignment operator

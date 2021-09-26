@@ -875,7 +875,7 @@ namespace ImGui
 	// Miscellaneous Utilities
 	IMGUI_API bool          IsRectVisible(const ImVec2 &size);                                  // test if rectangle (of given size, starting from cursor position) is visible / not clipped.
 	IMGUI_API bool          IsRectVisible(const ImVec2 &rect_min, const ImVec2 &rect_max);      // test if rectangle (in screen space) is visible / not clipped. to perform coarse clipping on user's side.
-	IMGUI_API double        GetTime();                                                          // get global imgui time. incremented by io.DeltaTime every frame.
+	IMGUI_API double        GetTime();                                                          // get global imgui time. incremented by io.Time every frame.
 	IMGUI_API int           GetFrameCount();                                                    // get global imgui frame count. incremented by 1 every frame.
 	IMGUI_API ImDrawList *GetBackgroundDrawList();                                            // this draw list will be the first rendering one. Useful to quickly draw shapes/text behind dear imgui contents.
 	IMGUI_API ImDrawList *GetForegroundDrawList();                                            // this draw list will be the last rendered one. Useful to quickly draw shapes/text over dear imgui contents.
@@ -903,7 +903,7 @@ namespace ImGui
 	IMGUI_API bool          IsKeyDown(int user_key_index);                                      // is key being held. == io.KeysDown[user_key_index].
 	IMGUI_API bool          IsKeyPressed(int user_key_index, bool repeat = true);               // was key pressed (went from !Down to Down)? if repeat=true, uses io.KeyRepeatDelay / KeyRepeatRate
 	IMGUI_API bool          IsKeyReleased(int user_key_index);                                  // was key released (went from Down to !Down)?
-	IMGUI_API int           GetKeyPressedAmount(int key_index, float repeat_delay, float rate); // uses provided repeat rate/delay. return a count, most often 0 or 1 but might be >1 if RepeatRate is small enough that DeltaTime > RepeatRate
+	IMGUI_API int           GetKeyPressedAmount(int key_index, float repeat_delay, float rate); // uses provided repeat rate/delay. return a count, most often 0 or 1 but might be >1 if RepeatRate is small enough that Time > RepeatRate
 	IMGUI_API void          CaptureKeyboardFromApp(bool want_capture_keyboard_value = true);    // attention: misleading name! manually override io.WantCaptureKeyboard flag next frame (said flag is entirely left for your application to handle). e.g. force capture keyboard when your widget is being hovered. This is equivalent to setting "io.WantCaptureKeyboard = want_capture_keyboard_value"; after the next NewFrame() call.
 
 	// Inputs Utilities: Mouse
@@ -1681,15 +1681,13 @@ enum ImGuiCond_
 //-----------------------------------------------------------------------------
 
 struct ImNewWrapper
-{
-};
+{};
 inline void *operator new(size_t, ImNewWrapper, void *ptr)
 {
 	return ptr;
 }
 inline void  operator delete(void *, ImNewWrapper, void *)
-{
-} // This is only required so we can use the symmetrical new()
+{} // This is only required so we can use the symmetrical new()
 #define IM_ALLOC(_SIZE)                     ImGui::MemAlloc(_SIZE)
 #define IM_FREE(_PTR)                       ImGui::MemFree(_PTR)
 #define IM_PLACEMENT_NEW(_PTR)              new(ImNewWrapper(), _PTR)
@@ -1984,7 +1982,7 @@ struct ImGuiIO
 	ImGuiConfigFlags   ConfigFlags;             // = 0              // See ImGuiConfigFlags_ enum. Set by user/application. Gamepad/keyboard navigation options, etc.
 	ImGuiBackendFlags  BackendFlags;            // = 0              // See ImGuiBackendFlags_ enum. Set by backend (imgui_impl_xxx files or custom backend) to communicate features supported by the backend.
 	ImVec2      DisplaySize;                    // <unset>          // Main display size, in pixels (generally == GetMainViewport()->Size)
-	float       DeltaTime;                      // = 1.0f/60.0f     // Time elapsed since last frame, in seconds.
+	float       Time;                      // = 1.0f/60.0f     // Time elapsed since last frame, in seconds.
 	float       IniSavingRate;                  // = 5.0f           // Minimum time between saving positions/sizes to .ini file, in seconds.
 	const char *IniFilename;                    // = "imgui.ini"    // Path to .ini file (important: default "imgui.ini" is relative to current working dir!). Set NULL to disable automatic .ini loading/saving or if you want to manually call LoadIniSettingsXXX() / SaveIniSettingsXXX() functions.
 	const char *LogFilename;                    // = "imgui_log.txt"// Path to .log file (default parameter to ImGui::LogToFile when no file is specified).
@@ -2069,7 +2067,7 @@ struct ImGuiIO
 	bool        WantSaveIniSettings;            // When manual .ini load/save is active (io.IniFilename == NULL), this will be set to notify your application that you can call SaveIniSettingsToMemory() and save yourself. Important: clear io.WantSaveIniSettings yourself after saving!
 	bool        NavActive;                      // Keyboard/Gamepad navigation is currently allowed (will handle ImGuiKey_NavXXX events) = a window is focused and it doesn't use the ImGuiWindowFlags_NoNavInputs flag.
 	bool        NavVisible;                     // Keyboard/Gamepad navigation is visible and allowed (will handle ImGuiKey_NavXXX events).
-	float       Framerate;                      // Rough estimate of application framerate, in frame per second. Solely for convenience. Rolling average estimation based on io.DeltaTime over 120 frames.
+	float       Framerate;                      // Rough estimate of application framerate, in frame per second. Solely for convenience. Rolling average estimation based on io.Time over 120 frames.
 	int         MetricsRenderVertices;          // Vertices output during last call to Render()
 	int         MetricsRenderIndices;           // Indices output during last call to Render() = number of triangles * 3
 	int         MetricsRenderWindows;           // Number of visible windows
@@ -2310,8 +2308,7 @@ struct ImGuiTextBuffer
 	IMGUI_API static char EmptyString[1];
 
 	ImGuiTextBuffer()
-	{
-	}
+	{}
 	inline char         operator[](int i) const
 	{
 		IM_ASSERT(Buf.Data != NULL); return Buf.Data[i];

@@ -28,6 +28,10 @@ public:
 		 */
 	int AddPointLight(CPointLight *light);
 
+	unsigned NumPointLights() const;
+
+	CPointLight &GetPointLight(unsigned index);
+
 private:
 		/** list of all lights */
 	std::vector<CPointLight *> m_pointLights;

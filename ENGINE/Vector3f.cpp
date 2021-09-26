@@ -3,11 +3,13 @@
 
 Vector3f::Vector3f()
 	:m_vec{ 0.f,0.f,0.f }
-{}
+{
+}
 
 Vector3f::Vector3f(float x, float y, float z)
 	: m_vec(x, y, z)
-{}
+{
+}
 
 Vector3f &Vector3f::operator+=(const Vector3f &v)
 {
@@ -117,6 +119,12 @@ Vector3f Vector3f::operator-(const Vector3f &oVec)
 	return m_vec - oVec.m_vec;
 }
 
+Vector3f &Vector3f::operator-=(const Vector3f &oVec)
+{
+	m_vec -= oVec.m_vec;
+	return *this;
+}
+
 Vector3f Vector3f::operator=(const Vector3f &oVec)
 {
 	return m_vec = oVec.m_vec;
@@ -129,4 +137,5 @@ Vector3f Vector3f::operator*(const Quaternion &quat)
 
 Vector3f::Vector3f(glm::vec3 v)
 	:m_vec(v)
-{}
+{
+}

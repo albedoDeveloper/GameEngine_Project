@@ -1,9 +1,7 @@
 #include "GameObjectFactory.h"
 
 GameObjectFactory::GameObjectFactory()
-{
-	m_objects = *new std::map<std::string, GameObject *>();
-}
+{}
 
 GameObjectFactory *GameObjectFactory::instance()
 {
@@ -153,12 +151,12 @@ void GameObjectFactory::Render()
 	}
 }
 
-void GameObjectFactory::Render(Shader &shaderOveride)
+void GameObjectFactory::Render(Shader &shaderOveride, bool noTexture)
 {
 	std::map<std::string, GameObject *>::iterator it;
 	for (it = m_objects.begin(); it != m_objects.end(); it++)
 	{
-		it->second->Render(shaderOveride);
+		it->second->Render(shaderOveride, noTexture);
 	}
 	for (it = m_objects.begin(); it != m_objects.end(); it++)
 	{

@@ -8,7 +8,6 @@
 #include <SDL2/SDL_mixer.h>
 #include <iostream>
 #include <SDL2/SDL_audio.h>
-#include <SDL2/SDL.h>
 #include <unordered_map>
 #include <memory>
 #include <vector>

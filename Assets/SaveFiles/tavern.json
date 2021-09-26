@@ -1,9 +1,7 @@
 {
     "back_wall": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "back_wall",
                 "Shader": "lit"
@@ -29,7 +27,7 @@
         },
         "active": true,
         "key": "back_wall",
-        "parent": "none"
+        "parent": "TEST"
     },
     "bar_floor_rod": {
         "Components": {
@@ -58,13 +56,11 @@
         },
         "active": true,
         "key": "bar_floor_rod",
-        "parent": "none"
+        "parent": "TEST"
     },
     "barrel1": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "barrel1",
                 "Shader": "lit"
@@ -90,13 +86,11 @@
         },
         "active": true,
         "key": "barrel1",
-        "parent": "none"
+        "parent": "TEST"
     },
     "barrel2": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "barrel2",
                 "Shader": "lit"
@@ -104,14 +98,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": 4.119999885559082,
+                "y": -0.03999999910593033,
+                "z": -0.7749999761581421
             },
             "Rotation": {
-                "w": 1.0,
+                "w": 0.9963527321815491,
                 "x": 0.0,
-                "y": 0.0,
+                "y": 0.08532997220754623,
                 "z": 0.0
             },
             "Scale": {
@@ -122,7 +116,7 @@
         },
         "active": true,
         "key": "barrel2",
-        "parent": "none"
+        "parent": "TEST"
     },
     "beertap1": {
         "Components": {
@@ -151,7 +145,7 @@
         },
         "active": true,
         "key": "beertap1",
-        "parent": "none"
+        "parent": "TEST"
     },
     "beertap2": {
         "Components": {
@@ -180,13 +174,11 @@
         },
         "active": true,
         "key": "beertap2",
-        "parent": "none"
+        "parent": "TEST"
     },
     "behind_bar_block": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "behind_bar_block",
                 "Shader": "lit"
@@ -212,7 +204,7 @@
         },
         "active": true,
         "key": "behind_bar_block",
-        "parent": "none"
+        "parent": "TEST"
     },
     "crate": {
         "Components": {
@@ -231,10 +223,10 @@
                 "z": -0.4449999928474426
             },
             "Rotation": {
-                "w": -0.9237795472145081,
-                "x": -0.3826502859592438,
-                "y": -0.013632668182253838,
-                "z": -0.0056467498652637005
+                "w": 0.6621717214584351,
+                "x": 0.2742801010608673,
+                "y": 0.6442762017250061,
+                "z": 0.26686346530914307
             },
             "Scale": {
                 "x": 1.0,
@@ -244,7 +236,7 @@
         },
         "active": true,
         "key": "crate",
-        "parent": "none"
+        "parent": "TEST"
     },
     "endscreen": {
         "Components": {
@@ -277,9 +269,7 @@
     },
     "fridge1": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "fridge1",
                 "Shader": "lit"
@@ -305,13 +295,11 @@
         },
         "active": true,
         "key": "fridge1",
-        "parent": "none"
+        "parent": "TEST"
     },
     "fridge2": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "fridge2",
                 "Shader": "lit"
@@ -337,13 +325,11 @@
         },
         "active": true,
         "key": "fridge2",
-        "parent": "none"
+        "parent": "TEST"
     },
     "graffiti_block": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "graffiti_block",
                 "Shader": "lit"
@@ -369,10 +355,11 @@
         },
         "active": true,
         "key": "graffiti_block",
-        "parent": "none"
+        "parent": "TEST"
     },
     "light1": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis",
                 "Shader": "lit"
@@ -380,14 +367,14 @@
         },
         "Transform": {
             "Position": {
-                "x": -8.354999542236328,
-                "y": 2.6700000762939453,
-                "z": 1.0
+                "x": 2.565000057220459,
+                "y": 2.305000066757202,
+                "z": -3.375
             },
             "Rotation": {
-                "w": 1.0,
+                "w": 0.9999813437461853,
                 "x": 0.0,
-                "y": 0.0,
+                "y": 0.006108613219112158,
                 "z": 0.0
             },
             "Scale": {
@@ -398,10 +385,11 @@
         },
         "active": true,
         "key": "light1",
-        "parent": "none"
+        "parent": "TEST"
     },
     "light2": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis",
                 "Shader": "lit"
@@ -442,9 +430,9 @@
                 "z": 5.275000095367432
             },
             "Rotation": {
-                "w": -0.9998468160629272,
+                "w": 0.7166944742202759,
                 "x": 0.0,
-                "y": -0.01475182268768549,
+                "y": 0.6973148584365845,
                 "z": 0.0
             },
             "Scale": {
@@ -455,13 +443,11 @@
         },
         "active": true,
         "key": "lightAnchor",
-        "parent": "none"
+        "parent": "TEST"
     },
     "main_bar_bench": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "main_bar_bench",
                 "Shader": "lit"
@@ -487,25 +473,23 @@
         },
         "active": true,
         "key": "main_bar_bench",
-        "parent": "none"
+        "parent": "TEST"
     },
     "player": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "CComponent": "CComponent"
         },
         "Transform": {
             "Position": {
-                "x": 0.11694088578224182,
-                "y": 2.0,
-                "z": 3.6719372272491455
+                "x": 4.469545364379883,
+                "y": 1.3381983041763306,
+                "z": 1.4158213138580322
             },
             "Rotation": {
-                "w": 0.6971656680107117,
+                "w": 0.9275335669517517,
                 "x": 0.0,
-                "y": 0.7169108390808105,
+                "y": 0.37380513548851013,
                 "z": 0.0
             },
             "Scale": {
@@ -516,13 +500,11 @@
         },
         "active": true,
         "key": "player",
-        "parent": "none"
+        "parent": "TEST"
     },
     "pool-table": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "pool-table",
                 "Shader": "lit"
@@ -548,7 +530,7 @@
         },
         "active": true,
         "key": "pool-table",
-        "parent": "none"
+        "parent": "TEST"
     },
     "roof_interior": {
         "Components": {
@@ -577,13 +559,11 @@
         },
         "active": true,
         "key": "roof_interior",
-        "parent": "none"
+        "parent": "TEST"
     },
     "south_bar_barrier": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "south_bar_barrier",
                 "Shader": "lit"
@@ -609,13 +589,11 @@
         },
         "active": true,
         "key": "south_bar_barrier",
-        "parent": "none"
+        "parent": "TEST"
     },
     "south_bar_barrier_2": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "south_bar_barrier_2",
                 "Shader": "lit"
@@ -641,7 +619,7 @@
         },
         "active": true,
         "key": "south_bar_barrier_2",
-        "parent": "none"
+        "parent": "TEST"
     },
     "south_bar_wall": {
         "Components": {
@@ -670,13 +648,11 @@
         },
         "active": true,
         "key": "south_bar_wall",
-        "parent": "none"
+        "parent": "TEST"
     },
     "spiked_door_bar": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "spiked_door_bar",
                 "Shader": "lit"
@@ -702,7 +678,7 @@
         },
         "active": true,
         "key": "spiked_door_bar",
-        "parent": "none"
+        "parent": "TEST"
     },
     "spiked_door_toilet": {
         "Components": {
@@ -731,36 +707,7 @@
         },
         "active": true,
         "key": "spiked_door_toilet",
-        "parent": "none"
-    },
-    "sun": {
-        "Components": {
-            "StaticMeshComponent": {
-                "AModel": "axis",
-                "Shader": "lit"
-            }
-        },
-        "Transform": {
-            "Position": {
-                "x": 0.0,
-                "y": 10.0,
-                "z": 10.0
-            },
-            "Rotation": {
-                "w": 0.9203639030456543,
-                "x": 0.3812272250652313,
-                "y": 0.08052139729261398,
-                "z": 0.033353060483932495
-            },
-            "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        "active": true,
-        "key": "sun",
-        "parent": "sunanchor"
+        "parent": "TEST"
     },
     "sunanchor": {
         "Components": {
@@ -789,13 +736,11 @@
         },
         "active": true,
         "key": "sunanchor",
-        "parent": "none"
+        "parent": "TEST"
     },
     "tavern_floor": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "tavern_floor",
                 "Shader": "lit"
@@ -821,13 +766,11 @@
         },
         "active": true,
         "key": "tavern_floor",
-        "parent": "none"
+        "parent": "TEST"
     },
     "tavern_glass_door_wall": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "tavern_glass_door_wall",
                 "Shader": "lit"
@@ -853,13 +796,11 @@
         },
         "active": true,
         "key": "tavern_glass_door_wall",
-        "parent": "none"
+        "parent": "TEST"
     },
     "tavern_glass_door_wall_long": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "tavern_glass_door_wall_long",
                 "Shader": "lit"
@@ -885,13 +826,11 @@
         },
         "active": true,
         "key": "tavern_glass_door_wall_long",
-        "parent": "none"
+        "parent": "TEST"
     },
     "tavern_glass_door_wall_long_2": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "tavern_glass_door_wall_long_2",
                 "Shader": "lit"
@@ -917,13 +856,11 @@
         },
         "active": true,
         "key": "tavern_glass_door_wall_long_2",
-        "parent": "none"
+        "parent": "TEST"
     },
     "toilet_block": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
+            "AABBComponent": "AABBComponent",
             "StaticMeshComponent": {
                 "AModel": "toilet_block",
                 "Shader": "lit"
@@ -949,7 +886,7 @@
         },
         "active": true,
         "key": "toilet_block",
-        "parent": "none"
+        "parent": "TEST"
     },
     "waitress": {
         "Components": {
@@ -978,6 +915,6 @@
         },
         "active": true,
         "key": "waitress",
-        "parent": "none"
+        "parent": "TEST"
     }
 }

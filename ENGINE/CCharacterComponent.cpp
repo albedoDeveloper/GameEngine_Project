@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "GraphicsEngine.h"
 #include "InputManager.h"
-#include "DeltaTime.h"
+#include "Time.h"
 #include <iostream>
 #include "Engine.h"
 #include "GameObjectFactory.h"
@@ -82,29 +82,29 @@ void CCharacter::Update()
 		{
 			if (INPUT->GetKey('s'))
 			{
-				accel.SetZ(0.5f * deltaTime);
+				accel.SetZ(0.5f);
 			}
 			else if (INPUT->GetKey('w'))
 			{
-				accel.SetZ(-0.5f * deltaTime);
+				accel.SetZ(-0.5f);
 			}
 
 			if (INPUT->GetKey('a'))
 			{
-				accel.SetX(-0.5f * deltaTime);
+				accel.SetX(-0.5f);
 			}
 			else if (INPUT->GetKey('d'))
 			{
-				accel.SetX(0.5f * deltaTime);
+				accel.SetX(0.5f);
 			}
 
 			if (INPUT->GetKey(' '))
 			{
-				accel.SetY(0.5f * deltaTime);
+				accel.SetY(0.5f);
 			}
 			else if (INPUT->GetKey('c'))
 			{
-				accel.SetY(-0.5f * deltaTime);
+				accel.SetY(-0.5f);
 			}
 		}
 
@@ -160,9 +160,9 @@ void CCharacter::Update()
 	static const float GRAVITY = 0;
 
 	//newtonian calculations
-	m_velocity = m_velocity * 0.9f; // apply damping factor
-	m_velocity = m_velocity + Vector3f(0, GRAVITY * deltaTime, 0); // gravity
-	m_velocity = m_velocity + accel;
+	m_velocity -= (m_velocity * 0.1f); // apply damping factor
+	m_velocity += Vector3f(0, GRAVITY * deltaTime, 0); // gravity
+	m_velocity += accel * (deltaTime);
 	if (m_velocity.Magnitude() > m_maxSpeed)
 	{
 		m_velocity.SetMagnitude(m_maxSpeed);

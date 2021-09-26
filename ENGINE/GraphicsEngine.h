@@ -9,7 +9,6 @@
 #include "Camera.h"
 #include "ModernOpenGL/AModel.h"
 #include "Color.h"
-#include <SDL2/SDL.h>
 #include "GraphicsLibraryEnum.h"
 #include <string>
 #include <map>
@@ -17,18 +16,10 @@
 #include "SkyBox.h"
 #include "LightManager.h"
 #include "ShadowMapper.h"
+#include <SDL2/SDL.h>
+#include <glad/glad.h>
 
 class CCamera;
-
-#define CHECK_GL_ERROR \
-	if (glGetError() == GL_NO_ERROR){printf("GL_NO_ERROR\n");} \
-	else if(glGetError() == GL_INVALID_ENUM){printf("GL_INVALID_ENUM\n");} \
-	else if(glGetError() == GL_INVALID_VALUE){printf("GL_INVALID_VALUE\n");} \
-	else if(glGetError() == GL_INVALID_OPERATION){printf("GL_INVALID_OPERATION\n");} \
-	else if(glGetError() == GL_INVALID_FRAMEBUFFER_OPERATION){printf("GL_INVALID_FRAMEBUFFER_OPERATION\n");} \
-	else if(glGetError() == GL_OUT_OF_MEMORY){printf("GL_OUT_OF_MEMORY\n");} \
-	else if(glGetError() == GL_STACK_UNDERFLOW){printf("GL_STACK_UNDERFLOW\n");} \
-	else if(glGetError() == GL_STACK_OVERFLOW){printf("GL_STACK_OVERFLOW\n");}
 
 	/**
 	 * @brief A singleton that handles all of the engine graphics
@@ -50,11 +41,6 @@ public:
 		*/
 	bool Init(GraphicsLibrary renderer, int windowWidth, int windowHeight);
 
-		/**
-		 * @brief initialises lighting
-		 * @return whether operation succeeded
-		*/
-	bool initLighting();
 
 		/**
 		 * @brief Function to be called at the start of every frame for rendering
@@ -75,10 +61,12 @@ public:
 
 	void AddDirectionalLight(const CDirectionalLight &light);
 
+	void WarpMouseCentreWindow() const;
+
 		/**
 		 * @brief Renders all visible objects
 		*/
-	void RenderObjects(Shader &shader);
+	void RenderObjects(Shader &shader, bool noTexture);
 
 	void RenderObjects();
 
@@ -121,7 +109,7 @@ public:
 		 * @param model The model to draw
 		 * @param trans Transform of the model
 		*/
-	void DrawModel(AModel *model, const Transform &trans, const Shader *m_shader);
+	void DrawModel(AModel *model, const Transform &trans, const Shader *m_shader, bool noTexture);
 
 		/**
 		 * @brief retrieves the ID by which a texture is stored in the graphics library
@@ -142,19 +130,17 @@ public:
 		 */
 	void Close();
 
-	void SetupShadowMapFBO();
+	void SetupDirLightFBO();
+	void SetupPointLightFBO(unsigned lightIndex);
 
-	void BindDepthMapTexture() const;
+	void BindDirShadowDepthMapTexture() const;
+
+	void BindPointDepthCubeMapTexture(unsigned lightIndex) const;
 
 		/**
 		 * Enables fullscreen mode
 		 */
-	void GoFullscreen() const
-	{
-		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
-		SDL_Surface *surface = SDL_GetWindowSurface(m_window);
-		SDL_UpdateWindowSurface(m_window);
-	}
+	void GoFullscreen() const;
 
 		/**
 		 * @brief Accessor for the projection matrix of the active camera
@@ -162,13 +148,27 @@ public:
 		 */
 	Matrix4f GetCameraProjection();
 
+	Matrix4f GetDirProjViewMat() const;
+
+	std::vector<Matrix4f> GetPointProjViewMat(unsigned lightIndex) const;
+
 		/**
 		 * @brief returns the current camera view position/direction
 		 * \return 4f view matrix
 		 */
 	Matrix4f GetCameraView();
 
-	Matrix4f GetShadowMapperMatrix();
+	unsigned NumPointLights() const;
+
+	void DirLightShadowPass();
+
+	void PointLightShadowPass();
+
+	void CameraRenderPass(bool debugMenu) const;
+
+	CPointLight &GetPointLight(unsigned index);
+
+	float GetPointLightFarPlane() const;
 
 		/** @brief pointer to lit shader */
 	Shader *m_litShader;
@@ -179,7 +179,9 @@ public:
 		/** @brief pointer to debug shader */
 	Shader *m_debugShader;
 
-	Shader *m_shadowMapShader;
+	Shader *m_dirShadowMapShader;
+
+	Shader *m_pointShadowMapShader;
 
 		/** @brief draw debug colliders */
 	bool m_drawDebug = false;
@@ -257,8 +259,6 @@ private:
 		/** @brief the ingame Skybox */
 	SkyBox skybox;
 
-	ShadowMapper m_shadowMapper;
-
 		/**
 		 * @brief initialises openGL
 		 * @return whether operation succeeded
@@ -286,6 +286,8 @@ private:
 
 		/** @brief lighManager reference */
 	LightManager m_lightManager;
+
+	ShadowMapper m_shadowMapper;
 };
 
 #define GRAPHICS GraphicsEngine::instance()

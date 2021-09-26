@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <SDL2/SDL.h>
+#include <SDL2/SDL_events.h>
 #include "GraphicsLibraryEnum.h"
 #include "LevelLoader.h"
 #include "LevelEditor.h"
@@ -78,10 +78,6 @@ private:
 		 * @brief Cleans up the program on its conclusion before quitting
 		*/
 	void Cleanup();
-
-	void ShadowMapRenderPass();
-
-	void CameraRenderPass();
 
 		/**
 		 * @brief Whether the engine is running

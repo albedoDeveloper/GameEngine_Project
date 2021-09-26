@@ -1,4 +1,6 @@
 #include "mesh.h"
+#include "../Utility.h"
+#include <glad/glad.h>
 
 void Mesh::SetupMesh()
 {
@@ -39,6 +41,7 @@ Mesh::Mesh(const std::vector<Vertex> &vertices, const std::vector<unsigned int> 
 
 	SetupMesh();
 };
+
 #include "../GraphicsEngine.h" //debug
 void Mesh::Draw(const Shader *shader) const
 {
@@ -48,11 +51,11 @@ void Mesh::Draw(const Shader *shader) const
 	unsigned int normalNr = 1;
 	unsigned int heightNr = 1;
 
-	for (unsigned int i = 0; i < textures.size(); i++)
+	for (unsigned int textureUnit = 0; textureUnit < textures.size(); textureUnit++)
 	{
-		glActiveTexture(GL_TEXTURE0 + i);
+		glActiveTexture(GL_TEXTURE4 + textureUnit);
 		std::string number;
-		std::string name = textures[i].type;
+		std::string name = textures[textureUnit].type;
 		if (name == "texture_diffuse")
 		{
 			number = std::to_string(diffuseNr++);
@@ -62,22 +65,39 @@ void Mesh::Draw(const Shader *shader) const
 			number = std::to_string(specularNr++);
 		}
 		else if (name == "texture_normal")
+		{
 			number = std::to_string(normalNr++);
+		}
 		else if (name == "texture_height")
+		{
 			number = std::to_string(heightNr++);
+		}
 
-		shader->SetIntUniform(("material." + name + number).c_str(), i);
-		glBindTexture(GL_TEXTURE_2D, textures[i].id);
+		shader->SetIntUniform(("material." + name + number).c_str(), 4 + textureUnit);
+		glBindTexture(GL_TEXTURE_2D, textures[textureUnit].id); CHECK_GL_ERROR();
 	}
 
-	// send shadowMap to shader
-	glActiveTexture(GL_TEXTURE2);
-	GRAPHICS->BindDepthMapTexture();
-	shader->SetIntUniform("shadowMap", 2);
+	// send shadowMap to shader 
+	glActiveTexture(GL_TEXTURE0);  CHECK_GL_ERROR(); //TODO  prototype code. using GL_TEXTURE2 wont work once the mesh contains more than 2 textures
+	GRAPHICS->BindDirShadowDepthMapTexture();
+	shader->SetIntUniform("dirLight.dirShadowMap", 0);
 
-	glBindVertexArray(VAO);
-	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0);
+	unsigned numPointLights = GRAPHICS->NumPointLights();
+	for (int i = 0; i < numPointLights; i++)
+	{
+		glActiveTexture(GL_TEXTURE1 + i); CHECK_GL_ERROR(); // TODO same kinda thing as above ^^^
+		GRAPHICS->BindPointDepthCubeMapTexture(i);
+		shader->SetIntUniform("pointLights[" + std::to_string(i) + "].depthCubeMap", 1 + i); // yeah .... dirty prototype code
+	}
 
-	glDisable(GL_TEXTURE_2D);
+	glBindVertexArray(VAO); CHECK_GL_ERROR();
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0); CHECK_GL_ERROR();
+	glBindVertexArray(0); CHECK_GL_ERROR();
+}
+
+void Mesh::DrawNoTexture() const
+{
+	glBindVertexArray(VAO); CHECK_GL_ERROR();
+	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0); CHECK_GL_ERROR();
+	glBindVertexArray(0); CHECK_GL_ERROR();
 }

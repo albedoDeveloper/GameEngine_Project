@@ -28,7 +28,7 @@ static const char *enum_str[] =
 	/**
 	 * @brief A static mesh containing information on a model
 	*/
-	class CStaticMesh : public CComponent
+class CStaticMesh : public CComponent
 {
 public:
 		/**
@@ -70,7 +70,7 @@ public:
 		*/
 	virtual void Render();
 
-	virtual void Render(Shader &shaderOveride);
+	virtual void Render(Shader &shaderOveride, bool noTexture);
 
 		/**
 		* @brief save the component

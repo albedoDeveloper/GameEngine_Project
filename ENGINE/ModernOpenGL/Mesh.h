@@ -100,6 +100,8 @@ public:
 		/// <param name="text"></param>
 	void Draw(const Shader *shader) const;
 
+	void DrawNoTexture() const;
+
 private:
 		/// <summary>
 		/// The VAO, VBO, EBO for modern opengl rendering

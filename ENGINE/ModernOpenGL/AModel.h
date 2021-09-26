@@ -40,6 +40,8 @@ public:
 		 */
 	void Draw(const Shader *shader) const;
 
+	void DrawNoTexture() const;
+
 		/**
 		 *
 		 * \return the number of faces this model has

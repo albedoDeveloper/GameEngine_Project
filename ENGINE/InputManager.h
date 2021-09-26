@@ -4,7 +4,7 @@
  * \date   September 2021
  *********************************************************************/
 
-#include <SDL2/SDL.h>
+#include <SDL2/SDL_events.h>
 #include <string>
 #include "GraphicsEngine.h"
 
@@ -65,7 +65,7 @@ public:
 		 * @brief checks whether a key is being pressed and stores the resulting data
 		 * @param e the current SDL event
 		*/
-	void CheckKey(SDL_Event *e);
+	void CheckEvent(SDL_Event *e);
 
 		/**
 		 * @brief checks whether a key is moving down and stores the resulting data
@@ -96,6 +96,8 @@ public:
 		 * @param e the current SDL event
 		*/
 	void CheckMouseMovement(SDL_Event *e);
+
+	void CalcDeltaMouse();
 
 		/**
 		 * @brief resets all input values to their original data

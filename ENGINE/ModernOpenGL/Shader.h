@@ -6,7 +6,6 @@
 
 #pragma once
 
-#include <glew/GL/glew.h>
 #include <glm/glm/glm.hpp>
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
@@ -24,17 +23,19 @@
 class Shader
 {
 public:
-		/// <summary>
-		/// Sets this shader object to the current opengl shader instance
-		/// </summary>
-	virtual void Use() const;
-
 		/// /// <summary>
 		/// Creates the shader and sets the vertex shader file and the fragment shader file to it, based upon the user
 		/// </summary>
 		/// <param name="vertexPath"></param>
 		/// <param name="fragmentPath"></param>
 	Shader(const char *vertexPath, const char *fragmentPath);
+
+	Shader(const char *vertexPath, const char *geometryPath, const char *fragmentPath);
+
+		/// <summary>
+		/// Sets this shader object to the current opengl shader instance
+		/// </summary>
+	virtual void Use() const;
 
 		/// <summary>
 		/// Sets a global bool uniform in the shader
@@ -114,14 +115,16 @@ private:
 		/// </summary>
 		/// <param name="name"></param>
 		/// <param name="value"></param>
-	void CreateShaders(unsigned int &shadername, const GLchar *const *actualShader, int typeOfShader);
+	void CreateShaders(unsigned int &shadername, const char *const *actualShader, int typeOfShader);
 
 		/// <summary>
 		/// Sets a global vector uniform in the shader
 		/// </summary>
 		/// <param name="name"></param>
 		/// <param name="value"></param>
-	void ShaderLinking(unsigned int &shadername, unsigned int &vertexShader);
+	void ShaderLinking(unsigned int &vertexShader, unsigned int &fragShader);
+
+	void ShaderLinking(unsigned int &vertexShader, unsigned &geometryShader, unsigned int &fragShader);
 
 		/// <summary>
 		/// The shadername id of the shader

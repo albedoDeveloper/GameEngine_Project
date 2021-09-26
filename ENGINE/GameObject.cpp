@@ -206,7 +206,7 @@ void GameObject::Render()
 	}
 }
 
-void GameObject::Render(Shader &shaderOveride)
+void GameObject::Render(Shader &shaderOveride, bool noTexture)
 {
 	if (m_isActive)
 	{
@@ -216,7 +216,7 @@ void GameObject::Render(Shader &shaderOveride)
 			// iterate through all components in list
 			for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
 			{
-				(*listIterator)->Render(shaderOveride);
+				(*listIterator)->Render(shaderOveride, noTexture);
 			}
 		}
 	}
