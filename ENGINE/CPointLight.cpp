@@ -14,6 +14,7 @@ CPointLight::CPointLight(Transform *parent, GameObject *parentObj)
 	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(m_litShaderIndex) + "].colour", m_colour);
 	GRAPHICS->m_litShader->SetVec3Uniform("pointLights[" + std::to_string(m_litShaderIndex) + "].position", m_transform.GetWorldTransform().GetRelativePosition());
 	GRAPHICS->m_litShader->SetFloatUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].farPlane", GRAPHICS->GetPointLightFarPlane());
+	GRAPHICS->m_litShader->SetBoolUniform("pointLights[" + std::to_string(m_litShaderIndex) + "].isActive", true);
 }
 
 void CPointLight::Update()

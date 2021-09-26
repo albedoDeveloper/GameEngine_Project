@@ -111,8 +111,6 @@ int GraphicsEngine::AddPointLight(CPointLight *light)
 
 	int numpointLights = m_lightManager.AddPointLight(light);
 
-	m_litShader->SetIntUniform("numOfPointLights", numpointLights);
-
 	return numpointLights;
 }
 
@@ -306,7 +304,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	//std::cout << "Max Uniforms: " << numUniforms << std::endl; CHECK_GL_ERROR();
 
 	m_litShader = new Shader("../Assets/Shaders/lit.vert", "../Assets/Shaders/lit.frag");
-	m_litShader->SetIntUniform("numOfPointLights", 0);
+	m_litShader->SetBoolUniform("pointLights[0].isActive", false);
+	m_litShader->SetBoolUniform("pointLights[1].isActive", false);
 	m_litShader->SetBoolUniform("dirLight.isActive", false);
 	m_litShader->SetFloatUniform("material.shininess", 16);
 
