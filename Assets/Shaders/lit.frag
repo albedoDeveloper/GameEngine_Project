@@ -101,7 +101,7 @@ void main()
 
 float PointShadowCalculation(vec3 fragPos, PointLight light)
 {
-    float bias = 0.15; // more bias the more offset the shadows will be, keep this number as small as possible, just enough to prevent shadow acne
+    float bias = 0.05; // more bias the more offset the shadows will be, keep this number as small as possible, just enough to prevent shadow acne
     int samples  = NUM_SAMPLES;
     float viewDistance = length(viewPos - fragPos);
     float diskRadius = 0.01;
