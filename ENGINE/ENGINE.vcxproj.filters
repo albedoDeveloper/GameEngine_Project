@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="ThirdParty\imgui\imgui.cpp">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui\imgui_demo.cpp">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui\imgui_draw.cpp">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui\imgui_impl_opengl3.cpp">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui\imgui_impl_sdl.cpp">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui\imgui_tables.cpp">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\imgui\imgui_widgets.cpp">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelEditor.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelLoader.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LightManager.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModernOpenGL\Shader.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModernOpenGL\Mesh.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CCharacterComponent.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CCollider.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CComponent.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CPointLight.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CScript.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CSound.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CStaticMesh.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModernOpenGL\AModel.cpp">
+      <Filter>Source\AssetClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameAssetFactory.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectFactory.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsEngine.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptingEngine.cpp">
+      <Filter>Source\Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MiscMath.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix4f.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="AScript.cpp">
+      <Filter>Source\AssetClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3f.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2f.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CDirectionalLight.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ShadowMapper.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\glad\src\glad.c">
+      <Filter>ThirdParty\glad</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ThirdParty\imgui\imconfig.h">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui\imgui.h">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui\imgui_impl_opengl3.h">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui\imgui_impl_opengl3_loader.h">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui\imgui_impl_sdl.h">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui\imgui_internal.h">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui\imstb_rectpack.h">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui\imstb_textedit.h">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\imgui\imstb_truetype.h">
+      <Filter>ThirdParty\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsLibraryEnum.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelEditor.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelLoader.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LightManager.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModernOpenGL\Mesh.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModernOpenGL\Shader.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyBox.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCharacterComponent.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CCollider.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CComponent.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CPointLight.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CScript.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CSound.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CStaticMesh.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModernOpenGL\AModel.h">
+      <Filter>Source\AssetClasses\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="AScript.h">
+      <Filter>Source\AssetClasses\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameAssetFactory.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectFactory.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsEngine.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptingEngine.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MiscMath.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3f.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix4f.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2f.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CDirectionalLight.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadowMapper.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\glad\include\glad\glad.h">
+      <Filter>ThirdParty\glad</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\glad\include\KHR\khrplatform.h">
+      <Filter>ThirdParty\glad</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Assets\init.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\rotate.lua">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="..\codestyle_config\.editorconfig" />
+    <None Include="..\Assets\Shaders\lit.vert">
+      <Filter>Shaders\lit</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\lit.frag">
+      <Filter>Shaders\lit</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\dirShadowMap.vert">
+      <Filter>Shaders\dirShadowMap</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\dirShadowMap.frag">
+      <Filter>Shaders\dirShadowMap</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\pointShadowMap.frag">
+      <Filter>Shaders\pointShadowMap</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\pointShadowMap.geom">
+      <Filter>Shaders\pointShadowMap</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\pointShadowMap.vert">
+      <Filter>Shaders\pointShadowMap</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\unlit.vert">
+      <Filter>Shaders\unlit</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\unlit.frag">
+      <Filter>Shaders\unlit</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\debug.frag">
+      <Filter>Shaders\debug</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\debug.vert">
+      <Filter>Shaders\debug</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\skybox.vert">
+      <Filter>Shaders\skybox</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\skybox.frag">
+      <Filter>Shaders\skybox</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="ThirdParty">
+      <UniqueIdentifier>{8675651d-f7ea-4f86-ae02-661cee94941f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\imgui">
+      <UniqueIdentifier>{acff2bad-4c3d-467c-a920-b08e6d3b0649}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{1554616f-f854-4c96-b656-ca4e8f91a1b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts">
+      <UniqueIdentifier>{91dcc06c-d47e-45be-b08d-a99026b045d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{b08299a7-e45f-4bd7-93e1-fc9a9021cd73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\AssetClasses">
+      <UniqueIdentifier>{c5492773-7fe0-4e91-a16d-defea0c00063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ComponentClasses">
+      <UniqueIdentifier>{0a17ef3c-b26a-4c84-8208-89f05973ab79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ComponentClasses\Headers">
+      <UniqueIdentifier>{e7abb32c-0314-43dd-8aa8-f9116f08862d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\ComponentClasses\Source">
+      <UniqueIdentifier>{a9492315-71bf-40b7-a857-2273138935ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\AssetClasses\Header">
+      <UniqueIdentifier>{45de4fdf-5961-4a2c-8734-b816791f0034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\AssetClasses\Source">
+      <UniqueIdentifier>{9af37afb-a542-4959-ae69-3c3a00b5fcbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Singletons">
+      <UniqueIdentifier>{26533421-9a30-486d-9704-01539fee5d88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Singletons\Source">
+      <UniqueIdentifier>{deb1f81b-a84d-4e2a-90b4-d5f074f14e8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Singletons\Headers">
+      <UniqueIdentifier>{1ff036df-31f8-43aa-88cd-d175fed44a24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Misc">
+      <UniqueIdentifier>{e408af05-9149-4f9b-a4b3-20e7e9a4135a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Misc\Source">
+      <UniqueIdentifier>{52d15461-67b7-47c8-96a0-c92512638a0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Misc\Headers">
+      <UniqueIdentifier>{e4669bb1-686b-4e8b-9d0b-2f96886d7acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Math">
+      <UniqueIdentifier>{4f4301e0-8503-4399-b641-fdd0be54085a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Math\Headers">
+      <UniqueIdentifier>{cd9e83c0-e6f7-4f5d-9f95-2b9ded0bbae7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Math\Source">
+      <UniqueIdentifier>{980c5b3f-ba8b-4808-a504-140790bb979f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\glad">
+      <UniqueIdentifier>{20b06efa-a0b7-429f-b187-7720b1af7d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\lit">
+      <UniqueIdentifier>{2aa8fa6e-9b93-46dc-8bf6-c5e99f4cae7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\dirShadowMap">
+      <UniqueIdentifier>{7fd372c1-b338-4d3f-8786-a17487723da3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\pointShadowMap">
+      <UniqueIdentifier>{32af4a10-8ad6-4162-a02e-925fbef5b943}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\unlit">
+      <UniqueIdentifier>{f1bfeb13-3375-4b89-abd2-2643b618fb21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\debug">
+      <UniqueIdentifier>{091e6d75-aff1-425e-a447-0f8aac52b878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\skybox">
+      <UniqueIdentifier>{8f9ea584-b9ac-4f30-b2b7-5208489ed979}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\frankengine.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ENGINE.rc" />
+  </ItemGroup>
+</Project>
