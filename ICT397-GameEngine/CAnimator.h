@@ -3,6 +3,7 @@
 #include "ModernOpenGL/AModel.h"
 #include <map>
 #include "CComponent.h"
+#include "DeltaTime.h"
 
 
 class CAnimator : public CComponent
@@ -14,10 +15,12 @@ class CAnimator : public CComponent
 			delete  m_CurrentAnimation;
 			m_CurrentAnimation = nullptr;
 		}
-		void AddAnimation(std::string name, std::string filePath);
-		void UpdateAnimation(float deltaTime);
+		void AddAnimation( std::string filePath);
+		void Update();
 		void CalculateBoneTransform(const Animation::AssimpNodeData* node, Matrix4f parentTransform);
 		void PlayAnimation(Animation* Animation);
+
+		std::vector<Matrix4f> GetFinalBoneMatrices() { return m_FinalBoneMatrices; }
 
 	private:
 		std::map<std::string, Animation> allAnimations;

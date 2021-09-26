@@ -26,6 +26,7 @@ LoadModel("beertap1", "beertap1/beertap1.fbx")
 LoadModel("beertap2", "beertap2/beertap2.fbx")
 LoadModel("fridge1", "fridge1/fridge1.fbx")
 LoadModel("fridge2", "fridge2/fridge2.fbx")
+LoadModel("basic_girl","basic_girl/basic_girl2.dae")
 LoadScript("rotate", "rotate.lua")
 
 SpawnGameObject("fridge1"):SetStatic(true)
@@ -70,6 +71,10 @@ GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_gla
 GetGameObject("tavern_glass_door_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("tavern_glass_door_wall"):GetCCollider():CollideWith(2)
 
+SpawnGameObject("basic_girl"):SetStatic(false)
+GetGameObject("basic_girl"):AddCStaticMesh():AssignModel("basic_girl")
+GetGameObject("basic_girl"):AddCAnimator()
+GetGameObject("basic_girl"):GetCAnimator():AddAnimation("C:/Users/Kye/Documents/Year 4 Semester 2/ICT398/ICT398_Project/Assets/Models/basic_girl/basic_girl2.dae")
 
 SpawnGameObject("spiked_door_bar"):SetStatic(true)
 GetGameObject("spiked_door_bar"):AddCStaticMesh():AssignModel("spiked_door_bar")

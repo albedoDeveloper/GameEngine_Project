@@ -41,7 +41,7 @@ void AModel::LoadModel(std::string path)
 {
 	// read file via assimp
 	Assimp::Importer importer;
-	const aiScene *scene = importer.ReadFile(path, aiProcess_FlipUVs | aiProcess_Triangulate | aiProcess_CalcTangentSpace | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph | aiProcess_GenNormals | aiProcess_JoinIdenticalVertices);
+	const aiScene *scene = importer.ReadFile(path, aiProcess_FlipUVs | aiProcess_Triangulate | aiProcess_CalcTangentSpace | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph | aiProcess_GenNormals);
 
 
 	//Check that assimp imported correctly

@@ -1,13 +1,13 @@
 #include "CAnimator.h"
-
+#include "GameObject.h"
+#include "GraphicsEngine.h"
 CAnimator::CAnimator(Transform* parent, GameObject* parentObj)
 	:CComponent{ parent, parentObj }
 {
 	m_CurrentTime = 0.0;
 	m_DeltaTime = 0;
-	//m_CurrentAnimation = animation;
 
-	//m_FinalBoneMatrices.reserve(100);
+	m_FinalBoneMatrices.reserve(100);
 
 	for (int i = 0; i < 100; i++)
 		m_FinalBoneMatrices.push_back(Matrix4f());
@@ -15,21 +15,28 @@ CAnimator::CAnimator(Transform* parent, GameObject* parentObj)
 
 }
 
-void CAnimator::AddAnimation(std::string name, std::string filePath)
+void CAnimator::AddAnimation(std::string filePath)
 {
-	
-
+	GameObject* g = GetParentObject();
+	AModel* model = &g->GetCStaticMesh()->GetModel();
+	m_CurrentAnimation = new Animation(filePath, model);
 }
 
-void CAnimator::UpdateAnimation(float deltaTime)
+void CAnimator::Update()
 {
-	m_DeltaTime = deltaTime;
+	m_DeltaTime = TIME->GetDeltaTime();
 	if (m_CurrentAnimation)
 	{
-		m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * deltaTime;
+		m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * m_DeltaTime;
 		m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration());
 		CalculateBoneTransform(&m_CurrentAnimation->GetRootNode(), Matrix4f());
 	}
+	
+	auto transforms = GetFinalBoneMatrices();
+	
+	for (int i = 0; i < transforms.size(); ++i)
+		GRAPHICS->m_litShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", transforms[i]);
+	
 }
 
 void  CAnimator::CalculateBoneTransform(const Animation::AssimpNodeData* node, Matrix4f parentTransform)
