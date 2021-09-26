@@ -124,7 +124,7 @@ void Engine::OnEvent(SDL_Event *e)
 		break;
 	}
 
-	INPUT->CheckKey(e);
+	INPUT->CheckEvent(e);
 }
 
 void Engine::Update()

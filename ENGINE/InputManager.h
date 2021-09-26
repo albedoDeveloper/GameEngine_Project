@@ -65,7 +65,7 @@ public:
 		 * @brief checks whether a key is being pressed and stores the resulting data
 		 * @param e the current SDL event
 		*/
-	void CheckKey(SDL_Event *e);
+	void CheckEvent(SDL_Event *e);
 
 		/**
 		 * @brief checks whether a key is moving down and stores the resulting data

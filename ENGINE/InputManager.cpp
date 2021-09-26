@@ -18,7 +18,7 @@ InputManager *InputManager::Instance()
 	return &inputMngr;
 }
 
-void InputManager::CheckKey(SDL_Event *e)
+void InputManager::CheckEvent(SDL_Event *e)
 {
 	m_Event = e;
 
@@ -38,8 +38,6 @@ void InputManager::CheckKey(SDL_Event *e)
 		break;
 	case(SDL_MOUSEMOTION):
 		CheckMouseMovement(e);
-		break;
-	default:
 		break;
 	}
 }
@@ -313,12 +311,6 @@ void InputManager::CheckMouseMovement(SDL_Event *e)
 {
 	mouseXAbsolute = e->motion.x;
 	mouseYAbsolute = e->motion.y;
-
-	//mouseX = -(prevMouseX - e->motion.x);
-	//prevMouseX = e->motion.x;
-
-	//mouseY = prevMouseY - e->motion.y;
-	//prevMouseY = e->motion.y;
 }
 
 void InputManager::CalcDeltaMouse()
