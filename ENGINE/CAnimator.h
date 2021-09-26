@@ -3,7 +3,7 @@
 #include "ModernOpenGL/AModel.h"
 #include <map>
 #include "CComponent.h"
-#include "DeltaTime.h"
+#include "Time.h"
 
 
 class CAnimator : public CComponent
