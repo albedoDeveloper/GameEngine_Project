@@ -4,7 +4,7 @@
 #include <iostream>
 
 CCollider::CCollider(Transform *parent, GameObject *parentObj)
-	:CComponent{ parent, parentObj }, m_allowRotation{ true }
+	:CComponent{ parent, parentObj }, m_allowRotation{ true }, m_active{ true }
 {
 	CStaticMesh *meshComp = m_parent->GetComponent<CStaticMesh>();
 	Transform *meshTrans = nullptr;
@@ -35,40 +35,112 @@ CCollider::CCollider(Transform *parent, GameObject *parentObj)
 
 void CCollider::Update()
 {
-	if (!m_parent->IsStatic())
-	{
-		UpdateCollider();
-	}
+
+	UpdateCollider();
+
 }
 
 void CCollider::Save(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
-	j[g->GetFactoryKey()]["Components"]["AABBComponent"] = "AABBComponent";
-
-	//m_transform.ToJson(j, g->getFactoryKey());
+	j[g->GetFactoryKey()]["Components"]["AABBComponent"]["colActive"] = m_active;
 }
 
 void CCollider::Load(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
-
-	//m_transform.FromJson(j, g->getFactoryKey());
+	UpdateCollider();
+	SetActive((j.at(m_parent->GetFactoryKey()).at("Components").at("AABBComponent").at("colActive")));
 }
 
 void CCollider::DrawToImGui()
 {
+	//m_active = m_parent->GetActive();
+	bool tempActive = m_active;
+
 	//ImGui::Text("staticMesh TREE");
 	if (ImGui::TreeNode("Collider CComponent"))
 	{
-		ImGui::Text("Collider Info : ");
+		ImGui::Text("Collider Info : "); ImGui::SameLine(); ImGui::Text((std::to_string(tempActive)).c_str());
+
+		ImGui::Checkbox("Active", &tempActive);
+
 		ImGui::TreePop();
 	}
+
+	SetActive(tempActive);
+
+	tempActive = false;
+
 }
 
 void CCollider::Start()
 {
 	UpdateCollider();
+}
+
+bool CCollider::GetActive()
+{
+	return m_active;
+}
+
+void CCollider::SetActive(bool activeStatus)
+{
+	m_active = activeStatus;
+
+	//these active checks are messy but best done here
+	//Collider should only be drawn if both GO and Col are active
+	if (m_active && m_parent->GetActive())
+	{
+		if (!colBody->isActive())
+			colBody->setIsActive(true);
+
+		if (col != nullptr)
+		{
+			if (!m_parent->IsStatic())
+			{
+				UpdateCollider();
+			}
+		}
+
+	}
+	else
+	{
+
+		if (col != nullptr)
+		{
+			colBody->setIsActive(false);
+		}
+	}
+
+}
+
+
+void CCollider::EnableDisable(bool activeStatus)
+{
+	//these active checks are messy, should be done elsewhere
+	if (activeStatus)
+	{
+		if (!colBody->isActive())
+			colBody->setIsActive(true);
+
+		if (col != nullptr)
+		{
+			if (!m_parent->IsStatic())
+			{
+				UpdateCollider();
+			}
+		}
+
+	}
+	else
+	{
+
+		if (col != nullptr)
+		{
+			colBody->setIsActive(false);
+		}
+	}
 }
 
 void CCollider::UpdateCollider()
