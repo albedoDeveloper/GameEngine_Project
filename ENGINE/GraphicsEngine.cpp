@@ -487,6 +487,10 @@ void GraphicsEngine::DirLightShadowPass()
 void GraphicsEngine::PointLightShadowPass()
 {
 	unsigned numLights = m_lightManager.NumPointLights();
+	if (numLights < 1)
+	{
+		return;
+	}
 
 	for (int lightIndex = 0; lightIndex < numLights; lightIndex++)
 	{
@@ -509,7 +513,10 @@ void GraphicsEngine::PointLightShadowPass()
 void GraphicsEngine::CameraRenderPass(bool debugMenu) const
 {
 	GRAPHICS->m_litShader->SetMat4Uniform("view", GRAPHICS->GetCameraView());
-	GRAPHICS->m_litShader->SetMat4Uniform("dirLightSpaceMatrix", GRAPHICS->GetDirProjViewMat());
+	if (m_shadowMapper.DirLightAcive())
+	{
+		GRAPHICS->m_litShader->SetMat4Uniform("dirLight.dirLightSpaceMatrix", GRAPHICS->GetDirProjViewMat());
+	}
 	GRAPHICS->UpdateCamViewPos();
 	unsigned numPointLights = GRAPHICS->NumPointLights();
 	for (int i = 0; i < numPointLights; i++)

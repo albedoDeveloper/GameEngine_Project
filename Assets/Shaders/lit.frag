@@ -40,6 +40,7 @@ struct DirectionalLight
     vec3 colour;
     vec3 direction;
     bool isActive;
+    mat4 dirLightSpaceMatrix;
 };
 
 // function declarations

@@ -162,7 +162,7 @@ void Engine::Render()
 {
 	GRAPHICS->DirLightShadowPass();
 	GRAPHICS->PointLightShadowPass();
-	CameraRenderPass();
+	GRAPHICS->CameraRenderPass(m_debugMenu);
 
 	if (m_debugMenu) // TEST WINDOW
 	{
@@ -195,9 +195,4 @@ void Engine::Cleanup()
 {
 	SCRIPT->Close();
 	GRAPHICS->Close();
-}
-
-void Engine::CameraRenderPass() const
-{
-	GRAPHICS->CameraRenderPass(m_debugMenu);
 }
