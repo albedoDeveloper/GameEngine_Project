@@ -103,7 +103,7 @@ float PointShadowCalculation(vec3 fragPos, PointLight light)
     float bias = 0.15; // more bias the more offset the shadows will be, keep this number as small as possible, just enough to prevent shadow acne
     int samples  = NUM_SAMPLES;
     float viewDistance = length(viewPos - fragPos);
-    float diskRadius = 0.05;
+    float diskRadius = 0.01;
 
 
     vec3 fragToLight = fragPos - light.position; 
@@ -113,6 +113,7 @@ float PointShadowCalculation(vec3 fragPos, PointLight light)
     float shadowSum = currentDepth -  bias > closestDepth ? 1.0 : 0.0; 
 
     // PCF
+//    diskRadius = (1.0f + (viewDistance / light.farPlane)) / 25.0f;  
     for(int i = 0; i < samples; ++i)
     {
         float closestDepth = texture(light.depthCubeMap, fragToLight + sampleOffsetDirections[i] * diskRadius).r;
