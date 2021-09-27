@@ -147,6 +147,19 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 			vertex.TexCoords = Vector2f(0.0f, 0.0f);
 		}
 
+		//tangents & bitangents
+		if (mesh->HasTangentsAndBitangents())
+		{
+			//first we need to get deltaUV's
+			Vector3f vec;
+			vec.SetX(mesh->mTangents[i].x);
+			vec.SetY(mesh->mTangents[i].y);
+			vec.SetZ(mesh->mTangents[i].z);
+
+			vertex.Tangent = vec;
+		}
+		
+
 		vertices.push_back(vertex);
 	}
 

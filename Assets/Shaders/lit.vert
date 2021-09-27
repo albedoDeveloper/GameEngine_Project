@@ -32,17 +32,22 @@ uniform DirectionalLight dirLight;
 
 void main()
 {
+    
+
     vs_out.FragPos = vec3(model * vec4(aPos,1.0));
     vec3 norm = mat3(transpose(inverse(model))) * aNormal;  
     vs_out.Normal = mat3(transpose(inverse(model))) * aNormal;  
     vs_out.TexCoords = aTexCoords;    
+
     vs_out.DirFragPosLightSpace = dirLight.dirLightSpaceMatrix * vec4(vs_out.FragPos, 1.0);
     gl_Position =  projection * view * model * vec4(aPos, 1.0);
 
-   vec3 T = normalize(vec3(model * vec4(aTangent,   0.0)) * norm);
-   vec3 B = normalize(vec3(model * vec4(aBitangent, 0.0)) * norm);
-   vec3 N = normalize(vec3(model * vec4(aNormal,    0.0)) * norm);
-   mat3 TBN = mat3(T, B, N);
-   vs_out.TBN = TBN;
+   //create TBN matrix
+    vec3 T = normalize(vec3(model * vec4(aTangent, 0.0)));
+    vec3 N = normalize(vec3(model * vec4(norm, 0.0)));
+    T = normalize(T - dot(T,N) * N);
+    vec3 B = cross(N,T);
+    mat3 TBN = transpose(mat3(T, B, N));
+    vs_out.TBN = TBN;
 
 }
