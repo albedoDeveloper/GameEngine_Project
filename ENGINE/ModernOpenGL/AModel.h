@@ -94,12 +94,12 @@ private:
 	std::vector<Mesh> m_meshes;
 
 		/// <summary>
-		/// The meshes that make up the model
+		/// The models directory
 		/// </summary>
 	std::string m_directory;
 
 		/// <summary>
-		/// The meshes that make up the model
+		/// The textures that make up the model
 		/// </summary>
 	std::vector<Texture> m_textures_loaded;
 

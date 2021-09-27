@@ -14,7 +14,7 @@ struct Material
 {
     sampler2D texture_diffuse1;
     sampler2D texture_specular1;
-    sampler2D texture_normal;
+    sampler2D texture_normal1;
     float shininess;
 };
 
@@ -181,7 +181,7 @@ vec3 CalcDirectionaLight(DirectionalLight light, vec3 normal, vec3 fragPos, vec3
     vec3 ambient  = ambientColour * vec3(texture(material.texture_diffuse1, texCoords));
     vec3 diffuse  = light.colour  * diff * vec3(texture(material.texture_diffuse1, texCoords));
     vec3 specular = light.colour * spec * vec3(texture(material.texture_specular1, texCoords));
-    vec3 normalLight = light.colour * norm * vec3(texture(material.texture_normal, texCoords));
+    vec3 normalLight = light.colour * norm * vec3(texture(material.texture_normal1, texCoords));
     return (ambient + (diffuse + specular + normalLight) * (1.0 - shadow));
 }
 
@@ -197,6 +197,9 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, v
     // specular shading
     vec3 reflectDir = reflect(-lightDir, normal);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0f), material.shininess);
+    //normal map shading
+    vec3 normalDir = reflect(-lightDir, normal);
+    float norm = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     // attenuation
     float distance    = length(light.position - fragPos);
     float attenuation = 1.0f / (light.constant + light.linear * distance + 
@@ -205,8 +208,11 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, v
     vec3 ambient  = ambientColour * vec3(texture(material.texture_diffuse1, texCoords));
     vec3 diffuse  = light.colour  * diff * vec3(texture(material.texture_diffuse1, texCoords));
     vec3 specular = light.colour * spec * vec3(texture(material.texture_specular1, texCoords));
+    vec3 normalLight = light.colour * norm * vec3(texture(material.texture_normal1, texCoords));
+
     ambient  *= attenuation;
     diffuse  *= attenuation;
     specular *= attenuation;
-    return (ambient + (diffuse + specular) * (1.0 - shadow));
+    return (ambient + (diffuse + specular + normalLight) * (1.0 - shadow));
 } 
+
