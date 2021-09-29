@@ -6,6 +6,7 @@
 #include <vector>
 #include "ModernOpenGL/AModel.h"
 
+
 class Animation
 {
 	public:

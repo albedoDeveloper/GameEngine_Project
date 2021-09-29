@@ -81,6 +81,8 @@ public:
 		/// <param name="value"></param>
 	void SetMat4Uniform(const std::string &name, Matrix4f mat) const;
 
+	void SetMat4UniformTrue(const std::string& name, Matrix4f mat) const;
+
 		/**
 		 * get shader name.
 		 *

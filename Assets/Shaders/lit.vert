@@ -36,7 +36,8 @@ uniform mat4 finalBonesMatrices[MAX_BONES];
 
 void main()
 {
-    vec4 totalPosition = vec4(0.0f);
+    vec4 totalPosition =  vec4(aPos,1.0f);
+     vec3 localNormal = vec3(1.0f);
     for(int i = 0 ; i < MAX_BONE_INFLUENCE ; i++)
     {
         if(boneIds[i] == -1) 
@@ -48,12 +49,12 @@ void main()
         }
         vec4 localPosition = finalBonesMatrices[boneIds[i]] * vec4(aPos,1.0f);
         totalPosition += localPosition * weights[i];
-        vec3 localNormal = mat3(finalBonesMatrices[boneIds[i]]) * aNormal;
+        localNormal = mat3(finalBonesMatrices[boneIds[i]]) * aNormal;
    }
     
     
     vs_out.FragPos = vec3(model * vec4(aPos,1.0));
-    vs_out.Normal = mat3(transpose(inverse(model))) * aNormal;  
+    vs_out.Normal = mat3(transpose(inverse(model))) * localNormal;  
     vs_out.TexCoords = aTexCoords;    
     vs_out.DirFragPosLightSpace = dirLight.dirLightSpaceMatrix * vec4(vs_out.FragPos, 1.0);
     gl_Position =  projection * view * model * totalPosition;

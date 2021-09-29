@@ -180,6 +180,18 @@ void Shader::SetMat4Uniform(const std::string &name, Matrix4f mat) const
 	glUniformMatrix4fv(uniformLoc, 1, GL_FALSE, mat.ValuePtr()); CHECK_GL_ERROR();
 }
 
+void Shader::SetMat4UniformTrue(const std::string& name, Matrix4f mat) const
+{
+	glUseProgram(m_ID); CHECK_GL_ERROR();
+	int uniformLoc = glGetUniformLocation(m_ID, name.c_str()); CHECK_GL_ERROR();
+	if (uniformLoc == -1)
+	{
+		return;
+	}
+	glUniformMatrix4fv(uniformLoc, 1, GL_TRUE, mat.ValuePtr()); CHECK_GL_ERROR();
+}
+
+
 void Shader::CreateShaders(unsigned int &shadername, const char *const *actualShader, int typeOfShader)
 {
 	int  success;

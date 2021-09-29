@@ -80,6 +80,8 @@ public:
 	
 	static Matrix4f ConvertAiMatrixToMatrix4f(const aiMatrix4x4& from);
 
+	const aiScene* scene;
+
 private:
 
 		/// <summary>
@@ -179,5 +181,7 @@ private:
 
 	void SetVertexBoneDataToDefault(Vertex& vertex);
 	void ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh* mesh, const aiScene* scene);
+	void SetVertexBoneData(Vertex& vertex, int boneID, float weight);
+
 
 };

@@ -3,7 +3,11 @@
 Bone::Bone(const std::string& name, int ID, const aiNodeAnim* channel)
 {
 	m_NumPositions = channel->mNumPositionKeys;
-
+	m_Name = name;
+	m_ID = ID;
+	m_LocalTransform = Matrix4f();
+	m_NumPositions = channel->mNumPositionKeys;
+	
 	for (int positionIndex = 0; positionIndex < m_NumPositions; ++positionIndex)
 	{
 		aiVector3D aiPosition = channel->mPositionKeys[positionIndex].mValue;

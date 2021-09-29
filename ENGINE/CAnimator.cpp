@@ -22,27 +22,29 @@ void CAnimator::AddAnimation(std::string filePath)
 	m_CurrentAnimation = new Animation(filePath, model);
 }
 
-void CAnimator::Update()
+void CAnimator::UpdateBone()
 {
 	m_DeltaTime = TIME->GetDeltaTime();
 	if (m_CurrentAnimation)
 	{
-		m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * m_DeltaTime;
+		m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * m_DeltaTime * 4;
 		m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration());
 		CalculateBoneTransform(&m_CurrentAnimation->GetRootNode(), Matrix4f());
 	}
 	
 	auto transforms = GetFinalBoneMatrices();
 	
-	for (int i = 0; i < transforms.size(); ++i)
+	for (int i = 0; i < transforms.size(); i++) {
 		GRAPHICS->m_litShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", transforms[i]);
-	
+		GRAPHICS->m_unlitShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", transforms[i]);
+	}
+
 }
 
 void  CAnimator::CalculateBoneTransform(const Animation::AssimpNodeData* node, Matrix4f parentTransform)
 {
 	std::string nodeName = node->name;
-	Matrix4f nodeTransform = node->transformation;
+	Matrix4f nodeTransform = node->transformation;	
 
 	Bone* Bone = m_CurrentAnimation->FindBone(nodeName);
 
@@ -55,6 +57,7 @@ void  CAnimator::CalculateBoneTransform(const Animation::AssimpNodeData* node, M
 	Matrix4f globalTransformation = parentTransform * nodeTransform;
 
 	auto boneInfoMap = m_CurrentAnimation->GetBoneIDMap();
+	
 	if (boneInfoMap.find(nodeName) != boneInfoMap.end())
 	{
 		int index = boneInfoMap[nodeName].id;

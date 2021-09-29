@@ -72,8 +72,10 @@ public:
 		 */
 	Matrix4f &operator*=(Matrix4f other);
 
-private:
+	glm::mat4 GetMatrix() { return m_mat; }
 	Matrix4f(glm::mat4 m);
+private:
+
 
 	glm::mat4 m_mat;
 

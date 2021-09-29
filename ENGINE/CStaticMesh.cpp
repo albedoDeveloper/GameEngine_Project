@@ -94,6 +94,9 @@ void CStaticMesh::Render()
 
 void CStaticMesh::Render(Shader &shaderOveride, bool noTexture)
 {
+	if (GetParentObject()->GetCAnimator() != nullptr)
+		GetParentObject()->GetCAnimator()->UpdateBone();
+	
 	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), &shaderOveride, noTexture);
 }
 

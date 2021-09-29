@@ -16,7 +16,7 @@ class CAnimator : public CComponent
 			m_CurrentAnimation = nullptr;
 		}
 		void AddAnimation( std::string filePath);
-		void Update();
+		void UpdateBone();
 		void CalculateBoneTransform(const Animation::AssimpNodeData* node, Matrix4f parentTransform);
 		void PlayAnimation(Animation* Animation);
 

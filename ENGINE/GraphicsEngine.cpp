@@ -214,11 +214,7 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	glEnable(GL_CULL_FACE); CHECK_GL_ERROR();
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); CHECK_GL_ERROR();
 
-	if (noTexture)
-	{
-		model->DrawNoTexture();
-	}
-	else
+
 	{
 		model->Draw(shader);
 	}

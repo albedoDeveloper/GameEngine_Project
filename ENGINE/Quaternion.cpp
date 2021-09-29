@@ -110,6 +110,7 @@ Matrix4f Quaternion::Mat4Cast() const
 	return glm::mat4_cast(m_quat);
 }
 
+
 Quaternion Quaternion::Slerp(const Quaternion& two, float scaleFactor)
 {	
 	Quaternion temp(glm::slerp(m_quat, glm::quat(two.GetW(), two.GetX(), two.GetY(), two.GetZ()), scaleFactor));

@@ -3,28 +3,40 @@
 Animation::Animation(const std::string& animationPath, AModel* model)
 {
 	Assimp::Importer importer;
-	const aiScene* scene = importer.ReadFile(animationPath, aiProcess_Triangulate);
+	importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, false);
+
+	const aiScene* scene = importer.ReadFile(animationPath, aiProcess_Triangulate| aiProcess_OptimizeGraph| aiProcess_OptimizeMeshes | aiProcess_GenNormals);
+	
 	assert(scene && scene->mRootNode);
+	
 	auto animation = scene->mAnimations[0];
+	
 	m_Duration = animation->mDuration;
+	
 	m_TicksPerSecond = animation->mTicksPerSecond;
+	
 	aiMatrix4x4 globalTransformation = scene->mRootNode->mTransformation;
-	globalTransformation = globalTransformation.Inverse();
+	
+	globalTransformation = globalTransformation.Inverse(); 
+	
 	ReadHeirarchyData(m_RootNode, scene->mRootNode);
 	ReadMissingBones(animation, *model);
+
 }
 
 Bone* Animation::FindBone(const std::string& name)
 {
 	//FIX
-	auto iter = std::find_if(m_Bones.begin(), m_Bones.end(),
-		[&](Bone& Bone)
-		{
-			return Bone.GetBoneName() == name;
-		}
+	auto iter = std::find_if(m_Bones.begin(), m_Bones.end(),[&](Bone& Bone)
+	{
+		return Bone.GetBoneName() == name;
+	}
 	);
-	if (iter == m_Bones.end()) return nullptr;
-	else return &(*iter);
+	
+	if (iter == m_Bones.end())
+		return nullptr;
+	else 
+		return &(*iter);
 }
 
 void Animation::ReadMissingBones(const aiAnimation* animation, AModel& model)
@@ -45,8 +57,7 @@ void Animation::ReadMissingBones(const aiAnimation* animation, AModel& model)
 			boneInfoMap[boneName].id = boneCount;
 			boneCount++;
 		}
-		m_Bones.push_back(Bone(channel->mNodeName.data,
-			boneInfoMap[channel->mNodeName.data].id, channel));
+		m_Bones.push_back(Bone(channel->mNodeName.data,boneInfoMap[channel->mNodeName.data].id, channel));
 	}
 
 	m_BoneInfoMap = boneInfoMap;
@@ -57,7 +68,6 @@ void Animation::ReadHeirarchyData(AssimpNodeData& dest, const aiNode* src)
 {
 	if (src != nullptr)
 	{
-		
 		dest.name = src->mName.data;
 		dest.transformation = AModel::ConvertAiMatrixToMatrix4f(src->mTransformation);
 		dest.childrenCount = src->mNumChildren;
