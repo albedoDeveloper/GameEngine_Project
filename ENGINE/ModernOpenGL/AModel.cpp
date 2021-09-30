@@ -49,7 +49,7 @@ void AModel::LoadModel(std::string path)
 	// read file via assimp
 	Assimp::Importer importer;
 	//importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, false);
-	const aiScene *scene = importer.ReadFile(path, aiProcess_FlipUVs | aiProcess_Triangulate | aiProcess_OptimizeGraph | aiProcess_OptimizeMeshes | aiProcess_CalcTangentSpace | aiProcess_GenNormals);
+	const aiScene *scene = importer.ReadFile(path, aiProcess_FlipUVs | aiProcess_Triangulate | aiProcess_OptimizeGraph | aiProcess_OptimizeMeshes | aiProcess_CalcTangentSpace | aiProcess_GenNormals|aiProcess_Debone|aiProcess_LimitBoneWeights);
 
 
 	//Check that assimp imported correctly
@@ -277,7 +277,7 @@ void AModel::ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh*
 		{
 			BoneInfo newBoneInfo;
 			newBoneInfo.id = m_BoneCounter;
-			newBoneInfo.offset = ConvertAiMatrixToMatrix4f(mesh->mBones[boneIndex]->mOffsetMatrix).GetMatrix();
+			newBoneInfo.offset = ConvertAiMatrixToMatrix4f(mesh->mBones[boneIndex]->mOffsetMatrix);
 			m_BoneInfoMap[boneName] = newBoneInfo;
 			boneID = m_BoneCounter;
 			m_BoneCounter++;

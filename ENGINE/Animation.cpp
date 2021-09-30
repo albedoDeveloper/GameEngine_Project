@@ -5,7 +5,7 @@ Animation::Animation(const std::string& animationPath, AModel* model)
 	Assimp::Importer importer;
 	importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, false);
 
-	const aiScene* scene = importer.ReadFile(animationPath, aiProcess_Triangulate| aiProcess_OptimizeGraph| aiProcess_OptimizeMeshes | aiProcess_GenNormals);
+	const aiScene* scene = importer.ReadFile(animationPath, aiProcess_Triangulate| aiProcess_OptimizeGraph| aiProcess_OptimizeMeshes | aiProcess_GenNormals | aiProcess_Debone | aiProcess_LimitBoneWeights);
 	
 	assert(scene && scene->mRootNode);
 	

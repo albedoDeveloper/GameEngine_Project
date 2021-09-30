@@ -183,6 +183,8 @@ public:
 
 	Shader *m_pointShadowMapShader;
 
+	Shader* m_unlitAnimated;
+
 		/** @brief draw debug colliders */
 	bool m_drawDebug = false;
 

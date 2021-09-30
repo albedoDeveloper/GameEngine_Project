@@ -203,6 +203,7 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 		return;
 	}
 
+	glUseProgram(shader->GetID());
 	Matrix4f modelTrans;
 
 	modelTrans.Translate(worldTrans.GetRelativePosition());
@@ -214,7 +215,11 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	glEnable(GL_CULL_FACE); CHECK_GL_ERROR();
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); CHECK_GL_ERROR();
 
-
+	/*if (noTexture)
+	{
+		model->DrawNoTexture();
+	}*/
+	//else
 	{
 		model->Draw(shader);
 	}
@@ -306,6 +311,7 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	m_litShader->SetFloatUniform("material.shininess", 16);
 
 	m_unlitShader = new Shader("../Assets/Shaders/unlit.vert", "../Assets/Shaders/unlit.frag");
+	m_unlitAnimated = new Shader("../Assets/Shaders/unlitAnimated.vert", "../Assets/Shaders/unlit.frag");
 	m_debugShader = new Shader("../Assets/Shaders/debug.vert", "../Assets/Shaders/debug.frag");
 	m_dirShadowMapShader = new Shader("../Assets/Shaders/dirShadowMap.vert", "../Assets/Shaders/dirShadowMap.frag");
 	m_pointShadowMapShader = new Shader("../Assets/Shaders/pointShadowMap.vert", "../Assets/Shaders/pointShadowMap.geom", "../Assets/Shaders/pointShadowMap.frag");

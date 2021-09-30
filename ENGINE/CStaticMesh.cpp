@@ -89,15 +89,36 @@ void CStaticMesh::Render()
 		m_shader = GRAPHICS->m_unlitShader;
 	}
 
+
+	if (GetParentObject()->GetCAnimator() != nullptr)
+	{
+		m_shader->SetIntUniform("animate", 1);
+		//GetParentObject()->GetCAnimator()->UpdateBone();
+	}
+
+	else
+	{
+		m_shader->SetIntUniform("animate", 0);
+	}
+	
 	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), m_shader, false);
 }
 
 void CStaticMesh::Render(Shader &shaderOveride, bool noTexture)
 {
 	if (GetParentObject()->GetCAnimator() != nullptr)
+	{
 		GetParentObject()->GetCAnimator()->UpdateBone();
+		shaderOveride.SetIntUniform("animate", 1);
+
+		//GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), GRAPHICS->m_unlitAnimated, noTexture);
+	}
 	
-	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), &shaderOveride, noTexture);
+	else
+	{
+		shaderOveride.SetIntUniform("animate", 0);
+		//GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), &shaderOveride, noTexture);
+	}
 }
 
 void CStaticMesh::Save(nlohmann::json &j)

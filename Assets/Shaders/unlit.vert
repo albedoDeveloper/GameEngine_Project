@@ -12,31 +12,40 @@ out vec3 Normal;
 uniform mat4 view;
 uniform mat4 projection;
 uniform mat4 model;
-
+uniform int animate;
 
 const int MAX_BONES = 100;
 const int MAX_BONE_INFLUENCE = 4;
 uniform mat4 finalBonesMatrices[MAX_BONES];
 
+
 void main()
 {
-    vec4 totalPosition =  vec4(aPos,1.0f);
-     vec3 localNormal = vec3(1.0f);
-    for(int i = 0 ; i < MAX_BONE_INFLUENCE ; i++)
-    {
-        if(boneIds[i] == -1) 
-            continue;
-        if(boneIds[i] >=MAX_BONES) 
-        {
-            totalPosition = vec4(aPos,1.0f);
-            break;
-        }
-        vec4 localPosition = finalBonesMatrices[boneIds[i]] * vec4(aPos,1.0f);
-        totalPosition += localPosition * weights[i];
-        localNormal = mat3(finalBonesMatrices[boneIds[i]]) * aNormal;
-   }
     
-    Normal = mat3(transpose(inverse(model))) * aNormal;  
+    vec4 totalPosition = vec4(aPos,1.0f);
+    
+    if(animate == 1)
+        totalPosition = vec4(0.0f);
+    
+    vec3 localNormal = vec3(1.0f);
+
+        for(int i = 0 ; i < MAX_BONE_INFLUENCE ; i++)
+        {
+            if(boneIds[i] == -1) 
+                continue;
+            
+            if(boneIds[i] >=MAX_BONES) 
+            {
+                totalPosition = vec4(aPos,1.0f);
+                break;
+            }
+            
+            vec4 localPosition = finalBonesMatrices[boneIds[i]] * vec4(aPos,1.0f);
+            totalPosition += localPosition * weights[i];
+            localNormal = mat3(finalBonesMatrices[boneIds[i]]) * aNormal;
+        }
+
+    Normal = mat3(transpose(inverse(model))) * localNormal;  
     TexCoords = aTexCoords;
     gl_Position =  projection * view * model * totalPosition;
 }
