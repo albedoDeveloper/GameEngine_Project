@@ -310,6 +310,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	m_litShader->SetBoolUniform("dirLight.isActive", false);
 	m_litShader->SetFloatUniform("material.shininess", 16);
 
+
+
 	m_unlitShader = new Shader("../Assets/Shaders/unlit.vert", "../Assets/Shaders/unlit.frag");
 	m_unlitAnimated = new Shader("../Assets/Shaders/unlitAnimated.vert", "../Assets/Shaders/unlit.frag");
 	m_debugShader = new Shader("../Assets/Shaders/debug.vert", "../Assets/Shaders/debug.frag");

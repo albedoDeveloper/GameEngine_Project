@@ -28,6 +28,7 @@ uniform mat4 view;
 uniform mat4 projection;
 uniform mat4 model;
 uniform DirectionalLight dirLight;
+uniform int animate;
 
 const int MAX_BONES = 100;
 const int MAX_BONE_INFLUENCE = 4;
@@ -36,7 +37,10 @@ uniform mat4 finalBonesMatrices[MAX_BONES];
 
 void main()
 {
-    vec4 totalPosition =  vec4(aPos,1.0f);
+    vec4 totalPosition = vec4(aPos,1.0f);
+    
+    if(animate == 1)
+        totalPosition = vec4(0.0f);
     vec3 localNormal = vec3(1.0f);
     for(int i = 0 ; i < MAX_BONE_INFLUENCE ; i++)
     {

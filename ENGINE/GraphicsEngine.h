@@ -185,6 +185,8 @@ public:
 
 	Shader* m_unlitAnimated;
 
+	Shader* m_litAnimated;
+
 		/** @brief draw debug colliders */
 	bool m_drawDebug = false;
 

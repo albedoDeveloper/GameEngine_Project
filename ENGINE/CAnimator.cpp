@@ -12,7 +12,6 @@ CAnimator::CAnimator(Transform* parent, GameObject* parentObj)
 	for (int i = 0; i < 100; i++)
 		m_FinalBoneMatrices.push_back(Matrix4f());
 
-
 }
 
 void CAnimator::AddAnimation(std::string filePath)
@@ -27,14 +26,15 @@ void CAnimator::UpdateBone()
 	m_DeltaTime = TIME->GetDeltaTime();
 	if (m_CurrentAnimation)
 	{
-		m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * m_DeltaTime * 9;
+		m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * m_DeltaTime * 12;
 		m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration());
 		CalculateBoneTransform(&m_CurrentAnimation->GetRootNode(), Matrix4f());
 	}
 	
 	auto transforms = GetFinalBoneMatrices();
 	
-	for (int i = 0; i < transforms.size(); i++) {
+	for (int i = 0; i < transforms.size(); i++) 
+	{
 		//GRAPHICS->m_litShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", transforms[i]);
 		GRAPHICS->m_unlitShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", transforms[i]);
 	}
