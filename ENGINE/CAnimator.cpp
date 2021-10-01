@@ -35,7 +35,7 @@ void CAnimator::UpdateBone()
 	
 	for (int i = 0; i < transforms.size(); i++) 
 	{
-		//GRAPHICS->m_litShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", transforms[i]);
+		GRAPHICS->m_litShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", transforms[i]);
 		GRAPHICS->m_unlitShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", transforms[i]);
 	}
 

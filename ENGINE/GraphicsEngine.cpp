@@ -313,7 +313,6 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 
 
 	m_unlitShader = new Shader("../Assets/Shaders/unlit.vert", "../Assets/Shaders/unlit.frag");
-	m_unlitAnimated = new Shader("../Assets/Shaders/unlitAnimated.vert", "../Assets/Shaders/unlit.frag");
 	m_debugShader = new Shader("../Assets/Shaders/debug.vert", "../Assets/Shaders/debug.frag");
 	m_dirShadowMapShader = new Shader("../Assets/Shaders/dirShadowMap.vert", "../Assets/Shaders/dirShadowMap.frag");
 	m_pointShadowMapShader = new Shader("../Assets/Shaders/pointShadowMap.vert", "../Assets/Shaders/pointShadowMap.geom", "../Assets/Shaders/pointShadowMap.frag");
