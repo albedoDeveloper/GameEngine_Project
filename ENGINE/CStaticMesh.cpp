@@ -111,14 +111,14 @@ void CStaticMesh::Render(Shader &shaderOveride, bool noTexture)
 		GetParentObject()->GetCAnimator()->UpdateBone();
 		shaderOveride.SetIntUniform("animate", 1);
 
-		//GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), GRAPHICS->m_unlitAnimated, noTexture);
 	}
 	
 	else
 	{
 		shaderOveride.SetIntUniform("animate", 0);
-		//GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), &shaderOveride, noTexture);
 	}
+	
+	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), &shaderOveride, noTexture);
 }
 
 void CStaticMesh::Save(nlohmann::json &j)
