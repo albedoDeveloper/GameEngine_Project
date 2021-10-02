@@ -14,11 +14,19 @@ CAnimator::CAnimator(Transform* parent, GameObject* parentObj)
 
 }
 
-void CAnimator::AddAnimation(std::string filePath)
+void CAnimator::AddAnimation(std::string filePath, bool playAtStart, std::string modelKey)
 {
 	GameObject* g = GetParentObject();
 	AModel* model = &g->GetCStaticMesh()->GetModel();
-	m_CurrentAnimation = new Animation(filePath, model);
+
+	allAnimations.emplace(std::pair<std::string, Animation*>(modelKey, new Animation(filePath, model)));
+	
+	if (playAtStart)
+	{
+		//&g->GetCStaticMesh()->AssignModelByKey(modelKey);
+		
+		m_CurrentAnimation = allAnimations[modelKey];
+	}
 }
 
 void CAnimator::UpdateBone()
@@ -26,7 +34,7 @@ void CAnimator::UpdateBone()
 	m_DeltaTime = TIME->GetDeltaTime();
 	if (m_CurrentAnimation)
 	{
-		m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * m_DeltaTime * 12;
+		m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * m_DeltaTime * 24;
 		m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration());
 		CalculateBoneTransform(&m_CurrentAnimation->GetRootNode(), Matrix4f());
 	}
@@ -70,8 +78,8 @@ void  CAnimator::CalculateBoneTransform(const Animation::AssimpNodeData* node, M
 }
 
 
-void CAnimator::PlayAnimation(Animation* animation)
+void CAnimator::PlayAnimation(std::string filePath)
 {
-	m_CurrentAnimation = animation;
+	m_CurrentAnimation = allAnimations[filePath];
 	m_CurrentTime = 0.0f;
 }

@@ -92,6 +92,7 @@ void CStaticMesh::Render()
 
 	if (GetParentObject()->GetCAnimator() != nullptr)
 	{
+		GetParentObject()->GetCAnimator()->UpdateBone();
 		m_shader->SetIntUniform("animate", 1);
 		//GetParentObject()->GetCAnimator()->UpdateBone();
 	}
@@ -108,7 +109,7 @@ void CStaticMesh::Render(Shader &shaderOveride, bool noTexture)
 {
 	if (GetParentObject()->GetCAnimator() != nullptr)
 	{
-		GetParentObject()->GetCAnimator()->UpdateBone();
+		
 		shaderOveride.SetIntUniform("animate", 1);
 
 	}

@@ -15,17 +15,17 @@ class CAnimator : public CComponent
 			delete  m_CurrentAnimation;
 			m_CurrentAnimation = nullptr;
 		}
-		void AddAnimation( std::string filePath);
+		void AddAnimation( std::string filePath, bool playAtStart, std::string modelKey);
 		void UpdateBone();
 		void CalculateBoneTransform(const Animation::AssimpNodeData* node, Matrix4f parentTransform);
-		void PlayAnimation(Animation* Animation);
+		void PlayAnimation(std::string animationName);
 
 		std::vector<Matrix4f> GetFinalBoneMatrices() { return m_FinalBoneMatrices; }
 
 	private:
-		std::map<std::string, Animation> allAnimations;
+		std::map<std::string, Animation*> allAnimations;
 		std::vector<Matrix4f> m_FinalBoneMatrices;
-		Animation* m_CurrentAnimation;
+		Animation* m_CurrentAnimation = nullptr;
 		float m_CurrentTime;
 		float m_DeltaTime;
 };
