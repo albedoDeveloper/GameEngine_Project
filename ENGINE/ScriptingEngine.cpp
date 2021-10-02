@@ -108,6 +108,7 @@ lua_State *ScriptingEngine::NewState()
 		.addFunction("GetCCollider", &GameObject::GetCCollider)
 		.addFunction("AddCAnimator", &GameObject::AddCAnimator)
 		.addFunction("GetCAnimator", &GameObject::GetCAnimator)
+		.addFunction("SetActive", &GameObject::SetActive)
 		.endClass();
 
 	getGlobalNamespace(Lbuff)

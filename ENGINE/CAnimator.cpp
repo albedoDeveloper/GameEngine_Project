@@ -19,7 +19,7 @@ void CAnimator::AddAnimation(std::string filePath, bool playAtStart, std::string
 	GameObject* g = GetParentObject();
 	AModel* model = &g->GetCStaticMesh()->GetModel();
 
-	allAnimations.emplace(std::pair<std::string, Animation*>(modelKey, new Animation(filePath, model)));
+	allAnimations.emplace(std::pair<std::string, Animation*>(modelKey, new Animation("../Assets/Models/" + filePath, model)));
 	
 	if (playAtStart)
 	{
