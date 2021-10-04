@@ -23,8 +23,6 @@ void CAnimator::AddAnimation(std::string filePath, bool playAtStart, std::string
 	
 	if (playAtStart)
 	{
-		//&g->GetCStaticMesh()->AssignModelByKey(modelKey);
-		
 		m_CurrentAnimation = allAnimations[modelKey];
 	}
 }
@@ -40,13 +38,12 @@ void CAnimator::UpdateBone()
 		firstTime = false;
 		iterator = 0;
 	}
+
 	
-	auto transforms = GetFinalBoneMatrices();
-	
-	for (int i = 0; i < transforms.size(); i++) 
+	for (int i = 0; i < m_FinalBoneMatrices.size(); i++)
 	{
-		GRAPHICS->m_litShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", transforms[i]);
-		GRAPHICS->m_unlitShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", transforms[i]);
+		GRAPHICS->m_litShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", m_FinalBoneMatrices[i]);
+		GRAPHICS->m_unlitShader->SetMat4Uniform("finalBonesMatrices[" + std::to_string(i) + "]", m_FinalBoneMatrices[i]);
 	}
 
 }
@@ -77,14 +74,11 @@ void  CAnimator::CalculateBoneTransform(const Animation::AssimpNodeData* node, M
 	}
 
 	Matrix4f globalTransformation = parentTransform * nodeTransform;
-
 	auto boneInfoMap = m_CurrentAnimation->GetBoneIDMap();
 	
 	if (boneInfoMap.find(nodeName) != boneInfoMap.end())
 	{
-		int index = boneInfoMap[nodeName].id;
-		Matrix4f offset = boneInfoMap[nodeName].offset;
-		m_FinalBoneMatrices[index] = globalTransformation * offset;
+		m_FinalBoneMatrices[boneInfoMap[nodeName].id] = globalTransformation * boneInfoMap[nodeName].offset;
 	}
 
 	for (int i = 0; i < node->childrenCount; i++)

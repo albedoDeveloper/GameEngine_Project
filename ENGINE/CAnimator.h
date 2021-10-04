@@ -20,8 +20,6 @@ class CAnimator : public CComponent
 		void CalculateBoneTransform(const Animation::AssimpNodeData* node, Matrix4f parentTransform);
 		void PlayAnimation(std::string animationName);
 
-		std::vector<Matrix4f> GetFinalBoneMatrices() { return m_FinalBoneMatrices; }
-
 	private:
 		std::map<std::string, Animation*> allAnimations;
 		std::vector<Matrix4f> m_FinalBoneMatrices;
