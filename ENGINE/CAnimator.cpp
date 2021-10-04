@@ -37,6 +37,8 @@ void CAnimator::UpdateBone()
 		m_CurrentTime += m_CurrentAnimation->GetTicksPerSecond() * m_DeltaTime * 24;
 		m_CurrentTime = fmod(m_CurrentTime, m_CurrentAnimation->GetDuration());
 		CalculateBoneTransform(&m_CurrentAnimation->GetRootNode(), Matrix4f());
+		firstTime = false;
+		iterator = 0;
 	}
 	
 	auto transforms = GetFinalBoneMatrices();
@@ -54,7 +56,19 @@ void  CAnimator::CalculateBoneTransform(const Animation::AssimpNodeData* node, M
 	std::string nodeName = node->name;
 	Matrix4f nodeTransform = node->transformation;	
 
-	Bone* Bone = m_CurrentAnimation->FindBone(nodeName);
+	Bone* Bone;
+	
+	if (firstTime)
+	{
+		Bone = m_CurrentAnimation->FindBone(nodeName);
+		listOfBones.push_back(Bone);
+	}
+
+	else
+	{
+		Bone = listOfBones[iterator];
+		iterator++;
+	}
 
 	if (Bone)
 	{
@@ -82,4 +96,6 @@ void CAnimator::PlayAnimation(std::string filePath)
 {
 	m_CurrentAnimation = allAnimations[filePath];
 	m_CurrentTime = 0.0f;
+	firstTime = true;
+	listOfBones.clear();
 }

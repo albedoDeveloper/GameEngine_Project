@@ -25,8 +25,12 @@ class CAnimator : public CComponent
 	private:
 		std::map<std::string, Animation*> allAnimations;
 		std::vector<Matrix4f> m_FinalBoneMatrices;
+		std::vector<Bone*> listOfBones;
 		Animation* m_CurrentAnimation = nullptr;
 		float m_CurrentTime;
 		float m_DeltaTime;
+
+		bool firstTime = true;
+		int iterator = 0;
 };
 
