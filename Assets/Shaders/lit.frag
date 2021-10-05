@@ -14,6 +14,7 @@ struct Material
 {
     sampler2D texture_diffuse1;
     sampler2D texture_specular1;
+    sampler2D texture_normal1;
     float shininess;
 };
 
@@ -67,12 +68,19 @@ in VS_OUT
     vec3 Normal;
     vec3 FragPos;
     vec4 DirFragPosLightSpace;
+    mat3 TBN;
 } vs_in;
 
 void main()
 {
+    //normal testing
+    vec3 bumpNormal = texture(material.texture_normal1, vs_in.TexCoords).rgb;
+    bumpNormal = normalize(bumpNormal * 2.0 - 1.0);
+    bumpNormal = bumpNormal * vs_in.TBN;
+
     // properties
-    vec3 norm = normalize(vs_in.Normal);
+    //vec3 norm =  normalize(vs_in.Normal);
+    vec3 norm = normalize(bumpNormal);
     vec3 viewDir = normalize(viewPos - vs_in.FragPos);
     vec3 result = vec3(0,0,0);
     float p1Shadow;
@@ -163,7 +171,7 @@ float DirShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir)
 
 vec3 CalcDirectionaLight(DirectionalLight light, vec3 normal, vec3 fragPos, vec3 viewDir, float shadow, vec2 texCoords)
 {
-    vec3 lightDir = normalize(-light.direction);
+    vec3 lightDir =  normalize(-light.direction);
 
     // ambient
     vec3 ambientColour = light.colour * light.ambientStrength;
@@ -200,8 +208,10 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, v
     vec3 ambient  = ambientColour * vec3(texture(material.texture_diffuse1, texCoords));
     vec3 diffuse  = light.colour  * diff * vec3(texture(material.texture_diffuse1, texCoords));
     vec3 specular = light.colour * spec * vec3(texture(material.texture_specular1, texCoords));
+
     ambient  *= attenuation;
     diffuse  *= attenuation;
     specular *= attenuation;
     return (ambient + (diffuse + specular) * (1.0 - shadow));
 } 
+

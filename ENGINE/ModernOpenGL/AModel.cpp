@@ -147,6 +147,19 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 			vertex.TexCoords = Vector2f(0.0f, 0.0f);
 		}
 
+		//tangents & bitangents
+		if (mesh->HasTangentsAndBitangents())
+		{
+			//first we need to get deltaUV's
+			Vector3f vec;
+			vec.SetX(mesh->mTangents[i].x);
+			vec.SetY(mesh->mTangents[i].y);
+			vec.SetZ(mesh->mTangents[i].z);
+
+			vertex.Tangent = vec;
+		}
+		
+
 		vertices.push_back(vertex);
 	}
 
@@ -172,12 +185,11 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		// 2. specular maps
 		std::vector<Texture> specularMaps = LoadMaterialTextures(material, aiTextureType_SPECULAR, "texture_specular");
 		textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
-
-		/*// 3. normal maps
-		std::vector<Texture> normalMaps = loadMaterialTextures(material, aiTextureType_HEIGHT, "texture_normal");
+		// 3. normal maps
+		std::vector<Texture> normalMaps = LoadMaterialTextures(material, aiTextureType_NORMALS, "texture_normal");
 		textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
 
-		// 4. height maps
+		/* // 4. height maps
 		std::vector<Texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
 		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());*/
 	}

@@ -226,9 +226,9 @@
         },
         "Transform": {
             "Position": {
-                "x": -7.744999885559082,
-                "y": 1.315000057220459,
-                "z": -0.4449999928474426
+                "x": -8.4399995803833,
+                "y": 0.4050000011920929,
+                "z": -0.27000001072883606
             },
             "Rotation": {
                 "w": 0.021184047684073448,
@@ -373,7 +373,6 @@
     },
     "light1": {
         "Components": {
-            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis",
                 "Shader": "lit"
@@ -403,7 +402,6 @@
     },
     "light2": {
         "Components": {
-            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis",
                 "Shader": "lit"
