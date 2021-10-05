@@ -190,13 +190,8 @@ void GameObjectFactory::Close()
 void GameObjectFactory::ClearCurrentLevel()
 {
 
-	//std::map<std::string, GameObject *> *gameObjects = GAMEOBJECT->GetObjectMap();
-
 	std::map<std::string, GameObject *>::iterator it;
 	std::map<std::string, GameObject *>::iterator it_next;
-
-	//int i = 0;
-
 
 	for (auto it = m_objects.cbegin(); it != m_objects.cend();)
 	{
