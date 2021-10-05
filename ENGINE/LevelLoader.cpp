@@ -60,7 +60,7 @@ void LevelLoader::LoadLevel()
 		GAMEOBJECT->ClearCurrentLevel();
 
 
-		//Step 2 retrieve and populate map
+		//Step 2 generate and populate map
 		std::map<std::string, GameObject *>::iterator it;
 
 		int i = 0;
