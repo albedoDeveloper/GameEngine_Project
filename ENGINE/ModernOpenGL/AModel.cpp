@@ -168,6 +168,7 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 
 		vertices.push_back(vertex);
 	}
+	
 	ExtractBoneWeightForVertices(vertices, mesh, scene);
 
 	m_numberOfFaces = mesh->mNumFaces;
@@ -305,7 +306,7 @@ void AModel::ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh*
 		auto weights = mesh->mBones[boneIndex]->mWeights;
 		int numWeights = mesh->mBones[boneIndex]->mNumWeights;
 
-		for (int weightIndex = 0; weightIndex < numWeights; ++weightIndex)
+		for (int weightIndex = 0; weightIndex < numWeights; weightIndex++)
 		{
 			int vertexId = weights[weightIndex].mVertexId;
 			float weight = weights[weightIndex].mWeight;

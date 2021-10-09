@@ -41,7 +41,7 @@ void main()
 {
     vec4 totalPosition = vec4(aPos,1.0f);
     vec3 localNormal = vec3(1.0f);
-    
+    vec3 norm = vec3(1.0f);
     if(animate == 1)
     {
         totalPosition = vec4(0.0f);
@@ -62,15 +62,17 @@ void main()
         }
 
         vs_out.FragPos = vec3(model * totalPosition);
-        vs_out.Normal = mat3(transpose(inverse(model))) * localNormal; 
+        norm = mat3(transpose(inverse(model))) * localNormal; 
     } 
     
     else
     {
          vs_out.FragPos = vec3(model * vec4(aPos,1.0));
-         vs_out.Normal = mat3(transpose(inverse(model))) * aNormal; 
+         norm = mat3(transpose(inverse(model))) * aNormal; 
     }
 
+    
+    vs_out.Normal = norm;
     vs_out.TexCoords = aTexCoords;    
 
     vs_out.DirFragPosLightSpace = dirLight.dirLightSpaceMatrix * vec4(vs_out.FragPos, 1.0);

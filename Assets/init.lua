@@ -77,7 +77,7 @@ GetGameObject("tavern_glass_door_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,
 GetGameObject("tavern_glass_door_wall"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("basic_girl"):SetStatic(false)
-GetGameObject("basic_girl"):AddCStaticMesh():AssignModel("basic_girl")
+GetGameObject("basic_girl"):AddCStaticMesh():AssignModel("Breathing Idle")
 GetGameObject("basic_girl"):AddCAnimator()
 GetGameObject("basic_girl"):GetCAnimator():AddAnimation("basic_girl/girlboxingfixed.fbx",false, "basic_girl")
 GetGameObject("basic_girl"):GetCAnimator():AddAnimation("basic_girl/Breathing Idle.fbx", true, "Breathing Idle")
@@ -87,7 +87,7 @@ GetGameObject("basic_girl"):GetCSound():LoadSound("girlTextSpeechThree.wav")
 GetGameObject("basic_girl"):AddCScript():AssignScript("girl1script")
 
 SpawnGameObject("basic_girl2"):SetStatic(false)
-GetGameObject("basic_girl2"):AddCStaticMesh():AssignModel("basic_girl")
+GetGameObject("basic_girl2"):AddCStaticMesh():AssignModel("Breathing Idle")
 GetGameObject("basic_girl2"):AddCAnimator()
 GetGameObject("basic_girl2"):GetCAnimator():AddAnimation("basic_girl/girlDying.fbx", false, "girlDying")
 GetGameObject("basic_girl2"):GetCAnimator():AddAnimation("basic_girl/Breathing Idle.fbx", true, "Breathing Idle")
