@@ -38,22 +38,31 @@ void CSound::LoadSound(std::string soundName)
 
 void CSound::PlaySound(std::string soundName, int length, bool positional)
 {
-	if (soundList.find(soundName) != soundList.end())
+	auto sound = soundList.find(soundName);
+	
+	if (sound != soundList.end())
 	{
 		SoundInfo temp;
-		temp.channel = Mix_PlayChannel(-1, soundList.find(soundName)->second, length);
-		temp.soundName = soundList.find(soundName)->first;
+		temp.channel = Mix_PlayChannel(-1, sound->second, length);
+		temp.soundName = sound->first;
 		temp.isPositional = positional;
-		soundinfo.emplace_back(temp);
+		soundinfo.emplace(std::pair<std::string,SoundInfo>(soundName,temp));
 	}
 	else
 		std::cout << soundName << " sound is not loaded!" << std::endl;
 }
 
+void CSound::ChangeVolume(std::string soundName, int volume)
+{
+	
+	Mix_Volume(soundinfo[soundName].channel, volume);
+}
+
 void CSound::Update()
 {
-	for (int i = 0; i < soundinfo.size(); i++)
-		if (soundinfo[i].isPositional && soundinfo[i].channel != -1)
+	for (auto& [key, value] : soundinfo)
+	{
+		if (value.isPositional && value.channel != -1)
 		{
 			auto playerTransform = GAMEOBJECT->GetGameObject("player")->GetTransform();
 			auto thisTransform = this->GetParentObject()->GetTransform();
@@ -80,9 +89,10 @@ void CSound::Update()
 			if (rotation < 0)
 				rotation += 360.0;*/
 
-			if (!Mix_SetPosition(soundinfo[i].channel, 0, distance))
+			if (!Mix_SetPosition(value.channel, 0, distance))
 			{
 				std::cout << "ERROR Mix_SetPosition: " << Mix_GetError() << std::endl;
 			}
 		}
+	}
 }

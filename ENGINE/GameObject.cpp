@@ -31,6 +31,16 @@ CSound *GameObject::GetCSound()
 	return GetComponent<CSound>();
 }
 
+CAnimator* GameObject::AddCAnimator()
+{
+	return AddComponent<CAnimator>();
+}
+
+CAnimator* GameObject::GetCAnimator()
+{
+	return GetComponent<CAnimator>();
+}
+
 void GameObject::SetStatic(bool isStatic)
 {
 	m_static = isStatic;

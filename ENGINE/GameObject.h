@@ -20,6 +20,7 @@
 #include <nlohmann/json.hpp>
 #include "CPointLight.h"
 #include "CDirectionalLight.h"
+#include "CAnimator.h"
 #include <iostream>
 
 	/**
@@ -48,7 +49,15 @@ public:
 		 * @return The created mesh
 		*/
 	CStaticMesh *AddCStaticMesh();
+	
+		/**
+		 * .
+		 * 
+		 * \return 
+		 */
+	CAnimator* AddCAnimator();
 
+	
 		/**
 		 * @brief Adds a script component
 		 * @return the created script
@@ -152,6 +161,11 @@ public:
 		 * \return first found collider component if found or nullptr
 		 */
 	CCollider *GetCCollider();
+
+	/**
+	 * .
+	 */
+	CAnimator* GetCAnimator();
 
 		/**
 		 * make this game objects transform a child of anothers.

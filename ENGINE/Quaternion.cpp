@@ -7,6 +7,10 @@ Quaternion::Quaternion()
 	:m_quat(glm::identity<glm::quat>())
 {}
 
+Quaternion::Quaternion(float w, float x, float y, float z)
+	:m_quat(glm::quat(w,x,y,z))
+{}
+
 float Quaternion::DotProduct(Quaternion oQuat)
 {
 	return glm::dot(m_quat, oQuat.m_quat);
@@ -104,4 +108,17 @@ Quaternion Quaternion::GetInverse()
 Matrix4f Quaternion::Mat4Cast() const
 {
 	return glm::mat4_cast(m_quat);
+}
+
+
+Quaternion Quaternion::Slerp(const Quaternion& two, float scaleFactor)
+{	
+	Quaternion temp(glm::slerp(m_quat, glm::quat(two.GetW(), two.GetX(), two.GetY(), two.GetZ()), scaleFactor));
+
+	return temp;
+}
+
+Quaternion Quaternion::Normalize()
+{
+	return glm::normalize(m_quat);
 }

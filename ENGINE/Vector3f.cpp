@@ -84,6 +84,11 @@ Vector3f Vector3f::Normalised()
 	return glm::normalize(m_vec);
 }
 
+Vector3f Vector3f::Mix(Vector3f oVec, float scale)
+{
+	return glm::mix(m_vec, oVec.m_vec, scale);
+}
+
 Vector3f Vector3f::Rad2Deg()
 {
 	Vector3f temp = m_vec;

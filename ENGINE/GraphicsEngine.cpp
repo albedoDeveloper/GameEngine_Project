@@ -203,6 +203,7 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 		return;
 	}
 
+	glUseProgram(shader->GetID());
 	Matrix4f modelTrans;
 
 	modelTrans.Translate(worldTrans.GetRelativePosition());
@@ -214,11 +215,11 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	glEnable(GL_CULL_FACE); CHECK_GL_ERROR();
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); CHECK_GL_ERROR();
 
-	if (noTexture)
+	/*if (noTexture)
 	{
 		model->DrawNoTexture();
-	}
-	else
+	}*/
+	//else
 	{
 		model->Draw(shader);
 	}
@@ -308,6 +309,8 @@ bool GraphicsEngine::InitOpenGL(int windowWidth, int windowHeight)
 	m_litShader->SetBoolUniform("pointLights[1].isActive", false);
 	m_litShader->SetBoolUniform("dirLight.isActive", false);
 	m_litShader->SetFloatUniform("material.shininess", 16);
+
+
 
 	m_unlitShader = new Shader("../Assets/Shaders/unlit.vert", "../Assets/Shaders/unlit.frag");
 	m_debugShader = new Shader("../Assets/Shaders/debug.vert", "../Assets/Shaders/debug.frag");

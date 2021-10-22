@@ -15,8 +15,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AScript.cpp" />
+    <ClCompile Include="Bone.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCharacterComponent.cpp" />
@@ -61,7 +64,10 @@
     <ClCompile Include="Vector3f.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="AScript.h" />
+    <ClInclude Include="Bone.h" />
+    <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CCamera.h" />

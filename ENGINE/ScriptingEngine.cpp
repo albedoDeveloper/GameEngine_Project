@@ -106,6 +106,9 @@ lua_State *ScriptingEngine::NewState()
 		.addFunction("GetCSound", &GameObject::GetCSound)
 		.addFunction("SetStatic", &GameObject::SetStatic)
 		.addFunction("GetCCollider", &GameObject::GetCCollider)
+		.addFunction("AddCAnimator", &GameObject::AddCAnimator)
+		.addFunction("GetCAnimator", &GameObject::GetCAnimator)
+		.addFunction("SetActive", &GameObject::SetActive)
 		.endClass();
 
 	getGlobalNamespace(Lbuff)
@@ -174,6 +177,14 @@ lua_State *ScriptingEngine::NewState()
 		.deriveClass<CSound, CComponent>("CSound")
 		.addFunction("LoadSound", &CSound::LoadSound)
 		.addFunction("PlaySound", &CSound::PlaySound)
+		.endClass();
+
+	getGlobalNamespace(Lbuff)
+		.beginClass<CComponent>("CComponent")
+		.endClass()
+		.deriveClass<CAnimator, CComponent>("CAnimator")
+		.addFunction("PlayAnimation", &CAnimator::PlayAnimation)
+		.addFunction("AddAnimation", &CAnimator::AddAnimation)
 		.endClass();
 
 	getGlobalNamespace(Lbuff)

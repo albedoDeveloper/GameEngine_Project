@@ -2,6 +2,7 @@
 #include <glad/glad.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include <stbi_image/stb_image.h>
+#include <assimp/vector3.h>
 
 
 AModel::AModel(std::string path, std::string key)
@@ -47,7 +48,8 @@ void AModel::LoadModel(std::string path)
 {
 	// read file via assimp
 	Assimp::Importer importer;
-	const aiScene *scene = importer.ReadFile(path, aiProcess_FlipUVs | aiProcess_Triangulate | aiProcess_CalcTangentSpace | aiProcess_OptimizeMeshes | aiProcess_OptimizeGraph | aiProcess_GenNormals | aiProcess_JoinIdenticalVertices);
+	//importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, false);
+	const aiScene *scene = importer.ReadFile(path, aiProcess_FlipUVs | aiProcess_Triangulate | aiProcess_OptimizeGraph | aiProcess_OptimizeMeshes | aiProcess_CalcTangentSpace | aiProcess_GenNormals|aiProcess_Debone|aiProcess_LimitBoneWeights);
 
 
 	//Check that assimp imported correctly
@@ -100,6 +102,9 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 	{
 		Vertex vertex;
 		Vector3f vector;
+
+		SetVertexBoneDataToDefault(vertex);
+		
 		// positions
 		vector.SetX((mesh->mVertices[i].x * m_info.size) + m_info.translation.GetX());
 
@@ -132,6 +137,7 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 			vector.SetZ(mesh->mNormals[i].z);
 			vertex.Normal = vector;
 		}
+
 		// texture coordinates
 		if (mesh->mTextureCoords[0])
 		{
@@ -162,6 +168,8 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 
 		vertices.push_back(vertex);
 	}
+	
+	ExtractBoneWeightForVertices(vertices, mesh, scene);
 
 	m_numberOfFaces = mesh->mNumFaces;
 
@@ -193,7 +201,7 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		std::vector<Texture> heightMaps = loadMaterialTextures(material, aiTextureType_AMBIENT, "texture_height");
 		textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());*/
 	}
-
+	
 	m_meshes.push_back(Mesh(vertices, indices, textures));
 }
 
@@ -257,3 +265,81 @@ unsigned int AModel::TextureFromFile(const char *path, const std::string &direct
 
 	return textureID;
 }
+
+void AModel::SetVertexBoneDataToDefault(Vertex& vertex)
+{
+	for (int i = 0; i < 4 ; i++)
+	{
+		vertex.m_BoneIDs[i] = -1;
+		vertex.m_Weights[i] = 0.0f;
+	}
+}
+
+void AModel::ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh* mesh, const aiScene* scene)
+{
+	auto& boneInfoMap = m_BoneInfoMap;
+	int& boneCount = m_BoneCounter;
+	for (int boneIndex = 0; boneIndex < mesh->mNumBones; boneIndex++)
+	{
+		int boneID = -1;
+		std::string boneName = mesh->mBones[boneIndex]->mName.C_Str();
+
+		if (m_BoneInfoMap.find(boneName) == m_BoneInfoMap.end())
+		{
+			BoneInfo newBoneInfo;
+			newBoneInfo.id = m_BoneCounter;
+			newBoneInfo.offset = ConvertAiMatrixToMatrix4f(mesh->mBones[boneIndex]->mOffsetMatrix);
+			m_BoneInfoMap[boneName] = newBoneInfo;
+			boneID = m_BoneCounter;
+			m_BoneCounter++;
+		}
+		
+		else
+		{
+			boneID = m_BoneInfoMap[boneName].id;
+		}
+		
+		assert(boneID != -1);
+		
+		auto weights = mesh->mBones[boneIndex]->mWeights;
+		int numWeights = mesh->mBones[boneIndex]->mNumWeights;
+
+		for (int weightIndex = 0; weightIndex < numWeights; weightIndex++)
+		{
+			int vertexId = weights[weightIndex].mVertexId;
+			float weight = weights[weightIndex].mWeight;
+			
+			assert(vertexId <= vertices.size());
+			
+			SetVertexBoneData(vertices[vertexId], boneID, weight);
+		}
+	}
+}
+
+void AModel::SetVertexBoneData(Vertex& vertex, int boneID, float weight)
+{
+	for (int i = 0; i < 100; ++i)
+	{
+		
+		if (vertex.m_BoneIDs[i] < 0)
+		{
+			vertex.m_Weights[i] = weight;
+			vertex.m_BoneIDs[i] = boneID;
+			break;
+		}
+	}
+}
+	
+Matrix4f AModel::ConvertAiMatrixToMatrix4f(const aiMatrix4x4 & from)
+{
+	Matrix4f aiToMatrix;
+	
+	//the a,b,c,d in assimp is the row ; the 1,2,3,4 is the column
+	aiToMatrix.SetMatrixElement(0,0) = from.a1; aiToMatrix.SetMatrixElement(1,0) = from.a2; aiToMatrix.SetMatrixElement(2,0) = from.a3; aiToMatrix.SetMatrixElement(3,0) = from.a4;
+	aiToMatrix.SetMatrixElement(0,1) = from.b1; aiToMatrix.SetMatrixElement(1,1) = from.b2; aiToMatrix.SetMatrixElement(2,1) = from.b3;  aiToMatrix.SetMatrixElement(3,1) = from.b4;
+	aiToMatrix.SetMatrixElement(0,2) = from.c1; aiToMatrix.SetMatrixElement(1,2) = from.c2;  aiToMatrix.SetMatrixElement(2,2) = from.c3; aiToMatrix.SetMatrixElement(3,2) = from.c4;
+	aiToMatrix.SetMatrixElement(0,3) = from.d1; aiToMatrix.SetMatrixElement(1,3) = from.d2;  aiToMatrix.SetMatrixElement(2,3) = from.d3; aiToMatrix.SetMatrixElement(3,3) = from.d4;
+	
+	return aiToMatrix;
+}
+

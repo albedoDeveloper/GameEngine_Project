@@ -130,6 +130,15 @@
     <ClCompile Include="ShadowMapper.cpp">
       <Filter>Source\Misc\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Bone.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CAnimator.cpp">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClCompile>
     <ClCompile Include="ThirdParty\glad\src\glad.c">
       <Filter>ThirdParty\glad</Filter>
     </ClCompile>
@@ -269,6 +278,15 @@
     </ClInclude>
     <ClInclude Include="ShadowMapper.h">
       <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Bone.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CAnimator.h">
+      <Filter>Source\ComponentClasses\Source</Filter>
     </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>Source\Misc\Headers</Filter>

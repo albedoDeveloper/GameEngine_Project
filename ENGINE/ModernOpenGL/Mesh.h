@@ -43,6 +43,11 @@ struct Vertex
 		/// The vertexs bitangent coordinates
 		/// </summary>
 	Vector3f Bitangent;
+	
+	//bone indexes which will influence this vertex
+	int m_BoneIDs[4];
+	//weights from each bone
+	float m_Weights[4];
 };
 
 	/// <summary>

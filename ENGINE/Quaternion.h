@@ -22,6 +22,12 @@ public:
 		 */
 	Quaternion();
 
+	/**
+	 * constructs an identity quaternion using individual w,x,y,z values
+	 */
+	Quaternion(float w, float x, float y, float z);
+
+
 		/**
 		 * dot product of two Quaternions
 		 *
@@ -136,6 +142,19 @@ public:
 		 * \return
 		 */
 	Matrix4f Mat4Cast() const;
+
+
+	/**
+	 * Spherical interperolation between 2 quaternions.
+	 * 
+	 * \param one
+	 * \param two
+	 * \param scaleFactor
+	 * \return 
+	 */
+	Quaternion Slerp(const Quaternion& two, float scaleFactor);
+
+	Quaternion Normalize();
 
 private:
 	friend class Vector3f;

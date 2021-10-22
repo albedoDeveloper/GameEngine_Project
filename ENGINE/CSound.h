@@ -46,6 +46,8 @@ public:
 		*/
 	virtual void Update();
 
+	void ChangeVolume(std::string soundName, int volume);
+
 private:
 		/**
 		* @brief Sound variables struct
@@ -66,5 +68,7 @@ private:
 	std::unordered_map<std::string, Mix_Chunk *> soundList;
 
 		/** @brief sound information */
-	std::vector<SoundInfo> soundinfo;
+	std::map<std::string,SoundInfo> soundinfo;
+
+
 };
