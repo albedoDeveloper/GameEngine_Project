@@ -412,7 +412,65 @@ void GraphicsEngine::DrawDebug()
 	glBindVertexArray(VAODebug); CHECK_GL_ERROR();
 	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3); CHECK_GL_ERROR();
 	glBindVertexArray(0); CHECK_GL_ERROR();
+
+
+	//now draw the navmesh
+	//DrawDebugNavMesh();
 }
+
+void GraphicsEngine::DrawDebugNavMesh()
+{
+	/*m_debugShader->Use();
+
+	m_debugShader->SetMat4Uniform("model", Matrix4f());
+	m_debugShader->SetVec3Uniform("ourColour", Vector3f(1, 0, 0));
+
+	glDisable(GL_CULL_FACE); CHECK_GL_ERROR();
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); CHECK_GL_ERROR();*/
+	//m_debugShader->SetVec3Uniform("ourColour", Vector3f(0, 1, 0));
+
+
+
+	/*std::vector <float> tempVector;
+
+	tempVector.emplace_back(0);
+	tempVector.emplace_back(1);
+	tempVector.emplace_back(2);
+
+	tempVector.emplace_back(3);
+	tempVector.emplace_back(4);
+	tempVector.emplace_back(5);*/
+
+	/*for (int i = 0; i < COLLISION->debugRender->getNbTriangles(); i++)
+	{
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point1.x);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point1.y);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point1.z);
+
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.x);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.y);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point2.z);
+
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.x);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.y);
+		tempVector.emplace_back(COLLISION->debugRender->getTrianglesArray()[i].point3.z);
+	}*/
+
+	/*if (initDebug)
+	{
+		InitDebug(tempVector);
+	}
+	else
+	{
+		glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
+	}
+
+	glBindVertexArray(VAODebug); CHECK_GL_ERROR();
+	glDrawArrays(GL_TRIANGLES, 0,  3); CHECK_GL_ERROR();
+	glBindVertexArray(0); CHECK_GL_ERROR();*/
+}
+
+
 
 void GraphicsEngine::SetupDirLightFBO()
 {

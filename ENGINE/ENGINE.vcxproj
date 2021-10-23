@@ -24,6 +24,7 @@
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCharacterComponent.cpp" />
     <ClCompile Include="CDirectionalLight.cpp" />
+    <ClCompile Include="CNavMesh.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="CComponent.cpp" />
@@ -73,6 +74,7 @@
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CCharacterComponent.h" />
     <ClInclude Include="CDirectionalLight.h" />
+    <ClInclude Include="CNavMesh.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="CComponent.h" />

@@ -111,6 +111,11 @@ public:
 		*/
 	void DrawModel(AModel *model, const Transform &trans, const Shader *m_shader, bool noTexture);
 
+		/*
+		 * @brief Renders debug navmesh
+		*/
+	void DrawDebugNavMesh();
+
 		/**
 		 * @brief retrieves the ID by which a texture is stored in the graphics library
 		 * @param key the key by which it's stored by the asset factory

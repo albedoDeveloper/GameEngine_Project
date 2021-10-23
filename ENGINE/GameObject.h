@@ -21,6 +21,7 @@
 #include "CPointLight.h"
 #include "CDirectionalLight.h"
 #include "CAnimator.h"
+#include "CNavMesh.h"
 #include <iostream>
 
 	/**
@@ -166,6 +167,16 @@ public:
 	 * .
 	 */
 	CAnimator* GetCAnimator();
+
+	/**
+	 * adds a navmesh to the gameobject (Reccomend only one per scene)
+	 */
+	CNavMesh *AddCNavMesh();
+
+	/**
+	 * Retrieves the attached navmesh
+	 */
+	CNavMesh *GetCNavMesh();
 
 		/**
 		 * make this game objects transform a child of anothers.

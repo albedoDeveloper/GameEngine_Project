@@ -204,6 +204,9 @@ GetGameObject("light2"):SetParentObject("lightAnchor")
 GetGameObject("light2"):AddCStaticMesh():AssignModel("axis")
 GetGameObject("light2"):GetTransform():Translate(0.3,0,0)
 
+SpawnGameObject("NavMesh");
+GetGameObject("NavMesh"):GetTransform():SetRelativePosition(0, 2, 0);
+GetGameObject("NavMesh"):AddCNavMesh();
 
 SpawnGameObject("player");
 GetGameObject("player"):GetTransform():SetRelativePosition(0, 2, 0);
