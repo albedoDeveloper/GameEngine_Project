@@ -24,9 +24,7 @@ CCollider::~CCollider()
 
 void CCollider::Update()
 {
-
 	UpdateCollider();
-
 }
 
 void CCollider::Save(nlohmann::json &j)
@@ -170,7 +168,7 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	COLLISION->RegisterCollisionBody(m_colObj, this);
 	btBoxShape *boxShape = new btBoxShape(btVector3(x, y, z));
 	m_colObj->setCollisionShape(boxShape);
-	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj, (1 << layer), colMask);
+	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj, (1 << layer), -1);
 }
 
 void CCollider::AddCapsuleCollider(float radius, float height, int layer)
