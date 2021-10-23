@@ -11,6 +11,7 @@ CollisionManager::CollisionManager()
 	m_dispatcher{ &m_config },
 	m_collisionWorld{ &m_dispatcher, &m_broadphase, &m_config }
 {
+	m_collisionWorld.setDebugDrawer(GRAPHICS);
 }
 
 void CollisionManager::Init()
@@ -46,4 +47,9 @@ void CollisionManager::RegisterCollisionBody(btCollisionObject *body, CCollider 
 btCollisionWorld &CollisionManager::GetCollisionWorld()
 {
 	return m_collisionWorld;
+}
+
+void CollisionManager::DrawDebug()
+{
+	m_collisionWorld.debugDrawWorld();
 }

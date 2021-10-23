@@ -48,6 +48,8 @@ public:
 		return 0.0f;
 	}
 
+	void DrawDebug();
+
 private:
 	/** @brief The beginning size, before alteration, of the collider array */
 	const static int m_initialSize = 50;

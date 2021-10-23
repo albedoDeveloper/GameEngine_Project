@@ -195,6 +195,7 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	btBoxShape *boxShape = new btBoxShape(btVector3(x, y, z));
 	m_colObj->setCollisionShape(boxShape);
 	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj);
+	//UpdateCollider();
 }
 
 void CCollider::AddCapsuleCollider(float radius, float height, int layer)

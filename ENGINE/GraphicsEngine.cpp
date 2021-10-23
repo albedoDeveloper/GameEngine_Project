@@ -542,6 +542,7 @@ void GraphicsEngine::CameraRenderPass(bool debugMenu) const
 	GRAPHICS->SetViewportToWindowSize();
 	GRAPHICS->NewFrame(debugMenu);
 	GRAPHICS->RenderObjects();
+	COLLISION->DrawDebug();
 }
 
 CPointLight &GraphicsEngine::GetPointLight(unsigned index)
@@ -553,4 +554,60 @@ CPointLight &GraphicsEngine::GetPointLight(unsigned index)
 float GraphicsEngine::GetPointLightFarPlane() const
 {
 	return m_shadowMapper.GetPointLightFarPlane();
+}
+
+void GraphicsEngine::drawLine(const btVector3 &from, const btVector3 &to, const btVector3 &color)
+{
+	unsigned int VBO;
+	unsigned int VAO;
+	float vertices[6] = {
+		from.x(),
+		from.y(),
+		from.z(),
+		to.x(),
+		to.y(),
+		to.z()
+	};
+	Vector3f colourVec(
+		color.x(),
+		color.y(),
+		color.z()
+	);
+
+	m_debugShader->Use();
+	m_debugShader->SetMat4Uniform("projection", GetCameraProjection());
+	m_debugShader->SetMat4Uniform("view", GetCameraView());
+	m_debugShader->SetVec3Uniform("ourColour", colourVec);
+
+	glGenVertexArrays(1, &VAO);
+	glBindVertexArray(VAO);
+	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 6, vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+	glEnableVertexAttribArray(0);
+
+	glDrawArrays(GL_LINES, 0, 2);
+}
+
+void GraphicsEngine::drawContactPoint(const btVector3 &PointOnB, const btVector3 &normalOnB, btScalar distance, int lifeTime, const btVector3 &color)
+{
+}
+
+void GraphicsEngine::reportErrorWarning(const char *warningString)
+{
+	std::cerr << "[ERROR] " << warningString << std::endl;
+}
+
+void GraphicsEngine::draw3dText(const btVector3 &location, const char *textString)
+{
+}
+
+void GraphicsEngine::setDebugMode(int debugMode)
+{
+}
+
+int GraphicsEngine::getDebugMode() const
+{
+	return btIDebugDraw::DBG_DrawWireframe;
 }
