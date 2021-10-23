@@ -19,7 +19,7 @@ void CNavMesh::Update()
 
 void CNavMesh::Render()
 {
-	//GRAPHICS->DrawDebugNavMesh();
+	GRAPHICS->DrawDebugNavMesh(this , m_transform.GetWorldTransform());
 }
 
 void CNavMesh::Save(nlohmann::json &j)

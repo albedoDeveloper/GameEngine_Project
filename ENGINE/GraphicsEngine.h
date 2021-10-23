@@ -18,6 +18,7 @@
 #include "ShadowMapper.h"
 #include <SDL2/SDL.h>
 #include <glad/glad.h>
+#include "CNavMesh.h"
 
 class CCamera;
 
@@ -114,7 +115,7 @@ public:
 		/*
 		 * @brief Renders debug navmesh
 		*/
-	void DrawDebugNavMesh();
+	void DrawDebugNavMesh(CNavMesh *navMesh, const Transform &worldTrans);
 
 		/**
 		 * @brief retrieves the ID by which a texture is stored in the graphics library

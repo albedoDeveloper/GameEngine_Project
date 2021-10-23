@@ -11,7 +11,7 @@
 
 
 
-struct NavNode
+class NavNode
 {
 	int id;
 	Transform transform;
