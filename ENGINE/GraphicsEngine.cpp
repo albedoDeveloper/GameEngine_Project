@@ -142,7 +142,7 @@ void GraphicsEngine::RenderObjects()
 
 	if (m_drawDebug)
 	{
-		DrawDebug();
+		COLLISION->DrawDebug();
 	}
 }
 
@@ -542,7 +542,6 @@ void GraphicsEngine::CameraRenderPass(bool debugMenu) const
 	GRAPHICS->SetViewportToWindowSize();
 	GRAPHICS->NewFrame(debugMenu);
 	GRAPHICS->RenderObjects();
-	COLLISION->DrawDebug();
 }
 
 CPointLight &GraphicsEngine::GetPointLight(unsigned index)
@@ -610,7 +609,7 @@ void GraphicsEngine::drawContactPoint(const btVector3 &PointOnB, const btVector3
 	m_debugShader->SetMat4Uniform("view", GetCameraView());
 	m_debugShader->SetVec3Uniform("ourColour", colourVec);
 
-	glPointSize(3);
+	glPointSize(16);
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
 	glGenBuffers(1, &VBO);

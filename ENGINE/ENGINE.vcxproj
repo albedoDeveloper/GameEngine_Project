@@ -226,7 +226,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;BT_THREADSAFE=1;BT_USE_DOUBLE_PRECISION</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>.\ThirdParty\glad\include;../include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\ThirdParty\glad\include;../include;../include/bulletphysics</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
