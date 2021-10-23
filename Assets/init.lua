@@ -55,11 +55,19 @@ GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_to
 
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
+GetGameObject("waitress"):AddCAffordanceManager():AddAffordance("OrderFood","girl_Fighting","")
+GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","energy", 0.7)
+GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","joy", -0.7)
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
 GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("toilet_block"):GetCCollider():CollideWith(2)
+GetGameObject("toilet_block"):AddCAffordanceManager():AddAffordance("ToiletBreak","girl_Talking","")
+GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("ToiletBreak","energy", -0.7)
+GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("ToiletBreak","joy", 0.7)
+
+
 
 SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
@@ -79,12 +87,15 @@ GetGameObject("tavern_glass_door_wall"):GetCCollider():CollideWith(2)
 SpawnGameObject("basic_girl"):SetStatic(false)
 GetGameObject("basic_girl"):AddCStaticMesh():AssignModel("Breathing Idle")
 GetGameObject("basic_girl"):AddCAnimator()
-GetGameObject("basic_girl"):GetCAnimator():AddAnimation("basic_girl/girlboxingfixed.fbx",false, "basic_girl")
-GetGameObject("basic_girl"):GetCAnimator():AddAnimation("basic_girl/girlIdle.fbx", true, "Breathing Idle")
-GetGameObject("basic_girl"):GetCAnimator():AddAnimation("basic_girl/girlTalking.fbx", false, "girlTalking")
+GetGameObject("basic_girl"):GetCAnimator():AddAnimation("basic_girl/girlboxingfixed.fbx",false, "girl_Fighting")
+GetGameObject("basic_girl"):GetCAnimator():AddAnimation("basic_girl/girlIdle.fbx", true, "girl_Idle")
+GetGameObject("basic_girl"):GetCAnimator():AddAnimation("basic_girl/girlTalking.fbx", false, "girl_Talking")
 GetGameObject("basic_girl"):AddCSound():LoadSound("girlTextSpeechOne.wav")
 GetGameObject("basic_girl"):GetCSound():LoadSound("girlTextSpeechThree.wav")
-GetGameObject("basic_girl"):AddCScript():AssignScript("girl1script")
+GetGameObject("basic_girl"):AddCAgent():AddEmotion("joy",0.7)
+GetGameObject("basic_girl"):GetCAgent():AddEmotion("energy",0.0)
+--GetGameObject("basic_girl"):AddCScript():AssignScript("girl1script")
+--GetGameObject("basic_girl"):AddCCollider():AddBoxCollider(0.5,0.5,0.5,0,-1,0,false,1)
 
 SpawnGameObject("basic_girl2"):SetStatic(false)
 GetGameObject("basic_girl2"):AddCStaticMesh():AssignModel("Breathing Idle")
@@ -93,7 +104,7 @@ GetGameObject("basic_girl2"):GetCAnimator():AddAnimation("basic_girl/girlDying.f
 GetGameObject("basic_girl2"):GetCAnimator():AddAnimation("basic_girl/girlIdle.fbx", true, "Breathing Idle")
 GetGameObject("basic_girl2"):GetCAnimator():AddAnimation("basic_girl/girlTalking.fbx", false, "girlTalking")
 GetGameObject("basic_girl2"):AddCSound():LoadSound("girlTextSpeechTwo.wav")
-GetGameObject("basic_girl2"):AddCScript():AssignScript("girl2script")
+--GetGameObject("basic_girl2"):AddCScript():AssignScript("girl2script")
 GetGameObject("basic_girl2"):GetTransform():RotateLocalY(180)
 GetGameObject("basic_girl2"):GetTransform():Translate(0,0,1.4)
 

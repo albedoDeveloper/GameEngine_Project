@@ -22,7 +22,8 @@
 #include "CDirectionalLight.h"
 #include "CAnimator.h"
 #include <iostream>
-
+#include "CAgent.h"
+#include "CAffordanceManager.h"
 	/**
 	 * @brief An object as represented in the game world containing all information on the object itself and its components
 	*/
@@ -167,6 +168,13 @@ public:
 	 */
 	CAnimator* GetCAnimator();
 
+	CAffordanceManager* AddCAffordanceManager();
+
+	CAffordanceManager* GetCAffordanceManager();
+
+	CAgent *AddCAgent();
+
+	CAgent *GetCAgent();
 		/**
 		 * make this game objects transform a child of anothers.
 		 *
