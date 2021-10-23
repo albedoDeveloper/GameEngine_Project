@@ -49,7 +49,18 @@ btCollisionWorld &CollisionManager::GetCollisionWorld()
 	return m_collisionWorld;
 }
 
+btScalar CollisionManager::addSingleResult(btManifoldPoint &cp, const btCollisionObjectWrapper *colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper *colObj1Wrap, int partId1, int index1)
+{
+	m_collision = true;
+	return 0.0;
+}
+
 void CollisionManager::DrawDebug()
 {
 	m_collisionWorld.debugDrawWorld();
+}
+
+void CollisionManager::PerformCollisionDetection()
+{
+	m_collisionWorld.performDiscreteCollisionDetection();
 }

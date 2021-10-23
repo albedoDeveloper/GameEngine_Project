@@ -134,30 +134,6 @@ void CCollider::UpdateCollider()
 	worldT.setOrigin(position);
 	worldT.setRotation(orientation);
 	m_colObj->setWorldTransform(worldT);
-
-	/*if (colBody->getNbColliders() != 0)
-	{
-		auto worldPosition = reactphysics3d::Vector3(
-			m_transform.GetWorldTransform().GetRelativePosition().GetX(),
-			m_transform.GetWorldTransform().GetRelativePosition().GetY(),
-			m_transform.GetWorldTransform().GetRelativePosition().GetZ()
-		);
-
-		reactphysics3d::Quaternion worldOrientation(reactphysics3d::Quaternion::identity());
-		if (m_allowRotation)
-		{
-			worldOrientation = reactphysics3d::Quaternion(
-				m_transform.GetWorldTransform().GetRelativeOrientation().GetX(),
-				m_transform.GetWorldTransform().GetRelativeOrientation().GetY(),
-				m_transform.GetWorldTransform().GetRelativeOrientation().GetZ(),
-				m_transform.GetWorldTransform().GetRelativeOrientation().GetW()
-			);
-			worldOrientation.inverse();
-		}
-
-		reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
-		col->getBody()->setTransform(worldTransform);
-	}*/
 }
 
 void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize, int layer, bool allowRotation)
@@ -195,7 +171,7 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	btBoxShape *boxShape = new btBoxShape(btVector3(x, y, z));
 	m_colObj->setCollisionShape(boxShape);
 	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj);
-	//UpdateCollider();
+	UpdateCollider();
 }
 
 void CCollider::AddCapsuleCollider(float radius, float height, int layer)

@@ -130,6 +130,7 @@ void Engine::OnEvent(SDL_Event *e)
 void Engine::Update()
 {
 	GAMEOBJECT->Update();
+	COLLISION->PerformCollisionDetection();
 	if (INPUT->GetKeyDown('`'))
 	{
 		m_debugMenu = !m_debugMenu;

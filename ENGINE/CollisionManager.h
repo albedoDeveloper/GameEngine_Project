@@ -42,13 +42,11 @@ public:
 
 	btCollisionWorld &GetCollisionWorld();
 
-	virtual btScalar addSingleResult(btManifoldPoint &cp, const btCollisionObjectWrapper *colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper *colObj1Wrap, int partId1, int index1)
-	{
-		m_collision = true;
-		return 0.0f;
-	}
+	virtual btScalar addSingleResult(btManifoldPoint &cp, const btCollisionObjectWrapper *colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper *colObj1Wrap, int partId1, int index1);
 
 	void DrawDebug();
+
+	void PerformCollisionDetection();
 
 private:
 	/** @brief The beginning size, before alteration, of the collider array */

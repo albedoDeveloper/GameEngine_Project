@@ -592,6 +592,34 @@ void GraphicsEngine::drawLine(const btVector3 &from, const btVector3 &to, const 
 
 void GraphicsEngine::drawContactPoint(const btVector3 &PointOnB, const btVector3 &normalOnB, btScalar distance, int lifeTime, const btVector3 &color)
 {
+	unsigned int VBO;
+	unsigned int VAO;
+	float vertices[3] = {
+		PointOnB.x(),
+		PointOnB.y(),
+		PointOnB.z(),
+	};
+	Vector3f colourVec(
+		color.x(),
+		color.y(),
+		color.z()
+	);
+
+	m_debugShader->Use();
+	m_debugShader->SetMat4Uniform("projection", GetCameraProjection());
+	m_debugShader->SetMat4Uniform("view", GetCameraView());
+	m_debugShader->SetVec3Uniform("ourColour", colourVec);
+
+	glPointSize(3);
+	glGenVertexArrays(1, &VAO);
+	glBindVertexArray(VAO);
+	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 3, vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+	glEnableVertexAttribArray(0);
+
+	glDrawArrays(GL_POINTS, 0, 1);
 }
 
 void GraphicsEngine::reportErrorWarning(const char *warningString)
@@ -609,5 +637,5 @@ void GraphicsEngine::setDebugMode(int debugMode)
 
 int GraphicsEngine::getDebugMode() const
 {
-	return btIDebugDraw::DBG_DrawWireframe;
+	return btIDebugDraw::DBG_DrawWireframe + btIDebugDraw::DBG_DrawContactPoints;
 }
