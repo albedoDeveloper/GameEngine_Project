@@ -150,12 +150,6 @@ void Engine::Update()
 
 	if (m_loadState)
 		levelLoader.LoadLevel();
-
-	if (m_drawColliders)
-	{
-		// only used to update collider triangles/lines for debugging. deltaTime irrelevant
-		COLLISION->physicsWorld->update(1);
-	}
 }
 
 void Engine::Render()

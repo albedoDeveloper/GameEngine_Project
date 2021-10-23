@@ -6,7 +6,7 @@
  *********************************************************************/
 #pragma once
 #include "CComponent.h"
-#include <reactphysics3d/reactphysics3d.h>
+#include <bulletphysics/btBulletCollisionCommon.h>
 #include <memory>
 
 	/**
@@ -21,14 +21,7 @@ public:
 		 * @param parentObj pointer to parent object of this component
 		*/
 	CCollider(Transform *parent, GameObject *parentObj);
-	~CCollider()
-	{
-		colBody = nullptr;
-		delete colBody;
-
-		col = nullptr;
-		delete colBody;
-	}
+	~CCollider();
 
 		/**
 		 * @brief initialises the component at start of program
@@ -73,6 +66,7 @@ public:
 	 */
 	glm::vec3 m_offset;
 
+
 public:
 		/** @brief whether the collider is registered with the collider manager */
 	bool m_isRegistered = false;
@@ -86,12 +80,7 @@ public:
 		/**
 		 * @brief A pointer to the collisionbody which contains all the colliders on the model
 		 */
-	reactphysics3d::CollisionBody *colBody = nullptr;
-
-		/**
-		 * @brief A pointer to the currently used collider of the body.
-		 */
-	reactphysics3d::Collider *col = nullptr;
+	btCollisionObject *m_colObj;
 
 		/**
 		 * @brief list of the Vertices of the concave collider, if in use.
@@ -151,5 +140,10 @@ public:
 	 *
 	 * \param layerToCollideWith
 	 */
-	void CollideWith(int layerToCollideWith);
+	//void CollideWith(int layerToCollideWith);
+
+private:
+	float boxXHalfSize;
+	float boxYHalfSize;
+	float boxZHalfSize;
 };

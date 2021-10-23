@@ -375,7 +375,7 @@ void GraphicsEngine::InitDebug(std::vector <float> &tempVector)
 
 void GraphicsEngine::DrawDebug()
 {
-	m_debugShader->Use();
+	/*m_debugShader->Use();
 
 	m_debugShader->SetMat4Uniform("model", Matrix4f());
 	m_debugShader->SetVec3Uniform("ourColour", Vector3f(1, 0, 0));
@@ -411,7 +411,7 @@ void GraphicsEngine::DrawDebug()
 
 	glBindVertexArray(VAODebug); CHECK_GL_ERROR();
 	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3); CHECK_GL_ERROR();
-	glBindVertexArray(0); CHECK_GL_ERROR();
+	glBindVertexArray(0); CHECK_GL_ERROR();*/
 }
 
 void GraphicsEngine::SetupDirLightFBO()
