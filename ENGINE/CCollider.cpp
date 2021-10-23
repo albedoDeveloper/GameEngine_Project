@@ -136,7 +136,7 @@ void CCollider::UpdateCollider()
 	m_colObj->setWorldTransform(worldT);
 }
 
-void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize, int layer, bool allowRotation)
+void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize, int layer, bool allowRotation, int colMask)
 {
 	m_allowRotation = allowRotation;
 
@@ -170,8 +170,7 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	COLLISION->RegisterCollisionBody(m_colObj, this);
 	btBoxShape *boxShape = new btBoxShape(btVector3(x, y, z));
 	m_colObj->setCollisionShape(boxShape);
-	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj);
-	UpdateCollider();
+	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj, (1 << layer), colMask);
 }
 
 void CCollider::AddCapsuleCollider(float radius, float height, int layer)

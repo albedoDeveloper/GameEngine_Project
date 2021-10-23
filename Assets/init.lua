@@ -36,12 +36,12 @@ LoadScript("girl2script", "girl2script.lua")
 
 SpawnGameObject("fridge1"):SetStatic(true)
 GetGameObject("fridge1"):AddCStaticMesh():AssignModel("fridge1")
-GetGameObject("fridge1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("fridge1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 --GetGameObject("fridge1"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("fridge2"):SetStatic(true)
 GetGameObject("fridge2"):AddCStaticMesh():AssignModel("fridge2")
-GetGameObject("fridge2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("fridge2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 --GetGameObject("fridge2"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("beertap1"):SetStatic(true)
@@ -58,22 +58,22 @@ GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
-GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 --GetGameObject("toilet_block"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
-GetGameObject("tavern_glass_door_wall_long_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("tavern_glass_door_wall_long_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 --GetGameObject("tavern_glass_door_wall_long_2"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("tavern_glass_door_wall_long"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long")
-GetGameObject("tavern_glass_door_wall_long"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("tavern_glass_door_wall_long"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 --GetGameObject("tavern_glass_door_wall_long"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("tavern_glass_door_wall"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_glass_door_wall")
-GetGameObject("tavern_glass_door_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("tavern_glass_door_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 --GetGameObject("tavern_glass_door_wall"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("basic_girl"):SetStatic(false)
@@ -99,7 +99,7 @@ GetGameObject("basic_girl2"):GetTransform():Translate(0,0,1.4)
 
 SpawnGameObject("spiked_door_bar"):SetStatic(true)
 GetGameObject("spiked_door_bar"):AddCStaticMesh():AssignModel("spiked_door_bar")
-GetGameObject("spiked_door_bar"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("spiked_door_bar"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 --GetGameObject("spiked_door_bar"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("south_bar_wall"):SetStatic(true)
@@ -107,17 +107,17 @@ GetGameObject("south_bar_wall"):AddCStaticMesh():AssignModel("south_bar_wall")
 
 SpawnGameObject("south_bar_barrier_2"):SetStatic(true)
 GetGameObject("south_bar_barrier_2"):AddCStaticMesh():AssignModel("south_bar_barrier_2")
-GetGameObject("south_bar_barrier_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("south_bar_barrier_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 --GetGameObject("south_bar_barrier_2"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("south_bar_barrier"):SetStatic(true)
 GetGameObject("south_bar_barrier"):AddCStaticMesh():AssignModel("south_bar_barrier")
-GetGameObject("south_bar_barrier"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("south_bar_barrier"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 --GetGameObject("south_bar_barrier"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("tavern_floor"):SetStatic(true)
 GetGameObject("tavern_floor"):AddCStaticMesh():AssignModel("tavern_floor")
-GetGameObject("tavern_floor"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("tavern_floor"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 --GetGameObject("tavern_floor"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("roof_interior"):SetStatic(true)
@@ -125,7 +125,7 @@ GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
 
 SpawnGameObject("pool-table"):SetStatic(true)
 GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
-GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 --GetGameObject("pool-table"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("main_bar_bench"):SetStatic(true)
@@ -135,12 +135,12 @@ GetGameObject("main_bar_bench"):AddCStaticMesh():AssignModel("main_bar_bench")
 
 SpawnGameObject("graffiti_block"):SetStatic(true)
 GetGameObject("graffiti_block"):AddCStaticMesh():AssignModel("graffiti_block")
-GetGameObject("graffiti_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("graffiti_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 --GetGameObject("graffiti_block"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("behind_bar_block"):SetStatic(true)
 GetGameObject("behind_bar_block"):AddCStaticMesh():AssignModel("behind_bar_block")
-GetGameObject("behind_bar_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("behind_bar_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 --GetGameObject("behind_bar_block"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("bar_floor_rod"):SetStatic(true)
@@ -148,13 +148,11 @@ GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
 
 SpawnGameObject("barrel1"):SetStatic(true)
 GetGameObject("barrel1"):AddCStaticMesh():AssignModel("barrel1")
-GetGameObject("barrel1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
---GetGameObject("barrel1"):GetCCollider():CollideWith(2)
+GetGameObject("barrel1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 
 SpawnGameObject("barrel2"):SetStatic(true)
 GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
-GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
---GetGameObject("barrel2"):GetCCollider():CollideWith(2)
+GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 
 SpawnGameObject("crate"):SetStatic(false)
 GetGameObject("crate"):AddCStaticMesh():AssignModel("crate")
@@ -164,8 +162,7 @@ GetGameObject("crate"):AddCScript():AssignScript("rotate")
 
 SpawnGameObject("back_wall"):SetStatic(true)
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
-GetGameObject("back_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
---GetGameObject("back_wall"):GetCCollider():CollideWith(2)
+GetGameObject("back_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 
 SpawnGameObject("lightAnchor"):SetStatic(false)
 GetGameObject("lightAnchor"):GetTransform():SetRelativePosition(4.954999923706055,
@@ -207,8 +204,7 @@ GetGameObject("light2"):GetTransform():Translate(0.3,0,0)
 
 SpawnGameObject("player");
 GetGameObject("player"):GetTransform():SetRelativePosition(0, 2, 0);
-GetGameObject("player"):AddCCollider():AddBoxCollider(0.25, 1.4, 0.25, 0 ,0, 0, false, 2, false);
---GetGameObject("player"):GetCCollider():CollideWith(1);
+GetGameObject("player"):AddCCollider():AddBoxCollider(0.25, 1.4, 0.25, 0 ,0, 0, false, 1, false, 31);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
 GetGameObject("player"):GetCCamera():GetTransform():Translate(0,0.5,0);
