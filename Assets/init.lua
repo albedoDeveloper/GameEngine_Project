@@ -56,16 +56,21 @@ GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_to
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
 GetGameObject("waitress"):AddCAffordanceManager():AddAffordance("OrderFood","agent_dance","")
-GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","energy", 0.7)
+GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","energy", 0.3)
 GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","joy", -0.7)
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
 GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("toilet_block"):GetCCollider():CollideWith(2)
+----------------------
 GetGameObject("toilet_block"):AddCAffordanceManager():AddAffordance("ToiletBreak","agent_walk","")
-GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("ToiletBreak","energy", -0.7)
-GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("ToiletBreak","joy", 0.7)
+GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("ToiletBreak","energy", 0.7)
+GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("ToiletBreak","joy", -0.4)
+------------------------
+GetGameObject("toilet_block"):GetCAffordanceManager():AddAffordance("DrinkWater","agent_drinking","")
+GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("DrinkWater","energy", -0.7)
+GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("DrinkWater","joy", 0.7)
 
 
 
@@ -96,8 +101,10 @@ GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/walk.fbx", tru
 GetGameObject("ai_agent_1"):AddCSound():LoadSound("girlTextSpeechTwo.wav")
 GetGameObject("ai_agent_1"):GetTransform():Translate(2,0,1.4)
 GetGameObject("ai_agent_1"):AddCAgent():AddEmotion("joy",0.7, 1.0, -0.002)
-GetGameObject("ai_agent_1"):GetCAgent():AddEmotion("energy",0.0, 1.0,0.0)
-GetGameObject("ai_agent_1"):GetCAgent():AddTrait("ToiletBreak",-1.0)
+GetGameObject("ai_agent_1"):GetCAgent():AddEmotion("energy",0.0, 1.0, 0.0)
+--GetGameObject("ai_agent_1"):GetCAgent():AddTrait("ToiletBreak",-1.0)
+--GetGameObject("ai_agent_1"):GetCAgent():AddTrait("DrinkWater", 0.2)
+--GetGameObject("ai_agent_1"):GetCAgent():AddTrait("OrderFood", -0.2)
 
 SpawnGameObject("spiked_door_bar"):SetStatic(true)
 GetGameObject("spiked_door_bar"):AddCStaticMesh():AssignModel("spiked_door_bar")

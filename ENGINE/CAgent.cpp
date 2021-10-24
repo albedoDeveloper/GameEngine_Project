@@ -44,7 +44,8 @@ void CAgent::Update()
 	
 	for (auto emotion : emotions)
 	{
-		emotion.second.emotion += emotion.second.emotionNativeChange;
+		if(emotion.second.emotion < 1 && emotion.second.emotion > 0)
+			emotion.second.emotion += emotion.second.emotionNativeChange;
 	}
 	
 }
@@ -52,7 +53,8 @@ void CAgent::Update()
 void CAgent::AiThink()
 {
 	FindNewAffordance();
-	if(inAffordance)
+	
+	if (currentAffordance != nullptr)
 		currentState = AiState::MOVE;
 }
 
@@ -77,6 +79,14 @@ void CAgent::AiAction()
 		for (auto &emotionEffect : currentAffordance->EmotionEffectors)
 		{
 			emotions.at(emotionEffect.first).emotion += emotionEffect.second * emotions.at(lowestName).multipler;
+			
+			if (emotions.at(emotionEffect.first).emotion > 1)
+				emotions.at(emotionEffect.first).emotion = 1;
+			
+			else if (emotions.at(emotionEffect.first).emotion < 0)
+				emotions.at(emotionEffect.first).emotion = 0;
+			
+			std::cout << lowestName << "+" << emotionEffect.first << " = " << emotions.at(emotionEffect.first).emotion;
 		}
 		currentState = AiState::THINK;
 	}
@@ -92,10 +102,11 @@ void CAgent::FindNewAffordance()
 		if (emotion.second.emotion < lowest)
 		{
 			lowestName = emotion.first;
+			lowest = emotion.second.emotion;
 		}
 	}
 
-	auto highestImprovement = 0.0f;
+	auto highestImprovement = -100;
 
 	for (auto &affordancelist : allAffordances)
 	{
@@ -103,7 +114,7 @@ void CAgent::FindNewAffordance()
 		{
 			if (affordance.second.EmotionEffectors.count(lowestName) != 0)
 			{
-				auto trait = 1.0f;
+				auto trait = 1.0;
 
 				if (traits.count(affordance.first) != 0)
 					trait = traits.at(affordance.first);
@@ -111,7 +122,7 @@ void CAgent::FindNewAffordance()
 				if (affordance.second.EmotionEffectors.find(lowestName)->second * trait >= highestImprovement)
 				{
 					currentAffordance = &affordance.second;
-					inAffordance = true;
+					highestImprovement = affordance.second.EmotionEffectors.find(lowestName)->second * trait;
 				}
 
 			}

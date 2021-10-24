@@ -68,7 +68,7 @@ class CAgent : public CComponent
 		std::unordered_map<std::string, float> traits;
 
 
-		bool inAffordance = false;
+		bool inAffordance = true;
 		
 		Affordance* currentAffordance = nullptr;
 
