@@ -13,8 +13,41 @@
 
 class NavNode
 {
-	int id;
+	//CNavMesh* parentMesh;
+
+	private:
+	int xPos;
+	int zPos;
 	Transform transform;
+
+	//bool active;
+
+	public:
+		NavNode( Transform parentTransform, int x, int z)
+		{
+			xPos = x;
+			zPos = z;
+			transform.SetRelativePosition(x,0,z);
+			
+			//active = true;
+		}
+
+		int GetXPos()
+		{
+			return xPos;
+		}
+
+		int GetZPos()
+		{
+			return zPos;
+		}
+
+		Transform* GetTransform()
+		{
+			return &transform;
+		}
+
+
 };
 
 	/**
@@ -66,10 +99,15 @@ class CNavMesh : public CComponent
 		*/
 	void GenerateNavMesh();
 
+		/**
+		 * @brief Retrieves the Navigation Nodes vector
+		*/
+	std::vector<NavNode*> GetNavNodes();
+
 private:
 		/**
 		 * @brief The vars for this comp
 		*/
-		std::vector<NavNode> navNodes;
+		std::vector<NavNode*> m_navNodes;
 	
 };

@@ -420,29 +420,51 @@ void GraphicsEngine::DrawDebug()
 
 void GraphicsEngine::DrawDebugNavMesh(CNavMesh *navMesh,const Transform &worldTrans)
 {
-	/*m_debugShader->Use();
+	
+	
 
-	m_debugShader->SetMat4Uniform("model", Matrix4f());
-	m_debugShader->SetVec3Uniform("ourColour", Vector3f(1, 0, 0));
-	*/
 	glDisable(GL_CULL_FACE); CHECK_GL_ERROR();
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); CHECK_GL_ERROR();
-	m_debugShader->SetVec3Uniform("ourColour", Vector3f(0, 1, 0));
+	
+	std::vector<float> combinedVertices = DrawCube(worldTrans, Colour::blue);
+	
+	int i = 0;
+	for (auto it : navMesh->GetNavNodes())
+	{
+		i++;
+
+
+		//colour change here, cache current colour
+
+		std::vector<float> nodeVertices = DrawCube(it->GetTransform()->GetWorldTransform(), Colour::green);
+
+		combinedVertices.insert(combinedVertices.end(), nodeVertices.begin(), nodeVertices.end());
 
 
 
-	std::vector <float> tempVector;
+	}
 
-	tempVector.emplace_back(0);
-	tempVector.emplace_back(1);
-	tempVector.emplace_back(2);
+	
 
-	tempVector.emplace_back(3);
-	tempVector.emplace_back(4);
-	tempVector.emplace_back(5);
+	/*for (size_t i = 0; i < combinedVertices.size(); i++)
+	{
+		std::cout << "Vertice "<< i << " at pos = " << combinedVertices[i] << std::endl;
+	}*/
+	
+	glBufferData(GL_ARRAY_BUFFER, sizeof(combinedVertices.data()[0]) * combinedVertices.size(), combinedVertices.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
+
+	glBindVertexArray(VAODebug); CHECK_GL_ERROR();
+	glDrawArrays(GL_TRIANGLES, 0, 72 * i); CHECK_GL_ERROR();
+	glBindVertexArray(0); CHECK_GL_ERROR();
+	
+}
+
+std::vector<float> GraphicsEngine::DrawCube(const Transform &worldTrans, const double color[3])
+{
+	m_debugShader->SetVec3Uniform("ourColour", Vector3f(color[0], color[1], color[2]));
 
 	//define the cube
-	float vertices[] = {
+	std::vector<float> vertices = {
 		// face one
 			worldTrans.GetRelativePosition().GetX() + 1.0f,  worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // top right
 			worldTrans.GetRelativePosition().GetX() + -1.0f,  worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // top left
@@ -475,21 +497,29 @@ void GraphicsEngine::DrawDebugNavMesh(CNavMesh *navMesh,const Transform &worldTr
 			worldTrans.GetRelativePosition().GetX() + -1.0f, worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // bottom right 
 
 	};
+
+
+
+
+
 	//define the indices (so we dont double up on positions)
-	unsigned int indices[] = {  // note that we start from 0!
-	0, 1, 3,   // first triangle
-	1, 2, 3    // second triangle
-	};
-	
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(tempVector.data()[0]) * tempVector.size(), tempVector.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
+	//unsigned int indices[] = {  // note that we start from 0!
+	//0, 1, 3,   // first triangle
+	//1, 2, 3    // second triangle
+	//};
 
-	glBindVertexArray(VAODebug); CHECK_GL_ERROR();
-	glDrawArrays(GL_TRIANGLES, 0, 72); CHECK_GL_ERROR();
-	glBindVertexArray(0); CHECK_GL_ERROR();
+	//unsigned int EBO;
+	//glGenBuffers(1, &EBO);
+
+
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices.data()[0]) * vertices.size(), vertices.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
+
+	return vertices;
+
 }
-
-
 
 void GraphicsEngine::SetupDirLightFBO()
 {

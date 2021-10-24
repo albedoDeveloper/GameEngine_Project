@@ -117,6 +117,11 @@ public:
 		*/
 	void DrawDebugNavMesh(CNavMesh *navMesh, const Transform &worldTrans);
 
+		/*
+		 * @brief Renders a cube at transform
+		*/
+	std::vector<float> DrawCube(const Transform &worldTrans, const double color[3]);
+
 		/**
 		 * @brief retrieves the ID by which a texture is stored in the graphics library
 		 * @param key the key by which it's stored by the asset factory
