@@ -120,7 +120,7 @@ public:
 		/*
 		 * @brief Renders a cube at transform
 		*/
-	std::vector<float> DrawCube(const Transform &worldTrans, const double color[3]);
+	std::vector<float> DrawCube(const Transform &worldTrans, const double color[3], float scale);
 
 		/**
 		 * @brief retrieves the ID by which a texture is stored in the graphics library

@@ -423,78 +423,99 @@ void GraphicsEngine::DrawDebugNavMesh(CNavMesh *navMesh,const Transform &worldTr
 	
 	
 
-	glDisable(GL_CULL_FACE); CHECK_GL_ERROR();
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); CHECK_GL_ERROR();
 	
-	std::vector<float> combinedVertices = DrawCube(worldTrans, Colour::blue);
+	
+	std::vector<float> combinedVertices/* = DrawCube(worldTrans, Colour::blue,0.25f)*/;
+	std::vector<float> combinedOddVertices /*= DrawCube(worldTrans, Colour::blue,0.25f)*/;
 	
 	int i = 0;
 	for (auto it : navMesh->GetNavNodes())
 	{
 		i++;
 
+		//std::vector<float> nodeVertices;
 
-		//colour change here, cache current colour
+		double myColor[3]{};
+		if (it->GetActive())
+		{
+			//glDisable(GL_CULL_FACE); CHECK_GL_ERROR();
+			//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); CHECK_GL_ERROR();
 
-		std::vector<float> nodeVertices = DrawCube(it->GetTransform()->GetWorldTransform(), Colour::green);
+			myColor[0] = Colour::green[0];
+			myColor[1] = Colour::green[1];
+			myColor[2] = Colour::green[2];
 
-		combinedVertices.insert(combinedVertices.end(), nodeVertices.begin(), nodeVertices.end());
+			std::vector<float> nodeVertices = DrawCube(it->GetTransform()->GetWorldTransform(), myColor,0.25f);
+		
+			combinedVertices.insert(combinedVertices.end(), nodeVertices.begin(), nodeVertices.end());
 
+			/*glBufferData(GL_ARRAY_BUFFER, sizeof(combinedVertices.data()[0]) * combinedVertices.size(), combinedVertices.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
 
+			glBindVertexArray(VAODebug); CHECK_GL_ERROR();
+			glDrawArrays(GL_TRIANGLES, 0, sizeof(combinedVertices.data()[0]) * combinedVertices.size()); CHECK_GL_ERROR();
+			glBindVertexArray(0); CHECK_GL_ERROR();*/
 
+		}
+		else
+		{
+			//glDisable(GL_CULL_FACE); CHECK_GL_ERROR();
+			//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); CHECK_GL_ERROR();
+			
+			myColor[0] = Colour::blue[0];
+			myColor[1] = Colour::blue[1];
+			myColor[2] = Colour::blue[2];
+
+			std::vector<float> nodeVertices = DrawCube(it->GetTransform()->GetWorldTransform(), myColor, 0.25f);
+
+			//combinedOddVertices.insert(combinedOddVertices.end(), nodeVertices.begin(), nodeVertices.end());
+
+			//glBufferData(GL_ARRAY_BUFFER, sizeof(combinedOddVertices.data()[0]) * combinedOddVertices.size(), combinedOddVertices.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
+
+			//glBindVertexArray(VAODebug); CHECK_GL_ERROR();
+			//glDrawArrays(GL_TRIANGLES, 0, sizeof(combinedOddVertices.data()[0]) * combinedOddVertices.size()); CHECK_GL_ERROR();
+			//glBindVertexArray(0); CHECK_GL_ERROR();
+		}
 	}
-
-	
-
-	/*for (size_t i = 0; i < combinedVertices.size(); i++)
-	{
-		std::cout << "Vertice "<< i << " at pos = " << combinedVertices[i] << std::endl;
-	}*/
-	
-	glBufferData(GL_ARRAY_BUFFER, sizeof(combinedVertices.data()[0]) * combinedVertices.size(), combinedVertices.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
-
-	glBindVertexArray(VAODebug); CHECK_GL_ERROR();
-	glDrawArrays(GL_TRIANGLES, 0, 72 * i); CHECK_GL_ERROR();
-	glBindVertexArray(0); CHECK_GL_ERROR();
-	
 }
 
-std::vector<float> GraphicsEngine::DrawCube(const Transform &worldTrans, const double color[3])
+std::vector<float> GraphicsEngine::DrawCube(const Transform &worldTrans, const double color[3], float scale)
 {
 	m_debugShader->SetVec3Uniform("ourColour", Vector3f(color[0], color[1], color[2]));
+	glDisable(GL_CULL_FACE); CHECK_GL_ERROR();
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); CHECK_GL_ERROR();
 
 	//define the cube
 	std::vector<float> vertices = {
 		// face one
-			worldTrans.GetRelativePosition().GetX() + 1.0f,  worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // top right
-			worldTrans.GetRelativePosition().GetX() + -1.0f,  worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // top left
-			worldTrans.GetRelativePosition().GetX() + -1.0f, worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // bottom left 
-			worldTrans.GetRelativePosition().GetX() + 1.0f, worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // bottom right 
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom right 
 		// face two
-			worldTrans.GetRelativePosition().GetX() + 1.0f,  worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // top right
-			worldTrans.GetRelativePosition().GetX() + 1.0f,  worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // top left
-			worldTrans.GetRelativePosition().GetX() + 1.0f, worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // bottom left 
-			worldTrans.GetRelativePosition().GetX() + 1.0f, worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // bottom right 
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom right 
 		// face three
-			worldTrans.GetRelativePosition().GetX() + 1.0f,  worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // top right
-			worldTrans.GetRelativePosition().GetX() + 1.0f,  worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // top left
-			worldTrans.GetRelativePosition().GetX() + -1.0f, worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // bottom left 
-			worldTrans.GetRelativePosition().GetX() + -1.0f, worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // bottom right 
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom right 
 		// face four
-			worldTrans.GetRelativePosition().GetX() + -1.0f,  worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // top right
-			worldTrans.GetRelativePosition().GetX() + -1.0f,  worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // top left
-			worldTrans.GetRelativePosition().GetX() + 1.0f, worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // bottom left 
-			worldTrans.GetRelativePosition().GetX() + 1.0f, worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // bottom right 
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom right 
 		// face five
-			worldTrans.GetRelativePosition().GetX() + -1.0f,  worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // top right
-			worldTrans.GetRelativePosition().GetX() + -1.0f,  worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // top left
-			worldTrans.GetRelativePosition().GetX() + -1.0f, worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // bottom left 
-			worldTrans.GetRelativePosition().GetX() + -1.0f, worldTrans.GetRelativePosition().GetY() + 1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // bottom right 
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom right 
 		// face six
-			worldTrans.GetRelativePosition().GetX() + -1.0f,  worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // top right
-			worldTrans.GetRelativePosition().GetX() + 1.0f,  worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + -1.0f,  // top left
-			worldTrans.GetRelativePosition().GetX() + 1.0f, worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // bottom left 
-			worldTrans.GetRelativePosition().GetX() + -1.0f, worldTrans.GetRelativePosition().GetY() + -1.0f, worldTrans.GetRelativePosition().GetZ() + 1.0f,  // bottom right 
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom right 
 
 	};
 
@@ -503,19 +524,23 @@ std::vector<float> GraphicsEngine::DrawCube(const Transform &worldTrans, const d
 
 
 	//define the indices (so we dont double up on positions)
-	//unsigned int indices[] = {  // note that we start from 0!
-	//0, 1, 3,   // first triangle
-	//1, 2, 3    // second triangle
-	//};
+	unsigned int indices[] = {  // note that we start from 0!
+	0, 1, 3,   // first triangle
+	1, 2, 3    // second triangle
+	};
 
-	//unsigned int EBO;
-	//glGenBuffers(1, &EBO);
+	unsigned int EBO;
+	glGenBuffers(1, &EBO);
 
 
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices.data()[0]) * vertices.size(), vertices.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices.data()[0]) * vertices.size(), vertices.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
+
+	glBindVertexArray(VAODebug); CHECK_GL_ERROR();
+	glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices.data()[0]) * vertices.size()); CHECK_GL_ERROR();
+	glBindVertexArray(0); CHECK_GL_ERROR();
 
 	return vertices;
 

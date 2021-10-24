@@ -1,6 +1,11 @@
 #include "CNavMesh.h"
 #include "GameObjectFactory.h"
 
+
+
+
+
+
 CNavMesh::CNavMesh(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj }
 {
@@ -14,12 +19,17 @@ void CNavMesh::Start()
 
 void CNavMesh::Update()
 {
-	
+	for (auto it : m_navNodes)
+	{
+		it->UpdateTransform(this->m_transform);
+
+	}
 }
 
 void CNavMesh::Render()
 {
-	GRAPHICS->DrawDebugNavMesh(this , m_transform.GetWorldTransform());
+	if(GRAPHICS->m_drawDebug)
+		GRAPHICS->DrawDebugNavMesh(this , m_transform.GetWorldTransform());
 }
 
 void CNavMesh::Save(nlohmann::json &j)
@@ -44,12 +54,17 @@ void CNavMesh::GenerateNavMesh()
 	{
 		for (int z = -5; z < 5; z++)
 		{
-			NavNode *newNode = new NavNode(&this->m_transform, x, z);
-			m_navNodes.emplace_back(newNode);
 			i++;
-			std::cout << "Nav node is of size " << i << std::endl;
+			bool active = true;
+			if(z==2 && x == 2)
+			{
+				active = false;
+			}
+
+			NavNode *newNode = new NavNode(this, x, z,active);
+			m_navNodes.emplace_back(newNode);
+			//std::cout << "Nav node is of size " << i << std::endl;
 		}
-		
 		
 	}
 
@@ -59,13 +74,34 @@ void CNavMesh::GenerateNavMesh()
 	for (auto it : m_navNodes)
 	{
 		loopCounter++;
-		std::cout << "Nav node "<< loopCounter <<" is at position x ="<< it->GetTransform()->GetRelativePosition().GetX() <<" and z = " << it->GetTransform()->GetRelativePosition().GetZ() << std::endl;
-
+		it->PopulateNeighbours();
 	}
 	
 }
+
 std::vector<NavNode *> CNavMesh::GetNavNodes()
 {
 	return m_navNodes;
+}
+
+NavNode* CNavMesh::FetchNode(int x, int z)
+{
+	NavNode* returnNode = NULL;
+
+	for (auto it : m_navNodes)
+	{
+		if (it->GetXPos() == x && it->GetZPos() == z)
+		{
+			returnNode = it;
+		}
+	}
+
+	if (returnNode == NULL)
+	{
+		std::cout << "Output x = " << x << " z = " << z << std::endl;
+
+	}
+
+	return returnNode;
 }
 

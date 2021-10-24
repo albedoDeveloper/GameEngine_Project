@@ -145,6 +145,9 @@
     <ClCompile Include="CNavMesh.cpp">
       <Filter>Source\ComponentClasses\Source</Filter>
     </ClCompile>
+    <ClCompile Include="NavNode.cpp">
+      <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">
@@ -302,6 +305,9 @@
     </ClInclude>
     <ClInclude Include="CNavMesh.h">
       <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="NavNode.h">
+      <Filter>Source\Misc\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

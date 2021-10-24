@@ -7,48 +7,12 @@
 #pragma once
 
 #include "CComponent.h"
+#include "NavNode.h"
 #include <iostream>
 
 
-
-class NavNode
-{
-	//CNavMesh* parentMesh;
-
-	private:
-	int xPos;
-	int zPos;
-	Transform transform;
-
-	//bool active;
-
-	public:
-		NavNode( Transform parentTransform, int x, int z)
-		{
-			xPos = x;
-			zPos = z;
-			transform.SetRelativePosition(x,0,z);
-			
-			//active = true;
-		}
-
-		int GetXPos()
-		{
-			return xPos;
-		}
-
-		int GetZPos()
-		{
-			return zPos;
-		}
-
-		Transform* GetTransform()
-		{
-			return &transform;
-		}
-
-
-};
+//forward declaration
+//class NavNode;
 
 	/**
 
@@ -103,6 +67,12 @@ class CNavMesh : public CComponent
 		 * @brief Retrieves the Navigation Nodes vector
 		*/
 	std::vector<NavNode*> GetNavNodes();
+
+		/**
+		 * @brief Retrieves a specific navNode
+		*/
+	NavNode* FetchNode(int x, int z);
+
 
 private:
 		/**
