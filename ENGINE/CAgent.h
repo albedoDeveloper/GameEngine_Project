@@ -20,10 +20,11 @@ class CAgent : public CComponent
 		
 		struct Emotion
 		{
-			Emotion(float emotion, float multiplier)
+			Emotion(float emotion, float multiplier, float emotionNativeChange)
 			{
 				this->emotion = emotion;
 				this->multipler = multiplier;
+				this->emotionNativeChange = emotionNativeChange;
 			}
 			
 			//Emotion level for that emotion
@@ -31,6 +32,10 @@ class CAgent : public CComponent
 			
 			//Multiplier to see how much a person actually gets out of an activity
 			float multipler;
+
+
+			//Does the AI change the emotion over time
+			float emotionNativeChange;
 		};
 
 
@@ -75,7 +80,7 @@ class CAgent : public CComponent
 
 		float time = 0;
 
-		void AddEmotion(std::string name, float level, float multiplier = 1.0f);
+		void AddEmotion(std::string name, float level, float multiplier, float emotionNativeChange);
 		
 		//-1.0f will make the ai hate it
 		void AddTrait(std::string name, float value);

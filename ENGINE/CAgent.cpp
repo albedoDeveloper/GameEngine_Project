@@ -12,12 +12,11 @@ CAgent::CAgent(Transform *parent, GameObject *parentObj):CComponent{ parent, par
 		if (it->second->GetCAffordanceManager() != nullptr)
 			allAffordances.insert(std::pair(it->first, &it->second->GetCAffordanceManager()->listOfAffordances));
 	}
-
 }
 
-void CAgent::AddEmotion(std::string name, float level, float multipler)
+void CAgent::AddEmotion(std::string name, float level, float multipler, float emotionNativeChange)
 {
-	emotions.insert(std::pair<std::string, Emotion>(name, Emotion(level, multipler)));
+	emotions.insert(std::pair<std::string, Emotion>(name, Emotion(level, multipler, emotionNativeChange)));
 }
 
 void CAgent::AddTrait(std::string name, float value)
@@ -42,6 +41,12 @@ void CAgent::Update()
 			AiAction();
 			break;
 	}
+	
+	for (auto emotion : emotions)
+	{
+		emotion.second.emotion += emotion.second.emotionNativeChange;
+	}
+	
 }
 
 void CAgent::AiThink()
@@ -127,12 +132,6 @@ void ChangeEmotionNatively(float &emotion, float modifier)
 
 	else
 		emotion = 0.0;
-
-}
-
-void ChangeMultiplier(float multipler, float modification)
-{
-
 
 }
 
