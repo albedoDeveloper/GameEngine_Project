@@ -1,8 +1,7 @@
 #include "CAgent.h"
 #include "GameObjectFactory.h"
 #include <iostream>
-CAgent::CAgent(Transform *parent, GameObject *parentObj)
-	:CComponent{ parent, parentObj }
+CAgent::CAgent(Transform *parent, GameObject *parentObj):CComponent{ parent, parentObj }
 {
 	auto allGameObjects = GAMEOBJECT->GetObjectMap();
 	
@@ -16,9 +15,14 @@ CAgent::CAgent(Transform *parent, GameObject *parentObj)
 
 }
 
-void CAgent::AddEmotion(std::string name, float level)
+void CAgent::AddEmotion(std::string name, float level, float multipler)
 {
-	emotions.insert(std::pair<std::string, float>(name, level));
+	emotions.insert(std::pair<std::string, Emotion>(name, Emotion(level, multipler)));
+}
+
+void CAgent::AddTrait(std::string name, float value)
+{
+	traits.insert(std::pair<std::string, float>(name, value));
 }
 
 void CAgent::Update()
@@ -67,7 +71,7 @@ void CAgent::AiAction()
 		
 		for (auto &emotionEffect : currentAffordance->EmotionEffectors)
 		{
-			emotions[emotionEffect.first] += emotionEffect.second;
+			emotions.at(emotionEffect.first).emotion += emotionEffect.second * emotions.at(lowestName).multipler;
 		}
 		currentState = AiState::THINK;
 	}
@@ -75,12 +79,12 @@ void CAgent::AiAction()
 
 void CAgent::FindNewAffordance()
 {
-	auto lowest = emotions.begin()->second;
+	auto lowest = emotions.begin()->second.emotion;
 	lowestName = emotions.begin()->first;
 	
 	for (auto &emotion : emotions)
 	{
-		if (emotion.second < lowest)
+		if (emotion.second.emotion < lowest)
 		{
 			lowestName = emotion.first;
 		}
@@ -88,14 +92,18 @@ void CAgent::FindNewAffordance()
 
 	auto highestImprovement = 0.0f;
 
-
 	for (auto &affordancelist : allAffordances)
 	{
 		for (auto &affordance : *affordancelist.second)
 		{
 			if (affordance.second.EmotionEffectors.count(lowestName) != 0)
 			{
-				if (affordance.second.EmotionEffectors.find(lowestName)->second >= highestImprovement)
+				auto trait = 1.0f;
+
+				if (traits.count(affordance.first) != 0)
+					trait = traits.at(affordance.first);
+
+				if (affordance.second.EmotionEffectors.find(lowestName)->second * trait >= highestImprovement)
 				{
 					currentAffordance = &affordance.second;
 					inAffordance = true;
@@ -105,6 +113,27 @@ void CAgent::FindNewAffordance()
 		}
 	}
 
+}
+
+void ChangeEmotionNatively(float &emotion, float modifier)
+{
+	if (emotion > 0.0 && emotion < 1.0)
+	{
+		emotion += modifier;
+	}
+
+	else if (emotion > 1.0)
+		emotion = 1.0;
+
+	else
+		emotion = 0.0;
+
+}
+
+void ChangeMultiplier(float multipler, float modification)
+{
 
 
 }
+
+

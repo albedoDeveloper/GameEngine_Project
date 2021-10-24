@@ -92,8 +92,9 @@ GetGameObject("basic_girl"):GetCAnimator():AddAnimation("basic_girl/girlIdle.fbx
 GetGameObject("basic_girl"):GetCAnimator():AddAnimation("basic_girl/girlTalking.fbx", false, "girl_Talking")
 GetGameObject("basic_girl"):AddCSound():LoadSound("girlTextSpeechOne.wav")
 GetGameObject("basic_girl"):GetCSound():LoadSound("girlTextSpeechThree.wav")
-GetGameObject("basic_girl"):AddCAgent():AddEmotion("joy",0.7)
-GetGameObject("basic_girl"):GetCAgent():AddEmotion("energy",0.0)
+GetGameObject("basic_girl"):AddCAgent():AddEmotion("joy",0.7, 1.0)
+GetGameObject("basic_girl"):GetCAgent():AddEmotion("energy",0.0, 1.0)
+GetGameObject("basic_girl"):GetCAgent():AddTrait("ToiletBreak",-1.0)
 --GetGameObject("basic_girl"):AddCScript():AssignScript("girl1script")
 --GetGameObject("basic_girl"):AddCCollider():AddBoxCollider(0.5,0.5,0.5,0,-1,0,false,1)
 

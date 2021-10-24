@@ -18,10 +18,30 @@ class CAgent : public CComponent
 			
 		};
 		
-		
+		struct Emotion
+		{
+			Emotion(float emotion, float multiplier)
+			{
+				this->emotion = emotion;
+				this->multipler = multiplier;
+			}
+			
+			//Emotion level for that emotion
+			float emotion;
+			
+			//Multiplier to see how much a person actually gets out of an activity
+			float multipler;
+		};
+
+
 		struct Traits
 		{
+			
 
+			//Special trait list 
+			//multiplier for events
+			//Change in multipler
+			//Gradual change in emotion
 		};
 
 		void FindNewAffordance();
@@ -39,8 +59,10 @@ class CAgent : public CComponent
 
 		}
 
-		std::unordered_map<std::string, float> emotions;
-		
+		std::unordered_map<std::string, Emotion> emotions;
+		std::unordered_map<std::string, float> traits;
+
+
 		bool inAffordance = false;
 		
 		Affordance* currentAffordance = nullptr;
@@ -53,8 +75,10 @@ class CAgent : public CComponent
 
 		float time = 0;
 
-		void AddEmotion(std::string name, float level);
-
+		void AddEmotion(std::string name, float level, float multiplier = 1.0f);
+		
+		//-1.0f will make the ai hate it
+		void AddTrait(std::string name, float value);
 
 		virtual void Update();
 };

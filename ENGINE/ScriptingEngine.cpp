@@ -188,6 +188,7 @@ lua_State *ScriptingEngine::NewState()
 		.endClass()
 		.deriveClass<CAgent, CComponent>("CAgent")
 		.addFunction("AddEmotion", &CAgent::AddEmotion)
+		.addFunction("AddTrait", &CAgent::AddTrait)
 		.endClass();
 	
 	getGlobalNamespace(Lbuff)
