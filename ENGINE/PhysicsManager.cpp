@@ -106,29 +106,29 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 			invMass2 = rb2->GetInverseMass();
 		}
 
+		const Matrix3f J1invWorld = (rb1->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast() * rb1->GetInertiaTensor() * rb1->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast().Transpose()).Inverse();
+		Matrix3f J2invWorld;
+		if (rb2)
+		{
+			J2invWorld = (rb2->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast() * rb2->GetInertiaTensor() * rb2->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast().Transpose()).Inverse();
+		}
+		const Vector3f angVel1 = rb1->GetAngularVelocity();
+		Vector3f angVel2;
+		if (rb2)
+		{
+			angVel2 = rb2->GetAngularVelocity();
+		}
+		Vector3f bodiesRelVel = rb1->GetVelocity(); // relative velocity of the two rigid bodies, or just body 1 if there is no second body
+		if (rb2)
+		{
+			bodiesRelVel -= rb2->GetVelocity();
+		}
+
 		unsigned numContactPoints = manifolds[pair].contactPoints.size();
 		for (unsigned contact = 0; contact < numContactPoints; contact++)
 		{
 			Manifold::ContactPoint &thisContact = manifolds[pair].contactPoints[contact];
-			const Matrix3f J1invWorld = (rb1->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast() * rb1->GetInertiaTensor() * rb1->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast().Transpose()).Inverse();
-			Matrix3f J2invWorld;
-			if (rb2)
-			{
-				J2invWorld = (rb2->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast() * rb2->GetInertiaTensor() * rb2->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast().Transpose()).Inverse();
-			}
-			const Vector3f angVel1 = rb1->GetAngularVelocity();
-			Vector3f angVel2;
-			if (rb2)
-			{
-				angVel2 = rb2->GetAngularVelocity();
-			}
-			Vector3f bodiesRelVel = rb1->GetVelocity(); // relative velocity of the two rigid bodies, or just body 1 if there is no second body
-			if (rb2)
-			{
-				bodiesRelVel -= rb2->GetVelocity();
-			}
 			const Vector3f normal = thisContact.worldNormal;
-			float penetration = thisContact.penDepth;
 			const Vector3f r1 = thisContact.col1LocalPoint;
 			Vector3f r2;
 			if (rb2)
@@ -150,6 +150,7 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 					(-1 * (1 + manifold.restitution) * (rb1->GetVelocity()).dotProduct(normal)) /
 					(invMass1 + (J1invWorld * (r1.crossProduct(normal)).crossProduct(r1)).dotProduct(normal)); // not 100% sure about this one
 			}
+			impulse /= numContactPoints;
 
 			// linear impulse - seperating velocity
 			Vector3f rb1NewVel = rb1->GetVelocity() + (impulse * normal) * rb1->GetInverseMass();
