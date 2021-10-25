@@ -14,30 +14,17 @@ CCollider::CCollider(Transform *parent, GameObject *parentObj)
 		m_transform.SetParent(meshTrans);
 	}
 
-	auto worldPosition = reactphysics3d::Vector3(
-		m_transform.GetWorldTransform().GetRelativePosition().GetX(),
-		m_transform.GetWorldTransform().GetRelativePosition().GetY(),
-		m_transform.GetWorldTransform().GetRelativePosition().GetZ()
-	);
-
-	auto worldOrientation = reactphysics3d::Quaternion(
-		m_transform.GetWorldTransform().GetRelativeOrientation().GetX(),
-		m_transform.GetWorldTransform().GetRelativeOrientation().GetY(),
-		m_transform.GetWorldTransform().GetRelativeOrientation().GetZ(),
-		m_transform.GetWorldTransform().GetRelativeOrientation().GetW()
-	);
-
-	reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
-	colBody = COLLISION->GetPhysicsWorld()->createCollisionBody(reactphysics3d::Transform::identity());
-
 	m_isRegistered = true;
+}
+
+CCollider::~CCollider()
+{
+	delete m_colObj;
 }
 
 void CCollider::Update()
 {
-
 	UpdateCollider();
-
 }
 
 void CCollider::Save(nlohmann::json &j)
@@ -49,6 +36,7 @@ void CCollider::Save(nlohmann::json &j)
 void CCollider::Load(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
+	//AddBoxCollider(0, 0, 0, 0, 0, 0, true, 0, true, 30);
 	UpdateCollider();
 	SetActive((j.at(m_parent->GetFactoryKey()).at("Components").at("AABBComponent").at("colActive")));
 }
@@ -86,91 +74,68 @@ bool CCollider::GetActive()
 
 void CCollider::SetActive(bool activeStatus)
 {
-	m_active = activeStatus;
-
 	//these active checks are messy but best done here
 	//Collider should only be drawn if both GO and Col are active
-	if (m_active && m_parent->GetActive())
+	if (activeStatus && m_parent->GetActive())
 	{
-		if (!colBody->isActive())
-			colBody->setIsActive(true);
+		if (!m_colObj->isActive())
+			m_colObj->activate(true);
 
-		if (col != nullptr)
-		{
-			if (!m_parent->IsStatic())
-			{
-				UpdateCollider();
-			}
-		}
-
+		UpdateCollider();
 	}
 	else
 	{
-
-		if (col != nullptr)
-		{
-			colBody->setIsActive(false);
-		}
+		m_colObj->activate(false);
 	}
 
 }
-
 
 void CCollider::EnableDisable(bool activeStatus)
 {
 	//these active checks are messy, should be done elsewhere
 	if (activeStatus)
 	{
-		if (!colBody->isActive())
-			colBody->setIsActive(true);
+		if (!m_colObj->isActive())
+			m_colObj->activate(true);
 
-		if (col != nullptr)
+
+		if (!m_parent->IsStatic())
 		{
-			if (!m_parent->IsStatic())
-			{
-				UpdateCollider();
-			}
+			UpdateCollider();
 		}
-
 	}
 	else
 	{
-
-		if (col != nullptr)
-		{
-			colBody->setIsActive(false);
-		}
+		m_colObj->activate(false);
 	}
 }
 
 void CCollider::UpdateCollider()
 {
-	if (colBody->getNbColliders() != 0)
+	btQuaternion orientation(btQuaternion::getIdentity());
+
+	btVector3 position(
+		m_transform.GetWorldTransform().GetRelativePosition().GetX(),
+		m_transform.GetWorldTransform().GetRelativePosition().GetY(),
+		m_transform.GetWorldTransform().GetRelativePosition().GetZ()
+	);
+	if (m_allowRotation)
 	{
-		auto worldPosition = reactphysics3d::Vector3(
-			m_transform.GetWorldTransform().GetRelativePosition().GetX(),
-			m_transform.GetWorldTransform().GetRelativePosition().GetY(),
-			m_transform.GetWorldTransform().GetRelativePosition().GetZ()
+		orientation = btQuaternion(
+			m_transform.GetWorldTransform().GetRelativeOrientation().GetX(),
+			m_transform.GetWorldTransform().GetRelativeOrientation().GetY(),
+			m_transform.GetWorldTransform().GetRelativeOrientation().GetZ(),
+			m_transform.GetWorldTransform().GetRelativeOrientation().GetW()
 		);
-
-		reactphysics3d::Quaternion worldOrientation(reactphysics3d::Quaternion::identity());
-		if (m_allowRotation)
-		{
-			worldOrientation = reactphysics3d::Quaternion(
-				m_transform.GetWorldTransform().GetRelativeOrientation().GetX(),
-				m_transform.GetWorldTransform().GetRelativeOrientation().GetY(),
-				m_transform.GetWorldTransform().GetRelativeOrientation().GetZ(),
-				m_transform.GetWorldTransform().GetRelativeOrientation().GetW()
-			);
-			worldOrientation.inverse();
-		}
-
-		reactphysics3d::Transform worldTransform(worldPosition, worldOrientation);
-		col->getBody()->setTransform(worldTransform);
+		orientation = orientation.inverse();
 	}
+	btTransform worldT(orientation, position);
+	worldT.setOrigin(position);
+	worldT.setRotation(orientation);
+	m_colObj->setWorldTransform(worldT);
 }
 
-void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize, int layer, bool allowRotation)
+void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize, int layer, bool allowRotation, int colMask)
 {
 	m_allowRotation = allowRotation;
 
@@ -199,25 +164,25 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 		exit(-24);
 	}
 
-	reactphysics3d::BoxShape *boxCollider = COLLISION->physicsCommon.createBoxShape(reactphysics3d::Vector3(x, y, z));
-
-	col = colBody->addCollider(boxCollider, reactphysics3d::Transform::identity());
-
-	col->setCollisionCategoryBits(layer);
-	col->setCollideWithMaskBits(0);
+	m_colObj = new btCollisionObject();
+	m_colObj->setCollisionFlags(btCollisionObject::CF_DYNAMIC_OBJECT);
+	COLLISION->RegisterCollisionBody(m_colObj, this);
+	btBoxShape *boxShape = new btBoxShape(btVector3(x, y, z));
+	m_colObj->setCollisionShape(boxShape);
+	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj, (1 << layer), -1);
 }
 
 void CCollider::AddCapsuleCollider(float radius, float height, int layer)
 {
-	reactphysics3d::CapsuleShape *capsuleCollider = COLLISION->physicsCommon.createCapsuleShape(1.0, 2.0);
-	col = colBody->addCollider(capsuleCollider, reactphysics3d::Transform::identity());
-	col->setCollisionCategoryBits(layer);
-	col->setCollideWithMaskBits(0);
+	//reactphysics3d::CapsuleShape *capsuleCollider = COLLISION->physicsCommon.createCapsuleShape(1.0, 2.0);
+	//col = colBody->addCollider(capsuleCollider, reactphysics3d::Transform::identity());
+	//col->setCollisionCategoryBits(layer);
+	//col->setCollideWithMaskBits(0);
 }
 
 void CCollider::AddConvexCollider()
 {
-	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
+	/*auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
 	auto totalFaces = model->NumFaces();
 	auto polyFace = new reactphysics3d::PolygonVertexArray::PolygonFace[model->NumFaces()];
 	reactphysics3d::PolygonVertexArray::PolygonFace *faces = polyFace;
@@ -250,17 +215,17 @@ void CCollider::AddConvexCollider()
 	}
 
 	reactphysics3d::PolygonVertexArray *polyVertexes = new reactphysics3d::PolygonVertexArray(vertices.size(), vertices.data(), 3 * sizeof(float), indices.data(),
-	sizeof(int), totalFaces, polyFace, reactphysics3d::PolygonVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::PolygonVertexArray::IndexDataType::INDEX_INTEGER_TYPE);
+																							  sizeof(int), totalFaces, polyFace, reactphysics3d::PolygonVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::PolygonVertexArray::IndexDataType::INDEX_INTEGER_TYPE);
 
 	reactphysics3d::PolyhedronMesh *polyMesh2 = COLLISION->physicsCommon.createPolyhedronMesh(polyVertexes);
 
 	auto convexCollider = COLLISION->physicsCommon.createConvexMeshShape(polyMesh2);
-	col = colBody->addCollider(convexCollider, reactphysics3d::Transform::identity());
+	col = colBody->addCollider(convexCollider, reactphysics3d::Transform::identity());*/
 }
 
 void CCollider::AddConcaveCollider(int layer)
 {
-	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
+	/*auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
 	auto totalFaces = model->NumFaces();
 
 
@@ -277,7 +242,7 @@ void CCollider::AddConcaveCollider(int layer)
 	}
 
 	reactphysics3d::TriangleVertexArray *triangleArray = new reactphysics3d::TriangleVertexArray(concaveVertices.size(), concaveVertices.data(), 3 * sizeof(float), totalFaces, concaveIndices.data(),
-		3 * sizeof(int), reactphysics3d::TriangleVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::TriangleVertexArray::IndexDataType::INDEX_INTEGER_TYPE);
+																								 3 * sizeof(int), reactphysics3d::TriangleVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::TriangleVertexArray::IndexDataType::INDEX_INTEGER_TYPE);
 
 	auto triangleMesh = COLLISION->physicsCommon.createTriangleMesh();
 
@@ -288,11 +253,11 @@ void CCollider::AddConcaveCollider(int layer)
 	col = colBody->addCollider(concaveMesh, reactphysics3d::Transform::identity());
 
 	col->setCollisionCategoryBits(layer);
-	col->setCollideWithMaskBits(0);
+	col->setCollideWithMaskBits(0);*/
 
 }
 
-void CCollider::CollideWith(int layerToCollideWith)
-{
-	col->setCollideWithMaskBits(layerToCollideWith);
-}
+//void CCollider::CollideWith(int layerToCollideWith)
+//{
+//	col->setCollideWithMaskBits(layerToCollideWith);
+//}

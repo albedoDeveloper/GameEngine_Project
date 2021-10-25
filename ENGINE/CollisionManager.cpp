@@ -2,16 +2,25 @@
 #include "GameObject.h"
 
 CollisionManager::CollisionManager()
-	:m_colliderArray{}, m_collision{}, m_fill{ 0 }, m_waitTime{ 0 }
-{}
+	:m_colliderArray{},
+	m_collision{},
+	m_fill{ 0 },
+	m_waitTime{ 0 },
+	m_broadphase{},
+	m_config{},
+	m_dispatcher{ &m_config },
+	m_collisionWorld{ &m_dispatcher, &m_broadphase, &m_config }
+{
+	m_collisionWorld.setDebugDrawer(GRAPHICS);
+}
 
 void CollisionManager::Init()
 {
-	physicsWorld = physicsCommon.createPhysicsWorld();
+	/*physicsWorld = physicsCommon.createPhysicsWorld();
 	physicsWorld->setIsDebugRenderingEnabled(true);
 	debugRender = &physicsWorld->getDebugRenderer();
 	debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::COLLISION_SHAPE, true);
-	debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::CONTACT_POINT, true);
+	debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::CONTACT_POINT, true);*/
 }
 
 CollisionManager *CollisionManager::Instance()
@@ -24,18 +33,34 @@ bool CollisionManager::CheckCollision(CCollider &myCollider)
 {
 	m_collision = false;
 
-	physicsWorld->testCollision(myCollider.colBody, *COLLISION);
+	m_collisionWorld.contactTest(myCollider.m_colObj, *COLLISION);
 
 	return m_collision;
 }
 
-void CollisionManager::onContact(const CallbackData &callbackData)
+void CollisionManager::RegisterCollisionBody(btCollisionObject *body, CCollider *comp)
+{
+	std::pair<btCollisionObject *, CCollider *> registration(body, comp);
+	m_collisionBodyMap.insert(registration);
+}
+
+btCollisionWorld &CollisionManager::GetCollisionWorld()
+{
+	return m_collisionWorld;
+}
+
+btScalar CollisionManager::addSingleResult(btManifoldPoint &cp, const btCollisionObjectWrapper *colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper *colObj1Wrap, int partId1, int index1)
 {
 	m_collision = true;
-	for (int i = 0; i < callbackData.getContactPair(0).getNbContactPoints(); i++)
-	{
-		reactphysics3d::Vector3 points(callbackData.getContactPair(0).getContactPoint(i).getLocalPointOnCollider1());
+	return 0.0;
+}
 
-		//std::cout << "Contact Points: " << points.x << " " << points.y << " " << points.z << '\n';
-	}
+void CollisionManager::DrawDebug()
+{
+	m_collisionWorld.debugDrawWorld();
+}
+
+void CollisionManager::PerformCollisionDetection()
+{
+	m_collisionWorld.performDiscreteCollisionDetection();
 }

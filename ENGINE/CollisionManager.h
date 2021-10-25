@@ -14,35 +14,12 @@
 /**
  * @brief A singleton that manages collisions between objects
 */
-class CollisionManager : reactphysics3d::CollisionCallback
+class CollisionManager : btCollisionWorld::ContactResultCallback
 {
-private:
-		/** @brief The beginning size, before alteration, of the collider array */
-	const static int m_initialSize = 50;
-
-		/** @brief The current index to which the collider array is filled */
-	int m_fill;
-
-		/** @brief Vector containing all of the colliders in the game */
-	std::vector<CCollider *> m_colliderArray;
-
-		/** @brief is colliding or not */
-	bool m_collision;
-
 public:
-		/** @brief Physics World that allows collisions to occur between collision bodies */
-	reactphysics3d::PhysicsWorld *physicsWorld;
-
-		/** @brief Common Physics factory class for all colliders*/
-	reactphysics3d::PhysicsCommon physicsCommon;
-
-		/** @brief Allows rendering of collision boxes in debug mode */
-	reactphysics3d::DebugRenderer *debugRender;
-
 		/** @brief wait tiem for collisions */
 	int m_waitTime;
 
-public:
 		/**
 		 * @brief default constructor
 		*/
@@ -61,23 +38,35 @@ public:
 		*/
 	bool CheckCollision(CCollider &myCollider);
 
-		/**
-		 * @brief Override for React::CollisionCallBack onContact
-		 *
-		 * /param callbackData the data for the Callback
-		 */
-	void onContact(const CallbackData &callbackData);
+	void RegisterCollisionBody(btCollisionObject *body, CCollider *comp);
 
-		/**
-		 * @Get the static collision world, to either add collisonbody or test for colliders
-		*/
-	reactphysics3d::PhysicsWorld *GetPhysicsWorld()
-	{
-		return physicsWorld;
-	};
+	btCollisionWorld &GetCollisionWorld();
+
+	virtual btScalar addSingleResult(btManifoldPoint &cp, const btCollisionObjectWrapper *colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper *colObj1Wrap, int partId1, int index1);
+
+	void DrawDebug();
+
+	void PerformCollisionDetection();
 
 private:
+	/** @brief The beginning size, before alteration, of the collider array */
+	const static int m_initialSize = 50;
 
+		/** @brief The current index to which the collider array is filled */
+	int m_fill;
+
+		/** @brief Vector containing all of the colliders in the game */
+	std::vector<CCollider *> m_colliderArray;
+
+		/** @brief is colliding or not */
+	bool m_collision;
+
+	std::unordered_map<const btCollisionObject *, CCollider *> m_collisionBodyMap;
+
+	btDbvtBroadphase m_broadphase;
+	btDefaultCollisionConfiguration m_config;
+	btCollisionDispatcher m_dispatcher;
+	btCollisionWorld m_collisionWorld;
 };
 
 #define COLLISION CollisionManager::Instance()
