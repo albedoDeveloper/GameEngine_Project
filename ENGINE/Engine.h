@@ -10,7 +10,6 @@
 #include "GraphicsLibraryEnum.h"
 #include "LevelLoader.h"
 #include "LevelEditor.h"
-#include <reactphysics3d/reactphysics3d.h>
 
 	/**
 	 * @brief A game engine that handles all the backend of a video game and allows for creation of video games with a client program
