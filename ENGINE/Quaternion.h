@@ -28,15 +28,6 @@ public:
 	 */
 	Quaternion(float x, float y, float z, float w);
 
-
-		/**
-		 * dot product of two Quaternions
-		 *
-		 * \param oQuat other quaternion
-		 * \return dot product
-		 */
-	float DotProduct(Quaternion oQuat);
-
 		/**
 		 * Conjugation of a quaternian
 		 *

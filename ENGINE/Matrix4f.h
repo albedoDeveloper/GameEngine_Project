@@ -41,6 +41,8 @@ public:
 		 */
 	void Scale(Vector3f v);
 
+	void Rotate(const Quaternion &q);
+
 	Matrix4f GetScale(const Vector3f &v) const;
 
 		/**
@@ -52,8 +54,8 @@ public:
 
 	void RemoveTranslation();
 
-	float& SetMatrixElement(unsigned int row, unsigned int column);
-	
+	float &SetMatrixElement(unsigned int row, unsigned int column);
+
 		/**
 		 * multiply 2 matrix4f's together
 		 *
@@ -72,7 +74,10 @@ public:
 		 */
 	Matrix4f &operator*=(Matrix4f other);
 
-	glm::mat4 GetMatrix() { return m_mat; }
+	glm::mat4 GetMatrix()
+	{
+		return m_mat;
+	}
 	Matrix4f(glm::mat4 m);
 private:
 

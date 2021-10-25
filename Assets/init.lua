@@ -40,6 +40,7 @@ GetGameObject("book"):AddCStaticMesh():AssignModel("book")
 GetGameObject("book"):GetTransform():Translate(1,1,0)
 GetGameObject("book"):AddCCollider():AddBoxCollider(0,0,0,0,0,0, true, 1, true, 31)
 GetGameObject("book"):AddCRigidBody():SetMass(2)
+GetGameObject("book"):AddCStaticMesh():AssignModel("axis")
 --GetGameObject("book"):GetCRigidBody():SetGravityEnabled(true)
 
 SpawnGameObject("fridge1"):SetStatic(true)

@@ -175,7 +175,7 @@ Transform Transform::GetWorldTransform() const
 	while (!stack.empty())
 	{
 		worldMat.Translate(stack.top()->m_position);
-		worldMat = worldMat * stack.top()->m_orientation.Conjugate().Mat4Cast();
+		worldMat = worldMat * stack.top()->m_orientation.Conjugate().Normalize().Mat4Cast();
 		worldMat.Scale(stack.top()->m_scale);
 		stack.pop();
 	}

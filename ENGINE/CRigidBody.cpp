@@ -220,19 +220,19 @@ void CRigidBody::Update()
 	// angular
 	Matrix3f worldInverseInertiaTensor = (m_transform.GetWorldTransform().GetRelativeOrientation().Mat3Cast() * m_inertiaTensor * m_transform.GetWorldTransform().GetRelativeOrientation().Mat3Cast().Transpose()).Inverse(); // transform inertia tensor from local to world space .TODO seems to work????
 	//m_angularAccel = m_torqueAccum * worldInverseInertiaTensor;
-	m_angularVelocity += m_angularAccel * TIME->GetDeltaTime();
+	//m_angularVelocity += m_angularAccel * TIME->GetDeltaTime();
 	if (m_freezeXRot) m_angularVelocity.SetX(0);
 	if (m_freezeYRot) m_angularVelocity.SetY(0);
 	if (m_freezeZRot) m_angularVelocity.SetZ(0);
 	//m_angularVelocity = m_angularVelocity * powf(0.9f, (TIME->GetDeltaTime() / 2.0f)); // angular damping
-	//Vector3f angVelWorldSpace = m_angularVelocity * m_parent->GetTransform()->GetRelativeOrientation().Conjugate();
+	Vector3f angVelLocalSpace = m_angularVelocity * m_parent->GetTransform()->GetRelativeOrientation().Conjugate();
 	Quaternion angVelQuat(
-		-m_angularVelocity.GetX(),
-		-m_angularVelocity.GetY(),
-		-m_angularVelocity.GetZ(),
+		angVelLocalSpace.GetX(),
+		angVelLocalSpace.GetY(),
+		angVelLocalSpace.GetZ(),
 		0
 	);
-	m_parent->GetTransform()->GetRelativeOrientation() += 0.5f * angVelQuat * (m_parent->GetTransform()->GetRelativeOrientation() * TIME->GetDeltaTime());
+	m_parent->GetTransform()->GetRelativeOrientation() += (0.5f * TIME->GetDeltaTime()) * angVelQuat * m_parent->GetTransform()->GetRelativeOrientation();
 	m_parent->GetTransform()->GetRelativeOrientation().Normalize();
 	//m_torqueAccum = Vector3f(0, 0, 0); // reset angular force accumulation
 
@@ -241,7 +241,7 @@ void CRigidBody::Update()
 
 void CRigidBody::Render()
 {
-	//GRAPHICS->RenderLine(Vector3f(1, 1, 0), m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_angularVelocity);
+	GRAPHICS->DrawLine(m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_angularVelocity, Vector3f(1, 1, 0));
 	//GRAPHICS->RenderLine(Vector3f(0, 1, 1), m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_velocity);
 	//GRAPHICS->RenderLine(Vector3f(1, 1, 1), m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_accel);
 }

@@ -39,6 +39,11 @@ void Matrix4f::Scale(Vector3f v)
 	m_mat = glm::scale(m_mat, glm::vec3(v.GetX(), v.GetY(), v.GetZ()));
 }
 
+void Matrix4f::Rotate(const Quaternion &q)
+{
+	m_mat = glm::rotate(m_mat, q.GetAxisAngleRadians(), q.GetAxis().m_vec);
+}
+
 Matrix4f Matrix4f::GetScale(const Vector3f &v) const
 {
 	return glm::scale(m_mat, v.m_vec);
@@ -54,7 +59,7 @@ void Matrix4f::RemoveTranslation()
 	m_mat = glm::mat4(glm::mat3(m_mat));
 }
 
-float& Matrix4f::SetMatrixElement(unsigned int row, unsigned int column)
+float &Matrix4f::SetMatrixElement(unsigned int row, unsigned int column)
 {
 	return m_mat[row][column];
 }

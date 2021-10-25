@@ -9,13 +9,8 @@ Quaternion::Quaternion()
 {}
 
 Quaternion::Quaternion(float x, float y, float z, float w)
-	: m_quat(glm::quat(x, y, z, w))
+	: m_quat(glm::quat(w, x, y, z))
 {}
-
-float Quaternion::DotProduct(Quaternion oQuat)
-{
-	return glm::dot(m_quat, oQuat.m_quat);
-}
 
 Quaternion Quaternion::Conjugate() const
 {
