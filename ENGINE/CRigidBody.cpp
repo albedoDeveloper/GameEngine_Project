@@ -2,7 +2,7 @@
 
 #include "CRigidBody.h"
 #include "GameObject.h"
-#include "Time.h"
+#include "MyTime.h"
 #include "InputManager.h"
 #include "MiscMath.h"
 #include "PhysicsManager.h"

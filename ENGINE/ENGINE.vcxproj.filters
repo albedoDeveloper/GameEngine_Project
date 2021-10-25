@@ -79,7 +79,7 @@
     <ClCompile Include="CollisionManager.cpp">
       <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
+    <ClCompile Include="MyTime.cpp">
       <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
@@ -243,7 +243,7 @@
     <ClInclude Include="CollisionManager.h">
       <Filter>Source\Singletons\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
+    <ClInclude Include="MyTime.h">
       <Filter>Source\Singletons\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">

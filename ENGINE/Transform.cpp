@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include <cmath>
 #include <iostream>
-#include "Time.h"
+#include "MyTime.h"
 #include "Matrix4f.h"
 
 const double pi = 2 * acos(0.0);

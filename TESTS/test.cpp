@@ -1,9 +1,8 @@
 #include "pch.h"
 #include "../ENGINE/Time.h"
+#include "../ENGINE/Transform.h"
 
 TEST(TestCaseName, TestName)
 {
-	TIME;
-	EXPECT_EQ(1, 1);
-	EXPECT_TRUE(true);
+	Transform t;
 }

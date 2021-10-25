@@ -35,7 +35,7 @@
     <ClCompile Include="Matrix3f.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="ThirdParty\glad\src\glad.c" />
-    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="MyTime.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameAssetFactory.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -88,7 +88,7 @@
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="ThirdParty\glad\include\glad\glad.h" />
     <ClInclude Include="ThirdParty\glad\include\KHR\khrplatform.h" />
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="MyTime.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameAssetFactory.h" />
     <ClInclude Include="GameObject.h" />
