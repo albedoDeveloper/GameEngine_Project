@@ -142,8 +142,12 @@ public:
 	 */
 	//void CollideWith(int layerToCollideWith);
 
+	float GetXHalfSize() const;
+	float GetYHalfSize() const;
+	float GetZHalfSize() const;
+
 private:
-	float boxXHalfSize;
-	float boxYHalfSize;
-	float boxZHalfSize;
+	float m_boxXHalfSize;
+	float m_boxYHalfSize;
+	float m_boxZHalfSize;
 };

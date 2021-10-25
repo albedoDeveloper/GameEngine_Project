@@ -22,6 +22,7 @@
 #include "CDirectionalLight.h"
 #include "CAnimator.h"
 #include <iostream>
+#include "CRigidBody.h"
 
 	/**
 	 * @brief An object as represented in the game world containing all information on the object itself and its components
@@ -49,15 +50,15 @@ public:
 		 * @return The created mesh
 		*/
 	CStaticMesh *AddCStaticMesh();
-	
+
 		/**
 		 * .
-		 * 
-		 * \return 
+		 *
+		 * \return
 		 */
-	CAnimator* AddCAnimator();
+	CAnimator *AddCAnimator();
 
-	
+
 		/**
 		 * @brief Adds a script component
 		 * @return the created script
@@ -71,6 +72,8 @@ public:
 		 * \return CstaticMesh or nullptr
 		 */
 	CStaticMesh *GetCStaticMesh();
+
+	CRigidBody *GetCRigidBody();
 
 		/**
 		 * @brief Adds a character component
@@ -165,7 +168,7 @@ public:
 	/**
 	 * .
 	 */
-	CAnimator* GetCAnimator();
+	CAnimator *GetCAnimator();
 
 		/**
 		 * make this game objects transform a child of anothers.

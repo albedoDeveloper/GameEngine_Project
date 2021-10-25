@@ -64,3 +64,161 @@ void CollisionManager::PerformCollisionDetection()
 {
 	m_collisionWorld.performDiscreteCollisionDetection();
 }
+
+ContactInfo::Manifold::ContactPoint::ContactPoint(Manifold *parentMani, const Vector3f &c1Point, const Vector3f &c2Point, float penetrationDepth, const Vector3f &normal)
+	: parentManifold{ parentMani }, col1LocalPoint{ c1Point }, col2LocalPoint{ c2Point }, penDepth{ penetrationDepth }, worldNormal{ normal }, desiredDeltaVelocity{}
+{}
+
+void ContactInfo::Manifold::ContactPoint::SwapBodies()
+{
+	worldNormal = worldNormal * -1;
+	Vector3f tempvec = col1LocalPoint;
+	col1LocalPoint = col2LocalPoint;
+	col2LocalPoint = tempvec;
+	closingVelocity = closingVelocity * -1;
+}
+
+void ContactInfo::Manifold::ContactPoint::CalculateContactBasis()
+{
+	Vector3f contactTangent[2];
+
+	if (fabsf(worldNormal.GetX()) > fabsf(worldNormal.GetY()))
+	{
+		// Scaling factor to ensure the results are normalised
+		const float scalingFactor = 1.0f / sqrtf(worldNormal.GetZ() * worldNormal.GetZ() + worldNormal.GetZ() * worldNormal.GetX());
+
+		// The new X-axis is at right angles to the world Y-axis
+		contactTangent[0].SetX(worldNormal.GetZ() * scalingFactor);
+		contactTangent[0].SetY(0);
+		contactTangent[0].SetZ(-worldNormal.GetX() * scalingFactor);
+
+		// The new Y-axis is at right angles to the new X- and Z- axes
+		contactTangent[1].SetX(worldNormal.GetY() * contactTangent[0].GetX());
+		contactTangent[1].SetY(worldNormal.GetZ() * contactTangent[0].GetX() - worldNormal.GetX() * contactTangent[0].GetZ());
+		contactTangent[1].SetZ(-worldNormal.GetY() * contactTangent[0].GetX());
+	}
+	else
+	{
+		// Scaling factor to ensure the results are normalised
+		const float s = 1.0f / sqrtf(worldNormal.GetZ() * worldNormal.GetZ() + worldNormal.GetY() * worldNormal.GetY());
+
+		// The new X-axis is at right angles to the world X-axis
+		contactTangent[0].SetX(0);
+		contactTangent[0].SetY(-worldNormal.GetZ() * s);
+		contactTangent[0].SetZ(worldNormal.GetY() * s);
+
+		// The new Y-axis is at right angles to the new X- and Z- axes
+		contactTangent[1].SetX(worldNormal.GetY() * contactTangent[0].GetZ() - worldNormal.GetZ() * contactTangent[0].GetY());
+		contactTangent[1].SetY(-worldNormal.GetX() * contactTangent[0].GetZ());
+		contactTangent[1].SetZ(worldNormal.GetX() * contactTangent[0].GetY());
+	}
+
+	// Make a matrix from the three vectors.
+	contactToWorld.ValuePtr()[0] = worldNormal.GetX();
+	contactToWorld.ValuePtr()[1] = contactTangent[0].GetX();
+	contactToWorld.ValuePtr()[2] = contactTangent[1].GetX();
+	contactToWorld.ValuePtr()[3] = worldNormal.GetY();
+	contactToWorld.ValuePtr()[4] = contactTangent[0].GetY();
+	contactToWorld.ValuePtr()[5] = contactTangent[1].GetY();
+	contactToWorld.ValuePtr()[6] = worldNormal.GetZ();
+	contactToWorld.ValuePtr()[7] = contactTangent[0].GetY();
+	contactToWorld.ValuePtr()[8] = contactTangent[1].GetZ();
+}
+
+void ContactInfo::Manifold::ContactPoint::CalcRelativeVelocity()
+{
+	// body 1
+	CRigidBody *rb1 = parentManifold->col1->GetParentObject()->GetCRigidBody();
+	// Work out the velocity of the contact point.
+	Vector3f velocity1 = rb1->GetAngularVelocity().crossProduct(col1LocalPoint * rb1->GetTransform().GetWorldTransform().GetRelativeOrientation());
+	velocity1 += rb1->GetVelocity();
+	// Turn the velocity into contact coordinates.
+	Vector3f contactVelocity1 = contactToWorld * velocity1;
+	// Calculate the amount of velocity that is due to forces without
+	// reactions.
+	//Vector3f accVelocity1 = rb1->GetAcceleration() * TIME->GetDeltaTime();
+
+	// body 2
+	CRigidBody *rb2 = parentManifold->col2->GetParentObject()->GetCRigidBody();
+	Vector3f contactVelocity2{};
+	if (rb2)
+	{
+		// Work out the velocity of the contact point.
+		Vector3f velocity2 = rb2->GetAngularVelocity().crossProduct(col1LocalPoint * rb2->GetTransform().GetWorldTransform().GetRelativeOrientation());
+		velocity2 += rb2->GetVelocity();
+		// Turn the velocity into contact coordinates.
+		contactVelocity2 = contactToWorld * velocity2;
+		// Calculate the amount of velocity that is due to forces without
+		// reactions.
+		//Vector3f accVelocity2 = rb2->GetAcceleration() * TIME->GetDeltaTime();
+	}
+
+	closingVelocity = contactVelocity1;
+	if (rb2)
+	{
+		closingVelocity -= contactVelocity2;
+	}
+}
+
+void ContactInfo::Manifold::ContactPoint::CalcDesiredDeltaVel()
+{
+	const float velocityLimit = 0.25f;
+
+	// Calculate the acceleration induced velocity accumulated this frame
+	float velocityFromAcc = 0;
+
+	CRigidBody *rb1 = parentManifold->col1->GetParentObject()->GetCRigidBody();
+	CRigidBody *rb2 = parentManifold->col2->GetParentObject()->GetCRigidBody();
+	assert(rb1);
+	velocityFromAcc += (rb1->GetAcceleration() * TIME->GetDeltaTime()).dotProduct(worldNormal);
+	if (rb2)
+	{
+		velocityFromAcc -= (rb2->GetAcceleration() * TIME->GetDeltaTime()).dotProduct(worldNormal);
+	}
+
+	// If the velocity is very slow, limit the restitution
+	float thisRestitution = 0.3f; // TODO un-hardcode
+	if (fabsf(closingVelocity.GetX()) < velocityLimit)
+	{
+		thisRestitution = 0.0f;
+	}
+
+	// Combine the bounce velocity with the removed
+	// acceleration velocity.
+	desiredDeltaVelocity = -1 * closingVelocity.GetX() - thisRestitution * (closingVelocity.GetX() - velocityFromAcc);
+}
+
+ContactInfo::Manifold::Manifold(CCollider *newCol1, CCollider *newCol2)
+	:col1{ newCol1 }, col2{ newCol2 }, penetration{ 0 }, restitution{ 0.4f }, contactPoints{}
+{}
+
+void ContactInfo::Manifold::Prepare()
+{
+	CRigidBody *rb1 = col1->GetParentObject()->GetCRigidBody();
+	CRigidBody *rb2 = col2->GetParentObject()->GetCRigidBody();
+	assert(rb1 || rb2);
+	if (!rb1)
+	{
+		CCollider *temp = col1;
+		col1 = col2;
+		col2 = temp;
+
+		for (int i = 0; i < contactPoints.size(); i++)
+		{
+			contactPoints[i].SwapBodies();
+		}
+	}
+
+	if (col2->GetParentObject()->GetCRigidBody())
+	{
+		restitution = std::fminf(col1->GetParentObject()->GetCRigidBody()->GetRestitution(), col2->GetParentObject()->GetCRigidBody()->GetRestitution());
+	}
+	else
+	{
+		restitution = col1->GetParentObject()->GetCRigidBody()->GetRestitution();
+	}
+}
+
+ContactInfo::ContactInfo()
+	: manifolds{}
+{}

@@ -223,6 +223,21 @@ void CCollider::AddConvexCollider()
 	col = colBody->addCollider(convexCollider, reactphysics3d::Transform::identity());*/
 }
 
+float CCollider::GetXHalfSize() const
+{
+	return m_boxXHalfSize;
+}
+
+float CCollider::GetYHalfSize() const
+{
+	return m_boxYHalfSize;
+}
+
+float CCollider::GetZHalfSize() const
+{
+	return m_boxZHalfSize;
+}
+
 void CCollider::AddConcaveCollider(int layer)
 {
 	/*auto model = this->GetParentObject()->GetCStaticMesh()->m_model;

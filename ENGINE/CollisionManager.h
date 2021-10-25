@@ -10,6 +10,48 @@
 #include "CCollider.h"
 #include <vector>
 #include "Time.h"
+#include "Matrix3f.h"
+
+class Manifold;
+
+class ContactInfo // contact info for one collider and all other colliders touching it
+{
+public:
+	class Manifold // contact data for one pair of colliders
+	{
+	public:
+		class ContactPoint // one individual contact point
+		{
+		public:
+			Manifold *parentManifold;
+			Vector3f col1LocalPoint;
+			Vector3f col2LocalPoint;
+			float penDepth;
+			Vector3f worldNormal;
+			Matrix3f contactToWorld;
+			float desiredDeltaVelocity;
+			Vector3f closingVelocity; // in contact coords
+			Vector3f bodyClosingVel;
+
+			ContactPoint(Manifold *parentMani, const Vector3f &c1Point, const Vector3f &c2Point, float penetrationDepth, const Vector3f &normal);
+			void SwapBodies();
+
+		private:
+			void CalculateContactBasis();
+			void CalcRelativeVelocity();
+			void CalcDesiredDeltaVel();
+		};
+		std::vector<ContactPoint> contactPoints;
+		CCollider *col1;
+		CCollider *col2;
+		float restitution;
+		float penetration;
+		Manifold(CCollider *newCol1, CCollider *newCol2);
+		void Prepare();
+	};
+	std::vector<Manifold> manifolds;
+	ContactInfo();
+};
 
 /**
  * @brief A singleton that manages collisions between objects
@@ -62,6 +104,8 @@ private:
 	bool m_collision;
 
 	std::unordered_map<const btCollisionObject *, CCollider *> m_collisionBodyMap;
+
+	ContactInfo m_contactInfoCache;
 
 	btDbvtBroadphase m_broadphase;
 	btDefaultCollisionConfiguration m_config;

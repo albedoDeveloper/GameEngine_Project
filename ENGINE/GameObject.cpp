@@ -21,6 +21,11 @@ CStaticMesh *GameObject::GetCStaticMesh()
 	return GetComponent<CStaticMesh>();
 }
 
+CRigidBody *GameObject::GetCRigidBody()
+{
+	return GetComponent<CRigidBody>();
+}
+
 CSound *GameObject::AddCSound()
 {
 	return AddComponent<CSound>();
@@ -31,12 +36,12 @@ CSound *GameObject::GetCSound()
 	return GetComponent<CSound>();
 }
 
-CAnimator* GameObject::AddCAnimator()
+CAnimator *GameObject::AddCAnimator()
 {
 	return AddComponent<CAnimator>();
 }
 
-CAnimator* GameObject::GetCAnimator()
+CAnimator *GameObject::GetCAnimator()
 {
 	return GetComponent<CAnimator>();
 }
@@ -151,7 +156,7 @@ void GameObject::SetActive(bool activeStatus)
 			col->EnableDisable(activeStatus);
 		}
 
-		if (activeStatus == true )
+		if (activeStatus == true)
 		{
 			col->EnableDisable(activeStatus);
 		}
