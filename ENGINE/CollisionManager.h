@@ -14,43 +14,35 @@
 
 class Manifold;
 
-class ContactInfo // contact info for one collider and all other colliders touching it
+class Manifold // contact data for one pair of colliders
 {
 public:
-	class Manifold // contact data for one pair of colliders
+	class ContactPoint // one individual contact point
 	{
 	public:
-		class ContactPoint // one individual contact point
-		{
-		public:
-			Manifold *parentManifold;
-			Vector3f col1LocalPoint;
-			Vector3f col2LocalPoint;
-			float penDepth;
-			Vector3f worldNormal;
-			Matrix3f contactToWorld;
-			float desiredDeltaVelocity;
-			Vector3f closingVelocity; // in contact coords
-			Vector3f bodyClosingVel;
+		Manifold *parentManifold;
+		Vector3f col1LocalPoint; // world space
+		Vector3f col2LocalPoint; // world space
+		float penDepth;
+		Vector3f worldNormal;
+		Matrix3f contactToWorld;
+		float desiredDeltaVelocity;
+		Vector3f closingVelocity; // in contact coords
 
-			ContactPoint(Manifold *parentMani, const Vector3f &c1Point, const Vector3f &c2Point, float penetrationDepth, const Vector3f &normal);
-			void SwapBodies();
+		ContactPoint(Manifold *parentMani, const Vector3f &c1Point, const Vector3f &c2Point, float penetrationDepth, const Vector3f &normal);
+		void SwapBodies();
 
-		private:
-			void CalculateContactBasis();
-			void CalcRelativeVelocity();
-			void CalcDesiredDeltaVel();
-		};
-		std::vector<ContactPoint> contactPoints;
-		CCollider *col1;
-		CCollider *col2;
-		float restitution;
-		float penetration;
-		Manifold(CCollider *newCol1, CCollider *newCol2);
-		void Prepare();
+	private:
+		void CalculateContactBasis();
+		void CalcRelativeVelocity();
+		void CalcDesiredDeltaVel();
 	};
-	std::vector<Manifold> manifolds;
-	ContactInfo();
+	std::vector<ContactPoint> contactPoints;
+	CCollider *col1;
+	CCollider *col2;
+	float restitution;
+	Manifold(CCollider *newCol1, CCollider *newCol2);
+	void Prepare();
 };
 
 /**
@@ -82,13 +74,15 @@ public:
 
 	void RegisterCollisionBody(btCollisionObject *body, CCollider *comp);
 
+	CCollider *GetCColliderRegistration(const btCollisionObject *body);
+
 	btCollisionWorld &GetCollisionWorld();
 
 	virtual btScalar addSingleResult(btManifoldPoint &cp, const btCollisionObjectWrapper *colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper *colObj1Wrap, int partId1, int index1);
 
 	void DrawDebug();
 
-	void PerformCollisionDetection();
+	void GenerateContactData();
 
 private:
 	/** @brief The beginning size, before alteration, of the collider array */
@@ -105,7 +99,7 @@ private:
 
 	std::unordered_map<const btCollisionObject *, CCollider *> m_collisionBodyMap;
 
-	ContactInfo m_contactInfoCache;
+	std::vector<Manifold> m_contactCache;
 
 	btDbvtBroadphase m_broadphase;
 	btDefaultCollisionConfiguration m_config;

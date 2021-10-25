@@ -31,7 +31,7 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 
 	sm->GetTransform().SetRelativePositionV(col->GetTransform().GetRelativePosition() * -1.f);
 
-	PHYSICS.RegisterRigidBody(this);
+	PHYSICS->RegisterRigidBody(this);
 }
 
 void CRigidBody::SetMass(float newMass)
@@ -63,39 +63,39 @@ void CRigidBody::AddTorque(Vector3f torque)
 	m_torqueAccum += torque;
 }
 
-void CRigidBody::IntegrateAcceleration()
-{
-	if (InfiniteMass())
-	{
-		return;
-	}
-
-	m_velocity += m_gravity * (TIME->GetDeltaTime() / 2.0f);
-}
-
-void CRigidBody::IntegrateVelocity()
-{
-	if (InfiniteMass())
-	{
-		return;
-	}
-
-	// linear
-	m_parent->GetTransform()->TranslateV(m_velocity * TIME->GetDeltaTime());
-
-	// angular
-	Vector3f angVelWorldSpace = m_angularVelocity * m_parent->GetTransform()->GetRelativeOrientation().Conjugate();
-	Quaternion angVelQuat(
-		-angVelWorldSpace.GetX(),
-		-angVelWorldSpace.GetY(),
-		-angVelWorldSpace.GetZ(),
-		0
-	);
-	m_parent->GetTransform()->GetRelativeOrientation() += 0.5f * angVelQuat * m_parent->GetTransform()->GetRelativeOrientation() * TIME->GetDeltaTime();
-	m_parent->GetTransform()->GetRelativeOrientation().Normalize();
-	m_parent->GetCCollider()->UpdateCollider();
-	IntegrateAcceleration();
-}
+//void CRigidBody::IntegrateAcceleration()
+//{
+//	if (InfiniteMass())
+//	{
+//		return;
+//	}
+//
+//	m_velocity += m_gravity * (TIME->GetDeltaTime() / 2.0f);
+//}
+//
+//void CRigidBody::IntegrateVelocity()
+//{
+//	if (InfiniteMass())
+//	{
+//		return;
+//	}
+//
+//	// linear
+//	m_parent->GetTransform()->TranslateV(m_velocity * TIME->GetDeltaTime());
+//
+//	// angular
+//	Vector3f angVelWorldSpace = m_angularVelocity * m_parent->GetTransform()->GetRelativeOrientation().Conjugate();
+//	Quaternion angVelQuat(
+//		-angVelWorldSpace.GetX(),
+//		-angVelWorldSpace.GetY(),
+//		-angVelWorldSpace.GetZ(),
+//		0
+//	);
+//	m_parent->GetTransform()->GetRelativeOrientation() += 0.5f * angVelQuat * m_parent->GetTransform()->GetRelativeOrientation() * TIME->GetDeltaTime();
+//	m_parent->GetTransform()->GetRelativeOrientation().Normalize();
+//	m_parent->GetCCollider()->UpdateCollider();
+//	IntegrateAcceleration();
+//}
 
 const Vector3f &CRigidBody::GetAcceleration() const
 {
@@ -200,7 +200,7 @@ float CRigidBody::GetRestitution() const
 	return m_restitution;
 }
 
-void CRigidBody::Update()
+void CRigidBody::Integrate()
 {
 	// linear
 	//m_accel = m_linForceAccum * m_inverseMass;

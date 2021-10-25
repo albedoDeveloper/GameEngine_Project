@@ -44,6 +44,11 @@ void CollisionManager::RegisterCollisionBody(btCollisionObject *body, CCollider 
 	m_collisionBodyMap.insert(registration);
 }
 
+CCollider *CollisionManager::GetCColliderRegistration(const btCollisionObject *body)
+{
+	return m_collisionBodyMap.at(body);
+}
+
 btCollisionWorld &CollisionManager::GetCollisionWorld()
 {
 	return m_collisionWorld;
@@ -60,16 +65,65 @@ void CollisionManager::DrawDebug()
 	m_collisionWorld.debugDrawWorld();
 }
 
-void CollisionManager::PerformCollisionDetection()
+void CollisionManager::GenerateContactData()
 {
 	m_collisionWorld.performDiscreteCollisionDetection();
+
+	for (unsigned i = 0; i < m_collisionWorld.getDispatcher()->getNumManifolds(); i++)
+	{
+		if (m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getNumContacts() < 1)
+		{
+			continue;
+		}
+		m_contactCache.push_back(Manifold(
+			GetCColliderRegistration(m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getBody0()),
+			GetCColliderRegistration(m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getBody1())
+		));
+		for (unsigned j = 0; j < m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getNumContacts(); j++)
+		{
+			m_contactCache.back().contactPoints.push_back(
+				Manifold::ContactPoint(
+					&(m_contactCache.back()),
+					Vector3f(
+						m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).getPositionWorldOnA().getX(),
+						m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).getPositionWorldOnA().getY(),
+						m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).getPositionWorldOnA().getZ()
+					) - GetCColliderRegistration(m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getBody0())->GetTransform().GetWorldTransform().GetRelativePosition(),
+					Vector3f(
+						m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).getPositionWorldOnB().getX(),
+						m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).getPositionWorldOnB().getY(),
+						m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).getPositionWorldOnB().getZ()
+					) - GetCColliderRegistration(m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getBody1())->GetTransform().GetWorldTransform().GetRelativePosition(),
+					fabs(m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).getDistance()),
+					Vector3f(
+						m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).m_normalWorldOnB.x(),
+						m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).m_normalWorldOnB.y(),
+						m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).m_normalWorldOnB.z()
+					) * -1
+				)
+			);
+		}
+
+		//// find contact with deepest penetration
+		//float maxPen = fabs(m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(0).getDistance());
+		//float maxPenIndex = 0;
+		//for (unsigned j = 0; j < m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getNumContacts(); j++)
+		//{
+		//	if (fabs(m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).getDistance()) > maxPen)
+		//	{
+		//		maxPen = fabs(m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(i)->getContactPoint(j).getDistance());
+		//		maxPenIndex = j;
+		//	}
+		//}
+		//m_contactInfoCache.manifolds.back().penetration = maxPen;
+	}
 }
 
-ContactInfo::Manifold::ContactPoint::ContactPoint(Manifold *parentMani, const Vector3f &c1Point, const Vector3f &c2Point, float penetrationDepth, const Vector3f &normal)
+Manifold::ContactPoint::ContactPoint(Manifold *parentMani, const Vector3f &c1Point, const Vector3f &c2Point, float penetrationDepth, const Vector3f &normal)
 	: parentManifold{ parentMani }, col1LocalPoint{ c1Point }, col2LocalPoint{ c2Point }, penDepth{ penetrationDepth }, worldNormal{ normal }, desiredDeltaVelocity{}
 {}
 
-void ContactInfo::Manifold::ContactPoint::SwapBodies()
+void Manifold::ContactPoint::SwapBodies()
 {
 	worldNormal = worldNormal * -1;
 	Vector3f tempvec = col1LocalPoint;
@@ -78,7 +132,7 @@ void ContactInfo::Manifold::ContactPoint::SwapBodies()
 	closingVelocity = closingVelocity * -1;
 }
 
-void ContactInfo::Manifold::ContactPoint::CalculateContactBasis()
+void Manifold::ContactPoint::CalculateContactBasis()
 {
 	Vector3f contactTangent[2];
 
@@ -125,7 +179,7 @@ void ContactInfo::Manifold::ContactPoint::CalculateContactBasis()
 	contactToWorld.ValuePtr()[8] = contactTangent[1].GetZ();
 }
 
-void ContactInfo::Manifold::ContactPoint::CalcRelativeVelocity()
+void Manifold::ContactPoint::CalcRelativeVelocity()
 {
 	// body 1
 	CRigidBody *rb1 = parentManifold->col1->GetParentObject()->GetCRigidBody();
@@ -160,7 +214,7 @@ void ContactInfo::Manifold::ContactPoint::CalcRelativeVelocity()
 	}
 }
 
-void ContactInfo::Manifold::ContactPoint::CalcDesiredDeltaVel()
+void Manifold::ContactPoint::CalcDesiredDeltaVel()
 {
 	const float velocityLimit = 0.25f;
 
@@ -188,11 +242,11 @@ void ContactInfo::Manifold::ContactPoint::CalcDesiredDeltaVel()
 	desiredDeltaVelocity = -1 * closingVelocity.GetX() - thisRestitution * (closingVelocity.GetX() - velocityFromAcc);
 }
 
-ContactInfo::Manifold::Manifold(CCollider *newCol1, CCollider *newCol2)
-	:col1{ newCol1 }, col2{ newCol2 }, penetration{ 0 }, restitution{ 0.4f }, contactPoints{}
+Manifold::Manifold(CCollider *newCol1, CCollider *newCol2)
+	:col1{ newCol1 }, col2{ newCol2 }, restitution{ 0.4f }, contactPoints{}
 {}
 
-void ContactInfo::Manifold::Prepare()
+void Manifold::Prepare()
 {
 	CRigidBody *rb1 = col1->GetParentObject()->GetCRigidBody();
 	CRigidBody *rb2 = col2->GetParentObject()->GetCRigidBody();
@@ -218,7 +272,3 @@ void ContactInfo::Manifold::Prepare()
 		restitution = col1->GetParentObject()->GetCRigidBody()->GetRestitution();
 	}
 }
-
-ContactInfo::ContactInfo()
-	: manifolds{}
-{}

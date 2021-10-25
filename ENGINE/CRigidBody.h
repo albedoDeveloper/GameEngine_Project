@@ -7,15 +7,15 @@ class CRigidBody : public CComponent
 {
 public:
 	CRigidBody(Transform *parentTrans, GameObject *parentObject);
-	void Update();
+	void Integrate();
 	void Render();
 	void SetMass(float newMass);
 	void SetInverseMass(float newInverseMass);
 	float GetInverseMass() const;
 	void AddLinearForce(Vector3f force);
 	void AddTorque(Vector3f torque);
-	void IntegrateAcceleration();
-	void IntegrateVelocity();
+	//void IntegrateAcceleration();
+	//void IntegrateVelocity();
 	const Vector3f &GetAcceleration() const;
 	void CalcInertiaTensor();
 	void RemoveMomentum();
