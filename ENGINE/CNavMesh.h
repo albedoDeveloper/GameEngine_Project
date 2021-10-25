@@ -10,11 +10,54 @@
 #include "NavNode.h"
 #include <iostream>
 #include <queue>
+#include <unordered_map>
+#include <unordered_set>
 
 
 
-//forward declaration
-//class NavNode;
+struct Graph
+{
+	std::unordered_map<NavNode*, std::vector<NavNode*> > edges;
+
+	std::vector<NavNode*> neighbors(NavNode* id)
+	{
+		return edges[id];
+	}
+
+	/*std::unordered_set<GridLocation> forests;
+
+	double cost(GridLocation from_node, GridLocation to_node) const
+	{
+		return forests.find(to_node) != forests.end() ? 5 : 1;
+	}*/
+
+	
+};
+
+template<typename T, typename priority_t>
+struct PriorityQueue
+{
+	typedef std::pair<priority_t, T> PQElement;
+	std::priority_queue<PQElement, std::vector<PQElement>,
+		std::greater<PQElement>> elements;
+
+	inline bool empty() const
+	{
+		return elements.empty();
+	}
+
+	inline void put(T item, priority_t priority)
+	{
+		elements.emplace(priority, item);
+	}
+
+	T get()
+	{
+		T best_item = elements.top().second;
+		elements.pop();
+		return best_item;
+	}
+};
 
 	/**
 
@@ -77,11 +120,24 @@ class CNavMesh : public CComponent
 
 	void Scan();
 
+	void DijkstraSearch(
+	Graph graph, NavNode* start, NavNode* goal,
+	std::unordered_map<NavNode*, NavNode*>& came_from,
+	std::unordered_map<NavNode*, double>& cost_so_far
+	);
+
+	//public vars because i'm lazy and time is short
+public:
+	GridLocation dirs[4] = { {1, 0}, {0, 1}, {-1, 0}, {0, -1} };
+
 
 private:
 		/**
 		 * @brief The vars for this comp
 		*/
 		std::vector<NavNode*> m_navNodes;
+
+
+		Graph nodeGraph;
 	
 };

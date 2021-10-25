@@ -19,10 +19,6 @@ struct GridLocation
 
 class NavNode
 {
-
-	
-
-
 	public:
 		
 		NavNode(CNavMesh *parentMeshIn, int x, int z, bool isActive);
@@ -48,7 +44,28 @@ class NavNode
 
 		void UpdateNeighbours(bool isActive);
 
+		//Grid location helpers
 
+	friend bool operator == (NavNode a, NavNode b)
+	{
+		return a.nodeLocation.x == b.nodeLocation.x && a.nodeLocation.z == b.nodeLocation.z;
+	}
+
+	friend bool operator != (NavNode a, NavNode b)
+	{
+		return !(a == b);
+	}
+
+	friend bool operator < (NavNode a, NavNode b)
+	{
+		return std::tie(a.nodeLocation.x, a.nodeLocation.z) < std::tie(b.nodeLocation.x, b.nodeLocation.z);
+	}
+
+	friend std::basic_iostream<char>::basic_ostream &operator<<(std::basic_iostream<char>::basic_ostream &out, const NavNode &loc)
+	{
+		out << '(' << loc.nodeLocation.x << ',' << loc.nodeLocation.z << ')';
+		return out;
+	}
 
 	private:
 
@@ -63,11 +80,13 @@ class NavNode
 		bool active;
 
 		//float dirs[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-		GridLocation dirs[4] = { {1, 0}, {0, 1}, {-1, 0}, {0, -1} };
+		//GridLocation dirs[4] = { {1, 0}, {0, 1}, {-1, 0}, {0, -1} };
 
 		std::vector<NavNode*> m_neighbourNodes;
 
 };
+
+
 
 
 
