@@ -57,8 +57,8 @@ void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 		}
 		Manifold::ContactPoint &contactPoint = manifolds[pair].contactPoints[maxPenPointIndex];
 		Vector3f normal = contactPoint.worldNormal;
-		CRigidBody *rb1 = manifolds[pair].contactPoints[0].parentManifold->col1->GetParentObject()->GetComponent<CRigidBody>();
-		CRigidBody *rb2 = manifolds[pair].contactPoints[0].parentManifold->col2->GetParentObject()->GetComponent<CRigidBody>();
+		CRigidBody *rb1 = manifolds[pair].col1->GetParentObject()->GetComponent<CRigidBody>();
+		CRigidBody *rb2 = manifolds[pair].col2->GetParentObject()->GetComponent<CRigidBody>();
 		assert(rb1);
 		if (rb1 && rb2)
 		{
