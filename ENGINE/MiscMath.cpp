@@ -33,7 +33,7 @@ void Decompose(const Matrix4f &m, Vector3f &scaleOut, Quaternion &rotationOut, V
 
 float Lerp(float start, float end, float interpolant)
 {
-	return start + interpolant * (end - start);
+	return start + (end - start) * interpolant;
 }
 
 float BiLerp(float a, float b, float c, float d, float x, float z)
@@ -67,3 +67,4 @@ Matrix4f Ortho(float left, float right, float bottom, float top, float near, flo
 {
 	return glm::ortho(left, right, bottom, top, near, far);
 }
+

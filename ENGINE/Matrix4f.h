@@ -52,6 +52,8 @@ public:
 
 	void RemoveTranslation();
 
+	Quaternion ToQuat();
+
 	float& SetMatrixElement(unsigned int row, unsigned int column);
 	
 		/**

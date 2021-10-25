@@ -1,6 +1,9 @@
 #include "CAgent.h"
 #include "GameObjectFactory.h"
 #include <iostream>
+#include <time.h>  
+#include <math.h>
+#include "MiscMath.h"
 CAgent::CAgent(Transform *parent, GameObject *parentObj):CComponent{ parent, parentObj }
 {
 	auto allGameObjects = GAMEOBJECT->GetObjectMap();
@@ -12,6 +15,7 @@ CAgent::CAgent(Transform *parent, GameObject *parentObj):CComponent{ parent, par
 		if (it->second->GetCAffordanceManager() != nullptr)
 			allAffordances.insert(std::pair(it->first, &it->second->GetCAffordanceManager()->listOfAffordances));
 	}
+	
 }
 
 void CAgent::AddEmotion(std::string name, float level, float multipler, float emotionNativeChange)
@@ -55,30 +59,52 @@ void CAgent::AiThink()
 	FindNewAffordance();
 	
 	if (currentAffordance != nullptr)
+	{
 		currentState = AiState::MOVE;
+		GetParentObject()->GetCAnimator()->PlayAnimation("agent_walk");
+		auto pTrans = GetParentObject()->GetTransform()->GetRelativePosition();
+		auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetRelativePosition();
+		startLocation = pTrans;
+		endLocation = afforanceTrans;
+
+		GetParentObject()->GetTransform()->SetRelativeOrientation(LookAt(startLocation, endLocation, GetParentObject()->GetTransform()->GetRelativeUp()).ToQuat().GetInverse());
+	}
 }
 
 void CAgent::AiMove()
 {
-	auto pTrans = GetParentObject()->GetTransform()->GetWorldTransform();
+	auto pTrans = GetParentObject()->GetTransform()->GetRelativePosition();
+	auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetRelativePosition();
 
-	currentState = AiState::ACTION;
+		//float t = lerpTime / 400;
+		GetParentObject()->GetTransform()->TranslateV(Vector3f(Lerp(startLocation.GetX(), endLocation.GetX(), 1.0f), pTrans.GetY(), Lerp(startLocation.GetZ(), endLocation.GetZ(), 1.0f)) * (TIME->GetDeltaTime()/4));
+		//lerpTime += lerpTime * TIME->GetDeltaTime();
 
-	if (!currentAffordance->animation._Equal(""))
-		GetParentObject()->GetCAnimator()->PlayAnimation(currentAffordance->animation);
+
+	if ((std::fabs(pTrans.GetX()) <= std::fabs(afforanceTrans.GetX()) + 1 && std::fabs(pTrans.GetX()) >= std::fabs(afforanceTrans.GetX()) - 1) && (std::fabs(pTrans.GetZ()) <= std::fabs(afforanceTrans.GetZ()) + 1 && std::fabs(pTrans.GetZ()) >= std::fabs(afforanceTrans.GetZ()) - 1))
+	{
+		currentState = AiState::ACTION;
+		lerpTime = 0;
+
+		if (!currentAffordance->animation._Equal(""))
+			GetParentObject()->GetCAnimator()->PlayAnimation(currentAffordance->animation);
+
+		if (!currentAffordance->sound._Equal(""))
+			GetParentObject()->GetCSound()->PlaySound(currentAffordance->sound, 0, true);
+	}
 }
 
 void CAgent::AiAction()
 {
 	time += TIME->GetDeltaTime();
 
-	if (time > 5.0)
+	if (time > (std::rand() % 25 + 15))
 	{
 		time = 0;
 		
 		for (auto &emotionEffect : currentAffordance->EmotionEffectors)
 		{
-			emotions.at(emotionEffect.first).emotion += emotionEffect.second * emotions.at(lowestName).multipler;
+			emotions.at(emotionEffect.first).emotion += emotionEffect.second * emotions.at(lowestName).multipler * (static_cast<float>(std::rand() % 140 + 70)/100);
 			
 			if (emotions.at(emotionEffect.first).emotion > 1)
 				emotions.at(emotionEffect.first).emotion = 1;
@@ -88,6 +114,7 @@ void CAgent::AiAction()
 			
 			std::cout << lowestName << "+" << emotionEffect.first << " = " << emotions.at(emotionEffect.first).emotion;
 		}
+		
 		currentState = AiState::THINK;
 	}
 }
@@ -99,7 +126,7 @@ void CAgent::FindNewAffordance()
 	
 	for (auto &emotion : emotions)
 	{
-		if (emotion.second.emotion < lowest)
+		if (emotion.second.emotion <= lowest)
 		{
 			lowestName = emotion.first;
 			lowest = emotion.second.emotion;

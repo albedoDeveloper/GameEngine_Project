@@ -12,6 +12,7 @@ struct Affordance
 	{
 		this->parentObj = parentObj;
 		this->animation = animation;
+		this->sound = sound;
 	}
 
 	std::unordered_map<std::string, float> EmotionEffectors;

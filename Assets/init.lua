@@ -55,22 +55,34 @@ GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_to
 
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
-GetGameObject("waitress"):AddCAffordanceManager():AddAffordance("OrderFood","agent_dance","")
+GetGameObject("waitress"):AddCAffordanceManager():AddAffordance("OrderFood","agent_loser","girlTextSpeechTwo.wav")
+GetGameObject("waitress"):GetCAffordanceManager():GetTransform():SetRelativePosition(5.034, 0, 5.252)
+
 GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","energy", 0.3)
 GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","joy", -0.7)
+
+------------------------
+SpawnGameObject("pool-table"):SetStatic(true)
+GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
+GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("pool-table"):GetCCollider():CollideWith(2)
+
+GetGameObject("pool-table"):AddCAffordanceManager():AddAffordance("Pool","agent_pool","girlTextSpeechTwo.wav")
+GetGameObject("pool-table"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","energy", 0.7)
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","joy", -0.4)
+
+GetGameObject("pool-table"):GetCAffordanceManager():AddAffordance("Texting","agent_mobile","girlTextSpeechTwo.wav")
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","energy", -0.7)
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","joy", 0.7)
+----------------------
+
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
 GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("toilet_block"):GetCCollider():CollideWith(2)
-----------------------
-GetGameObject("toilet_block"):AddCAffordanceManager():AddAffordance("ToiletBreak","agent_walk","")
-GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("ToiletBreak","energy", 0.7)
-GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("ToiletBreak","joy", -0.4)
-------------------------
-GetGameObject("toilet_block"):GetCAffordanceManager():AddAffordance("DrinkWater","agent_drinking","")
-GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("DrinkWater","energy", -0.7)
-GetGameObject("toilet_block"):GetCAffordanceManager():AddEmotion("DrinkWater","joy", 0.7)
+
 
 
 
@@ -98,6 +110,13 @@ GetGameObject("ai_agent_1"):AddCAnimator()
 GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/dance.fbx", false, "agent_dance")
 GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/drinking.fbx", false, "agent_drinking")
 GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/walk.fbx", true, "agent_walk")
+GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/loser.fbx", false, "agent_loser")
+GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/pool.fbx", false, "agent_pool")
+GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/slowdance.fbx", false, "agent_slowdance")
+GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/mobile.fbx", false, "agent_mobile")
+GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/pickup.fbx", false, "agent_pickup")
+GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/talking.fbx", false, "agent_talking")
+
 GetGameObject("ai_agent_1"):AddCSound():LoadSound("girlTextSpeechTwo.wav")
 GetGameObject("ai_agent_1"):GetTransform():Translate(2,0,1.4)
 GetGameObject("ai_agent_1"):AddCAgent():AddEmotion("joy",0.7, 1.0, -0.002)
@@ -132,10 +151,6 @@ GetGameObject("tavern_floor"):GetCCollider():CollideWith(2)
 SpawnGameObject("roof_interior"):SetStatic(true)
 GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
 
-SpawnGameObject("pool-table"):SetStatic(true)
-GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
-GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
-GetGameObject("pool-table"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("main_bar_bench"):SetStatic(true)
 GetGameObject("main_bar_bench"):AddCStaticMesh():AssignModel("main_bar_bench")

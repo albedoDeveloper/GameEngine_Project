@@ -67,8 +67,8 @@ class CAgent : public CComponent
 		std::unordered_map<std::string, Emotion> emotions;
 		std::unordered_map<std::string, float> traits;
 
-
-		bool inAffordance = true;
+		Vector3f startLocation;
+		Vector3f endLocation;
 		
 		Affordance* currentAffordance = nullptr;
 
@@ -79,7 +79,7 @@ class CAgent : public CComponent
 		std::string lowestName;
 
 		float time = 0;
-
+		float lerpTime = 0;
 		void AddEmotion(std::string name, float level, float multiplier, float emotionNativeChange);
 		
 		//-1.0f will make the ai hate it
