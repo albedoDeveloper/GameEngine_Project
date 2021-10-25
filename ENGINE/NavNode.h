@@ -11,7 +11,7 @@
 class CNavMesh;
 
 
-struct NodeDir
+struct GridLocation
 {
 	int x;
 	int z;
@@ -34,6 +34,8 @@ class NavNode
 
 		int GetZPos();
 
+		GridLocation GetLocation();
+
 		Transform* GetTransform();
 
 		bool GetActive();
@@ -42,21 +44,26 @@ class NavNode
 
 		void PopulateNeighbours();
 
+		std::vector<NavNode *> GetNeighbours();
+
 		void UpdateNeighbours(bool isActive);
+
 
 
 	private:
 
 		CNavMesh *parentMesh;
 
-		int xPos;
-		int zPos;
+		GridLocation nodeLocation;
+
+		//int xPos;
+		//int zPos;
 		Transform transform;
 
 		bool active;
 
 		//float dirs[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-		NodeDir dirs[4] = { {1, 0}, {0, 1}, {-1, 0}, {0, -1} };
+		GridLocation dirs[4] = { {1, 0}, {0, 1}, {-1, 0}, {0, -1} };
 
 		std::vector<NavNode*> m_neighbourNodes;
 

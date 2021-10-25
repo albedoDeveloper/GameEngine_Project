@@ -7,9 +7,10 @@
 	{
 
 		parentMesh = parentMeshIn;
-		xPos = x;
-		zPos = z;
-		transform.SetRelativePosition(x, 0, z);
+
+		nodeLocation.x = x;
+		nodeLocation.z = z;
+		transform.SetRelativePosition(nodeLocation.x, 0, nodeLocation.z);
 		active = isActive;
 
 
@@ -34,19 +35,24 @@
 
 	void NavNode::UpdateTransform(Transform parentTransform)
 	{
-		transform.SetRelativePosition(parentTransform.GetWorldTransform().GetRelativePosition().GetX() + xPos,
+		transform.SetRelativePosition(parentTransform.GetWorldTransform().GetRelativePosition().GetX() + nodeLocation.x,
 		parentTransform.GetWorldTransform().GetRelativePosition().GetY(),
-		parentTransform.GetWorldTransform().GetRelativePosition().GetZ() + zPos);
+		parentTransform.GetWorldTransform().GetRelativePosition().GetZ() + nodeLocation.z);
 	}
 
 	int NavNode::GetXPos()
 	{
-		return xPos;
+		return nodeLocation.x;
 	}
 
 	int NavNode::GetZPos()
 	{
-		return zPos;
+		return nodeLocation.z;
+	}
+
+	GridLocation NavNode::GetLocation()
+	{
+		return nodeLocation;
 	}
 
 	Transform* NavNode::GetTransform()
@@ -66,13 +72,13 @@
 
 	void NavNode::PopulateNeighbours()
 	{
-		m_neighbourNodes.emplace_back(parentMesh->FetchNode(xPos + dirs[0].x, zPos + dirs[0].z));
-		m_neighbourNodes.emplace_back(parentMesh->FetchNode(xPos + dirs[1].x, zPos + dirs[1].z));
-		m_neighbourNodes.emplace_back(parentMesh->FetchNode(xPos + dirs[2].x, zPos + dirs[2].z));
-		m_neighbourNodes.emplace_back(parentMesh->FetchNode(xPos + dirs[3].x, zPos + dirs[3].z));
+		m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + dirs[0].x, nodeLocation.z + dirs[0].z));
+		m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + dirs[1].x, nodeLocation.z + dirs[1].z));
+		m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + dirs[2].x, nodeLocation.z + dirs[2].z));
+		m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + dirs[3].x, nodeLocation.z + dirs[3].z));
 
 
-		if (xPos == 2 && zPos ==2)
+		if (nodeLocation.x == 2 && nodeLocation.z ==2)
 		{
 			UpdateNeighbours(active);
 		}
@@ -92,10 +98,16 @@
 			if (it != NULL)
 			{
 				it->SetActive(isActive);
-				std::cout << "x = " << it->GetXPos() << " y = " << it->GetZPos() << std::endl;
+				std::cout << "x = " << it->nodeLocation.x << " y = " << it->nodeLocation.z << std::endl;
 
 
 			}
 
 		}
 	}
+
+	std::vector<NavNode *> NavNode::GetNeighbours()
+	{
+		return m_neighbourNodes;
+	}
+

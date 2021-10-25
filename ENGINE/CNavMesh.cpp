@@ -98,10 +98,20 @@ NavNode* CNavMesh::FetchNode(int x, int z)
 
 	if (returnNode == NULL)
 	{
-		std::cout << "Output x = " << x << " z = " << z << std::endl;
+		//std::cout << "Output x = " << x << " z = " << z << std::endl;
 
 	}
 
 	return returnNode;
+}
+
+void CNavMesh::Scan()
+{
+	//std::unordered_map
+	for (NavNode* next : m_navNodes)
+	{
+		std::cout << "How does this work??" << std::endl;
+	}
+
 }
 

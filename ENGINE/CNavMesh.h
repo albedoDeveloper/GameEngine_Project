@@ -9,6 +9,8 @@
 #include "CComponent.h"
 #include "NavNode.h"
 #include <iostream>
+#include <queue>
+
 
 
 //forward declaration
@@ -72,6 +74,8 @@ class CNavMesh : public CComponent
 		 * @brief Retrieves a specific navNode
 		*/
 	NavNode* FetchNode(int x, int z);
+
+	void Scan();
 
 
 private:
