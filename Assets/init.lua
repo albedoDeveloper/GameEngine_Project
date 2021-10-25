@@ -32,26 +32,17 @@ LoadModel("girlTalking","basic_girl/girlTalking.fbx")
 LoadModel("girlDying","basic_girl/girlDying.fbx")
 LoadModel("book", "book/book.fbx")
 LoadScript("rotate", "rotate.lua")
+LoadScript("playerShoot", "playerShoot.lua")
 LoadScript("girl1script", "girl1script.lua")
 LoadScript("girl2script", "girl2script.lua")
-
-SpawnGameObject("book")
-GetGameObject("book"):AddCStaticMesh():AssignModel("book")
-GetGameObject("book"):GetTransform():Translate(1,1,0)
-GetGameObject("book"):AddCCollider():AddBoxCollider(0,0,0,0,0,0, true, 1, true, 31)
-GetGameObject("book"):AddCRigidBody():SetMass(2)
-GetGameObject("book"):AddCStaticMesh():AssignModel("axis")
---GetGameObject("book"):GetCRigidBody():SetGravityEnabled(true)
 
 SpawnGameObject("fridge1"):SetStatic(true)
 GetGameObject("fridge1"):AddCStaticMesh():AssignModel("fridge1")
 GetGameObject("fridge1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
---GetGameObject("fridge1"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("fridge2"):SetStatic(true)
 GetGameObject("fridge2"):AddCStaticMesh():AssignModel("fridge2")
 GetGameObject("fridge2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
---GetGameObject("fridge2"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("beertap1"):SetStatic(true)
 GetGameObject("beertap1"):AddCStaticMesh():AssignModel("beertap1")
@@ -216,7 +207,7 @@ GetGameObject("player"):GetTransform():SetRelativePosition(0, 2, 0);
 GetGameObject("player"):AddCCollider():AddBoxCollider(0.25, 1.4, 0.25, 0 ,0, 0, false, 1, false, 31);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
-GetGameObject("player"):GetCCamera():GetTransform():Translate(0,0.5,0);
+GetGameObject("player"):GetCCamera():GetTransform():Translate(0,0.5,0)
 
 SpawnGameObject("endscreen"):SetActive(false)
 GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")

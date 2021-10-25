@@ -131,8 +131,9 @@ void Engine::OnEvent(SDL_Event *e)
 void Engine::Update()
 {
 	GAMEOBJECT->Update();
-	//PHYSICS->IntegrateBodies();
-	//COLLISION->GenerateContactData();
+	PHYSICS->IntegrateBodies();
+	COLLISION->GenerateContactData();
+	PHYSICS->ResolveContactPoints(COLLISION->GetContactCache());
 	if (INPUT->GetKeyDown('`'))
 	{
 		m_debugMenu = !m_debugMenu;

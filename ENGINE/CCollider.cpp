@@ -142,15 +142,18 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	m_offset.x = offsetX;
 	m_offset.y = offsetY;
 	m_offset.z = offsetZ;
+	m_boxXHalfSize = x;
+	m_boxYHalfSize = y;
+	m_boxZHalfSize = z;
 
 	if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() != nullptr)
 	{
 		auto minMax = this->GetParentObject()->GetCStaticMesh()->m_model->MinMax();
 		minMax.push_back(23.f);
 
-		x = (minMax[1] - minMax[0]) / 2.0f;
-		y = (minMax[3] - minMax[2]) / 2.0f;
-		z = (minMax[5] - minMax[4]) / 2.0f;
+		m_boxXHalfSize = (minMax[1] - minMax[0]) / 2.0f;
+		m_boxYHalfSize = (minMax[3] - minMax[2]) / 2.0f;
+		m_boxZHalfSize = (minMax[5] - minMax[4]) / 2.0f;
 
 		auto xAvg = ((minMax[1]) + (minMax[0])) / 2;
 		auto yAvg = ((minMax[3]) + (minMax[2])) / 2;
@@ -167,7 +170,7 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	m_colObj = new btCollisionObject();
 	m_colObj->setCollisionFlags(btCollisionObject::CF_DYNAMIC_OBJECT);
 	COLLISION->RegisterCollisionBody(m_colObj, this);
-	btBoxShape *boxShape = new btBoxShape(btVector3(x, y, z));
+	btBoxShape *boxShape = new btBoxShape(btVector3(m_boxXHalfSize, m_boxYHalfSize, m_boxZHalfSize));
 	m_colObj->setCollisionShape(boxShape);
 	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj, (1 << layer), -1);
 }

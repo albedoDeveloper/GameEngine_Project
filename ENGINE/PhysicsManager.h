@@ -3,7 +3,7 @@
 #include <vector>
 #include "CRigidBody.h"
 
-struct Manifold;
+class Manifold;
 
 class PhysicsManager
 {
@@ -14,12 +14,12 @@ public:
 	//void IntegrateAccelerations();
 	//void IntegrateVelocities();
 	void IntegrateBodies();
-	void ResolveImpulses(std::vector<Manifold> &manifolds);
 
 private:
 	std::vector<CRigidBody *> m_bodies;
 
-	//void PrepareContacts(ContactInfo &contactInfo);
+	void PrepareContacts(std::vector<Manifold> &manifolds);
+	void ResolveImpulses(std::vector<Manifold> &manifolds);
 	void ResolveInterpenetration(std::vector<Manifold> &manifolds);
 };
 

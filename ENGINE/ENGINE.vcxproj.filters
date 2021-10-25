@@ -363,6 +363,9 @@
     <None Include="..\Assets\Shaders\skybox.frag">
       <Filter>Shaders\skybox</Filter>
     </None>
+    <None Include="..\Assets\Scripts\playerShoot.lua">
+      <Filter>Scripts</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ThirdParty">

@@ -31,6 +31,7 @@ public:
 
 		ContactPoint(Manifold *parentMani, const Vector3f &c1Point, const Vector3f &c2Point, float penetrationDepth, const Vector3f &normal);
 		void SwapBodies();
+		void Prepare();
 
 	private:
 		void CalculateContactBasis();
@@ -84,6 +85,8 @@ public:
 
 	void GenerateContactData();
 
+	std::vector<Manifold> &GetContactCache();
+
 private:
 	/** @brief The beginning size, before alteration, of the collider array */
 	const static int m_initialSize = 50;
@@ -105,6 +108,9 @@ private:
 	btDefaultCollisionConfiguration m_config;
 	btCollisionDispatcher m_dispatcher;
 	btCollisionWorld m_collisionWorld;
+
+	void FillManifoldAB(unsigned manifoldIndex);
+	void FillManifoldBA(unsigned manifoldIndex);
 };
 
 #define COLLISION CollisionManager::Instance()

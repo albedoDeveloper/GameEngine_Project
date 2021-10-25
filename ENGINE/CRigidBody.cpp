@@ -11,10 +11,10 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 	:CComponent{ parentTrans, parentObject },
 	m_inverseMass{ 0 },
 	m_inertiaTensor{ 1.f },
-	m_velocity{ 0.1f,0,0 },
+	m_velocity{ 0.0f,0,0 },
 	m_accel{ 0,0,0 },
 	m_linForceAccum{ 0,0,0 },
-	m_angularVelocity{ 0, 0.5f, 0 },
+	m_angularVelocity{ 0, 0.0f, 0 },
 	m_angularAccel{ 0,0,0 },
 	m_gravityEnabled{ true },
 	m_freezeXTrans{ false },
@@ -242,6 +242,6 @@ void CRigidBody::Integrate()
 void CRigidBody::Render()
 {
 	GRAPHICS->DrawLine(m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_angularVelocity, Vector3f(1, 1, 0));
-	//GRAPHICS->RenderLine(Vector3f(0, 1, 1), m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_velocity);
+	GRAPHICS->DrawLine(m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_velocity, Vector3f(1, 0, 1));
 	//GRAPHICS->RenderLine(Vector3f(1, 1, 1), m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_accel);
 }

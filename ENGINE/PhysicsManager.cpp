@@ -13,11 +13,11 @@ void PhysicsManager::ResolveContactPoints(std::vector<Manifold> &manifolds)
 {
 	if (manifolds.size() < 1) return;
 
-	//PrepareContacts(contactInfo);
+	//PrepareContacts(manifolds);
 
-	//ResolveInterpenetration(contactInfo);
+	ResolveInterpenetration(manifolds);
 
-	ResolveImpulses(manifolds);
+	//ResolveImpulses(manifolds);
 }
 
 void PhysicsManager::RegisterRigidBody(CRigidBody *body)
@@ -25,46 +25,27 @@ void PhysicsManager::RegisterRigidBody(CRigidBody *body)
 	m_bodies.push_back(body);
 }
 
-//void PhysicsManager::IntegrateAccelerations()
-//{
-//	for (int i = 0; i < m_bodies.size(); i++)
-//	{
-//		m_bodies[i]->IntegrateAcceleration();
-//	}
-//}
-//
-//void PhysicsManager::IntegrateVelocities()
-//{
-//	for (int i = 0; i < m_bodies.size(); i++)
-//	{
-//		m_bodies[i]->IntegrateVelocity();
-//	}
-//}
-
-//void PhysicsManager::PrepareContacts(ContactInfo &contactInfo)
-//{
-//	// prepare contacts
-//	for (unsigned pair = 0; pair < contactInfo.manifolds.size(); pair++)
-//	{
-//		for (unsigned contact = 0; contact < contactInfo.manifolds[pair].contactPoints.size(); contact++)
-//		{
-//			ContactInfo::Manifold &contactPair = contactInfo.manifolds[pair];
-//			if (!contactPair.contactPoints[contact].col1->GetParentObject()->GetCRigidBody() && !contactPair.contactPoints[contact].col2->GetParentObject()->GetCRigidBody())
-//			{
-//				return;
-//			}
-//			contactInfo.manifolds[pair].contactPoints[contact].PrepareContact();
-//		}
-//	}
-//}
+void PhysicsManager::PrepareContacts(std::vector<Manifold> &manifolds)
+{
+	// prepare contacts
+	for (unsigned pair = 0; pair < manifolds.size(); pair++)
+	{
+		for (unsigned contact = 0; contact < manifolds[pair].contactPoints.size(); contact++)
+		{
+			Manifold &contactPair = manifolds[pair];
+			assert(contactPair.col1->GetParentObject()->GetCRigidBody() || contactPair.col2->GetParentObject()->GetCRigidBody());
+			manifolds[pair].contactPoints[contact].Prepare();
+		}
+	}
+}
 
 void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 {
-	const float percent = 0.2f;
-	const float slop = 0.01f;
+	//const float percent = 0.2f;
+	//const float slop = 0.01f;
 
 	//resolves interpenetrations
-	for (unsigned pair = 0; pair < manifolds.size(); pair++)
+	for (unsigned pair = 0; pair < manifolds.size(); pair++) // loop through each manifold apply linear projection to biggest penetrating contact point
 	{
 		float maxPenPointIndex = 0;
 		float maxPen = manifolds[pair].contactPoints[maxPenPointIndex].penDepth;
@@ -81,16 +62,17 @@ void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 		Vector3f normal = contactPoint.worldNormal;
 		CRigidBody *rb1 = manifolds[pair].contactPoints[0].parentManifold->col1->GetParentObject()->GetComponent<CRigidBody>();
 		CRigidBody *rb2 = manifolds[pair].contactPoints[0].parentManifold->col2->GetParentObject()->GetComponent<CRigidBody>();
+		assert(rb1);
 		if (rb1 && rb2)
 		{
 			float totalInverseMass = rb1->GetInverseMass() + rb2->GetInverseMass();
-			Vector3f movePerIMass = contactPoint.worldNormal * (fmaxf(contactPoint.penDepth - slop, 0.0f) / totalInverseMass) * percent;
+			Vector3f movePerIMass = contactPoint.worldNormal / totalInverseMass;
 			rb1->GetParentObject()->GetTransform()->TranslateV(movePerIMass * rb1->GetInverseMass() * -1);
 			rb2->GetParentObject()->GetTransform()->TranslateV(movePerIMass * rb2->GetInverseMass());
 		}
 		else if (rb1 && !rb2)
 		{
-			Vector3f movePerIMass = contactPoint.worldNormal * (fmaxf(contactPoint.penDepth - slop, 0.0f)) * percent;
+			Vector3f movePerIMass = contactPoint.worldNormal;
 			rb1->GetParentObject()->GetTransform()->TranslateV(movePerIMass * -1);
 		}
 	}
@@ -185,10 +167,6 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 		CRigidBody *rb1 = manifolds[pair].col1->GetParentObject()->GetComponent<CRigidBody>();
 		CRigidBody *rb2 = manifolds[pair].col2->GetParentObject()->GetComponent<CRigidBody>();
 		assert(rb1);
-		if (!rb1 && !rb2)
-		{
-			return;
-		}
 		const float invMass1 = rb1->GetInverseMass();
 		float invMass2{};
 		if (rb2)
@@ -216,7 +194,6 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 			if (rb2)
 			{
 				bodiesRelVel -= rb2->GetVelocity();
-
 			}
 			const Vector3f normal = thisContact.worldNormal;
 			float penetration = thisContact.penDepth;
@@ -226,13 +203,13 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 			{
 				r2 = thisContact.col2LocalPoint;
 			}
-			Vector3f contactWorldPos = rb1->GetTransform().GetWorldTransform().GetRelativePosition() + r1 + (-1 * normal * (penetration / 2));
-			Vector3f contactRelVel = rb1->GetAngularVelocity().crossProduct(r1) + rb1->GetVelocity(); // relative velocity of the two objects at the contact point
-			if (rb2)
-			{
-				contactRelVel -= rb2->GetAngularVelocity().crossProduct(r2) + rb2->GetVelocity();
-			}
-			float contactRelVelAlongNormal = contactRelVel.dotProduct(normal);
+			//Vector3f contactWorldPos = rb1->GetTransform().GetWorldTransform().GetRelativePosition() + r1 + (-1 * normal * (penetration / 2));
+			//Vector3f contactRelVel = rb1->GetAngularVelocity().crossProduct(r1) + rb1->GetVelocity(); // relative velocity of the two objects at the contact point
+			//if (rb2)
+			//{
+			//	contactRelVel -= rb2->GetAngularVelocity().crossProduct(r2) + rb2->GetVelocity();
+			//}
+			//float contactRelVelAlongNormal = contactRelVel.dotProduct(normal);
 	/*		if (contactRelVelAlongNormal < 0)
 			{
 				std::cout << "seperating\n";
@@ -256,7 +233,6 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 					(-1 * (1 + manifold.restitution) * (rb1->GetVelocity()).dotProduct(normal)) /
 					(invMass1 + (J1invWorld * (r1.crossProduct(normal)).crossProduct(r1)).dotProduct(normal));
 			}
-			impulse /= numContactPoints;
 
 			// linear impulse - seperating velocity
 			Vector3f rb1NewVel = rb1->GetVelocity() + (impulse * normal) * rb1->GetInverseMass();

@@ -67,6 +67,7 @@ lua_State *ScriptingEngine::NewState()
 		.addFunction("GetDistance", &Transform::GetDistance)
 		.addFunction("GetDistance3f", &Transform::GetDistance3f)
 		.addFunction("SetParent", &Transform::SetParent)
+		.addFunction("GetRelativeForward", &Transform::GetRelativeForward)
 		.endClass();
 
 	getGlobalNamespace(Lbuff)
@@ -153,6 +154,7 @@ lua_State *ScriptingEngine::NewState()
 		.endClass()
 		.deriveClass<CRigidBody, CComponent>("CRigidBody")
 		.addFunction("SetMass", &CRigidBody::SetMass)
+		.addFunction("SetVelocity", &CRigidBody::SetVelocity)
 		.endClass();
 
 	getGlobalNamespace(Lbuff)
