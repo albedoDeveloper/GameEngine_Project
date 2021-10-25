@@ -102,6 +102,16 @@ std::vector<Manifold> &CollisionManager::GetContactCache()
 	return m_contactCache;
 }
 
+void CollisionManager::AddColliderToWorld(CCollider &c)
+{
+	m_collisionWorld.addCollisionObject(c.m_colObj);
+}
+
+void CollisionManager::RemoveColliderToWorld(CCollider &c)
+{
+	m_collisionWorld.removeCollisionObject(c.m_colObj);
+}
+
 void CollisionManager::FillManifoldAB(unsigned manifoldIndex)
 {
 	m_contactCache.push_back(Manifold(

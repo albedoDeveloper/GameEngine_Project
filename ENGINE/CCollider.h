@@ -150,4 +150,6 @@ private:
 	float m_boxXHalfSize;
 	float m_boxYHalfSize;
 	float m_boxZHalfSize;
+
+	friend class CollisionManager;
 };

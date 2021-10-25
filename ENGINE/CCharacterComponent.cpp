@@ -80,7 +80,7 @@ void CCharacter::Start()
 		projObj->AddComponent<CCollider>()->AddBoxCollider(0, 0, 0, 0, 0, 0, true, 1, true, 31);
 		projObj->AddComponent<CRigidBody>()->SetMass(2);
 		projObj->SetActive(false);
-		projObj->GetTransform()->SetRelativePosition(999, 999, 999);
+		projObj->GetTransform()->SetRelativePosition(1, 1, 1);
 		m_projectilePool[i] = projObj;
 	}
 }
@@ -151,7 +151,7 @@ void CCharacter::Update()
 			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * mouseSens);
 			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * -mouseSens);
 
-			if (INPUT->GetKeyDown('z'))
+			if (INPUT->GetMouseButtonDown(1))
 			{
 				static unsigned projPoolIndex = 0;
 				m_projectilePool[projPoolIndex]->SetActive(true);

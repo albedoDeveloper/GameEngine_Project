@@ -65,6 +65,7 @@ public:
 		/**
 		 * @brief Singleton instance accessor
 		 * @return the single instance of this manager
+		 * @return the single instance of this manager
 		*/
 	static CollisionManager *Instance();
 
@@ -86,6 +87,10 @@ public:
 	void GenerateContactData();
 
 	std::vector<Manifold> &GetContactCache();
+
+	void AddColliderToWorld(CCollider &c);
+
+	void RemoveColliderToWorld(CCollider &c);
 
 private:
 	/** @brief The beginning size, before alteration, of the collider array */
