@@ -66,14 +66,17 @@ void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 		if (rb1 && rb2)
 		{
 			float totalInverseMass = rb1->GetInverseMass() + rb2->GetInverseMass();
-			Vector3f movePerIMass = contactPoint.worldNormal / totalInverseMass;
+			Vector3f movePerIMass = contactPoint.worldNormal * maxPen / totalInverseMass;
 			rb1->GetParentObject()->GetTransform()->TranslateV(movePerIMass * rb1->GetInverseMass() * -1);
 			rb2->GetParentObject()->GetTransform()->TranslateV(movePerIMass * rb2->GetInverseMass());
+			manifolds[pair].col1->UpdateCollider();
+			manifolds[pair].col2->UpdateCollider();
 		}
 		else if (rb1 && !rb2)
 		{
-			Vector3f movePerIMass = contactPoint.worldNormal;
-			rb1->GetParentObject()->GetTransform()->TranslateV(movePerIMass * -1);
+			Vector3f move = contactPoint.worldNormal * maxPen;
+			rb1->GetParentObject()->GetTransform()->TranslateV(move * -1);
+			manifolds[pair].col1->UpdateCollider();
 		}
 	}
 
