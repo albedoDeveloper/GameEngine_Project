@@ -36,6 +36,7 @@ void CCollider::Save(nlohmann::json &j)
 void CCollider::Load(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
+	//AddBoxCollider(0, 0, 0, 0, 0, 0, true, 0, true, 30);
 	UpdateCollider();
 	SetActive((j.at(m_parent->GetFactoryKey()).at("Components").at("AABBComponent").at("colActive")));
 }

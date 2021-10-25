@@ -127,8 +127,11 @@
     "basic_girl": {
         "Components": {
             "CComponent": "CComponent",
+            "ScriptComponent": {
+                "Script": "girl1script"
+            },
             "StaticMeshComponent": {
-                "AModel": "basic_girl",
+                "AModel": "Breathing Idle",
                 "Shader": "lit"
             }
         },
@@ -145,13 +148,46 @@
                 "z": 0.0
             },
             "Scale": {
-                "x": 0.009999999776482582,
-                "y": 0.009999999776482582,
-                "z": 0.009999999776482582
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         },
         "active": true,
         "key": "basic_girl",
+        "parent": "none"
+    },
+    "basic_girl2": {
+        "Components": {
+            "CComponent": "CComponent",
+            "ScriptComponent": {
+                "Script": "girl2script"
+            },
+            "StaticMeshComponent": {
+                "AModel": "Breathing Idle",
+                "Shader": "lit"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.399999976158142
+            },
+            "Rotation": {
+                "w": -4.371138828673793e-08,
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        "active": true,
+        "key": "basic_girl2",
         "parent": "none"
     },
     "beertap1": {
@@ -256,15 +292,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -8.4399995803833,
-                "y": 0.4050000011920929,
-                "z": -0.27000001072883606
+                "x": -7.744999885559082,
+                "y": 1.315000057220459,
+                "z": -0.4449999928474426
             },
             "Rotation": {
-                "w": -0.8665838241577148,
-                "x": -0.35895100235939026,
-                "y": 0.3202883005142212,
-                "z": 0.13266779482364655
+                "w": 0.008362559601664543,
+                "x": 0.003463881090283394,
+                "y": 0.9238412976264954,
+                "z": 0.38266754150390625
             },
             "Scale": {
                 "x": 1.0,
@@ -403,6 +439,7 @@
     },
     "light1": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis",
                 "Shader": "lit"
@@ -432,6 +469,7 @@
     },
     "light2": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis",
                 "Shader": "lit"
@@ -472,9 +510,9 @@
                 "z": 5.275000095367432
             },
             "Rotation": {
-                "w": -0.937983512878418,
+                "w": 0.009051673114299774,
                 "x": 0.0,
-                "y": 0.34667739272117615,
+                "y": 0.9999589920043945,
                 "z": 0.0
             },
             "Scale": {
@@ -489,9 +527,6 @@
     },
     "main_bar_bench": {
         "Components": {
-            "AABBComponent": {
-                "colActive": true
-            },
             "StaticMeshComponent": {
                 "AModel": "main_bar_bench",
                 "Shader": "lit"
@@ -528,14 +563,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 1.0777215957641602,
+                "x": 5.9016008377075195,
                 "y": 2.0,
-                "z": 4.143479824066162
+                "z": 4.118240833282471
             },
             "Rotation": {
-                "w": 0.9921146631240845,
+                "w": 0.862513542175293,
                 "x": 0.0,
-                "y": -0.12533321976661682,
+                "y": -0.5060337781906128,
                 "z": 0.0
             },
             "Scale": {

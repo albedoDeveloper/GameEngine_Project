@@ -328,6 +328,8 @@ void GameObject::Load(nlohmann::json &j)
 
 		if (it.key() == "AABBComponent")
 		{
+			//TODO Fix the collision loading
+
 			if (GetComponent<CCollider>())
 			{
 				std::cout << "collider already exists" << std::endl;
