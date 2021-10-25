@@ -71,8 +71,8 @@ GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("Argue","joy", -0.9
 ------------------------
 SpawnGameObject("pool-table"):SetStatic(true)
 GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
-GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
-GetGameObject("pool-table"):GetCCollider():CollideWith(2)
+--GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+--GetGameObject("pool-table"):GetCCollider():CollideWith(2)
 
 GetGameObject("pool-table"):AddCAffordanceManager():AddAffordance("Pool","agent_pool","Pool.wav")
 GetGameObject("pool-table"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
@@ -86,9 +86,9 @@ GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","joy", 
 ----------------------
 SpawnGameObject("barrel1"):SetStatic(true)
 GetGameObject("barrel1"):AddCStaticMesh():AssignModel("barrel1")
-GetGameObject("barrel1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+--GetGameObject("barrel1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("barrel1"):GetTransform():SetRelativePosition(0, 0, -2.5)
-GetGameObject("barrel1"):GetCCollider():CollideWith(2)
+--GetGameObject("barrel1"):GetCCollider():CollideWith(2)
 
 GetGameObject("barrel1"):AddCAffordanceManager():AddAffordance("Drinking","agent_drinking","Drink.wav")
 GetGameObject("barrel1"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
@@ -103,8 +103,8 @@ GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("LookForMoney","joy"
 ----------------------
 SpawnGameObject("barrel2"):SetStatic(true)
 GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
-GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
-GetGameObject("barrel2"):GetCCollider():CollideWith(2)
+--GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+--GetGameObject("barrel2"):GetCCollider():CollideWith(2)
 
 GetGameObject("barrel2"):AddCAffordanceManager():AddAffordance("DanceAggressive","agent_dance","DanceAggressive.wav")
 GetGameObject("barrel2"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
