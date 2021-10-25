@@ -587,6 +587,8 @@ void GraphicsEngine::drawLine(const btVector3 &from, const btVector3 &to, const 
 	glEnableVertexAttribArray(0);
 
 	glDrawArrays(GL_LINES, 0, 2);
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
 }
 
 void GraphicsEngine::drawContactPoint(const btVector3 &PointOnB, const btVector3 &normalOnB, btScalar distance, int lifeTime, const btVector3 &color)
@@ -619,6 +621,8 @@ void GraphicsEngine::drawContactPoint(const btVector3 &PointOnB, const btVector3
 	glEnableVertexAttribArray(0);
 
 	glDrawArrays(GL_POINTS, 0, 1);
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
 }
 
 void GraphicsEngine::reportErrorWarning(const char *warningString)
@@ -627,12 +631,10 @@ void GraphicsEngine::reportErrorWarning(const char *warningString)
 }
 
 void GraphicsEngine::draw3dText(const btVector3 &location, const char *textString)
-{
-}
+{}
 
 void GraphicsEngine::setDebugMode(int debugMode)
-{
-}
+{}
 
 int GraphicsEngine::getDebugMode() const
 {
