@@ -11,10 +11,10 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 	:CComponent{ parentTrans, parentObject },
 	m_inverseMass{ 0 },
 	m_inertiaTensor{ 1.f },
-	m_velocity{ 0,0,0 },
+	m_velocity{ 0.1f,0,0 },
 	m_accel{ 0,0,0 },
 	m_linForceAccum{ 0,0,0 },
-	m_angularVelocity{ 0,0,0 },
+	m_angularVelocity{ 0, 0.5f, 0 },
 	m_angularAccel{ 0,0,0 },
 	m_gravityEnabled{ true },
 	m_freezeXTrans{ false },
@@ -23,7 +23,7 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 	m_freezeXRot{ false },
 	m_freezeYRot{ false },
 	m_freezeZRot{ false },
-	m_gravity{ 0,-0.1,0 },
+	m_gravity{ 0,0,0 },
 	m_restitution{ 0.4f }
 {
 	CCollider *col = m_parent->GetComponent<CCollider>(); // TODO get all collider components
@@ -80,7 +80,10 @@ void CRigidBody::IntegrateVelocity()
 		return;
 	}
 
+	// linear
 	m_parent->GetTransform()->TranslateV(m_velocity * TIME->GetDeltaTime());
+
+	// angular
 	Vector3f angVelWorldSpace = m_angularVelocity * m_parent->GetTransform()->GetRelativeOrientation().Conjugate();
 	Quaternion angVelQuat(
 		-angVelWorldSpace.GetX(),
@@ -199,43 +202,41 @@ float CRigidBody::GetRestitution() const
 
 void CRigidBody::Update()
 {
-	//// linear
-	////m_accel = m_linForceAccum * m_inverseMass;
+	// linear
+	//m_accel = m_linForceAccum * m_inverseMass;
 	//m_accel = Vector3f(0, 0, 0);
-	//if (m_gravityEnabled)
-	//{
-	//	m_accel += Vector3f(0, -3.81f, 0); // gravity
-	//}
-	//m_velocity += m_accel * (TIME->GetDeltaTime() / 2.0f);
-	//if (m_freezeXTrans) m_velocity.SetX(0);
-	//if (m_freezeYTrans) m_velocity.SetY(0);
-	//if (m_freezeZTrans) m_velocity.SetZ(0);
+	if (m_gravityEnabled)
+	{
+		m_accel += m_gravity; // gravity
+	}
+	m_velocity += m_accel * TIME->GetDeltaTime();
+	if (m_freezeXTrans) m_velocity.SetX(0);
+	if (m_freezeYTrans) m_velocity.SetY(0);
+	if (m_freezeZTrans) m_velocity.SetZ(0);
 	//m_velocity = m_velocity * powf(0.9f, TIME->GetDeltaTime()); // linear damping
-	//m_parent->GetTransform()->TranslateV(m_velocity * TIME->GetDeltaTime());
+	m_parent->GetTransform()->TranslateV(m_velocity * TIME->GetDeltaTime());
 	//m_linForceAccum = Vector3f(0, 0, 0); // reset linear force accumulation
 
-	//// angular
-	//Matrix3f worldInverseInertiaTensor = (m_transform.GetWorldTransform().GetRelativeOrientation().Mat3Cast() * m_inertiaTensor * m_transform.GetWorldTransform().GetRelativeOrientation().Mat3Cast().Transpose()).Inverse(); // transform inertia tensor from local to world space .TODO seems to work????
+	// angular
+	Matrix3f worldInverseInertiaTensor = (m_transform.GetWorldTransform().GetRelativeOrientation().Mat3Cast() * m_inertiaTensor * m_transform.GetWorldTransform().GetRelativeOrientation().Mat3Cast().Transpose()).Inverse(); // transform inertia tensor from local to world space .TODO seems to work????
 	//m_angularAccel = m_torqueAccum * worldInverseInertiaTensor;
-	//m_angularVelocity += m_angularAccel * TIME->GetDeltaTime();
-	//if (m_freezeXRot) m_angularVelocity.SetX(0);
-	//if (m_freezeYRot) m_angularVelocity.SetY(0);
-	//if (m_freezeZRot) m_angularVelocity.SetZ(0);
+	m_angularVelocity += m_angularAccel * TIME->GetDeltaTime();
+	if (m_freezeXRot) m_angularVelocity.SetX(0);
+	if (m_freezeYRot) m_angularVelocity.SetY(0);
+	if (m_freezeZRot) m_angularVelocity.SetZ(0);
 	//m_angularVelocity = m_angularVelocity * powf(0.9f, (TIME->GetDeltaTime() / 2.0f)); // angular damping
 	//Vector3f angVelWorldSpace = m_angularVelocity * m_parent->GetTransform()->GetRelativeOrientation().Conjugate();
-	//Quaternion angVelQuat(
-	//	-angVelWorldSpace.GetX(),
-	//	-angVelWorldSpace.GetY(),
-	//	-angVelWorldSpace.GetZ(),
-	//	0
-	//);
-	//m_parent->GetTransform()->GetRelativeOrientation() += 0.5f * angVelQuat * m_parent->GetTransform()->GetRelativeOrientation() * TIME->GetDeltaTime();
-	//m_parent->GetTransform()->GetRelativeOrientation().Normalize();
+	Quaternion angVelQuat(
+		-m_angularVelocity.GetX(),
+		-m_angularVelocity.GetY(),
+		-m_angularVelocity.GetZ(),
+		0
+	);
+	m_parent->GetTransform()->GetRelativeOrientation() += 0.5f * angVelQuat * (m_parent->GetTransform()->GetRelativeOrientation() * TIME->GetDeltaTime());
+	m_parent->GetTransform()->GetRelativeOrientation().Normalize();
 	//m_torqueAccum = Vector3f(0, 0, 0); // reset angular force accumulation
 
-	//m_parent->GetComponent<CCollider>()->UpdateCollider();
-
-	//m_velocityDueToGravityThisFrame = m_accel * TIME->GetDeltaTime();
+	m_parent->GetComponent<CCollider>()->UpdateCollider();
 }
 
 void CRigidBody::Render()

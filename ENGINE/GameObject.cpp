@@ -41,6 +41,11 @@ CAnimator *GameObject::AddCAnimator()
 	return AddComponent<CAnimator>();
 }
 
+CRigidBody *GameObject::AddCRigidBody()
+{
+	return AddComponent<CRigidBody>();
+}
+
 CAnimator *GameObject::GetCAnimator()
 {
 	return GetComponent<CAnimator>();

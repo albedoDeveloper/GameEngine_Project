@@ -8,8 +8,8 @@ Quaternion::Quaternion()
 	:m_quat(glm::identity<glm::quat>())
 {}
 
-Quaternion::Quaternion(float w, float x, float y, float z)
-	: m_quat(glm::quat(w, x, y, z))
+Quaternion::Quaternion(float x, float y, float z, float w)
+	: m_quat(glm::quat(x, y, z, w))
 {}
 
 float Quaternion::DotProduct(Quaternion oQuat)

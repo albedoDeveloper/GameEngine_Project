@@ -36,19 +36,19 @@ public:
 
 private:
 	bool m_gravityEnabled;
-	Vector3f m_gravity;
+	Vector3f m_gravity; // world space
 
 	/// linear
 	float m_inverseMass;
-	Vector3f m_velocity;
-	Vector3f m_accel;
+	Vector3f m_velocity; // world space
+	Vector3f m_accel; // world space
 	Vector3f m_linForceAccum;
 
 	// angular
-	Vector3f m_angularVelocity;
-	Vector3f m_angularAccel;
+	Vector3f m_angularVelocity; // world space
+	Vector3f m_angularAccel; // world space
 	Vector3f m_torqueAccum;
-	Matrix3f m_inertiaTensor;
+	Matrix3f m_inertiaTensor; // local space
 
 	// constraints
 	bool m_freezeXTrans;

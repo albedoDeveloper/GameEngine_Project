@@ -58,6 +58,8 @@ public:
 		 */
 	CAnimator *AddCAnimator();
 
+	CRigidBody *AddCRigidBody();
+
 
 		/**
 		 * @brief Adds a script component
