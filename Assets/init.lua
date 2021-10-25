@@ -36,6 +36,12 @@ LoadScript("playerShoot", "playerShoot.lua")
 LoadScript("girl1script", "girl1script.lua")
 LoadScript("girl2script", "girl2script.lua")
 
+SpawnGameObject("book2")
+GetGameObject("book2"):AddCStaticMesh():AssignModel("book")
+GetGameObject("book2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1,true, 31)
+GetGameObject("book2"):AddCRigidBody():SetMass(2)
+GetGameObject("book2"):GetTransform():SetRelativePosition(-2,2,0)
+
 SpawnGameObject("fridge1"):SetStatic(true)
 GetGameObject("fridge1"):AddCStaticMesh():AssignModel("fridge1")
 GetGameObject("fridge1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)

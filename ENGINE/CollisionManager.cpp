@@ -93,12 +93,7 @@ void CollisionManager::GenerateContactData()
 			FillManifoldBA(i);
 		}
 		assert(m_contactCache.back().col1->GetParentObject()->GetCRigidBody());
-		//int n = m_contactCache.back().contactPoints.size();
-		//for (int i = 0; i < n; i++)
-		//{
-		//	std::cout << m_contactCache.back().contactPoints[i].penDepth << std::endl;
-		//}
-		//std::cout << "===============================================\n";
+
 	}
 }
 

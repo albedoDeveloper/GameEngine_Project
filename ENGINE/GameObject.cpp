@@ -151,6 +151,15 @@ void GameObject::SetActive(bool activeStatus)
 {
 	m_isActive = activeStatus;
 
+	// setactive on all components
+	for (auto it = m_components.begin(); it != m_components.end(); it++)
+	{
+		for (auto it2 = it->second->begin(); it2 != it->second->end(); it2++)
+		{
+			it2._Ptr->_Myval->SetIsActive(activeStatus);
+		}
+	}
+
 	CCollider *col = GetComponent<CCollider>();
 
 	//We have to deactivate the collider here immediatly

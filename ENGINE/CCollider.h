@@ -66,8 +66,6 @@ public:
 	 */
 	glm::vec3 m_offset;
 
-
-public:
 		/** @brief whether the collider is registered with the collider manager */
 	bool m_isRegistered = false;
 
@@ -145,6 +143,8 @@ public:
 	float GetXHalfSize() const;
 	float GetYHalfSize() const;
 	float GetZHalfSize() const;
+
+	virtual void SetIsActive(bool isActive);
 
 private:
 	float m_boxXHalfSize;

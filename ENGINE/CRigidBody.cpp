@@ -141,6 +141,11 @@ void CRigidBody::SetVelocity(const Vector3f &vel)
 	m_velocity = vel;
 }
 
+void CRigidBody::SetAngularVelocity(const Vector3f &v)
+{
+	m_angularVelocity = v;
+}
+
 const Vector3f &CRigidBody::GetAngularVelocity() const
 {
 	return m_angularVelocity;
@@ -227,9 +232,9 @@ void CRigidBody::Integrate()
 	//m_angularVelocity = m_angularVelocity * powf(0.9f, (TIME->GetDeltaTime() / 2.0f)); // angular damping
 	Vector3f angVelLocalSpace = m_angularVelocity * m_parent->GetTransform()->GetRelativeOrientation().Conjugate();
 	Quaternion angVelQuat(
-		angVelLocalSpace.GetX(),
-		angVelLocalSpace.GetY(),
-		angVelLocalSpace.GetZ(),
+		-angVelLocalSpace.GetX(),
+		-angVelLocalSpace.GetY(),
+		-angVelLocalSpace.GetZ(),
 		0
 	);
 	m_parent->GetTransform()->GetRelativeOrientation() += (0.5f * TIME->GetDeltaTime()) * angVelQuat * m_parent->GetTransform()->GetRelativeOrientation();

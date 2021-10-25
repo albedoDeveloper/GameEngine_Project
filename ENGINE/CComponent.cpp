@@ -4,7 +4,7 @@
 #include <iostream>
 
 CComponent::CComponent(Transform *parentTrans, GameObject *parentObject)
-	: m_transform{ parentTrans }, m_parent{ parentObject }
+	: m_transform{ parentTrans }, m_parent{ parentObject }, m_isActive{ true }
 {
 	m_transform.SetGameObject(m_parent);
 }
@@ -22,6 +22,11 @@ const Transform &CComponent::GetTransformConst() const
 GameObject *CComponent::GetParentObject()
 {
 	return m_parent;
+}
+
+void CComponent::SetIsActive(bool isActive)
+{
+	m_isActive = isActive;
 }
 
 void CComponent::Save(nlohmann::json &j)

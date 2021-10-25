@@ -156,12 +156,15 @@ void CCharacter::Update()
 				static unsigned projPoolIndex = 0;
 				m_projectilePool[projPoolIndex]->SetActive(true);
 				m_projectilePool[projPoolIndex]->GetComponent<CRigidBody>()->RemoveMomentum();
+				m_projectilePool[projPoolIndex]->GetTransform()->SetRelativeOrientation(
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeOrientation()
+				);
 				m_projectilePool[projPoolIndex]->GetTransform()->SetRelativePositionV(
 					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() +
 					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 0.7f
 				);
 				m_projectilePool[projPoolIndex]->GetComponent<CRigidBody>()->SetVelocity(
-					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 2.1f
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 0.5f
 				);
 				projPoolIndex++;
 				if (projPoolIndex >= PROJECTILE_POOL_SIZE)

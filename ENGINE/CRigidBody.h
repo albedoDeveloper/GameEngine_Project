@@ -21,6 +21,7 @@ public:
 	void RemoveMomentum();
 	const Vector3f &GetVelocity() const;
 	void SetVelocity(const Vector3f &vel);
+	void SetAngularVelocity(const Vector3f &v);
 	const Vector3f &GetAngularVelocity() const;
 	const Matrix3f &GetInertiaTensor() const;
 	const Matrix3f &GetWorldInertiaTensor() const;

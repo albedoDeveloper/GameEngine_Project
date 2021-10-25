@@ -231,6 +231,12 @@ float CCollider::GetXHalfSize() const
 	return m_boxXHalfSize;
 }
 
+void CCollider::SetIsActive(bool isActive)
+{
+	CComponent::SetIsActive(isActive);
+	m_colObj->activate(isActive);
+}
+
 float CCollider::GetYHalfSize() const
 {
 	return m_boxYHalfSize;
