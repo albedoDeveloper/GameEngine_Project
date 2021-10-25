@@ -68,6 +68,7 @@ void CAgent::AiThink()
 		endLocation = afforanceTrans;
 
 		GetParentObject()->GetTransform()->SetRelativeOrientation(LookAt(startLocation, endLocation, GetParentObject()->GetTransform()->GetRelativeUp()).ToQuat().GetInverse());
+		waitTime = (std::rand() % 25 + 15);
 	}
 }
 
@@ -81,8 +82,8 @@ void CAgent::AiMove()
 		//lerpTime += lerpTime * TIME->GetDeltaTime();
 
 
-	if ((std::fabs(pTrans.GetX()) <= std::fabs(afforanceTrans.GetX()) + 1 && std::fabs(pTrans.GetX()) >= std::fabs(afforanceTrans.GetX()) - 1) && (std::fabs(pTrans.GetZ()) <= std::fabs(afforanceTrans.GetZ()) + 1 && std::fabs(pTrans.GetZ()) >= std::fabs(afforanceTrans.GetZ()) - 1))
-	{
+	//if ((std::fabs(pTrans.GetX()) <= std::fabs(afforanceTrans.GetX()) + 1 && std::fabs(pTrans.GetX()) >= std::fabs(afforanceTrans.GetX()) - 1) && (std::fabs(pTrans.GetZ()) <= std::fabs(afforanceTrans.GetZ()) + 1 && std::fabs(pTrans.GetZ()) >= std::fabs(afforanceTrans.GetZ()) - 1))
+	//{
 		currentState = AiState::ACTION;
 		lerpTime = 0;
 
@@ -91,19 +92,23 @@ void CAgent::AiMove()
 
 		if (!currentAffordance->sound._Equal(""))
 			GetParentObject()->GetCSound()->PlaySound(currentAffordance->sound, 0, true);
-	}
+	//}
 }
 
 void CAgent::AiAction()
 {
 	time += TIME->GetDeltaTime();
 
-	if (time > (std::rand() % 25 + 15))
+	if (time > waitTime)
 	{
 		time = 0;
-		
+		std::cout << std::rand() % 25 + 15  << std::endl;
+		std::cout << "-------------------------------------------" << std::endl;
+		std::cout << "Agent Name: " << this->GetParentObject()->GetFactoryKey() << std::endl;
+
 		for (auto &emotionEffect : currentAffordance->EmotionEffectors)
 		{
+			
 			emotions.at(emotionEffect.first).emotion += emotionEffect.second * emotions.at(lowestName).multipler * (static_cast<float>(std::rand() % 140 + 70)/100);
 			
 			if (emotions.at(emotionEffect.first).emotion > 1)
@@ -112,7 +117,7 @@ void CAgent::AiAction()
 			else if (emotions.at(emotionEffect.first).emotion < 0)
 				emotions.at(emotionEffect.first).emotion = 0;
 			
-			std::cout << lowestName << "+" << emotionEffect.first << " = " << emotions.at(emotionEffect.first).emotion;
+			std::cout << "Emotion: " << emotionEffect.first << " = " << emotions.at(emotionEffect.first).emotion << std::endl;
 		}
 		
 		currentState = AiState::THINK;

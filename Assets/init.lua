@@ -53,38 +53,74 @@ GetGameObject("beertap2"):AddCStaticMesh():AssignModel("beertap2")
 SpawnGameObject("spiked_door_toilet"):SetStatic(true)
 GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_toilet")
 
+-------------------------
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
-GetGameObject("waitress"):AddCAffordanceManager():AddAffordance("OrderFood","agent_loser","girlTextSpeechTwo.wav")
+
+GetGameObject("waitress"):AddCAffordanceManager():AddAffordance("OrderFood","agent_talking","OrderFood.wav")
 GetGameObject("waitress"):GetCAffordanceManager():GetTransform():SetRelativePosition(5.034, 0, 5.252)
+GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","energy", 0.9)
+GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","joy", -0.4)
 
-GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","energy", 0.3)
-GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","joy", -0.7)
 
+GetGameObject("waitress"):GetCAffordanceManager():AddAffordance("Argue","agent_loser","Argue.wav")
+GetGameObject("waitress"):GetCAffordanceManager():GetTransform():SetRelativePosition(5.034, 0, 5.252)
+GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("Argue","energy", 0.9)
+GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("Argue","joy", -0.9)
+------------------------
 ------------------------
 SpawnGameObject("pool-table"):SetStatic(true)
 GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
 GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("pool-table"):GetCCollider():CollideWith(2)
 
-GetGameObject("pool-table"):AddCAffordanceManager():AddAffordance("Pool","agent_pool","girlTextSpeechTwo.wav")
+GetGameObject("pool-table"):AddCAffordanceManager():AddAffordance("Pool","agent_pool","Pool.wav")
 GetGameObject("pool-table"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
-GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","energy", 0.7)
-GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","joy", -0.4)
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","energy", -0.5)
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","joy", 0.6)
 
-GetGameObject("pool-table"):GetCAffordanceManager():AddAffordance("Texting","agent_mobile","girlTextSpeechTwo.wav")
-GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","energy", -0.7)
-GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","joy", 0.7)
+GetGameObject("pool-table"):GetCAffordanceManager():AddAffordance("Texting","agent_mobile","Texting.wav")
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","energy", -0.1)
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","joy", 0.5)
 ----------------------
+----------------------
+SpawnGameObject("barrel1"):SetStatic(true)
+GetGameObject("barrel1"):AddCStaticMesh():AssignModel("barrel1")
+GetGameObject("barrel1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("barrel1"):GetTransform():SetRelativePosition(0, 0, -2.5)
+GetGameObject("barrel1"):GetCCollider():CollideWith(2)
 
+GetGameObject("barrel1"):AddCAffordanceManager():AddAffordance("Drinking","agent_drinking","Drink.wav")
+GetGameObject("barrel1"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
+GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("Drinking","energy", 0.2)
+GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("Drinking","joy", 0.3)
+
+GetGameObject("barrel1"):GetCAffordanceManager():AddAffordance("LookForMoney","agent_pickup","LookForMoney")
+GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("LookForMoney","energy", -0.4)
+GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("LookForMoney","joy", 0.6)
+-----------------------
+
+----------------------
+SpawnGameObject("barrel2"):SetStatic(true)
+GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
+GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
+GetGameObject("barrel2"):GetCCollider():CollideWith(2)
+
+GetGameObject("barrel2"):AddCAffordanceManager():AddAffordance("DanceAggressive","agent_dance","DanceAggressive.wav")
+GetGameObject("barrel2"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
+GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceAggressive","energy", 0.7)
+GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceAggressive","joy", -0.4)
+
+GetGameObject("barrel2"):GetCAffordanceManager():AddAffordance("DanceRelax","agent_slowdance","DanceRelax.wav")
+GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceRelax","energy", -0.7)
+GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceRelax","joy", 0.7)
+
+----------------------
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
 GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("toilet_block"):GetCCollider():CollideWith(2)
-
-
-
 
 SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
@@ -101,11 +137,10 @@ GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_gla
 GetGameObject("tavern_glass_door_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
 GetGameObject("tavern_glass_door_wall"):GetCCollider():CollideWith(2)
 
-
-
-
+----------
 SpawnGameObject("ai_agent_1"):SetStatic(false)
 GetGameObject("ai_agent_1"):AddCStaticMesh():AssignModel("agent_dance")
+
 GetGameObject("ai_agent_1"):AddCAnimator()
 GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/dance.fbx", false, "agent_dance")
 GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/drinking.fbx", false, "agent_drinking")
@@ -117,10 +152,87 @@ GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/mobile.fbx", f
 GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/pickup.fbx", false, "agent_pickup")
 GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/talking.fbx", false, "agent_talking")
 
-GetGameObject("ai_agent_1"):AddCSound():LoadSound("girlTextSpeechTwo.wav")
+GetGameObject("ai_agent_1"):AddCSound():LoadSound("OrderFood.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("Argue.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("Pool.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("Drink.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("LookForMoney.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("Texting.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("DanceAggressive.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("DanceRelax.wav")
+
 GetGameObject("ai_agent_1"):GetTransform():Translate(2,0,1.4)
 GetGameObject("ai_agent_1"):AddCAgent():AddEmotion("joy",0.7, 1.0, -0.002)
 GetGameObject("ai_agent_1"):GetCAgent():AddEmotion("energy",0.0, 1.0, 0.0)
+
+GetGameObject("ai_agent_1"):GetCAgent():AddTrait("OrderFood", -0.2)
+GetGameObject("ai_agent_1"):GetCAgent():AddTrait("Pool", 0.1)
+--------------
+
+----------
+SpawnGameObject("ai_agent_2"):SetStatic(false)
+GetGameObject("ai_agent_2"):AddCStaticMesh():AssignModel("agent_dance")
+GetGameObject("ai_agent_2"):GetTransform():SetRelativePosition(-2, 0, 0)
+
+GetGameObject("ai_agent_2"):AddCAnimator()
+GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/dance.fbx", false, "agent_dance")
+GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/drinking.fbx", false, "agent_drinking")
+GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/walk.fbx", true, "agent_walk")
+GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/loser.fbx", false, "agent_loser")
+GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/pool.fbx", false, "agent_pool")
+GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/slowdance.fbx", false, "agent_slowdance")
+GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/mobile.fbx", false, "agent_mobile")
+GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/pickup.fbx", false, "agent_pickup")
+GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/talking.fbx", false, "agent_talking")
+
+GetGameObject("ai_agent_2"):AddCSound():LoadSound("OrderFood.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("Argue.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("Pool.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("Drink.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("LookForMoney.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("Texting.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("DanceAggressive.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("DanceRelax.wav")
+
+GetGameObject("ai_agent_2"):GetTransform():Translate(2,0,1.4)
+GetGameObject("ai_agent_2"):AddCAgent():AddEmotion("joy",0.1, 1.0, 0.002)
+GetGameObject("ai_agent_2"):GetCAgent():AddEmotion("energy",0.8, 1.0, 0.0)
+
+GetGameObject("ai_agent_2"):GetCAgent():AddTrait("AggressiveDance", -0.5)
+GetGameObject("ai_agent_2"):GetCAgent():AddTrait("PassiveDance", 0.5)
+--------------
+
+----------
+SpawnGameObject("ai_agent_3"):SetStatic(false)
+GetGameObject("ai_agent_3"):AddCStaticMesh():AssignModel("agent_dance")
+GetGameObject("ai_agent_3"):GetTransform():SetRelativePosition(2, 0, 0)
+
+GetGameObject("ai_agent_3"):AddCAnimator()
+GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/dance.fbx", false, "agent_dance")
+GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/drinking.fbx", false, "agent_drinking")
+GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/walk.fbx", true, "agent_walk")
+GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/loser.fbx", false, "agent_loser")
+GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/pool.fbx", false, "agent_pool")
+GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/slowdance.fbx", false, "agent_slowdance")
+GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/mobile.fbx", false, "agent_mobile")
+GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/pickup.fbx", false, "agent_pickup")
+GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/talking.fbx", false, "agent_talking")
+
+GetGameObject("ai_agent_3"):AddCSound():LoadSound("OrderFood.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("Argue.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("Pool.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("Drink.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("LookForMoney.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("Texting.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("DanceAggressive.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("DanceRelax.wav")
+
+GetGameObject("ai_agent_3"):GetTransform():Translate(2,0,1.4)
+GetGameObject("ai_agent_3"):AddCAgent():AddEmotion("joy",0.4, 1.0, 0.0)
+GetGameObject("ai_agent_3"):GetCAgent():AddEmotion("energy",0.6, 1.0, 0.0)
+--------------
+
+
 --GetGameObject("ai_agent_1"):GetCAgent():AddTrait("ToiletBreak",-1.0)
 --GetGameObject("ai_agent_1"):GetCAgent():AddTrait("DrinkWater", 0.2)
 --GetGameObject("ai_agent_1"):GetCAgent():AddTrait("OrderFood", -0.2)
@@ -170,15 +282,6 @@ GetGameObject("behind_bar_block"):GetCCollider():CollideWith(2)
 SpawnGameObject("bar_floor_rod"):SetStatic(true)
 GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
 
-SpawnGameObject("barrel1"):SetStatic(true)
-GetGameObject("barrel1"):AddCStaticMesh():AssignModel("barrel1")
-GetGameObject("barrel1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
-GetGameObject("barrel1"):GetCCollider():CollideWith(2)
-
-SpawnGameObject("barrel2"):SetStatic(true)
-GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
-GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1)
-GetGameObject("barrel2"):GetCCollider():CollideWith(2)
 
 SpawnGameObject("crate"):SetStatic(false)
 GetGameObject("crate"):AddCStaticMesh():AssignModel("crate")

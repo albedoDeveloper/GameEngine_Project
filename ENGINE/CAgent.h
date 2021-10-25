@@ -80,6 +80,7 @@ class CAgent : public CComponent
 
 		float time = 0;
 		float lerpTime = 0;
+		int waitTime = 0;
 		void AddEmotion(std::string name, float level, float multiplier, float emotionNativeChange);
 		
 		//-1.0f will make the ai hate it
