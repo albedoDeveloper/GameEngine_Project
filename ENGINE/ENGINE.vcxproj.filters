@@ -142,11 +142,11 @@
     <ClCompile Include="ThirdParty\glad\src\glad.c">
       <Filter>ThirdParty\glad</Filter>
     </ClCompile>
-    <ClCompile Include="CNavMesh.cpp">
-      <Filter>Source\ComponentClasses\Source</Filter>
-    </ClCompile>
     <ClCompile Include="NavNode.cpp">
       <Filter>Source\Misc\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CNavMesh.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -303,11 +303,11 @@
     <ClInclude Include="ThirdParty\glad\include\KHR\khrplatform.h">
       <Filter>ThirdParty\glad</Filter>
     </ClInclude>
-    <ClInclude Include="CNavMesh.h">
-      <Filter>Source\ComponentClasses\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="NavNode.h">
       <Filter>Source\Misc\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CNavMesh.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

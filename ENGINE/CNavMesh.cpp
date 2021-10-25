@@ -3,9 +3,6 @@
 
 
 
-
-
-
 CNavMesh::CNavMesh(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj }
 {
