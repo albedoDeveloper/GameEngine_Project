@@ -148,6 +148,8 @@
     <ClCompile Include="CNavMesh.cpp">
       <Filter>Source\ComponentClasses\Source</Filter>
     </ClCompile>
+    <ClCompile Include="CAgent.cpp" />
+    <ClCompile Include="CAffordanceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">
@@ -309,6 +311,8 @@
     <ClInclude Include="CNavMesh.h">
       <Filter>Source\ComponentClasses\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="CAgent.h" />
+    <ClInclude Include="CAffordanceManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\init.lua">

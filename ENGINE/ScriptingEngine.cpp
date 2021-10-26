@@ -110,6 +110,10 @@ lua_State *ScriptingEngine::NewState()
 		.addFunction("GetCCollider", &GameObject::GetCCollider)
 		.addFunction("AddCAnimator", &GameObject::AddCAnimator)
 		.addFunction("GetCAnimator", &GameObject::GetCAnimator)
+		.addFunction("AddCAffordanceManager", &GameObject::AddCAffordanceManager)
+		.addFunction("GetCAffordanceManager", &GameObject::GetCAffordanceManager)
+		.addFunction("AddCAgent", &GameObject::AddCAgent)
+		.addFunction("GetCAgent", &GameObject::GetCAgent)
 		.addFunction("SetActive", &GameObject::SetActive)
 		.endClass();
 
@@ -179,6 +183,22 @@ lua_State *ScriptingEngine::NewState()
 		.deriveClass<CSound, CComponent>("CSound")
 		.addFunction("LoadSound", &CSound::LoadSound)
 		.addFunction("PlaySound", &CSound::PlaySound)
+		.endClass();
+
+	getGlobalNamespace(Lbuff)
+		.beginClass<CComponent>("CComponent")
+		.endClass()
+		.deriveClass<CAgent, CComponent>("CAgent")
+		.addFunction("AddEmotion", &CAgent::AddEmotion)
+		.addFunction("AddTrait", &CAgent::AddTrait)
+		.endClass();
+	
+	getGlobalNamespace(Lbuff)
+		.beginClass<CComponent>("CComponent")
+		.endClass()
+		.deriveClass<CAffordanceManager, CComponent>("CAffordanceManager")
+		.addFunction("AddAffordance", &CAffordanceManager::AddAffordance)
+		.addFunction("AddEmotion", &CAffordanceManager::AddEmotion)
 		.endClass();
 
 	getGlobalNamespace(Lbuff)

@@ -23,7 +23,8 @@
 #include "CAnimator.h"
 #include "CNavMesh.h"
 #include <iostream>
-
+#include "CAgent.h"
+#include "CAffordanceManager.h"
 	/**
 	 * @brief An object as represented in the game world containing all information on the object itself and its components
 	*/
@@ -168,6 +169,14 @@ public:
 	 */
 	CAnimator* GetCAnimator();
 
+	CAffordanceManager* AddCAffordanceManager();
+
+	CAffordanceManager* GetCAffordanceManager();
+
+	CAgent *AddCAgent();
+
+	CAgent *GetCAgent();
+		/**
 	/**
 	 * adds a navmesh to the gameobject (Reccomend only one per scene)
 	 */

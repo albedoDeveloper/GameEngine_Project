@@ -57,6 +57,7 @@ uniform PointLight pointLights[NR_POINT_LIGHTS];
 uniform DirectionalLight dirLight;
 uniform Material material;
 uniform vec3 viewPos = vec3(0,0,0);
+uniform int animate;
 
 // out
 layout(location = 0) out vec4 FragColor;
@@ -79,8 +80,11 @@ void main()
     bumpNormal = bumpNormal * vs_in.TBN;
 
     // properties
-    //vec3 norm =  normalize(vs_in.Normal);
-    vec3 norm = normalize(bumpNormal);
+    vec3 norm =  normalize(vs_in.Normal);
+    if (animate == 0){
+        vec3 norm = normalize(bumpNormal);
+    }
+
     vec3 viewDir = normalize(viewPos - vs_in.FragPos);
     vec3 result = vec3(0,0,0);
     float p1Shadow;

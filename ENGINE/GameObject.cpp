@@ -41,6 +41,26 @@ CAnimator* GameObject::GetCAnimator()
 	return GetComponent<CAnimator>();
 }
 
+CAffordanceManager* GameObject::AddCAffordanceManager()
+{
+	return AddComponent<CAffordanceManager>();
+}
+
+CAffordanceManager* GameObject::GetCAffordanceManager()
+{
+	return GetComponent<CAffordanceManager>();
+}
+
+CAgent *GameObject::AddCAgent()
+{
+	return AddComponent<CAgent>();
+}
+
+CAgent *GameObject::GetCAgent()
+{
+	return GetComponent<CAgent>();
+}
+
 CNavMesh *GameObject::AddCNavMesh()
 {
 	return AddComponent<CNavMesh>();

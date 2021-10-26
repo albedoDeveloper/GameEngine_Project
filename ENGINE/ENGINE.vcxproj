@@ -18,6 +18,8 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AScript.cpp" />
     <ClCompile Include="Bone.cpp" />
+    <ClCompile Include="CAffordanceManager.cpp" />
+    <ClCompile Include="CAgent.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CAnimator.cpp" />
     <ClCompile Include="CCollider.cpp" />
@@ -69,6 +71,8 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AScript.h" />
     <ClInclude Include="Bone.h" />
+    <ClInclude Include="CAffordanceManager.h" />
+    <ClInclude Include="CAgent.h" />
     <ClInclude Include="CAnimator.h" />
     <ClInclude Include="CCollider.h" />
     <ClInclude Include="Camera.h" />
@@ -229,8 +233,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;BT_THREADSAFE=1;BT_USE_DOUBLE_PRECISION</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>.\ThirdParty\glad\include;../include;../include/bulletphysics</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>.\ThirdParty\glad\include;</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
