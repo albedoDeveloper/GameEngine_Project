@@ -3,7 +3,7 @@
 
 
 
-	NavNode::NavNode(CNavMesh *parentMeshIn, int x, int z, bool isActive)
+	NavNode::NavNode(CNavMesh *parentMeshIn, int x, int z, bool isActive, bool isBarrier)
 	{
 
 		parentMesh = parentMeshIn;
@@ -12,7 +12,7 @@
 		nodeLocation.z = z;
 		transform.SetRelativePosition(nodeLocation.x, 0, nodeLocation.z);
 		active = isActive;
-
+		barrier = isBarrier;
 
 
 		//parentMesh->FetchNode(dirs[0].x, dirs[0].z);
@@ -68,6 +68,16 @@
 	void NavNode::SetActive(bool isActive)
 	{
 		active = isActive;
+	}
+
+	bool NavNode::GetBarrier()
+	{
+		return barrier;
+	}
+
+	void NavNode::SetBarrier(bool isBarrier)
+	{
+		barrier = isBarrier;
 	}
 
 	void NavNode::PopulateNeighbours()

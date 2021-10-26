@@ -432,10 +432,8 @@ void GraphicsEngine::DrawDebugNavMesh(CNavMesh *navMesh,const Transform &worldTr
 		//std::vector<float> nodeVertices;
 
 		double myColor[3]{};
-		if (it->GetActive())
+		if (it->GetActive() && !it->GetBarrier())
 		{
-			//glDisable(GL_CULL_FACE); CHECK_GL_ERROR();
-			//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); CHECK_GL_ERROR();
 
 			myColor[0] = Colour::green[0];
 			myColor[1] = Colour::green[1];
@@ -445,31 +443,23 @@ void GraphicsEngine::DrawDebugNavMesh(CNavMesh *navMesh,const Transform &worldTr
 		
 			combinedVertices.insert(combinedVertices.end(), nodeVertices.begin(), nodeVertices.end());
 
-			/*glBufferData(GL_ARRAY_BUFFER, sizeof(combinedVertices.data()[0]) * combinedVertices.size(), combinedVertices.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
-
-			glBindVertexArray(VAODebug); CHECK_GL_ERROR();
-			glDrawArrays(GL_TRIANGLES, 0, sizeof(combinedVertices.data()[0]) * combinedVertices.size()); CHECK_GL_ERROR();
-			glBindVertexArray(0); CHECK_GL_ERROR();*/
-
 		}
-		else
+		else if(!it->GetActive() && !it->GetBarrier())
 		{
-			//glDisable(GL_CULL_FACE); CHECK_GL_ERROR();
-			//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); CHECK_GL_ERROR();
 			
 			myColor[0] = Colour::blue[0];
 			myColor[1] = Colour::blue[1];
 			myColor[2] = Colour::blue[2];
 
 			std::vector<float> nodeVertices = DrawCube(it->GetTransform()->GetWorldTransform(), myColor, 0.25f);
+		}
+		else if (it->GetBarrier())
+		{
+			myColor[0] = Colour::red[0];
+			myColor[1] = Colour::red[1];
+			myColor[2] = Colour::red[2];
 
-			//combinedOddVertices.insert(combinedOddVertices.end(), nodeVertices.begin(), nodeVertices.end());
-
-			//glBufferData(GL_ARRAY_BUFFER, sizeof(combinedOddVertices.data()[0]) * combinedOddVertices.size(), combinedOddVertices.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
-
-			//glBindVertexArray(VAODebug); CHECK_GL_ERROR();
-			//glDrawArrays(GL_TRIANGLES, 0, sizeof(combinedOddVertices.data()[0]) * combinedOddVertices.size()); CHECK_GL_ERROR();
-			//glBindVertexArray(0); CHECK_GL_ERROR();
+			std::vector<float> nodeVertices = DrawCube(it->GetTransform()->GetWorldTransform(), myColor, 0.25f);
 		}
 	}
 

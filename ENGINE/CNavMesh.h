@@ -119,6 +119,8 @@ class CNavMesh : public CComponent
 		*/
 	NavNode* FetchNode(int x, int z);
 
+	NavNode* FindNearest(Vector3f pos);
+
 	void Scan(int i);
 
 	std::unordered_map<NavNode* , NavNode* > breadth_first_search(Graph graph, NavNode* start, NavNode* goal);

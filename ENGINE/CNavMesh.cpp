@@ -75,20 +75,22 @@ void CNavMesh::DrawToImGui()
 void CNavMesh::GenerateNavMesh()
 {
 	int i = 0;
-	for (int x = -5; x < 5; x++)
+	for (int x = -12; x < 12; x++)
 	{
 		for (int z = -5; z < 5; z++)
 		{
 			i++;
 			bool active = true;
+			bool barrier = false;
 			
 			//neighbour scan test
-			/*if (z == 2 && x == 2)
+			if (z == 0 && (x == -1 || x == -2 || x == -3 || x == -4 || x == -5 || x == 0 || x == 1 || x == 2 || x == 3 || x == 4 || x == 5))
 			{
 				active = false;
-			}*/
+				barrier = true;
+			}
 
-			NavNode *newNode = new NavNode(this, x, z,active);
+			NavNode *newNode = new NavNode(this, x, z,active,barrier);
 			m_navNodes.emplace_back(newNode);
 			//std::cout << "Nav node is of size " << i << std::endl;
 		}
@@ -104,12 +106,11 @@ void CNavMesh::GenerateNavMesh()
 		it->PopulateNeighbours();
 	}
 
-
 	//after we have generated the nodes and the neighbours we need to populate into the graph
 	for (size_t i = 0; i < m_navNodes.size() - 1; i++)
 	{
-
-		nodeGraph.edges.insert({ m_navNodes[i],{m_navNodes[i]->GetNeighbours()} });
+		if(!m_navNodes[i]->GetBarrier())
+			nodeGraph.edges.insert({ m_navNodes[i],{m_navNodes[i]->GetNeighbours()} });
 	}
 	
 }
@@ -140,9 +141,39 @@ NavNode* CNavMesh::FetchNode(int x, int z)
 	return returnNode;
 }
 
+NavNode* CNavMesh::FindNearest(Vector3f pos)
+{
+	float shortestDst = 100;
+	int nodeIndex = 0;
+
+	for (int i = 0; i < m_navNodes.size(); i++)
+	{
+		Vector3f diff = pos - m_navNodes[i]->GetTransform()->GetWorldTransform().GetRelativePosition();
+		float curDst = diff.Magnitude();
+
+		
+
+		if (shortestDst < curDst)
+		{
+			shortestDst = curDst;
+			nodeIndex = i;
+		}
+
+	}
+
+	return m_navNodes[nodeIndex];
+
+}
+
 void CNavMesh::Scan(int i)
 {
 	
+
+	Vector3f positionVec {0,1,0};
+	std::cout << "dst at x =" << FindNearest(positionVec)->GetXPos() << " z = " << FindNearest(positionVec)->GetZPos() << std::endl;
+
+	
+
 	//clear prior
 	came_from.clear();
 	cost_so_far.clear();
@@ -166,9 +197,15 @@ void CNavMesh::Scan(int i)
 	}*/
 
 	//breadth_first_search(nodeGraph, m_navNodes[0], m_navNodes[i]);
-	DijkstraSearch(nodeGraph, m_navNodes[0], m_navNodes[i], came_from,cost_so_far);
 
-	reconstruct_path(m_navNodes[0], m_navNodes[i], came_from);
+	if (m_navNodes[i] != NULL)
+	{
+		DijkstraSearch(nodeGraph, m_navNodes[0], m_navNodes[i], came_from, cost_so_far);
+
+		//reconstruct_path(m_navNodes[0], m_navNodes[i], came_from);
+	}
+
+	
 
 }
 
@@ -219,12 +256,16 @@ void CNavMesh::DijkstraSearch(
 	cost_so_far[start] = 0;
 
 
+	 bool isEmpty = frontier.empty();
+
 	while (!frontier.empty())
 	{
+		
+
 		NavNode *current = frontier.get();
 
-		//current->SetActive(false);
-		//std::cout << "current x = " << current->GetXPos() << ": z = " << current->GetZPos() << std::endl;
+	//current->SetActive(false);
+		//std::cout << "frontier size = " << frontier.elements.size() << std::endl;
 
 		if (current == goal)
 		{
@@ -244,6 +285,17 @@ void CNavMesh::DijkstraSearch(
 				frontier.put(next, new_cost);
 			}
 		}
+
+
+		if (frontier.elements.size() == 0)
+		{
+			isEmpty = true;
+		}
+	}
+
+	if (!isEmpty)
+	{
+		reconstruct_path(start,goal,came_from);
 	}
 }
 
@@ -254,6 +306,7 @@ std::vector<NavNode*> CNavMesh::reconstruct_path(
 {
 	std::vector<NavNode*> path;
 	NavNode* current = goal;
+
 	current->SetActive(false);
 	while (current != start)
 	{
@@ -263,7 +316,7 @@ std::vector<NavNode*> CNavMesh::reconstruct_path(
 		if (current != NULL)
 		{
 			current->SetActive(false);
-			std::cout << "current x = " << current->GetXPos() << ": z = " << current->GetZPos() << std::endl;
+			//std::cout << "current x = " << current->GetXPos() << ": z = " << current->GetZPos() << std::endl;
 		}
 	}
 

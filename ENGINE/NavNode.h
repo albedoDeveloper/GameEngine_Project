@@ -21,7 +21,7 @@ class NavNode
 {
 	public:
 		
-		NavNode(CNavMesh *parentMeshIn, int x, int z, bool isActive);
+		NavNode(CNavMesh *parentMeshIn, int x, int z, bool isActive, bool isBarrier);
 		
 
 		void UpdateTransform(Transform parentTransform);
@@ -37,6 +37,11 @@ class NavNode
 		bool GetActive();
 
 		void SetActive(bool isActive);
+
+		bool GetBarrier();
+
+		void SetBarrier(bool isBarrier);
+
 
 		void PopulateNeighbours();
 
@@ -78,6 +83,8 @@ class NavNode
 		Transform transform;
 
 		bool active;
+
+		bool barrier;
 
 		//float dirs[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 		//GridLocation dirs[4] = { {1, 0}, {0, 1}, {-1, 0}, {0, -1} };
