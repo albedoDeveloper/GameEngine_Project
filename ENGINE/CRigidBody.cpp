@@ -171,6 +171,11 @@ float CRigidBody::GetRestitution() const
 	return m_restitution;
 }
 
+Vector3f CRigidBody::GetGravity() const
+{
+	return m_gravity;
+}
+
 void CRigidBody::Integrate()
 {
 	// linear

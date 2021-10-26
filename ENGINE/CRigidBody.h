@@ -33,6 +33,7 @@ public:
 	void SetFreezeRotation(bool x, bool y, bool z);
 	bool InfiniteMass() const;
 	float GetRestitution() const;
+	Vector3f GetGravity() const;
 	Vector3f m_velocityDueToGravityThisFrame;
 
 private:
