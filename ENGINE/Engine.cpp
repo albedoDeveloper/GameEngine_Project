@@ -95,6 +95,7 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
+	srand(std::time(NULL));
 	COLLISION->Init();
 
 	if (!GRAPHICS->Init(renderer, windowWidth, windowHeight))

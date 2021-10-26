@@ -109,9 +109,7 @@ void CStaticMesh::Render(Shader &shaderOveride, bool noTexture)
 {
 	if (GetParentObject()->GetCAnimator() != nullptr)
 	{
-		
 		shaderOveride.SetIntUniform("animate", 1);
-
 	}
 	
 	else

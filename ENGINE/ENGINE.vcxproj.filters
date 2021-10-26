@@ -142,6 +142,8 @@
     <ClCompile Include="ThirdParty\glad\src\glad.c">
       <Filter>ThirdParty\glad</Filter>
     </ClCompile>
+    <ClCompile Include="CAgent.cpp" />
+    <ClCompile Include="CAffordanceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">
@@ -297,6 +299,8 @@
     <ClInclude Include="ThirdParty\glad\include\KHR\khrplatform.h">
       <Filter>ThirdParty\glad</Filter>
     </ClInclude>
+    <ClInclude Include="CAgent.h" />
+    <ClInclude Include="CAffordanceManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\init.lua">
