@@ -49,6 +49,7 @@ Matrix4f Matrix4f::GetScale(const Vector3f &v) const
 	return glm::scale(m_mat, v.m_vec);
 }
 
+
 float *Matrix4f::ValuePtr()
 {
 	return glm::value_ptr(m_mat);
@@ -74,5 +75,10 @@ Matrix4f Matrix4f::operator*(const Matrix4f &other) const
 	return m_mat * other.m_mat;
 }
 
+Quaternion Matrix4f::ToQuat()
+{
+	return glm::quat_cast(m_mat);
+
+}
 
 
