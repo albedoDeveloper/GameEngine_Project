@@ -171,6 +171,11 @@ float CRigidBody::GetRestitution() const
 	return m_restitution;
 }
 
+void CRigidBody::SetRestitution(float e)
+{
+	m_restitution = e;
+}
+
 Vector3f CRigidBody::GetGravity() const
 {
 	return m_gravity;

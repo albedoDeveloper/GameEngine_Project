@@ -81,6 +81,7 @@ void CCharacter::Start()
 		projObj->AddComponent<CCollider>()->AddSphereCollider();
 		projObj->AddComponent<CRigidBody>()->SetMass(0.5f);
 		projObj->GetComponent<CRigidBody>()->SetGravityEnabled(true);
+		projObj->GetComponent<CRigidBody>()->SetRestitution(0.6f);
 		projObj->SetActive(false);
 		m_projectilePool[i] = projObj;
 	}
@@ -94,6 +95,7 @@ void CCharacter::Start()
 		obj->AddComponent<CCollider>()->AddBoxCollider(0, 0, 0, 0, 0, 0, true, 0, true, 31);
 		obj->AddComponent<CRigidBody>()->SetMass(2);
 		obj->GetComponent<CRigidBody>()->SetGravityEnabled(false);
+		obj->GetComponent<CRigidBody>()->SetRestitution(0.2f);
 		obj->SetActive(false);
 		m_bookPool[i] = obj;
 	}
