@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "GraphicsEngine.h"
 #include "InputManager.h"
-#include "Time.h"
+#include "MyTime.h"
 #include <iostream>
 #include "Engine.h"
 #include "GameObjectFactory.h"
@@ -61,12 +61,27 @@ void CCharacter::SetPlayerControlled(bool playerControlled)
 
 void CCharacter::Start()
 {
+	const std::string PROJECTILE_NAME_PREFIX = "projectile_";
+
 	m_initialHitpoints = m_hitpoints;
 	m_collider = m_parent->GetComponent<CCollider>();
 	if (!m_collider)
 	{
 		std::cout << "ERROR: CCharacter cannot find collider on parent object\n";
 		exit(34);
+	}
+
+	// create projectile pool
+	for (int i = 0; i < PROJECTILE_POOL_SIZE; i++)
+	{
+		std::string name = PROJECTILE_NAME_PREFIX + std::to_string(i);
+		GameObject *projObj = GAMEOBJECT->SpawnGameObject(name);
+		projObj->AddCStaticMesh()->AssignModelByKey("book");
+		projObj->AddComponent<CCollider>()->AddBoxCollider(0, 0, 0, 0, 0, 0, true, 1, true, 31);
+		projObj->AddComponent<CRigidBody>()->SetMass(2);
+		projObj->SetActive(false);
+		projObj->GetTransform()->SetRelativePosition(1, 1, 1);
+		m_projectilePool[i] = projObj;
 	}
 }
 
@@ -135,6 +150,28 @@ void CCharacter::Update()
 		{
 			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * mouseSens);
 			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * -mouseSens);
+
+			if (INPUT->GetMouseButtonDown(1))
+			{
+				static unsigned projPoolIndex = 0;
+				m_projectilePool[projPoolIndex]->SetActive(true);
+				m_projectilePool[projPoolIndex]->GetComponent<CRigidBody>()->RemoveMomentum();
+				m_projectilePool[projPoolIndex]->GetTransform()->SetRelativeOrientation(
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeOrientation()
+				);
+				m_projectilePool[projPoolIndex]->GetTransform()->SetRelativePositionV(
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() +
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 0.7f
+				);
+				m_projectilePool[projPoolIndex]->GetComponent<CRigidBody>()->SetVelocity(
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 0.5f
+				);
+				projPoolIndex++;
+				if (projPoolIndex >= PROJECTILE_POOL_SIZE)
+				{
+					projPoolIndex = 0;
+				}
+			}
 		}
 
 		if (parentObj->GetComponent<CCamera>()->GetTransform().GetRelativeOrientation().GetEulerAnglesDegrees().GetX() > 90.f ||

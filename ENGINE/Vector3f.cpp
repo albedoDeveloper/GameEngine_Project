@@ -3,13 +3,11 @@
 
 Vector3f::Vector3f()
 	:m_vec{ 0.f,0.f,0.f }
-{
-}
+{}
 
 Vector3f::Vector3f(float x, float y, float z)
 	: m_vec(x, y, z)
-{
-}
+{}
 
 Vector3f &Vector3f::operator+=(const Vector3f &v)
 {
@@ -69,12 +67,12 @@ void Vector3f::SetMagnitude(float length)
 	m_vec = (length / glm::length(m_vec)) * m_vec;
 }
 
-Vector3f Vector3f::crossProduct(Vector3f oVec)
+Vector3f Vector3f::crossProduct(Vector3f oVec) const
 {
 	return glm::cross(m_vec, oVec.m_vec);
 }
 
-float Vector3f::dotProduct(Vector3f oVec)
+float Vector3f::dotProduct(Vector3f oVec) const
 {
 	return glm::dot(m_vec, oVec.m_vec);
 }
@@ -97,11 +95,6 @@ Vector3f Vector3f::Rad2Deg()
 	newVec.SetY(RadToDegrees(temp.GetY()));
 	newVec.SetZ(RadToDegrees(temp.GetZ()));
 	return newVec;
-}
-
-Vector3f Vector3f::operator+(Vector3f oVec)
-{
-	return m_vec + oVec.m_vec;
 }
 
 Vector3f Vector3f::operator*(const Vector3f &oVec)
@@ -142,5 +135,14 @@ Vector3f Vector3f::operator*(const Quaternion &quat)
 
 Vector3f::Vector3f(glm::vec3 v)
 	:m_vec(v)
+{}
+
+Vector3f Vector3f::operator+(Vector3f oVec)
 {
+	return m_vec + oVec.m_vec;
+}
+
+Vector3f Vector3f::operator+(const Vector3f rhs) const
+{
+	return m_vec + rhs.m_vec;
 }

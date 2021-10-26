@@ -9,6 +9,7 @@
 #include <glm/glm/gtc/quaternion.hpp>
 
 class Matrix4f;
+class Matrix3f;
 class Vector3f;
 
 	/**
@@ -25,16 +26,7 @@ public:
 	/**
 	 * constructs an identity quaternion using individual w,x,y,z values
 	 */
-	Quaternion(float w, float x, float y, float z);
-
-
-		/**
-		 * dot product of two Quaternions
-		 *
-		 * \param oQuat other quaternion
-		 * \return dot product
-		 */
-	float DotProduct(Quaternion oQuat);
+	Quaternion(float x, float y, float z, float w);
 
 		/**
 		 * Conjugation of a quaternian
@@ -143,22 +135,33 @@ public:
 		 */
 	Matrix4f Mat4Cast() const;
 
+	Matrix3f Mat3Cast() const;
+
 
 	/**
 	 * Spherical interperolation between 2 quaternions.
-	 * 
+	 *
 	 * \param one
 	 * \param two
 	 * \param scaleFactor
-	 * \return 
+	 * \return
 	 */
-	Quaternion Slerp(const Quaternion& two, float scaleFactor);
+	Quaternion Slerp(const Quaternion &two, float scaleFactor);
 
 	Quaternion Normalize();
+
+	Quaternion &operator+=(const Quaternion &other);
+
+	Quaternion operator*(float scalar);
+
+	Quaternion operator*(const Quaternion &rhs);
+
+	Quaternion operator+(const Quaternion &rhs);
 
 private:
 	friend class Vector3f;
 	friend class Matrix4f;
+	friend Quaternion operator*(float lhs, const Quaternion &rhs);
 
 	/** quaternion value */
 	glm::quat m_quat;

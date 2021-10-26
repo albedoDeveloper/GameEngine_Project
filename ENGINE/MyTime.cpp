@@ -1,21 +1,21 @@
-#include "Time.h"
+#include "MyTime.h"
 #include <iostream>
 #include <algorithm>
 
-Time::Time()
+MyTime::MyTime()
 {
 	m_now = SDL_GetPerformanceCounter();
 	m_last = 0;
 	m_deltaTime = 0;
 }
 
-Time *Time::Instance()
+MyTime *MyTime::Instance()
 {
-	static Time instance;
+	static MyTime instance;
 	return &instance;
 }
 
-void Time::UpdateDeltaTime()
+void MyTime::UpdateDeltaTime()
 {
 	m_last = m_now;
 	m_now = SDL_GetPerformanceCounter();
@@ -23,17 +23,17 @@ void Time::UpdateDeltaTime()
 	m_deltaTime = (m_now - m_last) / (double)SDL_GetPerformanceFrequency();
 }
 
-void Time::CatchupDeltaTime()
+void MyTime::CatchupDeltaTime()
 {
 	m_now = SDL_GetPerformanceCounter();
 }
 
-double Time::GetDeltaTime()
+double MyTime::GetDeltaTime()
 {
 	return m_deltaTime;
 }
 
-float Time::GetTimeElapsed() const
+float MyTime::GetTimeElapsed() const
 {
 	return SDL_GetPerformanceCounter();
 }

@@ -86,6 +86,8 @@ public:
 		*/
 	GameObject *GetParentObject();
 
+	virtual void SetIsActive(bool isActive);
+
 
 protected:
 		/**
@@ -96,4 +98,6 @@ protected:
 		 * @brief The object to which this component belongs
 		*/
 	GameObject *m_parent;
+
+	bool m_isActive;
 };
