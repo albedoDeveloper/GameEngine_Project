@@ -41,6 +41,8 @@ public:
 		 */
 	void Scale(Vector3f v);
 
+	void Rotate(const Quaternion &q);
+
 	Matrix4f GetScale(const Vector3f &v) const;
 
 		/**
@@ -51,6 +53,8 @@ public:
 	float *ValuePtr();
 
 	void RemoveTranslation();
+
+	float &SetMatrixElement(unsigned int row, unsigned int column);
 
 	Quaternion ToQuat();
 

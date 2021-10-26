@@ -2,19 +2,15 @@
 #include "Vector3f.h"
 #include <glm/glm/gtc/quaternion.hpp>
 #include "Matrix4f.h"
+#include "Matrix3f.h"
 
 Quaternion::Quaternion()
 	:m_quat(glm::identity<glm::quat>())
 {}
 
-Quaternion::Quaternion(float w, float x, float y, float z)
-	:m_quat(glm::quat(w,x,y,z))
+Quaternion::Quaternion(float x, float y, float z, float w)
+	: m_quat(glm::quat(w, x, y, z))
 {}
-
-float Quaternion::DotProduct(Quaternion oQuat)
-{
-	return glm::dot(m_quat, oQuat.m_quat);
-}
 
 Quaternion Quaternion::Conjugate() const
 {
@@ -111,8 +107,8 @@ Matrix4f Quaternion::Mat4Cast() const
 }
 
 
-Quaternion Quaternion::Slerp(const Quaternion& two, float scaleFactor)
-{	
+Quaternion Quaternion::Slerp(const Quaternion &two, float scaleFactor)
+{
 	Quaternion temp(glm::slerp(m_quat, glm::quat(two.GetW(), two.GetX(), two.GetY(), two.GetZ()), scaleFactor));
 
 	return temp;
@@ -121,4 +117,30 @@ Quaternion Quaternion::Slerp(const Quaternion& two, float scaleFactor)
 Quaternion Quaternion::Normalize()
 {
 	return glm::normalize(m_quat);
+}
+
+Quaternion &Quaternion::operator+=(const Quaternion &other)
+{
+	m_quat += other.m_quat;
+	return *this;
+}
+
+Quaternion Quaternion::operator*(float scalar)
+{
+	return m_quat * scalar;
+}
+
+Quaternion Quaternion::operator*(const Quaternion &rhs)
+{
+	return m_quat * rhs.m_quat;
+}
+
+Quaternion Quaternion::operator+(const Quaternion &rhs)
+{
+	return m_quat + rhs.m_quat;
+}
+
+Matrix3f Quaternion::Mat3Cast() const
+{
+	return glm::mat3_cast(m_quat);
 }

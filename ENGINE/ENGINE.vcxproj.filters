@@ -79,7 +79,7 @@
     <ClCompile Include="CollisionManager.cpp">
       <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
+    <ClCompile Include="MyTime.cpp">
       <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
@@ -147,6 +147,15 @@
     </ClCompile>
     <ClCompile Include="CAgent.cpp">
       <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix3f.cpp">
+      <Filter>Source\Math\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CRigidBody.cpp">
+      <Filter>Source\ComponentClasses\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsManager.cpp">
+      <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -240,7 +249,7 @@
     <ClInclude Include="CollisionManager.h">
       <Filter>Source\Singletons\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
+    <ClInclude Include="MyTime.h">
       <Filter>Source\Singletons\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
@@ -309,6 +318,15 @@
     <ClInclude Include="CAgent.h">
       <Filter>Source\ComponentClasses\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="CRigidBody.h">
+      <Filter>Source\ComponentClasses\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix3f.h">
+      <Filter>Source\Math\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsManager.h">
+      <Filter>Source\Singletons\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\init.lua">
@@ -356,6 +374,9 @@
     </None>
     <None Include="..\Assets\Shaders\skybox.frag">
       <Filter>Shaders\skybox</Filter>
+    </None>
+    <None Include="..\Assets\Scripts\playerShoot.lua">
+      <Filter>Scripts</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

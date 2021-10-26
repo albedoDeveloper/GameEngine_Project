@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include <cmath>
 #include <iostream>
-#include "Time.h"
+#include "MyTime.h"
 #include "Matrix4f.h"
 
 const double pi = 2 * acos(0.0);
@@ -175,7 +175,7 @@ Transform Transform::GetWorldTransform() const
 	while (!stack.empty())
 	{
 		worldMat.Translate(stack.top()->m_position);
-		worldMat = worldMat * stack.top()->m_orientation.Conjugate().Mat4Cast();
+		worldMat = worldMat * stack.top()->m_orientation.Conjugate().Normalize().Mat4Cast();
 		worldMat.Scale(stack.top()->m_scale);
 		stack.pop();
 	}

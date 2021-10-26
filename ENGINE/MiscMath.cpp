@@ -68,3 +68,57 @@ Matrix4f Ortho(float left, float right, float bottom, float top, float near, flo
 	return glm::ortho(left, right, bottom, top, near, far);
 }
 
+Vector3f operator/(const Vector3f &lhs, const Matrix3f &rhs)
+{
+	return lhs.m_vec / rhs.m_mat;
+}
+
+Vector3f operator*(const Matrix3f &lhs, const Vector3f &rhs)
+{
+	return lhs.m_mat * rhs.m_vec;
+}
+
+Vector3f operator-(const Vector3f &lhs, const Vector3f &rhs)
+{
+	return lhs.m_vec - rhs.m_vec;
+}
+
+Vector3f operator*(const Vector3f &lhs, const Vector3f &rhs)
+{
+	return glm::cross(lhs.m_vec, rhs.m_vec);
+}
+
+Vector3f operator/(const Vector3f &lhs, float rhs)
+{
+	return lhs.m_vec / rhs;
+}
+
+Vector3f operator*(float lhs, const Vector3f &rhs)
+{
+	return lhs * rhs.m_vec;
+}
+
+Vector3f operator*(const Vector3f &lhs, const Matrix3f &rhs)
+{
+	return lhs.m_vec * rhs.m_mat;
+}
+
+Vector3f operator+(float lhs, const Vector3f &rhs)
+{
+	return lhs + rhs.m_vec;
+}
+
+Vector3f operator/(float lhs, const Vector3f &rhs)
+{
+	return lhs / rhs.m_vec;
+}
+
+Matrix3f operator*(float lhs, const Matrix3f &rhs)
+{
+	return lhs * rhs.m_mat;
+}
+
+Quaternion operator*(float lhs, const Quaternion &rhs)
+{
+	return lhs * rhs.m_quat;
+}
