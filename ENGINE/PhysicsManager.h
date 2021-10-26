@@ -11,8 +11,6 @@ public:
 	static PhysicsManager *Instance();
 	void ResolveContactPoints(std::vector<Manifold> &manifolds);
 	void RegisterRigidBody(CRigidBody *body);
-	//void IntegrateAccelerations();
-	//void IntegrateVelocities();
 	void IntegrateBodies();
 
 private:
