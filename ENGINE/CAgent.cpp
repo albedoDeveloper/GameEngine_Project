@@ -101,7 +101,7 @@ void CAgent::AiMove()
 
 
 		//float t = lerpTime / 400;
-		GetParentObject()->GetTransform()->TranslateV(Vector3f(std::lerp(pTrans.GetX(), endPos.GetX(), 1.0f ), (std::lerp(pTrans.GetY(), endPos.GetY(), 1.0f)), std::lerp(pTrans.GetZ(), endPos.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);
+		m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pTrans.GetX(), endPos.GetX() - pTrans.GetX(), 1.0f ), (std::lerp(pTrans.GetY(), endPos.GetY(), 1.0f)), std::lerp(pTrans.GetZ(), endPos.GetZ() - pTrans.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);
 
 		//GetParentObject()->GetTransform()->SetRelativePositionV(Vector3f( endPos.GetX() , startPos.GetY(), endPos.GetZ()));
 		//lerpTime += lerpTime * TIME->GetDeltaTime();
