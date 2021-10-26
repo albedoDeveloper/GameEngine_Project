@@ -114,15 +114,6 @@ public:
 	void AddSphereCollider();
 
 	/**
-	 * @brief Adds a capsule collider around the objects model, currently not completed.
-	 *
-	 * \param radius
-	 * \param height
-	 * \param layer
-	 */
-	void AddCapsuleCollider(float radius, float height, int layer);
-
-	/**
 	 * @brief Creates a convex/polygon collider around the object. Currently is not working.
 	 *
 	 */

@@ -14,7 +14,7 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 	m_velocity{ 0.0f,0,0 },
 	m_accel{ 0,0,0 },
 	m_linForceAccum{ 0,0,0 },
-	m_angularVelocity{ 0, 0.0f, 0 },
+	m_angularVelocity{ 0, 6, 0 },
 	m_angularAccel{ 0,0,0 },
 	m_gravityEnabled{ false },
 	m_freezeXTrans{ false },
@@ -206,15 +206,9 @@ void CRigidBody::Integrate()
 	if (m_freezeYRot) m_angularVelocity.SetY(0);
 	if (m_freezeZRot) m_angularVelocity.SetZ(0);
 	m_angularVelocity = m_angularVelocity * powf(0.9f, (TIME->GetDeltaTime())); // angular damping
-	Vector3f angVelLocalSpace = m_angularVelocity * m_parent->GetTransform()->GetRelativeOrientation().Conjugate();
-	Quaternion angVelQuat(
-		-angVelLocalSpace.GetX(),
-		-angVelLocalSpace.GetY(),
-		-angVelLocalSpace.GetZ(),
-		0
-	);
-	m_parent->GetTransform()->GetRelativeOrientation() += (0.5f * TIME->GetDeltaTime()) * angVelQuat * m_parent->GetTransform()->GetRelativeOrientation();
-	m_parent->GetTransform()->GetRelativeOrientation().Normalize();
+
+	//m_parent->GetTransform()->GetRelativeOrientation() += (0.5f * TIME->GetDeltaTime()) * angVelQuat * m_parent->GetTransform()->GetRelativeOrientation();
+	m_parent->GetTransform()->GetRelativeOrientation().IntegrateAngVel(m_angularVelocity, TIME->GetDeltaTime());
 	//m_torqueAccum = Vector3f(0, 0, 0); // reset angular force accumulation
 
 	m_parent->GetComponent<CCollider>()->UpdateCollider();
@@ -226,6 +220,6 @@ void CRigidBody::Render()
 	{
 		GRAPHICS->DrawLine(m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_angularVelocity, Vector3f(1, 1, 0));
 		GRAPHICS->DrawLine(m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_velocity, Vector3f(1, 0, 1));
+		//GRAPHICS->RenderLine(Vector3f(1, 1, 1), m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_accel);
 	}
-	//GRAPHICS->RenderLine(Vector3f(1, 1, 1), m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_accel);
 }

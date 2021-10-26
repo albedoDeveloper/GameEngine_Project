@@ -200,7 +200,7 @@ lua_State *ScriptingEngine::NewState()
 		.addFunction("AddEmotion", &CAgent::AddEmotion)
 		.addFunction("AddTrait", &CAgent::AddTrait)
 		.endClass();
-	
+
 	getGlobalNamespace(Lbuff)
 		.beginClass<CComponent>("CComponent")
 		.endClass()
@@ -223,9 +223,7 @@ lua_State *ScriptingEngine::NewState()
 		.deriveClass<CCollider, CComponent>("CCollider")
 		.addFunction("AddConvexCollider", &CCollider::AddConvexCollider)
 		.addFunction("AddBoxCollider", &CCollider::AddBoxCollider)
-		.addFunction("AddCapsuleCollider", &CCollider::AddCapsuleCollider)
 		.addFunction("AddConcaveCollider", &CCollider::AddConcaveCollider)
-		//.addFunction("CollideWith", &CCollider::CollideWith)
 		.endClass();
 
 	return Lbuff;

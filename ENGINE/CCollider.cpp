@@ -121,11 +121,12 @@ void CCollider::UpdateCollider()
 	);
 	if (m_allowRotation)
 	{
+		Quaternion world = m_transform.GetWorldTransform().GetRelativeOrientation();
 		orientation = btQuaternion(
-			m_transform.GetWorldTransform().GetRelativeOrientation().GetX(),
-			m_transform.GetWorldTransform().GetRelativeOrientation().GetY(),
-			m_transform.GetWorldTransform().GetRelativeOrientation().GetZ(),
-			m_transform.GetWorldTransform().GetRelativeOrientation().GetW()
+			world.GetX(),
+			world.GetY(),
+			world.GetZ(),
+			world.GetW()
 		);
 		orientation = orientation.inverse();
 	}
@@ -214,14 +215,6 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	btBoxShape *boxShape = new btBoxShape(btVector3(m_boxXHalfSize, m_boxYHalfSize, m_boxZHalfSize));
 	m_colObj->setCollisionShape(boxShape);
 	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj, (1 << layer), -1);
-}
-
-void CCollider::AddCapsuleCollider(float radius, float height, int layer)
-{
-	//reactphysics3d::CapsuleShape *capsuleCollider = COLLISION->physicsCommon.createCapsuleShape(1.0, 2.0);
-	//col = colBody->addCollider(capsuleCollider, reactphysics3d::Transform::identity());
-	//col->setCollisionCategoryBits(layer);
-	//col->setCollideWithMaskBits(0);
 }
 
 void CCollider::AddConvexCollider()

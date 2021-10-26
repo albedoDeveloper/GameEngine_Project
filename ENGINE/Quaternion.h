@@ -148,7 +148,11 @@ public:
 	 */
 	Quaternion Slerp(const Quaternion &two, float scaleFactor);
 
-	Quaternion Normalize();
+	Quaternion Normalized() const;
+
+	void Normalize();
+
+	void IntegrateAngVel(const Vector3f &v, float scale);
 
 	Quaternion &operator+=(const Quaternion &other);
 

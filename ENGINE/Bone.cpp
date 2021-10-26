@@ -119,14 +119,14 @@ Matrix4f Bone::InterpolateRotation(float animationTime)
 
 	if (1 == m_NumRotations)
 	{
-		return m_Rotations[0].orientation.Normalize().Mat4Cast();
+		return m_Rotations[0].orientation.Normalized().Mat4Cast();
 	}
 
 	int p0Index = GetRotationIndex(animationTime);
 	int p1Index = p0Index + 1;
 	float scaleFactor = GetScaleFactor(m_Rotations[p0Index].timeStamp, m_Rotations[p1Index].timeStamp, animationTime);
 	Quaternion finalRotation = m_Rotations[p0Index].orientation.Slerp(m_Rotations[p1Index].orientation, scaleFactor);
-	return finalRotation.Normalize().Mat4Cast();
+	return finalRotation.Normalized().Mat4Cast();
 }
 
 Matrix4f Bone::InterpolateScaling(float animationTime)
