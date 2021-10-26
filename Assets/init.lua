@@ -33,7 +33,7 @@ LoadModel("Breathing Idle","basic_girl/girlIdle.fbx")
 LoadModel("girlTalking","basic_girl/girlTalking.fbx")
 LoadModel("girlDying","basic_girl/girlDying.fbx")
 LoadModel("book", "book/book.fbx")
---LoadModel("jukebox", "jukebox/jukebox.fbx")
+LoadModel("jukebox", "jukebox/jukebox.fbx")
 LoadScript("rotate", "rotate.lua")
 LoadScript("playerShoot", "playerShoot.lua")
 LoadScript("girl1script", "girl1script.lua")
@@ -47,9 +47,6 @@ GetGameObject("book2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1,true, 31
 GetGameObject("book2"):AddCRigidBody():SetMass(2)
 GetGameObject("book2"):GetTransform():SetRelativePosition(-2,2,0)
 
---SpawnGameObject("jukebox"):SetStatic(true)
---GetGameObject("jukebox"):AddCStaticMesh():AssignModel("jukebox")
---GetGameObject("jukebox"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 
 SpawnGameObject("fridge1"):SetStatic(true)
 GetGameObject("fridge1"):AddCStaticMesh():AssignModel("fridge1")
@@ -385,6 +382,17 @@ GetGameObject("NavMesh"):GetTransform():SetRelativePosition(1, 0, 0);
 GetGameObject("NavMesh"):AddCNavMesh();
 
 --------------
+
+SpawnGameObject("jukebox"):SetStatic(true)
+GetGameObject("jukebox"):AddCStaticMesh():AssignModel("jukebox")
+GetGameObject("jukebox"):GetCStaticMesh():RemoveNormalMapping()
+GetGameObject("jukebox"):GetTransform():SetRelativePosition(-1.5,0.9,-2.41)
+GetGameObject("jukebox"):GetTransform():Scale(4,4,4)
+GetGameObject("jukebox"):GetTransform():RotateLocalX(44)
+GetGameObject("jukebox"):AddCSound():LoadSound("milkyway.wav")
+GetGameObject("jukebox"):GetCSound():PlaySound("milkyway.wav",-1,true)
+--GetGameObject("jukebox"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+
 
 
 SpawnGameObject("player");
