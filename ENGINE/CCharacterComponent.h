@@ -96,7 +96,9 @@ public:
 
 private:
 	static const unsigned PROJECTILE_POOL_SIZE = 300;
+	static const unsigned BOOK_POOL_SIZE = 100;
 	GameObject *m_projectilePool[PROJECTILE_POOL_SIZE];
+	GameObject *m_bookPool[BOOK_POOL_SIZE];
 
 
 		/**

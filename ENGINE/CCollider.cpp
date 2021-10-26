@@ -135,6 +135,47 @@ void CCollider::UpdateCollider()
 	m_colObj->setWorldTransform(worldT);
 }
 
+void CCollider::AddSphereCollider()
+{
+	if (this->GetParentObject()->GetComponent<CStaticMesh>() != nullptr)
+	{
+		auto minMax = this->GetParentObject()->GetCStaticMesh()->m_model->MinMax();
+		minMax.push_back(23.f);
+
+		m_boxXHalfSize = (minMax[1] - minMax[0]) / 2.0f;
+		m_boxYHalfSize = (minMax[3] - minMax[2]) / 2.0f;
+		m_boxZHalfSize = (minMax[5] - minMax[4]) / 2.0f;
+
+		auto xAvg = ((minMax[1]) + (minMax[0])) / 2;
+		auto yAvg = ((minMax[3]) + (minMax[2])) / 2;
+		auto zAvg = ((minMax[5]) + (minMax[4])) / 2;
+
+		m_transform.SetRelativePosition(xAvg, yAvg, zAvg);
+	}
+	else
+	{
+		std::cout << "CCollider::AddSphereCollider() function. Cannot autosize because GameObject doesn not have a CstaticMesh!\n";
+		exit(-24);
+	}
+
+	float biggest = m_boxXHalfSize;
+	if (m_boxYHalfSize > biggest)
+	{
+		biggest = m_boxYHalfSize;
+	}
+	if (m_boxZHalfSize > biggest)
+	{
+		biggest = m_boxZHalfSize;
+	}
+
+	btSphereShape *sphereShape = new btSphereShape(biggest);
+	m_colObj = new btCollisionObject();
+	m_colObj->setCollisionFlags(btCollisionObject::CF_DYNAMIC_OBJECT);
+	COLLISION->RegisterCollisionBody(m_colObj, this);
+	m_colObj->setCollisionShape(sphereShape);
+	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj);
+}
+
 void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float offsetY, float offsetZ, bool autoSize, int layer, bool allowRotation, int colMask)
 {
 	m_allowRotation = allowRotation;

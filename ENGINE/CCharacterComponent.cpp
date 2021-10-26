@@ -62,6 +62,7 @@ void CCharacter::SetPlayerControlled(bool playerControlled)
 void CCharacter::Start()
 {
 	const std::string PROJECTILE_NAME_PREFIX = "projectile_";
+	const std::string BOOK_NAME_PREFIX = "book_";
 
 	m_initialHitpoints = m_hitpoints;
 	m_collider = m_parent->GetComponent<CCollider>();
@@ -76,12 +77,25 @@ void CCharacter::Start()
 	{
 		std::string name = PROJECTILE_NAME_PREFIX + std::to_string(i);
 		GameObject *projObj = GAMEOBJECT->SpawnGameObject(name);
-		projObj->AddCStaticMesh()->AssignModelByKey("book");
-		projObj->AddComponent<CCollider>()->AddBoxCollider(0, 0, 0, 0, 0, 0, true, 1, true, 31);
-		projObj->AddComponent<CRigidBody>()->SetMass(2);
+		projObj->AddCStaticMesh()->AssignModelByKey("ball");
+		projObj->AddComponent<CCollider>()->AddSphereCollider();
+		projObj->AddComponent<CRigidBody>()->SetMass(0.5f);
+		projObj->GetComponent<CRigidBody>()->SetGravityEnabled(true);
 		projObj->SetActive(false);
-		projObj->GetTransform()->SetRelativePosition(1, 1, 1);
 		m_projectilePool[i] = projObj;
+	}
+
+	// book pool
+	for (int i = 0; i < BOOK_POOL_SIZE; i++)
+	{
+		std::string name = BOOK_NAME_PREFIX + std::to_string(i);
+		GameObject *obj = GAMEOBJECT->SpawnGameObject(name);
+		obj->AddCStaticMesh()->AssignModelByKey("book");
+		obj->AddComponent<CCollider>()->AddBoxCollider(0, 0, 0, 0, 0, 0, true, 0, true, 31);
+		obj->AddComponent<CRigidBody>()->SetMass(2);
+		obj->GetComponent<CRigidBody>()->SetGravityEnabled(false);
+		obj->SetActive(false);
+		m_bookPool[i] = obj;
 	}
 }
 
@@ -151,7 +165,7 @@ void CCharacter::Update()
 			parentObj->GetTransform()->RotateLocalY(INPUT->GetAxis("Mouse X") * mouseSens);
 			parentObj->GetComponent<CCamera>()->GetTransform().RotateLocalX(INPUT->GetAxis("Mouse Y") * -mouseSens);
 
-			if (INPUT->GetMouseButtonDown(1))
+			if (INPUT->GetMouseButtonDown(0))
 			{
 				static unsigned projPoolIndex = 0;
 				m_projectilePool[projPoolIndex]->SetActive(true);
@@ -164,12 +178,44 @@ void CCharacter::Update()
 					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 0.7f
 				);
 				m_projectilePool[projPoolIndex]->GetComponent<CRigidBody>()->SetVelocity(
-					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 0.5f
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 10.5f
 				);
 				projPoolIndex++;
 				if (projPoolIndex >= PROJECTILE_POOL_SIZE)
 				{
 					projPoolIndex = 0;
+				}
+			}
+			if (INPUT->GetMouseButtonDown(1))
+			{
+				static unsigned bookPoolIndex = 0;
+				m_bookPool[bookPoolIndex]->SetActive(true);
+				m_bookPool[bookPoolIndex]->GetComponent<CRigidBody>()->RemoveMomentum();
+				m_bookPool[bookPoolIndex]->GetTransform()->SetRelativeOrientation(
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeOrientation()
+				);
+				m_bookPool[bookPoolIndex]->GetTransform()->SetRelativePositionV(
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() +
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 0.7f
+				);
+				m_bookPool[bookPoolIndex]->GetComponent<CRigidBody>()->SetVelocity(
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 1.5f
+				);
+				bookPoolIndex++;
+				if (bookPoolIndex >= BOOK_POOL_SIZE)
+				{
+					bookPoolIndex = 0;
+				}
+			}
+			if (INPUT->GetMouseButtonDown(2))
+			{
+				for (int i = 0; i < PROJECTILE_POOL_SIZE; i++)
+				{
+					m_projectilePool[i]->SetActive(false);
+				}
+				for (int i = 0; i < BOOK_POOL_SIZE; i++)
+				{
+					m_bookPool[i]->SetActive(false);
 				}
 			}
 		}
