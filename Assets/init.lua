@@ -13,6 +13,7 @@ LoadModel("roof_interior", "roof_interior/roof_interior.fbx")
 LoadModel("south_bar_barrier", "south_bar_barrier/south_bar_barrier.fbx")
 LoadModel("south_bar_barrier_2", "south_bar_barrier_2/south_bar_barrier_2.fbx")
 LoadModel("south_bar_wall", "south_bar_wall/south_bar_wall.fbx")
+LoadModel("south_bar_wall_2", "south_bar_wall_2/south_bar_wall_2.fbx")
 LoadModel("spiked_door_bar", "spiked_door_bar/spiked_door_bar.fbx")
 LoadModel("spiked_door_toilet", "spiked_door_toilet/spiked_door_toilet.fbx")
 LoadModel("tavern_glass_door_wall", "tavern_glass_door_wall/tavern_glass_door_wall.fbx")
@@ -235,6 +236,11 @@ GetGameObject("spiked_door_bar"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,
 
 SpawnGameObject("south_bar_wall"):SetStatic(true)
 GetGameObject("south_bar_wall"):AddCStaticMesh():AssignModel("south_bar_wall")
+GetGameObject("south_bar_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
+
+SpawnGameObject("south_bar_wall_2"):SetStatic(true)
+GetGameObject("south_bar_wall_2"):AddCStaticMesh():AssignModel("south_bar_wall_2")
+GetGameObject("south_bar_wall_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 
 SpawnGameObject("south_bar_barrier_2"):SetStatic(true)
 GetGameObject("south_bar_barrier_2"):AddCStaticMesh():AssignModel("south_bar_barrier_2")
