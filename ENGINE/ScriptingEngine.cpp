@@ -101,6 +101,8 @@ lua_State *ScriptingEngine::NewState()
 		.addFunction("GetCPointLight", &GameObject::GetCPointLight)
 		.addFunction("AddCDirectionalLight", &GameObject::AddCDirectionalLight)
 		.addFunction("GetCDirectionalLight", &GameObject::GetCDirectionalLight)
+		.addFunction("AddCNavMesh", &GameObject::AddCNavMesh)
+		.addFunction("GetCNavMesh", &GameObject::GetCNavMesh)
 		.addFunction("SetActive", &GameObject::SetActive)
 		.addFunction("SetParentObject", &GameObject::SetParentObject)
 		.addFunction("AddCSound", &GameObject::AddCSound)
@@ -216,6 +218,12 @@ lua_State *ScriptingEngine::NewState()
 		.deriveClass<CAnimator, CComponent>("CAnimator")
 		.addFunction("PlayAnimation", &CAnimator::PlayAnimation)
 		.addFunction("AddAnimation", &CAnimator::AddAnimation)
+		.endClass();
+
+	getGlobalNamespace(Lbuff)
+		.beginClass<CComponent>("CComponent")
+		.endClass()
+		.deriveClass<CNavMesh,CComponent>("CNavMesh")
 		.endClass();
 
 	getGlobalNamespace(Lbuff)

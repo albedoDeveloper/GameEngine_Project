@@ -379,6 +379,11 @@ GetGameObject("ai_agent_3"):GetCSound():LoadSound("calm.wav")
 GetGameObject("ai_agent_3"):GetTransform():Translate(2,0,1.4)
 GetGameObject("ai_agent_3"):AddCAgent():AddEmotion("valence",0.4, 1.0, 0.0)
 GetGameObject("ai_agent_3"):GetCAgent():AddEmotion("arousal",0.6, 1.0, 0.0)
+
+SpawnGameObject("NavMesh");
+GetGameObject("NavMesh"):GetTransform():SetRelativePosition(1, 0, 0);
+GetGameObject("NavMesh"):AddCNavMesh();
+
 --------------
 
 
