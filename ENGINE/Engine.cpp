@@ -5,10 +5,11 @@
 #include "GraphicsEngine.h"
 #include "InputManager.h"
 #include "GameObjectFactory.h"
-#include "Time.h"
+#include "MyTime.h"
 #include "./ThirdParty/imgui/imgui_impl_sdl.h"
 #include "./ThirdParty/imgui/imgui_impl_opengl3.h"
 #include <glm/glm/gtc/matrix_transform.hpp>
+#include "PhysicsManager.h"
 
 Engine::Engine()
 	:m_isRunning{ true }, m_saveState{ false }, m_loadState{ false }, levelLoader{ LevelLoader() }, levelEditor{ LevelEditor() },
@@ -131,7 +132,9 @@ void Engine::OnEvent(SDL_Event *e)
 void Engine::Update()
 {
 	GAMEOBJECT->Update();
-	COLLISION->PerformCollisionDetection();
+	PHYSICS->IntegrateBodies();
+	COLLISION->GenerateContactData();
+	PHYSICS->ResolveContactPoints(COLLISION->GetContactCache());
 	if (INPUT->GetKeyDown('`'))
 	{
 		m_debugMenu = !m_debugMenu;

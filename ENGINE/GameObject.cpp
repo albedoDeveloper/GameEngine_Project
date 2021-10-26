@@ -21,6 +21,11 @@ CStaticMesh *GameObject::GetCStaticMesh()
 	return GetComponent<CStaticMesh>();
 }
 
+CRigidBody *GameObject::GetCRigidBody()
+{
+	return GetComponent<CRigidBody>();
+}
+
 CSound *GameObject::AddCSound()
 {
 	return AddComponent<CSound>();
@@ -31,12 +36,17 @@ CSound *GameObject::GetCSound()
 	return GetComponent<CSound>();
 }
 
-CAnimator* GameObject::AddCAnimator()
+CAnimator *GameObject::AddCAnimator()
 {
 	return AddComponent<CAnimator>();
 }
 
-CAnimator* GameObject::GetCAnimator()
+CRigidBody *GameObject::AddCRigidBody()
+{
+	return AddComponent<CRigidBody>();
+}
+
+CAnimator *GameObject::GetCAnimator()
 {
 	return GetComponent<CAnimator>();
 }
@@ -161,6 +171,15 @@ void GameObject::SetActive(bool activeStatus)
 {
 	m_isActive = activeStatus;
 
+	// setactive on all components
+	for (auto it = m_components.begin(); it != m_components.end(); it++)
+	{
+		for (auto it2 = it->second->begin(); it2 != it->second->end(); it2++)
+		{
+			it2._Ptr->_Myval->SetIsActive(activeStatus);
+		}
+	}
+
 	CCollider *col = GetComponent<CCollider>();
 
 	//We have to deactivate the collider here immediatly
@@ -171,7 +190,7 @@ void GameObject::SetActive(bool activeStatus)
 			col->EnableDisable(activeStatus);
 		}
 
-		if (activeStatus == true )
+		if (activeStatus == true)
 		{
 			col->EnableDisable(activeStatus);
 		}

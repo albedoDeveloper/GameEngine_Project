@@ -142,15 +142,18 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	m_offset.x = offsetX;
 	m_offset.y = offsetY;
 	m_offset.z = offsetZ;
+	m_boxXHalfSize = x;
+	m_boxYHalfSize = y;
+	m_boxZHalfSize = z;
 
 	if (autoSize && this->GetParentObject()->GetComponent<CStaticMesh>() != nullptr)
 	{
 		auto minMax = this->GetParentObject()->GetCStaticMesh()->m_model->MinMax();
 		minMax.push_back(23.f);
 
-		x = (minMax[1] - minMax[0]) / 2.0f;
-		y = (minMax[3] - minMax[2]) / 2.0f;
-		z = (minMax[5] - minMax[4]) / 2.0f;
+		m_boxXHalfSize = (minMax[1] - minMax[0]) / 2.0f;
+		m_boxYHalfSize = (minMax[3] - minMax[2]) / 2.0f;
+		m_boxZHalfSize = (minMax[5] - minMax[4]) / 2.0f;
 
 		auto xAvg = ((minMax[1]) + (minMax[0])) / 2;
 		auto yAvg = ((minMax[3]) + (minMax[2])) / 2;
@@ -167,7 +170,7 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 	m_colObj = new btCollisionObject();
 	m_colObj->setCollisionFlags(btCollisionObject::CF_DYNAMIC_OBJECT);
 	COLLISION->RegisterCollisionBody(m_colObj, this);
-	btBoxShape *boxShape = new btBoxShape(btVector3(x, y, z));
+	btBoxShape *boxShape = new btBoxShape(btVector3(m_boxXHalfSize, m_boxYHalfSize, m_boxZHalfSize));
 	m_colObj->setCollisionShape(boxShape);
 	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj, (1 << layer), -1);
 }
@@ -182,78 +185,117 @@ void CCollider::AddCapsuleCollider(float radius, float height, int layer)
 
 void CCollider::AddConvexCollider()
 {
-	/*auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
+	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
 	auto totalFaces = model->NumFaces();
-	auto polyFace = new reactphysics3d::PolygonVertexArray::PolygonFace[model->NumFaces()];
-	reactphysics3d::PolygonVertexArray::PolygonFace *faces = polyFace;
+	//auto polyFace = new reactphysics3d::PolygonVertexArray::PolygonFace[model->NumFaces()];
+	//reactphysics3d::PolygonVertexArray::PolygonFace *faces = polyFace;
+	btConvexHullShape *shape = new btConvexHullShape();
 	std::vector<float> vertices;
 	std::vector<int> indices;
-	float breaktime = false;
+	assert(model->GetMeshes().size() == 1);
 
 	for (int i = 0; i < model->GetMeshes()[0].vertices.size(); i++)
 	{
-		if (!breaktime)
-		{
-			vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetX());
-			vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetY());
-			vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetZ());
-		}
-
-		breaktime = false;
+		//vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetX());
+		//vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetY());
+		//vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetZ());
+		shape->addPoint(
+			btVector3(
+				model->GetMeshes()[0].vertices[i].Position.GetX(),
+				model->GetMeshes()[0].vertices[i].Position.GetY(),
+				model->GetMeshes()[0].vertices[i].Position.GetZ()
+			)
+		);
 	}
 
-	for (int i = 0; i < model->GetMeshes()[0].indices.size(); i++)
-	{
-		indices.emplace_back(model->GetMeshes()[0].indices[i]);
-	}
+	m_colObj = new btCollisionObject();
+	m_colObj->setCollisionFlags(btCollisionObject::CF_DYNAMIC_OBJECT);
+	COLLISION->RegisterCollisionBody(m_colObj, this);
+	m_colObj->setCollisionShape(shape);
+	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj, 1, -1);
 
-	for (unsigned int i = 0; i < model->NumFaces(); i++)
-	{
-		faces->indexBase = i * 3;
-		faces->nbVertices = 4;
-		faces++;
-	}
+	//for (int i = 0; i < model->GetMeshes()[0].indices.size(); i++)
+	//{
+	//	indices.emplace_back(model->GetMeshes()[0].indices[i]);
+	//}
 
-	reactphysics3d::PolygonVertexArray *polyVertexes = new reactphysics3d::PolygonVertexArray(vertices.size(), vertices.data(), 3 * sizeof(float), indices.data(),
-																							  sizeof(int), totalFaces, polyFace, reactphysics3d::PolygonVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::PolygonVertexArray::IndexDataType::INDEX_INTEGER_TYPE);
+	//for (unsigned int i = 0; i < model->NumFaces(); i++)
+	//{
+	//	faces->indexBase = i * 3;
+	//	faces->nbVertices = 4;
+	//	faces++;
+	//}
 
-	reactphysics3d::PolyhedronMesh *polyMesh2 = COLLISION->physicsCommon.createPolyhedronMesh(polyVertexes);
+	/*reactphysics3d::PolygonVertexArray *polyVertexes = new reactphysics3d::PolygonVertexArray(vertices.size(), vertices.data(), 3 * sizeof(float), indices.data(),
+																							  sizeof(int), totalFaces, polyFace, reactphysics3d::PolygonVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::PolygonVertexArray::IndexDataType::INDEX_INTEGER_TYPE);*/
 
-	auto convexCollider = COLLISION->physicsCommon.createConvexMeshShape(polyMesh2);
-	col = colBody->addCollider(convexCollider, reactphysics3d::Transform::identity());*/
+	//reactphysics3d::PolyhedronMesh *polyMesh2 = COLLISION->physicsCommon.createPolyhedronMesh(polyVertexes);
+
+	//auto convexCollider = COLLISION->physicsCommon.createConvexMeshShape(polyMesh2);
+	//col = colBody->addCollider(convexCollider, reactphysics3d::Transform::identity());
 }
 
-void CCollider::AddConcaveCollider(int layer)
+float CCollider::GetXHalfSize() const
 {
-	/*auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
-	auto totalFaces = model->NumFaces();
+	return m_boxXHalfSize;
+}
 
-
-	for (int i = 0; i < model->GetMeshes()[0].vertices.size(); i++)
+void CCollider::SetIsActive(bool isActive)
+{
+	CComponent::SetIsActive(isActive);
+	if (isActive)
 	{
-		concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetX());
-		concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetY());
-		concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetZ());
+		COLLISION->AddColliderToWorld(*this);
 	}
-
-	for (int i = 0; i < model->GetMeshes()[0].indices.size(); i++)
+	else
 	{
-		concaveIndices.emplace_back(model->GetMeshes()[0].indices[i]);
+		COLLISION->RemoveColliderToWorld(*this);
 	}
+}
 
-	reactphysics3d::TriangleVertexArray *triangleArray = new reactphysics3d::TriangleVertexArray(concaveVertices.size(), concaveVertices.data(), 3 * sizeof(float), totalFaces, concaveIndices.data(),
-																								 3 * sizeof(int), reactphysics3d::TriangleVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::TriangleVertexArray::IndexDataType::INDEX_INTEGER_TYPE);
+float CCollider::GetYHalfSize() const
+{
+	return m_boxYHalfSize;
+}
 
-	auto triangleMesh = COLLISION->physicsCommon.createTriangleMesh();
+float CCollider::GetZHalfSize() const
+{
+	return m_boxZHalfSize;
+}
 
-	triangleMesh->addSubpart(triangleArray);
+void CCollider::AddConcaveCollider()
+{
+	//auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
+	//auto totalFaces = model->NumFaces();
 
-	auto concaveMesh = COLLISION->physicsCommon.createConcaveMeshShape(triangleMesh);
+	//assert(model->GetMeshes().size() == 1);
+	//for (int i = 0; i < model->GetMeshes()[0].vertices.size(); i++)
+	//{
+	//	concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetX());
+	//	concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetY());
+	//	concaveVertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetZ());
+	//}
 
-	col = colBody->addCollider(concaveMesh, reactphysics3d::Transform::identity());
+	//for (int i = 0; i < model->GetMeshes()[0].indices.size(); i++)
+	//{
+	//	concaveIndices.emplace_back(model->GetMeshes()[0].indices[i]);
+	//}
 
-	col->setCollisionCategoryBits(layer);
-	col->setCollideWithMaskBits(0);*/
+	////reactphysics3d::TriangleVertexArray *triangleArray = new reactphysics3d::TriangleVertexArray(concaveVertices.size(), concaveVertices.data(), 3 * sizeof(float), totalFaces, concaveIndices.data(),
+	////																							 3 * sizeof(int), reactphysics3d::TriangleVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::TriangleVertexArray::IndexDataType::INDEX_INTEGER_TYPE);
+
+	//btConvexHullShape
+
+	//	auto triangleMesh = COLLISION->physicsCommon.createTriangleMesh();
+
+	//triangleMesh->addSubpart(triangleArray);
+
+	//auto concaveMesh = COLLISION->physicsCommon.createConcaveMeshShape(triangleMesh);
+
+	//col = colBody->addCollider(concaveMesh, reactphysics3d::Transform::identity());
+
+	//col->setCollisionCategoryBits(layer);
+	//col->setCollideWithMaskBits(0);
 
 }
 
