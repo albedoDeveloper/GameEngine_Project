@@ -5,6 +5,8 @@
 #include <glm/glm/gtc/type_ptr.hpp>
 #include "Quaternion.h"
 
+class Matrix3f;
+
 	/**
 	* @brief Stores information about a vector or point in three dimensions as floats
 	*/
@@ -24,12 +26,6 @@ public:
 		 * \param z
 		 */
 	Vector3f(float x, float y, float z);
-
-		/**
-		* @brief adds another vector to this one
-		* @param v The vector to add to this vector by
-		*/
-	Vector3f &operator+= (const Vector3f &v);
 
 		/**
 		 * get first element of vector array of floats
@@ -102,7 +98,7 @@ public:
 		 * \param oVec other vector
 		 * \return cross product value
 		 */
-	Vector3f crossProduct(Vector3f oVec);
+	Vector3f crossProduct(Vector3f oVec) const;
 
 		/**
 		 * dot product between two vectors
@@ -110,7 +106,7 @@ public:
 		 * \param oVec other vector
 		 * \return dot product
 		 */
-	float dotProduct(Vector3f oVec);
+	float dotProduct(Vector3f oVec) const;
 
 		/**
 		 * get a normalised version of this vector
@@ -127,6 +123,14 @@ public:
 		/// <param name="oVec"></param>
 		/// <returns></returns>
 	Vector3f operator+(Vector3f oVec);
+
+		/**
+		* @brief adds another vector to this one
+		* @param v The vector to add to this vector by
+		*/
+	Vector3f &operator+= (const Vector3f &v);
+
+	Vector3f operator+(const Vector3f rhs) const;
 
 
 		/// <summary>
@@ -190,5 +194,14 @@ private:
 
 		// friendship decleration
 	friend Matrix4f LookAt(const Vector3f &eye, const Vector3f &centre, const Vector3f &up);
+	friend Vector3f operator/(const Vector3f &lhs, const Matrix3f &rhs);
+	friend Vector3f operator*(const Matrix3f &lhs, const Vector3f &rhs);
+	friend Vector3f operator-(const Vector3f &lhs, const Vector3f &rhs);
+	friend Vector3f operator*(const Vector3f &lhs, const Vector3f &rhs);
+	friend Vector3f operator/(const Vector3f &lhs, float rhs);
+	friend Vector3f operator*(float lhs, const Vector3f &rhs);
+	friend Vector3f operator*(const Vector3f &lhs, const Matrix3f &rhs);
+	friend Vector3f operator+(float lhs, const Vector3f &rhs);
+	friend Vector3f operator/(float lhs, const Vector3f &rhs);
 	friend class Matrix4f;
 };

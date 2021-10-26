@@ -710,6 +710,15 @@ float GraphicsEngine::GetPointLightFarPlane() const
 	return m_shadowMapper.GetPointLightFarPlane();
 }
 
+void GraphicsEngine::DrawLine(const Vector3f &from, const Vector3f &to, const Vector3f &color)
+{
+	drawLine(
+		btVector3(from.GetX(), from.GetY(), from.GetZ()),
+		btVector3(to.GetX(), to.GetY(), to.GetZ()),
+		btVector3(color.GetX(), color.GetY(), color.GetZ())
+	);
+}
+
 void GraphicsEngine::drawLine(const btVector3 &from, const btVector3 &to, const btVector3 &color)
 {
 	unsigned int VBO;
@@ -786,10 +795,12 @@ void GraphicsEngine::reportErrorWarning(const char *warningString)
 }
 
 void GraphicsEngine::draw3dText(const btVector3 &location, const char *textString)
-{}
+{
+}
 
 void GraphicsEngine::setDebugMode(int debugMode)
-{}
+{
+}
 
 int GraphicsEngine::getDebugMode() const
 {

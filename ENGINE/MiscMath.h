@@ -9,6 +9,7 @@
 
 #include "Quaternion.h"
 #include "Vector3f.h"
+#include "Matrix3f.h"
 
 	/**
 	 * decompose a matrix into its scale, rotation and translation components
@@ -48,3 +49,25 @@ Matrix4f Perspective(float fovyDegrees, float aspect, float near, float far);
 Matrix4f LookAt(const Vector3f &eyePos, const Vector3f &lookAtPoint, const Vector3f &upVec);
 
 Matrix4f Ortho(float left, float right, float bottom, float top, float near, float far);
+
+Vector3f operator/(const Vector3f &lhs, const Matrix3f &rhs);
+
+Vector3f operator*(const Matrix3f &lhs, const Vector3f &rhs);
+
+Vector3f operator-(const Vector3f &lhs, const Vector3f &rhs);
+
+Vector3f operator*(const Vector3f &lhs, const Vector3f &rhs);
+
+Vector3f operator/(const Vector3f &lhs, float rhs);
+
+Vector3f operator*(float lhs, const Vector3f &rhs);
+
+Vector3f operator*(const Vector3f &lhs, const Matrix3f &rhs);
+
+Vector3f operator+(float lhs, const Vector3f &rhs);
+
+Vector3f operator/(float lhs, const Vector3f &rhs);
+
+Matrix3f operator*(float lhs, const Matrix3f &rhs);
+
+Quaternion operator*(float lhs, const Quaternion &rhs);

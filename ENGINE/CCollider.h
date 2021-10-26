@@ -66,8 +66,6 @@ public:
 	 */
 	glm::vec3 m_offset;
 
-
-public:
 		/** @brief whether the collider is registered with the collider manager */
 	bool m_isRegistered = false;
 
@@ -113,6 +111,8 @@ public:
 	 */
 	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2, float offsetX = 0, float offsetY = 0, float offsetZ = 0, bool autoSize = true, int layer = 0, bool allowRotation = true, int colMask = 31);
 
+	void AddSphereCollider();
+
 	/**
 	 * @brief Adds a capsule collider around the objects model, currently not completed.
 	 *
@@ -133,7 +133,7 @@ public:
 	 *
 	 * \param layer
 	 */
-	void AddConcaveCollider(int layer);
+	void AddConcaveCollider();
 
 	/**
 	 * Changes what other colliders the collider can collide with.
@@ -142,8 +142,16 @@ public:
 	 */
 	//void CollideWith(int layerToCollideWith);
 
+	float GetXHalfSize() const;
+	float GetYHalfSize() const;
+	float GetZHalfSize() const;
+
+	virtual void SetIsActive(bool isActive);
+
 private:
-	float boxXHalfSize;
-	float boxYHalfSize;
-	float boxZHalfSize;
+	float m_boxXHalfSize;
+	float m_boxYHalfSize;
+	float m_boxZHalfSize;
+
+	friend class CollisionManager;
 };

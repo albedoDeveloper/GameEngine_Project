@@ -23,6 +23,7 @@
 #include "CAnimator.h"
 #include "CNavMesh.h"
 #include <iostream>
+#include "CRigidBody.h"
 #include "CAgent.h"
 #include "CAffordanceManager.h"
 	/**
@@ -51,15 +52,17 @@ public:
 		 * @return The created mesh
 		*/
 	CStaticMesh *AddCStaticMesh();
-	
+
 		/**
 		 * .
-		 * 
-		 * \return 
+		 *
+		 * \return
 		 */
-	CAnimator* AddCAnimator();
+	CAnimator *AddCAnimator();
 
-	
+	CRigidBody *AddCRigidBody();
+
+
 		/**
 		 * @brief Adds a script component
 		 * @return the created script
@@ -73,6 +76,8 @@ public:
 		 * \return CstaticMesh or nullptr
 		 */
 	CStaticMesh *GetCStaticMesh();
+
+	CRigidBody *GetCRigidBody();
 
 		/**
 		 * @brief Adds a character component
@@ -167,7 +172,7 @@ public:
 	/**
 	 * .
 	 */
-	CAnimator* GetCAnimator();
+	CAnimator *GetCAnimator();
 
 	CAffordanceManager* AddCAffordanceManager();
 

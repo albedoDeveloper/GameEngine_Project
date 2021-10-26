@@ -13,6 +13,7 @@ LoadModel("roof_interior", "roof_interior/roof_interior.fbx")
 LoadModel("south_bar_barrier", "south_bar_barrier/south_bar_barrier.fbx")
 LoadModel("south_bar_barrier_2", "south_bar_barrier_2/south_bar_barrier_2.fbx")
 LoadModel("south_bar_wall", "south_bar_wall/south_bar_wall.fbx")
+LoadModel("south_bar_wall_2", "south_bar_wall_2/south_bar_wall_2.fbx")
 LoadModel("spiked_door_bar", "spiked_door_bar/spiked_door_bar.fbx")
 LoadModel("spiked_door_toilet", "spiked_door_toilet/spiked_door_toilet.fbx")
 LoadModel("tavern_glass_door_wall", "tavern_glass_door_wall/tavern_glass_door_wall.fbx")
@@ -26,13 +27,24 @@ LoadModel("beertap1", "beertap1/beertap1.fbx")
 LoadModel("beertap2", "beertap2/beertap2.fbx")
 LoadModel("fridge1", "fridge1/fridge1.fbx")
 LoadModel("fridge2", "fridge2/fridge2.fbx")
+LoadModel("ball", "ball/ball.fbx")
 LoadModel("basic_girl","basic_girl/girlboxingfixed.fbx")
 LoadModel("Breathing Idle","basic_girl/girlIdle.fbx")
 LoadModel("girlTalking","basic_girl/girlTalking.fbx")
 LoadModel("girlDying","basic_girl/girlDying.fbx")
+LoadModel("book", "book/book.fbx")
+LoadScript("rotate", "rotate.lua")
+LoadScript("playerShoot", "playerShoot.lua")
+LoadScript("girl1script", "girl1script.lua")
+LoadScript("girl2script", "girl2script.lua")
 LoadModel("agent_dance","ai_agent/dance.fbx")
 --LoadModel("agent_walk","ai_agent/walk.fbx")
-LoadScript("rotate", "rotate.lua")
+
+SpawnGameObject("book2")
+GetGameObject("book2"):AddCStaticMesh():AssignModel("book")
+GetGameObject("book2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1,true, 31)
+GetGameObject("book2"):AddCRigidBody():SetMass(2)
+GetGameObject("book2"):GetTransform():SetRelativePosition(-2,2,0)
 
 SpawnGameObject("fridge1"):SetStatic(true)
 GetGameObject("fridge1"):AddCStaticMesh():AssignModel("fridge1")
@@ -84,7 +96,7 @@ GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","valenc
 ----------------------
 SpawnGameObject("barrel1"):SetStatic(true)
 GetGameObject("barrel1"):AddCStaticMesh():AssignModel("barrel1")
-GetGameObject("barrel1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("barrel1"):AddCCollider():AddConvexCollider()
 GetGameObject("barrel1"):GetTransform():SetRelativePosition(0, 0, -2.5)
 
 GetGameObject("barrel1"):AddCAffordanceManager():AddAffordance("Drinking","agent_drinking","Drink.wav")
@@ -100,7 +112,7 @@ GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("LookForMoney","vale
 ----------------------
 SpawnGameObject("barrel2"):SetStatic(true)
 GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
-GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("barrel2"):AddCCollider():AddConvexCollider()
 
 GetGameObject("barrel2"):AddCAffordanceManager():AddAffordance("DanceAggressive","agent_dance","DanceAggressive.wav")
 GetGameObject("barrel2"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
@@ -115,7 +127,7 @@ GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceRelax","valenc
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
-GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("toilet_block"):AddCCollider():AddConvexCollider()
 
 SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
@@ -235,14 +247,19 @@ GetGameObject("spiked_door_bar"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,
 
 SpawnGameObject("south_bar_wall"):SetStatic(true)
 GetGameObject("south_bar_wall"):AddCStaticMesh():AssignModel("south_bar_wall")
+GetGameObject("south_bar_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
+
+SpawnGameObject("south_bar_wall_2"):SetStatic(true)
+GetGameObject("south_bar_wall_2"):AddCStaticMesh():AssignModel("south_bar_wall_2")
+GetGameObject("south_bar_wall_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
 
 SpawnGameObject("south_bar_barrier_2"):SetStatic(true)
 GetGameObject("south_bar_barrier_2"):AddCStaticMesh():AssignModel("south_bar_barrier_2")
-GetGameObject("south_bar_barrier_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
+GetGameObject("south_bar_barrier_2"):AddCCollider():AddConvexCollider()
 
 SpawnGameObject("south_bar_barrier"):SetStatic(true)
 GetGameObject("south_bar_barrier"):AddCStaticMesh():AssignModel("south_bar_barrier")
-GetGameObject("south_bar_barrier"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
+GetGameObject("south_bar_barrier"):AddCCollider():AddConvexCollider()
 
 SpawnGameObject("tavern_floor"):SetStatic(true)
 GetGameObject("tavern_floor"):AddCStaticMesh():AssignModel("tavern_floor")
@@ -254,7 +271,7 @@ GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
 
 SpawnGameObject("main_bar_bench"):SetStatic(true)
 GetGameObject("main_bar_bench"):AddCStaticMesh():AssignModel("main_bar_bench")
-GetGameObject("main_bar_bench"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("main_bar_bench"):AddCCollider():AddConvexCollider()
 
 SpawnGameObject("graffiti_block"):SetStatic(true)
 GetGameObject("graffiti_block"):AddCStaticMesh():AssignModel("graffiti_block")
@@ -275,7 +292,7 @@ GetGameObject("crate"):AddCScript():AssignScript("rotate")
 
 SpawnGameObject("back_wall"):SetStatic(true)
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
-GetGameObject("back_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
+GetGameObject("back_wall"):AddCCollider():AddConvexCollider()
 
 SpawnGameObject("lightAnchor"):SetStatic(false)
 GetGameObject("lightAnchor"):GetTransform():SetRelativePosition(4.954999923706055,
@@ -322,7 +339,7 @@ GetGameObject("player"):GetTransform():SetRelativePosition(0, 2, 0);
 GetGameObject("player"):AddCCollider():AddBoxCollider(0.25, 1.4, 0.25, 0 ,0, 0, false, 1, false, 31);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
-GetGameObject("player"):GetCCamera():GetTransform():Translate(0,0.5,0);
+GetGameObject("player"):GetCCamera():GetTransform():Translate(0,0.5,0)
 
 SpawnGameObject("endscreen"):SetActive(false)
 GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")
