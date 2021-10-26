@@ -14,12 +14,13 @@ Quaternion::Quaternion(float x, float y, float z, float w)
 
 Quaternion Quaternion::Conjugate() const
 {
-	return glm::conjugate(glm::normalize(m_quat));
+	return glm::conjugate(m_quat);
 }
 
 void Quaternion::Rotate(float degrees, const Vector3f &axis)
 {
 	m_quat = glm::rotate(m_quat, glm::radians(degrees), glm::vec3(axis.GetX(), axis.GetY(), axis.GetZ()));
+	Normalize();
 }
 
 Vector3f Quaternion::GetAxis() const
@@ -30,6 +31,11 @@ Vector3f Quaternion::GetAxis() const
 		axis.y,
 		axis.z
 	);
+}
+
+float Quaternion::GetMagnitude() const
+{
+	return glm::length(m_quat);
 }
 
 float Quaternion::GetAxisAngleRadians() const
@@ -131,7 +137,7 @@ void Quaternion::IntegrateAngVel(const Vector3f &v, float scale)
 		v.GetY(),
 		v.GetZ()
 	);
-	m_quat += (scale / 2.f) * w * m_quat;
+	m_quat -= (scale / 2.f) * w * m_quat;
 }
 
 Quaternion &Quaternion::operator+=(const Quaternion &other)

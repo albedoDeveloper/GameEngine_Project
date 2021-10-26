@@ -50,6 +50,8 @@ public:
 		 */
 	Vector3f GetAxis() const;
 
+	float GetMagnitude() const;
+
 		/**
 		 * get the angle in radians. use GetAxis() to get the corresponding axis
 		 *

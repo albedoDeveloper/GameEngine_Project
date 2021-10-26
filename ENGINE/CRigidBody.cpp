@@ -206,8 +206,7 @@ void CRigidBody::Integrate()
 	if (m_freezeYRot) m_angularVelocity.SetY(0);
 	if (m_freezeZRot) m_angularVelocity.SetZ(0);
 	m_angularVelocity = m_angularVelocity * powf(0.9f, (TIME->GetDeltaTime())); // angular damping
-
-	//m_parent->GetTransform()->GetRelativeOrientation() += (0.5f * TIME->GetDeltaTime()) * angVelQuat * m_parent->GetTransform()->GetRelativeOrientation();
+	std::cout << m_parent->GetTransform()->GetRelativeOrientation().GetMagnitude() << std::endl;
 	m_parent->GetTransform()->GetRelativeOrientation().IntegrateAngVel(m_angularVelocity, TIME->GetDeltaTime());
 	//m_torqueAccum = Vector3f(0, 0, 0); // reset angular force accumulation
 
