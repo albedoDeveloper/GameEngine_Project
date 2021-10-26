@@ -216,8 +216,10 @@ void CAgent::ConvertFloatToEmotion()
 		std::cout << "Agent Name: " << name << std::endl;
 		std::cout << "Current Circumplex emotion: " << currentCircumplex << std::endl;
 		std::cout << "Current activity: " << currentAffordance->name << std::endl;
-
+		
 		std::cout << "************************" << std::endl;
+
+		//GetParentObject()->GetCSound()->PlaySound("currentCircumplex", 0, true);
 	}
 }
 
