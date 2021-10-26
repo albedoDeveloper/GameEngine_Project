@@ -111,6 +111,8 @@ public:
 	 */
 	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2, float offsetX = 0, float offsetY = 0, float offsetZ = 0, bool autoSize = true, int layer = 0, bool allowRotation = true, int colMask = 31);
 
+	void AddSphereCollider();
+
 	/**
 	 * @brief Adds a capsule collider around the objects model, currently not completed.
 	 *
