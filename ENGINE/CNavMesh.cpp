@@ -148,17 +148,22 @@ NavNode* CNavMesh::FindNearest(Vector3f pos)
 
 	for (int i = 0; i < m_navNodes.size(); i++)
 	{
-		Vector3f diff = pos - m_navNodes[i]->GetTransform()->GetWorldTransform().GetRelativePosition();
-		float curDst = diff.Magnitude();
-
-		
-
-		if (shortestDst < curDst)
+		if (!m_navNodes[i]->GetBarrier())
 		{
-			shortestDst = curDst;
-			nodeIndex = i;
+			Vector3f diff = pos - m_navNodes[i]->GetTransform()->GetWorldTransform().GetRelativePosition();
+			float curDst = diff.Magnitude();
+
+
+
+			if (curDst < shortestDst)
+			{
+				shortestDst = curDst;
+				nodeIndex = i;
+			}
+
 		}
 
+		
 	}
 
 	return m_navNodes[nodeIndex];
@@ -170,7 +175,7 @@ void CNavMesh::Scan(int i)
 	
 
 	Vector3f positionVec {0,1,0};
-	std::cout << "dst at x =" << FindNearest(positionVec)->GetXPos() << " z = " << FindNearest(positionVec)->GetZPos() << std::endl;
+	//std::cout << "dst at x =" << FindNearest(positionVec)->GetXPos() << " z = " << FindNearest(positionVec)->GetZPos() << std::endl;
 
 	
 
@@ -184,7 +189,7 @@ void CNavMesh::Scan(int i)
 		m_navNodes[i]->SetActive(true);
 	}
 
-	std::cout << "increment  = " << increment << std::endl;
+	//std::cout << "increment  = " << increment << std::endl;
 
 	//Print out graph
 	/*for (size_t i = 0; i < nodeGraph.edges.size(); i++)
