@@ -81,6 +81,7 @@ GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("Argue","valence", 
 ------------------------
 SpawnGameObject("pool-table"):SetStatic(true)
 GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
+GetGameObject("pool-table"):GetCStaticMesh():RemoveNormalMapping()
 GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 --GetGameObject("pool-table"):GetCCollider():CollideWith(2)
 
@@ -132,15 +133,17 @@ GetGameObject("toilet_block"):AddCCollider():AddConvexCollider()
 SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
 GetGameObject("tavern_glass_door_wall_long_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("tavern_glass_door_wall_long_2"):GetCStaticMesh():RemoveNormalMapping()
 
 SpawnGameObject("tavern_glass_door_wall_long"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long")
 GetGameObject("tavern_glass_door_wall_long"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("tavern_glass_door_wall_long"):GetCStaticMesh():RemoveNormalMapping()
 
 SpawnGameObject("tavern_glass_door_wall"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_glass_door_wall")
 GetGameObject("tavern_glass_door_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
-
+GetGameObject("tavern_glass_door_wall"):GetCStaticMesh():RemoveNormalMapping()
 
 --GetGameObject("ai_agent_1"):GetCAgent():AddTrait("ToiletBreak",-1.0)
 --GetGameObject("ai_agent_1"):GetCAgent():AddTrait("DrinkWater", 0.2)
@@ -185,6 +188,7 @@ GetGameObject("graffiti_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0
 SpawnGameObject("behind_bar_block"):SetStatic(true)
 GetGameObject("behind_bar_block"):AddCStaticMesh():AssignModel("behind_bar_block")
 GetGameObject("behind_bar_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
+GetGameObject("behind_bar_block"):GetCStaticMesh():RemoveNormalMapping()
 
 SpawnGameObject("bar_floor_rod"):SetStatic(true)
 GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
@@ -198,6 +202,7 @@ GetGameObject("crate"):AddCScript():AssignScript("rotate")
 SpawnGameObject("back_wall"):SetStatic(true)
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
 GetGameObject("back_wall"):AddCCollider():AddConvexCollider()
+GetGameObject("back_wall"):GetCStaticMesh():RemoveNormalMapping()
 
 SpawnGameObject("lightAnchor"):SetStatic(false)
 GetGameObject("lightAnchor"):GetTransform():SetRelativePosition(4.954999923706055,

@@ -58,6 +58,7 @@ uniform DirectionalLight dirLight;
 uniform Material material;
 uniform vec3 viewPos = vec3(0,0,0);
 uniform int animate;
+uniform int normalMapping;
 
 // out
 layout(location = 0) out vec4 FragColor;
@@ -76,16 +77,22 @@ void main()
 {
     //normal testing
     vec3 bumpNormal = texture(material.texture_normal1, vs_in.TexCoords).rgb;
-    bumpNormal = normalize(bumpNormal * 2.0 - 1.0);
+    bumpNormal = normalize(bumpNormal * 1.5 - 1.0);
     bumpNormal = bumpNormal * vs_in.TBN;
 
     // properties
     vec3 norm =  normalize(vs_in.Normal);
+    
     if (animate == 0){
         norm = normalize(bumpNormal);
     }
 
-    vec3 viewDir = normalize(viewPos - vs_in.FragPos);
+    if(normalMapping == 0){
+         norm = normalize(vs_in.Normal);
+    }
+
+
+    vec3 viewDir = vs_in.TBN * normalize(viewPos - vs_in.FragPos);
     vec3 result = vec3(0,0,0);
     float p1Shadow;
     float p2Shadow;
