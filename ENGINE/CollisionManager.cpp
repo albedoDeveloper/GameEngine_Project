@@ -313,17 +313,7 @@ void Manifold::Prepare()
 	CRigidBody *rb1 = col1->GetParentObject()->GetCRigidBody();
 	CRigidBody *rb2 = col2->GetParentObject()->GetCRigidBody();
 	assert(rb1 || rb2);
-	if (!rb1)
-	{
-		CCollider *temp = col1;
-		col1 = col2;
-		col2 = temp;
-
-		for (int i = 0; i < contactPoints.size(); i++)
-		{
-			contactPoints[i].SwapBodies();
-		}
-	}
+	assert(rb1);
 
 	if (col2->GetParentObject()->GetCRigidBody())
 	{
