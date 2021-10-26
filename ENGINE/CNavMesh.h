@@ -120,6 +120,8 @@ class CNavMesh : public CComponent
 
 	void Scan();
 
+	std::unordered_map<NavNode* , NavNode* > breadth_first_search(Graph graph, NavNode* start, NavNode* goal);
+
 	void DijkstraSearch(
 	Graph graph, NavNode* start, NavNode* goal,
 	std::unordered_map<NavNode*, NavNode*>& came_from,

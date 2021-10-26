@@ -32,9 +32,20 @@ void CNavMesh::Update()
 
 void CNavMesh::Render()
 {
-	if(GRAPHICS->m_drawDebug)
-		GRAPHICS->DrawDebugNavMesh(this , m_transform.GetWorldTransform());
-}
+
+	btVector3 vec1 = btVector3(m_navNodes[0]->GetTransform()->GetRelativePosition().GetX(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetZ());
+	btVector3 vec2 = btVector3(m_navNodes[50]->GetTransform()->GetRelativePosition().GetX(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetZ());
+
+
+	if (GRAPHICS->m_drawDebug)
+	{
+		GRAPHICS->DrawDebugNavMesh(this, m_transform.GetWorldTransform());
+
+		GRAPHICS->drawLine(vec1, vec2, btVector3(1.0f, 0.5f, 0.5f));
+
+	}
+
+	}
 
 void CNavMesh::Save(nlohmann::json &j)
 {
@@ -136,9 +147,44 @@ void CNavMesh::Scan()
 			 "node value z = " << nodeGraph.neighbors(m_navNodes[i])[j]->GetZPos() << std::endl;
 		}
 	}
+	breadth_first_search(nodeGraph, m_navNodes[0], m_navNodes[1]);
+
+
+	
+
 	
 
 
+}
+
+std::unordered_map<NavNode* , NavNode* > CNavMesh::breadth_first_search(Graph graph, NavNode* start, NavNode* goal)
+{
+	std::queue<NavNode*> frontier;
+	frontier.push(start);
+
+	std::unordered_map<NavNode* , NavNode* > came_from;
+	came_from[start] = start;
+
+	while (!frontier.empty())
+	{
+		NavNode* current = frontier.front();
+		frontier.pop();
+
+		if (current == goal)
+		{
+			break;
+		}
+
+		for (NavNode* next : graph.neighbors(current))
+		{
+			if (came_from.find(next) == came_from.end())
+			{
+				frontier.push(next);
+				came_from[next] = current;
+			}
+		}
+	}
+	return came_from;
 }
 
 void CNavMesh::DijkstraSearch(
