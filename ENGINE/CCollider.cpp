@@ -228,18 +228,13 @@ void CCollider::AddConvexCollider()
 {
 	auto model = this->GetParentObject()->GetCStaticMesh()->m_model;
 	auto totalFaces = model->NumFaces();
-	//auto polyFace = new reactphysics3d::PolygonVertexArray::PolygonFace[model->NumFaces()];
-	//reactphysics3d::PolygonVertexArray::PolygonFace *faces = polyFace;
 	btConvexHullShape *shape = new btConvexHullShape();
 	std::vector<float> vertices;
 	std::vector<int> indices;
-	assert(model->GetMeshes().size() == 1);
 
 	for (int i = 0; i < model->GetMeshes()[0].vertices.size(); i++)
 	{
-		//vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetX());
-		//vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetY());
-		//vertices.emplace_back(model->GetMeshes()[0].vertices[i].Position.GetZ());
+
 		shape->addPoint(
 			btVector3(
 				model->GetMeshes()[0].vertices[i].Position.GetX(),
@@ -254,26 +249,6 @@ void CCollider::AddConvexCollider()
 	COLLISION->RegisterCollisionBody(m_colObj, this);
 	m_colObj->setCollisionShape(shape);
 	COLLISION->GetCollisionWorld().addCollisionObject(m_colObj, 1, -1);
-
-	//for (int i = 0; i < model->GetMeshes()[0].indices.size(); i++)
-	//{
-	//	indices.emplace_back(model->GetMeshes()[0].indices[i]);
-	//}
-
-	//for (unsigned int i = 0; i < model->NumFaces(); i++)
-	//{
-	//	faces->indexBase = i * 3;
-	//	faces->nbVertices = 4;
-	//	faces++;
-	//}
-
-	/*reactphysics3d::PolygonVertexArray *polyVertexes = new reactphysics3d::PolygonVertexArray(vertices.size(), vertices.data(), 3 * sizeof(float), indices.data(),
-																							  sizeof(int), totalFaces, polyFace, reactphysics3d::PolygonVertexArray::VertexDataType::VERTEX_FLOAT_TYPE, reactphysics3d::PolygonVertexArray::IndexDataType::INDEX_INTEGER_TYPE);*/
-
-	//reactphysics3d::PolyhedronMesh *polyMesh2 = COLLISION->physicsCommon.createPolyhedronMesh(polyVertexes);
-
-	//auto convexCollider = COLLISION->physicsCommon.createConvexMeshShape(polyMesh2);
-	//col = colBody->addCollider(convexCollider, reactphysics3d::Transform::identity());
 }
 
 float CCollider::GetXHalfSize() const

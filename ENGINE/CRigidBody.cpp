@@ -194,7 +194,7 @@ void CRigidBody::Integrate()
 	if (m_freezeXTrans) m_velocity.SetX(0);
 	if (m_freezeYTrans) m_velocity.SetY(0);
 	if (m_freezeZTrans) m_velocity.SetZ(0);
-	m_velocity = m_velocity * powf(0.98f, TIME->GetDeltaTime()); // linear damping
+	m_velocity = m_velocity * powf(0.9f, TIME->GetDeltaTime()); // linear damping
 	m_parent->GetTransform()->TranslateV(m_velocity * TIME->GetDeltaTime());
 	//m_linForceAccum = Vector3f(0, 0, 0); // reset linear force accumulation
 
@@ -205,7 +205,7 @@ void CRigidBody::Integrate()
 	if (m_freezeXRot) m_angularVelocity.SetX(0);
 	if (m_freezeYRot) m_angularVelocity.SetY(0);
 	if (m_freezeZRot) m_angularVelocity.SetZ(0);
-	m_angularVelocity = m_angularVelocity * powf(0.98f, (TIME->GetDeltaTime())); // angular damping
+	m_angularVelocity = m_angularVelocity * powf(0.9f, (TIME->GetDeltaTime())); // angular damping
 	Vector3f angVelLocalSpace = m_angularVelocity * m_parent->GetTransform()->GetRelativeOrientation().Conjugate();
 	Quaternion angVelQuat(
 		-angVelLocalSpace.GetX(),
