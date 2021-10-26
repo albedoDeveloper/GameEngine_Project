@@ -13,7 +13,7 @@ void PhysicsManager::ResolveContactPoints(std::vector<Manifold> &manifolds)
 {
 	if (manifolds.size() < 1) return;
 
-	//PrepareContacts(manifolds);
+	PrepareContacts(manifolds);
 
 	ResolveImpulses(manifolds);
 
@@ -30,12 +30,13 @@ void PhysicsManager::PrepareContacts(std::vector<Manifold> &manifolds)
 	// prepare contacts
 	for (unsigned pair = 0; pair < manifolds.size(); pair++)
 	{
-		for (unsigned contact = 0; contact < manifolds[pair].contactPoints.size(); contact++)
-		{
-			Manifold &contactPair = manifolds[pair];
-			assert(contactPair.col1->GetParentObject()->GetCRigidBody() || contactPair.col2->GetParentObject()->GetCRigidBody());
-			manifolds[pair].contactPoints[contact].Prepare();
-		}
+		manifolds[pair].Prepare();
+		//for (unsigned contact = 0; contact < manifolds[pair].contactPoints.size(); contact++)
+		//{
+		//	Manifold &contactPair = manifolds[pair];
+		//	assert(contactPair.col1->GetParentObject()->GetCRigidBody() || contactPair.col2->GetParentObject()->GetCRigidBody());
+		//	manifolds[pair].contactPoints[contact].Prepare();
+		//}
 	}
 }
 

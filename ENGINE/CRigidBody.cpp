@@ -16,15 +16,15 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 	m_linForceAccum{ 0,0,0 },
 	m_angularVelocity{ 0, 0.0f, 0 },
 	m_angularAccel{ 0,0,0 },
-	m_gravityEnabled{ true },
+	m_gravityEnabled{ false },
 	m_freezeXTrans{ false },
 	m_freezeYTrans{ false },
 	m_freezeZTrans{ false },
 	m_freezeXRot{ false },
 	m_freezeYRot{ false },
 	m_freezeZRot{ false },
-	m_gravity{ 0,0,0 },
-	m_restitution{ 0.4f }
+	m_gravity{ 0,-4,0 },
+	m_restitution{ 0.7f }
 {
 	CCollider *col = m_parent->GetComponent<CCollider>(); // TODO get all collider components
 	CStaticMesh *sm = m_parent->GetComponent<CStaticMesh>();
@@ -169,6 +169,11 @@ bool CRigidBody::InfiniteMass() const
 float CRigidBody::GetRestitution() const
 {
 	return m_restitution;
+}
+
+void CRigidBody::SetRestitution(float e)
+{
+	m_restitution = e;
 }
 
 Vector3f CRigidBody::GetGravity() const
