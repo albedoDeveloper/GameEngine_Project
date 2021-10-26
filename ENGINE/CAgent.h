@@ -48,7 +48,8 @@ class CAgent : public CComponent
 			//Change in multipler
 			//Gradual change in emotion
 		};
-
+		
+		void ConvertFloatToEmotion();
 		void FindNewAffordance();
 
 		void AiThink();

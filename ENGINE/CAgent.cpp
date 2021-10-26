@@ -102,7 +102,6 @@ void CAgent::AiAction()
 	if (time > waitTime)
 	{
 		time = 0;
-		std::cout << std::rand() % 25 + 15  << std::endl;
 		std::cout << "-------------------------------------------" << std::endl;
 		std::cout << "Agent Name: " << this->GetParentObject()->GetFactoryKey() << std::endl;
 
@@ -151,10 +150,13 @@ void CAgent::FindNewAffordance()
 				if (traits.count(affordance.first) != 0)
 					trait = traits.at(affordance.first);
 
-				if (affordance.second.EmotionEffectors.find(lowestName)->second * trait >= highestImprovement)
+				//std::cout << static_cast<float>(std::rand() % 150 + 50) / 100 << std::endl;
+				float affordanceAmount = affordance.second.EmotionEffectors.find(lowestName)->second * trait * (static_cast<float>(std::rand() % 150 + 50) / 100);
+				
+				if ( affordanceAmount >= highestImprovement)
 				{
 					currentAffordance = &affordance.second;
-					highestImprovement = affordance.second.EmotionEffectors.find(lowestName)->second * trait;
+					highestImprovement = affordanceAmount;
 				}
 
 			}
@@ -162,6 +164,16 @@ void CAgent::FindNewAffordance()
 	}
 
 }
+
+void CAgent::ConvertFloatToEmotion()
+{
+	
+
+
+
+
+}
+
 
 void ChangeEmotionNatively(float &emotion, float modifier)
 {

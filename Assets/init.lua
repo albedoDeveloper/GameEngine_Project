@@ -59,14 +59,14 @@ GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
 
 GetGameObject("waitress"):AddCAffordanceManager():AddAffordance("OrderFood","agent_talking","OrderFood.wav")
 GetGameObject("waitress"):GetCAffordanceManager():GetTransform():SetRelativePosition(5.034, 0, 5.252)
-GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","energy", 0.9)
-GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","joy", -0.4)
+GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","arousal",0.7)
+GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("OrderFood","valence", -0.4)
 
 
 GetGameObject("waitress"):GetCAffordanceManager():AddAffordance("Argue","agent_loser","Argue.wav")
 GetGameObject("waitress"):GetCAffordanceManager():GetTransform():SetRelativePosition(5.034, 0, 5.252)
-GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("Argue","energy", 0.9)
-GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("Argue","joy", -0.9)
+GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("Argue","arousal", 0.65)
+GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("Argue","valence", -0.7)
 ------------------------
 ------------------------
 SpawnGameObject("pool-table"):SetStatic(true)
@@ -76,12 +76,12 @@ GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
 
 GetGameObject("pool-table"):AddCAffordanceManager():AddAffordance("Pool","agent_pool","Pool.wav")
 GetGameObject("pool-table"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
-GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","energy", -0.5)
-GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","joy", 0.6)
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","arousal", -0.5)
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","valence", 0.6)
 
 GetGameObject("pool-table"):GetCAffordanceManager():AddAffordance("Texting","agent_mobile","Texting.wav")
-GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","energy", -0.1)
-GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","joy", 0.5)
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","arousal", -0.1)
+GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","valence", 0.5)
 ----------------------
 ----------------------
 SpawnGameObject("barrel1"):SetStatic(true)
@@ -92,12 +92,12 @@ GetGameObject("barrel1"):GetTransform():SetRelativePosition(0, 0, -2.5)
 
 GetGameObject("barrel1"):AddCAffordanceManager():AddAffordance("Drinking","agent_drinking","Drink.wav")
 GetGameObject("barrel1"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
-GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("Drinking","energy", 0.2)
-GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("Drinking","joy", 0.3)
+GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("Drinking","arousal", 0.2)
+GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("Drinking","valence", 0.3)
 
-GetGameObject("barrel1"):GetCAffordanceManager():AddAffordance("LookForMoney","agent_pickup","LookForMoney")
-GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("LookForMoney","energy", -0.4)
-GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("LookForMoney","joy", 0.6)
+GetGameObject("barrel1"):GetCAffordanceManager():AddAffordance("LookForMoney","agent_pickup","LookForMoney.wav")
+GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("LookForMoney","arousal", -0.4)
+GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("LookForMoney","valence", 0.6)
 -----------------------
 
 ----------------------
@@ -108,12 +108,12 @@ GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
 
 GetGameObject("barrel2"):AddCAffordanceManager():AddAffordance("DanceAggressive","agent_dance","DanceAggressive.wav")
 GetGameObject("barrel2"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
-GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceAggressive","energy", 0.7)
-GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceAggressive","joy", -0.4)
+GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceAggressive","arousal", 0.7)
+GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceAggressive","valence", -0.4)
 
 GetGameObject("barrel2"):GetCAffordanceManager():AddAffordance("DanceRelax","agent_slowdance","DanceRelax.wav")
-GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceRelax","energy", -0.7)
-GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceRelax","joy", 0.7)
+GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceRelax","arousal", -0.4)
+GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceRelax","valence", 0.7)
 
 ----------------------
 
@@ -162,11 +162,11 @@ GetGameObject("ai_agent_1"):GetCSound():LoadSound("DanceAggressive.wav")
 GetGameObject("ai_agent_1"):GetCSound():LoadSound("DanceRelax.wav")
 
 GetGameObject("ai_agent_1"):GetTransform():Translate(2,0,1.4)
-GetGameObject("ai_agent_1"):AddCAgent():AddEmotion("joy",0.7, 1.0, -0.002)
-GetGameObject("ai_agent_1"):GetCAgent():AddEmotion("energy",0.0, 1.0, 0.0)
+GetGameObject("ai_agent_1"):AddCAgent():AddEmotion("valence",0.7, 1.0, -0.002)
+GetGameObject("ai_agent_1"):GetCAgent():AddEmotion("arousal",0.0, 1.0, 0.0)
 
-GetGameObject("ai_agent_1"):GetCAgent():AddTrait("OrderFood", -0.2)
-GetGameObject("ai_agent_1"):GetCAgent():AddTrait("Pool", 0.1)
+GetGameObject("ai_agent_1"):GetCAgent():AddTrait("OrderFood", 0.2)
+GetGameObject("ai_agent_1"):GetCAgent():AddTrait("Pool", 1.4)
 --------------
 
 ----------
@@ -195,11 +195,11 @@ GetGameObject("ai_agent_2"):GetCSound():LoadSound("DanceAggressive.wav")
 GetGameObject("ai_agent_2"):GetCSound():LoadSound("DanceRelax.wav")
 
 GetGameObject("ai_agent_2"):GetTransform():Translate(2,0,1.4)
-GetGameObject("ai_agent_2"):AddCAgent():AddEmotion("joy",0.1, 1.0, 0.002)
-GetGameObject("ai_agent_2"):GetCAgent():AddEmotion("energy",0.8, 1.0, 0.0)
+GetGameObject("ai_agent_2"):AddCAgent():AddEmotion("valence",0.1, 1.0, 0.002)
+GetGameObject("ai_agent_2"):GetCAgent():AddEmotion("arousal",0.8, 1.0, 0.0)
 
-GetGameObject("ai_agent_2"):GetCAgent():AddTrait("AggressiveDance", -0.5)
-GetGameObject("ai_agent_2"):GetCAgent():AddTrait("PassiveDance", 0.5)
+GetGameObject("ai_agent_2"):GetCAgent():AddTrait("DanceAggressive",-0.5)
+GetGameObject("ai_agent_2"):GetCAgent():AddTrait("DancePassive", 0.5)
 --------------
 
 ----------
@@ -228,8 +228,8 @@ GetGameObject("ai_agent_3"):GetCSound():LoadSound("DanceAggressive.wav")
 GetGameObject("ai_agent_3"):GetCSound():LoadSound("DanceRelax.wav")
 
 GetGameObject("ai_agent_3"):GetTransform():Translate(2,0,1.4)
-GetGameObject("ai_agent_3"):AddCAgent():AddEmotion("joy",0.4, 1.0, 0.0)
-GetGameObject("ai_agent_3"):GetCAgent():AddEmotion("energy",0.6, 1.0, 0.0)
+GetGameObject("ai_agent_3"):AddCAgent():AddEmotion("valence",0.4, 1.0, 0.0)
+GetGameObject("ai_agent_3"):GetCAgent():AddEmotion("arousal",0.6, 1.0, 0.0)
 --------------
 
 
