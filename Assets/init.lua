@@ -30,9 +30,19 @@ LoadModel("basic_girl","basic_girl/girlboxingfixed.fbx")
 LoadModel("Breathing Idle","basic_girl/girlIdle.fbx")
 LoadModel("girlTalking","basic_girl/girlTalking.fbx")
 LoadModel("girlDying","basic_girl/girlDying.fbx")
+LoadModel("book", "book/book.fbx")
+LoadScript("rotate", "rotate.lua")
+LoadScript("playerShoot", "playerShoot.lua")
+LoadScript("girl1script", "girl1script.lua")
+LoadScript("girl2script", "girl2script.lua")
 LoadModel("agent_dance","ai_agent/dance.fbx")
 --LoadModel("agent_walk","ai_agent/walk.fbx")
-LoadScript("rotate", "rotate.lua")
+
+SpawnGameObject("book2")
+GetGameObject("book2"):AddCStaticMesh():AssignModel("book")
+GetGameObject("book2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1,true, 31)
+GetGameObject("book2"):AddCRigidBody():SetMass(2)
+GetGameObject("book2"):GetTransform():SetRelativePosition(-2,2,0)
 
 SpawnGameObject("fridge1"):SetStatic(true)
 GetGameObject("fridge1"):AddCStaticMesh():AssignModel("fridge1")
@@ -319,7 +329,7 @@ GetGameObject("player"):GetTransform():SetRelativePosition(0, 2, 0);
 GetGameObject("player"):AddCCollider():AddBoxCollider(0.25, 1.4, 0.25, 0 ,0, 0, false, 1, false, 31);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
-GetGameObject("player"):GetCCamera():GetTransform():Translate(0,0.5,0);
+GetGameObject("player"):GetCCamera():GetTransform():Translate(0,0.5,0)
 
 SpawnGameObject("endscreen"):SetActive(false)
 GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")

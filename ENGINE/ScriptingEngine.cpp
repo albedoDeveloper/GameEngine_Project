@@ -67,6 +67,7 @@ lua_State *ScriptingEngine::NewState()
 		.addFunction("GetDistance", &Transform::GetDistance)
 		.addFunction("GetDistance3f", &Transform::GetDistance3f)
 		.addFunction("SetParent", &Transform::SetParent)
+		.addFunction("GetRelativeForward", &Transform::GetRelativeForward)
 		.endClass();
 
 	getGlobalNamespace(Lbuff)
@@ -107,6 +108,7 @@ lua_State *ScriptingEngine::NewState()
 		.addFunction("SetStatic", &GameObject::SetStatic)
 		.addFunction("GetCCollider", &GameObject::GetCCollider)
 		.addFunction("AddCAnimator", &GameObject::AddCAnimator)
+		.addFunction("AddCRigidBody", &GameObject::AddCRigidBody)
 		.addFunction("GetCAnimator", &GameObject::GetCAnimator)
 		.addFunction("AddCAffordanceManager", &GameObject::AddCAffordanceManager)
 		.addFunction("GetCAffordanceManager", &GameObject::GetCAffordanceManager)
@@ -149,6 +151,14 @@ lua_State *ScriptingEngine::NewState()
 		.endClass()
 		.deriveClass<CScript, CComponent>("CScript")
 		.addFunction("AssignScript", &CScript::AssignScriptByKey)
+		.endClass();
+
+	getGlobalNamespace(Lbuff)
+		.beginClass<CComponent>("CComponent")
+		.endClass()
+		.deriveClass<CRigidBody, CComponent>("CRigidBody")
+		.addFunction("SetMass", &CRigidBody::SetMass)
+		.addFunction("SetVelocity", &CRigidBody::SetVelocity)
 		.endClass();
 
 	getGlobalNamespace(Lbuff)

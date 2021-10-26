@@ -18,7 +18,6 @@
 class AModel
 {
 public:
-		
 	struct BoneInfo
 	{
 		/*id is index in finalBoneMatrices*/
@@ -28,7 +27,7 @@ public:
 		Matrix4f offset;
 
 	};
-	
+
 		/**
 		 * Constructs model with a unique key and the pathname of the model file to be loaded
 		 *
@@ -75,12 +74,18 @@ public:
 	std::map<std::string, BoneInfo> m_BoneInfoMap; //
 	int m_BoneCounter = 0;
 
-	std::map<std::string, BoneInfo>& GetBoneInfoMap() { return m_BoneInfoMap; }
-	int& GetBoneCount() { return m_BoneCounter; }
-	
-	static Matrix4f ConvertAiMatrixToMatrix4f(const aiMatrix4x4& from);
+	std::map<std::string, BoneInfo> &GetBoneInfoMap()
+	{
+		return m_BoneInfoMap;
+	}
+	int &GetBoneCount()
+	{
+		return m_BoneCounter;
+	}
 
-	const aiScene* scene;
+	static Matrix4f ConvertAiMatrixToMatrix4f(const aiMatrix4x4 &from);
+
+	const aiScene *scene;
 
 private:
 
@@ -179,9 +184,7 @@ private:
 		/// <returns></returns>
 	unsigned int TextureFromFile(const char *path, const std::string &directory);
 
-	void SetVertexBoneDataToDefault(Vertex& vertex);
-	void ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh* mesh, const aiScene* scene);
-	void SetVertexBoneData(Vertex& vertex, int boneID, float weight);
-
-
+	void SetVertexBoneDataToDefault(Vertex &vertex);
+	void ExtractBoneWeightForVertices(std::vector<Vertex> &vertices, aiMesh *mesh, const aiScene *scene);
+	void SetVertexBoneData(Vertex &vertex, int boneID, float weight);
 };

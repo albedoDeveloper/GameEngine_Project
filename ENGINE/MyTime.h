@@ -1,5 +1,5 @@
 /*****************************************************************//**
- * \file   Time.h
+ * \file   MyTime.h
  * \brief  Elapsed time since last update
  *
  * \date   September 2021
@@ -9,13 +9,13 @@
 #include <SDL2/SDL.h>
 
 /** @brief The elapsed time between frames */
-class Time
+class MyTime
 {
 public:
 		/**
 		 * @brief get singleton instance
 		*/
-	static Time *Instance();
+	static MyTime *Instance();
 
 		/**
 		 * @brief call once a frame to update delta time value
@@ -44,7 +44,7 @@ private:
 		/**
 		 * @Initialize constructor
 		 */
-	Time();
+	MyTime();
 
 		/** @brief the current time */
 	Uint64 m_now;
@@ -54,4 +54,4 @@ private:
 	double m_deltaTime;
 };
 
-#define TIME Time::Instance()
+#define TIME MyTime::Instance()

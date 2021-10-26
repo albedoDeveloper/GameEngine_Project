@@ -30,11 +30,14 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="CComponent.cpp" />
     <ClCompile Include="CPointLight.cpp" />
+    <ClCompile Include="CRigidBody.cpp" />
     <ClCompile Include="CScript.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CStaticMesh.cpp" />
+    <ClCompile Include="Matrix3f.cpp" />
+    <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="ThirdParty\glad\src\glad.c" />
-    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="MyTime.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameAssetFactory.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -81,12 +84,15 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="CComponent.h" />
     <ClInclude Include="CPointLight.h" />
+    <ClInclude Include="CRigidBody.h" />
     <ClInclude Include="CScript.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CStaticMesh.h" />
+    <ClInclude Include="Matrix3f.h" />
+    <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="ThirdParty\glad\include\glad\glad.h" />
     <ClInclude Include="ThirdParty\glad\include\KHR\khrplatform.h" />
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="MyTime.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameAssetFactory.h" />
     <ClInclude Include="GameObject.h" />
@@ -122,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\init.lua" />
+    <None Include="..\Assets\Scripts\playerShoot.lua" />
     <None Include="..\Assets\Scripts\rotate.lua" />
     <None Include="..\Assets\Shaders\debug.frag" />
     <None Include="..\Assets\Shaders\dirShadowMap.vert" />

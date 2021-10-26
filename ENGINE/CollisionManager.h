@@ -9,7 +9,42 @@
 
 #include "CCollider.h"
 #include <vector>
-#include "Time.h"
+#include "MyTime.h"
+#include "Matrix3f.h"
+
+class Manifold;
+
+class Manifold // contact data for one pair of colliders
+{
+public:
+	class ContactPoint // one individual contact point
+	{
+	public:
+		Manifold *parentManifold;
+		Vector3f col1LocalPoint; // world space
+		Vector3f col2LocalPoint; // world space
+		float penDepth;
+		Vector3f worldNormal;
+		Matrix3f contactToWorld;
+		float desiredDeltaVelocity;
+		Vector3f closingVelocity; // in contact coords
+
+		ContactPoint(Manifold *parentMani, const Vector3f &c1Point, const Vector3f &c2Point, float penetrationDepth, const Vector3f &normal);
+		void SwapBodies();
+		void Prepare();
+
+	private:
+		void CalculateContactBasis();
+		void CalcRelativeVelocity();
+		void CalcDesiredDeltaVel();
+	};
+	std::vector<ContactPoint> contactPoints;
+	CCollider *col1;
+	CCollider *col2;
+	float restitution;
+	Manifold(CCollider *newCol1, CCollider *newCol2);
+	void Prepare();
+};
 
 /**
  * @brief A singleton that manages collisions between objects
@@ -30,6 +65,7 @@ public:
 		/**
 		 * @brief Singleton instance accessor
 		 * @return the single instance of this manager
+		 * @return the single instance of this manager
 		*/
 	static CollisionManager *Instance();
 
@@ -40,13 +76,21 @@ public:
 
 	void RegisterCollisionBody(btCollisionObject *body, CCollider *comp);
 
+	CCollider *GetCColliderRegistration(const btCollisionObject *body);
+
 	btCollisionWorld &GetCollisionWorld();
 
 	virtual btScalar addSingleResult(btManifoldPoint &cp, const btCollisionObjectWrapper *colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper *colObj1Wrap, int partId1, int index1);
 
 	void DrawDebug();
 
-	void PerformCollisionDetection();
+	void GenerateContactData();
+
+	std::vector<Manifold> &GetContactCache();
+
+	void AddColliderToWorld(CCollider &c);
+
+	void RemoveColliderToWorld(CCollider &c);
 
 private:
 	/** @brief The beginning size, before alteration, of the collider array */
@@ -63,10 +107,15 @@ private:
 
 	std::unordered_map<const btCollisionObject *, CCollider *> m_collisionBodyMap;
 
+	std::vector<Manifold> m_contactCache;
+
 	btDbvtBroadphase m_broadphase;
 	btDefaultCollisionConfiguration m_config;
 	btCollisionDispatcher m_dispatcher;
 	btCollisionWorld m_collisionWorld;
+
+	void FillManifoldAB(unsigned manifoldIndex);
+	void FillManifoldBA(unsigned manifoldIndex);
 };
 
 #define COLLISION CollisionManager::Instance()

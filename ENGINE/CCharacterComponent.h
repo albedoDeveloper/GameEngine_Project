@@ -95,6 +95,9 @@ public:
 	void SetMouseEnabled(bool isEnabled);
 
 private:
+	static const unsigned PROJECTILE_POOL_SIZE = 300;
+	GameObject *m_projectilePool[PROJECTILE_POOL_SIZE];
+
 
 		/**
 		 * @brief The character's velocity, how much and in what direction its position changes over time
