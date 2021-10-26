@@ -131,7 +131,7 @@ public:
 	 *
 	 * \param layer
 	 */
-	void AddConcaveCollider(int layer);
+	void AddConcaveCollider();
 
 	/**
 	 * Changes what other colliders the collider can collide with.

@@ -83,9 +83,7 @@ public:
 	Matrix4f(glm::mat4 m);
 private:
 
-
 	glm::mat4 m_mat;
-
 	friend void Decompose(const Matrix4f &m, Vector3f &scaleOut, Quaternion &rotationOut, Vector3f &positionOut);
 	friend Matrix4f Perspective(float fovyDegrees, float aspect, float near, float far);
 	friend Matrix4f LookAt(const Vector3f &eye, const Vector3f &centre, const Vector3f &up);
