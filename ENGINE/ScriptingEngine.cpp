@@ -146,6 +146,7 @@ lua_State *ScriptingEngine::NewState()
 		.addFunction("AssignModel", &CStaticMesh::AssignModelByKey)
 		.addFunction("GetModel", &CStaticMesh::GetModel)
 		.addFunction("AssignShader", &CStaticMesh::AssignShader)
+		.addFunction("RemoveNormalMapping", &CStaticMesh::RemoveNormalMapping)
 		.endClass();
 
 	getGlobalNamespace(Lbuff)

@@ -32,6 +32,7 @@ uniform mat4 projection;
 uniform mat4 model;
 uniform DirectionalLight dirLight;
 uniform int animate;
+uniform int normalMapping;
 
 const int MAX_BONES = 100;
 const int MAX_BONE_INFLUENCE = 4;
