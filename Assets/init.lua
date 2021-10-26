@@ -84,7 +84,7 @@ GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","valenc
 ----------------------
 SpawnGameObject("barrel1"):SetStatic(true)
 GetGameObject("barrel1"):AddCStaticMesh():AssignModel("barrel1")
-GetGameObject("barrel1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("barrel1"):AddCCollider():AddConvexCollider()
 GetGameObject("barrel1"):GetTransform():SetRelativePosition(0, 0, -2.5)
 
 GetGameObject("barrel1"):AddCAffordanceManager():AddAffordance("Drinking","agent_drinking","Drink.wav")
@@ -100,7 +100,7 @@ GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("LookForMoney","vale
 ----------------------
 SpawnGameObject("barrel2"):SetStatic(true)
 GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
-GetGameObject("barrel2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("barrel2"):AddCCollider():AddConvexCollider()
 
 GetGameObject("barrel2"):AddCAffordanceManager():AddAffordance("DanceAggressive","agent_dance","DanceAggressive.wav")
 GetGameObject("barrel2"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
@@ -115,7 +115,7 @@ GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceRelax","valenc
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
-GetGameObject("toilet_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("toilet_block"):AddCCollider():AddConvexCollider()
 
 SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
 GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
@@ -238,11 +238,11 @@ GetGameObject("south_bar_wall"):AddCStaticMesh():AssignModel("south_bar_wall")
 
 SpawnGameObject("south_bar_barrier_2"):SetStatic(true)
 GetGameObject("south_bar_barrier_2"):AddCStaticMesh():AssignModel("south_bar_barrier_2")
-GetGameObject("south_bar_barrier_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
+GetGameObject("south_bar_barrier_2"):AddCCollider():AddConvexCollider()
 
 SpawnGameObject("south_bar_barrier"):SetStatic(true)
 GetGameObject("south_bar_barrier"):AddCStaticMesh():AssignModel("south_bar_barrier")
-GetGameObject("south_bar_barrier"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
+GetGameObject("south_bar_barrier"):AddCCollider():AddConvexCollider()
 
 SpawnGameObject("tavern_floor"):SetStatic(true)
 GetGameObject("tavern_floor"):AddCStaticMesh():AssignModel("tavern_floor")
@@ -254,7 +254,7 @@ GetGameObject("roof_interior"):AddCStaticMesh():AssignModel("roof_interior")
 
 SpawnGameObject("main_bar_bench"):SetStatic(true)
 GetGameObject("main_bar_bench"):AddCStaticMesh():AssignModel("main_bar_bench")
-GetGameObject("main_bar_bench"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("main_bar_bench"):AddCCollider():AddConvexCollider()
 
 SpawnGameObject("graffiti_block"):SetStatic(true)
 GetGameObject("graffiti_block"):AddCStaticMesh():AssignModel("graffiti_block")
@@ -275,7 +275,7 @@ GetGameObject("crate"):AddCScript():AssignScript("rotate")
 
 SpawnGameObject("back_wall"):SetStatic(true)
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
-GetGameObject("back_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
+GetGameObject("back_wall"):AddCCollider():AddConvexCollider()
 
 SpawnGameObject("lightAnchor"):SetStatic(false)
 GetGameObject("lightAnchor"):GetTransform():SetRelativePosition(4.954999923706055,
