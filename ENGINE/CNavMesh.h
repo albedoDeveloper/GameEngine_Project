@@ -17,6 +17,7 @@
 
 struct Graph
 {
+	double cost;
 	std::unordered_map<NavNode*, std::vector<NavNode*> > edges;
 
 	std::vector<NavNode*> neighbors(NavNode* id)
@@ -118,7 +119,7 @@ class CNavMesh : public CComponent
 		*/
 	NavNode* FetchNode(int x, int z);
 
-	void Scan();
+	void Scan(int i);
 
 	std::unordered_map<NavNode* , NavNode* > breadth_first_search(Graph graph, NavNode* start, NavNode* goal);
 
@@ -126,6 +127,11 @@ class CNavMesh : public CComponent
 	Graph graph, NavNode* start, NavNode* goal,
 	std::unordered_map<NavNode*, NavNode*>& came_from,
 	std::unordered_map<NavNode*, double>& cost_so_far
+	);
+
+	std::vector<NavNode* > reconstruct_path(
+   NavNode* start, NavNode *goal,
+   std::unordered_map<NavNode*, NavNode*> came_from
 	);
 
 	//public vars because i'm lazy and time is short
@@ -139,7 +145,16 @@ private:
 		*/
 		std::vector<NavNode*> m_navNodes;
 
+		
 
 		Graph nodeGraph;
+
+		std::unordered_map<NavNode *, NavNode *> came_from;
+		std::unordered_map<NavNode *, double> cost_so_far;
+
+		std::vector<NavNode *> path;
+
+
+		int increment = 0;
 	
 };
