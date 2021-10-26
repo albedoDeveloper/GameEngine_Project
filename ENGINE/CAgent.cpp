@@ -69,6 +69,8 @@ void CAgent::AiThink()
 
 		GetParentObject()->GetTransform()->SetRelativeOrientation(LookAt(startLocation, endLocation, GetParentObject()->GetTransform()->GetRelativeUp()).ToQuat().GetInverse());
 		waitTime = (std::rand() % 25 + 15);
+
+		ConvertFloatToEmotion();
 	}
 }
 
@@ -150,7 +152,6 @@ void CAgent::FindNewAffordance()
 				if (traits.count(affordance.first) != 0)
 					trait = traits.at(affordance.first);
 
-				//std::cout << static_cast<float>(std::rand() % 150 + 50) / 100 << std::endl;
 				float affordanceAmount = affordance.second.EmotionEffectors.find(lowestName)->second * trait * (static_cast<float>(std::rand() % 150 + 50) / 100);
 				
 				if ( affordanceAmount >= highestImprovement)
@@ -167,11 +168,57 @@ void CAgent::FindNewAffordance()
 
 void CAgent::ConvertFloatToEmotion()
 {
-	
+	if (emotions.count("valence") > 0 && emotions.count("arousal") > 0)
+	{
+		auto valence = emotions.at("valence").emotion;
+		auto arousel = emotions.at("arousal").emotion;
+		std::string currentCircumplex;
 
+		if (valence <= 0.5 && arousel == 0.0)
+			currentCircumplex = "tired";
 
+		else if (valence <= 0.5 && arousel < 0.2)
+			currentCircumplex = "bored";
 
+		else if (valence <= 0.5 && arousel < 0.4)
+			currentCircumplex = "depressed";
 
+		else if (valence <= 0.5 && arousel < 0.6)
+			currentCircumplex = "frustrated";
+
+		else if (valence <= 0.5 && arousel < 0.8)
+			currentCircumplex = "angry";
+
+		else if (valence <= 0.5 && arousel < 1.0)
+			currentCircumplex = "tense";
+
+		else if (valence > 0.5 && arousel == 0.0)
+			currentCircumplex = "calm";
+
+		else if (valence > 0.5 && arousel < 0.2)
+			currentCircumplex = "relaxed";
+
+		else if (valence > 0.5 && arousel < 0.4)
+			currentCircumplex = "content";
+
+		else if (valence > 0.5 && arousel < 0.6)
+			currentCircumplex = "happy";
+
+		else if (valence > 0.5 && arousel < 0.8)
+			currentCircumplex = "delighted";
+
+		else if (valence > 0.5 && arousel < 1.0)
+			currentCircumplex = "excited";
+
+		std::string name = this->GetParentObject()->GetFactoryKey();
+
+		std::cout << "************************" << std::endl;
+		std::cout << "Agent Name: " << name << std::endl;
+		std::cout << "Current Circumplex emotion: " << currentCircumplex << std::endl;
+		std::cout << "Current activity: " << currentAffordance->name << std::endl;
+
+		std::cout << "************************" << std::endl;
+	}
 }
 
 

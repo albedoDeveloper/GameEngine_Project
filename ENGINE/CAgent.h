@@ -78,6 +78,7 @@ class CAgent : public CComponent
 		AiState currentState = AiState::THINK;
 
 		std::string lowestName;
+		//std::string currentCircumplex;
 
 		float time = 0;
 		float lerpTime = 0;
