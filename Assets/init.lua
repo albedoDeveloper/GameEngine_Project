@@ -1,4 +1,5 @@
 LoadModel("crate", "crate/crate.fbx")
+LoadModel("crate_small", "crate_small/crate_small.fbx")
 LoadModel("tavern_floor", "tavern_floor/tavern_floor.fbx")
 LoadModel("axis", "axis/axis.fbx")
 LoadModel("behind_bar_block", "behind_bar_block/behind_bar_block.fbx")
@@ -278,11 +279,11 @@ GetGameObject("behind_bar_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true
 SpawnGameObject("bar_floor_rod"):SetStatic(true)
 GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
 
-SpawnGameObject("crate"):SetStatic(false)
-GetGameObject("crate"):AddCStaticMesh():AssignModel("crate")
-GetGameObject("crate"):GetTransform():SetRelativePosition(-7.744999885559082, 1.315000057220459, -0.4449999928474426)
-GetGameObject("crate"):GetTransform():RotateLocalX(45)
-GetGameObject("crate"):AddCScript():AssignScript("rotate")
+--SpawnGameObject("crate"):SetStatic(false)
+--GetGameObject("crate"):AddCStaticMesh():AssignModel("crate")
+--GetGameObject("crate"):GetTransform():SetRelativePosition(-8.744999885559082, 1.315000057220459, -1.2449999928474426)
+--GetGameObject("crate"):GetTransform():RotateLocalX(45)
+--GetGameObject("crate"):AddCScript():AssignScript("rotate")
 
 SpawnGameObject("back_wall"):SetStatic(true)
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")

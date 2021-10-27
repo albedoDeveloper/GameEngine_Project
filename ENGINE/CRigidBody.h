@@ -33,7 +33,9 @@ public:
 	float GetRestitution() const;
 	void SetRestitution(float e);
 	Vector3f GetGravity() const;
-	Vector3f m_velocityDueToGravityThisFrame;
+	void SetDamping(float d);
+	float GetDamping() const;
+	void SetGravity(const Vector3f &g);
 
 private:
 	bool m_gravityEnabled;
@@ -60,4 +62,6 @@ private:
 	bool m_freezeZRot;
 
 	float m_restitution;
+
+	float m_damping;
 };

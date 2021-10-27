@@ -24,7 +24,8 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 	m_freezeYRot{ false },
 	m_freezeZRot{ false },
 	m_gravity{ 0,-4,0 },
-	m_restitution{ 0.7f }
+	m_restitution{ 0.7f },
+	m_damping{ 0.9f }
 {
 	CCollider *col = m_parent->GetComponent<CCollider>(); // TODO get all collider components
 	CStaticMesh *sm = m_parent->GetComponent<CStaticMesh>();
@@ -183,10 +184,24 @@ Vector3f CRigidBody::GetGravity() const
 	return m_gravity;
 }
 
+void CRigidBody::SetDamping(float d)
+{
+	m_damping = d;
+}
+
+float CRigidBody::GetDamping() const
+{
+	return m_damping;
+}
+
+void CRigidBody::SetGravity(const Vector3f &g)
+{
+	m_gravity = g;
+}
+
 void CRigidBody::Integrate()
 {
 	// linear
-	//m_accel = m_linForceAccum * m_inverseMass;
 	m_accel = Vector3f(0, 0, 0);
 	if (m_gravityEnabled)
 	{
@@ -196,25 +211,21 @@ void CRigidBody::Integrate()
 	if (m_freezeXTrans) m_velocity.SetX(0);
 	if (m_freezeYTrans) m_velocity.SetY(0);
 	if (m_freezeZTrans) m_velocity.SetZ(0);
-	m_velocity = m_velocity * powf(0.4f, TIME->GetDeltaTime()); // linear damping
+	m_velocity = m_velocity * powf(m_damping, TIME->GetDeltaTime()); // linear damping
 	m_parent->GetTransform()->TranslateV(m_velocity * TIME->GetDeltaTime());
-	//m_linForceAccum = Vector3f(0, 0, 0); // reset linear force accumulation
 
 	// angular
 	Matrix3f worldInverseInertiaTensor = GetInverseWorldInertiaTensor();
-	//m_angularAccel = m_torqueAccum * worldInverseInertiaTensor;
-	//m_angularVelocity += m_angularAccel * TIME->GetDeltaTime();
 	if (m_freezeXRot) m_angularVelocity.SetX(0);
 	if (m_freezeYRot) m_angularVelocity.SetY(0);
 	if (m_freezeZRot) m_angularVelocity.SetZ(0);
-	m_angularVelocity = m_angularVelocity * powf(0.4f, (TIME->GetDeltaTime())); // angular damping
+	m_angularVelocity = m_angularVelocity * powf(m_damping, (TIME->GetDeltaTime())); // angular damping
 
 	m_parent->GetTransform()->GetRelativeOrientation().IntegrateAngVel(
 		m_angularVelocity * m_parent->GetTransform()->GetRelativeOrientation().GetInverse(),
 		TIME->GetDeltaTime()
 	);
 	m_parent->GetTransform()->GetRelativeOrientation().Normalize();
-	//m_torqueAccum = Vector3f(0, 0, 0); // reset angular force accumulation
 
 	m_parent->GetComponent<CCollider>()->UpdateCollider();
 }

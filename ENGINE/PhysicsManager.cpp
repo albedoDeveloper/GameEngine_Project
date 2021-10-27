@@ -131,6 +131,7 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 			Manifold::ContactPoint &thisContact = manifolds[pair].contactPoints[contact];
 			const Vector3f normal = thisContact.worldNormal;
 			const Vector3f r1 = thisContact.col1LocalPoint;
+
 			Vector3f r2;
 			if (rb2)
 			{
@@ -154,7 +155,6 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 			impulse /= numContactPoints;
 
 			// linear impulse - seperating velocity
-			//Vector3f accelerationInducedVel1 = rb1->GetGravity() * TIME->GetDeltaTime();
 			Vector3f rb1NewVel = rb1->GetVelocity() + (impulse * normal) * rb1->GetInverseMass();
 			rb1->SetVelocity(rb1NewVel);
 			if (rb2)
