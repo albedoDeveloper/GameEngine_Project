@@ -143,15 +143,17 @@ void CCharacter::Update()
 
 		if (INPUT->GetKeyDown('k'))
 		{
-			static bool toggle = false;
+			static bool toggle = true;
 			if (toggle)
 			{
 				GAMEOBJECT->GetGameObject("light2")->GetCPointLight()->AssignColour(0.7f, 0.7f, 0.7f);
+				GAMEOBJECT->GetGameObject("lightAnchor")->GetTransform()->SetRelativePosition(5, 2.5, 1);
 				toggle = false;
 			}
 			else
 			{
 				GAMEOBJECT->GetGameObject("light2")->GetCPointLight()->AssignColour(0, 0, 0.7f);
+				GAMEOBJECT->GetGameObject("lightAnchor")->GetTransform()->SetRelativePosition(4.955, 1.905, 5.275);
 				toggle = true;
 			}
 		}

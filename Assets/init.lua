@@ -320,7 +320,7 @@ GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
 
 SpawnGameObject("crate"):SetStatic(false)
 GetGameObject("crate"):AddCStaticMesh():AssignModel("crate")
-GetGameObject("crate"):GetTransform():SetRelativePosition(-7.744999885559082, 1.315000057220459, -0.4449999928474426)
+GetGameObject("crate"):GetTransform():SetRelativePosition(-8.744999885559082, 0.815000057220459, -1.4449999928474426)
 GetGameObject("crate"):GetTransform():RotateLocalX(45)
 GetGameObject("crate"):AddCScript():AssignScript("rotate")
 
