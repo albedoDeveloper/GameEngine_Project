@@ -24,10 +24,28 @@ void LevelEditor::ObjectList()
 
 	objectList = GAMEOBJECT->GetObjectMap();
 
+	std::map<std::string, GameObject *> *filteredObjectList = objectList;
+
+	/// @brief ////////
+	std::map<std::string, GameObject *>::iterator filterIt;
+	for (filterIt = objectList->begin(); filterIt != objectList->end(); filterIt++)
+	{
+		if (filterIt->second->GetCRigidBody())
+		{
+			objectList->erase(filterIt);
+		}
+	}
+
+
+	////////////////
+
 	//iteration
 	std::map<std::string, GameObject *>::iterator it;
 	for (it = objectList->begin(); it != objectList->end(); it++)
 	{
+		//std::cout << "string " << std::endl;
+
+
 		//population
 		ObjectHeader(it->second);
 	}
@@ -39,6 +57,7 @@ void LevelEditor::ObjectHeader(GameObject *g)
 
 	//is the gameobject active?
 	bool isActive = g->GetActive();
+
 
 	if (ImGui::TreeNode((char *)g->GetFactoryKey().c_str()))
 	{

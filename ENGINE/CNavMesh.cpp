@@ -118,6 +118,8 @@ bool CNavMesh::AssignBarriers(int x, int z)
 {
 	bool returnBool = false;
 
+	//COLLISION.
+
 	if (z == 0 && (x == -1 || x == -2 || x == -3 || x == -4 || x == -5 || x == 0 || x == 1 || x == 2 || x == 3 || x == 4 || x == 5))
 	{
 		returnBool = true;
