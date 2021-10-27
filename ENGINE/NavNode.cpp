@@ -120,7 +120,7 @@
 			if (it != NULL)
 			{
 				it->SetActive(isActive);
-				std::cout << "x = " << it->nodeLocation.x << " y = " << it->nodeLocation.z << std::endl;
+				//std::cout << "x = " << it->nodeLocation.x << " y = " << it->nodeLocation.z << std::endl;
 
 
 			}

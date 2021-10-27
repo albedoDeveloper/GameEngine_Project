@@ -1,4 +1,5 @@
 LoadModel("crate", "crate/crate.fbx")
+LoadModel("crate_small", "crate_small/crate_small.fbx")
 LoadModel("tavern_floor", "tavern_floor/tavern_floor.fbx")
 LoadModel("axis", "axis/axis.fbx")
 LoadModel("behind_bar_block", "behind_bar_block/behind_bar_block.fbx")
@@ -362,15 +363,15 @@ GetGameObject("sunanchor"):AddCStaticMesh():AssignModel("axis")
 SpawnGameObject("light1"):SetStatic(false)
 GetGameObject("light1"):AddCPointLight()
 GetGameObject("light1"):GetCPointLight():AssignColour(0.8,0.8,0.8)
-GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(0.6)
-GetGameObject("light1"):GetTransform():SetRelativePosition(-5.354999542236328,
+GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(0.3)
+GetGameObject("light1"):GetTransform():SetRelativePosition(-8.354999542236328,
 2.6700000762939453,
 1.0);
 GetGameObject("light1"):AddCStaticMesh():AssignModel("axis")
 
 SpawnGameObject("light2"):SetStatic(false)
 GetGameObject("light2"):AddCPointLight()
-GetGameObject("light2"):GetCPointLight():AssignColour(0.8,0.8,0.8)
+GetGameObject("light2"):GetCPointLight():AssignColour(0.1,0.1,0.1)
 GetGameObject("light2"):GetCPointLight():AssignAmbientStrength(0.6)
 GetGameObject("light2"):SetParentObject("lightAnchor")
 GetGameObject("light2"):AddCStaticMesh():AssignModel("axis")
@@ -383,6 +384,7 @@ GetGameObject("ai_agent_3"):GetCAgent():AddEmotion("arousal",0.6, 1.0, 0.0)
 
 SpawnGameObject("NavMesh");
 GetGameObject("NavMesh"):GetTransform():SetRelativePosition(1, 0, 0);
+GetGameObject("NavMesh"):AddCCollider():AddBoxCollider(0.25, 0.3, 0.25, 0 ,0, 0, false, 0, false, 31);
 GetGameObject("NavMesh"):AddCNavMesh();
 
 --------------
