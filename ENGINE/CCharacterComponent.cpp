@@ -141,6 +141,21 @@ void CCharacter::Update()
 			}
 		}
 
+		if (INPUT->GetKeyDown('k'))
+		{
+			static bool toggle = false;
+			if (toggle)
+			{
+				GAMEOBJECT->GetGameObject("light2")->GetCPointLight()->AssignColour(0.7f, 0.7f, 0.7f);
+				toggle = false;
+			}
+			else
+			{
+				GAMEOBJECT->GetGameObject("light2")->GetCPointLight()->AssignColour(0, 0, 0.7f);
+				toggle = true;
+			}
+		}
+
 		if (INPUT->GetKeyDownByCode(KeyCode::ESC))
 		{
 			m_mouseEnabled = false;

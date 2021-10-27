@@ -42,13 +42,6 @@ LoadScript("girl2script", "girl2script.lua")
 LoadModel("agent_dance","ai_agent/dance.fbx")
 --LoadModel("agent_walk","ai_agent/walk.fbx")
 
-SpawnGameObject("book2")
-GetGameObject("book2"):AddCStaticMesh():AssignModel("book")
-GetGameObject("book2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1,true, 31)
-GetGameObject("book2"):AddCRigidBody():SetMass(2)
-GetGameObject("book2"):GetTransform():SetRelativePosition(-2,2,0)
-
-
 SpawnGameObject("fridge1"):SetStatic(true)
 GetGameObject("fridge1"):AddCStaticMesh():AssignModel("fridge1")
 GetGameObject("fridge1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
@@ -366,8 +359,8 @@ GetGameObject("light1"):AddCStaticMesh():AssignModel("axis")
 
 SpawnGameObject("light2"):SetStatic(false)
 GetGameObject("light2"):AddCPointLight()
-GetGameObject("light2"):GetCPointLight():AssignColour(0.1,0.1,0.1)
-GetGameObject("light2"):GetCPointLight():AssignAmbientStrength(0.6)
+GetGameObject("light2"):GetCPointLight():AssignColour(0,0,0.7)
+GetGameObject("light2"):GetCPointLight():AssignAmbientStrength(0.7)
 GetGameObject("light2"):SetParentObject("lightAnchor")
 GetGameObject("light2"):AddCStaticMesh():AssignModel("axis")
 GetGameObject("light2"):GetTransform():Translate(0.3,0,0)
@@ -392,7 +385,7 @@ GetGameObject("jukebox"):GetTransform():Scale(4,4,4)
 GetGameObject("jukebox"):GetTransform():RotateLocalX(44)
 GetGameObject("jukebox"):AddCSound():LoadSound("milkyway.wav")
 GetGameObject("jukebox"):GetCSound():PlaySound("milkyway.wav",-1,true)
---GetGameObject("jukebox"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("jukebox"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 
 
 
