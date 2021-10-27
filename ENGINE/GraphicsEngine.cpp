@@ -412,7 +412,152 @@ void GraphicsEngine::DrawDebug()
 
 	glBindVertexArray(VAODebug); CHECK_GL_ERROR();
 	glDrawArrays(GL_TRIANGLES, 0, COLLISION->physicsWorld->getDebugRenderer().getNbTriangles() * 3); CHECK_GL_ERROR();
-	glBindVertexArray(0); CHECK_GL_ERROR();*/
+	glBindVertexArray(0); CHECK_GL_ERROR();
+
+	*/
+	//now draw the navmesh
+	//DrawDebugNavMesh();
+}
+
+void GraphicsEngine::DrawDebugNavMesh(CNavMesh *navMesh,const Transform &worldTrans)
+{
+	
+	std::vector<float> combinedVertices/* = DrawCube(worldTrans, Colour::blue,0.25f)*/;
+	std::vector<float> combinedOddVertices /*= DrawCube(worldTrans, Colour::blue,0.25f)*/;
+	
+	int i = 0;
+	for (auto it : navMesh->GetNavNodes())
+	{
+		i++;
+
+		//std::vector<float> nodeVertices;
+
+		double myColor[3]{};
+		if (it->GetActive() && !it->GetBarrier())
+		{
+
+			myColor[0] = Colour::green[0];
+			myColor[1] = Colour::green[1];
+			myColor[2] = Colour::green[2];
+
+			std::vector<float> nodeVertices = DrawCube(it->GetTransform()->GetWorldTransform(), myColor,0.25f);
+		
+			combinedVertices.insert(combinedVertices.end(), nodeVertices.begin(), nodeVertices.end());
+
+		}
+		else if(!it->GetActive() && !it->GetBarrier())
+		{
+			
+			myColor[0] = Colour::blue[0];
+			myColor[1] = Colour::blue[1];
+			myColor[2] = Colour::blue[2];
+
+			std::vector<float> nodeVertices = DrawCube(it->GetTransform()->GetWorldTransform(), myColor, 0.25f);
+		}
+		else if (it->GetBarrier())
+		{
+			myColor[0] = Colour::red[0];
+			myColor[1] = Colour::red[1];
+			myColor[2] = Colour::red[2];
+
+			std::vector<float> nodeVertices = DrawCube(it->GetTransform()->GetWorldTransform(), myColor, 0.25f);
+		}
+	}
+
+}
+
+std::vector<float> GraphicsEngine::DrawCube(const Transform &worldTrans, const double color[3], float scale)
+{
+	
+
+
+	m_debugShader->Use();
+	m_debugShader->SetMat4Uniform("projection", GetCameraProjection());
+	m_debugShader->SetMat4Uniform("view", GetCameraView());
+	m_debugShader->SetVec3Uniform("ourColour", Vector3f(color[0], color[1], color[2]));
+
+	glDisable(GL_CULL_FACE); CHECK_GL_ERROR();
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); CHECK_GL_ERROR();
+
+	//define the cube
+	std::vector<float> vertices = {
+		// face one
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom right 
+		// face two
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom right 
+		// face three
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom right 
+		// face four
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom right 
+		// face five
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // bottom right 
+		// face six
+			worldTrans.GetRelativePosition().GetX() + -scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top right
+			worldTrans.GetRelativePosition().GetX() + scale,  worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + -scale,  // top left
+			worldTrans.GetRelativePosition().GetX() + scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom left 
+			worldTrans.GetRelativePosition().GetX() + -scale, worldTrans.GetRelativePosition().GetY() + -scale, worldTrans.GetRelativePosition().GetZ() + scale,  // bottom right 
+
+	};
+
+
+
+
+
+	////define the indices (so we dont double up on positions)
+	//unsigned int indices[] = {  // note that we start from 0!
+	//0, 1, 3,   // first triangle
+	//1, 2, 3    // second triangle
+	//};
+
+	unsigned int VBO;
+	unsigned int VAO;
+
+	//unsigned int EBO;
+	//glGenBuffers(1, &EBO);
+
+
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices.data()[0]) * vertices.size(), vertices.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
+
+	//glBindVertexArray(VAODebug); CHECK_GL_ERROR();
+	//glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices.data()[0]) * vertices.size()); CHECK_GL_ERROR();
+	//glBindVertexArray(0); CHECK_GL_ERROR();
+
+
+	////////////////
+	glGenVertexArrays(1, &VAO);
+	glBindVertexArray(VAO);
+	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices.data()[0]) * vertices.size(), vertices.data(), GL_DYNAMIC_DRAW); CHECK_GL_ERROR();
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+	glEnableVertexAttribArray(0);
+
+	glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices.data()[0]) * vertices.size()); CHECK_GL_ERROR();
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+
+	//////////
+
+	return vertices;
+
 }
 
 void GraphicsEngine::SetupDirLightFBO()

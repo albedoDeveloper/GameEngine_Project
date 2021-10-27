@@ -100,4 +100,9 @@ public:
 
 	/** @brief current shader enum */
 	ShaderSelection m_selectedShader;
+
+	/** @brief Apply Normal Mapping to Object */
+	bool normalMapping = true;
+
+	void RemoveNormalMapping();
 };
