@@ -43,6 +43,8 @@ public:
 
 	void Rotate(const Quaternion &q);
 
+	Matrix4f Inverse();
+
 	Matrix4f GetScale(const Vector3f &v) const;
 
 		/**
@@ -75,6 +77,7 @@ public:
 		 * \return reference to this matrix object
 		 */
 	Matrix4f &operator*=(Matrix4f other);
+
 
 	glm::mat4 GetMatrix()
 	{

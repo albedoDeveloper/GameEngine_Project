@@ -6,23 +6,23 @@
 #include "MiscMath.h"
 #include "InputManager.h"
 
-CAgent::CAgent(Transform *parent, GameObject *parentObj):CComponent{ parent, parentObj }
+CAgent::CAgent(Transform *parent, GameObject *parentObj) :CComponent{ parent, parentObj }
 {
 	auto allGameObjects = GAMEOBJECT->GetObjectMap();
-	
+
 	std::map<std::string, GameObject *>::iterator it;
-	
+
 	for (it = allGameObjects->begin(); it != allGameObjects->end(); it++)
 	{
 		if (it->second->GetCAffordanceManager() != nullptr)
 			allAffordances.insert(std::pair(it->first, &it->second->GetCAffordanceManager()->listOfAffordances));
 
-		if(it->second->GetCNavMesh() != nullptr)
+		if (it->second->GetCNavMesh() != nullptr)
 			navMesh = it->second->GetCNavMesh();
 	}
 
-	
-	
+
+
 }
 void CAgent::Render()
 {
@@ -74,31 +74,31 @@ void CAgent::Update()
 
 	switch (currentState)
 	{
-		case AiState::THINK:
-			AiThink();
-			break;
+	case AiState::THINK:
+		AiThink();
+		break;
 
-		case AiState::MOVE: 
-			AiMove();
-			break;
+	case AiState::MOVE:
+		AiMove();
+		break;
 
-		case AiState::ACTION:
-			AiAction();
-			break;
+	case AiState::ACTION:
+		AiAction();
+		break;
 	}
-	
+
 	for (auto emotion : emotions)
 	{
-		if(emotion.second.emotion < 1 && emotion.second.emotion > 0)
+		if (emotion.second.emotion < 1 && emotion.second.emotion > 0)
 			emotion.second.emotion += emotion.second.emotionNativeChange;
 	}
-	
+
 }
 
 void CAgent::AiThink()
 {
 	FindNewAffordance();
-	
+
 	if (currentAffordance != nullptr)
 	{
 		currentState = AiState::MOVE;
@@ -107,9 +107,9 @@ void CAgent::AiThink()
 		//auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetRelativePosition();
 		auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetWorldTransform().GetRelativePosition();
 		startLocation = pTrans;
-		endLocation = afforanceTrans;
 
-		GetParentObject()->GetTransform()->SetRelativeOrientation(LookAt(startLocation, endLocation, GetParentObject()->GetTransform()->GetRelativeUp()).ToQuat().GetInverse());
+
+
 		waitTime = (std::rand() % 25 + 15);
 
 		ConvertFloatToEmotion();
@@ -126,10 +126,10 @@ void CAgent::AiThink()
 		path.clear();
 		pathIndex = 0;
 
-		if(navNode != nullptr || destinationNode != nullptr)
+		if (navNode != nullptr || destinationNode != nullptr)
 		{
 			//run pathfindign algorithm
-			path = navMesh->DijkstraSearch( navNode, destinationNode, came_from, cost_so_far);
+			path = navMesh->DijkstraSearch(navNode, destinationNode, came_from, cost_so_far);
 
 
 			//FollowPath();
@@ -142,10 +142,10 @@ void CAgent::AiMove()
 {
 	/*FindNavLocation();*/
 
-	Vector3f startPos{0,0,0};
-	Vector3f endPos{5,1,5};
+	Vector3f startPos{ 0,0,0 };
+	Vector3f endPos{ 5,1,5 };
 
-	if(navNode != NULL)
+	if (navNode != NULL)
 		startPos = navNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 
 	auto pTrans = GetParentObject()->GetTransform()->GetRelativePosition();
@@ -154,39 +154,47 @@ void CAgent::AiMove()
 
 	FindDestinationLocation(afforanceTrans);
 
-	if(destinationNode != NULL)
+	if (destinationNode != NULL)
 		endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 
+	GetParentObject()->GetTransform()->SetRelativeOrientation(LookAt(startLocation, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).ToQuat().Normalized().GetInverse());
 
 	Vector3f dst = afforanceTrans - pTrans;
 
 		//float t = lerpTime / 400;
 		// 
-		if (path.empty())
-		{
-			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pTrans.GetX(), endPos.GetX() - pTrans.GetX(), 1.0f), (std::lerp(pTrans.GetY(), endPos.GetY(), 1.0f)), std::lerp(pTrans.GetZ(), endPos.GetZ() - pTrans.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);
-		}
+	if (path.empty())
+	{
+		m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pTrans.GetX(), endPos.GetX() - pTrans.GetX(), 1.0f), (std::lerp(pTrans.GetY(), endPos.GetY(), 1.0f)), std::lerp(pTrans.GetZ(), endPos.GetZ() - pTrans.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);
+	}
+	else
+	{
+		FollowPath();
+	}
+
+	//GetParentObject()->GetTransform()->SetRelativePositionV(Vector3f( endPos.GetX() , startPos.GetY(), endPos.GetZ()));
+	//lerpTime += lerpTime * TIME->GetDeltaTime();
+
+
+//if ((std::fabs(pTrans.GetX()) <= std::fabs(afforanceTrans.GetX()) + 1 && std::fabs(pTrans.GetX()) >= std::fabs(afforanceTrans.GetX()) - 1) && (std::fabs(pTrans.GetZ()) <= std::fabs(afforanceTrans.GetZ()) + 1 && std::fabs(pTrans.GetZ()) >= std::fabs(afforanceTrans.GetZ()) - 1))
+//Vector3f dst = afforanceTrans - pTrans;
+	if (dst.Magnitude() < 2)
+	{
+		if (currentAffordance->parentObj->GetCAffordanceManager()->isInUse)
+			currentState = AiState::THINK;
+
 		else
 		{
-			FollowPath();
+			currentState = AiState::ACTION;
+			lerpTime = 0;
+			currentAffordance->parentObj->GetCAffordanceManager()->isInUse = true;
+
+			if (!currentAffordance->animation._Equal(""))
+				GetParentObject()->GetCAnimator()->PlayAnimation(currentAffordance->animation);
+
+			if (!currentAffordance->sound._Equal(""))
+				GetParentObject()->GetCSound()->PlaySound(currentAffordance->sound, 0, true);
 		}
-
-		//GetParentObject()->GetTransform()->SetRelativePositionV(Vector3f( endPos.GetX() , startPos.GetY(), endPos.GetZ()));
-		//lerpTime += lerpTime * TIME->GetDeltaTime();
-
-
-	//if ((std::fabs(pTrans.GetX()) <= std::fabs(afforanceTrans.GetX()) + 1 && std::fabs(pTrans.GetX()) >= std::fabs(afforanceTrans.GetX()) - 1) && (std::fabs(pTrans.GetZ()) <= std::fabs(afforanceTrans.GetZ()) + 1 && std::fabs(pTrans.GetZ()) >= std::fabs(afforanceTrans.GetZ()) - 1))
-	//Vector3f dst = afforanceTrans - pTrans;
-	if(dst.Magnitude() < 2)
-	{
-		currentState = AiState::ACTION;
-		lerpTime = 0;
-
-		if (!currentAffordance->animation._Equal(""))
-			GetParentObject()->GetCAnimator()->PlayAnimation(currentAffordance->animation);
-
-		if (!currentAffordance->sound._Equal(""))
-			GetParentObject()->GetCSound()->PlaySound(currentAffordance->sound, 0, true);
 	}
 }
 
@@ -195,8 +203,8 @@ void CAgent::FollowPath()
 
 	if (!path.empty())
 	{
-		NavNode* prevNode = path[0];
-		NavNode* nextNode = path[0];
+		NavNode *prevNode = path[0];
+		NavNode *nextNode = path[0];
 
 		//std::cout << "Path Start " << std::endl;
 
@@ -220,7 +228,7 @@ void CAgent::FollowPath()
 		}*/
 
 
-		if(pathIndex < path.size() - 1)
+		if (pathIndex < path.size() - 1)
 		{
 			nextNode = path[pathIndex];
 
@@ -234,7 +242,7 @@ void CAgent::FollowPath()
 				m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
 				//m_parent->GetTransform()->SetRelativePosition(endPos.GetX(),endPos.GetY(), endPos.GetZ());
 			}
-			
+
 			if (dst.Magnitude() < 1)
 			{
 				prevNode = path[pathIndex];
@@ -244,7 +252,7 @@ void CAgent::FollowPath()
 		}
 		else
 		{
-			std::cout <<"destination found" << std::endl;
+			std::cout << "destination found" << std::endl;
 			Vector3f pos = GetParentObject()->GetTransform()->GetRelativePosition();
 			Vector3f endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
@@ -253,7 +261,7 @@ void CAgent::FollowPath()
 
 		//std::cout << "Path End " << std::endl;
 	}
-	
+
 }
 
 
@@ -269,19 +277,20 @@ void CAgent::AiAction()
 
 		for (auto &emotionEffect : currentAffordance->EmotionEffectors)
 		{
-			
-			emotions.at(emotionEffect.first).emotion += emotionEffect.second * emotions.at(lowestName).multipler * (static_cast<float>(std::rand() % 140 + 70)/100);
-			
+
+			emotions.at(emotionEffect.first).emotion += emotionEffect.second * emotions.at(lowestName).multipler * (static_cast<float>(std::rand() % 140 + 70) / 100);
+
 			if (emotions.at(emotionEffect.first).emotion > 1)
 				emotions.at(emotionEffect.first).emotion = 1;
-			
+
 			else if (emotions.at(emotionEffect.first).emotion < 0)
 				emotions.at(emotionEffect.first).emotion = 0;
-			
+
 			std::cout << "Emotion: " << emotionEffect.first << " = " << emotions.at(emotionEffect.first).emotion << std::endl;
 		}
-		
+
 		currentState = AiState::THINK;
+		currentAffordance->parentObj->GetCAffordanceManager()->isInUse = false;
 	}
 }
 
@@ -289,7 +298,7 @@ void CAgent::FindNewAffordance()
 {
 	auto lowest = emotions.begin()->second.emotion;
 	lowestName = emotions.begin()->first;
-	
+
 	for (auto &emotion : emotions)
 	{
 		if (emotion.second.emotion <= lowest)
@@ -313,10 +322,11 @@ void CAgent::FindNewAffordance()
 					trait = traits.at(affordance.first);
 
 				float affordanceAmount = affordance.second.EmotionEffectors.find(lowestName)->second * trait * (static_cast<float>(std::rand() % 150 + 50) / 100);
-				
-				if ( affordanceAmount >= highestImprovement)
+
+				if (affordanceAmount >= highestImprovement)
 				{
 					currentAffordance = &affordance.second;
+
 					highestImprovement = affordanceAmount;
 				}
 
@@ -376,7 +386,7 @@ void CAgent::ConvertFloatToEmotion()
 		std::cout << "Agent Name: " << name << std::endl;
 		std::cout << "Current Circumplex emotion: " << currentCircumplex << std::endl;
 		std::cout << "Current activity: " << currentAffordance->name << std::endl;
-		
+
 		std::cout << "************************" << std::endl;
 
 		//GetParentObject()->GetCSound()->PlaySound("currentCircumplex", 0, true);
@@ -400,7 +410,7 @@ void ChangeEmotionNatively(float &emotion, float modifier)
 }
 
 
-NavNode* CAgent::FindNavLocation()
+NavNode *CAgent::FindNavLocation()
 {
 	if (navMesh == NULL)
 	{
@@ -430,7 +440,7 @@ NavNode* CAgent::FindNavLocation()
 	return navNode;
 }
 
-NavNode* CAgent::FindDestinationLocation(Vector3f position)
+NavNode *CAgent::FindDestinationLocation(Vector3f position)
 {
 	if (navMesh == NULL)
 	{
