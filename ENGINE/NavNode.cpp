@@ -113,7 +113,7 @@
 
 			if (it == NULL)
 			{
-				std::cout << "ERROR WE GOT A NULL HERE x =" << std::endl;
+				std::cout << "ERROR Nav Node Neighbours are NULL" << std::endl;
 
 			}
 
