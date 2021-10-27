@@ -34,6 +34,7 @@ LoadModel("Breathing Idle","basic_girl/girlIdle.fbx")
 LoadModel("girlTalking","basic_girl/girlTalking.fbx")
 LoadModel("girlDying","basic_girl/girlDying.fbx")
 LoadModel("book", "book/book.fbx")
+LoadModel("jukebox", "jukebox/jukebox.fbx")
 LoadScript("rotate", "rotate.lua")
 LoadScript("playerShoot", "playerShoot.lua")
 LoadScript("girl1script", "girl1script.lua")
@@ -76,6 +77,7 @@ GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("Argue","valence", 
 ------------------------
 SpawnGameObject("pool-table"):SetStatic(true)
 GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
+GetGameObject("pool-table"):GetCStaticMesh():RemoveNormalMapping()
 GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 --GetGameObject("pool-table"):GetCCollider():CollideWith(2)
 
@@ -120,22 +122,6 @@ GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceRelax","valenc
 
 ----------------------
 
-SpawnGameObject("toilet_block"):SetStatic(true)
-GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
-GetGameObject("toilet_block"):AddCCollider():AddConvexCollider()
-
-SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
-GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
-GetGameObject("tavern_glass_door_wall_long_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
-
-SpawnGameObject("tavern_glass_door_wall_long"):SetStatic(true)
-GetGameObject("tavern_glass_door_wall_long"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long")
-GetGameObject("tavern_glass_door_wall_long"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
-
-SpawnGameObject("tavern_glass_door_wall"):SetStatic(true)
-GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_glass_door_wall")
-GetGameObject("tavern_glass_door_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
-
 ----------
 SpawnGameObject("ai_agent_1"):SetStatic(false)
 GetGameObject("ai_agent_1"):AddCStaticMesh():AssignModel("agent_dance")
@@ -159,6 +145,19 @@ GetGameObject("ai_agent_1"):GetCSound():LoadSound("LookForMoney.wav")
 GetGameObject("ai_agent_1"):GetCSound():LoadSound("Texting.wav")
 GetGameObject("ai_agent_1"):GetCSound():LoadSound("DanceAggressive.wav")
 GetGameObject("ai_agent_1"):GetCSound():LoadSound("DanceRelax.wav")
+
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("tired.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("bored.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("depressed.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("frustrated.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("angry.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("tense.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("excited.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("delighted.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("happy.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("content.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("relaxed.wav")
+GetGameObject("ai_agent_1"):GetCSound():LoadSound("calm.wav")
 
 GetGameObject("ai_agent_1"):GetTransform():Translate(2,0,1.4)
 GetGameObject("ai_agent_1"):AddCAgent():AddEmotion("valence",0.7, 1.0, -0.002)
@@ -193,6 +192,19 @@ GetGameObject("ai_agent_2"):GetCSound():LoadSound("Texting.wav")
 GetGameObject("ai_agent_2"):GetCSound():LoadSound("DanceAggressive.wav")
 GetGameObject("ai_agent_2"):GetCSound():LoadSound("DanceRelax.wav")
 
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("tired.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("bored.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("depressed.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("frustrated.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("angry.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("tense.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("excited.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("delighted.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("happy.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("content.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("relaxed.wav")
+GetGameObject("ai_agent_2"):GetCSound():LoadSound("calm.wav")
+
 GetGameObject("ai_agent_2"):GetTransform():Translate(2,0,1.4)
 GetGameObject("ai_agent_2"):AddCAgent():AddEmotion("valence",0.1, 1.0, 0.002)
 GetGameObject("ai_agent_2"):GetCAgent():AddEmotion("arousal",0.8, 1.0, 0.0)
@@ -226,11 +238,37 @@ GetGameObject("ai_agent_3"):GetCSound():LoadSound("Texting.wav")
 GetGameObject("ai_agent_3"):GetCSound():LoadSound("DanceAggressive.wav")
 GetGameObject("ai_agent_3"):GetCSound():LoadSound("DanceRelax.wav")
 
-GetGameObject("ai_agent_3"):GetTransform():Translate(2,0,1.4)
-GetGameObject("ai_agent_3"):AddCAgent():AddEmotion("valence",0.4, 1.0, 0.0)
-GetGameObject("ai_agent_3"):GetCAgent():AddEmotion("arousal",0.6, 1.0, 0.0)
---------------
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("tired.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("bored.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("depressed.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("frustrated.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("angry.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("tense.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("excited.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("delighted.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("happy.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("content.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("relaxed.wav")
+GetGameObject("ai_agent_3"):GetCSound():LoadSound("calm.wav")
 
+SpawnGameObject("toilet_block"):SetStatic(true)
+GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
+GetGameObject("toilet_block"):AddCCollider():AddConvexCollider()
+
+SpawnGameObject("tavern_glass_door_wall_long_2"):SetStatic(true)
+GetGameObject("tavern_glass_door_wall_long_2"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long_2")
+GetGameObject("tavern_glass_door_wall_long_2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("tavern_glass_door_wall_long_2"):GetCStaticMesh():RemoveNormalMapping()
+
+SpawnGameObject("tavern_glass_door_wall_long"):SetStatic(true)
+GetGameObject("tavern_glass_door_wall_long"):AddCStaticMesh():AssignModel("tavern_glass_door_wall_long")
+GetGameObject("tavern_glass_door_wall_long"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("tavern_glass_door_wall_long"):GetCStaticMesh():RemoveNormalMapping()
+
+SpawnGameObject("tavern_glass_door_wall"):SetStatic(true)
+GetGameObject("tavern_glass_door_wall"):AddCStaticMesh():AssignModel("tavern_glass_door_wall")
+GetGameObject("tavern_glass_door_wall"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("tavern_glass_door_wall"):GetCStaticMesh():RemoveNormalMapping()
 
 --GetGameObject("ai_agent_1"):GetCAgent():AddTrait("ToiletBreak",-1.0)
 --GetGameObject("ai_agent_1"):GetCAgent():AddTrait("DrinkWater", 0.2)
@@ -275,6 +313,7 @@ GetGameObject("graffiti_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0
 SpawnGameObject("behind_bar_block"):SetStatic(true)
 GetGameObject("behind_bar_block"):AddCStaticMesh():AssignModel("behind_bar_block")
 GetGameObject("behind_bar_block"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true,30)
+GetGameObject("behind_bar_block"):GetCStaticMesh():RemoveNormalMapping()
 
 SpawnGameObject("bar_floor_rod"):SetStatic(true)
 GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
@@ -288,6 +327,7 @@ GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
 SpawnGameObject("back_wall"):SetStatic(true)
 GetGameObject("back_wall"):AddCStaticMesh():AssignModel("back_wall")
 GetGameObject("back_wall"):AddCCollider():AddConvexCollider()
+--GetGameObject("back_wall"):GetCStaticMesh():RemoveNormalMapping()
 
 SpawnGameObject("lightAnchor"):SetStatic(false)
 GetGameObject("lightAnchor"):GetTransform():SetRelativePosition(4.954999923706055,
@@ -311,19 +351,41 @@ GetGameObject("sunanchor"):AddCStaticMesh():AssignModel("axis")
 SpawnGameObject("light1"):SetStatic(false)
 GetGameObject("light1"):AddCPointLight()
 GetGameObject("light1"):GetCPointLight():AssignColour(0.8,0.8,0.8)
-GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(0.3)
-GetGameObject("light1"):GetTransform():SetRelativePosition(-8.354999542236328,
+GetGameObject("light1"):GetCPointLight():AssignAmbientStrength(0.6)
+GetGameObject("light1"):GetTransform():SetRelativePosition(-5.354999542236328,
 2.6700000762939453,
 1.0);
 GetGameObject("light1"):AddCStaticMesh():AssignModel("axis")
 
 SpawnGameObject("light2"):SetStatic(false)
 GetGameObject("light2"):AddCPointLight()
-GetGameObject("light2"):GetCPointLight():AssignColour(0.1,0.1,1)
+GetGameObject("light2"):GetCPointLight():AssignColour(0.8,0.8,0.8)
 GetGameObject("light2"):GetCPointLight():AssignAmbientStrength(0.6)
 GetGameObject("light2"):SetParentObject("lightAnchor")
 GetGameObject("light2"):AddCStaticMesh():AssignModel("axis")
 GetGameObject("light2"):GetTransform():Translate(0.3,0,0)
+
+
+GetGameObject("ai_agent_3"):GetTransform():Translate(2,0,1.4)
+GetGameObject("ai_agent_3"):AddCAgent():AddEmotion("valence",0.4, 1.0, 0.0)
+GetGameObject("ai_agent_3"):GetCAgent():AddEmotion("arousal",0.6, 1.0, 0.0)
+
+SpawnGameObject("NavMesh");
+GetGameObject("NavMesh"):GetTransform():SetRelativePosition(1, 0, 0);
+GetGameObject("NavMesh"):AddCNavMesh();
+
+--------------
+
+SpawnGameObject("jukebox"):SetStatic(true)
+GetGameObject("jukebox"):AddCStaticMesh():AssignModel("jukebox")
+GetGameObject("jukebox"):GetCStaticMesh():RemoveNormalMapping()
+GetGameObject("jukebox"):GetTransform():SetRelativePosition(-1.5,0.9,-2.41)
+GetGameObject("jukebox"):GetTransform():Scale(4,4,4)
+GetGameObject("jukebox"):GetTransform():RotateLocalX(44)
+GetGameObject("jukebox"):AddCSound():LoadSound("milkyway.wav")
+GetGameObject("jukebox"):GetCSound():PlaySound("milkyway.wav",-1,true)
+--GetGameObject("jukebox"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+
 
 
 SpawnGameObject("player");

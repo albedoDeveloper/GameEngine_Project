@@ -26,6 +26,7 @@
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCharacterComponent.cpp" />
     <ClCompile Include="CDirectionalLight.cpp" />
+    <ClCompile Include="CNavMesh.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="CComponent.cpp" />
@@ -34,6 +35,7 @@
     <ClCompile Include="CScript.cpp" />
     <ClCompile Include="CSound.cpp" />
     <ClCompile Include="CStaticMesh.cpp" />
+    <ClCompile Include="NavNode.cpp" />
     <ClCompile Include="Matrix3f.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="ThirdParty\glad\src\glad.c" />
@@ -80,6 +82,7 @@
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CCharacterComponent.h" />
     <ClInclude Include="CDirectionalLight.h" />
+    <ClInclude Include="CNavMesh.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="CComponent.h" />
@@ -88,6 +91,7 @@
     <ClInclude Include="CScript.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CStaticMesh.h" />
+    <ClInclude Include="NavNode.h" />
     <ClInclude Include="Matrix3f.h" />
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="ThirdParty\glad\include\glad\glad.h" />
@@ -216,7 +220,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;BT_THREADSAFE=1;BT_USE_DOUBLE_PRECISION;_DEBUG=1</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>.\ThirdParty\glad\include;../include;../include/bulletphysics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <ShowIncludes>false</ShowIncludes>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <CompileAsManaged>false</CompileAsManaged>

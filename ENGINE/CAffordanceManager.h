@@ -8,12 +8,15 @@
 
 struct Affordance
 {
-	Affordance(GameObject *parentObj, std::string animation, std::string sound)
+	Affordance(std::string name, GameObject *parentObj, std::string animation, std::string sound)
 	{
+		this->name = name;
 		this->parentObj = parentObj;
 		this->animation = animation;
 		this->sound = sound;
 	}
+
+	std::string name;
 
 	std::unordered_map<std::string, float> EmotionEffectors;
 
