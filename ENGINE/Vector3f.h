@@ -42,6 +42,10 @@ public:
 		*/
 	void Scale(float x, float y, float z);
 
+	Matrix4f TranslationMatrix() const;
+
+	Matrix4f ScaleMatrix() const;
+
 		/**
 		 * @brief x value accessor
 		 * @return the value of X
