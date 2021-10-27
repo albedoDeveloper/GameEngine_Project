@@ -173,6 +173,8 @@ public:
 
 	void DrawLine(const Vector3f &from, const Vector3f &to, const Vector3f &color);
 
+	void DrawPoint(const Vector3f &pos, const Vector3f &colour);
+
 	virtual void drawLine(const btVector3 &from, const btVector3 &to, const btVector3 &color);
 
 	virtual void drawContactPoint(const btVector3 &PointOnB, const btVector3 &normalOnB, btScalar distance, int lifeTime, const btVector3 &color);

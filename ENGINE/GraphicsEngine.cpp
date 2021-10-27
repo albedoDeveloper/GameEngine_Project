@@ -151,8 +151,12 @@ void GraphicsEngine::RenderObjects()
 		{
 			GRAPHICS->DrawLine(
 				COLLISION->GetContactCache()[i].col1->GetTransform().GetWorldTransform().GetRelativePosition() + COLLISION->GetContactCache()[i].contactPoints[j].col1LocalPoint,
-				COLLISION->GetContactCache()[i].col1->GetTransform().GetWorldTransform().GetRelativePosition() + COLLISION->GetContactCache()[i].contactPoints[j].col1LocalPoint + COLLISION->GetContactCache()[i].contactPoints[j].worldNormal,
+				COLLISION->GetContactCache()[i].col1->GetTransform().GetWorldTransform().GetRelativePosition() + COLLISION->GetContactCache()[i].contactPoints[j].col1LocalPoint + COLLISION->GetContactCache()[i].contactPoints[j].worldNormal * -1,
 				Vector3f(1, 0, 0)
+			);
+			GRAPHICS->DrawPoint(
+				COLLISION->GetContactCache()[i].col1->GetTransform().GetWorldTransform().GetRelativePosition() + COLLISION->GetContactCache()[i].contactPoints[j].col1LocalPoint,
+				Vector3f(1, 1, 0)
 			);
 		}
 	}
@@ -576,6 +580,40 @@ void GraphicsEngine::DrawLine(const Vector3f &from, const Vector3f &to, const Ve
 	);
 }
 
+void GraphicsEngine::DrawPoint(const Vector3f &pos, const Vector3f &colour)
+{
+	unsigned int VBO;
+	unsigned int VAO;
+	float vertices[3] = {
+		pos.GetX(),
+		pos.GetY(),
+		pos.GetZ(),
+	};
+	Vector3f colourVec(
+		colour.GetX(),
+		colour.GetY(),
+		colour.GetZ()
+	);
+
+	m_debugShader->Use();
+	m_debugShader->SetMat4Uniform("projection", GetCameraProjection());
+	m_debugShader->SetMat4Uniform("view", GetCameraView());
+	m_debugShader->SetVec3Uniform("ourColour", colourVec);
+
+	glPointSize(16);
+	glGenVertexArrays(1, &VAO);
+	glBindVertexArray(VAO);
+	glGenBuffers(1, &VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 3, vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+	glEnableVertexAttribArray(0);
+
+	glDrawArrays(GL_POINTS, 0, 1);
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+}
+
 void GraphicsEngine::drawLine(const btVector3 &from, const btVector3 &to, const btVector3 &color)
 {
 	unsigned int VBO;
@@ -659,5 +697,5 @@ void GraphicsEngine::setDebugMode(int debugMode)
 
 int GraphicsEngine::getDebugMode() const
 {
-	return btIDebugDraw::DBG_DrawWireframe + btIDebugDraw::DBG_DrawContactPoints;
+	return btIDebugDraw::DBG_DrawWireframe;
 }

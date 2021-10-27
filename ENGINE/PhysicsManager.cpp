@@ -107,7 +107,7 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 			invMass2 = rb2->GetInverseMass();
 		}
 
-		const Matrix3f J1invWorld = (rb1->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast() * rb1->GetInertiaTensor() * rb1->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast().Transpose()).Inverse();
+		const Matrix3f J1invWorld = (rb1->GetTransform().GetWorldTransform().GetRelativeOrientation().Inverse().Mat3Cast() * rb1->GetInertiaTensor() * rb1->GetTransform().GetWorldTransform().GetRelativeOrientation().Inverse().Mat3Cast().Transpose()).Inverse();
 		Matrix3f J2invWorld;
 		if (rb2)
 		{
