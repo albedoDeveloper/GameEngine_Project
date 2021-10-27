@@ -141,6 +141,25 @@ void CCharacter::Update()
 			}
 		}
 
+		if (INPUT->GetKeyDown('k'))
+		{
+			static bool toggle = true;
+			if (toggle)
+			{
+				GAMEOBJECT->GetGameObject("light2")->GetCPointLight()->AssignColour(0.7f, 0.7f, 0.7f);
+				GAMEOBJECT->GetGameObject("light2")->GetCPointLight()->AssignAmbientStrength(0.5f);
+				GAMEOBJECT->GetGameObject("lightAnchor")->GetTransform()->SetRelativePosition(5, 2.5, 1);
+				toggle = false;
+			}
+			else
+			{
+				GAMEOBJECT->GetGameObject("light2")->GetCPointLight()->AssignColour(0, 0, 0.7f);
+				GAMEOBJECT->GetGameObject("light2")->GetCPointLight()->AssignAmbientStrength(0.6f);
+				GAMEOBJECT->GetGameObject("lightAnchor")->GetTransform()->SetRelativePosition(4.955, 1.905, 5.275);
+				toggle = true;
+			}
+		}
+
 		if (INPUT->GetKeyDownByCode(KeyCode::ESC))
 		{
 			m_mouseEnabled = false;
