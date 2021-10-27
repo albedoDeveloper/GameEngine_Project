@@ -4,6 +4,7 @@
 #include <time.h>  
 #include <math.h>
 #include "MiscMath.h"
+#include "InputManager.h"
 
 CAgent::CAgent(Transform *parent, GameObject *parentObj):CComponent{ parent, parentObj }
 {
@@ -23,6 +24,40 @@ CAgent::CAgent(Transform *parent, GameObject *parentObj):CComponent{ parent, par
 	
 	
 }
+void CAgent::Render()
+{
+
+	//btVector3 vec1 = btVector3(m_navNodes[0]->GetTransform()->GetWorldTransform().GetRelativePosition().GetX(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetZ());
+	//btVector3 vec2 = btVector3(m_navNodes[50]->GetTransform()->GetRelativePosition().GetX(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetZ());
+
+	Vector3f vec1 = Vector3f(1, 2, 3);
+	Vector3f vec2 = Vector3f(3, 2, 1);
+
+	if (GRAPHICS->m_drawDebug)
+	{
+		//GRAPHICS->DrawLine(vec1, vec2, Vector3f(1.0f, 0.5f, 0.5f));
+
+		if (!path.empty())
+		{
+			NavNode *prevNode = path[0];
+
+			;
+
+			for (auto &curNode : path)
+			{
+
+				GRAPHICS->DrawLine(prevNode->GetTransform()->GetRelativePosition(), curNode->GetTransform()->GetRelativePosition(), Vector3f(1.0f, 0.5f, 0.5f));
+
+				prevNode = curNode;
+
+
+			}
+		}
+
+	}
+
+}
+
 
 void CAgent::AddEmotion(std::string name, float level, float multipler, float emotionNativeChange)
 {
@@ -69,7 +104,8 @@ void CAgent::AiThink()
 		currentState = AiState::MOVE;
 		GetParentObject()->GetCAnimator()->PlayAnimation("agent_walk");
 		auto pTrans = GetParentObject()->GetTransform()->GetRelativePosition();
-		auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetRelativePosition();
+		//auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetRelativePosition();
+		auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetWorldTransform().GetRelativePosition();
 		startLocation = pTrans;
 		endLocation = afforanceTrans;
 
@@ -77,12 +113,34 @@ void CAgent::AiThink()
 		waitTime = (std::rand() % 25 + 15);
 
 		ConvertFloatToEmotion();
+
+		//grab nodes
+		FindNavLocation();
+		FindDestinationLocation(afforanceTrans);
+
+		//clear navNodes
+		came_from.clear();
+		cost_so_far.clear();
+
+		//clear old path
+		path.clear();
+		pathIndex = 0;
+
+		if(navNode != nullptr || destinationNode != nullptr)
+		{
+			//run pathfindign algorithm
+			path = navMesh->DijkstraSearch( navNode, destinationNode, came_from, cost_so_far);
+
+
+			//FollowPath();
+		}
+
 	}
 }
 
 void CAgent::AiMove()
 {
-	FindNavLocation();
+	/*FindNavLocation();*/
 
 	Vector3f startPos{0,0,0};
 	Vector3f endPos{5,1,5};
@@ -100,8 +158,18 @@ void CAgent::AiMove()
 		endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 
 
+	Vector3f dst = afforanceTrans - pTrans;
+
 		//float t = lerpTime / 400;
-		m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pTrans.GetX(), endPos.GetX() - pTrans.GetX(), 1.0f ), (std::lerp(pTrans.GetY(), endPos.GetY(), 1.0f)), std::lerp(pTrans.GetZ(), endPos.GetZ() - pTrans.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);
+		// 
+		if (path.empty())
+		{
+			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pTrans.GetX(), endPos.GetX() - pTrans.GetX(), 1.0f), (std::lerp(pTrans.GetY(), endPos.GetY(), 1.0f)), std::lerp(pTrans.GetZ(), endPos.GetZ() - pTrans.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);
+		}
+		else
+		{
+			FollowPath();
+		}
 
 		//GetParentObject()->GetTransform()->SetRelativePositionV(Vector3f( endPos.GetX() , startPos.GetY(), endPos.GetZ()));
 		//lerpTime += lerpTime * TIME->GetDeltaTime();
@@ -109,10 +177,8 @@ void CAgent::AiMove()
 
 	//if ((std::fabs(pTrans.GetX()) <= std::fabs(afforanceTrans.GetX()) + 1 && std::fabs(pTrans.GetX()) >= std::fabs(afforanceTrans.GetX()) - 1) && (std::fabs(pTrans.GetZ()) <= std::fabs(afforanceTrans.GetZ()) + 1 && std::fabs(pTrans.GetZ()) >= std::fabs(afforanceTrans.GetZ()) - 1))
 	//Vector3f dst = afforanceTrans - pTrans;
-	Vector3f dst = endPos - startPos;
 	if(dst.Magnitude() < 2)
 	{
-		std::cout<<"Test"<<std::endl;
 		currentState = AiState::ACTION;
 		lerpTime = 0;
 
@@ -123,6 +189,73 @@ void CAgent::AiMove()
 			GetParentObject()->GetCSound()->PlaySound(currentAffordance->sound, 0, true);
 	}
 }
+
+void CAgent::FollowPath()
+{
+
+	if (!path.empty())
+	{
+		NavNode* prevNode = path[0];
+		NavNode* nextNode = path[0];
+
+		//std::cout << "Path Start " << std::endl;
+
+		/*for (auto &curNode : path)
+		{
+			Vector3f pos = prevNode->GetTransform()->GetWorldTransform().GetRelativePosition();
+			Vector3f endPos = curNode->GetTransform()->GetWorldTransform().GetRelativePosition();
+
+			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);
+
+			prevNode = curNode;
+		}*/
+
+
+
+		/*if (INPUT->GetKeyDown('x'))
+		{
+			if(pathIndex < path.size())
+			pathIndex++;
+
+		}*/
+
+
+		if(pathIndex < path.size() - 1)
+		{
+			nextNode = path[pathIndex];
+
+			Vector3f pos = GetParentObject()->GetTransform()->GetRelativePosition();
+			Vector3f endPos = nextNode->GetTransform()->GetWorldTransform().GetRelativePosition();
+
+			Vector3f dst = endPos - GetParentObject()->GetTransform()->GetRelativePosition();
+
+			if (dst.Magnitude() > 1)
+			{
+				m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
+				//m_parent->GetTransform()->SetRelativePosition(endPos.GetX(),endPos.GetY(), endPos.GetZ());
+			}
+			
+			if (dst.Magnitude() < 1)
+			{
+				prevNode = path[pathIndex];
+				pathIndex++;
+			}
+
+		}
+		else
+		{
+			std::cout <<"destination found" << std::endl;
+			Vector3f pos = GetParentObject()->GetTransform()->GetRelativePosition();
+			Vector3f endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
+			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
+			//m_parent->GetTransform()->SetRelativePosition(endPos.GetX(),endPos.GetY(), endPos.GetZ());
+		}
+
+		//std::cout << "Path End " << std::endl;
+	}
+	
+}
+
 
 void CAgent::AiAction()
 {
@@ -284,12 +417,12 @@ NavNode* CAgent::FindNavLocation()
 	}
 	else
 	{
-		std::cout << "pos = " << m_transform.GetWorldTransform().GetRelativePosition().GetX() << std::endl;
+		//std::cout << "pos = " << m_transform.GetWorldTransform().GetRelativePosition().GetX() << std::endl;
 
 		navNode = navMesh->FindNearest(m_transform.GetWorldTransform().GetRelativePosition());
-		navNode->SetActive(false);
+		//navNode->SetActive(false);
 
-		std::cout << "Agent " << this->GetParentObject()->GetFactoryKey() << " dst at x =" << navNode->GetXPos() << " z = " << navNode->GetZPos() << std::endl;
+		//std::cout << "Agent " << this->GetParentObject()->GetFactoryKey() << " dst at x =" << navNode->GetXPos() << " z = " << navNode->GetZPos() << std::endl;
 	}
 
 	//startLocation = navNode->GetTransform()->GetWorldTransform().GetRelativePosition();
@@ -314,12 +447,12 @@ NavNode* CAgent::FindDestinationLocation(Vector3f position)
 	}
 	else
 	{
-		std::cout << "Affordance pos = " << position.GetX() << ", " << position.GetY() << ", " << position.GetZ() << std::endl;
+		//std::cout << "Affordance pos = " << position.GetX() << ", " << position.GetY() << ", " << position.GetZ() << std::endl;
 
 		destinationNode = navMesh->FindNearest(position);
 		destinationNode->SetActive(false);
 
-		std::cout << "Affordance " << this->GetParentObject()->GetFactoryKey() << " dst at x =" << destinationNode->GetXPos() << " z = " << destinationNode->GetZPos() << std::endl;
+		//std::cout << "Affordance " << this->GetParentObject()->GetFactoryKey() << " dst at x =" << destinationNode->GetXPos() << " z = " << destinationNode->GetZPos() << std::endl;
 	}
 
 	//endLocation = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
