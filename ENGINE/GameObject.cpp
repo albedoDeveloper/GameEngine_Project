@@ -71,16 +71,6 @@ CAgent *GameObject::GetCAgent()
 	return GetComponent<CAgent>();
 }
 
-CNavMesh *GameObject::AddCNavMesh()
-{
-	return AddComponent<CNavMesh>();
-}
-
-CNavMesh *GameObject::GetCNavMesh()
-{
-	return GetComponent<CNavMesh>();
-}
-
 void GameObject::SetStatic(bool isStatic)
 {
 	m_static = isStatic;

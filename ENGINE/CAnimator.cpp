@@ -76,16 +76,9 @@ void  CAnimator::CalculateBoneTransform(const Animation::AssimpNodeData* node, M
 	Matrix4f globalTransformation = parentTransform * nodeTransform;
 	auto boneInfoMap = m_CurrentAnimation->GetBoneIDMap();
 	
-	if (boneInfoMap.find(nodeName) != boneInfoMap.end() )
+	if (boneInfoMap.find(nodeName) != boneInfoMap.end())
 	{
-		try
-		{
-			m_FinalBoneMatrices.at(boneInfoMap[nodeName].id) = globalTransformation * boneInfoMap[nodeName].offset;
-		}
-		catch(...)
-		{
-
-		}
+		m_FinalBoneMatrices[boneInfoMap[nodeName].id] = globalTransformation * boneInfoMap[nodeName].offset;
 	}
 
 	for (int i = 0; i < node->childrenCount; i++)

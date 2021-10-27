@@ -17,7 +17,6 @@
 #include "LightManager.h"
 #include "ShadowMapper.h"
 #include <SDL2/SDL.h>
-#include "CNavMesh.h"
 #include <bulletphysics/btBulletCollisionCommon.h>
 
 class CCamera;
@@ -111,16 +110,6 @@ public:
 		 * @param trans Transform of the model
 		*/
 	void DrawModel(AModel *model, const Transform &trans, const Shader *m_shader, bool noTexture);
-
-		/*
-		 * @brief Renders debug navmesh
-		*/
-	void DrawDebugNavMesh(CNavMesh *navMesh, const Transform &worldTrans);
-
-		/*
-		 * @brief Renders a cube at transform
-		*/
-	std::vector<float> DrawCube(const Transform &worldTrans, const double color[3], float scale);
 
 		/**
 		 * @brief retrieves the ID by which a texture is stored in the graphics library

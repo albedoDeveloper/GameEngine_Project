@@ -4,7 +4,6 @@
 #include <iostream>
 #include <unordered_map>
 #include "CAffordanceManager.h"
-#include "CNavMesh.h"
 
 
 class CAgent : public CComponent
@@ -56,8 +55,6 @@ class CAgent : public CComponent
 		void AiThink();
 		void AiMove();
 		void AiAction();
-		NavNode* FindNavLocation();
-		NavNode* FindDestinationLocation(Vector3f position);
 
 	public:
 		CAgent(Transform *parent, GameObject *parentObj);
@@ -71,10 +68,6 @@ class CAgent : public CComponent
 		std::unordered_map<std::string, Emotion> emotions;
 		std::unordered_map<std::string, float> traits;
 
-		CNavMesh* navMesh;
-		NavNode* navNode;
-		NavNode* destinationNode;
-
 		Vector3f startLocation;
 		Vector3f endLocation;
 		
@@ -85,7 +78,6 @@ class CAgent : public CComponent
 		AiState currentState = AiState::THINK;
 
 		std::string lowestName;
-		//std::string currentCircumplex;
 
 		float time = 0;
 		float lerpTime = 0;

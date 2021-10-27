@@ -102,11 +102,6 @@ void CStaticMesh::Render()
 		m_shader->SetIntUniform("animate", 0);
 	}
 	
-	if (normalMapping)
-		m_shader->SetIntUniform("normalMapping", 1);
-	else
-		m_shader->SetIntUniform("normalMapping", 0);
-
 	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), m_shader, false);
 }
 
@@ -122,11 +117,6 @@ void CStaticMesh::Render(Shader &shaderOveride, bool noTexture)
 		shaderOveride.SetIntUniform("animate", 0);
 	}
 	
-	if(normalMapping)
-		shaderOveride.SetIntUniform("normalMapping", 1);
-	else
-		shaderOveride.SetIntUniform("normalMapping", 0);
-
 	GRAPHICS->DrawModel(m_model, m_transform.GetWorldTransform(), &shaderOveride, noTexture);
 }
 
@@ -174,9 +164,4 @@ void CStaticMesh::DrawToImGui()
 		ImGui::Text("AModel Name : "); ImGui::SameLine(); ImGui::Text(m_model->Key().c_str());
 		ImGui::TreePop();
 	}
-}
-
-void CStaticMesh::RemoveNormalMapping()
-{
-	normalMapping = false;
 }
