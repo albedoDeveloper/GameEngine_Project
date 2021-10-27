@@ -71,9 +71,9 @@ void CAgent::AiThink()
 		auto pTrans = GetParentObject()->GetTransform()->GetRelativePosition();
 		auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetRelativePosition();
 		startLocation = pTrans;
-		endLocation = afforanceTrans;
 
-		GetParentObject()->GetTransform()->SetRelativeOrientation(LookAt(startLocation, endLocation, GetParentObject()->GetTransform()->GetRelativeUp()).ToQuat().GetInverse());
+		
+		
 		waitTime = (std::rand() % 25 + 15);
 
 		ConvertFloatToEmotion();
@@ -99,6 +99,7 @@ void CAgent::AiMove()
 	if(destinationNode != NULL)
 		endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 
+	GetParentObject()->GetTransform()->SetRelativeOrientation(LookAt(startLocation, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).ToQuat().Normalize().GetInverse());
 
 		//float t = lerpTime / 400;
 		m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pTrans.GetX(), endPos.GetX() - pTrans.GetX(), 1.0f ), (std::lerp(pTrans.GetY(), endPos.GetY(), 1.0f)), std::lerp(pTrans.GetZ(), endPos.GetZ() - pTrans.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);

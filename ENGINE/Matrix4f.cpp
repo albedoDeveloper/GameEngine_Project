@@ -82,3 +82,7 @@ Quaternion Matrix4f::ToQuat()
 }
 
 
+Matrix4f Matrix4f::Inverse() 
+{
+	return glm::inverse(m_mat);
+}
