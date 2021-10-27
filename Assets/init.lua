@@ -39,13 +39,6 @@ LoadScript("girl2script", "girl2script.lua")
 LoadModel("agent_dance","ai_agent/dance.fbx")
 --LoadModel("agent_walk","ai_agent/walk.fbx")
 
-SpawnGameObject("book2")
-GetGameObject("book2"):AddCStaticMesh():AssignModel("book")
-GetGameObject("book2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1,true, 31)
-GetGameObject("book2"):AddCRigidBody():SetMass(2)
-GetGameObject("book2"):GetTransform():SetRelativePosition(-2,2,0)
-GetGameObject("book2"):GetCStaticMesh():RemoveNormalMapping()
-
 SpawnGameObject("fridge1"):SetStatic(true)
 GetGameObject("fridge1"):AddCStaticMesh():AssignModel("fridge1")
 GetGameObject("fridge1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
@@ -351,7 +344,7 @@ GetGameObject("bar_floor_rod"):AddCStaticMesh():AssignModel("bar_floor_rod")
 
 SpawnGameObject("crate"):SetStatic(false)
 GetGameObject("crate"):AddCStaticMesh():AssignModel("crate")
-GetGameObject("crate"):GetTransform():SetRelativePosition(-7.744999885559082, 1.315000057220459, -0.4449999928474426)
+GetGameObject("crate"):GetTransform():SetRelativePosition(-8.744999885559082, 0.815000057220459, -1.4449999928474426)
 GetGameObject("crate"):GetTransform():RotateLocalX(45)
 GetGameObject("crate"):AddCScript():AssignScript("rotate")
 
@@ -390,8 +383,8 @@ GetGameObject("light1"):AddCStaticMesh():AssignModel("axis")
 
 SpawnGameObject("light2"):SetStatic(false)
 GetGameObject("light2"):AddCPointLight()
-GetGameObject("light2"):GetCPointLight():AssignColour(0.1,0.1,0.1)
-GetGameObject("light2"):GetCPointLight():AssignAmbientStrength(0.6)
+GetGameObject("light2"):GetCPointLight():AssignColour(0,0,0.7)
+GetGameObject("light2"):GetCPointLight():AssignAmbientStrength(0.7)
 GetGameObject("light2"):SetParentObject("lightAnchor")
 GetGameObject("light2"):AddCStaticMesh():AssignModel("axis")
 GetGameObject("light2"):GetTransform():Translate(0.3,0,0)
@@ -410,7 +403,8 @@ GetGameObject("NavMesh"):AddCNavMesh();
 
 
 SpawnGameObject("player");
-GetGameObject("player"):GetTransform():SetRelativePosition(0, 2, 0);
+GetGameObject("player"):GetTransform():SetRelativePosition(8.9, 1.4, -3.2);
+GetGameObject("player"):GetTransform():RotateLocalY(-120);
 GetGameObject("player"):AddCCollider():AddBoxCollider(0.25, 1.4, 0.25, 0 ,0, 0, false, 1, false, 31);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();

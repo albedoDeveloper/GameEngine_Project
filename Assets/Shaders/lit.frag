@@ -84,13 +84,12 @@ void main()
     vec3 norm =  normalize(vs_in.Normal);
     
     if (animate == 0){
-        norm = normalize(bumpNormal) * normalize(vs_in.Normal);
+        norm = normalize(vs_in.Normal);
     }
 
     if(normalMapping == 0){
          norm = normalize(vs_in.Normal);
     }
-
 
     vec3 viewDir = normalize(viewPos - vs_in.FragPos);
     vec3 result = vec3(0,0,0);
