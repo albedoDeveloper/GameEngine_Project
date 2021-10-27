@@ -112,6 +112,30 @@ void CollisionManager::RemoveColliderToWorld(CCollider &c)
 	m_collisionWorld.removeCollisionObject(c.m_colObj);
 }
 
+CCollider *CollisionManager::Raycast(const Vector3f &from, const Vector3f &to)
+{
+	m_colObjCache = nullptr;
+	m_collisionWorld.rayTest(
+		btVector3(from.GetX(), from.GetY(), from.GetZ()),
+		btVector3(to.GetX(), to.GetY(), to.GetZ()),
+		*COLLISION
+	);
+	if (m_colObjCache)
+	{
+		return COLLISION->GetCColliderRegistration(m_colObjCache);
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+btScalar CollisionManager::addSingleResult(btCollisionWorld::LocalRayResult &rayResult, bool normalInWorldSpace)
+{
+	m_colObjCache = const_cast<btCollisionObject *>(rayResult.m_collisionObject);
+	return btScalar();
+}
+
 void CollisionManager::FillManifoldAB(unsigned manifoldIndex)
 {
 	m_contactCache.push_back(Manifold(

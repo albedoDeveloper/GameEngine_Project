@@ -406,12 +406,15 @@ GetGameObject("NavMesh"):AddCNavMesh();
 
 
 SpawnGameObject("player");
-GetGameObject("player"):GetTransform():SetRelativePosition(8.9, 1.4, -3.2);
+GetGameObject("player"):GetTransform():SetRelativePosition(8.9, 1.6, -3.2);
 GetGameObject("player"):GetTransform():RotateLocalY(-120);
 GetGameObject("player"):AddCCollider():AddBoxCollider(0.25, 1.4, 0.25, 0 ,0, 0, false, 1, false, 31);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
 GetGameObject("player"):GetCCamera():GetTransform():Translate(0,0.5,0)
+GetGameObject("player"):AddCSound():LoadSound("gravity_pickup.wav")
+GetGameObject("player"):GetCSound():LoadSound("gravity_hold.wav")
+GetGameObject("player"):GetCSound():LoadSound("gravity_throw.wav")
 
 SpawnGameObject("endscreen"):SetActive(false)
 GetGameObject("endscreen"):AddCStaticMesh():AssignModel("endscreen")

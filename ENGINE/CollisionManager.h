@@ -49,7 +49,7 @@ public:
 /**
  * @brief A singleton that manages collisions between objects
 */
-class CollisionManager : btCollisionWorld::ContactResultCallback
+class CollisionManager : btCollisionWorld::ContactResultCallback, btCollisionWorld::RayResultCallback
 {
 public:
 		/** @brief wait tiem for collisions */
@@ -92,6 +92,10 @@ public:
 
 	void RemoveColliderToWorld(CCollider &c);
 
+	CCollider *Raycast(const Vector3f &from, const Vector3f &to);
+
+	virtual btScalar addSingleResult(btCollisionWorld::LocalRayResult &rayResult, bool normalInWorldSpace);
+
 private:
 	/** @brief The beginning size, before alteration, of the collider array */
 	const static int m_initialSize = 50;
@@ -108,6 +112,8 @@ private:
 	std::unordered_map<const btCollisionObject *, CCollider *> m_collisionBodyMap;
 
 	std::vector<Manifold> m_contactCache;
+
+	btCollisionObject *m_colObjCache;
 
 	btDbvtBroadphase m_broadphase;
 	btDefaultCollisionConfiguration m_config;

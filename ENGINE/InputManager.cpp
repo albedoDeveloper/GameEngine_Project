@@ -46,6 +46,14 @@ void InputManager::CheckKeyDown(SDL_Event *e)
 {
 	switch (e->key.keysym.sym)
 	{
+	case SDLK_e:
+		e_Key.held = true;
+		if (!e->key.repeat)
+		{
+			e_Key.held = true;
+			e_Key.down = true;
+		}
+		break;
 	case SDLK_w:
 		w_Key.held = true;
 		if (!e->key.repeat)
@@ -161,6 +169,11 @@ void InputManager::CheckKeyUp(SDL_Event *e)
 {
 	switch (e->key.keysym.sym)
 	{
+	case SDLK_e:
+		e_Key.up = true;
+		e_Key.held = false;
+		e_Key.down = false;
+		break;
 	case SDLK_w:
 		w_Key.up = true;
 		w_Key.held = false;
@@ -331,6 +344,9 @@ void InputManager::ResetInputValues()
 
 void InputManager::ResetKeyValues()
 {
+	e_Key.down = false;
+	e_Key.up = false;
+
 	w_Key.down = false;
 	//w_Key.held = false;
 	w_Key.up = false;
@@ -447,6 +463,10 @@ bool InputManager::GetKey(char c)
 {
 	switch (c)
 	{
+	case 'e':
+	case 'E':
+		return  e_Key.held || e_Key.down;
+		break;
 	case 'w':
 	case 'W':
 		return  w_Key.held || w_Key.down;
@@ -547,6 +567,10 @@ bool InputManager::GetKeyDown(char c)
 {
 	switch (c)
 	{
+	case 'e':
+	case 'E':
+		return  e_Key.down;
+		break;
 	case 'w':
 	case 'W':
 		return  w_Key.down;
@@ -640,6 +664,10 @@ bool InputManager::GetKeyUp(char c)
 {
 	switch (c)
 	{
+	case 'e':
+	case 'E':
+		return  e_Key.up;
+		break;
 	case 'w':
 	case 'W':
 		return  w_Key.up;

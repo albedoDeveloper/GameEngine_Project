@@ -250,6 +250,9 @@ private:
 	int prevMouseY = 0;
 
 		/** @brief the W key*/
+	Key e_Key;
+
+		/** @brief the W key*/
 	Key w_Key;
 
 		/** @brief the A key*/
