@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Transform.h"
+#include "GameObject.h"
 
 TEST(TestCaseName, TestName)
 {
@@ -44,4 +44,12 @@ TEST(QuaternionClass, GetYTest)
 	//q.Rotate()
 	//EXPECT_FLOAT_EQ(q.GetEulerAnglesDegrees().GetY(), 180.f);
 	//EXPECT_FLOAT_EQ(q.GetEulerAnglesDegrees().GetZ(), 0.f);
+}
+
+
+TEST(InertiaTensor, InertiaTensor1)
+{
+	GameObject obj;
+	//CCollider &col = *obj.AddCCollider();
+	//col.AddBoxCollider(0.5, 0.5, 0.1, 0, 0, 0, false, 0, true, 31);
 }

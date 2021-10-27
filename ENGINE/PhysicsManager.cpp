@@ -107,11 +107,11 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 			invMass2 = rb2->GetInverseMass();
 		}
 
-		const Matrix3f J1invWorld = (rb1->GetTransform().GetWorldTransform().GetRelativeOrientation().Inverse().Mat3Cast() * rb1->GetInertiaTensor() * rb1->GetTransform().GetWorldTransform().GetRelativeOrientation().Inverse().Mat3Cast().Transpose()).Inverse();
+		const Matrix3f J1invWorld = rb1->GetInverseWorldInertiaTensor();
 		Matrix3f J2invWorld;
 		if (rb2)
 		{
-			J2invWorld = (rb2->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast() * rb2->GetInertiaTensor() * rb2->GetTransform().GetWorldTransform().GetRelativeOrientation().Mat3Cast().Transpose()).Inverse();
+			J2invWorld = rb2->GetInverseWorldInertiaTensor();
 		}
 		const Vector3f angVel1 = rb1->GetAngularVelocity();
 		Vector3f angVel2;
@@ -154,6 +154,7 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 			impulse /= numContactPoints;
 
 			// linear impulse - seperating velocity
+			//Vector3f accelerationInducedVel1 = rb1->GetGravity() * TIME->GetDeltaTime();
 			Vector3f rb1NewVel = rb1->GetVelocity() + (impulse * normal) * rb1->GetInverseMass();
 			rb1->SetVelocity(rb1NewVel);
 			if (rb2)

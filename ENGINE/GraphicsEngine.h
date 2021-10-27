@@ -17,7 +17,6 @@
 #include "LightManager.h"
 #include "ShadowMapper.h"
 #include <SDL2/SDL.h>
-#include <glad/glad.h>
 #include <bulletphysics/btBulletCollisionCommon.h>
 
 class CCamera;

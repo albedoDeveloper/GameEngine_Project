@@ -22,7 +22,7 @@ public:
 	void SetAngularVelocity(float x, float y, float z);
 	const Vector3f &GetAngularVelocity() const;
 	const Matrix3f &GetInertiaTensor() const;
-	const Matrix3f &GetWorldInertiaTensor() const;
+	const Matrix3f &GetInverseWorldInertiaTensor() const;
 	void AddAngularVelocity(const Vector3f &vel);
 	void SubtractAngularVelocity(const Vector3f &vel);
 	bool IsGravityEnabled() const;

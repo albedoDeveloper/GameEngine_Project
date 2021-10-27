@@ -10,6 +10,7 @@
 #include "Matrix4f.h"
 #include "MiscMath.h"
 #include "Utility.h"
+#include <glad/glad.h>
 
 extern "C"
 {
@@ -143,22 +144,6 @@ void GraphicsEngine::RenderObjects()
 	if (m_drawDebug)
 	{
 		COLLISION->DrawDebug();
-	}
-
-	for (int i = 0; i < COLLISION->GetContactCache().size(); i++)
-	{
-		for (int j = 0; j < COLLISION->GetContactCache()[i].contactPoints.size(); j++)
-		{
-			GRAPHICS->DrawLine(
-				COLLISION->GetContactCache()[i].col1->GetTransform().GetWorldTransform().GetRelativePosition() + COLLISION->GetContactCache()[i].contactPoints[j].col1LocalPoint,
-				COLLISION->GetContactCache()[i].col1->GetTransform().GetWorldTransform().GetRelativePosition() + COLLISION->GetContactCache()[i].contactPoints[j].col1LocalPoint + COLLISION->GetContactCache()[i].contactPoints[j].worldNormal * -1,
-				Vector3f(1, 0, 0)
-			);
-			GRAPHICS->DrawPoint(
-				COLLISION->GetContactCache()[i].col1->GetTransform().GetWorldTransform().GetRelativePosition() + COLLISION->GetContactCache()[i].contactPoints[j].col1LocalPoint,
-				Vector3f(1, 1, 0)
-			);
-		}
 	}
 }
 
@@ -697,5 +682,5 @@ void GraphicsEngine::setDebugMode(int debugMode)
 
 int GraphicsEngine::getDebugMode() const
 {
-	return btIDebugDraw::DBG_DrawWireframe;
+	return btIDebugDraw::DBG_DrawWireframe + btIDebugDraw::DBG_DrawContactPoints;
 }

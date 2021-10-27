@@ -251,13 +251,14 @@ float CCollider::GetXHalfSize() const
 
 void CCollider::SetIsActive(bool isActive)
 {
-	CComponent::SetIsActive(isActive);
-	if (isActive)
+	if (isActive && !m_active)
 	{
+		m_active = true;
 		COLLISION->AddColliderToWorld(*this);
 	}
-	else
+	else if (!isActive && m_active)
 	{
+		m_active = false;
 		COLLISION->RemoveColliderToWorld(*this);
 	}
 }

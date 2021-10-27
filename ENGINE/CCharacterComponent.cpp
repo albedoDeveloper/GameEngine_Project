@@ -95,7 +95,7 @@ void CCharacter::Start()
 		obj->AddComponent<CCollider>()->AddBoxCollider(0, 0, 0, 0, 0, 0, true, 0, true, 31);
 		obj->AddComponent<CRigidBody>()->SetMass(2);
 		obj->GetComponent<CRigidBody>()->SetGravityEnabled(true);
-		obj->GetComponent<CRigidBody>()->SetRestitution(0.2f);
+		obj->GetComponent<CRigidBody>()->SetRestitution(0.0f);
 		obj->SetActive(false);
 		m_bookPool[i] = obj;
 	}
