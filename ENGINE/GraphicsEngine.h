@@ -17,6 +17,7 @@
 #include "LightManager.h"
 #include "ShadowMapper.h"
 #include <SDL2/SDL.h>
+#include <glad/glad.h>
 #include "CNavMesh.h"
 #include <bulletphysics/btBulletCollisionCommon.h>
 
@@ -63,8 +64,6 @@ public:
 	void AddDirectionalLight(const CDirectionalLight &light);
 
 	void WarpMouseCentreWindow() const;
-
-	void DrawPoint(const Vector3f &pos, const Vector3f &colour);
 
 		/**
 		 * @brief Renders all visible objects

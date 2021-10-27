@@ -91,13 +91,11 @@ void CCharacter::Start()
 	{
 		std::string name = BOOK_NAME_PREFIX + std::to_string(i);
 		GameObject *obj = GAMEOBJECT->SpawnGameObject(name);
-		obj->AddCStaticMesh()->AssignModelByKey("crate_small");
+		obj->AddCStaticMesh()->AssignModelByKey("book");
 		obj->AddComponent<CCollider>()->AddBoxCollider(0, 0, 0, 0, 0, 0, true, 0, true, 31);
 		obj->AddComponent<CRigidBody>()->SetMass(2);
-		obj->GetComponent<CRigidBody>()->SetGravityEnabled(true);
-		obj->GetComponent<CRigidBody>()->SetGravity(Vector3f(0, -4, 0));
-		obj->GetComponent<CRigidBody>()->SetRestitution(0.0f);
-		obj->GetComponent<CRigidBody>()->SetDamping(0.4f);
+		obj->GetComponent<CRigidBody>()->SetGravityEnabled(false);
+		obj->GetComponent<CRigidBody>()->SetRestitution(0.2f);
 		obj->SetActive(false);
 		m_bookPool[i] = obj;
 	}
@@ -200,7 +198,7 @@ void CCharacter::Update()
 				);
 				m_bookPool[bookPoolIndex]->GetTransform()->SetRelativePositionV(
 					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() +
-					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 1.4f
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 0.7f
 				);
 				m_bookPool[bookPoolIndex]->GetComponent<CRigidBody>()->SetVelocity(
 					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 1.5f

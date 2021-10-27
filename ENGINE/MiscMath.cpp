@@ -4,9 +4,9 @@
 void Decompose(const Matrix4f &m, Vector3f &scaleOut, Quaternion &rotationOut, Vector3f &positionOut)
 {
 	glm::mat4 mat(m.m_mat);
-	glm::vec3 scale(1.f, 1.f, 1.f);
-	glm::quat rot(1.f, 0.f, 0.f, 0.f);
-	glm::vec3 pos(0.f, 0.f, 0.f);
+	glm::vec3 scale(scaleOut.GetX(), scaleOut.GetY(), scaleOut.GetZ());
+	glm::quat rot(rotationOut.GetW(), rotationOut.GetX(), rotationOut.GetY(), rotationOut.GetZ());
+	glm::vec3 pos(positionOut.GetX(), positionOut.GetY(), positionOut.GetZ());
 	glm::fvec3 temp1(0.f, 0.f, 0.f);
 	glm::vec4 temp2(0.f, 0.f, 0.f, 0.f);
 

@@ -8,9 +8,6 @@ CNavMesh::CNavMesh(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj }
 {
 	GenerateNavMesh();
-
-	width = 24;
-	length = 10;
 }
 
 void CNavMesh::Start()
@@ -28,7 +25,7 @@ void CNavMesh::Update()
 
 	if (INPUT->GetKeyDown('x'))
 	{
-		if (increment < 120)
+		if (increment < 99)
 		{
 			increment++;
 		}
@@ -47,18 +44,18 @@ void CNavMesh::Render()
 	//btVector3 vec1 = btVector3(m_navNodes[0]->GetTransform()->GetWorldTransform().GetRelativePosition().GetX(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetZ());
 	//btVector3 vec2 = btVector3(m_navNodes[50]->GetTransform()->GetRelativePosition().GetX(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetZ());
 
-	Vector3f vec1 = Vector3f(1,2,3);
-	Vector3f vec2 = Vector3f(3,2,1);
+	btVector3 vec1 = btVector3(1,2,3);
+	btVector3 vec2 = btVector3(3,2,1);
 
 	if (GRAPHICS->m_drawDebug)
 	{
 		GRAPHICS->DrawDebugNavMesh(this, m_transform.GetWorldTransform());
 
-		//GRAPHICS->DrawLine(vec1, vec2, Vector3f(1.0f, 0.5f, 0.5f));
+		GRAPHICS->drawLine(vec1, vec2, btVector3(1.0f, 0.5f, 0.5f));
 
 	}
 
-}
+	}
 
 void CNavMesh::Save(nlohmann::json &j)
 {
@@ -83,11 +80,15 @@ void CNavMesh::GenerateNavMesh()
 		for (int z = -5; z < 5; z++)
 		{
 			i++;
-			bool active = !AssignBarriers(x,z);
-			bool barrier = AssignBarriers(x, z);
+			bool active = true;
+			bool barrier = false;
 			
-			//assign barriers
-			
+			//neighbour scan test
+			if (z == 0 && (x == -1 || x == -2 || x == -3 || x == -4 || x == -5 || x == 0 || x == 1 || x == 2 || x == 3 || x == 4 || x == 5))
+			{
+				active = false;
+				barrier = true;
+			}
 
 			NavNode *newNode = new NavNode(this, x, z,active,barrier);
 			m_navNodes.emplace_back(newNode);
@@ -114,29 +115,9 @@ void CNavMesh::GenerateNavMesh()
 	
 }
 
-bool CNavMesh::AssignBarriers(int x, int z)
-{
-	bool returnBool = false;
-
-	//COLLISION.
-
-	if (z == 0 && (x == -1 || x == -2 || x == -3 || x == -4 || x == -5 || x == 0 || x == 1 || x == 2 || x == 3 || x == 4 || x == 5))
-	{
-		returnBool = true;
-	}
-
-	return returnBool;
-}
-
 std::vector<NavNode *> CNavMesh::GetNavNodes()
 {
 	return m_navNodes;
-}
-
-
-Graph CNavMesh::GetNodeGraph()
-{
-	return nodeGraph;
 }
 
 NavNode* CNavMesh::FetchNode(int x, int z)
@@ -224,7 +205,7 @@ void CNavMesh::Scan(int i)
 
 	if (m_navNodes[i] != NULL)
 	{
-		DijkstraSearch(m_navNodes[0], m_navNodes[i], came_from, cost_so_far);
+		DijkstraSearch(nodeGraph, m_navNodes[0], m_navNodes[i], came_from, cost_so_far);
 
 		//reconstruct_path(m_navNodes[0], m_navNodes[i], came_from);
 	}
@@ -268,14 +249,11 @@ std::unordered_map<NavNode* , NavNode* > CNavMesh::breadth_first_search(Graph gr
 	return came_from;
 }
 
-std::vector<NavNode *> CNavMesh::DijkstraSearch(
-	NavNode* start, NavNode* goal,
+void CNavMesh::DijkstraSearch(
+	Graph graph, NavNode* start, NavNode* goal,
 	std::unordered_map<NavNode*, NavNode *> &came_from,
 	std::unordered_map<NavNode*, double> &cost_so_far)
 {
-
-	std::vector<NavNode *> path;
-
 	PriorityQueue<NavNode*, double> frontier;
 	frontier.put(start, 0);
 
@@ -299,7 +277,7 @@ std::vector<NavNode *> CNavMesh::DijkstraSearch(
 			break;
 		}
 
-		for (NavNode *next : nodeGraph.neighbors(current))
+		for (NavNode *next : graph.neighbors(current))
 		{
 			double new_cost = cost_so_far[current] + 1;
 			//double new_cost = cost_so_far[current] + graph.cost(current, next);
@@ -322,10 +300,8 @@ std::vector<NavNode *> CNavMesh::DijkstraSearch(
 
 	if (!isEmpty)
 	{
-		path = reconstruct_path(start,goal,came_from);
+		reconstruct_path(start,goal,came_from);
 	}
-
-	return path;
 }
 
 std::vector<NavNode*> CNavMesh::reconstruct_path(

@@ -111,7 +111,6 @@ lua_State *ScriptingEngine::NewState()
 		.addFunction("GetCCollider", &GameObject::GetCCollider)
 		.addFunction("AddCAnimator", &GameObject::AddCAnimator)
 		.addFunction("AddCRigidBody", &GameObject::AddCRigidBody)
-		.addFunction("GetCRigidBody", &GameObject::GetCRigidBody)
 		.addFunction("GetCAnimator", &GameObject::GetCAnimator)
 		.addFunction("AddCAffordanceManager", &GameObject::AddCAffordanceManager)
 		.addFunction("GetCAffordanceManager", &GameObject::GetCAffordanceManager)
@@ -163,7 +162,6 @@ lua_State *ScriptingEngine::NewState()
 		.deriveClass<CRigidBody, CComponent>("CRigidBody")
 		.addFunction("SetMass", &CRigidBody::SetMass)
 		.addFunction("SetVelocity", &CRigidBody::SetVelocity)
-		.addFunction("SetAngularVelocity", &CRigidBody::SetAngularVelocity)
 		.endClass();
 
 	getGlobalNamespace(Lbuff)
@@ -205,7 +203,7 @@ lua_State *ScriptingEngine::NewState()
 		.addFunction("AddEmotion", &CAgent::AddEmotion)
 		.addFunction("AddTrait", &CAgent::AddTrait)
 		.endClass();
-
+	
 	getGlobalNamespace(Lbuff)
 		.beginClass<CComponent>("CComponent")
 		.endClass()
@@ -225,7 +223,7 @@ lua_State *ScriptingEngine::NewState()
 	getGlobalNamespace(Lbuff)
 		.beginClass<CComponent>("CComponent")
 		.endClass()
-		.deriveClass<CNavMesh, CComponent>("CNavMesh")
+		.deriveClass<CNavMesh,CComponent>("CNavMesh")
 		.endClass();
 
 	getGlobalNamespace(Lbuff)

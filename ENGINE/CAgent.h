@@ -56,9 +56,6 @@ class CAgent : public CComponent
 		void AiThink();
 		void AiMove();
 		void AiAction();
-
-		void FollowPath();
-
 		NavNode* FindNavLocation();
 		NavNode* FindDestinationLocation(Vector3f position);
 
@@ -71,23 +68,12 @@ class CAgent : public CComponent
 
 		}
 
-		/**
-		 * @brief renders the navmesh
-		*/
-		virtual void Render();
-
 		std::unordered_map<std::string, Emotion> emotions;
 		std::unordered_map<std::string, float> traits;
 
 		CNavMesh* navMesh;
 		NavNode* navNode;
 		NavNode* destinationNode;
-
-		std::vector<NavNode* > path;
-
-		int pathIndex = 0;
-		std::unordered_map<NavNode *, NavNode *> came_from;
-		std::unordered_map<NavNode *, double> cost_so_far;
 
 		Vector3f startLocation;
 		Vector3f endLocation;
@@ -104,8 +90,6 @@ class CAgent : public CComponent
 		float time = 0;
 		float lerpTime = 0;
 		int waitTime = 0;
-
-
 		void AddEmotion(std::string name, float level, float multiplier, float emotionNativeChange);
 		
 		//-1.0f will make the ai hate it

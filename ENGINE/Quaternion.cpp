@@ -12,20 +12,14 @@ Quaternion::Quaternion(float x, float y, float z, float w)
 	: m_quat(glm::quat(w, x, y, z))
 {}
 
-Quaternion Quaternion::Inverse() const
+Quaternion Quaternion::Conjugate() const
 {
-	return glm::inverse(m_quat);
+	return glm::conjugate(m_quat);
 }
 
 void Quaternion::Rotate(float degrees, const Vector3f &axis)
 {
 	m_quat = glm::rotate(m_quat, glm::radians(degrees), glm::vec3(axis.GetX(), axis.GetY(), axis.GetZ()));
-	Normalize();
-}
-
-float Quaternion::GetMagnitude() const
-{
-	return glm::length(m_quat);
 }
 
 Vector3f Quaternion::GetAxis() const
@@ -45,11 +39,11 @@ float Quaternion::GetAxisAngleRadians() const
 
 Vector3f Quaternion::GetEulerAnglesDegrees() const
 {
-	glm::vec3 axis = glm::eulerAngles(m_quat);
+	glm::vec3 axis = glm::degrees(glm::eulerAngles(m_quat));
 	return Vector3f(
-		glm::degrees(axis.x),
-		glm::degrees(axis.y),
-		glm::degrees(axis.z)
+		axis.x,
+		axis.y,
+		axis.z
 	);
 }
 
@@ -120,25 +114,9 @@ Quaternion Quaternion::Slerp(const Quaternion &two, float scaleFactor)
 	return temp;
 }
 
-Quaternion Quaternion::Normalized() const
+Quaternion Quaternion::Normalize()
 {
 	return glm::normalize(m_quat);
-}
-
-void Quaternion::Normalize()
-{
-	m_quat = glm::normalize(m_quat);
-}
-
-void Quaternion::IntegrateAngVel(const Vector3f &v, float scale)
-{
-	glm::quat w(
-		0.f,
-		v.GetX(),
-		v.GetY(),
-		v.GetZ()
-	);
-	m_quat -= (scale / 2.f) * w * m_quat;
 }
 
 Quaternion &Quaternion::operator+=(const Quaternion &other)

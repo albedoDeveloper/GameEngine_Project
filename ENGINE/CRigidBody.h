@@ -14,15 +14,17 @@ public:
 	float GetInverseMass() const;
 	void AddLinearForce(Vector3f force);
 	void AddTorque(Vector3f torque);
+	//void IntegrateAcceleration();
+	//void IntegrateVelocity();
 	const Vector3f &GetAcceleration() const;
 	void CalcInertiaTensor();
 	void RemoveMomentum();
 	const Vector3f &GetVelocity() const;
 	void SetVelocity(const Vector3f &vel);
-	void SetAngularVelocity(float x, float y, float z);
+	void SetAngularVelocity(const Vector3f &v);
 	const Vector3f &GetAngularVelocity() const;
 	const Matrix3f &GetInertiaTensor() const;
-	const Matrix3f &GetInverseWorldInertiaTensor() const;
+	const Matrix3f &GetWorldInertiaTensor() const;
 	void AddAngularVelocity(const Vector3f &vel);
 	void SubtractAngularVelocity(const Vector3f &vel);
 	bool IsGravityEnabled() const;
@@ -33,9 +35,7 @@ public:
 	float GetRestitution() const;
 	void SetRestitution(float e);
 	Vector3f GetGravity() const;
-	void SetDamping(float d);
-	float GetDamping() const;
-	void SetGravity(const Vector3f &g);
+	Vector3f m_velocityDueToGravityThisFrame;
 
 private:
 	bool m_gravityEnabled;
@@ -62,5 +62,4 @@ private:
 	bool m_freezeZRot;
 
 	float m_restitution;
-	float m_damping;
 };

@@ -109,16 +109,10 @@ class CNavMesh : public CComponent
 		*/
 	void GenerateNavMesh();
 
-
-	bool AssignBarriers(int x, int z);
-
-
 		/**
 		 * @brief Retrieves the Navigation Nodes vector
 		*/
 	std::vector<NavNode*> GetNavNodes();
-
-	Graph GetNodeGraph();
 
 		/**
 		 * @brief Retrieves a specific navNode
@@ -131,9 +125,8 @@ class CNavMesh : public CComponent
 
 	std::unordered_map<NavNode* , NavNode* > breadth_first_search(Graph graph, NavNode* start, NavNode* goal);
 
-	//note: we dont need to pass the graph
-	std::vector<NavNode* > DijkstraSearch(
-	NavNode* start, NavNode* goal,
+	void DijkstraSearch(
+	Graph graph, NavNode* start, NavNode* goal,
 	std::unordered_map<NavNode*, NavNode*>& came_from,
 	std::unordered_map<NavNode*, double>& cost_so_far
 	);
@@ -147,7 +140,6 @@ class CNavMesh : public CComponent
 public:
 	GridLocation dirs[4] = { {1, 0}, {0, 1}, {-1, 0}, {0, -1} };
 
-	Graph nodeGraph;
 
 private:
 		/**
@@ -155,8 +147,9 @@ private:
 		*/
 		std::vector<NavNode*> m_navNodes;
 
-		int width;
-		int length;
+		
+
+		Graph nodeGraph;
 
 		std::unordered_map<NavNode *, NavNode *> came_from;
 		std::unordered_map<NavNode *, double> cost_so_far;

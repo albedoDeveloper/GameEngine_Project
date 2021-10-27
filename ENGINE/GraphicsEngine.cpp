@@ -10,7 +10,6 @@
 #include "Matrix4f.h"
 #include "MiscMath.h"
 #include "Utility.h"
-#include <glad/glad.h>
 
 extern "C"
 {
@@ -208,7 +207,7 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	Matrix4f modelTrans;
 
 	modelTrans.Translate(worldTrans.GetRelativePosition());
-	modelTrans *= worldTrans.GetRelativeOrientation().Inverse().Mat4Cast();
+	modelTrans *= worldTrans.GetRelativeOrientation().Conjugate().Mat4Cast();
 	modelTrans.Scale(worldTrans.GetRelativeScale());
 
 	shader->SetMat4Uniform("model", modelTrans);
@@ -419,12 +418,12 @@ void GraphicsEngine::DrawDebug()
 	//DrawDebugNavMesh();
 }
 
-void GraphicsEngine::DrawDebugNavMesh(CNavMesh *navMesh, const Transform &worldTrans)
+void GraphicsEngine::DrawDebugNavMesh(CNavMesh *navMesh,const Transform &worldTrans)
 {
-
+	
 	std::vector<float> combinedVertices/* = DrawCube(worldTrans, Colour::blue,0.25f)*/;
 	std::vector<float> combinedOddVertices /*= DrawCube(worldTrans, Colour::blue,0.25f)*/;
-
+	
 	int i = 0;
 	for (auto it : navMesh->GetNavNodes())
 	{
@@ -440,14 +439,14 @@ void GraphicsEngine::DrawDebugNavMesh(CNavMesh *navMesh, const Transform &worldT
 			myColor[1] = Colour::green[1];
 			myColor[2] = Colour::green[2];
 
-			std::vector<float> nodeVertices = DrawCube(it->GetTransform()->GetWorldTransform(), myColor, 0.25f);
-
+			std::vector<float> nodeVertices = DrawCube(it->GetTransform()->GetWorldTransform(), myColor,0.25f);
+		
 			combinedVertices.insert(combinedVertices.end(), nodeVertices.begin(), nodeVertices.end());
 
 		}
-		else if (!it->GetActive() && !it->GetBarrier())
+		else if(!it->GetActive() && !it->GetBarrier())
 		{
-
+			
 			myColor[0] = Colour::blue[0];
 			myColor[1] = Colour::blue[1];
 			myColor[2] = Colour::blue[2];
@@ -468,7 +467,7 @@ void GraphicsEngine::DrawDebugNavMesh(CNavMesh *navMesh, const Transform &worldT
 
 std::vector<float> GraphicsEngine::DrawCube(const Transform &worldTrans, const double color[3], float scale)
 {
-
+	
 
 
 	m_debugShader->Use();
@@ -786,46 +785,14 @@ void GraphicsEngine::reportErrorWarning(const char *warningString)
 }
 
 void GraphicsEngine::draw3dText(const btVector3 &location, const char *textString)
-{}
+{
+}
 
 void GraphicsEngine::setDebugMode(int debugMode)
-{}
+{
+}
 
 int GraphicsEngine::getDebugMode() const
 {
 	return btIDebugDraw::DBG_DrawWireframe + btIDebugDraw::DBG_DrawContactPoints;
-}
-
-void GraphicsEngine::DrawPoint(const Vector3f &pos, const Vector3f &colour)
-{
-	unsigned int VBO;
-	unsigned int VAO;
-	float vertices[3] = {
-		pos.GetX(),
-		pos.GetY(),
-		pos.GetZ(),
-	};
-	Vector3f colourVec(
-		colour.GetX(),
-		colour.GetY(),
-		colour.GetZ()
-	);
-
-	m_debugShader->Use();
-	m_debugShader->SetMat4Uniform("projection", GetCameraProjection());
-	m_debugShader->SetMat4Uniform("view", GetCameraView());
-	m_debugShader->SetVec3Uniform("ourColour", colourVec);
-
-	glPointSize(16);
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 3, vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
-	glEnableVertexAttribArray(0);
-
-	glDrawArrays(GL_POINTS, 0, 1);
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
 }

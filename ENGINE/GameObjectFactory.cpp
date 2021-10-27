@@ -27,7 +27,6 @@ GameObject *GameObjectFactory::GetGameObject(std::string key)
 		return m_objects.at(key);
 	}
 
-	return nullptr;
 }
 
 //GameObject *GameObjectFactory::GetClosestObject(Transform *target, std::string partialKey)

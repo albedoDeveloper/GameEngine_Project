@@ -121,12 +121,11 @@ void CCollider::UpdateCollider()
 	);
 	if (m_allowRotation)
 	{
-		Quaternion world = m_transform.GetWorldTransform().GetRelativeOrientation();
 		orientation = btQuaternion(
-			world.GetX(),
-			world.GetY(),
-			world.GetZ(),
-			world.GetW()
+			m_transform.GetWorldTransform().GetRelativeOrientation().GetX(),
+			m_transform.GetWorldTransform().GetRelativeOrientation().GetY(),
+			m_transform.GetWorldTransform().GetRelativeOrientation().GetZ(),
+			m_transform.GetWorldTransform().GetRelativeOrientation().GetW()
 		);
 		orientation = orientation.inverse();
 	}
@@ -260,14 +259,12 @@ float CCollider::GetXHalfSize() const
 void CCollider::SetIsActive(bool isActive)
 {
 	CComponent::SetIsActive(isActive);
-	if (isActive && !m_active)
+	if (isActive)
 	{
-		m_active = true;
 		COLLISION->AddColliderToWorld(*this);
 	}
-	else if (!isActive && m_active)
+	else
 	{
-		m_active = false;
 		COLLISION->RemoveColliderToWorld(*this);
 	}
 }
