@@ -54,9 +54,14 @@ void CSound::PlaySound(std::string soundName, int length, bool positional)
 
 void CSound::ChangeVolume(std::string soundName, int volume)
 {
-	
 	Mix_Volume(soundinfo[soundName].channel, volume);
 }
+
+void CSound::StopPlaying(std::string soundName)
+{
+	Mix_HaltChannel(soundinfo[soundName].channel);
+}
+
 
 void CSound::Update()
 {
@@ -67,8 +72,7 @@ void CSound::Update()
 			auto playerTransform = GAMEOBJECT->GetGameObject("player")->GetTransform();
 			auto thisTransform = this->GetParentObject()->GetTransform();
 
-			int distance = (glm::abs(thisTransform->GetRelativePosition().GetZ() - playerTransform->GetRelativePosition().GetZ())) +
-				glm::abs((thisTransform->GetRelativePosition().GetX() - playerTransform->GetRelativePosition().GetX())) / 2 * 60;
+			int distance = (glm::abs(thisTransform->GetRelativePosition().GetZ()) - glm::abs(playerTransform->GetRelativePosition().GetZ())) + glm::abs((thisTransform->GetRelativePosition().GetX()) - glm::abs( playerTransform->GetRelativePosition().GetX())) / 2 * 60;
 
 			if (distance < 1)
 				distance = 1;

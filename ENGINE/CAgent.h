@@ -99,6 +99,7 @@ class CAgent : public CComponent
 		AiState currentState = AiState::THINK;
 
 		std::string lowestName;
+		std::string currentInUseAffordance = "";
 		//std::string currentCircumplex;
 
 		float time = 0;
