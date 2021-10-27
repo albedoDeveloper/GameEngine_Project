@@ -63,14 +63,25 @@ GetGameObject("beertap2"):AddCStaticMesh():AssignModel("beertap2")
 SpawnGameObject("spiked_door_toilet"):SetStatic(true)
 GetGameObject("spiked_door_toilet"):AddCStaticMesh():AssignModel("spiked_door_toilet")
 
+--------------------------------------------------
 SpawnGameObject("table"):SetStatic(true)
 GetGameObject("table"):AddCStaticMesh():AssignModel("table")
 GetGameObject("table"):GetCStaticMesh():RemoveNormalMapping()
 GetGameObject("table"):GetTransform():SetRelativePosition(8,0,-2.5)
 GetGameObject("table"):GetTransform():Scale(0.015,0.015,0.015)
 GetGameObject("table"):GetTransform():RotateLocalX(90)
---GetGameObject("table"):AddCCollider():AddConvexCollider()
 
+
+GetGameObject("table"):AddCAffordanceManager():AddAffordance("Drinking","agent_drinking","Drink.wav")
+GetGameObject("table"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
+GetGameObject("table"):GetCAffordanceManager():AddEmotion("Drinking","arousal", 0.2)
+GetGameObject("table"):GetCAffordanceManager():AddEmotion("Drinking","valence", 0.3)
+
+GetGameObject("table"):GetCAffordanceManager():AddAffordance("LookForMoney","agent_pickup","LookForMoney.wav")
+GetGameObject("table"):GetCAffordanceManager():AddEmotion("LookForMoney","arousal", -0.4)
+GetGameObject("table"):GetCAffordanceManager():AddEmotion("LookForMoney","valence", 0.6)
+--GetGameObject("table"):AddCCollider():AddConvexCollider()
+------------------------------------------------------------
 -------------------------
 SpawnGameObject("waitress"):SetStatic(true)
 GetGameObject("waitress"):AddCStaticMesh():AssignModel("waitress")
@@ -102,20 +113,34 @@ GetGameObject("pool-table"):GetCAffordanceManager():AddAffordance("Texting","age
 GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","arousal", -0.1)
 GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","valence", 0.5)
 ----------------------
+
+--------------
+
+SpawnGameObject("jukebox"):SetStatic(true)
+GetGameObject("jukebox"):AddCStaticMesh():AssignModel("jukebox")
+GetGameObject("jukebox"):GetCStaticMesh():RemoveNormalMapping()
+GetGameObject("jukebox"):GetTransform():SetRelativePosition(-1.5,0.9,-2.41)
+GetGameObject("jukebox"):GetTransform():Scale(4,4,4)
+GetGameObject("jukebox"):GetTransform():RotateLocalX(44)
+GetGameObject("jukebox"):AddCSound():LoadSound("milkyway.wav")
+GetGameObject("jukebox"):GetCSound():PlaySound("milkyway.wav",-1,true)
+--GetGameObject("jukebox"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+
+GetGameObject("jukebox"):AddCAffordanceManager():AddAffordance("DanceAggressive","agent_dance","DanceAggressive.wav")
+GetGameObject("jukebox"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
+GetGameObject("jukebox"):GetCAffordanceManager():AddEmotion("DanceAggressive","arousal", 0.7)
+GetGameObject("jukebox"):GetCAffordanceManager():AddEmotion("DanceAggressive","valence", -0.4)
+
+GetGameObject("jukebox"):GetCAffordanceManager():AddAffordance("DanceRelax","agent_slowdance","DanceRelax.wav")
+GetGameObject("jukebox"):GetCAffordanceManager():AddEmotion("DanceRelax","arousal", -0.4)
+GetGameObject("jukebox"):GetCAffordanceManager():AddEmotion("DanceRelax","valence", 0.7)
+
 ----------------------
 SpawnGameObject("barrel1"):SetStatic(true)
 GetGameObject("barrel1"):AddCStaticMesh():AssignModel("barrel1")
 GetGameObject("barrel1"):AddCCollider():AddConvexCollider()
 --GetGameObject("barrel1"):GetTransform():SetRelativePosition(0, 0, -2.5)
 
-GetGameObject("barrel1"):AddCAffordanceManager():AddAffordance("Drinking","agent_drinking","Drink.wav")
-GetGameObject("barrel1"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
-GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("Drinking","arousal", 0.2)
-GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("Drinking","valence", 0.3)
-
-GetGameObject("barrel1"):GetCAffordanceManager():AddAffordance("LookForMoney","agent_pickup","LookForMoney.wav")
-GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("LookForMoney","arousal", -0.4)
-GetGameObject("barrel1"):GetCAffordanceManager():AddEmotion("LookForMoney","valence", 0.6)
 -----------------------
 
 ----------------------
@@ -123,20 +148,14 @@ SpawnGameObject("barrel2"):SetStatic(true)
 GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
 GetGameObject("barrel2"):AddCCollider():AddConvexCollider()
 
-GetGameObject("barrel2"):AddCAffordanceManager():AddAffordance("DanceAggressive","agent_dance","DanceAggressive.wav")
---GetGameObject("barrel2"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
-GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceAggressive","arousal", 0.7)
-GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceAggressive","valence", -0.4)
-
-GetGameObject("barrel2"):GetCAffordanceManager():AddAffordance("DanceRelax","agent_slowdance","DanceRelax.wav")
-GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceRelax","arousal", -0.4)
-GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceRelax","valence", 0.7)
 
 ----------------------
 
 ----------
 SpawnGameObject("ai_agent_1"):SetStatic(false)
 GetGameObject("ai_agent_1"):AddCStaticMesh():AssignModel("agent_dance")
+--GetGameObject("ai_agent_1"):GetTransform():RotateLocalY()
+
 
 GetGameObject("ai_agent_1"):AddCAnimator()
 GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/dance.fbx", false, "agent_dance")
@@ -387,17 +406,6 @@ GetGameObject("NavMesh"):GetTransform():SetRelativePosition(1, 0, 0);
 --GetGameObject("NavMesh"):AddCCollider():AddBoxCollider(0.25, 0.3, 0.25, 0 ,0, 0, false, 0, false, 31);
 GetGameObject("NavMesh"):AddCNavMesh();
 
---------------
-
-SpawnGameObject("jukebox"):SetStatic(true)
-GetGameObject("jukebox"):AddCStaticMesh():AssignModel("jukebox")
-GetGameObject("jukebox"):GetCStaticMesh():RemoveNormalMapping()
-GetGameObject("jukebox"):GetTransform():SetRelativePosition(-1.5,0.9,-2.41)
-GetGameObject("jukebox"):GetTransform():Scale(4,4,4)
-GetGameObject("jukebox"):GetTransform():RotateLocalX(44)
-GetGameObject("jukebox"):AddCSound():LoadSound("milkyway.wav")
-GetGameObject("jukebox"):GetCSound():PlaySound("milkyway.wav",-1,true)
---GetGameObject("jukebox"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 
 
 

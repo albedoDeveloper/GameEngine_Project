@@ -157,7 +157,7 @@ void CAgent::AiMove()
 	if (destinationNode != NULL)
 		endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 
-	GetParentObject()->GetTransform()->SetRelativeOrientation(LookAt(startLocation, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).ToQuat().Normalized().GetInverse());
+
 
 	Vector3f dst = afforanceTrans - pTrans;
 
@@ -248,16 +248,24 @@ void CAgent::FollowPath()
 				prevNode = path[pathIndex];
 				pathIndex++;
 			}
-
+			
+			auto lookat = LookAt(pos, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
+			//lookat.SetY(180);
+			GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
 		}
 		else
 		{
-			std::cout << "destination found" << std::endl;
+			//std::cout << "destination found" << std::endl;
 			Vector3f pos = GetParentObject()->GetTransform()->GetRelativePosition();
 			Vector3f endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
-			//m_parent->GetTransform()->SetRelativePosition(endPos.GetX(),endPos.GetY(), endPos.GetZ());
+
+			auto lookat = LookAt(pos, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
+			//lookat.SetY(180);
+			GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
 		}
+			//m_parent->GetTransform()->SetRelativePosition(endPos.GetX(),endPos.GetY(), endPos.GetZ());
+		
 
 		//std::cout << "Path End " << std::endl;
 	}
@@ -359,7 +367,7 @@ void CAgent::ConvertFloatToEmotion()
 		else if (valence <= 0.5 && arousel < 0.8)
 			currentCircumplex = "angry";
 
-		else if (valence <= 0.5 && arousel < 1.0)
+		else if (valence <= 0.5 && arousel <= 1.0)
 			currentCircumplex = "tense";
 
 		else if (valence > 0.5 && arousel == 0.0)
@@ -377,7 +385,7 @@ void CAgent::ConvertFloatToEmotion()
 		else if (valence > 0.5 && arousel < 0.8)
 			currentCircumplex = "delighted";
 
-		else if (valence > 0.5 && arousel < 1.0)
+		else if (valence > 0.5 && arousel <= 1.0)
 			currentCircumplex = "excited";
 
 		std::string name = this->GetParentObject()->GetFactoryKey();
@@ -389,7 +397,7 @@ void CAgent::ConvertFloatToEmotion()
 
 		std::cout << "************************" << std::endl;
 
-		//GetParentObject()->GetCSound()->PlaySound("currentCircumplex", 0, true);
+		GetParentObject()->GetCSound()->PlaySound(currentCircumplex + ".wav", 0, true);
 	}
 }
 
