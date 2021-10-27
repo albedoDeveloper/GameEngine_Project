@@ -28,7 +28,7 @@ void CNavMesh::Update()
 
 	if (INPUT->GetKeyDown('x'))
 	{
-		if (increment < 120)
+		if (increment < 240)
 		{
 			increment++;
 		}
@@ -120,7 +120,42 @@ bool CNavMesh::AssignBarriers(int x, int z)
 
 	//COLLISION.
 
-	if (z == 0 && (x == -1 || x == -2 || x == -3 || x == -4 || x == -5 || x == 0 || x == 1 || x == 2 || x == 3 || x == 4 || x == 5))
+	/*if (z == 0 && (x == -1 || x == -2 || x == -3 || x == -4 || x == -5 || x == 0 || x == 1 || x == 2 || x == 3 || x == 4 || x == 5))
+	{
+		returnBool = true;
+	}*/
+
+	//pool table
+	if ((x == -9 || x == -8) && (z == 1 || z == 0 || z == -1))
+	{
+		returnBool = true;
+	}
+
+	//barrel1
+	if ((x == 4 || x == 5) && (z == -1 || z == 0))
+	{
+		returnBool = true;
+	}
+
+	//barrel2
+	if ((x >= -9) && (z == -5))
+	{
+		returnBool = true;
+	}
+
+	//wall
+	if ((x == -5 || x == -4 || x == -3 || x == -2 || x == -1 || x == 0 || x == 1)&&( z == -5 || z == -4 || z == -3 ))
+	{
+		returnBool = true;
+	}
+
+	//bar
+	if ((x == 6 || x == 7 || x == 8 || x == 9 || x == 10) && ( z == 4 || z == 5))
+	{
+		returnBool = true;
+	}
+
+	if (x == 11)
 	{
 		returnBool = true;
 	}
@@ -208,7 +243,8 @@ void CNavMesh::Scan(int i)
 		m_navNodes[i]->SetActive(true);
 	}
 
-	//std::cout << "increment  = " << increment << std::endl;
+	std::cout << "node at x =" << m_navNodes[i]->GetXPos() << " z = " << m_navNodes[i]->GetZPos() << std::endl;
+
 
 	//Print out graph
 	/*for (size_t i = 0; i < nodeGraph.edges.size(); i++)
