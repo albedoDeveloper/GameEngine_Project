@@ -21,7 +21,6 @@
 #include "CPointLight.h"
 #include "CDirectionalLight.h"
 #include "CAnimator.h"
-#include "CNavMesh.h"
 #include <iostream>
 #include "CRigidBody.h"
 #include "CAgent.h"
@@ -181,17 +180,6 @@ public:
 	CAgent *AddCAgent();
 
 	CAgent *GetCAgent();
-		/**
-	/**
-	 * adds a navmesh to the gameobject (Reccomend only one per scene)
-	 */
-	CNavMesh *AddCNavMesh();
-
-	/**
-	 * Retrieves the attached navmesh
-	 */
-	CNavMesh *GetCNavMesh();
-
 		/**
 		 * make this game objects transform a child of anothers.
 		 *
