@@ -28,12 +28,8 @@ public:
 	 */
 	Quaternion(float x, float y, float z, float w);
 
-		/**
-		 * Conjugation of a quaternian
-		 *
-		 * \return Conjugation of a quaternian
-		 */
-	Quaternion Conjugate() const;
+
+	Quaternion Inverse() const;
 
 		/**
 		 * Rotates around a given axis

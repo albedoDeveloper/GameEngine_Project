@@ -12,9 +12,9 @@ Quaternion::Quaternion(float x, float y, float z, float w)
 	: m_quat(glm::quat(w, x, y, z))
 {}
 
-Quaternion Quaternion::Conjugate() const
+Quaternion Quaternion::Inverse() const
 {
-	return glm::conjugate(m_quat);
+	return glm::inverse(m_quat);
 }
 
 void Quaternion::Rotate(float degrees, const Vector3f &axis)

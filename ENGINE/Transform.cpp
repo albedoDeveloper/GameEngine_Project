@@ -175,14 +175,15 @@ Transform Transform::GetWorldTransform() const
 	while (!stack.empty())
 	{
 		worldMat.Translate(stack.top()->m_position);
-		worldMat = worldMat * stack.top()->m_orientation.Conjugate().Mat4Cast();
+		worldMat = worldMat * stack.top()->m_orientation.Inverse().Mat4Cast();
 		worldMat.Scale(stack.top()->m_scale);
+
 		stack.pop();
 	}
 
 	Transform t;
 	Decompose(worldMat, t.m_scale, t.m_orientation, t.m_position);
-	t.m_orientation = t.m_orientation.Conjugate();
+	t.m_orientation = t.m_orientation.Inverse();
 
 	return t;
 }

@@ -14,7 +14,7 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 	m_velocity{ 0.0f,0,0 },
 	m_accel{ 0,0,0 },
 	m_linForceAccum{ 0,0,0 },
-	m_angularVelocity{ 0, 6, 0 },
+	m_angularVelocity{ 0, 0, 0 },
 	m_angularAccel{ 0,0,0 },
 	m_gravityEnabled{ false },
 	m_freezeXTrans{ false },
@@ -107,9 +107,11 @@ void CRigidBody::SetVelocity(const Vector3f &vel)
 	m_velocity = vel;
 }
 
-void CRigidBody::SetAngularVelocity(const Vector3f &v)
+void CRigidBody::SetAngularVelocity(float x, float y, float z)
 {
-	m_angularVelocity = v;
+	m_angularVelocity.SetX(x);
+	m_angularVelocity.SetY(y);
+	m_angularVelocity.SetZ(z);
 }
 
 const Vector3f &CRigidBody::GetAngularVelocity() const
@@ -206,8 +208,12 @@ void CRigidBody::Integrate()
 	if (m_freezeYRot) m_angularVelocity.SetY(0);
 	if (m_freezeZRot) m_angularVelocity.SetZ(0);
 	m_angularVelocity = m_angularVelocity * powf(0.9f, (TIME->GetDeltaTime())); // angular damping
-	std::cout << m_parent->GetTransform()->GetRelativeOrientation().GetMagnitude() << std::endl;
-	m_parent->GetTransform()->GetRelativeOrientation().IntegrateAngVel(m_angularVelocity, TIME->GetDeltaTime());
+
+	m_parent->GetTransform()->GetRelativeOrientation().IntegrateAngVel(
+		m_angularVelocity * m_parent->GetTransform()->GetRelativeOrientation().GetInverse(),
+		TIME->GetDeltaTime()
+	);
+	m_parent->GetTransform()->GetRelativeOrientation().Normalize();
 	//m_torqueAccum = Vector3f(0, 0, 0); // reset angular force accumulation
 
 	m_parent->GetComponent<CCollider>()->UpdateCollider();

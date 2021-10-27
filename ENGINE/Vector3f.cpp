@@ -1,13 +1,16 @@
 #include "Vector3f.h"
 #include "MiscMath.h"
+#include "Matrix4f.h"
 
 Vector3f::Vector3f()
 	:m_vec{ 0.f,0.f,0.f }
-{}
+{
+}
 
 Vector3f::Vector3f(float x, float y, float z)
 	: m_vec(x, y, z)
-{}
+{
+}
 
 Vector3f &Vector3f::operator+=(const Vector3f &v)
 {
@@ -87,6 +90,24 @@ Vector3f Vector3f::Mix(Vector3f oVec, float scale)
 	return glm::mix(m_vec, oVec.m_vec, scale);
 }
 
+Matrix4f Vector3f::TranslationMatrix() const
+{
+	Matrix4f t;
+	t.ValuePtr()[3] = m_vec.x;
+	t.ValuePtr()[7] = m_vec.y;
+	t.ValuePtr()[11] = m_vec.z;
+	return t;
+}
+
+Matrix4f Vector3f::ScaleMatrix() const
+{
+	Matrix4f t;
+	t.ValuePtr()[0] = m_vec.x;
+	t.ValuePtr()[5] = m_vec.y;
+	t.ValuePtr()[10] = m_vec.z;
+	return t;
+}
+
 Vector3f Vector3f::Rad2Deg()
 {
 	Vector3f temp = m_vec;
@@ -135,7 +156,8 @@ Vector3f Vector3f::operator*(const Quaternion &quat)
 
 Vector3f::Vector3f(glm::vec3 v)
 	:m_vec(v)
-{}
+{
+}
 
 Vector3f Vector3f::operator+(Vector3f oVec)
 {

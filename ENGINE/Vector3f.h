@@ -180,6 +180,10 @@ public:
 
 	Vector3f Mix(Vector3f oVec, float scale);
 
+	Matrix4f TranslationMatrix() const;
+
+	Matrix4f ScaleMatrix() const;
+
 private:
 		/// <summary>
 		/// Member Variable vector

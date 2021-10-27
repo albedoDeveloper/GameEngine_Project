@@ -144,6 +144,18 @@ void GraphicsEngine::RenderObjects()
 	{
 		COLLISION->DrawDebug();
 	}
+
+	for (int i = 0; i < COLLISION->GetContactCache().size(); i++)
+	{
+		for (int j = 0; j < COLLISION->GetContactCache()[i].contactPoints.size(); j++)
+		{
+			GRAPHICS->DrawLine(
+				COLLISION->GetContactCache()[i].col1->GetTransform().GetWorldTransform().GetRelativePosition() + COLLISION->GetContactCache()[i].contactPoints[j].col1LocalPoint,
+				COLLISION->GetContactCache()[i].col1->GetTransform().GetWorldTransform().GetRelativePosition() + COLLISION->GetContactCache()[i].contactPoints[j].col1LocalPoint + COLLISION->GetContactCache()[i].contactPoints[j].worldNormal,
+				Vector3f(1, 0, 0)
+			);
+		}
+	}
 }
 
 void GraphicsEngine::SetViewportToWindowSize() const
@@ -207,7 +219,7 @@ void GraphicsEngine::DrawModel(AModel *model, const Transform &worldTrans, const
 	Matrix4f modelTrans;
 
 	modelTrans.Translate(worldTrans.GetRelativePosition());
-	modelTrans *= worldTrans.GetRelativeOrientation().Conjugate().Mat4Cast();
+	modelTrans *= worldTrans.GetRelativeOrientation().Inverse().Mat4Cast();
 	modelTrans.Scale(worldTrans.GetRelativeScale());
 
 	shader->SetMat4Uniform("model", modelTrans);
@@ -640,12 +652,10 @@ void GraphicsEngine::reportErrorWarning(const char *warningString)
 }
 
 void GraphicsEngine::draw3dText(const btVector3 &location, const char *textString)
-{
-}
+{}
 
 void GraphicsEngine::setDebugMode(int debugMode)
-{
-}
+{}
 
 int GraphicsEngine::getDebugMode() const
 {

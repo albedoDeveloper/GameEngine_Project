@@ -14,14 +14,12 @@ public:
 	float GetInverseMass() const;
 	void AddLinearForce(Vector3f force);
 	void AddTorque(Vector3f torque);
-	//void IntegrateAcceleration();
-	//void IntegrateVelocity();
 	const Vector3f &GetAcceleration() const;
 	void CalcInertiaTensor();
 	void RemoveMomentum();
 	const Vector3f &GetVelocity() const;
 	void SetVelocity(const Vector3f &vel);
-	void SetAngularVelocity(const Vector3f &v);
+	void SetAngularVelocity(float x, float y, float z);
 	const Vector3f &GetAngularVelocity() const;
 	const Matrix3f &GetInertiaTensor() const;
 	const Matrix3f &GetWorldInertiaTensor() const;
