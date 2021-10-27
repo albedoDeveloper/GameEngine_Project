@@ -91,7 +91,7 @@ void CCharacter::Start()
 	{
 		std::string name = BOOK_NAME_PREFIX + std::to_string(i);
 		GameObject *obj = GAMEOBJECT->SpawnGameObject(name);
-		obj->AddCStaticMesh()->AssignModelByKey("book");
+		obj->AddCStaticMesh()->AssignModelByKey("crate_small");
 		obj->AddComponent<CCollider>()->AddBoxCollider(0, 0, 0, 0, 0, 0, true, 0, true, 31);
 		obj->AddComponent<CRigidBody>()->SetMass(2);
 		obj->GetComponent<CRigidBody>()->SetGravityEnabled(true);
