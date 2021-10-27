@@ -30,10 +30,15 @@ void LevelEditor::ObjectList()
 	std::map<std::string, GameObject *>::iterator filterIt;
 	for (filterIt = objectList->begin(); filterIt != objectList->end(); filterIt++)
 	{
+
 		if (filterIt->second->GetCRigidBody())
 		{
-			objectList->erase(filterIt);
+			filteredObjectList->emplace(filterIt->first, filterIt->second);
 		}
+		//
+		//{
+		//	//objectList->erase(filterIt);
+		//}
 	}
 
 
@@ -41,7 +46,7 @@ void LevelEditor::ObjectList()
 
 	//iteration
 	std::map<std::string, GameObject *>::iterator it;
-	for (it = objectList->begin(); it != objectList->end(); it++)
+	for (it = filteredObjectList->begin(); it != filteredObjectList->end(); it++)
 	{
 		//std::cout << "string " << std::endl;
 
