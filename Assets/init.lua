@@ -106,7 +106,7 @@ GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","valenc
 SpawnGameObject("barrel1"):SetStatic(true)
 GetGameObject("barrel1"):AddCStaticMesh():AssignModel("barrel1")
 GetGameObject("barrel1"):AddCCollider():AddConvexCollider()
-GetGameObject("barrel1"):GetTransform():SetRelativePosition(0, 0, -2.5)
+--GetGameObject("barrel1"):GetTransform():SetRelativePosition(0, 0, -2.5)
 
 GetGameObject("barrel1"):AddCAffordanceManager():AddAffordance("Drinking","agent_drinking","Drink.wav")
 GetGameObject("barrel1"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
@@ -124,7 +124,7 @@ GetGameObject("barrel2"):AddCStaticMesh():AssignModel("barrel2")
 GetGameObject("barrel2"):AddCCollider():AddConvexCollider()
 
 GetGameObject("barrel2"):AddCAffordanceManager():AddAffordance("DanceAggressive","agent_dance","DanceAggressive.wav")
-GetGameObject("barrel2"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
+--GetGameObject("barrel2"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
 GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceAggressive","arousal", 0.7)
 GetGameObject("barrel2"):GetCAffordanceManager():AddEmotion("DanceAggressive","valence", -0.4)
 
@@ -384,7 +384,7 @@ GetGameObject("ai_agent_3"):GetCAgent():AddEmotion("arousal",0.6, 1.0, 0.0)
 
 SpawnGameObject("NavMesh");
 GetGameObject("NavMesh"):GetTransform():SetRelativePosition(1, 0, 0);
-GetGameObject("NavMesh"):AddCCollider():AddBoxCollider(0.25, 0.3, 0.25, 0 ,0, 0, false, 0, false, 31);
+--GetGameObject("NavMesh"):AddCCollider():AddBoxCollider(0.25, 0.3, 0.25, 0 ,0, 0, false, 0, false, 31);
 GetGameObject("NavMesh"):AddCNavMesh();
 
 --------------
