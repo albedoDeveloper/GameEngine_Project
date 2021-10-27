@@ -41,6 +41,8 @@ public:
 		*/
 	void PlaySound(std::string soundName, int length, bool positional);
 
+	void StopPlaying(std::string soundName);
+
 		/**
 		* @brief updates ongoing behaviour each frame
 		*/
