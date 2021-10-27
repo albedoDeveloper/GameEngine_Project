@@ -163,7 +163,6 @@ void CCharacter::Update()
 			else
 			{
 				m_parent->GetComponent<CSound>()->PlaySound("gravity_throw.wav", 0, false);
-				//m_parent->GetComponent<CSound>()->
 				m_heldItem->GetCRigidBody()->RemoveMomentum();
 				m_heldItem->GetCRigidBody()->SetGravityEnabled(true);
 				m_heldItem->GetCRigidBody()->SetVelocity(m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 10);
@@ -173,7 +172,6 @@ void CCharacter::Update()
 
 		if (m_heldItem)
 		{
-			m_parent->GetComponent<CSound>()->PlaySound("gravity_hold.wav", -1, false);
 			m_heldItem->GetTransform()->SetRelativePositionV(
 				m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() +
 				(m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 2)
