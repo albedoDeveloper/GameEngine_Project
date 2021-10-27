@@ -28,12 +28,9 @@ public:
 	 */
 	Quaternion(float x, float y, float z, float w);
 
-		/**
-		 * Conjugation of a quaternian
-		 *
-		 * \return Conjugation of a quaternian
-		 */
-	Quaternion Conjugate() const;
+	Quaternion Inverse() const;
+
+	float GetMagnitude() const;
 
 		/**
 		 * Rotates around a given axis
@@ -148,7 +145,11 @@ public:
 	 */
 	Quaternion Slerp(const Quaternion &two, float scaleFactor);
 
-	Quaternion Normalize();
+	Quaternion Normalized() const;
+
+	void Normalize();
+
+	void IntegrateAngVel(const Vector3f &v, float scale);
 
 	Quaternion &operator+=(const Quaternion &other);
 

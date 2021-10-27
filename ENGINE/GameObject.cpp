@@ -51,12 +51,12 @@ CAnimator *GameObject::GetCAnimator()
 	return GetComponent<CAnimator>();
 }
 
-CAffordanceManager* GameObject::AddCAffordanceManager()
+CAffordanceManager *GameObject::AddCAffordanceManager()
 {
 	return AddComponent<CAffordanceManager>();
 }
 
-CAffordanceManager* GameObject::GetCAffordanceManager()
+CAffordanceManager *GameObject::GetCAffordanceManager()
 {
 	return GetComponent<CAffordanceManager>();
 }
@@ -190,29 +190,29 @@ void GameObject::SetActive(bool activeStatus)
 		}
 	}
 
-	CCollider *col = GetComponent<CCollider>();
+	//CCollider *col = GetComponent<CCollider>();
 
-	//We have to deactivate the collider here immediatly
-	if (col != nullptr)
-	{
-		if (activeStatus == false)
-		{
-			col->EnableDisable(activeStatus);
-		}
+	////We have to deactivate the collider here immediatly
+	//if (col != nullptr)
+	//{
+	//	if (activeStatus == false)
+	//	{
+	//		col->EnableDisable(activeStatus);
+	//	}
 
-		if (activeStatus == true)
-		{
-			col->EnableDisable(activeStatus);
-		}
-		//collider must be updated before disabling gameobject
-		col->Update();
-	}
+	//	if (activeStatus == true)
+	//	{
+	//		col->EnableDisable(activeStatus);
+	//	}
+	//	//collider must be updated before disabling gameobject
+	//	col->Update();
+	//}
 
 
-	if (activeStatus)
-	{
-		Start();
-	}
+	//if (activeStatus)
+	//{
+	//	Start();
+	//}
 
 }
 

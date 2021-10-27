@@ -1,5 +1,6 @@
 #include "Vector3f.h"
 #include "MiscMath.h"
+#include "Matrix4f.h"
 
 Vector3f::Vector3f()
 	:m_vec{ 0.f,0.f,0.f }
@@ -145,4 +146,22 @@ Vector3f Vector3f::operator+(Vector3f oVec)
 Vector3f Vector3f::operator+(const Vector3f rhs) const
 {
 	return m_vec + rhs.m_vec;
+}
+
+Matrix4f Vector3f::TranslationMatrix() const
+{
+	Matrix4f t;
+	t.ValuePtr()[3] = m_vec.x;
+	t.ValuePtr()[7] = m_vec.y;
+	t.ValuePtr()[11] = m_vec.z;
+	return t;
+}
+
+Matrix4f Vector3f::ScaleMatrix() const
+{
+	Matrix4f t;
+	t.ValuePtr()[0] = m_vec.x;
+	t.ValuePtr()[5] = m_vec.y;
+	t.ValuePtr()[10] = m_vec.z;
+	return t;
 }
