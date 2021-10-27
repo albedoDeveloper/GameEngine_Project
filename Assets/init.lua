@@ -43,7 +43,7 @@ GetGameObject("book2"):AddCStaticMesh():AssignModel("book")
 GetGameObject("book2"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,1,true, 31)
 GetGameObject("book2"):AddCRigidBody():SetMass(2)
 GetGameObject("book2"):GetTransform():SetRelativePosition(-2,2,0)
-
+GetGameObject("book2"):GetCStaticMesh():RemoveNormalMapping()
 
 SpawnGameObject("fridge1"):SetStatic(true)
 GetGameObject("fridge1"):AddCStaticMesh():AssignModel("fridge1")

@@ -33,6 +33,6 @@ class CAffordanceManager : public CComponent
 		void AddEmotion(std::string affordanceName, std::string name, float level);
 
 		std::map<std::string, Affordance> listOfAffordances;
-		//bool isInUse;
+		bool isInUse;
 };
 

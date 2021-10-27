@@ -113,15 +113,21 @@ void CAgent::AiMove()
 	Vector3f dst = endPos - startPos;
 	if(dst.Magnitude() < 2)
 	{
-		std::cout<<"Test"<<std::endl;
-		currentState = AiState::ACTION;
-		lerpTime = 0;
+		if (currentAffordance->parentObj->GetCAffordanceManager()->isInUse)
+			currentState = AiState::THINK;
 
-		if (!currentAffordance->animation._Equal(""))
-			GetParentObject()->GetCAnimator()->PlayAnimation(currentAffordance->animation);
+		else
+		{
+			currentState = AiState::ACTION;
+			lerpTime = 0;
+			currentAffordance->parentObj->GetCAffordanceManager()->isInUse = true;
 
-		if (!currentAffordance->sound._Equal(""))
-			GetParentObject()->GetCSound()->PlaySound(currentAffordance->sound, 0, true);
+			if (!currentAffordance->animation._Equal(""))
+				GetParentObject()->GetCAnimator()->PlayAnimation(currentAffordance->animation);
+
+			if (!currentAffordance->sound._Equal(""))
+				GetParentObject()->GetCSound()->PlaySound(currentAffordance->sound, 0, true);
+		}
 	}
 }
 
@@ -150,6 +156,7 @@ void CAgent::AiAction()
 		}
 		
 		currentState = AiState::THINK;
+		currentAffordance->parentObj->GetCAffordanceManager()->isInUse = false;
 	}
 }
 
@@ -185,6 +192,7 @@ void CAgent::FindNewAffordance()
 				if ( affordanceAmount >= highestImprovement)
 				{
 					currentAffordance = &affordance.second;
+
 					highestImprovement = affordanceAmount;
 				}
 
