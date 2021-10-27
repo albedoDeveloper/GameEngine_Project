@@ -72,6 +72,8 @@ public:
 		*/
 	void Update();
 
+	void Render();
+
 		/**
 		 * @brief saves the component
 		*/
@@ -100,6 +102,7 @@ private:
 	GameObject *m_projectilePool[PROJECTILE_POOL_SIZE];
 	GameObject *m_bookPool[BOOK_POOL_SIZE];
 
+	GameObject *m_heldItem;
 
 		/**
 		 * @brief The character's velocity, how much and in what direction its position changes over time

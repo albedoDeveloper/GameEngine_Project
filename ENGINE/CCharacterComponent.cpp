@@ -20,7 +20,8 @@ CCharacter::CCharacter(Transform *parent, GameObject *parentObj)
 	m_playerControlled{ false },
 	m_mouseEnabled{ true },
 	m_moveEnabled{ true },
-	m_endscreenUp{ false }
+	m_endscreenUp{ false },
+	m_heldItem{ nullptr }
 {
 }
 
@@ -139,6 +140,42 @@ void CCharacter::Update()
 			{
 				accel.SetY(-0.5f);
 			}
+		}
+
+		if (INPUT->GetKeyDown('e'))
+		{
+			if (!m_heldItem)
+			{
+				CCollider *col = nullptr;
+				if (col = COLLISION->Raycast(
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() + (m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 0.7f),
+					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() + (m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 2)
+				))
+				{
+					if (col->GetParentObject()->GetCRigidBody())
+					{
+						m_parent->GetComponent<CSound>()->PlaySound("gravity_pickup.wav", 0, false);
+						m_heldItem = col->GetParentObject();
+						m_heldItem->GetCRigidBody()->SetGravityEnabled(false);
+					}
+				}
+			}
+			else
+			{
+				m_parent->GetComponent<CSound>()->PlaySound("gravity_throw.wav", 0, false);
+				m_heldItem->GetCRigidBody()->RemoveMomentum();
+				m_heldItem->GetCRigidBody()->SetGravityEnabled(true);
+				m_heldItem->GetCRigidBody()->SetVelocity(m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 10);
+				m_heldItem = nullptr;
+			}
+		}
+
+		if (m_heldItem)
+		{
+			m_heldItem->GetTransform()->SetRelativePositionV(
+				m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() +
+				(m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 2)
+			);
 		}
 
 		if (INPUT->GetKeyDown('k'))
@@ -301,6 +338,15 @@ void CCharacter::Update()
 		m_parentTransform->Translate(0, 0, -worldVel.GetZ());
 		m_collider->UpdateCollider();
 	}
+}
+
+void CCharacter::Render()
+{
+	//GRAPHICS->DrawLine(
+	//	m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() + m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() ,
+	//	m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() + (m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 2),
+	//	Vector3f(0, 1, 0)
+	//);
 }
 
 void CCharacter::Save(nlohmann::json &j)

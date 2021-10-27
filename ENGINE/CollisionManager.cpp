@@ -132,8 +132,7 @@ CCollider *CollisionManager::Raycast(const Vector3f &from, const Vector3f &to)
 
 btScalar CollisionManager::addSingleResult(btCollisionWorld::LocalRayResult &rayResult, bool normalInWorldSpace)
 {
-	m_collision = true;
-	m_colObjCache = rayResult.m_collisionObject;
+	m_colObjCache = const_cast<btCollisionObject *>(rayResult.m_collisionObject);
 	return btScalar();
 }
 
