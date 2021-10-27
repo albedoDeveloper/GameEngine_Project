@@ -375,22 +375,22 @@ void GameObject::Load(nlohmann::json &j)
 			}
 		}
 
-		if (it.key() == "AABBComponent")
-		{
-			//TODO Fix the collision loading
+		//if (it.key() == "AABBComponent")
+		//{
+		//	//TODO Fix the collision loading
 
-			if (GetComponent<CCollider>())
-			{
-				std::cout << "collider already exists" << std::endl;
-				GetComponent<CCollider>()->Load(j);
-			}
-			else
-			{
-				CCollider *col = AddCCollider();
+		//	if (GetComponent<CCollider>())
+		//	{
+		//		std::cout << "collider already exists" << std::endl;
+		//		GetComponent<CCollider>()->Load(j);
+		//	}
+		//	else
+		//	{
+		//		CCollider *col = AddCCollider();
 
-				col->Load(j);
-			}
-		}
+		//		col->Load(j);
+		//	}
+		//}
 	}
 
 

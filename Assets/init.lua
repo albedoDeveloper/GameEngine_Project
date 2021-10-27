@@ -379,6 +379,7 @@ GetGameObject("ai_agent_3"):GetCAgent():AddEmotion("arousal",0.6, 1.0, 0.0)
 
 SpawnGameObject("NavMesh");
 GetGameObject("NavMesh"):GetTransform():SetRelativePosition(1, 0, 0);
+GetGameObject("NavMesh"):AddCCollider():AddBoxCollider(0.25, 0.3, 0.25, 0 ,0, 0, false, 0, false, 31);
 GetGameObject("NavMesh"):AddCNavMesh();
 
 --------------
