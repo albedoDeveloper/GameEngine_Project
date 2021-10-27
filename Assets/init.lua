@@ -395,7 +395,8 @@ GetGameObject("jukebox"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 
 
 
 SpawnGameObject("player");
-GetGameObject("player"):GetTransform():SetRelativePosition(0, 2, 0);
+GetGameObject("player"):GetTransform():SetRelativePosition(8.9, 1.4, -3.2);
+GetGameObject("player"):GetTransform():RotateLocalY(-120);
 GetGameObject("player"):AddCCollider():AddBoxCollider(0.25, 1.4, 0.25, 0 ,0, 0, false, 1, false, 31);
 GetGameObject("player"):AddCCharacter():SetPlayerControlled(true);
 GetGameObject("player"):AddCCameraComponent():SetAsCurrentCamera();
