@@ -90,7 +90,7 @@ void CAgent::AiMove()
 		lerpTime = 0;
 
 		if (!currentAffordance->animation._Equal(""))
-			GetParentObject()->GetCAnimator()->PlayAnimation("agent_dance");
+			GetParentObject()->GetCAnimator()->PlayAnimation(currentAffordance->animation);
 
 		if (!currentAffordance->sound._Equal(""))
 			GetParentObject()->GetCSound()->PlaySound(currentAffordance->sound, 0, true);

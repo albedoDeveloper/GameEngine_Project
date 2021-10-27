@@ -77,7 +77,7 @@ void main()
 {
     //normal testing
     vec3 bumpNormal = texture(material.texture_normal1, vs_in.TexCoords).rgb;
-    bumpNormal = normalize(bumpNormal * 2.0- 1.0);
+    bumpNormal = normalize(bumpNormal * 2.0 - 1.0);
     bumpNormal = bumpNormal * vs_in.TBN;
 
     // properties
