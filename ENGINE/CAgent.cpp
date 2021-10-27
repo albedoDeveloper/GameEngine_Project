@@ -181,7 +181,12 @@ void CAgent::AiMove()
 	if (dst.Magnitude() < 2)
 	{
 		if (currentAffordance->parentObj->GetCAffordanceManager()->isInUse)
+		{
 			currentState = AiState::THINK;
+			currentInUseAffordance = currentAffordance->parentObj->GetFactoryKey();
+
+		}
+			
 
 		else
 		{
@@ -299,6 +304,7 @@ void CAgent::AiAction()
 
 		currentState = AiState::THINK;
 		currentAffordance->parentObj->GetCAffordanceManager()->isInUse = false;
+		currentInUseAffordance = "";
 	}
 }
 
@@ -331,7 +337,7 @@ void CAgent::FindNewAffordance()
 
 				float affordanceAmount = affordance.second.EmotionEffectors.find(lowestName)->second * trait * (static_cast<float>(std::rand() % 150 + 50) / 100);
 
-				if (affordanceAmount >= highestImprovement)
+				if (affordanceAmount >= highestImprovement && affordance.second.parentObj->GetFactoryKey() != currentInUseAffordance)
 				{
 					currentAffordance = &affordance.second;
 

@@ -66,11 +66,12 @@ GetGameObject("table"):GetTransform():RotateLocalX(90)
 
 
 GetGameObject("table"):AddCAffordanceManager():AddAffordance("Drinking","agent_drinking","Drink.wav")
-GetGameObject("table"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
+--GetGameObject("table"):GetCAffordanceManager():GetTransform():SetRelativePosition(8,0,-2.5)
 GetGameObject("table"):GetCAffordanceManager():AddEmotion("Drinking","arousal", 0.2)
 GetGameObject("table"):GetCAffordanceManager():AddEmotion("Drinking","valence", 0.3)
 
 GetGameObject("table"):GetCAffordanceManager():AddAffordance("LookForMoney","agent_pickup","LookForMoney.wav")
+--GetGameObject("table"):GetCAffordanceManager():GetTransform():SetRelativePosition(8,0,-2.5)
 GetGameObject("table"):GetCAffordanceManager():AddEmotion("LookForMoney","arousal", -0.4)
 GetGameObject("table"):GetCAffordanceManager():AddEmotion("LookForMoney","valence", 0.6)
 --GetGameObject("table"):AddCCollider():AddConvexCollider()
@@ -103,6 +104,7 @@ GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","arousal",
 GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Pool","valence", 0.6)
 
 GetGameObject("pool-table"):GetCAffordanceManager():AddAffordance("Texting","agent_mobile","Texting.wav")
+GetGameObject("pool-table"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
 GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","arousal", -0.1)
 GetGameObject("pool-table"):GetCAffordanceManager():AddEmotion("Texting","valence", 0.5)
 ----------------------
@@ -120,13 +122,14 @@ GetGameObject("jukebox"):GetCSound():PlaySound("milkyway.wav",-1,true)
 --GetGameObject("jukebox"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 
 GetGameObject("jukebox"):AddCAffordanceManager():AddAffordance("DanceAggressive","agent_dance","DanceAggressive.wav")
-GetGameObject("jukebox"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
+--GetGameObject("jukebox"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
 GetGameObject("jukebox"):GetCAffordanceManager():AddEmotion("DanceAggressive","arousal", 0.7)
 GetGameObject("jukebox"):GetCAffordanceManager():AddEmotion("DanceAggressive","valence", -0.4)
 
 GetGameObject("jukebox"):GetCAffordanceManager():AddAffordance("DanceRelax","agent_slowdance","DanceRelax.wav")
 GetGameObject("jukebox"):GetCAffordanceManager():AddEmotion("DanceRelax","arousal", -0.4)
 GetGameObject("jukebox"):GetCAffordanceManager():AddEmotion("DanceRelax","valence", 0.7)
+
 
 ----------------------
 SpawnGameObject("barrel1"):SetStatic(true)
