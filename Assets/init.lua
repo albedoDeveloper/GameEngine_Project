@@ -96,7 +96,6 @@ SpawnGameObject("pool-table"):SetStatic(true)
 GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
 --GetGameObject("pool-table"):GetCStaticMesh():RemoveNormalMapping()
 GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
---GetGameObject("pool-table"):GetCCollider():CollideWith(2)
 
 GetGameObject("pool-table"):AddCAffordanceManager():AddAffordance("Pool","agent_pool","Pool.wav")
 GetGameObject("pool-table"):GetCAffordanceManager():GetTransform():SetRelativePosition(-6.5,0,0.3)
