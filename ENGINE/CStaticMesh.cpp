@@ -101,7 +101,13 @@ void CStaticMesh::Render()
 	{
 		m_shader->SetIntUniform("animate", 0);
 	}
-	
+
+
+	if (INPUT->GetKeyDownByCode(KeyCode::Z) && m_shader == GRAPHICS->m_litShader)
+	{
+		normalMapping = !normalMapping;
+	}
+
 	if (normalMapping)
 		m_shader->SetIntUniform("normalMapping", 1);
 	else
@@ -116,13 +122,13 @@ void CStaticMesh::Render(Shader &shaderOveride, bool noTexture)
 	{
 		shaderOveride.SetIntUniform("animate", 1);
 	}
-	
+
 	else
 	{
 		shaderOveride.SetIntUniform("animate", 0);
 	}
-	
-	if(normalMapping)
+
+	if (normalMapping)
 		shaderOveride.SetIntUniform("normalMapping", 1);
 	else
 		shaderOveride.SetIntUniform("normalMapping", 0);
