@@ -261,13 +261,7 @@ void CAgent::FollowPath()
 			}
 			
 
-			//pos.SetZ(0);
-			endPos.SetZ(endPos.GetZ() * -1);
-			auto dir = endPos - pos;
-
 			auto lookat = LookAt(pos.Normalised(), endPos.Normalised(), GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-	
-
 			GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
 		}
 		else
@@ -278,10 +272,6 @@ void CAgent::FollowPath()
 			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
 
 			auto lookat = LookAt(pos, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-			
-			if (lookat.GetEulerAnglesDegrees().GetY() >= 360)
-				lookat.SetY(0);
-
 			GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
 		}
 	}
