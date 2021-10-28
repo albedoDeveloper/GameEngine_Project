@@ -102,7 +102,7 @@ public:
 	ShaderSelection m_selectedShader;
 
 	/** @brief Apply Normal Mapping to Object */
-	bool normalMapping = true;
+	bool normalMapping = false;
 
 	void RemoveNormalMapping();
 };
