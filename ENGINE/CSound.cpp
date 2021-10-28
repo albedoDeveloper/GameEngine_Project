@@ -39,14 +39,14 @@ void CSound::LoadSound(std::string soundName)
 void CSound::PlaySound(std::string soundName, int length, bool positional)
 {
 	auto sound = soundList.find(soundName);
-	
+
 	if (sound != soundList.end())
 	{
 		SoundInfo temp;
 		temp.channel = Mix_PlayChannel(-1, sound->second, length);
 		temp.soundName = sound->first;
 		temp.isPositional = positional;
-		soundinfo.emplace(std::pair<std::string,SoundInfo>(soundName,temp));
+		soundinfo.emplace(std::pair<std::string, SoundInfo>(soundName, temp));
 	}
 	else
 		std::cout << soundName << " sound is not loaded!" << std::endl;
@@ -65,14 +65,12 @@ void CSound::StopPlaying(std::string soundName)
 
 void CSound::Update()
 {
-	for (auto& [key, value] : soundinfo)
+	for (auto &[key, value] : soundinfo)
 	{
 		if (value.isPositional && value.channel != -1)
 		{
 			auto playerTransform = GAMEOBJECT->GetGameObject("player")->GetTransform();
 			auto thisTransform = this->GetParentObject()->GetTransform();
-
-			std::cout << playerTransform->GetRelativePosition().GetX() << std::endl;
 
 			float distanceF = glm::abs((glm::abs(thisTransform->GetRelativePosition().GetZ()) - glm::abs(playerTransform->GetRelativePosition().GetZ()))) + glm::abs(glm::abs((thisTransform->GetRelativePosition().GetX()) - glm::abs(playerTransform->GetRelativePosition().GetX()))) / 2 * 60;
 
