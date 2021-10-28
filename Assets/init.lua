@@ -236,8 +236,9 @@ GetGameObject("ai_agent_2"):GetTransform():Translate(2,0,1.4)
 GetGameObject("ai_agent_2"):AddCAgent():AddEmotion("valence",0.1, 1.0, 0.002)
 GetGameObject("ai_agent_2"):GetCAgent():AddEmotion("arousal",0.8, 1.0, 0.0)
 
-GetGameObject("ai_agent_2"):GetCAgent():AddTrait("DanceAggressive",-0.5)
-GetGameObject("ai_agent_2"):GetCAgent():AddTrait("DancePassive", 0.5)
+GetGameObject("ai_agent_2"):GetCAgent():AddTrait("DanceAggressive",-1.5)
+GetGameObject("ai_agent_2"):GetCAgent():AddTrait("DancePassive", 1.5)
+GetGameObject("ai_agent_2"):GetCAgent():AddTrait("LookForMoney", 0.2)
 --------------
 
 ----------
@@ -277,6 +278,12 @@ GetGameObject("ai_agent_3"):GetCSound():LoadSound("happy.wav")
 GetGameObject("ai_agent_3"):GetCSound():LoadSound("content.wav")
 GetGameObject("ai_agent_3"):GetCSound():LoadSound("relaxed.wav")
 GetGameObject("ai_agent_3"):GetCSound():LoadSound("calm.wav")
+
+GetGameObject("ai_agent_3"):GetTransform():Translate(2,0,1.4)
+GetGameObject("ai_agent_3"):AddCAgent():AddEmotion("valence",0.4, 1.0, 0.0)
+GetGameObject("ai_agent_3"):GetCAgent():AddEmotion("arousal",0.6, 1.0, 0.0)
+
+
 
 SpawnGameObject("toilet_block"):SetStatic(true)
 GetGameObject("toilet_block"):AddCStaticMesh():AssignModel("toilet_block")
@@ -393,9 +400,6 @@ GetGameObject("light2"):AddCStaticMesh():AssignModel("axis")
 GetGameObject("light2"):GetTransform():Translate(0.3,0,0)
 
 
-GetGameObject("ai_agent_3"):GetTransform():Translate(2,0,1.4)
-GetGameObject("ai_agent_3"):AddCAgent():AddEmotion("valence",0.4, 1.0, 0.0)
-GetGameObject("ai_agent_3"):GetCAgent():AddEmotion("arousal",0.6, 1.0, 0.0)
 
 SpawnGameObject("NavMesh");
 GetGameObject("NavMesh"):GetTransform():SetRelativePosition(1, 0, 0);

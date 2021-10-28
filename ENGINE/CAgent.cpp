@@ -266,7 +266,6 @@ void CAgent::FollowPath()
 			auto dir = endPos - pos;
 
 			auto lookat = LookAt(pos.Normalised(), endPos.Normalised(), GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-
 	
 
 			GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
