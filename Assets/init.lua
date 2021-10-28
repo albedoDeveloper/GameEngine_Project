@@ -95,7 +95,7 @@ GetGameObject("waitress"):GetCAffordanceManager():AddEmotion("Argue","valence", 
 SpawnGameObject("pool-table"):SetStatic(true)
 GetGameObject("pool-table"):AddCStaticMesh():AssignModel("pool-table")
 --GetGameObject("pool-table"):GetCStaticMesh():RemoveNormalMapping()
---("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
+GetGameObject("pool-table"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
 --GetGameObject("pool-table"):GetCCollider():CollideWith(2)
 
 GetGameObject("pool-table"):AddCAffordanceManager():AddAffordance("Pool","agent_pool","Pool.wav")
