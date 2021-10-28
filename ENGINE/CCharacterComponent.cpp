@@ -154,7 +154,7 @@ void CCharacter::Update()
 				{
 					if (col->GetParentObject()->GetCRigidBody())
 					{
-						m_parent->GetComponent<CSound>()->PlaySound("gravity_pickup.wav", 0, true);
+						m_parent->GetComponent<CSound>()->PlaySound("gravity_pickup.wav", 0, false);
 						m_heldItem = col->GetParentObject();
 						m_heldItem->GetCRigidBody()->SetGravityEnabled(false);
 					}
@@ -162,7 +162,7 @@ void CCharacter::Update()
 			}
 			else
 			{
-				m_parent->GetComponent<CSound>()->PlaySound("gravity_throw.wav", 0, true);
+				m_parent->GetComponent<CSound>()->PlaySound("gravity_throw.wav", 0, false);
 				m_heldItem->GetCRigidBody()->RemoveMomentum();
 				m_heldItem->GetCRigidBody()->SetGravityEnabled(true);
 				m_heldItem->GetCRigidBody()->SetVelocity(m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 10);
