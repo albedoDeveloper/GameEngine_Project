@@ -108,6 +108,12 @@ void CAgent::AiThink()
 		auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetWorldTransform().GetRelativePosition();
 		startLocation = pTrans;
 
+		auto lookat = LookAt(pTrans, afforanceTrans, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
+		
+
+
+
+		GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
 
 
 		waitTime = (std::rand() % 25 + 15);
@@ -254,8 +260,15 @@ void CAgent::FollowPath()
 				pathIndex++;
 			}
 			
-			auto lookat = LookAt(pos, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-			//lookat.SetY(180);
+
+			//pos.SetZ(0);
+			endPos.SetZ(endPos.GetZ() * -1);
+			auto dir = endPos - pos;
+
+			auto lookat = LookAt(pos.Normalised(), endPos.Normalised(), GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
+
+	
+
 			GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
 		}
 		else
@@ -266,13 +279,12 @@ void CAgent::FollowPath()
 			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
 
 			auto lookat = LookAt(pos, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-			//lookat.SetY(180);
+			
+			if (lookat.GetEulerAnglesDegrees().GetY() >= 360)
+				lookat.SetY(0);
+
 			GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
 		}
-			//m_parent->GetTransform()->SetRelativePosition(endPos.GetX(),endPos.GetY(), endPos.GetZ());
-		
-
-		//std::cout << "Path End " << std::endl;
 	}
 
 }
