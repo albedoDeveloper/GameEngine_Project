@@ -90,7 +90,7 @@ void CAgent::Update()
 	for (auto emotion : emotions)
 	{
 		if (emotion.second.emotion < 1 && emotion.second.emotion > 0)
-			emotion.second.emotion += emotion.second.emotionNativeChange;
+			emotion.second.emotion += emotion.second.emotionNativeChange * TIME->GetDeltaTime();
 	}
 
 }
@@ -108,12 +108,6 @@ void CAgent::AiThink()
 		auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetWorldTransform().GetRelativePosition();
 		startLocation = pTrans;
 
-		auto lookat = LookAt(pTrans, afforanceTrans, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-		
-
-
-
-		GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
 
 
 		waitTime = (std::rand() % 25 + 15);
@@ -248,31 +242,71 @@ void CAgent::FollowPath()
 
 			Vector3f dst = endPos - GetParentObject()->GetTransform()->GetRelativePosition();
 
+			
+
+
+			//if (GetParentObject()->GetTransform()->GetRelativeOrientation().GetY() > 360)
+				//GetParentObject()->GetTransform()->SetRelativeOrientation(Quaternion(0,0,0,1));
+
 			if (dst.Magnitude() > 1)
 			{
 				m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
+				
 				//m_parent->GetTransform()->SetRelativePosition(endPos.GetX(),endPos.GetY(), endPos.GetZ());
 			}
 
 			if (dst.Magnitude() < 1)
 			{
+				auto zvalue = 0;
+				auto xvalue = 0;
+				
+
+				
+
 				prevNode = path[pathIndex];
 				pathIndex++;
-			}
-			
 
-			auto lookat = LookAt(pos.Normalised(), endPos.Normalised(), GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-			GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
+					
+				auto endNode = (Vector3f(path[pathIndex]->GetTransform()->GetRelativePosition().GetX(), path[pathIndex]->GetTransform()->GetRelativePosition().GetY(), path[pathIndex]->GetTransform()->GetRelativePosition().GetZ()));
+
+				GetParentObject()->GetTransform()->SetRelativeOrientation(Quaternion());
+
+				if (prevNode->GetTransform()->GetRelativePosition().GetX() - endNode.GetX() > 0 && prevNode->GetTransform()->GetRelativePosition().GetZ() - endNode.GetZ() == 0)
+					zvalue = 90;
+				
+				else if (prevNode->GetTransform()->GetRelativePosition().GetX() - endNode.GetX() < 0 && prevNode->GetTransform()->GetRelativePosition().GetZ() - endNode.GetZ() == 0)
+					zvalue = 270;
+
+				if (prevNode->GetTransform()->GetRelativePosition().GetX() - endNode.GetX() == 0 && prevNode->GetTransform()->GetRelativePosition().GetZ() - endNode.GetZ() < 0)
+					zvalue = 0;
+
+				else if (prevNode->GetTransform()->GetRelativePosition().GetX() - endNode.GetX() == 0 && prevNode->GetTransform()->GetRelativePosition().GetZ() - endNode.GetZ() > 0)
+					zvalue = 180;
+
+
+				auto endPos = Vector3f(xvalue, path[pathIndex]->GetTransform()->GetRelativePosition().GetY(), zvalue);
+
+				//auto lookat = LookAt(prevNode->GetTransform()->GetRelativePosition(),endNode, Vector3f(0,1,0)).Inverse().ToQuat();
+
+				GetParentObject()->GetTransform()->RotateLocalY(zvalue);
+
+				//GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
+				//std::cout << "rotation " << glm::degrees(GetParentObject()->GetTransform()->GetRelativeOrientation().GetY()) << std::endl;
+			}
+
 		}
 		else
 		{
 			//std::cout << "destination found" << std::endl;
 			Vector3f pos = GetParentObject()->GetTransform()->GetRelativePosition();
 			Vector3f endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
+			
+			//auto lookat = LookAt(pos, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
+			//GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
+			
 			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
 
-			auto lookat = LookAt(pos, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-			GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
+
 		}
 	}
 
