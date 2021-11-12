@@ -38,6 +38,7 @@
     <ClCompile Include="NavNode.cpp" />
     <ClCompile Include="Matrix3f.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="ThirdParty\glad\src\glad.c" />
     <ClCompile Include="MyTime.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -94,6 +95,7 @@
     <ClInclude Include="NavNode.h" />
     <ClInclude Include="Matrix3f.h" />
     <ClInclude Include="PhysicsManager.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="ThirdParty\glad\include\glad\glad.h" />
     <ClInclude Include="ThirdParty\glad\include\KHR\khrplatform.h" />
     <ClInclude Include="MyTime.h" />

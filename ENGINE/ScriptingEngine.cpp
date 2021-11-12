@@ -7,6 +7,7 @@
 #include "InputManager.h"
 #include "CCollider.h"
 #include "Engine.h"
+#include "SoundManager.h"
 #include <iostream>
 
 using namespace luabridge;
@@ -34,6 +35,7 @@ lua_State *ScriptingEngine::NewState()
 	luaL_openlibs(Lbuff);
 
 	getGlobalNamespace(Lbuff).addFunction("LoadModel", LoadModel);
+	getGlobalNamespace(Lbuff).addFunction("LoadSound", LoadSound);
 	getGlobalNamespace(Lbuff).addFunction("LoadScript", LoadScript);
 	getGlobalNamespace(Lbuff).addFunction("UnloadTexture", UnloadTexture);
 	getGlobalNamespace(Lbuff).addFunction("SpawnGameObject", SpawnGameObject);
@@ -194,7 +196,6 @@ lua_State *ScriptingEngine::NewState()
 		.beginClass<CComponent>("CComponent")
 		.endClass()
 		.deriveClass<CSound, CComponent>("CSound")
-		.addFunction("LoadSound", &CSound::LoadSound)
 		.addFunction("PlaySound", &CSound::PlaySound)
 		.endClass();
 
@@ -274,6 +275,11 @@ void ScriptingEngine::LoadModel(std::string name, std::string filePath)
 void ScriptingEngine::LoadScript(std::string key, std::string filePath)
 {
 	ASSET->LoadScript(key, "../Assets/Scripts/" + filePath);
+}
+
+void ScriptingEngine::LoadSound(std::string name)
+{
+	SOUND->LoadSound(name);
 }
 
 void ScriptingEngine::UnloadTexture(std::string key)
