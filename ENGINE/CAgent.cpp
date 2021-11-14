@@ -26,10 +26,6 @@ CAgent::CAgent(Transform *parent, GameObject *parentObj) :CComponent{ parent, pa
 }
 void CAgent::Render()
 {
-
-	//btVector3 vec1 = btVector3(m_navNodes[0]->GetTransform()->GetWorldTransform().GetRelativePosition().GetX(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetZ());
-	//btVector3 vec2 = btVector3(m_navNodes[50]->GetTransform()->GetRelativePosition().GetX(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetZ());
-
 	Vector3f vec1 = Vector3f(1, 2, 3);
 	Vector3f vec2 = Vector3f(3, 2, 1);
 
@@ -97,6 +93,7 @@ void CAgent::Update()
 
 void CAgent::AiThink()
 {
+	// At the start of the simulation (or at the end of task) the AI will find a new affordance
 	FindNewAffordance();
 
 	if (currentAffordance != nullptr)
@@ -104,7 +101,6 @@ void CAgent::AiThink()
 		currentState = AiState::MOVE;
 		GetParentObject()->GetCAnimator()->PlayAnimation("agent_walk");
 		auto pTrans = GetParentObject()->GetTransform()->GetRelativePosition();
-		//auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetRelativePosition();
 		auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetWorldTransform().GetRelativePosition();
 		startLocation = pTrans;
 
@@ -131,8 +127,6 @@ void CAgent::AiThink()
 			//run pathfindign algorithm
 			path = navMesh->DijkstraSearch(navNode, destinationNode, came_from, cost_so_far);
 
-
-			//FollowPath();
 		}
 
 	}
@@ -161,8 +155,6 @@ void CAgent::AiMove()
 
 	Vector3f dst = afforanceTrans - pTrans;
 
-		//float t = lerpTime / 400;
-		// 
 	if (path.empty())
 	{
 		m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pTrans.GetX(), endPos.GetX() - pTrans.GetX(), 1.0f), (std::lerp(pTrans.GetY(), endPos.GetY(), 1.0f)), std::lerp(pTrans.GetZ(), endPos.GetZ() - pTrans.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);
@@ -172,12 +164,6 @@ void CAgent::AiMove()
 		FollowPath();
 	}
 
-	//GetParentObject()->GetTransform()->SetRelativePositionV(Vector3f( endPos.GetX() , startPos.GetY(), endPos.GetZ()));
-	//lerpTime += lerpTime * TIME->GetDeltaTime();
-
-
-//if ((std::fabs(pTrans.GetX()) <= std::fabs(afforanceTrans.GetX()) + 1 && std::fabs(pTrans.GetX()) >= std::fabs(afforanceTrans.GetX()) - 1) && (std::fabs(pTrans.GetZ()) <= std::fabs(afforanceTrans.GetZ()) + 1 && std::fabs(pTrans.GetZ()) >= std::fabs(afforanceTrans.GetZ()) - 1))
-//Vector3f dst = afforanceTrans - pTrans;
 	if (dst.Magnitude() < 2)
 	{
 		if (currentAffordance->parentObj->GetCAffordanceManager()->isInUse)
@@ -269,23 +255,14 @@ void CAgent::FollowPath()
 
 				auto endPos = Vector3f(xvalue, path[pathIndex]->GetTransform()->GetRelativePosition().GetY(), zvalue);
 
-				//auto lookat = LookAt(prevNode->GetTransform()->GetRelativePosition(),endNode, Vector3f(0,1,0)).Inverse().ToQuat();
-
 				GetParentObject()->GetTransform()->RotateLocalY(zvalue);
-
-				//GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
-				//std::cout << "rotation " << glm::degrees(GetParentObject()->GetTransform()->GetRelativeOrientation().GetY()) << std::endl;
 			}
 
 		}
 		else
 		{
-			//std::cout << "destination found" << std::endl;
 			Vector3f pos = GetParentObject()->GetTransform()->GetRelativePosition();
 			Vector3f endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
-			
-			//auto lookat = LookAt(pos, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-			//GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
 			
 			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
 
@@ -486,15 +463,10 @@ NavNode *CAgent::FindDestinationLocation(Vector3f position)
 	}
 	else
 	{
-		//std::cout << "Affordance pos = " << position.GetX() << ", " << position.GetY() << ", " << position.GetZ() << std::endl;
 
 		destinationNode = navMesh->FindNearest(position);
 		destinationNode->SetActive(false);
-
-		//std::cout << "Affordance " << this->GetParentObject()->GetFactoryKey() << " dst at x =" << destinationNode->GetXPos() << " z = " << destinationNode->GetZPos() << std::endl;
 	}
-
-	//endLocation = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 
 	return destinationNode;
 }

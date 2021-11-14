@@ -23,7 +23,7 @@ void CSound::PlaySound(std::string soundName, int length, bool positional)
 		soundinfo.emplace(std::pair<std::string, SoundInfo>(soundName, temp));
 	}
 	else
-		std::cout << soundName << " sound is not loaded!" << std::endl;
+		std::cout << soundName << "Sound is not loaded!" << std::endl;
 }
 
 void CSound::ChangeVolume(std::string soundName, int volume)
@@ -34,6 +34,7 @@ void CSound::ChangeVolume(std::string soundName, int volume)
 void CSound::StopPlaying(std::string soundName)
 {
 	Mix_HaltChannel(soundinfo[soundName].channel);
+	soundinfo.erase(soundName);
 }
 
 

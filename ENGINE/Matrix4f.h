@@ -85,7 +85,9 @@ public:
 		return m_mat;
 	}
 	Matrix4f(glm::mat4 m);
-
+	/// @brief Converts matrix from an assimp matrix to our facaded matrix
+	/// @param from 
+	/// @return 
 	Matrix4f ConvertAiMatrixToMatrix4f(const aiMatrix4x4 &from);
 private:
 
