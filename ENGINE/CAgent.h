@@ -135,6 +135,7 @@ class CAgent : public CComponent
 		/// @param value 
 		void AddTrait(std::string name, float value);
 
+		/// @brief Update the AI every frame
 		virtual void Update();
 };
 

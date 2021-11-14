@@ -12,6 +12,7 @@ CAgent::CAgent(Transform *parent, GameObject *parentObj) :CComponent{ parent, pa
 
 	std::map<std::string, GameObject *>::iterator it;
 
+	//Gets every possible affordance in the map
 	for (it = allGameObjects->begin(); it != allGameObjects->end(); it++)
 	{
 		if (it->second->GetCAffordanceManager() != nullptr)
@@ -20,7 +21,6 @@ CAgent::CAgent(Transform *parent, GameObject *parentObj) :CComponent{ parent, pa
 		if (it->second->GetCNavMesh() != nullptr)
 			navMesh = it->second->GetCNavMesh();
 	}
-
 
 
 }
@@ -67,7 +67,7 @@ void CAgent::AddTrait(std::string name, float value)
 
 void CAgent::Update()
 {
-
+	// State machine that determines what the AI should do
 	switch (currentState)
 	{
 	case AiState::THINK:
@@ -83,6 +83,7 @@ void CAgent::Update()
 		break;
 	}
 
+	// Checks every emotion and adds their multiplier over time (for example if an AI gets angry over time)
 	for (auto emotion : emotions)
 	{
 		if (emotion.second.emotion < 1 && emotion.second.emotion > 0)
@@ -96,16 +97,19 @@ void CAgent::AiThink()
 	// At the start of the simulation (or at the end of task) the AI will find a new affordance
 	FindNewAffordance();
 
+	// Checks to see if an afforance has been found, then change the state to AI move
 	if (currentAffordance != nullptr)
 	{
 		currentState = AiState::MOVE;
+		
+		// Plays the walking animation of the AI (if no animation exists they will just tpose instead)
 		GetParentObject()->GetCAnimator()->PlayAnimation("agent_walk");
+		
 		auto pTrans = GetParentObject()->GetTransform()->GetRelativePosition();
 		auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetWorldTransform().GetRelativePosition();
 		startLocation = pTrans;
 
-
-
+		//Random calculates the amount of time an AI
 		waitTime = (std::rand() % 25 + 15);
 
 		ConvertFloatToEmotion();
@@ -164,8 +168,10 @@ void CAgent::AiMove()
 		FollowPath();
 	}
 
+	// Start when the AI reaches the affordances
 	if (dst.Magnitude() < 2)
 	{
+		// Checks to see if the AI is in use by another AI, if it is they will try to find another AI
 		if (currentAffordance->parentObj->GetCAffordanceManager()->isInUse)
 		{
 			currentState = AiState::THINK;
@@ -173,16 +179,20 @@ void CAgent::AiMove()
 
 		}
 			
-
+		//Start performing the affordance
 		else
 		{
 			currentState = AiState::ACTION;
 			lerpTime = 0;
+			
+			// Set the affordance to being in use by the AI
 			currentAffordance->parentObj->GetCAffordanceManager()->isInUse = true;
 
+			// plays the animation for that affordance
 			if (!currentAffordance->animation._Equal(""))
 				GetParentObject()->GetCAnimator()->PlayAnimation(currentAffordance->animation);
 
+			// plays the sound for that affordance
 			if (!currentAffordance->sound._Equal(""))
 				GetParentObject()->GetCSound()->PlaySound(currentAffordance->sound, 0, true);
 		}
@@ -199,9 +209,6 @@ void CAgent::FollowPath()
 
 		//std::cout << "Path Start " << std::endl;
 
-		
-
-
 		if (pathIndex < path.size() - 1)
 		{
 			nextNode = path[pathIndex];
@@ -211,17 +218,10 @@ void CAgent::FollowPath()
 
 			Vector3f dst = endPos - GetParentObject()->GetTransform()->GetRelativePosition();
 
-			
-
-
-			//if (GetParentObject()->GetTransform()->GetRelativeOrientation().GetY() > 360)
-				//GetParentObject()->GetTransform()->SetRelativeOrientation(Quaternion(0,0,0,1));
-
 			if (dst.Magnitude() > 1)
 			{
 				m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
 				
-				//m_parent->GetTransform()->SetRelativePosition(endPos.GetX(),endPos.GetY(), endPos.GetZ());
 			}
 
 			if (dst.Magnitude() < 1)
@@ -230,12 +230,10 @@ void CAgent::FollowPath()
 				auto xvalue = 0;
 				
 
-				
-
 				prevNode = path[pathIndex];
 				pathIndex++;
 
-					
+				// Checks what direction the next node is, then causes the AI agent to face that direaction
 				auto endNode = (Vector3f(path[pathIndex]->GetTransform()->GetRelativePosition().GetX(), path[pathIndex]->GetTransform()->GetRelativePosition().GetY(), path[pathIndex]->GetTransform()->GetRelativePosition().GetZ()));
 
 				GetParentObject()->GetTransform()->SetRelativeOrientation(Quaternion());
@@ -277,17 +275,21 @@ void CAgent::AiAction()
 {
 	time += TIME->GetDeltaTime();
 
+	// Waits until the designated time is up before finishing the affordance
 	if (time > waitTime)
 	{
 		time = 0;
 		std::cout << "-------------------------------------------" << std::endl;
 		std::cout << "Agent Name: " << this->GetParentObject()->GetFactoryKey() << std::endl;
 
+		//Applies the affordances effects on each emotion
 		for (auto &emotionEffect : currentAffordance->EmotionEffectors)
 		{
-
+			// adds the emotion effect of the affordance to the coresponding emotion of the AI, which is multiplied by the AI's trait and finally a random amount
+			// The random amount simulates real life, where every time you participate in an activity, what emotion you get out of it is slightly ranfom
 			emotions.at(emotionEffect.first).emotion += emotionEffect.second * emotions.at(lowestName).multipler * (static_cast<float>(std::rand() % 140 + 70) / 100);
 
+			// Prevents emotion overall (an agent can go beyond very high arousal for example)
 			if (emotions.at(emotionEffect.first).emotion > 1)
 				emotions.at(emotionEffect.first).emotion = 1;
 
@@ -297,7 +299,10 @@ void CAgent::AiAction()
 			std::cout << "Emotion: " << emotionEffect.first << " = " << emotions.at(emotionEffect.first).emotion << std::endl;
 		}
 
+		//Changes agent to think about a new affordance
 		currentState = AiState::THINK;
+		
+		//Makes it so the affordance object is no longer in use
 		currentAffordance->parentObj->GetCAffordanceManager()->isInUse = false;
 		currentInUseAffordance = "";
 	}
@@ -305,6 +310,7 @@ void CAgent::AiAction()
 
 void CAgent::FindNewAffordance()
 {
+	// First find which emotion out of all of them is the lowest for the agent
 	auto lowest = emotions.begin()->second.emotion;
 	lowestName = emotions.begin()->first;
 
@@ -319,19 +325,24 @@ void CAgent::FindNewAffordance()
 
 	auto highestImprovement = -100;
 
+	// Then go through all the affordances possible, determining which affordance will best increase the agents emotion the most
 	for (auto &affordancelist : allAffordances)
 	{
 		for (auto &affordance : *affordancelist.second)
 		{
 			if (affordance.second.EmotionEffectors.count(lowestName) != 0)
 			{
+				// Set the trait modifier to 1 (meaning no effect
 				auto trait = 1.0;
 
+				//If the user has a trait for that particular affordance, then apply it
 				if (traits.count(affordance.first) != 0)
 					trait = traits.at(affordance.first);
 
+				// Calculate the total float value you gain from that affordance, based upon its original amount the affordance gives, the users trait, as well as slight random modifier
 				float affordanceAmount = affordance.second.EmotionEffectors.find(lowestName)->second * trait * (static_cast<float>(std::rand() % 150 + 50) / 100);
 
+				// if this affordance gives the most emotion float value amount AND is not taken by another agent, then set that as the affordance target
 				if (affordanceAmount >= highestImprovement && affordance.second.parentObj->GetFactoryKey() != currentInUseAffordance)
 				{
 					currentAffordance = &affordance.second;
@@ -344,7 +355,8 @@ void CAgent::FindNewAffordance()
 	}
 
 }
-
+//Set the corresponding affordance value to a string
+//THIS IS NOT NEEDED FOR THE AI ENGINE, IT IS PURELY HERE TO GIVE  A VISUAL REPRSENTATION OF THE AI ENGINE AND EMOTIONAL MODEL IN ACTION
 void CAgent::ConvertFloatToEmotion()
 {
 	if (emotions.count("valence") > 0 && emotions.count("arousal") > 0)
@@ -397,25 +409,9 @@ void CAgent::ConvertFloatToEmotion()
 		std::cout << "Current activity: " << currentAffordance->name << std::endl;
 
 		std::cout << "************************" << std::endl;
-
+		//Play the voice line corresponding to that emotion
 		GetParentObject()->GetCSound()->PlaySound(currentCircumplex + ".wav", 0, true);
 	}
-}
-
-
-void ChangeEmotionNatively(float &emotion, float modifier)
-{
-	if (emotion > 0.0 && emotion < 1.0)
-	{
-		emotion += modifier;
-	}
-
-	else if (emotion > 1.0)
-		emotion = 1.0;
-
-	else
-		emotion = 0.0;
-
 }
 
 
