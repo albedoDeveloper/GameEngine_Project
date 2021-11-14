@@ -13,7 +13,6 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 	m_inertiaTensor{ 1.f },
 	m_velocity{ 0.0f,0,0 },
 	m_accel{ 0,0,0 },
-	m_linForceAccum{ 0,0,0 },
 	m_angularVelocity{ 0, 0.0f, 0 },
 	m_angularAccel{ 0,0,0 },
 	m_gravityEnabled{ false },
@@ -25,7 +24,8 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 	m_freezeZRot{ false },
 	m_gravity{ 0,-4,0 },
 	m_restitution{ 0.7f },
-	m_damping{ 0.9f }
+	m_damping{ 0.9f },
+	m_shape{ CRigidBody::BodyShape::Box }
 {
 	CCollider *col = m_parent->GetComponent<CCollider>(); // TODO get all collider components
 	CStaticMesh *sm = m_parent->GetComponent<CStaticMesh>();
@@ -43,6 +43,42 @@ void CRigidBody::SetMass(float newMass)
 	CalcInertiaTensor();
 }
 
+void CRigidBody::CalcBoxInertiaTensor()
+{
+	CCollider *col = m_parent->GetComponent<CCollider>();
+
+	// calc inertia tensor for rectangular slab
+	m_inertiaTensor.ValuePtr()[0] = ((1 / m_inverseMass) / 12.f) * ((col->GetYHalfSize() * 2) * (col->GetYHalfSize() * 2) + (col->GetZHalfSize() * 2) * (col->GetZHalfSize() * 2)); //xx
+	m_inertiaTensor.ValuePtr()[1] = 0;
+	m_inertiaTensor.ValuePtr()[2] = 0;
+	m_inertiaTensor.ValuePtr()[3] = 0;
+	m_inertiaTensor.ValuePtr()[4] = ((1 / m_inverseMass) / 12.f) * ((col->GetXHalfSize() * 2) * (col->GetXHalfSize() * 2) + (col->GetZHalfSize() * 2) * (col->GetZHalfSize() * 2)); //yy
+	m_inertiaTensor.ValuePtr()[5] = 0;
+	m_inertiaTensor.ValuePtr()[6] = 0;
+	m_inertiaTensor.ValuePtr()[7] = 0;
+	m_inertiaTensor.ValuePtr()[8] = ((1 / m_inverseMass) / 12.f) * ((col->GetXHalfSize() * 2) * (col->GetXHalfSize() * 2) + (col->GetYHalfSize() * 2) * (col->GetYHalfSize() * 2)); //zz
+}
+
+void CRigidBody::CalcSphereInertiaTensor()
+{
+	CCollider *col = m_parent->GetComponent<CCollider>();
+
+	m_inertiaTensor.ValuePtr()[0] = 2.f * (1 / m_inverseMass) * col->GetXHalfSize() * col->GetXHalfSize(); //xx
+	m_inertiaTensor.ValuePtr()[1] = 0;
+	m_inertiaTensor.ValuePtr()[2] = 0;
+	m_inertiaTensor.ValuePtr()[3] = 0;
+	m_inertiaTensor.ValuePtr()[4] = 2.f * (1 / m_inverseMass) * col->GetXHalfSize() * col->GetXHalfSize(); //yy
+	m_inertiaTensor.ValuePtr()[5] = 0;
+	m_inertiaTensor.ValuePtr()[6] = 0;
+	m_inertiaTensor.ValuePtr()[7] = 0;
+	m_inertiaTensor.ValuePtr()[8] = 2.f * (1 / m_inverseMass) * col->GetXHalfSize() * col->GetXHalfSize(); //zz
+}
+
+void CRigidBody::SetShape(BodyShape s)
+{
+	m_shape = s;
+}
+
 void CRigidBody::SetInverseMass(float newInverseMass)
 {
 	m_inverseMass = newInverseMass;
@@ -52,16 +88,6 @@ void CRigidBody::SetInverseMass(float newInverseMass)
 float CRigidBody::GetInverseMass() const
 {
 	return m_inverseMass;
-}
-
-void CRigidBody::AddLinearForce(Vector3f force)
-{
-	m_linForceAccum += force;
-}
-
-void CRigidBody::AddTorque(Vector3f torque)
-{
-	m_torqueAccum += torque;
 }
 
 const Vector3f &CRigidBody::GetAcceleration() const
@@ -77,18 +103,18 @@ void CRigidBody::CalcInertiaTensor()
 	}
 	else
 	{
-		CCollider *col = m_parent->GetComponent<CCollider>();
+		switch (m_shape)
+		{
+		case BodyShape::Box:
+			CalcBoxInertiaTensor();
+			break;
+		case BodyShape::Sphere:
+			CalcSphereInertiaTensor();
+			break;
+		default:
+			std::cerr << "[ERROR!] void CRigidBody::CalcInertiaTensor() - Unsupported BodyShape type" << std::endl;
+		}
 
-		// calc inertia tensor for rectangular slab
-		m_inertiaTensor.ValuePtr()[0] = ((1 / m_inverseMass) / 12.f) * ((col->GetYHalfSize() * 2) * (col->GetYHalfSize() * 2) + (col->GetZHalfSize() * 2) * (col->GetZHalfSize() * 2)); //xx
-		m_inertiaTensor.ValuePtr()[1] = 0;
-		m_inertiaTensor.ValuePtr()[2] = 0;
-		m_inertiaTensor.ValuePtr()[3] = 0;
-		m_inertiaTensor.ValuePtr()[4] = ((1 / m_inverseMass) / 12.f) * ((col->GetXHalfSize() * 2) * (col->GetXHalfSize() * 2) + (col->GetZHalfSize() * 2) * (col->GetZHalfSize() * 2)); //yy
-		m_inertiaTensor.ValuePtr()[5] = 0;
-		m_inertiaTensor.ValuePtr()[6] = 0;
-		m_inertiaTensor.ValuePtr()[7] = 0;
-		m_inertiaTensor.ValuePtr()[8] = ((1 / m_inverseMass) / 12.f) * ((col->GetXHalfSize() * 2) * (col->GetXHalfSize() * 2) + (col->GetYHalfSize() * 2) * (col->GetYHalfSize() * 2)); //zz
 	}
 }
 
@@ -220,7 +246,6 @@ void CRigidBody::Render()
 	{
 		GRAPHICS->DrawLine(m_parent->GetTransform()->GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_angularVelocity, Vector3f(1, 1, 0));
 		GRAPHICS->DrawLine(m_parent->GetTransform()->GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_velocity, Vector3f(1, 0, 1));
-		//GRAPHICS->RenderLine(Vector3f(1, 1, 1), m_transform.GetWorldTransform().GetRelativePosition(), m_transform.GetWorldTransform().GetRelativePosition() + m_accel);
 	}
 }
 
