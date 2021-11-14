@@ -86,6 +86,7 @@ void  CAnimator::CalculateBoneTransform(const Animation::AssimpNodeData* node, M
 void CAnimator::PlayAnimation(std::string filePath)
 {
 	m_CurrentAnimation = ANIMATION->GetAnimation(filePath);
+	
 	m_CurrentTime = 0.0f;
 	firstTime = true;
 	listOfBones.clear();

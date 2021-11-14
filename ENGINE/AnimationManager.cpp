@@ -22,5 +22,6 @@ void AnimationManager::AddAnimation(std::string filePath, std::string modelName,
 
 Animation* AnimationManager::GetAnimation(std::string name)
 {
+	assert(animationList.count(name) > 0);
 	return animationList.at(name);
 }

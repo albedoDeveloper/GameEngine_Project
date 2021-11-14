@@ -67,7 +67,7 @@ LoadSound("gravity_throw.wav")
 
 LoadSound("milkyway.wav")
 
-LoadAnimation("ai_agent/dance.fbx", "agent_dance")
+LoadAnimation("ai_agent/dance.fbx", "agent_dance", "agent_dance")
 LoadAnimation("ai_agent/drinking.fbx","agent_dance",  "agent_drinking")
 LoadAnimation("ai_agent/walk.fbx", "agent_dance", "agent_walk")
 LoadAnimation("ai_agent/loser.fbx", "agent_dance", "agent_loser")
