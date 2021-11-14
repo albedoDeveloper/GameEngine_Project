@@ -67,6 +67,16 @@ LoadSound("gravity_throw.wav")
 
 LoadSound("milkyway.wav")
 
+LoadAnimation("ai_agent/dance.fbx", "agent_dance")
+LoadAnimation("ai_agent/drinking.fbx","agent_dance",  "agent_drinking")
+LoadAnimation("ai_agent/walk.fbx", "agent_dance", "agent_walk")
+LoadAnimation("ai_agent/loser.fbx", "agent_dance", "agent_loser")
+LoadAnimation("ai_agent/pool.fbx", "agent_dance", "agent_pool")
+LoadAnimation("ai_agent/slowdance.fbx", "agent_dance", "agent_slowdance")
+LoadAnimation("ai_agent/mobile.fbx", "agent_dance", "agent_mobile")
+LoadAnimation("ai_agent/pickup.fbx", "agent_dance", "agent_pickup")
+LoadAnimation("ai_agent/talking.fbx", "agent_dance", "agent_talking")
+
 SpawnGameObject("fridge1"):SetStatic(true)
 GetGameObject("fridge1"):AddCStaticMesh():AssignModel("fridge1")
 GetGameObject("fridge1"):AddCCollider():AddBoxCollider(0,0,0,0,0,0,true,0,true, 30)
@@ -181,16 +191,6 @@ GetGameObject("ai_agent_1"):AddCStaticMesh():AssignModel("agent_dance")
 
 
 GetGameObject("ai_agent_1"):AddCAnimator()
-GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/dance.fbx", false, "agent_dance")
-GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/drinking.fbx", false, "agent_drinking")
-GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/walk.fbx", true, "agent_walk")
-GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/loser.fbx", false, "agent_loser")
-GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/pool.fbx", false, "agent_pool")
-GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/slowdance.fbx", false, "agent_slowdance")
-GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/mobile.fbx", false, "agent_mobile")
-GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/pickup.fbx", false, "agent_pickup")
-GetGameObject("ai_agent_1"):GetCAnimator():AddAnimation("ai_agent/talking.fbx", false, "agent_talking")
-
 GetGameObject("ai_agent_1"):AddCSound();
 
 GetGameObject("ai_agent_1"):GetTransform():Translate(2,0,1.4)
@@ -207,15 +207,6 @@ GetGameObject("ai_agent_2"):AddCStaticMesh():AssignModel("agent_dance")
 GetGameObject("ai_agent_2"):GetTransform():SetRelativePosition(-2, 0, 0)
 
 GetGameObject("ai_agent_2"):AddCAnimator()
-GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/dance.fbx", false, "agent_dance")
-GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/drinking.fbx", false, "agent_drinking")
-GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/walk.fbx", true, "agent_walk")
-GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/loser.fbx", false, "agent_loser")
-GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/pool.fbx", false, "agent_pool")
-GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/slowdance.fbx", false, "agent_slowdance")
-GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/mobile.fbx", false, "agent_mobile")
-GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/pickup.fbx", false, "agent_pickup")
-GetGameObject("ai_agent_2"):GetCAnimator():AddAnimation("ai_agent/talking.fbx", false, "agent_talking")
 
 GetGameObject("ai_agent_2"):AddCSound();
 
@@ -234,16 +225,6 @@ GetGameObject("ai_agent_3"):AddCStaticMesh():AssignModel("agent_dance")
 GetGameObject("ai_agent_3"):GetTransform():SetRelativePosition(2, 0, 0)
 
 GetGameObject("ai_agent_3"):AddCAnimator()
-GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/dance.fbx", false, "agent_dance")
-GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/drinking.fbx", false, "agent_drinking")
-GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/walk.fbx", true, "agent_walk")
-GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/loser.fbx", false, "agent_loser")
-GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/pool.fbx", false, "agent_pool")
-GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/slowdance.fbx", false, "agent_slowdance")
-GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/mobile.fbx", false, "agent_mobile")
-GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/pickup.fbx", false, "agent_pickup")
-GetGameObject("ai_agent_3"):GetCAnimator():AddAnimation("ai_agent/talking.fbx", false, "agent_talking")
-
 GetGameObject("ai_agent_3"):AddCSound();
 
 GetGameObject("ai_agent_3"):GetTransform():Translate(2,0,1.4)

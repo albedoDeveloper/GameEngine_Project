@@ -8,6 +8,7 @@
 #include "CCollider.h"
 #include "Engine.h"
 #include "SoundManager.h"
+#include "AnimationManager.h"
 #include <iostream>
 
 using namespace luabridge;
@@ -37,6 +38,7 @@ lua_State *ScriptingEngine::NewState()
 	getGlobalNamespace(Lbuff).addFunction("LoadModel", LoadModel);
 	getGlobalNamespace(Lbuff).addFunction("LoadSound", LoadSound);
 	getGlobalNamespace(Lbuff).addFunction("LoadScript", LoadScript);
+	getGlobalNamespace(Lbuff).addFunction("LoadAnimation", LoadAnimation);
 	getGlobalNamespace(Lbuff).addFunction("UnloadTexture", UnloadTexture);
 	getGlobalNamespace(Lbuff).addFunction("SpawnGameObject", SpawnGameObject);
 	getGlobalNamespace(Lbuff).addFunction("GetGameObject", GetGameObject);
@@ -220,7 +222,6 @@ lua_State *ScriptingEngine::NewState()
 		.endClass()
 		.deriveClass<CAnimator, CComponent>("CAnimator")
 		.addFunction("PlayAnimation", &CAnimator::PlayAnimation)
-		.addFunction("AddAnimation", &CAnimator::AddAnimation)
 		.endClass();
 
 	getGlobalNamespace(Lbuff)
@@ -280,6 +281,11 @@ void ScriptingEngine::LoadScript(std::string key, std::string filePath)
 void ScriptingEngine::LoadSound(std::string name)
 {
 	SOUND->LoadSound(name);
+}
+
+void ScriptingEngine::LoadAnimation(std::string filePath, std::string modelName, std::string name)
+{
+	ANIMATION->AddAnimation(filePath, modelName, name);
 }
 
 void ScriptingEngine::UnloadTexture(std::string key)

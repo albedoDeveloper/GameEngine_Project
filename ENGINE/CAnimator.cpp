@@ -1,6 +1,8 @@
 #include "CAnimator.h"
 #include "GameObject.h"
 #include "GraphicsEngine.h"
+#include "AnimationManager.h"
+
 CAnimator::CAnimator(Transform* parent, GameObject* parentObj)
 	:CComponent{ parent, parentObj }
 {
@@ -14,18 +16,6 @@ CAnimator::CAnimator(Transform* parent, GameObject* parentObj)
 
 }
 
-void CAnimator::AddAnimation(std::string filePath, bool playAtStart, std::string modelKey)
-{
-	GameObject* g = GetParentObject();
-	AModel* model = &g->GetCStaticMesh()->GetModel();
-
-	allAnimations.emplace(std::pair<std::string, Animation*>(modelKey, new Animation("../Assets/Models/" + filePath, model)));
-	
-	if (playAtStart)
-	{
-		m_CurrentAnimation = allAnimations[modelKey];
-	}
-}
 
 void CAnimator::UpdateBone()
 {
@@ -95,7 +85,7 @@ void  CAnimator::CalculateBoneTransform(const Animation::AssimpNodeData* node, M
 
 void CAnimator::PlayAnimation(std::string filePath)
 {
-	m_CurrentAnimation = allAnimations[filePath];
+	m_CurrentAnimation = ANIMATION->GetAnimation(filePath);
 	m_CurrentTime = 0.0f;
 	firstTime = true;
 	listOfBones.clear();

@@ -4,7 +4,7 @@
 #include <map>
 #include "CComponent.h"
 #include "MyTime.h"
-
+#include "Animation.h"
 
 class CAnimator : public CComponent
 {
@@ -16,13 +16,11 @@ public:
 		delete  m_CurrentAnimation;
 		m_CurrentAnimation = nullptr;
 	}
-	void AddAnimation(std::string filePath, bool playAtStart, std::string modelKey);
 	void UpdateBone();
 	void CalculateBoneTransform(const Animation::AssimpNodeData *node, Matrix4f parentTransform);
 	void PlayAnimation(std::string animationName);
 
 private:
-	std::map<std::string, Animation *> allAnimations;
 	std::vector<Matrix4f> m_FinalBoneMatrices;
 	std::vector<Bone *> listOfBones;
 	Animation *m_CurrentAnimation = nullptr;
