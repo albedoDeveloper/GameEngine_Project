@@ -24,8 +24,7 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 	m_freezeZRot{ false },
 	m_gravity{ 0,-4,0 },
 	m_restitution{ 0.7f },
-	m_damping{ 0.9f },
-	m_shape{ CRigidBody::BodyShape::Box }
+	m_damping{ 0.9f }
 {
 	CCollider *col = m_parent->GetComponent<CCollider>(); // TODO get all collider components
 	CStaticMesh *sm = m_parent->GetComponent<CStaticMesh>();
@@ -74,11 +73,6 @@ void CRigidBody::CalcSphereInertiaTensor()
 	m_inertiaTensor.ValuePtr()[8] = 2.f * (1 / m_inverseMass) * col->GetXHalfSize() * col->GetXHalfSize(); //zz
 }
 
-void CRigidBody::SetShape(BodyShape s)
-{
-	m_shape = s;
-}
-
 void CRigidBody::SetInverseMass(float newInverseMass)
 {
 	m_inverseMass = newInverseMass;
@@ -103,12 +97,12 @@ void CRigidBody::CalcInertiaTensor()
 	}
 	else
 	{
-		switch (m_shape)
+		switch (m_parent->GetComponent<CCollider>()->GetShape())
 		{
-		case BodyShape::Box:
+		case CCollider::Shape::Box:
 			CalcBoxInertiaTensor();
 			break;
-		case BodyShape::Sphere:
+		case CCollider::Shape::Sphere:
 			CalcSphereInertiaTensor();
 			break;
 		default:

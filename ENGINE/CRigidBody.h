@@ -5,11 +5,6 @@
 
 class CRigidBody : public CComponent
 {
-	enum class BodyShape
-	{
-		Box, Sphere
-	};
-
 public:
 		/**
 		 * constructs component with parent transform and parent gameobject.
@@ -39,7 +34,6 @@ public:
 	void SetMass(float newMass);
 	void CalcBoxInertiaTensor();
 	void CalcSphereInertiaTensor();
-	void SetShape(BodyShape s);
 	void SetInverseMass(float newInverseMass);
 	float GetInverseMass() const;
 	const Vector3f &GetAcceleration() const;
@@ -113,6 +107,4 @@ private:
 
 		/// @brief damping factor (simulates air friction)
 	float m_damping;
-
-	BodyShape m_shape;
 };
