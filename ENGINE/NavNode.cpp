@@ -13,24 +13,6 @@
 		transform.SetRelativePosition(nodeLocation.x, 0, nodeLocation.z);
 		active = isActive;
 		barrier = isBarrier;
-
-
-		//parentMesh->FetchNode(dirs[0].x, dirs[0].z);
-
-		
-
-		
-
-		/*if (!isActive)
-		{
-			m_neighbourNodes.emplace_back(parentMesh->FetchNode(3, 2));
-			m_neighbourNodes.emplace_back(parentMesh->FetchNode(1, 2));
-			m_neighbourNodes.emplace_back(parentMesh->FetchNode(2, 3));
-			m_neighbourNodes.emplace_back(parentMesh->FetchNode(2, 1));
-
-			UpdateNeighbours(isActive);
-
-		}*/
 	}
 
 	void NavNode::UpdateTransform(Transform parentTransform)
@@ -114,17 +96,12 @@
 			if (it == NULL)
 			{
 				std::cout << "ERROR Nav Node Neighbours are NULL" << std::endl;
-
 			}
 
 			if (it != NULL)
 			{
 				it->SetActive(isActive);
-				//std::cout << "x = " << it->nodeLocation.x << " y = " << it->nodeLocation.z << std::endl;
-
-
 			}
-
 		}
 	}
 

@@ -213,24 +213,7 @@ void CAgent::FollowPath()
 
 		//std::cout << "Path Start " << std::endl;
 
-		/*for (auto &curNode : path)
-		{
-			Vector3f pos = prevNode->GetTransform()->GetWorldTransform().GetRelativePosition();
-			Vector3f endPos = curNode->GetTransform()->GetWorldTransform().GetRelativePosition();
-
-			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);
-
-			prevNode = curNode;
-		}*/
-
-
-
-		/*if (INPUT->GetKeyDown('x'))
-		{
-			if(pathIndex < path.size())
-			pathIndex++;
-
-		}*/
+		
 
 
 		if (pathIndex < path.size() - 1)
@@ -473,18 +456,15 @@ NavNode *CAgent::FindNavLocation()
 			if (it->second->GetCNavMesh() != nullptr)
 				navMesh = it->second->GetCNavMesh();
 		}
+
+		navNode = navMesh->FindNearest(m_transform.GetWorldTransform().GetRelativePosition());
 	}
 	else
 	{
-		//std::cout << "pos = " << m_transform.GetWorldTransform().GetRelativePosition().GetX() << std::endl;
 
 		navNode = navMesh->FindNearest(m_transform.GetWorldTransform().GetRelativePosition());
-		//navNode->SetActive(false);
 
-		//std::cout << "Agent " << this->GetParentObject()->GetFactoryKey() << " dst at x =" << navNode->GetXPos() << " z = " << navNode->GetZPos() << std::endl;
 	}
-
-	//startLocation = navNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 
 	return navNode;
 }

@@ -194,16 +194,18 @@ void GameObjectFactory::ClearCurrentLevel()
 	std::map<std::string, GameObject *>::iterator it;
 	std::map<std::string, GameObject *>::iterator it_next;
 
+	// functionality for animations and rigibody loading is limited so we simply change their position rather than reconstruct the object
 	for (auto it = m_objects.cbegin(); it != m_objects.cend();)
 	{
-		if (it->second->GetFactoryKey() == "player")
+		if (it->second->GetFactoryKey() == "player" || it->second->GetFactoryKey() == "NavMesh" || it->second->GetComponent<CAgent>() != NULL || it->second->GetComponent<CRigidBody>() != NULL)
 		{
-			std::cout << "Don't delete Player Obj" << std::endl;
+			
+			std::cout << "Don't delete this Obj" << it->second->GetFactoryKey() << std::endl;
 			it++;
 		}
 		else if (m_objects.find(it->first) != m_objects.cend())
 		{
-			std::cout << "delete level test: go =" << it->second->GetFactoryKey() << std::endl;
+			std::cout << "delete level test: gObj =" << it->second->GetFactoryKey() << std::endl;
 
 			//delete it->second;
 			m_objects.erase(it++);

@@ -43,31 +43,25 @@ void CNavMesh::Update()
 
 void CNavMesh::Render()
 {
-
-	//btVector3 vec1 = btVector3(m_navNodes[0]->GetTransform()->GetWorldTransform().GetRelativePosition().GetX(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetZ());
-	//btVector3 vec2 = btVector3(m_navNodes[50]->GetTransform()->GetRelativePosition().GetX(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetZ());
-
 	Vector3f vec1 = Vector3f(1, 2, 3);
 	Vector3f vec2 = Vector3f(3, 2, 1);
 
 	if (GRAPHICS->m_drawDebug)
 	{
 		GRAPHICS->DrawDebugNavMesh(this, m_transform.GetWorldTransform());
-
-		//GRAPHICS->DrawLine(vec1, vec2, Vector3f(1.0f, 0.5f, 0.5f));
-
 	}
 
 }
 
 void CNavMesh::Save(nlohmann::json &j)
 {
-
+	GameObject *g = GetParentObject();
+	j[g->GetFactoryKey()]["Components"]["NavMeshComponent"] = "NavMesh";
 }
 
 void CNavMesh::Load(nlohmann::json &j)
 {
-
+	GameObject *g = GetParentObject();
 }
 
 void CNavMesh::DrawToImGui()
@@ -83,15 +77,14 @@ void CNavMesh::GenerateNavMesh()
 		for (int z = -5; z < 5; z++)
 		{
 			i++;
+
+			//assign barriers
+			//if we are looping through anyway we might as well set the barriers here
 			bool active = !AssignBarriers(x, z);
 			bool barrier = AssignBarriers(x, z);
 
-			//assign barriers
-
-
 			NavNode *newNode = new NavNode(this, x, z, active, barrier);
 			m_navNodes.emplace_back(newNode);
-			//std::cout << "Nav node is of size " << i << std::endl;
 		}
 
 	}
@@ -118,12 +111,8 @@ bool CNavMesh::AssignBarriers(int x, int z)
 {
 	bool returnBool = false;
 
-	//COLLISION.
-
-	/*if (z == 0 && (x == -1 || x == -2 || x == -3 || x == -4 || x == -5 || x == 0 || x == 1 || x == 2 || x == 3 || x == 4 || x == 5))
-	{
-		returnBool = true;
-	}*/
+	//COLLISION POSITIONS
+	//Not an ideal solution but it does the job
 
 	//pool table
 	if ((x == -9 || x == -8) && (z == 1 || z == 0 || z == -1))
@@ -203,12 +192,6 @@ NavNode *CNavMesh::FetchNode(int x, int z)
 		}
 	}
 
-	if (returnNode == NULL)
-	{
-		//std::cout << "Output x = " << x << " z = " << z << std::endl;
-
-	}
-
 	return returnNode;
 }
 
@@ -224,16 +207,12 @@ NavNode *CNavMesh::FindNearest(Vector3f pos)
 			Vector3f diff = pos - m_navNodes[i]->GetTransform()->GetWorldTransform().GetRelativePosition();
 			float curDst = diff.Magnitude();
 
-
-
 			if (curDst < shortestDst)
 			{
 				shortestDst = curDst;
 				nodeIndex = i;
 			}
-
 		}
-
 
 	}
 
@@ -243,46 +222,29 @@ NavNode *CNavMesh::FindNearest(Vector3f pos)
 
 void CNavMesh::Scan(int i)
 {
-
-
 	Vector3f positionVec{ 0,1,0 };
 	//std::cout << "dst at x =" << FindNearest(positionVec)->GetXPos() << " z = " << FindNearest(positionVec)->GetZPos() << std::endl;
-
-
 
 	//clear prior
 	came_from.clear();
 	cost_so_far.clear();
-	//generates graph
-	for (size_t i = 0; i < m_navNodes.size() - 1; i++)
+
+	if (i < m_navNodes.size())
 	{
-
-		m_navNodes[i]->SetActive(true);
-	}
-
-	std::cout << "node at x =" << m_navNodes[i]->GetXPos() << " z = " << m_navNodes[i]->GetZPos() << std::endl;
-
-
-	//Print out graph
-	/*for (size_t i = 0; i < nodeGraph.edges.size(); i++)
-	{
-		for (size_t j = 0; j < nodeGraph.neighbors(m_navNodes[i]).size(); j++)
+		//generates graph
+		for (size_t i = 0; i < m_navNodes.size() - 1; i++)
 		{
-			std::cout << "at node i = " << i << ", neighbours j =" << j << " node value x = " << nodeGraph.neighbors(m_navNodes[i])[j]->GetXPos() <<
-			 "node value z = " << nodeGraph.neighbors(m_navNodes[i])[j]->GetZPos() << std::endl;
+
+			m_navNodes[i]->SetActive(true);
 		}
-	}*/
 
-	//breadth_first_search(nodeGraph, m_navNodes[0], m_navNodes[i]);
 
-	if (m_navNodes[i] != NULL)
-	{
-		DijkstraSearch(m_navNodes[0], m_navNodes[i], came_from, cost_so_far);
 
-		//reconstruct_path(m_navNodes[0], m_navNodes[i], came_from);
+		if (m_navNodes[i] != NULL)
+		{
+			DijkstraSearch(m_navNodes[0], m_navNodes[i], came_from, cost_so_far);
+		}
 	}
-
-
 
 }
 

@@ -1,5 +1,8 @@
 {
     "NavMesh": {
+        "Components": {
+            "NavMeshComponent": "NavMesh"
+        },
         "Transform": {
             "Position": {
                 "x": 1.0,
@@ -24,6 +27,7 @@
     },
     "ai_agent_1": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "agent_dance",
                 "Shader": "lit"
@@ -31,15 +35,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -3.0436789989471436,
+                "x": 4.582730293273926,
                 "y": 0.0,
-                "z": 0.6154270172119141
+                "z": 3.3239340782165527
             },
             "Rotation": {
-                "w": 0.7511129379272461,
+                "w": 1.0,
                 "x": 0.0,
-                "y": 0.6601735949516296,
-                "z": -0.0
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -53,6 +57,7 @@
     },
     "ai_agent_2": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "agent_dance",
                 "Shader": "lit"
@@ -60,15 +65,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -3.9228615760803223,
+                "x": -1.5040643215179443,
                 "y": 0.0,
-                "z": 0.6154270172119141
+                "z": -0.6325963139533997
             },
             "Rotation": {
-                "w": 0.7638253569602966,
+                "w": 0.7071068286895752,
                 "x": 0.0,
-                "y": 0.6454229950904846,
-                "z": -0.0
+                "y": 0.7071068286895752,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -82,6 +87,7 @@
     },
     "ai_agent_3": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "agent_dance",
                 "Shader": "lit"
@@ -89,15 +95,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -2.1644978523254395,
+                "x": 6.016541481018066,
                 "y": 0.0,
-                "z": 0.6154270172119141
+                "z": -2.479257583618164
             },
             "Rotation": {
-                "w": 0.7430315017700195,
+                "w": -0.7071068286895752,
                 "x": 0.0,
-                "y": 0.6692564487457275,
-                "z": -0.0
+                "y": 0.7071068286895752,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -111,6 +117,9 @@
     },
     "back_wall": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "back_wall",
                 "Shader": "lit"
@@ -169,6 +178,9 @@
     },
     "barrel1": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "barrel1",
                 "Shader": "lit"
@@ -176,9 +188,9 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.3100000023841858,
-                "y": 1.715000033378601,
-                "z": -2.5
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
                 "w": 1.0,
@@ -198,6 +210,9 @@
     },
     "barrel2": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "barrel2",
                 "Shader": "lit"
@@ -285,6 +300,9 @@
     },
     "behind_bar_block": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "behind_bar_block",
                 "Shader": "lit"
@@ -312,24 +330,28 @@
         "key": "behind_bar_block",
         "parent": "none"
     },
-    "book2": {
+    "book_0": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
-                "AModel": "book",
+                "AModel": "crate_small",
                 "Shader": "lit"
             }
         },
         "Transform": {
             "Position": {
-                "x": -2.0,
-                "y": 2.0,
-                "z": 0.0
+                "x": 3.5788094997406006,
+                "y": 0.3379424214363098,
+                "z": -1.326577067375183
             },
             "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "w": 0.9759411215782166,
+                "x": -0.016366424039006233,
+                "y": 0.19074676930904388,
+                "z": -0.1043391227722168
             },
             "Scale": {
                 "x": 1.0,
@@ -338,40 +360,15 @@
             }
         },
         "active": true,
-        "key": "book2",
-        "parent": "none"
-    },
-    "book_0": {
-        "Components": {
-            "StaticMeshComponent": {
-                "AModel": "crate_small",
-                "Shader": "lit"
-            }
-        },
-        "Transform": {
-            "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "Scale": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            }
-        },
-        "active": false,
         "key": "book_0",
         "parent": "none"
     },
     "book_1": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -379,15 +376,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": 6.031128883361816,
+                "y": 0.31956857442855835,
+                "z": -1.5512611865997314
             },
             "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "w": -0.254040390253067,
+                "x": -0.04952462017536163,
+                "y": -0.9644563794136047,
+                "z": 0.05324327573180199
             },
             "Scale": {
                 "x": 1.0,
@@ -395,12 +392,16 @@
                 "z": 1.0
             }
         },
-        "active": false,
+        "active": true,
         "key": "book_1",
         "parent": "none"
     },
     "book_10": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -430,6 +431,10 @@
     },
     "book_11": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -459,6 +464,10 @@
     },
     "book_12": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -488,6 +497,10 @@
     },
     "book_13": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -517,6 +530,10 @@
     },
     "book_14": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -546,6 +563,10 @@
     },
     "book_15": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -575,6 +596,10 @@
     },
     "book_16": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -604,6 +629,10 @@
     },
     "book_17": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -633,6 +662,10 @@
     },
     "book_18": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -662,6 +695,10 @@
     },
     "book_19": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -691,6 +728,10 @@
     },
     "book_2": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -698,15 +739,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": 6.762641429901123,
+                "y": 0.318749338388443,
+                "z": 0.25122159719467163
             },
             "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "w": -0.5246152877807617,
+                "x": -0.6356936097145081,
+                "y": -0.3771555423736572,
+                "z": -0.42240509390830994
             },
             "Scale": {
                 "x": 1.0,
@@ -714,12 +755,16 @@
                 "z": 1.0
             }
         },
-        "active": false,
+        "active": true,
         "key": "book_2",
         "parent": "none"
     },
     "book_20": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -749,6 +794,10 @@
     },
     "book_21": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -778,6 +827,10 @@
     },
     "book_22": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -807,6 +860,10 @@
     },
     "book_23": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -836,6 +893,10 @@
     },
     "book_24": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -865,6 +926,10 @@
     },
     "book_25": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -894,6 +959,10 @@
     },
     "book_26": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -923,6 +992,10 @@
     },
     "book_27": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -952,6 +1025,10 @@
     },
     "book_28": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -981,6 +1058,10 @@
     },
     "book_29": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1010,6 +1091,10 @@
     },
     "book_3": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1017,15 +1102,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": 3.536144733428955,
+                "y": 0.30891263484954834,
+                "z": 1.82304048538208
             },
             "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "w": -0.04319775477051735,
+                "x": -0.3958055078983307,
+                "y": 0.04542998969554901,
+                "z": -0.9161921739578247
             },
             "Scale": {
                 "x": 1.0,
@@ -1033,12 +1118,16 @@
                 "z": 1.0
             }
         },
-        "active": false,
+        "active": true,
         "key": "book_3",
         "parent": "none"
     },
     "book_30": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1068,6 +1157,10 @@
     },
     "book_31": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1097,6 +1190,10 @@
     },
     "book_32": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1126,6 +1223,10 @@
     },
     "book_33": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1155,6 +1256,10 @@
     },
     "book_34": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1184,6 +1289,10 @@
     },
     "book_35": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1213,6 +1322,10 @@
     },
     "book_36": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1242,6 +1355,10 @@
     },
     "book_37": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1271,6 +1388,10 @@
     },
     "book_38": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1300,6 +1421,10 @@
     },
     "book_39": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1329,6 +1454,10 @@
     },
     "book_4": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1336,15 +1465,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": 2.348802089691162,
+                "y": 0.29732149839401245,
+                "z": 3.709094285964966
             },
             "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "w": 0.8005474805831909,
+                "x": -0.05040530860424042,
+                "y": 0.5962419509887695,
+                "z": -0.03284201771020889
             },
             "Scale": {
                 "x": 1.0,
@@ -1352,12 +1481,16 @@
                 "z": 1.0
             }
         },
-        "active": false,
+        "active": true,
         "key": "book_4",
         "parent": "none"
     },
     "book_40": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1387,6 +1520,10 @@
     },
     "book_41": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1416,6 +1553,10 @@
     },
     "book_42": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1445,6 +1586,10 @@
     },
     "book_43": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1474,6 +1619,10 @@
     },
     "book_44": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1503,6 +1652,10 @@
     },
     "book_45": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1532,6 +1685,10 @@
     },
     "book_46": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1561,6 +1718,10 @@
     },
     "book_47": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1590,6 +1751,10 @@
     },
     "book_48": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1619,6 +1784,10 @@
     },
     "book_49": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1648,6 +1817,10 @@
     },
     "book_5": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1677,6 +1850,10 @@
     },
     "book_50": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1706,6 +1883,10 @@
     },
     "book_51": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1735,6 +1916,10 @@
     },
     "book_52": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1764,6 +1949,10 @@
     },
     "book_53": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1793,6 +1982,10 @@
     },
     "book_54": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1822,6 +2015,10 @@
     },
     "book_55": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1851,6 +2048,10 @@
     },
     "book_56": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1880,6 +2081,10 @@
     },
     "book_57": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1909,6 +2114,10 @@
     },
     "book_58": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1938,6 +2147,10 @@
     },
     "book_59": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1967,6 +2180,10 @@
     },
     "book_6": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -1996,6 +2213,10 @@
     },
     "book_60": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2025,6 +2246,10 @@
     },
     "book_61": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2054,6 +2279,10 @@
     },
     "book_62": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2083,6 +2312,10 @@
     },
     "book_63": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2112,6 +2345,10 @@
     },
     "book_64": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2141,6 +2378,10 @@
     },
     "book_65": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2170,6 +2411,10 @@
     },
     "book_66": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2199,6 +2444,10 @@
     },
     "book_67": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2228,6 +2477,10 @@
     },
     "book_68": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2257,6 +2510,10 @@
     },
     "book_69": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2286,6 +2543,10 @@
     },
     "book_7": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2315,6 +2576,10 @@
     },
     "book_70": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2344,6 +2609,10 @@
     },
     "book_71": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2373,6 +2642,10 @@
     },
     "book_72": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2402,6 +2675,10 @@
     },
     "book_73": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2431,6 +2708,10 @@
     },
     "book_74": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2460,6 +2741,10 @@
     },
     "book_75": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2489,6 +2774,10 @@
     },
     "book_76": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2518,6 +2807,10 @@
     },
     "book_77": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2547,6 +2840,10 @@
     },
     "book_78": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2576,6 +2873,10 @@
     },
     "book_79": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2605,6 +2906,10 @@
     },
     "book_8": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2634,6 +2939,10 @@
     },
     "book_80": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2663,6 +2972,10 @@
     },
     "book_81": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2692,6 +3005,10 @@
     },
     "book_82": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2721,6 +3038,10 @@
     },
     "book_83": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2750,6 +3071,10 @@
     },
     "book_84": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2779,6 +3104,10 @@
     },
     "book_85": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2808,6 +3137,10 @@
     },
     "book_86": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2837,6 +3170,10 @@
     },
     "book_87": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2866,6 +3203,10 @@
     },
     "book_88": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2895,6 +3236,10 @@
     },
     "book_89": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2924,6 +3269,10 @@
     },
     "book_9": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2953,6 +3302,10 @@
     },
     "book_90": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -2982,6 +3335,10 @@
     },
     "book_91": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -3011,6 +3368,10 @@
     },
     "book_92": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -3040,6 +3401,10 @@
     },
     "book_93": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -3069,6 +3434,10 @@
     },
     "book_94": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -3098,6 +3467,10 @@
     },
     "book_95": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -3127,6 +3500,10 @@
     },
     "book_96": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -3156,6 +3533,10 @@
     },
     "book_97": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -3185,6 +3566,10 @@
     },
     "book_98": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -3214,6 +3599,10 @@
     },
     "book_99": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "crate_small",
                 "Shader": "lit"
@@ -3253,15 +3642,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -7.744999885559082,
-                "y": 1.315000057220459,
-                "z": -0.4449999928474426
+                "x": -8.744999885559082,
+                "y": 0.815000057220459,
+                "z": -1.4449999332427979
             },
             "Rotation": {
-                "w": 0.5875582695007324,
-                "x": 0.24337351322174072,
-                "y": -0.712971568107605,
-                "z": -0.29532408714294434
+                "w": -0.9232420325279236,
+                "x": -0.38241931796073914,
+                "y": 0.034316711127758026,
+                "z": 0.014214174821972847
             },
             "Scale": {
                 "x": 1.0,
@@ -3304,6 +3693,9 @@
     },
     "fridge1": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "fridge1",
                 "Shader": "lit"
@@ -3333,6 +3725,9 @@
     },
     "fridge2": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "fridge2",
                 "Shader": "lit"
@@ -3362,6 +3757,9 @@
     },
     "graffiti_block": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "graffiti_block",
                 "Shader": "lit"
@@ -3391,6 +3789,7 @@
     },
     "jukebox": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "jukebox",
                 "Shader": "lit"
@@ -3420,6 +3819,7 @@
     },
     "light1": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis",
                 "Shader": "lit"
@@ -3449,6 +3849,7 @@
     },
     "light2": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "axis",
                 "Shader": "lit"
@@ -3489,9 +3890,9 @@
                 "z": 5.275000095367432
             },
             "Rotation": {
-                "w": 0.6359689831733704,
+                "w": -0.9993099570274353,
                 "x": 0.0,
-                "y": -0.7717146873474121,
+                "y": 0.03714381903409958,
                 "z": 0.0
             },
             "Scale": {
@@ -3506,6 +3907,9 @@
     },
     "main_bar_bench": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "main_bar_bench",
                 "Shader": "lit"
@@ -3542,14 +3946,14 @@
         },
         "Transform": {
             "Position": {
-                "x": -8.512884140014648,
-                "y": 2.537564754486084,
-                "z": 2.6532771587371826
+                "x": 8.61890697479248,
+                "y": 1.600000023841858,
+                "z": 1.532968521118164
             },
             "Rotation": {
-                "w": 0.9338929653167725,
+                "w": 0.6606572270393372,
                 "x": 0.0,
-                "y": 0.35755282640457153,
+                "y": -0.750687837600708,
                 "z": 0.0
             },
             "Scale": {
@@ -3564,6 +3968,10 @@
     },
     "pool-table": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "pool-table",
                 "Shader": "lit"
@@ -3593,6 +4001,10 @@
     },
     "projectile_0": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3600,15 +4012,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": 6.811157703399658,
+                "y": 0.11963970959186554,
+                "z": -1.0916087627410889
             },
             "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "w": 0.5380602478981018,
+                "x": -0.06228170171380043,
+                "y": -0.8350291848182678,
+                "z": 0.0966358631849289
             },
             "Scale": {
                 "x": 1.0,
@@ -3616,12 +4028,16 @@
                 "z": 1.0
             }
         },
-        "active": false,
+        "active": true,
         "key": "projectile_0",
         "parent": "none"
     },
     "projectile_1": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3629,15 +4045,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": -1.3555257320404053,
+                "y": 0.11963970959186554,
+                "z": 7.207334518432617
             },
             "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "w": 0.53969407081604,
+                "x": -0.06290692090988159,
+                "y": -0.8338586091995239,
+                "z": 0.09722591936588287
             },
             "Scale": {
                 "x": 1.0,
@@ -3645,12 +4061,16 @@
                 "z": 1.0
             }
         },
-        "active": false,
+        "active": true,
         "key": "projectile_1",
         "parent": "none"
     },
     "projectile_10": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3680,6 +4100,10 @@
     },
     "projectile_100": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3709,6 +4133,10 @@
     },
     "projectile_101": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3738,6 +4166,10 @@
     },
     "projectile_102": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3767,6 +4199,10 @@
     },
     "projectile_103": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3796,6 +4232,10 @@
     },
     "projectile_104": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3825,6 +4265,10 @@
     },
     "projectile_105": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3854,6 +4298,10 @@
     },
     "projectile_106": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3883,6 +4331,10 @@
     },
     "projectile_107": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3912,6 +4364,10 @@
     },
     "projectile_108": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3941,6 +4397,10 @@
     },
     "projectile_109": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3970,6 +4430,10 @@
     },
     "projectile_11": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -3999,6 +4463,10 @@
     },
     "projectile_110": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4028,6 +4496,10 @@
     },
     "projectile_111": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4057,6 +4529,10 @@
     },
     "projectile_112": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4086,6 +4562,10 @@
     },
     "projectile_113": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4115,6 +4595,10 @@
     },
     "projectile_114": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4144,6 +4628,10 @@
     },
     "projectile_115": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4173,6 +4661,10 @@
     },
     "projectile_116": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4202,6 +4694,10 @@
     },
     "projectile_117": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4231,6 +4727,10 @@
     },
     "projectile_118": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4260,6 +4760,10 @@
     },
     "projectile_119": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4289,6 +4793,10 @@
     },
     "projectile_12": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4318,6 +4826,10 @@
     },
     "projectile_120": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4347,6 +4859,10 @@
     },
     "projectile_121": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4376,6 +4892,10 @@
     },
     "projectile_122": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4405,6 +4925,10 @@
     },
     "projectile_123": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4434,6 +4958,10 @@
     },
     "projectile_124": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4463,6 +4991,10 @@
     },
     "projectile_125": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4492,6 +5024,10 @@
     },
     "projectile_126": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4521,6 +5057,10 @@
     },
     "projectile_127": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4550,6 +5090,10 @@
     },
     "projectile_128": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4579,6 +5123,10 @@
     },
     "projectile_129": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4608,6 +5156,10 @@
     },
     "projectile_13": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4637,6 +5189,10 @@
     },
     "projectile_130": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4666,6 +5222,10 @@
     },
     "projectile_131": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4695,6 +5255,10 @@
     },
     "projectile_132": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4724,6 +5288,10 @@
     },
     "projectile_133": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4753,6 +5321,10 @@
     },
     "projectile_134": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4782,6 +5354,10 @@
     },
     "projectile_135": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4811,6 +5387,10 @@
     },
     "projectile_136": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4840,6 +5420,10 @@
     },
     "projectile_137": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4869,6 +5453,10 @@
     },
     "projectile_138": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4898,6 +5486,10 @@
     },
     "projectile_139": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4927,6 +5519,10 @@
     },
     "projectile_14": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4956,6 +5552,10 @@
     },
     "projectile_140": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -4985,6 +5585,10 @@
     },
     "projectile_141": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5014,6 +5618,10 @@
     },
     "projectile_142": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5043,6 +5651,10 @@
     },
     "projectile_143": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5072,6 +5684,10 @@
     },
     "projectile_144": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5101,6 +5717,10 @@
     },
     "projectile_145": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5130,6 +5750,10 @@
     },
     "projectile_146": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5159,6 +5783,10 @@
     },
     "projectile_147": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5188,6 +5816,10 @@
     },
     "projectile_148": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5217,6 +5849,10 @@
     },
     "projectile_149": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5246,6 +5882,10 @@
     },
     "projectile_15": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5275,6 +5915,10 @@
     },
     "projectile_150": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5304,6 +5948,10 @@
     },
     "projectile_151": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5333,6 +5981,10 @@
     },
     "projectile_152": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5362,6 +6014,10 @@
     },
     "projectile_153": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5391,6 +6047,10 @@
     },
     "projectile_154": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5420,6 +6080,10 @@
     },
     "projectile_155": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5449,6 +6113,10 @@
     },
     "projectile_156": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5478,6 +6146,10 @@
     },
     "projectile_157": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5507,6 +6179,10 @@
     },
     "projectile_158": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5536,6 +6212,10 @@
     },
     "projectile_159": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5565,6 +6245,10 @@
     },
     "projectile_16": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5594,6 +6278,10 @@
     },
     "projectile_160": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5623,6 +6311,10 @@
     },
     "projectile_161": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5652,6 +6344,10 @@
     },
     "projectile_162": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5681,6 +6377,10 @@
     },
     "projectile_163": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5710,6 +6410,10 @@
     },
     "projectile_164": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5739,6 +6443,10 @@
     },
     "projectile_165": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5768,6 +6476,10 @@
     },
     "projectile_166": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5797,6 +6509,10 @@
     },
     "projectile_167": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5826,6 +6542,10 @@
     },
     "projectile_168": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5855,6 +6575,10 @@
     },
     "projectile_169": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5884,6 +6608,10 @@
     },
     "projectile_17": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5913,6 +6641,10 @@
     },
     "projectile_170": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5942,6 +6674,10 @@
     },
     "projectile_171": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -5971,6 +6707,10 @@
     },
     "projectile_172": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6000,6 +6740,10 @@
     },
     "projectile_173": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6029,6 +6773,10 @@
     },
     "projectile_174": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6058,6 +6806,10 @@
     },
     "projectile_175": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6087,6 +6839,10 @@
     },
     "projectile_176": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6116,6 +6872,10 @@
     },
     "projectile_177": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6145,6 +6905,10 @@
     },
     "projectile_178": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6174,6 +6938,10 @@
     },
     "projectile_179": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6203,6 +6971,10 @@
     },
     "projectile_18": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6232,6 +7004,10 @@
     },
     "projectile_180": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6261,6 +7037,10 @@
     },
     "projectile_181": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6290,6 +7070,10 @@
     },
     "projectile_182": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6319,6 +7103,10 @@
     },
     "projectile_183": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6348,6 +7136,10 @@
     },
     "projectile_184": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6377,6 +7169,10 @@
     },
     "projectile_185": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6406,6 +7202,10 @@
     },
     "projectile_186": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6435,6 +7235,10 @@
     },
     "projectile_187": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6464,6 +7268,10 @@
     },
     "projectile_188": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6493,6 +7301,10 @@
     },
     "projectile_189": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6522,6 +7334,10 @@
     },
     "projectile_19": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6551,6 +7367,10 @@
     },
     "projectile_190": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6580,6 +7400,10 @@
     },
     "projectile_191": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6609,6 +7433,10 @@
     },
     "projectile_192": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6638,6 +7466,10 @@
     },
     "projectile_193": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6667,6 +7499,10 @@
     },
     "projectile_194": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6696,6 +7532,10 @@
     },
     "projectile_195": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6725,6 +7565,10 @@
     },
     "projectile_196": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6754,6 +7598,10 @@
     },
     "projectile_197": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6783,6 +7631,10 @@
     },
     "projectile_198": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6812,6 +7664,10 @@
     },
     "projectile_199": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6841,6 +7697,10 @@
     },
     "projectile_2": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6848,15 +7708,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": 2.284104347229004,
+                "y": 0.11963970959186554,
+                "z": -1.8584840297698975
             },
             "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "w": 0.5395144820213318,
+                "x": -0.06287147849798203,
+                "y": -0.8339776992797852,
+                "z": 0.09722430258989334
             },
             "Scale": {
                 "x": 1.0,
@@ -6864,12 +7724,16 @@
                 "z": 1.0
             }
         },
-        "active": false,
+        "active": true,
         "key": "projectile_2",
         "parent": "none"
     },
     "projectile_20": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6899,6 +7763,10 @@
     },
     "projectile_200": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6928,6 +7796,10 @@
     },
     "projectile_201": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6957,6 +7829,10 @@
     },
     "projectile_202": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -6986,6 +7862,10 @@
     },
     "projectile_203": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7015,6 +7895,10 @@
     },
     "projectile_204": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7044,6 +7928,10 @@
     },
     "projectile_205": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7073,6 +7961,10 @@
     },
     "projectile_206": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7102,6 +7994,10 @@
     },
     "projectile_207": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7131,6 +8027,10 @@
     },
     "projectile_208": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7160,6 +8060,10 @@
     },
     "projectile_209": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7189,6 +8093,10 @@
     },
     "projectile_21": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7218,6 +8126,10 @@
     },
     "projectile_210": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7247,6 +8159,10 @@
     },
     "projectile_211": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7276,6 +8192,10 @@
     },
     "projectile_212": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7305,6 +8225,10 @@
     },
     "projectile_213": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7334,6 +8258,10 @@
     },
     "projectile_214": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7363,6 +8291,10 @@
     },
     "projectile_215": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7392,6 +8324,10 @@
     },
     "projectile_216": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7421,6 +8357,10 @@
     },
     "projectile_217": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7450,6 +8390,10 @@
     },
     "projectile_218": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7479,6 +8423,10 @@
     },
     "projectile_219": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7508,6 +8456,10 @@
     },
     "projectile_22": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7537,6 +8489,10 @@
     },
     "projectile_220": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7566,6 +8522,10 @@
     },
     "projectile_221": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7595,6 +8555,10 @@
     },
     "projectile_222": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7624,6 +8588,10 @@
     },
     "projectile_223": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7653,6 +8621,10 @@
     },
     "projectile_224": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7682,6 +8654,10 @@
     },
     "projectile_225": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7711,6 +8687,10 @@
     },
     "projectile_226": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7740,6 +8720,10 @@
     },
     "projectile_227": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7769,6 +8753,10 @@
     },
     "projectile_228": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7798,6 +8786,10 @@
     },
     "projectile_229": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7827,6 +8819,10 @@
     },
     "projectile_23": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7856,6 +8852,10 @@
     },
     "projectile_230": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7885,6 +8885,10 @@
     },
     "projectile_231": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7914,6 +8918,10 @@
     },
     "projectile_232": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7943,6 +8951,10 @@
     },
     "projectile_233": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -7972,6 +8984,10 @@
     },
     "projectile_234": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8001,6 +9017,10 @@
     },
     "projectile_235": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8030,6 +9050,10 @@
     },
     "projectile_236": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8059,6 +9083,10 @@
     },
     "projectile_237": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8088,6 +9116,10 @@
     },
     "projectile_238": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8117,6 +9149,10 @@
     },
     "projectile_239": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8146,6 +9182,10 @@
     },
     "projectile_24": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8175,6 +9215,10 @@
     },
     "projectile_240": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8204,6 +9248,10 @@
     },
     "projectile_241": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8233,6 +9281,10 @@
     },
     "projectile_242": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8262,6 +9314,10 @@
     },
     "projectile_243": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8291,6 +9347,10 @@
     },
     "projectile_244": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8320,6 +9380,10 @@
     },
     "projectile_245": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8349,6 +9413,10 @@
     },
     "projectile_246": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8378,6 +9446,10 @@
     },
     "projectile_247": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8407,6 +9479,10 @@
     },
     "projectile_248": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8436,6 +9512,10 @@
     },
     "projectile_249": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8465,6 +9545,10 @@
     },
     "projectile_25": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8494,6 +9578,10 @@
     },
     "projectile_250": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8523,6 +9611,10 @@
     },
     "projectile_251": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8552,6 +9644,10 @@
     },
     "projectile_252": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8581,6 +9677,10 @@
     },
     "projectile_253": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8610,6 +9710,10 @@
     },
     "projectile_254": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8639,6 +9743,10 @@
     },
     "projectile_255": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8668,6 +9776,10 @@
     },
     "projectile_256": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8697,6 +9809,10 @@
     },
     "projectile_257": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8726,6 +9842,10 @@
     },
     "projectile_258": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8755,6 +9875,10 @@
     },
     "projectile_259": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8784,6 +9908,10 @@
     },
     "projectile_26": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8813,6 +9941,10 @@
     },
     "projectile_260": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8842,6 +9974,10 @@
     },
     "projectile_261": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8871,6 +10007,10 @@
     },
     "projectile_262": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8900,6 +10040,10 @@
     },
     "projectile_263": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8929,6 +10073,10 @@
     },
     "projectile_264": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8958,6 +10106,10 @@
     },
     "projectile_265": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -8987,6 +10139,10 @@
     },
     "projectile_266": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9016,6 +10172,10 @@
     },
     "projectile_267": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9045,6 +10205,10 @@
     },
     "projectile_268": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9074,6 +10238,10 @@
     },
     "projectile_269": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9103,6 +10271,10 @@
     },
     "projectile_27": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9132,6 +10304,10 @@
     },
     "projectile_270": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9161,6 +10337,10 @@
     },
     "projectile_271": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9190,6 +10370,10 @@
     },
     "projectile_272": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9219,6 +10403,10 @@
     },
     "projectile_273": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9248,6 +10436,10 @@
     },
     "projectile_274": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9277,6 +10469,10 @@
     },
     "projectile_275": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9306,6 +10502,10 @@
     },
     "projectile_276": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9335,6 +10535,10 @@
     },
     "projectile_277": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9364,6 +10568,10 @@
     },
     "projectile_278": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9393,6 +10601,10 @@
     },
     "projectile_279": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9422,6 +10634,10 @@
     },
     "projectile_28": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9451,6 +10667,10 @@
     },
     "projectile_280": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9480,6 +10700,10 @@
     },
     "projectile_281": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9509,6 +10733,10 @@
     },
     "projectile_282": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9538,6 +10766,10 @@
     },
     "projectile_283": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9567,6 +10799,10 @@
     },
     "projectile_284": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9596,6 +10832,10 @@
     },
     "projectile_285": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9625,6 +10865,10 @@
     },
     "projectile_286": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9654,6 +10898,10 @@
     },
     "projectile_287": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9683,6 +10931,10 @@
     },
     "projectile_288": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9712,6 +10964,10 @@
     },
     "projectile_289": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9741,6 +10997,10 @@
     },
     "projectile_29": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9770,6 +11030,10 @@
     },
     "projectile_290": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9799,6 +11063,10 @@
     },
     "projectile_291": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9828,6 +11096,10 @@
     },
     "projectile_292": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9857,6 +11129,10 @@
     },
     "projectile_293": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9886,6 +11162,10 @@
     },
     "projectile_294": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9915,6 +11195,10 @@
     },
     "projectile_295": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9944,6 +11228,10 @@
     },
     "projectile_296": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -9973,6 +11261,10 @@
     },
     "projectile_297": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10002,6 +11294,10 @@
     },
     "projectile_298": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10031,6 +11327,10 @@
     },
     "projectile_299": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10060,6 +11360,10 @@
     },
     "projectile_3": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10067,15 +11371,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": -0.34358733892440796,
+                "y": 0.11963970959186554,
+                "z": 6.992188453674316
             },
             "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "w": 0.5549324750900269,
+                "x": -0.05638633295893669,
+                "y": -0.825733482837677,
+                "z": 0.08387308567762375
             },
             "Scale": {
                 "x": 1.0,
@@ -10083,12 +11387,16 @@
                 "z": 1.0
             }
         },
-        "active": false,
+        "active": true,
         "key": "projectile_3",
         "parent": "none"
     },
     "projectile_30": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10118,6 +11426,10 @@
     },
     "projectile_31": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10147,6 +11459,10 @@
     },
     "projectile_32": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10176,6 +11492,10 @@
     },
     "projectile_33": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10205,6 +11525,10 @@
     },
     "projectile_34": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10234,6 +11558,10 @@
     },
     "projectile_35": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10263,6 +11591,10 @@
     },
     "projectile_36": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10292,6 +11624,10 @@
     },
     "projectile_37": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10321,6 +11657,10 @@
     },
     "projectile_38": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10350,6 +11690,10 @@
     },
     "projectile_39": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10379,6 +11723,10 @@
     },
     "projectile_4": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10386,15 +11734,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "x": 4.182750701904297,
+                "y": 0.11963970959186554,
+                "z": 1.8535943031311035
             },
             "Rotation": {
-                "w": 1.0,
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
+                "w": 0.5987050533294678,
+                "x": -0.05393138900399208,
+                "y": -0.7959291934967041,
+                "z": 0.07169710099697113
             },
             "Scale": {
                 "x": 1.0,
@@ -10402,12 +11750,16 @@
                 "z": 1.0
             }
         },
-        "active": false,
+        "active": true,
         "key": "projectile_4",
         "parent": "none"
     },
     "projectile_40": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10437,6 +11789,10 @@
     },
     "projectile_41": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10466,6 +11822,10 @@
     },
     "projectile_42": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10495,6 +11855,10 @@
     },
     "projectile_43": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10524,6 +11888,10 @@
     },
     "projectile_44": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10553,6 +11921,10 @@
     },
     "projectile_45": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10582,6 +11954,10 @@
     },
     "projectile_46": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10611,6 +11987,10 @@
     },
     "projectile_47": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10640,6 +12020,10 @@
     },
     "projectile_48": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10669,6 +12053,10 @@
     },
     "projectile_49": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10698,6 +12086,10 @@
     },
     "projectile_5": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10727,6 +12119,10 @@
     },
     "projectile_50": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10756,6 +12152,10 @@
     },
     "projectile_51": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10785,6 +12185,10 @@
     },
     "projectile_52": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10814,6 +12218,10 @@
     },
     "projectile_53": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10843,6 +12251,10 @@
     },
     "projectile_54": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10872,6 +12284,10 @@
     },
     "projectile_55": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10901,6 +12317,10 @@
     },
     "projectile_56": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10930,6 +12350,10 @@
     },
     "projectile_57": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10959,6 +12383,10 @@
     },
     "projectile_58": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -10988,6 +12416,10 @@
     },
     "projectile_59": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11017,6 +12449,10 @@
     },
     "projectile_6": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11046,6 +12482,10 @@
     },
     "projectile_60": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11075,6 +12515,10 @@
     },
     "projectile_61": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11104,6 +12548,10 @@
     },
     "projectile_62": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11133,6 +12581,10 @@
     },
     "projectile_63": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11162,6 +12614,10 @@
     },
     "projectile_64": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11191,6 +12647,10 @@
     },
     "projectile_65": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11220,6 +12680,10 @@
     },
     "projectile_66": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11249,6 +12713,10 @@
     },
     "projectile_67": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11278,6 +12746,10 @@
     },
     "projectile_68": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11307,6 +12779,10 @@
     },
     "projectile_69": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11336,6 +12812,10 @@
     },
     "projectile_7": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11365,6 +12845,10 @@
     },
     "projectile_70": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11394,6 +12878,10 @@
     },
     "projectile_71": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11423,6 +12911,10 @@
     },
     "projectile_72": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11452,6 +12944,10 @@
     },
     "projectile_73": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11481,6 +12977,10 @@
     },
     "projectile_74": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11510,6 +13010,10 @@
     },
     "projectile_75": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11539,6 +13043,10 @@
     },
     "projectile_76": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11568,6 +13076,10 @@
     },
     "projectile_77": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11597,6 +13109,10 @@
     },
     "projectile_78": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11626,6 +13142,10 @@
     },
     "projectile_79": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11655,6 +13175,10 @@
     },
     "projectile_8": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11684,6 +13208,10 @@
     },
     "projectile_80": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11713,6 +13241,10 @@
     },
     "projectile_81": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11742,6 +13274,10 @@
     },
     "projectile_82": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11771,6 +13307,10 @@
     },
     "projectile_83": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11800,6 +13340,10 @@
     },
     "projectile_84": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11829,6 +13373,10 @@
     },
     "projectile_85": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11858,6 +13406,10 @@
     },
     "projectile_86": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11887,6 +13439,10 @@
     },
     "projectile_87": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11916,6 +13472,10 @@
     },
     "projectile_88": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11945,6 +13505,10 @@
     },
     "projectile_89": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -11974,6 +13538,10 @@
     },
     "projectile_9": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -12003,6 +13571,10 @@
     },
     "projectile_90": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -12032,6 +13604,10 @@
     },
     "projectile_91": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -12061,6 +13637,10 @@
     },
     "projectile_92": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -12090,6 +13670,10 @@
     },
     "projectile_93": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -12119,6 +13703,10 @@
     },
     "projectile_94": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -12148,6 +13736,10 @@
     },
     "projectile_95": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -12177,6 +13769,10 @@
     },
     "projectile_96": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -12206,6 +13802,10 @@
     },
     "projectile_97": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -12235,6 +13835,10 @@
     },
     "projectile_98": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -12264,6 +13868,10 @@
     },
     "projectile_99": {
         "Components": {
+            "AABBComponent": {
+                "colActive": false
+            },
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "ball",
                 "Shader": "lit"
@@ -12322,6 +13930,9 @@
     },
     "south_bar_barrier": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "south_bar_barrier",
                 "Shader": "lit"
@@ -12351,6 +13962,9 @@
     },
     "south_bar_barrier_2": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "south_bar_barrier_2",
                 "Shader": "lit"
@@ -12380,6 +13994,9 @@
     },
     "south_bar_wall": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "south_bar_wall",
                 "Shader": "lit"
@@ -12409,6 +14026,9 @@
     },
     "south_bar_wall_2": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "south_bar_wall_2",
                 "Shader": "lit"
@@ -12438,6 +14058,9 @@
     },
     "spiked_door_bar": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "spiked_door_bar",
                 "Shader": "lit"
@@ -12523,8 +14146,41 @@
         "key": "sunanchor",
         "parent": "none"
     },
+    "table": {
+        "Components": {
+            "CComponent": "CComponent",
+            "StaticMeshComponent": {
+                "AModel": "table",
+                "Shader": "lit"
+            }
+        },
+        "Transform": {
+            "Position": {
+                "x": 8.0,
+                "y": 0.0,
+                "z": -2.5
+            },
+            "Rotation": {
+                "w": 0.7071068286895752,
+                "x": 0.7071068286895752,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 0.014999999664723873,
+                "y": 0.014999999664723873,
+                "z": 0.014999999664723873
+            }
+        },
+        "active": true,
+        "key": "table",
+        "parent": "none"
+    },
     "tavern_floor": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "tavern_floor",
                 "Shader": "lit"
@@ -12554,6 +14210,9 @@
     },
     "tavern_glass_door_wall": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "tavern_glass_door_wall",
                 "Shader": "lit"
@@ -12583,6 +14242,9 @@
     },
     "tavern_glass_door_wall_long": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "tavern_glass_door_wall_long",
                 "Shader": "lit"
@@ -12612,6 +14274,9 @@
     },
     "tavern_glass_door_wall_long_2": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "tavern_glass_door_wall_long_2",
                 "Shader": "lit"
@@ -12641,6 +14306,9 @@
     },
     "toilet_block": {
         "Components": {
+            "AABBComponent": {
+                "colActive": true
+            },
             "StaticMeshComponent": {
                 "AModel": "toilet_block",
                 "Shader": "lit"
@@ -12670,6 +14338,7 @@
     },
     "waitress": {
         "Components": {
+            "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "waitress",
                 "Shader": "lit"
