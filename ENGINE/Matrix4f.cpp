@@ -3,6 +3,7 @@
 #include "Matrix4f.h"
 #include "Vector3f.h"
 
+
 Matrix4f &Matrix4f::operator*=(Matrix4f other)
 {
 	m_mat = m_mat * other.m_mat;
@@ -85,4 +86,18 @@ Quaternion Matrix4f::ToQuat()
 Matrix4f Matrix4f::Inverse() 
 {
 	return glm::inverse(m_mat);
+}
+
+
+Matrix4f Matrix4f::ConvertAiMatrixToMatrix4f(const aiMatrix4x4 &from)
+{
+	auto aiToMatrix = m_mat;
+
+	//the a,b,c,d in assimp is the row ; the 1,2,3,4 is the column
+	m_mat[0][0] = from.a1; 	m_mat[1][0] = from.a2; 	m_mat[2][0] = from.a3; 	m_mat[3][0] = from.a4;
+	m_mat[0][1] = from.b1; 	m_mat[1][1] = from.b2; 	m_mat[2][1] = from.b3;  m_mat[3][1] = from.b4;
+	m_mat[0][2] = from.c1; 	m_mat[1][2] = from.c2;  m_mat[2][2] = from.c3; 	m_mat[3][2] = from.c4;
+	m_mat[0][3] = from.d1; 	m_mat[1][3] = from.d2;  m_mat[2][3] = from.d3; 	m_mat[3][3] = from.d4;
+
+	return m_mat;
 }

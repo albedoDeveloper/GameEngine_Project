@@ -66,9 +66,6 @@ private:
 		int channel = -1;
 	};
 
-		/** @brief soundlist map */
-	std::unordered_map<std::string, Mix_Chunk *> soundList;
-
 		/** @brief sound information */
 	std::map<std::string, SoundInfo> soundinfo;
 };

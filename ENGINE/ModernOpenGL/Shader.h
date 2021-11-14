@@ -7,9 +7,7 @@
 #pragma once
 
 #include <glm/glm/glm.hpp>
-#include <assimp/Importer.hpp>
-#include <assimp/scene.h>
-#include <assimp/postprocess.h>
+
 #include <string>
 #include <fstream>
 #include <sstream>

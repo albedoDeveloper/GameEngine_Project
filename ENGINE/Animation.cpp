@@ -7,13 +7,11 @@ Animation::Animation(const std::string& animationPath, AModel* model)
 
 	const aiScene* scene = importer.ReadFile(animationPath, aiProcess_FlipUVs | aiProcess_Triangulate | aiProcess_OptimizeGraph | aiProcess_OptimizeMeshes | aiProcess_CalcTangentSpace | aiProcess_GenNormals | aiProcess_LimitBoneWeights);
 	
-	assert(scene && scene->mRootNode);
-	auto animation = scene->mAnimations[0];
+	assert(("The animation data was not imported correctly", scene && scene->mRootNode));
 	
+	auto animation = scene->mAnimations[0];
 	m_Duration = animation->mDuration;
 	m_TicksPerSecond = animation->mTicksPerSecond;
-	
-	aiMatrix4x4 globalTransformation = scene->mRootNode->mTransformation;
 
 	ReadHeirarchyData(m_RootNode, scene->mRootNode);
 	ReadMissingBones(animation, *model);
@@ -64,7 +62,7 @@ void Animation::ReadHeirarchyData(AssimpNodeData& dest, const aiNode* src)
 	if (src != nullptr)
 	{
 		dest.name = src->mName.data;
-		dest.transformation = AModel::ConvertAiMatrixToMatrix4f(src->mTransformation);
+		dest.transformation = dest.transformation.ConvertAiMatrixToMatrix4f(src->mTransformation);
 		dest.childrenCount = src->mNumChildren;
 
 		for (int i = 0; i < src->mNumChildren; i++)

@@ -165,6 +165,8 @@
     <ClCompile Include="PhysicsManager.cpp">
       <Filter>Source\Singletons\Source</Filter>
     </ClCompile>
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="AnimationManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">
@@ -343,6 +345,8 @@
     <ClInclude Include="PhysicsManager.h">
       <Filter>Source\Singletons\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="AnimationManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\init.lua">
