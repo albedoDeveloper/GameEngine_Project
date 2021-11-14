@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationManager.cpp" />
     <ClCompile Include="AScript.cpp" />
     <ClCompile Include="Bone.cpp" />
     <ClCompile Include="CAffordanceManager.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="NavNode.cpp" />
     <ClCompile Include="Matrix3f.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="ThirdParty\glad\src\glad.c" />
     <ClCompile Include="MyTime.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -72,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationManager.h" />
     <ClInclude Include="AScript.h" />
     <ClInclude Include="Bone.h" />
     <ClInclude Include="CAffordanceManager.h" />
@@ -94,6 +97,7 @@
     <ClInclude Include="NavNode.h" />
     <ClInclude Include="Matrix3f.h" />
     <ClInclude Include="PhysicsManager.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="ThirdParty\glad\include\glad\glad.h" />
     <ClInclude Include="ThirdParty\glad\include\KHR\khrplatform.h" />
     <ClInclude Include="MyTime.h" />

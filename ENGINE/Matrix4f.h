@@ -8,6 +8,7 @@
 
 #include <glm/glm/gtc/type_ptr.hpp>
 #include <glm/glm/gtx/matrix_decompose.hpp>
+#include <assimp/matrix4x4.h>
 
 class Vector3f;
 
@@ -84,6 +85,8 @@ public:
 		return m_mat;
 	}
 	Matrix4f(glm::mat4 m);
+
+	Matrix4f ConvertAiMatrixToMatrix4f(const aiMatrix4x4 &from);
 private:
 
 	glm::mat4 m_mat;

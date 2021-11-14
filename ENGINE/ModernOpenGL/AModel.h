@@ -11,7 +11,9 @@
 #include <array>
 #include "../Vector3f.h"
 #include "Mesh.h"
-
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 	/**
 	 * Holds model data for a model such as meshes, and textures
 	 */
@@ -83,7 +85,6 @@ public:
 		return m_BoneCounter;
 	}
 
-	static Matrix4f ConvertAiMatrixToMatrix4f(const aiMatrix4x4 &from);
 
 	const aiScene *scene;
 

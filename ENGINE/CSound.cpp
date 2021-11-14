@@ -2,49 +2,23 @@
 #include "GameObjectFactory.h"
 #include "GraphicsEngine.h"
 #include <glm/glm/gtx/vector_angle.hpp>
+#include "SoundManager.h"
 CSound::CSound(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj }
 {
-	int flags = MIX_INIT_MP3;
-	int initted = Mix_Init(flags);
 
-	if (initted & flags != flags)
-		std::cout << "Mix_Init: Failed to intialize mp3" << std::endl;
-
-	if (SDL_Init(SDL_INIT_AUDIO) == -1)
-	{
-		printf("SDL_Init: %s\n", SDL_GetError());
-		exit(1);
-	}
-
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
-	{
-		printf("Mix_OpenAudio: %s\n", Mix_GetError());
-		exit(2);
-	}
 }
 
-void CSound::LoadSound(std::string soundName)
-{
-	auto soundNameFull = "../Assets/Sounds/" + soundName;
-
-	Mix_Chunk *temp = Mix_LoadWAV(soundNameFull.data());
-
-	if (!temp)
-		std::cout << "ERROR Mix_LoadWAV: " << Mix_GetError() << std::endl;
-
-	soundList.insert(std::make_pair(soundName, temp));
-}
 
 void CSound::PlaySound(std::string soundName, int length, bool positional)
 {
-	auto sound = soundList.find(soundName);
+	auto sound = SOUND->GetSound(soundName);
 
-	if (sound != soundList.end())
+	if (sound != nullptr)
 	{
 		SoundInfo temp;
-		temp.channel = Mix_PlayChannel(-1, sound->second, length);
-		temp.soundName = sound->first;
+		temp.channel = Mix_PlayChannel(-1, sound, length);
+		temp.soundName = soundName;
 		temp.isPositional = positional;
 		soundinfo.emplace(std::pair<std::string, SoundInfo>(soundName, temp));
 	}

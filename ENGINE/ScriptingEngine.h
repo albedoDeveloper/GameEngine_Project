@@ -69,6 +69,15 @@ private:
 	*/
 	static void LoadModel(std::string name, std::string filePath);
 
+	static void LoadAnimation(std::string filePath, std::string modelName, std::string name);
+
+		/**
+	 * @brief Loads a  Sound into the sound manager
+	 * @param name The name of the sound
+	*/
+	static void LoadSound(std::string name);
+
+
 	static void UnloadTexture(std::string key);
 
 	/**
