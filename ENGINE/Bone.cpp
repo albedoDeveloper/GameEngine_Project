@@ -8,7 +8,7 @@ Bone::Bone(const std::string &name, int ID, const aiNodeAnim *channel)
 	m_LocalTransform = Matrix4f();
 	m_NumPositions = channel->mNumPositionKeys;
 
-	for (int positionIndex = 0; positionIndex < m_NumPositions; ++positionIndex)
+	for (int positionIndex = 0; positionIndex < m_NumPositions; positionIndex++)
 	{
 		aiVector3D aiPosition = channel->mPositionKeys[positionIndex].mValue;
 		float timeStamp = channel->mPositionKeys[positionIndex].mTime;
@@ -19,7 +19,8 @@ Bone::Bone(const std::string &name, int ID, const aiNodeAnim *channel)
 	}
 
 	m_NumRotations = channel->mNumRotationKeys;
-	for (int rotationIndex = 0; rotationIndex < m_NumRotations; ++rotationIndex)
+	
+	for (int rotationIndex = 0; rotationIndex < m_NumRotations; rotationIndex++)
 	{
 		aiQuaternion aiOrientation = channel->mRotationKeys[rotationIndex].mValue;
 		float timeStamp = channel->mRotationKeys[rotationIndex].mTime;
@@ -30,7 +31,8 @@ Bone::Bone(const std::string &name, int ID, const aiNodeAnim *channel)
 	}
 
 	m_NumScalings = channel->mNumScalingKeys;
-	for (int keyIndex = 0; keyIndex < m_NumScalings; ++keyIndex)
+	
+	for (int keyIndex = 0; keyIndex < m_NumScalings; keyIndex++)
 	{
 		aiVector3D scale = channel->mScalingKeys[keyIndex].mValue;
 		float timeStamp = channel->mScalingKeys[keyIndex].mTime;
@@ -55,30 +57,30 @@ void Bone::UpdateBone(float animationTime)
 
 int Bone::GetPositionIndex(float animationTime)
 {
-	for (int index = 0; index < m_NumPositions - 1; ++index)
+	for (int transIndex = 0; transIndex < m_NumPositions - 1; transIndex++)
 	{
-		if (animationTime < m_Positions[index + 1].timeStamp)
-			return index;
+		if (animationTime < m_Positions[transIndex + 1].timeStamp)
+			return transIndex;
 	}
 	assert(0);
 }
 
 int  Bone::GetRotationIndex(float animationTime)
 {
-	for (int index = 0; index < m_NumRotations - 1; ++index)
+	for (int rotIndex = 0; rotIndex < m_NumRotations - 1; rotIndex++)
 	{
-		if (animationTime < m_Rotations[index + 1].timeStamp)
-			return index;
+		if (animationTime < m_Rotations[rotIndex + 1].timeStamp)
+			return rotIndex;
 	}
 	assert(0);
 }
 
 int  Bone::GetScaleIndex(float animationTime)
 {
-	for (int index = 0; index < m_NumScalings - 1; ++index)
+	for (int sIndex = 0; sIndex < m_NumScalings - 1; sIndex++)
 	{
-		if (animationTime < m_Scales[index + 1].timeStamp)
-			return index;
+		if (animationTime < m_Scales[sIndex + 1].timeStamp)
+			return sIndex;
 	}
 	assert(0);
 }
@@ -96,35 +98,42 @@ Matrix4f Bone::InterpolatePosition(float animationTime)
 {
 	Matrix4f tempMatrix;
 
-	if (1 == m_NumPositions)
+	if (m_NumPositions == 1)
 	{
 		tempMatrix.Translate(m_Positions[0].position);
-		return tempMatrix;
 	}
 
-	int p0Index = GetPositionIndex(animationTime);
-	int p1Index = p0Index + 1;
-	float scaleFactor = GetScaleFactor(m_Positions[p0Index].timeStamp, m_Positions[p1Index].timeStamp, animationTime);
-	Vector3f finalPosition = m_Positions[p0Index].position.Mix(m_Positions[p1Index].position, scaleFactor);
-	tempMatrix.Translate(finalPosition);
-
+	else
+	{
+		int beforeIndex = GetPositionIndex(animationTime);
+		int afterIndex = beforeIndex + 1;
+		float scaleFactor = GetScaleFactor(m_Positions[beforeIndex].timeStamp, m_Positions[afterIndex].timeStamp, animationTime);
+		Vector3f finalPosition = m_Positions[beforeIndex].position.Mix(m_Positions[afterIndex].position, scaleFactor);
+		tempMatrix.Translate(finalPosition);
+	}
+	
 	return tempMatrix;
 }
 
 Matrix4f Bone::InterpolateRotation(float animationTime)
 {
 	Matrix4f tempMatrix;
-
-	if (1 == m_NumRotations)
+	Quaternion rotation;
+	
+	if (m_NumRotations == 1)
 	{
-		return m_Rotations[0].orientation.Normalized().Mat4Cast();
+		rotation = m_Rotations[0].orientation;
 	}
 
-	int p0Index = GetRotationIndex(animationTime);
-	int p1Index = p0Index + 1;
-	float scaleFactor = GetScaleFactor(m_Rotations[p0Index].timeStamp, m_Rotations[p1Index].timeStamp, animationTime);
-	Quaternion finalRotation = m_Rotations[p0Index].orientation.Slerp(m_Rotations[p1Index].orientation, scaleFactor);
-	return finalRotation.Normalized().Mat4Cast();
+	else
+	{
+		int beforeIndex = GetRotationIndex(animationTime);
+		int afterIndex = beforeIndex + 1;
+		float scaleFactor = GetScaleFactor(m_Rotations[beforeIndex].timeStamp, m_Rotations[afterIndex].timeStamp, animationTime);
+		rotation = m_Rotations[beforeIndex].orientation.Slerp(m_Rotations[afterIndex].orientation, scaleFactor);
+	}
+	
+	return rotation.Normalized().Mat4Cast();
 }
 
 Matrix4f Bone::InterpolateScaling(float animationTime)
@@ -138,10 +147,10 @@ Matrix4f Bone::InterpolateScaling(float animationTime)
 		return tempMatrix;
 	}
 
-	int p0Index = GetScaleIndex(animationTime);
-	int p1Index = p0Index + 1;
-	float scaleFactor = GetScaleFactor(m_Scales[p0Index].timeStamp, m_Scales[p1Index].timeStamp, animationTime);
-	Vector3f finalScale = m_Scales[p0Index].scale.Mix(m_Scales[p1Index].scale, scaleFactor);
+	int beforeIndex = GetScaleIndex(animationTime);
+	int afterIndex = beforeIndex + 1;
+	float scaleFactor = GetScaleFactor(m_Scales[beforeIndex].timeStamp, m_Scales[afterIndex].timeStamp, animationTime);
+	Vector3f finalScale = m_Scales[beforeIndex].scale.Mix(m_Scales[afterIndex].scale, scaleFactor);
 	tempMatrix.Scale(finalScale);
 	return tempMatrix;
 }

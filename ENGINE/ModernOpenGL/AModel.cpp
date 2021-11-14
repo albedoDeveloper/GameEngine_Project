@@ -280,12 +280,13 @@ void AModel::ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh*
 {
 	auto& boneInfoMap = m_BoneInfoMap;
 	int& boneCount = m_BoneCounter;
+	
 	for (int boneIndex = 0; boneIndex < mesh->mNumBones; boneIndex++)
 	{
 		int boneID = -1;
 		std::string boneName = mesh->mBones[boneIndex]->mName.C_Str();
 
-		if (m_BoneInfoMap.find(boneName) == m_BoneInfoMap.end())
+		if (m_BoneInfoMap.count(boneName) == 0)
 		{
 			BoneInfo newBoneInfo;
 			newBoneInfo.id = m_BoneCounter;
@@ -300,15 +301,15 @@ void AModel::ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh*
 			boneID = m_BoneInfoMap[boneName].id;
 		}
 		
-		assert(boneID != -1);
+		assert((boneID != -1, "Error loading bones"));
 		
 		auto weights = mesh->mBones[boneIndex]->mWeights;
 		int numWeights = mesh->mBones[boneIndex]->mNumWeights;
 
-		for (int weightIndex = 0; weightIndex < numWeights; weightIndex++)
+		for (int i = 0; i < numWeights; i++)
 		{
-			int vertexId = weights[weightIndex].mVertexId;
-			float weight = weights[weightIndex].mWeight;
+			int vertexId = weights[i].mVertexId;
+			float weight = weights[i].mWeight;
 			
 			assert(vertexId <= vertices.size());
 			
@@ -321,7 +322,6 @@ void AModel::SetVertexBoneData(Vertex& vertex, int boneID, float weight)
 {
 	for (int i = 0; i < 100; ++i)
 	{
-		
 		if (vertex.m_BoneIDs[i] < 0)
 		{
 			vertex.m_Weights[i] = weight;
