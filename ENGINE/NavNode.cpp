@@ -64,21 +64,23 @@
 
 	void NavNode::PopulateNeighbours()
 	{
-		if (parentMesh->FetchNode(nodeLocation.x + parentMesh->dirs[0].x, nodeLocation.z + parentMesh->dirs[0].z) != NULL)
+		
+
+		if (parentMesh->FetchNode(nodeLocation.x + parentMesh->GetDirs()[0].x, nodeLocation.z + parentMesh->GetDirs()[0].z) != NULL)
 		{
-			m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + parentMesh->dirs[0].x, nodeLocation.z + parentMesh->dirs[0].z));
+			m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + parentMesh->GetDirs()[0].x, nodeLocation.z + parentMesh->GetDirs()[0].z));
 		}
-		if (parentMesh->FetchNode(nodeLocation.x + parentMesh->dirs[1].x, nodeLocation.z + parentMesh->dirs[1].z) != NULL)
+		if (parentMesh->FetchNode(nodeLocation.x + parentMesh->GetDirs()[1].x, nodeLocation.z + parentMesh->GetDirs()[1].z) != NULL)
 		{
-			m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + parentMesh->dirs[1].x, nodeLocation.z + parentMesh->dirs[1].z));
+			m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + parentMesh->GetDirs()[1].x, nodeLocation.z + parentMesh->GetDirs()[1].z));
 		}
-		if (parentMesh->FetchNode(nodeLocation.x + parentMesh->dirs[2].x, nodeLocation.z + parentMesh->dirs[2].z) != NULL)
+		if (parentMesh->FetchNode(nodeLocation.x + parentMesh->GetDirs()[2].x, nodeLocation.z + parentMesh->GetDirs()[2].z) != NULL)
 		{
-			m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + parentMesh->dirs[2].x, nodeLocation.z + parentMesh->dirs[2].z));
+			m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + parentMesh->GetDirs()[2].x, nodeLocation.z + parentMesh->GetDirs()[2].z));
 		}
-		if (parentMesh->FetchNode(nodeLocation.x + parentMesh->dirs[3].x, nodeLocation.z + parentMesh->dirs[3].z) != NULL)
+		if (parentMesh->FetchNode(nodeLocation.x + parentMesh->GetDirs()[3].x, nodeLocation.z + parentMesh->GetDirs()[3].z) != NULL)
 		{
-			m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + parentMesh->dirs[3].x, nodeLocation.z + parentMesh->dirs[3].z));
+			m_neighbourNodes.emplace_back(parentMesh->FetchNode(nodeLocation.x + parentMesh->GetDirs()[3].x, nodeLocation.z + parentMesh->GetDirs()[3].z));
 		}
 
 

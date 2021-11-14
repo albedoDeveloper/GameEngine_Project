@@ -180,6 +180,12 @@ Graph CNavMesh::GetNodeGraph()
 	return nodeGraph;
 }
 
+
+GridLocation* CNavMesh::GetDirs()
+{
+	return dirs;
+}
+
 NavNode *CNavMesh::FetchNode(int x, int z)
 {
 	NavNode *returnNode = NULL;

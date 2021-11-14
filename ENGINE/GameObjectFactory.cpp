@@ -105,7 +105,7 @@ GameObject *GameObjectFactory::SpawnGameObject(std::string key)
 {
 	if ((CheckKey(key)))
 	{
-		std::cout << "[Error] Object key (" << key << ") already taken\n";
+		//std::cout << "[Error] Object key (" << key << ") already taken\n";
 		return nullptr;
 	}
 
@@ -200,12 +200,12 @@ void GameObjectFactory::ClearCurrentLevel()
 		if (it->second->GetFactoryKey() == "player" || it->second->GetFactoryKey() == "NavMesh" || it->second->GetComponent<CAgent>() != NULL || it->second->GetComponent<CRigidBody>() != NULL)
 		{
 			
-			std::cout << "Don't delete this Obj" << it->second->GetFactoryKey() << std::endl;
+			//std::cout << "Don't delete this Obj" << it->second->GetFactoryKey() << std::endl;
 			it++;
 		}
 		else if (m_objects.find(it->first) != m_objects.cend())
 		{
-			std::cout << "delete level test: gObj =" << it->second->GetFactoryKey() << std::endl;
+			//std::cout << "delete level test: gObj =" << it->second->GetFactoryKey() << std::endl;
 
 			//delete it->second;
 			m_objects.erase(it++);
@@ -217,7 +217,7 @@ void GameObjectFactory::ClearCurrentLevel()
 			it++;
 		}
 
-		std::cout << "LIST SIZE == " << m_objects.size() << std::endl;
+		//std::cout << "LIST SIZE == " << m_objects.size() << std::endl;
 
 	}
 }

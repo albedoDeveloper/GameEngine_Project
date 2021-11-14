@@ -135,6 +135,9 @@ class CNavMesh : public CComponent
 		*/
 	Graph GetNodeGraph();
 
+
+	GridLocation* GetDirs();
+
 		/**
 		 * @brief Retrieves a specific navNode
 		 * @param the x position of the node
@@ -194,17 +197,20 @@ class CNavMesh : public CComponent
 
 public:
 
-	/**
-		 * @brief The directions of each neighbour forward, backward, left, right
-	*/
-	GridLocation dirs[4] = { {1, 0}, {0, 1}, {-1, 0}, {0, -1} };
-
-	/**
-		 * @brief The directions of each neighbour forward, backward, left, right
-	*/
-	Graph nodeGraph;
+	
 
 private:
+
+		/**
+		 * @brief The directions of each neighbour forward, backward, left, right
+		*/
+		GridLocation dirs[4] = { {1, 0}, {0, 1}, {-1, 0}, {0, -1} };
+
+		/**
+		 * @brief The directions of each neighbour forward, backward, left, right
+		*/
+		Graph nodeGraph;
+
 		/**
 		 * @brief The list of nav nodes
 		*/
