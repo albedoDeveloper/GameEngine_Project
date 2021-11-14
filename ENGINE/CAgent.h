@@ -8,110 +8,99 @@
 
 
 class CAgent : public CComponent
-{	
-	private:
+{
+private:
 
-		enum class AiState
+	enum class AiState
+	{
+		THINK,
+		MOVE,
+		ACTION
+
+	};
+
+	struct Emotion
+	{
+		Emotion(float emotion, float multiplier, float emotionNativeChange)
 		{
-			THINK,
-			MOVE,
-			ACTION
-			
-		};
-		
-		struct Emotion
-		{
-			Emotion(float emotion, float multiplier, float emotionNativeChange)
-			{
-				this->emotion = emotion;
-				this->multipler = multiplier;
-				this->emotionNativeChange = emotionNativeChange;
-			}
-			
-			//Emotion level for that emotion
-			float emotion;
-			
-			//Multiplier to see how much a person actually gets out of an activity
-			float multipler;
-
-
-			//Does the AI change the emotion over time
-			float emotionNativeChange;
-		};
-
-
-		struct Traits
-		{
-			
-
-			//Special trait list 
-			//multiplier for events
-			//Change in multipler
-			//Gradual change in emotion
-		};
-		
-		void ConvertFloatToEmotion();
-		void FindNewAffordance();
-
-		void AiThink();
-		void AiMove();
-		void AiAction();
-
-		void FollowPath();
-
-		NavNode* FindNavLocation();
-		NavNode* FindDestinationLocation(Vector3f position);
-
-	public:
-		CAgent(Transform *parent, GameObject *parentObj);
-		
-		~CAgent(){
-			delete currentAffordance;
-			currentAffordance = nullptr;
-
+			this->emotion = emotion;
+			this->multipler = multiplier;
+			this->emotionNativeChange = emotionNativeChange;
 		}
 
-		/**
-		 * @brief renders the navmesh
-		*/
-		virtual void Render();
+		//Emotion level for that emotion
+		float emotion;
 
-		std::unordered_map<std::string, Emotion> emotions;
-		std::unordered_map<std::string, float> traits;
-
-		CNavMesh* navMesh;
-		NavNode* navNode;
-		NavNode* destinationNode;
-
-		std::vector<NavNode* > path;
-
-		int pathIndex = 0;
-		std::unordered_map<NavNode *, NavNode *> came_from;
-		std::unordered_map<NavNode *, double> cost_so_far;
-
-		Vector3f startLocation;
-		Vector3f endLocation;
-		
-		Affordance* currentAffordance = nullptr;
-
-		std::unordered_map<std::string, std::map<std::string,Affordance>*> allAffordances;
-		
-		AiState currentState = AiState::THINK;
-
-		std::string lowestName;
-		std::string currentInUseAffordance = "";
-		//std::string currentCircumplex;
-
-		float time = 0;
-		float lerpTime = 0;
-		int waitTime = 0;
+		//Multiplier to see how much a person actually gets out of an activity
+		float multipler;
 
 
-		void AddEmotion(std::string name, float level, float multiplier, float emotionNativeChange);
-		
-		//-1.0f will make the ai hate it
-		void AddTrait(std::string name, float value);
+		//Does the AI change the emotion over time
+		float emotionNativeChange;
+	};
 
-		virtual void Update();
+	void ConvertFloatToEmotion();
+	void FindNewAffordance();
+
+	void AiThink();
+	void AiMove();
+	void AiAction();
+
+	void FollowPath();
+
+	NavNode *FindNavLocation();
+	NavNode *FindDestinationLocation(Vector3f position);
+
+public:
+	CAgent(Transform *parent, GameObject *parentObj);
+
+	~CAgent()
+	{
+		delete currentAffordance;
+		currentAffordance = nullptr;
+
+	}
+
+	/**
+	 * @brief renders the navmesh
+	*/
+	virtual void Render();
+
+	std::unordered_map<std::string, Emotion> emotions;
+	std::unordered_map<std::string, float> traits;
+
+	CNavMesh *navMesh;
+	NavNode *navNode;
+	NavNode *destinationNode;
+
+	std::vector<NavNode * > path;
+
+	int pathIndex = 0;
+	std::unordered_map<NavNode *, NavNode *> came_from;
+	std::unordered_map<NavNode *, double> cost_so_far;
+
+	Vector3f startLocation;
+	Vector3f endLocation;
+
+	Affordance *currentAffordance = nullptr;
+
+	std::unordered_map<std::string, std::map<std::string, Affordance> *> allAffordances;
+
+	AiState currentState = AiState::THINK;
+
+	std::string lowestName;
+	std::string currentInUseAffordance = "";
+
+	float time = 0;
+	float lerpTime = 0;
+	int waitTime = 0;
+
+
+	void AddEmotion(std::string name, float level, float multiplier, float emotionNativeChange);
+
+	//-1.0f will make the ai hate it
+	void AddTrait(std::string name, float value);
+
+	virtual void Update();
 };
 

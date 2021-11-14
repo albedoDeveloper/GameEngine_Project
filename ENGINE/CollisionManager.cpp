@@ -15,13 +15,7 @@ CollisionManager::CollisionManager()
 }
 
 void CollisionManager::Init()
-{
-	/*physicsWorld = physicsCommon.createPhysicsWorld();
-	physicsWorld->setIsDebugRenderingEnabled(true);
-	debugRender = &physicsWorld->getDebugRenderer();
-	debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::COLLISION_SHAPE, true);
-	debugRender->setIsDebugItemDisplayed(reactphysics3d::DebugRenderer::DebugItem::CONTACT_POINT, true);*/
-}
+{}
 
 CollisionManager *CollisionManager::Instance()
 {
@@ -274,9 +268,6 @@ void Manifold::ContactPoint::CalcRelativeVelocity()
 	velocity1 += rb1->GetVelocity();
 	// Turn the velocity into contact coordinates.
 	Vector3f contactVelocity1 = contactToWorld * velocity1;
-	// Calculate the amount of velocity that is due to forces without
-	// reactions.
-	//Vector3f accVelocity1 = rb1->GetAcceleration() * TIME->GetDeltaTime();
 
 	// body 2
 	CRigidBody *rb2 = parentManifold->col2->GetParentObject()->GetCRigidBody();
@@ -288,9 +279,6 @@ void Manifold::ContactPoint::CalcRelativeVelocity()
 		velocity2 += rb2->GetVelocity();
 		// Turn the velocity into contact coordinates.
 		contactVelocity2 = contactToWorld * velocity2;
-		// Calculate the amount of velocity that is due to forces without
-		// reactions.
-		//Vector3f accVelocity2 = rb2->GetAcceleration() * TIME->GetDeltaTime();
 	}
 
 	closingVelocity = contactVelocity1;

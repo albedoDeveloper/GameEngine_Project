@@ -26,22 +26,14 @@ CAgent::CAgent(Transform *parent, GameObject *parentObj) :CComponent{ parent, pa
 }
 void CAgent::Render()
 {
-
-	//btVector3 vec1 = btVector3(m_navNodes[0]->GetTransform()->GetWorldTransform().GetRelativePosition().GetX(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[0]->GetTransform()->GetRelativePosition().GetZ());
-	//btVector3 vec2 = btVector3(m_navNodes[50]->GetTransform()->GetRelativePosition().GetX(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetY(), m_navNodes[50]->GetTransform()->GetRelativePosition().GetZ());
-
 	Vector3f vec1 = Vector3f(1, 2, 3);
 	Vector3f vec2 = Vector3f(3, 2, 1);
 
 	if (GRAPHICS->m_drawDebug)
 	{
-		//GRAPHICS->DrawLine(vec1, vec2, Vector3f(1.0f, 0.5f, 0.5f));
-
 		if (!path.empty())
 		{
 			NavNode *prevNode = path[0];
-
-			;
 
 			for (auto &curNode : path)
 			{
@@ -49,15 +41,12 @@ void CAgent::Render()
 				GRAPHICS->DrawLine(prevNode->GetTransform()->GetRelativePosition(), curNode->GetTransform()->GetRelativePosition(), Vector3f(1.0f, 0.5f, 0.5f));
 
 				prevNode = curNode;
-
-
 			}
 		}
 
 	}
 
 }
-
 
 void CAgent::AddEmotion(std::string name, float level, float multipler, float emotionNativeChange)
 {
@@ -104,13 +93,10 @@ void CAgent::AiThink()
 		currentState = AiState::MOVE;
 		GetParentObject()->GetCAnimator()->PlayAnimation("agent_walk");
 		auto pTrans = GetParentObject()->GetTransform()->GetRelativePosition();
-		//auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetRelativePosition();
 		auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetWorldTransform().GetRelativePosition();
 		startLocation = pTrans;
 
 		auto lookat = LookAt(pTrans, afforanceTrans, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-		
-
 
 
 		GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
@@ -136,9 +122,6 @@ void CAgent::AiThink()
 		{
 			//run pathfindign algorithm
 			path = navMesh->DijkstraSearch(navNode, destinationNode, came_from, cost_so_far);
-
-
-			//FollowPath();
 		}
 
 	}
@@ -146,8 +129,6 @@ void CAgent::AiThink()
 
 void CAgent::AiMove()
 {
-	/*FindNavLocation();*/
-
 	Vector3f startPos{ 0,0,0 };
 	Vector3f endPos{ 5,1,5 };
 
@@ -155,7 +136,6 @@ void CAgent::AiMove()
 		startPos = navNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 
 	auto pTrans = GetParentObject()->GetTransform()->GetRelativePosition();
-	//GetParentObject()->GetTransform()->SetRelativePosition(startPos.GetX(),startPos.GetY(),startPos.GetZ());
 	auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetWorldTransform().GetRelativePosition();
 
 	FindDestinationLocation(afforanceTrans);
@@ -163,12 +143,8 @@ void CAgent::AiMove()
 	if (destinationNode != NULL)
 		endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 
-
-
 	Vector3f dst = afforanceTrans - pTrans;
 
-		//float t = lerpTime / 400;
-		// 
 	if (path.empty())
 	{
 		m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pTrans.GetX(), endPos.GetX() - pTrans.GetX(), 1.0f), (std::lerp(pTrans.GetY(), endPos.GetY(), 1.0f)), std::lerp(pTrans.GetZ(), endPos.GetZ() - pTrans.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);
@@ -178,12 +154,6 @@ void CAgent::AiMove()
 		FollowPath();
 	}
 
-	//GetParentObject()->GetTransform()->SetRelativePositionV(Vector3f( endPos.GetX() , startPos.GetY(), endPos.GetZ()));
-	//lerpTime += lerpTime * TIME->GetDeltaTime();
-
-
-//if ((std::fabs(pTrans.GetX()) <= std::fabs(afforanceTrans.GetX()) + 1 && std::fabs(pTrans.GetX()) >= std::fabs(afforanceTrans.GetX()) - 1) && (std::fabs(pTrans.GetZ()) <= std::fabs(afforanceTrans.GetZ()) + 1 && std::fabs(pTrans.GetZ()) >= std::fabs(afforanceTrans.GetZ()) - 1))
-//Vector3f dst = afforanceTrans - pTrans;
 	if (dst.Magnitude() < 2)
 	{
 		if (currentAffordance->parentObj->GetCAffordanceManager()->isInUse)
@@ -192,7 +162,7 @@ void CAgent::AiMove()
 			currentInUseAffordance = currentAffordance->parentObj->GetFactoryKey();
 
 		}
-			
+
 
 		else
 		{
@@ -217,28 +187,6 @@ void CAgent::FollowPath()
 		NavNode *prevNode = path[0];
 		NavNode *nextNode = path[0];
 
-		//std::cout << "Path Start " << std::endl;
-
-		/*for (auto &curNode : path)
-		{
-			Vector3f pos = prevNode->GetTransform()->GetWorldTransform().GetRelativePosition();
-			Vector3f endPos = curNode->GetTransform()->GetWorldTransform().GetRelativePosition();
-
-			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime() / 4);
-
-			prevNode = curNode;
-		}*/
-
-
-
-		/*if (INPUT->GetKeyDown('x'))
-		{
-			if(pathIndex < path.size())
-			pathIndex++;
-
-		}*/
-
-
 		if (pathIndex < path.size() - 1)
 		{
 			nextNode = path[pathIndex];
@@ -251,7 +199,6 @@ void CAgent::FollowPath()
 			if (dst.Magnitude() > 1)
 			{
 				m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
-				//m_parent->GetTransform()->SetRelativePosition(endPos.GetX(),endPos.GetY(), endPos.GetZ());
 			}
 
 			if (dst.Magnitude() < 1)
@@ -259,26 +206,23 @@ void CAgent::FollowPath()
 				prevNode = path[pathIndex];
 				pathIndex++;
 			}
-			
 
-			//pos.SetZ(0);
 			endPos.SetZ(endPos.GetZ() * -1);
 			auto dir = endPos - pos;
 
 			auto lookat = LookAt(pos.Normalised(), endPos.Normalised(), GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-	
+
 
 			GetParentObject()->GetTransform()->SetRelativeOrientation(lookat);
 		}
 		else
 		{
-			//std::cout << "destination found" << std::endl;
 			Vector3f pos = GetParentObject()->GetTransform()->GetRelativePosition();
 			Vector3f endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
 
 			auto lookat = LookAt(pos, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
-			
+
 			if (lookat.GetEulerAnglesDegrees().GetY() >= 360)
 				lookat.SetY(0);
 
@@ -452,15 +396,8 @@ NavNode *CAgent::FindNavLocation()
 	}
 	else
 	{
-		//std::cout << "pos = " << m_transform.GetWorldTransform().GetRelativePosition().GetX() << std::endl;
-
 		navNode = navMesh->FindNearest(m_transform.GetWorldTransform().GetRelativePosition());
-		//navNode->SetActive(false);
-
-		//std::cout << "Agent " << this->GetParentObject()->GetFactoryKey() << " dst at x =" << navNode->GetXPos() << " z = " << navNode->GetZPos() << std::endl;
 	}
-
-	//startLocation = navNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 
 	return navNode;
 }

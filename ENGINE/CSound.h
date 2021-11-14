@@ -70,7 +70,5 @@ private:
 	std::unordered_map<std::string, Mix_Chunk *> soundList;
 
 		/** @brief sound information */
-	std::map<std::string,SoundInfo> soundinfo;
-
-
+	std::map<std::string, SoundInfo> soundinfo;
 };

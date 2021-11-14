@@ -18,21 +18,12 @@
 struct Graph
 {
 	double cost;
-	std::unordered_map<NavNode*, std::vector<NavNode*> > edges;
+	std::unordered_map<NavNode *, std::vector<NavNode *> > edges;
 
-	std::vector<NavNode*> neighbors(NavNode* id)
+	std::vector<NavNode *> neighbors(NavNode *id)
 	{
 		return edges[id];
 	}
-
-	/*std::unordered_set<GridLocation> forests;
-
-	double cost(GridLocation from_node, GridLocation to_node) const
-	{
-		return forests.find(to_node) != forests.end() ? 5 : 1;
-	}*/
-
-	
 };
 
 template<typename T, typename priority_t>
@@ -66,17 +57,17 @@ struct PriorityQueue
 	*/
 class CNavMesh : public CComponent
 {
-	public:
-	/**
-	 * @brief Constructor based on parent GameObject
-	 * @param parent the parent transform for this component
-	 * @param parentObj the parent object of this component
-	*/
-		CNavMesh(Transform *parent, GameObject *parentObj);
+public:
+/**
+ * @brief Constructor based on parent GameObject
+ * @param parent the parent transform for this component
+ * @param parentObj the parent object of this component
+*/
+	CNavMesh(Transform *parent, GameObject *parentObj);
 
-		/**
-		 * @brief Initiates the script at program start
-		*/
+	/**
+	 * @brief Initiates the script at program start
+	*/
 	virtual void Start();
 
 		/**
@@ -116,31 +107,31 @@ class CNavMesh : public CComponent
 		/**
 		 * @brief Retrieves the Navigation Nodes vector
 		*/
-	std::vector<NavNode*> GetNavNodes();
+	std::vector<NavNode *> GetNavNodes();
 
 	Graph GetNodeGraph();
 
 		/**
 		 * @brief Retrieves a specific navNode
 		*/
-	NavNode* FetchNode(int x, int z);
+	NavNode *FetchNode(int x, int z);
 
-	NavNode* FindNearest(Vector3f pos);
+	NavNode *FindNearest(Vector3f pos);
 
 	void Scan(int i);
 
-	std::unordered_map<NavNode* , NavNode* > breadth_first_search(Graph graph, NavNode* start, NavNode* goal);
+	std::unordered_map<NavNode *, NavNode * > breadth_first_search(Graph graph, NavNode *start, NavNode *goal);
 
 	//note: we dont need to pass the graph
-	std::vector<NavNode* > DijkstraSearch(
-	NavNode* start, NavNode* goal,
-	std::unordered_map<NavNode*, NavNode*>& came_from,
-	std::unordered_map<NavNode*, double>& cost_so_far
+	std::vector<NavNode * > DijkstraSearch(
+	NavNode *start, NavNode *goal,
+	std::unordered_map<NavNode *, NavNode *> &came_from,
+	std::unordered_map<NavNode *, double> &cost_so_far
 	);
 
-	std::vector<NavNode* > reconstruct_path(
-   NavNode* start, NavNode *goal,
-   std::unordered_map<NavNode*, NavNode*> came_from
+	std::vector<NavNode * > reconstruct_path(
+   NavNode *start, NavNode *goal,
+   std::unordered_map<NavNode *, NavNode *> came_from
 	);
 
 	//public vars because i'm lazy and time is short
@@ -153,17 +144,15 @@ private:
 		/**
 		 * @brief The vars for this comp
 		*/
-		std::vector<NavNode*> m_navNodes;
+	std::vector<NavNode *> m_navNodes;
 
-		int width;
-		int length;
+	int width;
+	int length;
 
-		std::unordered_map<NavNode *, NavNode *> came_from;
-		std::unordered_map<NavNode *, double> cost_so_far;
+	std::unordered_map<NavNode *, NavNode *> came_from;
+	std::unordered_map<NavNode *, double> cost_so_far;
 
-		std::vector<NavNode *> path;
+	std::vector<NavNode *> path;
 
-
-		int increment = 0;
-	
+	int increment = 0;
 };

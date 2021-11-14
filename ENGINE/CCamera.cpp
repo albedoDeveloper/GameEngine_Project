@@ -15,7 +15,6 @@ void CCamera::Start()
 
 void CCamera::DrawToImGui()
 {
-	//ImGui::Text("staticMesh TREE");
 	if (ImGui::TreeNode("Camera Component"))
 	{
 		ImGui::Text("Camera info : ");

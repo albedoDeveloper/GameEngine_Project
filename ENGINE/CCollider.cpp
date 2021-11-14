@@ -218,12 +218,7 @@ void CCollider::AddBoxCollider(float x, float y, float z, float offsetX, float o
 }
 
 void CCollider::AddCapsuleCollider(float radius, float height, int layer)
-{
-	//reactphysics3d::CapsuleShape *capsuleCollider = COLLISION->physicsCommon.createCapsuleShape(1.0, 2.0);
-	//col = colBody->addCollider(capsuleCollider, reactphysics3d::Transform::identity());
-	//col->setCollisionCategoryBits(layer);
-	//col->setCollideWithMaskBits(0);
-}
+{}
 
 void CCollider::AddConvexCollider()
 {

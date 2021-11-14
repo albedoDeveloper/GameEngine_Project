@@ -81,20 +81,6 @@ void CSound::Update()
 			else if (distance > 255)
 				distance = 255;
 
-			//std::cout << distance << std::endl;
-			/*glm::vec3 checkPos = glm::vec3(playerTransform->GetPosition().GetX(), playerTransform->GetPosition().GetY(), playerTransform->GetPosition().GetZ()) - glm::vec3(thisTransform->GetPosition().GetX(), thisTransform->GetPosition().GetY(), thisTransform->GetPosition().GetZ());
-
-			Quaternion rawRotation;
-			rawRotation = playerTransform->GetRotation().GetInverse();
-			bool zRotated = false;
-			bool centred = false;
-
-
-			int rotation = glm::degrees(rawRotation.GetEulerAnglesDegrees().GetY());
-
-			if (rotation < 0)
-				rotation += 360.0;*/
-
 			if (!Mix_SetPosition(value.channel, 0, distance))
 			{
 				std::cout << "ERROR Mix_SetPosition: " << Mix_GetError() << std::endl;

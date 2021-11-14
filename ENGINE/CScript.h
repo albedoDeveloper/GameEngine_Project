@@ -33,10 +33,6 @@ public:
 		*/
 	virtual void Update();
 
-		/**
-		 * @brief script mutator
-		 * @param script pointer to the script for this component to use
-		*/
 
 		/**
 		 * @brief saves the component
