@@ -332,20 +332,21 @@ void GameObject::Save(nlohmann::json &j)
 
 void GameObject::Load(nlohmann::json &j)
 {
-	//std::cout << getFactoryKey() << std::endl;
 	GetTransform()->FromJson(j, GetFactoryKey());
 
 	//then we check whether it is active or inactive
 	m_isActive = j.at(GetFactoryKey()).at("active");
 
-	//we get teh number of components
-	std::cout << j.at(GetFactoryKey()).at("Components").size() << std::endl;
+
+
+	//we get the number of components
+	//std::cout << j.at(GetFactoryKey()).at("Components").size() << std::endl;
 
 	for (auto it : j.at(GetFactoryKey()).at("Components").items())
 	{
-		std::cout << "GO TEST" << it.key() << " | " << it.value() << std::endl;
+		//std::cout << "GO TEST" << it.key() << " | " << it.value() << std::endl;
 
-
+		//Best to do this here, Not the most ideal solution but it's better to know which component we are dealing with before diving in
 
 		if (it.key() == "ScriptComponent")
 		{
@@ -401,7 +402,7 @@ void GameObject::Load(nlohmann::json &j)
 		GameObject *myParent = GAMEOBJECT->GetGameObject(j.at(GetFactoryKey()).at("parent"));
 		GetTransform()->SetParent(myParent->GetTransform());
 
-		std::cout << GetFactoryKey() << " PARENT = " << GetTransform()->GetParent()->GetGameObject()->GetFactoryKey() << std::endl;
+		//std::cout << GetFactoryKey() << " PARENT = " << GetTransform()->GetParent()->GetGameObject()->GetFactoryKey() << std::endl;
 	}
 
 }

@@ -75,16 +75,14 @@ void LevelLoader::LoadLevel()
 
 		for (auto it : j.items())
 		{
-			//std::cout << "TEST " << j.at(el.key()).at("key") << std::endl;
-			//std::cout << "TEST " << j.at(el.key()).at("Position").at("x") << std::endl;
-
-			GameObject *go = GAMEOBJECT->SpawnGameObject(j.at(it.key()).at("key"));
-
-			//go->Load(j);
+			if (j.at(it.key()).at("key") != "player" || j.at(it.key()).at("key") != "NavMesh")
+			{
+				
+				GameObject *go = GAMEOBJECT->SpawnGameObject(j.at(it.key()).at("key"));
+			}
 		}
 
-		//this iterator only works if we already have all objects in GO factory
-			//need a more robust method
+		//now that we have all objects in factory we load
 		for (it = m_objects->begin(); it != m_objects->end(); it++)
 		{
 			//we read each gameobject from JSON
