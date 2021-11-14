@@ -5,6 +5,7 @@
 #include <assimp/vector3.h>
 
 
+
 AModel::AModel(std::string path, std::string key)
 	:m_key{ key }
 {
@@ -288,7 +289,7 @@ void AModel::ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh*
 		{
 			BoneInfo newBoneInfo;
 			newBoneInfo.id = m_BoneCounter;
-			newBoneInfo.offset = ConvertAiMatrixToMatrix4f(mesh->mBones[boneIndex]->mOffsetMatrix);
+			newBoneInfo.offset = newBoneInfo.offset.ConvertAiMatrixToMatrix4f(mesh->mBones[boneIndex]->mOffsetMatrix);
 			m_BoneInfoMap[boneName] = newBoneInfo;
 			boneID = m_BoneCounter;
 			m_BoneCounter++;
@@ -328,18 +329,5 @@ void AModel::SetVertexBoneData(Vertex& vertex, int boneID, float weight)
 			break;
 		}
 	}
-}
-	
-Matrix4f AModel::ConvertAiMatrixToMatrix4f(const aiMatrix4x4 & from)
-{
-	Matrix4f aiToMatrix;
-	
-	//the a,b,c,d in assimp is the row ; the 1,2,3,4 is the column
-	aiToMatrix.SetMatrixElement(0,0) = from.a1; aiToMatrix.SetMatrixElement(1,0) = from.a2; aiToMatrix.SetMatrixElement(2,0) = from.a3; aiToMatrix.SetMatrixElement(3,0) = from.a4;
-	aiToMatrix.SetMatrixElement(0,1) = from.b1; aiToMatrix.SetMatrixElement(1,1) = from.b2; aiToMatrix.SetMatrixElement(2,1) = from.b3;  aiToMatrix.SetMatrixElement(3,1) = from.b4;
-	aiToMatrix.SetMatrixElement(0,2) = from.c1; aiToMatrix.SetMatrixElement(1,2) = from.c2;  aiToMatrix.SetMatrixElement(2,2) = from.c3; aiToMatrix.SetMatrixElement(3,2) = from.c4;
-	aiToMatrix.SetMatrixElement(0,3) = from.d1; aiToMatrix.SetMatrixElement(1,3) = from.d2;  aiToMatrix.SetMatrixElement(2,3) = from.d3; aiToMatrix.SetMatrixElement(3,3) = from.d4;
-	
-	return aiToMatrix;
 }
 
