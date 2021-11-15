@@ -1,8 +1,18 @@
+/*******************************************************************
+ * \file   CRigidBody.h
+ * \brief  CRigidBody
+ *
+ * \date   November 2021
+ *********************************************************************/
+
 #pragma once
 
 #include "CComponent.h"
 #include "Matrix3f.h"
 
+/**
+ * Rigidbody component, handles newtons dynamics and impulse collision response.
+ */
 class CRigidBody : public CComponent
 {
 public:
