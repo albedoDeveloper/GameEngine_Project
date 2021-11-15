@@ -80,6 +80,135 @@ void CAgent::Update()
 
 }
 
+void CAgent::Save(nlohmann::json &j)
+{
+	std::string stateString;
+
+	switch (currentState)
+	{
+	case AiState::THINK:
+		stateString = "THINK";
+		break;
+
+	case AiState::MOVE:
+		stateString = "MOVE";
+		break;
+
+	case AiState::ACTION:
+		stateString = "ACTION";
+		break;
+	}
+
+	auto valence = emotions.at("valence").emotion;
+	auto arousel = emotions.at("arousal").emotion;
+
+	GameObject *g = GetParentObject();
+	j[g->GetFactoryKey()]["Components"]["AgentComponent"]["AI State"] = stateString;
+	j[g->GetFactoryKey()]["Components"]["AgentComponent"]["Valence"] = std::to_string(valence).c_str();
+	j[g->GetFactoryKey()]["Components"]["AgentComponent"]["Arousal"] = std::to_string(arousel).c_str();
+
+	j[g->GetFactoryKey()]["Components"]["AgentComponent"]["Activity"] = currentAffordance->name.c_str();
+}
+
+void CAgent::Load(nlohmann::json &j)
+{
+	GameObject *g = GetParentObject();
+
+	std::string stateString = j.at(m_parent->GetFactoryKey()).at("Components").at("AgentComponent").at("AI State");
+
+	if (stateString == "THINK")
+	{
+		currentState = AiState::THINK;
+	}
+	
+	if (stateString == "MOVE")
+	{
+		currentState = AiState::MOVE;
+	}
+
+	if (stateString == "ACTION")
+	{
+		currentState = AiState::ACTION;
+	}
+
+	//set valence & arousal
+	//float valence = j.at(m_parent->GetFactoryKey()).at("Components").at("AgentComponent").at("Valence");
+	//emotions.at("valence").emotion = j.at(m_parent->GetFactoryKey()).at("Components").at("AgentComponent").at("Valence");
+	//emotions.at("arousal").emotion = j.at(m_parent->GetFactoryKey()).at("Components").at("AgentComponent").at("Arousal");
+
+
+	//set affordance
+	for (auto &affordancelist : allAffordances)
+	{
+		for (auto &affordance : *affordancelist.second)
+		{
+			if (affordance.second.name.c_str() == j.at(m_parent->GetFactoryKey()).at("Components").at("AgentComponent").at("Activity"))
+			{
+				currentAffordance = &affordance.second;
+			}
+		}
+	}
+
+
+	//recalculate path 
+	//grab nodes
+	FindNavLocation();
+	FindDestinationLocation(currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetWorldTransform().GetRelativePosition());
+
+	//clear navNodes
+	came_from.clear();
+	cost_so_far.clear();
+
+	//clear old path
+	path.clear();
+	pathIndex = 0;
+
+	if (navNode != nullptr || destinationNode != nullptr)
+	{
+		//run pathfindign algorithm
+		path = navMesh->DijkstraSearch(navNode, destinationNode, came_from, cost_so_far);
+	}
+
+	FollowPath();
+
+}
+
+void CAgent::DrawToImGui()
+{
+
+	std::string stateString;
+
+	switch (currentState)
+	{
+	case AiState::THINK:
+		stateString = "THINK";
+		break;
+
+	case AiState::MOVE:
+		stateString = "MOVE";
+		break;
+
+	case AiState::ACTION:
+		stateString = "ACTION";
+		break;
+	}
+
+	auto valence = emotions.at("valence").emotion;
+	auto arousel = emotions.at("arousal").emotion;
+
+
+	if (ImGui::TreeNode("Agent CComponent"))
+	{
+		ImGui::Text("Current State : "); ImGui::SameLine(); ImGui::Text(stateString.c_str());
+		ImGui::Text("Current Valence : "); ImGui::SameLine(); ImGui::Text(std::to_string(valence).c_str());
+		ImGui::Text("Current Arousal : "); ImGui::SameLine(); ImGui::Text(std::to_string(arousel).c_str());
+		ImGui::Text( "Current Circumplex emotion: "); ImGui::SameLine(); ImGui::Text(currentCircumplex.c_str());
+		ImGui::Text("Current Activity: "); ImGui::SameLine(); ImGui::Text(currentAffordance->name.c_str());
+		ImGui::TreePop();
+
+	}
+}
+
 void CAgent::AiThink()
 {
 	FindNewAffordance();
@@ -320,7 +449,7 @@ void CAgent::ConvertFloatToEmotion()
 	{
 		auto valence = emotions.at("valence").emotion;
 		auto arousel = emotions.at("arousal").emotion;
-		std::string currentCircumplex;
+		//std::string currentCircumplex;
 
 		if (valence <= 0.5 && arousel == 0.0)
 			currentCircumplex = "tired";

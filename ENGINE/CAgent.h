@@ -83,6 +83,7 @@ public:
 	Vector3f endLocation;
 
 	Affordance *currentAffordance = nullptr;
+	std::string currentCircumplex = "none";
 
 	std::unordered_map<std::string, std::map<std::string, Affordance> *> allAffordances;
 
@@ -102,5 +103,23 @@ public:
 	void AddTrait(std::string name, float value);
 
 	virtual void Update();
+
+	/**
+		* @brief save the component
+		* \param j json to save to
+		*/
+	virtual void Save(nlohmann::json &j);
+
+	/**
+	* @brief loads the component from saved state
+	* \param j json to save to
+	*/
+	virtual void Load(nlohmann::json &j);
+
+	/**
+		 * @brief Draws to imgui
+		*/
+	virtual void DrawToImGui();
+
 };
 

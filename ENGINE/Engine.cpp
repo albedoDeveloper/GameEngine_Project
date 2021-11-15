@@ -160,6 +160,7 @@ void Engine::Render()
 		ImGui::Begin("Debug Menu");                          // Create a window called "Hello, world!" and append into it.
 
 		ImGui::Checkbox("Draw Colliders", &m_drawColliders);      // Edit bools storing our window open/close state
+		GRAPHICS->m_drawDebug = m_drawColliders;
 
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 

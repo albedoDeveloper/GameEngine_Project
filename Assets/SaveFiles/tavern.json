@@ -27,6 +27,12 @@
     },
     "ai_agent_1": {
         "Components": {
+            "AgentComponent": {
+                "AI State": "MOVE",
+                "Activity": "LookForMoney",
+                "Arousal": "1.000000",
+                "Valence": "0.276000"
+            },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "agent_dance",
@@ -35,9 +41,9 @@
         },
         "Transform": {
             "Position": {
-                "x": 3.852199077606201,
+                "x": 1.2332128286361694,
                 "y": 0.0,
-                "z": 3.653291702270508
+                "z": -0.9439717531204224
             },
             "Rotation": {
                 "w": -0.7071068286895752,
@@ -57,6 +63,12 @@
     },
     "ai_agent_2": {
         "Components": {
+            "AgentComponent": {
+                "AI State": "THINK",
+                "Activity": "Pool",
+                "Arousal": "0.135000",
+                "Valence": "0.544000"
+            },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "agent_dance",
@@ -65,14 +77,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 4.922873020172119,
+                "x": -4.711866855621338,
                 "y": 0.0,
-                "z": -2.2938127517700195
+                "z": -0.5364320874214172
             },
             "Rotation": {
-                "w": 1.0,
+                "w": 0.7071068286895752,
                 "x": 0.0,
-                "y": 0.0,
+                "y": 0.7071068286895752,
                 "z": 0.0
             },
             "Scale": {
@@ -87,6 +99,12 @@
     },
     "ai_agent_3": {
         "Components": {
+            "AgentComponent": {
+                "AI State": "ACTION",
+                "Activity": "Argue",
+                "Arousal": "0.300000",
+                "Valence": "1.000000"
+            },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
                 "AModel": "agent_dance",
@@ -95,14 +113,14 @@
         },
         "Transform": {
             "Position": {
-                "x": -1.862646222114563,
+                "x": 4.398064613342285,
                 "y": 0.0,
-                "z": -0.6641097664833069
+                "z": 3.392474412918091
             },
             "Rotation": {
-                "w": -4.371138828673793e-08,
+                "w": -0.7071068286895752,
                 "x": 0.0,
-                "y": 1.0,
+                "y": 0.7071068286895752,
                 "z": 0.0
             },
             "Scale": {
@@ -321,7 +339,7 @@
     "book_0": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -331,15 +349,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -6.5028157234191895,
-                "y": 0.2706584632396698,
-                "z": 3.652707576751709
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.8768021464347839,
-                "x": 0.01045055128633976,
-                "y": -0.4806501567363739,
-                "z": -0.00917833112180233
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -347,14 +365,14 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "book_0",
         "parent": "none"
     },
     "book_1": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -364,15 +382,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -7.392097473144531,
-                "y": 0.2840037941932678,
-                "z": 2.1072492599487305
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.45847246050834656,
-                "x": 0.02585144340991974,
-                "y": -0.8883142471313477,
-                "z": -0.005713687743991613
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -380,7 +398,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "book_1",
         "parent": "none"
     },
@@ -717,7 +735,7 @@
     "book_2": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -727,15 +745,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -7.455934524536133,
-                "y": 0.3739114999771118,
-                "z": 3.064161777496338
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.49452367424964905,
-                "x": -0.49821168184280396,
-                "y": -0.6375128626823425,
-                "z": -0.3175041675567627
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -743,7 +761,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "book_2",
         "parent": "none"
     },
@@ -1080,7 +1098,7 @@
     "book_3": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -1090,15 +1108,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -5.852416515350342,
-                "y": 0.3068580627441406,
-                "z": 2.88092041015625
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.305368036031723,
-                "x": -0.5938220024108887,
-                "y": -0.66950923204422,
-                "z": -0.32539716362953186
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -1106,7 +1124,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "book_3",
         "parent": "none"
     },
@@ -1443,7 +1461,7 @@
     "book_4": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -1453,15 +1471,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -3.646256446838379,
-                "y": 0.30050128698349,
-                "z": 1.0979399681091309
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6256090402603149,
-                "x": 0.018136383965611458,
-                "y": 0.779545247554779,
-                "z": 0.02436424233019352
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -1469,7 +1487,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "book_4",
         "parent": "none"
     },
@@ -1806,7 +1824,7 @@
     "book_5": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -1816,15 +1834,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -3.7621610164642334,
-                "y": 0.2838493883609772,
-                "z": 0.36620697379112244
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6057767868041992,
-                "x": -0.008082850836217403,
-                "y": 0.7955762147903442,
-                "z": -0.005253541748970747
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -1832,7 +1850,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "book_5",
         "parent": "none"
     },
@@ -3635,10 +3653,10 @@
                 "z": -1.4449999332427979
             },
             "Rotation": {
-                "w": 0.87363201379776,
-                "x": 0.3618704676628113,
-                "y": -0.30053359270095825,
-                "z": -0.12448539584875107
+                "w": -0.7415793538093567,
+                "x": -0.30717313289642334,
+                "y": -0.5510106682777405,
+                "z": -0.22823680937290192
             },
             "Scale": {
                 "x": 1.0,
@@ -3861,14 +3879,14 @@
         },
         "Transform": {
             "Position": {
-                "x": 5.0,
-                "y": 2.5,
-                "z": 1.0
+                "x": 4.954999923706055,
+                "y": 1.9049999713897705,
+                "z": 5.275000095367432
             },
             "Rotation": {
-                "w": 0.9456126689910889,
+                "w": -0.8026790618896484,
                 "x": 0.0,
-                "y": -0.32529503107070923,
+                "y": -0.5964113473892212,
                 "z": 0.0
             },
             "Scale": {
@@ -3919,14 +3937,14 @@
         },
         "Transform": {
             "Position": {
-                "x": -8.318157196044922,
-                "y": 2.2772600650787354,
-                "z": -0.9582822322845459
+                "x": 8.615509033203125,
+                "y": 1.600000023841858,
+                "z": -1.9874879121780396
             },
             "Rotation": {
-                "w": -0.47101137042045593,
+                "w": 0.4999999701976776,
                 "x": 0.0,
-                "y": -0.8821272253990173,
+                "y": -0.866025447845459,
                 "z": 0.0
             },
             "Scale": {
@@ -3971,7 +3989,7 @@
     "projectile_0": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -3981,15 +3999,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 1.7575416564941406,
-                "y": 0.13052017986774445,
-                "z": -1.0300625562667847
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6307593584060669,
-                "x": 0.059037771075963974,
-                "y": 0.7703613638877869,
-                "z": 0.07211555540561676
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -3997,14 +4015,14 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_0",
         "parent": "none"
     },
     "projectile_1": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -4014,15 +4032,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 5.459482192993164,
-                "y": 0.1323530673980713,
-                "z": -1.920917272567749
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.630408525466919,
-                "x": 0.061271943151950836,
-                "y": 0.7702147960662842,
-                "z": 0.07483265548944473
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -4030,14 +4048,14 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_1",
         "parent": "none"
     },
     "projectile_10": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -4047,15 +4065,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 9.3812255859375,
-                "y": 0.13003773987293243,
-                "z": 2.885343074798584
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6613917350769043,
-                "x": 0.07711018621921539,
-                "y": 0.7410469055175781,
-                "z": 0.08639778196811676
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -4063,7 +4081,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_10",
         "parent": "none"
     },
@@ -4400,7 +4418,7 @@
     "projectile_11": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -4410,15 +4428,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 6.503189563751221,
-                "y": 0.1322096437215805,
-                "z": 3.379565715789795
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6626087427139282,
-                "x": 0.0772666409611702,
-                "y": 0.739956259727478,
-                "z": 0.08628097176551819
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -4426,7 +4444,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_11",
         "parent": "none"
     },
@@ -4763,7 +4781,7 @@
     "projectile_12": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -4773,15 +4791,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 10.342533111572266,
-                "y": 0.13380491733551025,
-                "z": -2.3878238201141357
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6625884175300598,
-                "x": 0.07727843523025513,
-                "y": 0.7399718761444092,
-                "z": 0.08629149943590164
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -4789,7 +4807,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_12",
         "parent": "none"
     },
@@ -5126,7 +5144,7 @@
     "projectile_13": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -5136,15 +5154,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 6.567206382751465,
-                "y": 0.13158778846263885,
-                "z": 1.8135271072387695
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.662686824798584,
-                "x": 0.07727188616991043,
-                "y": 0.7398871779441833,
-                "z": 0.08626909554004669
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -5152,7 +5170,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_13",
         "parent": "none"
     },
@@ -5489,7 +5507,7 @@
     "projectile_14": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -5499,15 +5517,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 1.445554494857788,
-                "y": 0.13362643122673035,
-                "z": 0.7839195728302002
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6626724600791931,
-                "x": 0.0772598385810852,
-                "y": 0.7399017214775085,
-                "z": 0.08626486361026764
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -5515,7 +5533,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_14",
         "parent": "none"
     },
@@ -7667,7 +7685,7 @@
     "projectile_2": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -7677,15 +7695,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 2.2284913063049316,
-                "y": 0.1322409063577652,
-                "z": -2.2374424934387207
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.630361795425415,
-                "x": 0.06128837168216705,
-                "y": 0.7702480554580688,
-                "z": 0.0748712345957756
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -7693,7 +7711,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_2",
         "parent": "none"
     },
@@ -11330,7 +11348,7 @@
     "projectile_3": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -11340,15 +11358,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 6.040515422821045,
-                "y": 0.1311420351266861,
-                "z": 3.358893394470215
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6364104747772217,
-                "x": 0.06859730184078217,
-                "y": 0.7638689279556274,
-                "z": 0.0823439210653305
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -11356,7 +11374,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_3",
         "parent": "none"
     },
@@ -11693,7 +11711,7 @@
     "projectile_4": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -11703,15 +11721,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -5.779175758361816,
-                "y": 0.13012690842151642,
-                "z": 0.7740252017974854
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6608530282974243,
-                "x": 0.07587844133377075,
-                "y": 0.7417958974838257,
-                "z": 0.08517418056726456
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -11719,7 +11737,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_4",
         "parent": "none"
     },
@@ -12056,7 +12074,7 @@
     "projectile_5": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -12066,15 +12084,15 @@
         },
         "Transform": {
             "Position": {
-                "x": -6.268413066864014,
-                "y": 0.1321471929550171,
-                "z": 1.1618142127990723
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6607872843742371,
-                "x": 0.07645510882139206,
-                "y": 0.7417206764221191,
-                "z": 0.08582136780023575
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -12082,7 +12100,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_5",
         "parent": "none"
     },
@@ -12419,7 +12437,7 @@
     "projectile_6": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -12429,15 +12447,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 4.46329402923584,
-                "y": 0.12989085912704468,
-                "z": 0.9444025158882141
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6613441705703735,
-                "x": 0.0770886018872261,
-                "y": 0.7410913705825806,
-                "z": 0.08639975637197495
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -12445,7 +12463,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_6",
         "parent": "none"
     },
@@ -12782,7 +12800,7 @@
     "projectile_7": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -12792,15 +12810,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 6.999229431152344,
-                "y": 0.13068702816963196,
-                "z": 3.119194507598877
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6613878607749939,
-                "x": 0.07712657004594803,
-                "y": 0.7410467267036438,
-                "z": 0.08641420304775238
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -12808,7 +12826,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_7",
         "parent": "none"
     },
@@ -13145,7 +13163,7 @@
     "projectile_8": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -13155,15 +13173,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 4.150303363800049,
-                "y": 0.1328011006116867,
-                "z": -2.6055667400360107
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6614502668380737,
-                "x": 0.07708703726530075,
-                "y": 0.7410028576850891,
-                "z": 0.08634796738624573
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -13171,7 +13189,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_8",
         "parent": "none"
     },
@@ -13508,7 +13526,7 @@
     "projectile_9": {
         "Components": {
             "AABBComponent": {
-                "colActive": true
+                "colActive": false
             },
             "CComponent": "CComponent",
             "StaticMeshComponent": {
@@ -13518,15 +13536,15 @@
         },
         "Transform": {
             "Position": {
-                "x": 10.754344940185547,
-                "y": 0.13095884025096893,
-                "z": -2.2246882915496826
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Rotation": {
-                "w": 0.6614043116569519,
-                "x": 0.07709141075611115,
-                "y": 0.7410413026809692,
-                "z": 0.08636578917503357
+                "w": 1.0,
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
             },
             "Scale": {
                 "x": 1.0,
@@ -13534,7 +13552,7 @@
                 "z": 1.0
             }
         },
-        "active": true,
+        "active": false,
         "key": "projectile_9",
         "parent": "none"
     },
