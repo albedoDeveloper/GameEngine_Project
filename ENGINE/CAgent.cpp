@@ -114,9 +114,6 @@ void CAgent::Load(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
 
-	std::cout << "I guess it works???" << j.at(m_parent->GetFactoryKey()).at("Components").at("AgentComponent").at("Valence") << std::endl;
-
-
 	std::string stateString = j.at(m_parent->GetFactoryKey()).at("Components").at("AgentComponent").at("AI State");
 
 	if (stateString == "THINK")
