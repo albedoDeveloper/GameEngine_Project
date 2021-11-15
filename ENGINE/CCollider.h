@@ -1,4 +1,4 @@
-/*****************************************************************//**
+/*******************************************************************
  * \file   CCollider.h
  * \brief  Collider Component
  *
@@ -15,6 +15,11 @@
 class CCollider : public CComponent
 {
 public:
+	enum class Shape
+	{
+		Box, Sphere, None
+	};
+
 		/**
 		 * @brief constructor taking parent as argument
 		 * @param parent pointer to parent transform for this component's transform
@@ -22,6 +27,8 @@ public:
 		*/
 	CCollider(Transform *parent, GameObject *parentObj);
 	~CCollider();
+
+	Shape GetShape() const;
 
 		/**
 		 * @brief initialises the component at start of program
@@ -114,33 +121,10 @@ public:
 	void AddSphereCollider();
 
 	/**
-	 * @brief Adds a capsule collider around the objects model, currently not completed.
-	 *
-	 * \param radius
-	 * \param height
-	 * \param layer
-	 */
-	void AddCapsuleCollider(float radius, float height, int layer);
-
-	/**
 	 * @brief Creates a convex/polygon collider around the object. Currently is not working.
 	 *
 	 */
 	void AddConvexCollider();
-
-	/**
-	 * Creates a Concave/Mesh collider around the object.
-	 *
-	 * \param layer
-	 */
-	void AddConcaveCollider();
-
-	/**
-	 * Changes what other colliders the collider can collide with.
-	 *
-	 * \param layerToCollideWith
-	 */
-	//void CollideWith(int layerToCollideWith);
 
 	float GetXHalfSize() const;
 	float GetYHalfSize() const;
@@ -149,9 +133,11 @@ public:
 	virtual void SetIsActive(bool isActive);
 
 private:
-	float m_boxXHalfSize;
-	float m_boxYHalfSize;
-	float m_boxZHalfSize;
+	float m_XHalfSize;
+	float m_YHalfSize;
+	float m_ZHalfSize;
+
+	Shape m_shape;
 
 	friend class CollisionManager;
 };

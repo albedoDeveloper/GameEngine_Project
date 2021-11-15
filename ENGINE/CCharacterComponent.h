@@ -24,12 +24,6 @@ public:
 	CCharacter(Transform *parent, GameObject *parentObj);
 
 		/**
-		 * @brief Moves the character by altering its acceleration
-		 * @param acceleration the acceleration to addy
-		*/
-	//void Move(float x, float y, float z);
-
-		/**
 		 * @brief constructor taking parent as argument
 		 * @param parent pointer to parent transform for this component's transform
 		 * @param parentObj pointer to parent object of this component

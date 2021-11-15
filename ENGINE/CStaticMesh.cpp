@@ -94,7 +94,6 @@ void CStaticMesh::Render()
 	{
 		GetParentObject()->GetCAnimator()->UpdateBone();
 		m_shader->SetIntUniform("animate", 1);
-		//GetParentObject()->GetCAnimator()->UpdateBone();
 	}
 
 	else
@@ -141,16 +140,12 @@ void CStaticMesh::Save(nlohmann::json &j)
 	GameObject *g = GetParentObject();
 	j[g->GetFactoryKey()]["Components"]["StaticMeshComponent"]["AModel"] = m_model->Key();
 	j[g->GetFactoryKey()]["Components"]["StaticMeshComponent"]["Shader"] = enum_str[m_selectedShader];
-
-	//m_transform.ToJson(j, g->getFactoryKey());
 }
 
 void CStaticMesh::Load(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
-	//AssignModelByKey(j.at(m_parent->GetFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
 	AssignShader(j.at(m_parent->GetFactoryKey()).at("Components").at("StaticMeshComponent").at("Shader"));
-	//m_transform.FromJson(j, g->getFactoryKey());
 }
 
 void CStaticMesh::DrawToImGui()
@@ -161,7 +156,6 @@ void CStaticMesh::DrawToImGui()
 	if (ImGui::TreeNode("StaticMesh CComponent"))
 	{
 		//Shader select
-
 		ImGui::PushItemWidth(125); ImGui::Combo("Shader Select", &m_shaderSelect, items, IM_ARRAYSIZE(items));
 
 		switch (m_shaderSelect)

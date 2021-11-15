@@ -27,54 +27,49 @@ void PhysicsManager::RegisterRigidBody(CRigidBody *body)
 
 void PhysicsManager::PrepareContacts(std::vector<Manifold> &manifolds)
 {
-	// prepare contacts
 	for (unsigned pair = 0; pair < manifolds.size(); pair++)
 	{
 		manifolds[pair].Prepare();
-		//for (unsigned contact = 0; contact < manifolds[pair].contactPoints.size(); contact++)
-		//{
-		//	Manifold &contactPair = manifolds[pair];
-		//	assert(contactPair.col1->GetParentObject()->GetCRigidBody() || contactPair.col2->GetParentObject()->GetCRigidBody());
-		//	manifolds[pair].contactPoints[contact].Prepare();
-		//}
 	}
 }
 
 void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 {
-	//resolves interpenetrations
 	for (unsigned pair = 0; pair < manifolds.size(); pair++) // loop through each manifold apply linear projection to biggest penetrating contact point
 	{
+		// find deepest interpenetrating contact
 		float maxPenPointIndex = 0;
-		float maxPen = manifolds[pair].contactPoints[maxPenPointIndex].penDepth;
-		for (unsigned point = 0; point < manifolds[pair].contactPoints.size(); point++)
+		float maxPen = manifolds[pair].GetContactPoints()[maxPenPointIndex].GetPenDepth();
+		for (unsigned point = 0; point < manifolds[pair].GetContactPoints().size(); point++)
 		{
-			Manifold::ContactPoint &contactPoint = manifolds[pair].contactPoints[point];
-			if (contactPoint.penDepth > maxPen)
+			Manifold::ContactPoint &contactPoint = manifolds[pair].GetContactPoints()[point];
+			if (contactPoint.GetPenDepth() > maxPen)
 			{
-				maxPen = contactPoint.penDepth;
+				maxPen = contactPoint.GetPenDepth();
 				maxPenPointIndex = point;
 			}
 		}
-		Manifold::ContactPoint &contactPoint = manifolds[pair].contactPoints[maxPenPointIndex];
-		Vector3f normal = contactPoint.worldNormal;
-		CRigidBody *rb1 = manifolds[pair].col1->GetParentObject()->GetComponent<CRigidBody>();
-		CRigidBody *rb2 = manifolds[pair].col2->GetParentObject()->GetComponent<CRigidBody>();
-		assert(rb1);
-		if (rb1 && rb2)
+
+		Manifold::ContactPoint &contactPoint = manifolds[pair].GetContactPoints()[maxPenPointIndex];
+		Vector3f normal = contactPoint.GetWorldNormal();
+		CRigidBody *rb1 = manifolds[pair].GetCol1()->GetParentObject()->GetComponent<CRigidBody>();
+		CRigidBody *rb2 = manifolds[pair].GetCol2()->GetParentObject()->GetComponent<CRigidBody>();
+		assert(rb1); // double check if col1 has a rigidbody, this should always be the case since the collision manager will make sure of this
+		if (rb1 && rb2) // if both colliders have a rigidbody then seperate them proportional to their masses
 		{
 			float totalInverseMass = rb1->GetInverseMass() + rb2->GetInverseMass();
-			Vector3f movePerIMass = contactPoint.worldNormal * maxPen / totalInverseMass;
+			Vector3f movePerIMass = contactPoint.GetWorldNormal() * maxPen / totalInverseMass;
 			rb1->GetParentObject()->GetTransform()->TranslateV(movePerIMass * rb1->GetInverseMass() * -1);
 			rb2->GetParentObject()->GetTransform()->TranslateV(movePerIMass * rb2->GetInverseMass());
-			manifolds[pair].col1->UpdateCollider();
-			manifolds[pair].col2->UpdateCollider();
+			manifolds[pair].GetCol1()->UpdateCollider();
+			manifolds[pair].GetCol2()->UpdateCollider();
 		}
-		else if (rb1 && !rb2)
+		else if (rb1 && !rb2) // if only col1 has a rigidbody then move it by the full interpenetration amount
 		{
-			Vector3f move = contactPoint.worldNormal * maxPen;
-			rb1->GetParentObject()->GetTransform()->TranslateV(move * -1);
-			manifolds[pair].col1->UpdateCollider();
+			Vector3f move = contactPoint.GetWorldNormal() * maxPen;
+			rb1->GetParentObject()->GetTransform()->TranslateV(move * -1
+			);
+			manifolds[pair].GetCol1()->UpdateCollider();
 		}
 	}
 }
@@ -92,14 +87,13 @@ void PhysicsManager::IntegrateBodies()
 
 void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 {
-	//resolve impulses
 	unsigned numManifolds = manifolds.size();
-	for (int pair = 0; pair < numManifolds; pair++)
+	for (int m = 0; m < numManifolds; m++)
 	{
-		Manifold &manifold = manifolds[pair];
-		CRigidBody *rb1 = manifolds[pair].col1->GetParentObject()->GetComponent<CRigidBody>();
-		CRigidBody *rb2 = manifolds[pair].col2->GetParentObject()->GetComponent<CRigidBody>();
-		assert(rb1);
+		Manifold &manifold = manifolds[m];
+		CRigidBody *rb1 = manifolds[m].GetCol1()->GetParentObject()->GetComponent<CRigidBody>();
+		CRigidBody *rb2 = manifolds[m].GetCol2()->GetParentObject()->GetComponent<CRigidBody>();
+		assert(rb1); // double check if col1 has a rigidbody, this should always be true because the collision manager will make sure of this
 		const float invMass1 = rb1->GetInverseMass();
 		float invMass2{};
 		if (rb2)
@@ -125,35 +119,36 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 			bodiesRelVel -= rb2->GetVelocity();
 		}
 
-		unsigned numContactPoints = manifolds[pair].contactPoints.size();
+		unsigned numContactPoints = manifolds[m].GetContactPoints().size();
 		for (unsigned contact = 0; contact < numContactPoints; contact++)
 		{
-			Manifold::ContactPoint &thisContact = manifolds[pair].contactPoints[contact];
-			const Vector3f normal = thisContact.worldNormal;
-			const Vector3f r1 = thisContact.col1LocalPoint;
+			Manifold::ContactPoint &thisContact = manifolds[m].GetContactPoints()[contact];
+			const Vector3f normal = thisContact.GetWorldNormal();
+			const Vector3f r1 = thisContact.GetCol1LocalPoint();
 			Vector3f r2;
 			if (rb2)
 			{
-				r2 = thisContact.col2LocalPoint;
+				r2 = thisContact.GetCol2LocalPoint();
 			}
 
-			// angular impulse momentum equation - See book "Introduction to Game Development - by Rabin"
 			float impulse = 0.f;
 			if (rb2)
 			{
+				// angular impulse momentum equation - See book "Introduction to Game Development - by Rabin"
 				impulse =
-					((-1 * (1 + manifold.restitution) * (normal.dotProduct(bodiesRelVel) + angVel1.dotProduct(r1.crossProduct(normal)) - angVel2.dotProduct(r2.crossProduct(normal)))) /
+					((-1 * (1 + manifold.GetRestitution()) * (normal.dotProduct(bodiesRelVel) + angVel1.dotProduct(r1.crossProduct(normal)) - angVel2.dotProduct(r2.crossProduct(normal)))) /
 					(invMass1 + invMass2 + ((r1.crossProduct(normal) * J1invWorld).dotProduct(r1.crossProduct(normal)) + ((r2.crossProduct(normal) * J2invWorld).dotProduct(r2.crossProduct(normal))))));
 			}
 			else
 			{
+				// simplified angular impulse equation which only takes into account one rigidbody, colliding against an immovable object
 				impulse =
-					(-1 * (1 + manifold.restitution) * (rb1->GetVelocity()).dotProduct(normal)) /
-					(invMass1 + (J1invWorld * (r1.crossProduct(normal)).crossProduct(r1)).dotProduct(normal)); // not 100% sure about this one
+					(-1 * (1 + manifold.GetRestitution()) * (rb1->GetVelocity()).dotProduct(normal)) /
+					(invMass1 + (J1invWorld * (r1.crossProduct(normal)).crossProduct(r1)).dotProduct(normal));
 			}
 			impulse /= numContactPoints;
 
-			// linear impulse - seperating velocity
+			// linear impulse
 			Vector3f rb1NewVel = rb1->GetVelocity() + (impulse * normal) * rb1->GetInverseMass();
 			rb1->SetVelocity(rb1NewVel);
 			if (rb2)

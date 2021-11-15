@@ -77,15 +77,11 @@ void Engine::QuitGame()
 
 void Engine::SaveGame()
 {
-	//GAMEOBJECT->Save();
 	levelLoader.SaveLevel();
-	//m_saveState = true;
 }
 
 void Engine::LoadGame()
 {
-	//GAMEOBJECT->Load();
-	//INPUT->Initialise(this);
 	levelLoader.LoadLevel();
 }
 
@@ -97,7 +93,6 @@ bool Engine::CheckSaveState()
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
 	srand(std::time(NULL));
-	COLLISION->Init();
 
 	if (!GRAPHICS->Init(renderer, windowWidth, windowHeight))
 	{
@@ -106,11 +101,6 @@ bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 
 	SCRIPT->Initialise();
 	SCRIPT->RunInitScript();
-
-	// temporarily creating player controller here
-	// TODO move to init
-	//GAMEOBJECT->GetGameObject("player")->AddCSound()->LoadSound("milkyway.wav");
-	//GAMEOBJECT->GetGameObject("player")->GetCSound()->PlaySound("milkyway.wav", -1, false);
 
 	GAMEOBJECT->Start();
 
@@ -165,19 +155,11 @@ void Engine::Render()
 
 	if (m_debugMenu) // TEST WINDOW
 	{
-		//ImGui::ShowDemoWindow();
-
 		levelEditor.DrawEditor();
 
 		ImGui::Begin("Debug Menu");                          // Create a window called "Hello, world!" and append into it.
 
 		ImGui::Checkbox("Draw Colliders", &m_drawColliders);      // Edit bools storing our window open/close state
-		GRAPHICS->m_drawDebug = m_drawColliders;
-
-		//if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-		//	counter++;
-		//ImGui::SameLine();
-		//ImGui::Text("counter = %d", counter);
 
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 

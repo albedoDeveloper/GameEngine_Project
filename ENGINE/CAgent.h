@@ -60,10 +60,10 @@ class CAgent : public CComponent
 		/// @brief The state of the AI when its performing an affordance
 		void AiAction();
 
-		void FollowPath();
 
-		NavNode* FindNavLocation();
-		NavNode* FindDestinationLocation(Vector3f position);
+		//Does the AI change the emotion over time
+		float emotionNativeChange;
+	};
 
 		/// @brief the current affordance the AI wishes to perform
 		Affordance *currentAffordance = nullptr;
@@ -93,33 +93,53 @@ class CAgent : public CComponent
 			delete currentAffordance;
 			currentAffordance = nullptr;
 
-		}
+	void AiThink();
+	void AiMove();
+	void AiAction();
 
-		/**
-		 * @brief renders the navmesh
-		*/
-		virtual void Render();
+	void FollowPath();
 
-		CNavMesh* navMesh;
-		NavNode* navNode;
-		NavNode* destinationNode;
+	NavNode *FindNavLocation();
+	NavNode *FindDestinationLocation(Vector3f position);
 
-		std::vector<NavNode* > path;
+public:
+	CAgent(Transform *parent, GameObject *parentObj);
 
-		int pathIndex = 0;
-		std::unordered_map<NavNode *, NavNode *> came_from;
-		std::unordered_map<NavNode *, double> cost_so_far;
+	~CAgent()
+	{
+		delete currentAffordance;
+		currentAffordance = nullptr;
 
-		Vector3f startLocation;
-		Vector3f endLocation;
+	}
+
+	/**
+	 * @brief renders the navmesh
+	*/
+	virtual void Render();
+
+	CNavMesh *navMesh;
+	NavNode *navNode;
+	NavNode *destinationNode;
+
+	std::vector<NavNode * > path;
+
+	int pathIndex = 0;
+	std::unordered_map<NavNode *, NavNode *> came_from;
+	std::unordered_map<NavNode *, double> cost_so_far;
+
+	Vector3f startLocation;
+	Vector3f endLocation;
+
+	Affordance *currentAffordance = nullptr;
+
+	std::unordered_map<std::string, std::map<std::string, Affordance> *> allAffordances;
+
 		
 		
 		//std::string currentCircumplex;
 
-		float time = 0;
-		float lerpTime = 0;
-		int waitTime = 0;
 
+	void AddEmotion(std::string name, float level, float multiplier, float emotionNativeChange);
 
 		/// @brief Add a new emotion to the AI agent
 		/// @param name 

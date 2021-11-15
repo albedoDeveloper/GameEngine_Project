@@ -236,9 +236,6 @@ lua_State *ScriptingEngine::NewState()
 		.deriveClass<CCollider, CComponent>("CCollider")
 		.addFunction("AddConvexCollider", &CCollider::AddConvexCollider)
 		.addFunction("AddBoxCollider", &CCollider::AddBoxCollider)
-		.addFunction("AddCapsuleCollider", &CCollider::AddCapsuleCollider)
-		.addFunction("AddConcaveCollider", &CCollider::AddConcaveCollider)
-		//.addFunction("CollideWith", &CCollider::CollideWith)
 		.endClass();
 
 	return Lbuff;

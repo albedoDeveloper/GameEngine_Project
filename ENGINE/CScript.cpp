@@ -29,19 +29,15 @@ void CScript::Save(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
 	j[g->GetFactoryKey()]["Components"]["ScriptComponent"]["Script"] = m_script->Key();
-
-	//m_transform.ToJson(j, g->getFactoryKey());
 }
 
 void CScript::Load(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
-	//m_transform.FromJson(j, g->getFactoryKey());
 }
 
 void CScript::DrawToImGui()
 {
-	//ImGui::Text("staticMesh TREE");
 	if (ImGui::TreeNode("Script CComponent"))
 	{
 		ImGui::Text("Script Info : "); ImGui::SameLine(); ImGui::Text(m_script->Key().c_str());

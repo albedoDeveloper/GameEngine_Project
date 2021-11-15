@@ -21,9 +21,8 @@ CAgent::CAgent(Transform *parent, GameObject *parentObj) :CComponent{ parent, pa
 		if (it->second->GetCNavMesh() != nullptr)
 			navMesh = it->second->GetCNavMesh();
 	}
-
-
 }
+
 void CAgent::Render()
 {
 	Vector3f vec1 = Vector3f(1, 2, 3);
@@ -31,13 +30,9 @@ void CAgent::Render()
 
 	if (GRAPHICS->m_drawDebug)
 	{
-		//GRAPHICS->DrawLine(vec1, vec2, Vector3f(1.0f, 0.5f, 0.5f));
-
 		if (!path.empty())
 		{
 			NavNode *prevNode = path[0];
-
-			;
 
 			for (auto &curNode : path)
 			{
@@ -45,15 +40,10 @@ void CAgent::Render()
 				GRAPHICS->DrawLine(prevNode->GetTransform()->GetRelativePosition(), curNode->GetTransform()->GetRelativePosition(), Vector3f(1.0f, 0.5f, 0.5f));
 
 				prevNode = curNode;
-
-
 			}
 		}
-
 	}
-
 }
-
 
 void CAgent::AddEmotion(std::string name, float level, float multipler, float emotionNativeChange)
 {
@@ -130,7 +120,6 @@ void CAgent::AiThink()
 		{
 			//run pathfindign algorithm
 			path = navMesh->DijkstraSearch(navNode, destinationNode, came_from, cost_so_far);
-
 		}
 
 	}
@@ -138,8 +127,6 @@ void CAgent::AiThink()
 
 void CAgent::AiMove()
 {
-	/*FindNavLocation();*/
-
 	Vector3f startPos{ 0,0,0 };
 	Vector3f endPos{ 5,1,5 };
 
@@ -147,15 +134,12 @@ void CAgent::AiMove()
 		startPos = navNode->GetTransform()->GetWorldTransform().GetRelativePosition();
 
 	auto pTrans = GetParentObject()->GetTransform()->GetRelativePosition();
-	//GetParentObject()->GetTransform()->SetRelativePosition(startPos.GetX(),startPos.GetY(),startPos.GetZ());
 	auto afforanceTrans = currentAffordance->parentObj->GetCAffordanceManager()->GetTransform().GetWorldTransform().GetRelativePosition();
 
 	FindDestinationLocation(afforanceTrans);
 
 	if (destinationNode != NULL)
 		endPos = destinationNode->GetTransform()->GetWorldTransform().GetRelativePosition();
-
-
 
 	Vector3f dst = afforanceTrans - pTrans;
 
@@ -255,7 +239,6 @@ void CAgent::FollowPath()
 
 				GetParentObject()->GetTransform()->RotateLocalY(zvalue);
 			}
-
 		}
 		else
 		{
@@ -264,12 +247,13 @@ void CAgent::FollowPath()
 			
 			m_parent->GetTransform()->TranslateV(Vector3f(std::lerp(pos.GetX(), endPos.GetX() - pos.GetX(), 1.0f), (std::lerp(pos.GetY(), endPos.GetY(), 1.0f)), std::lerp(pos.GetZ(), endPos.GetZ() - pos.GetZ(), 1.0f)) * TIME->GetDeltaTime());
 
+			auto lookat = LookAt(pos, endPos, GetParentObject()->GetTransform()->GetRelativeUp()).Inverse().ToQuat();
 
+			if (lookat.GetEulerAnglesDegrees().GetY() >= 360)
+				lookat.SetY(0);
 		}
 	}
-
 }
-
 
 void CAgent::AiAction()
 {
@@ -437,9 +421,7 @@ NavNode *CAgent::FindNavLocation()
 	}
 	else
 	{
-
 		navNode = navMesh->FindNearest(m_transform.GetWorldTransform().GetRelativePosition());
-
 	}
 
 	return navNode;
