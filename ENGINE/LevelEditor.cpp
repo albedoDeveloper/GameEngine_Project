@@ -9,12 +9,15 @@ LevelEditor::LevelEditor()
 
 void LevelEditor::DrawEditor()
 {
+	//ImGui::Begin("Level Editor");
+	//ImGui::SetWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
 	ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);
 
-	if (ImGui::CollapsingHeader("Level Editor"))
+	if (ImGui::CollapsingHeader("GameObjects"))
 	{
 		ObjectList();
 	}
+	//ImGui::End();
 }
 
 void LevelEditor::ObjectList()

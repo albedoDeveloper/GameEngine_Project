@@ -347,12 +347,14 @@ void GameObject::Load(nlohmann::json &j)
 		//std::cout << "GO TEST" << it.key() << " | " << it.value() << std::endl;
 
 		//Best to do this here, Not the most ideal solution but it's better to know which component we are dealing with before diving in
+		//also we need to 
 
 		if (it.key() == "ScriptComponent")
 		{
 			if (GetComponent<CScript>())
 			{
-				GetComponent<CScript>()->AssignScriptByKey(j.at(GetFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
+				//GetComponent<CScript>()->AssignScriptByKey(j.at(GetFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
+				GetComponent<CScript>()->Load(j);
 			}
 			else
 			{
