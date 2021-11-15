@@ -39,26 +39,26 @@ void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 	{
 		// find deepest interpenetrating contact
 		float maxPenPointIndex = 0;
-		float maxPen = manifolds[pair].contactPoints[maxPenPointIndex].penDepth;
+		float maxPen = manifolds[pair].contactPoints[maxPenPointIndex].GetPenDepth();
 		for (unsigned point = 0; point < manifolds[pair].contactPoints.size(); point++)
 		{
 			Manifold::ContactPoint &contactPoint = manifolds[pair].contactPoints[point];
-			if (contactPoint.penDepth > maxPen)
+			if (contactPoint.GetPenDepth() > maxPen)
 			{
-				maxPen = contactPoint.penDepth;
+				maxPen = contactPoint.GetPenDepth();
 				maxPenPointIndex = point;
 			}
 		}
 
 		Manifold::ContactPoint &contactPoint = manifolds[pair].contactPoints[maxPenPointIndex];
-		Vector3f normal = contactPoint.worldNormal;
+		Vector3f normal = contactPoint.GetWorldNormal();
 		CRigidBody *rb1 = manifolds[pair].col1->GetParentObject()->GetComponent<CRigidBody>();
 		CRigidBody *rb2 = manifolds[pair].col2->GetParentObject()->GetComponent<CRigidBody>();
 		assert(rb1); // double check if col1 has a rigidbody, this should always be the case since the collision manager will make sure of this
 		if (rb1 && rb2) // if both colliders have a rigidbody then seperate them proportional to their masses
 		{
 			float totalInverseMass = rb1->GetInverseMass() + rb2->GetInverseMass();
-			Vector3f movePerIMass = contactPoint.worldNormal * maxPen / totalInverseMass;
+			Vector3f movePerIMass = contactPoint.GetWorldNormal() * maxPen / totalInverseMass;
 			rb1->GetParentObject()->GetTransform()->TranslateV(movePerIMass * rb1->GetInverseMass() * -1);
 			rb2->GetParentObject()->GetTransform()->TranslateV(movePerIMass * rb2->GetInverseMass());
 			manifolds[pair].col1->UpdateCollider();
@@ -66,7 +66,7 @@ void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 		}
 		else if (rb1 && !rb2) // if only col1 has a rigidbody then move it by the full interpenetration amount
 		{
-			Vector3f move = contactPoint.worldNormal * maxPen;
+			Vector3f move = contactPoint.GetWorldNormal() * maxPen;
 			rb1->GetParentObject()->GetTransform()->TranslateV(move * -1
 			);
 			manifolds[pair].col1->UpdateCollider();
@@ -123,12 +123,12 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 		for (unsigned contact = 0; contact < numContactPoints; contact++)
 		{
 			Manifold::ContactPoint &thisContact = manifolds[m].contactPoints[contact];
-			const Vector3f normal = thisContact.worldNormal;
-			const Vector3f r1 = thisContact.col1LocalPoint;
+			const Vector3f normal = thisContact.GetWorldNormal();
+			const Vector3f r1 = thisContact.GetCol1LocalPoint();
 			Vector3f r2;
 			if (rb2)
 			{
-				r2 = thisContact.col2LocalPoint;
+				r2 = thisContact.GetCol2LocalPoint();
 			}
 
 			float impulse = 0.f;

@@ -20,23 +20,19 @@ public:
 	class ContactPoint // one individual contact point
 	{
 	public:
-		Manifold *parentManifold;
-		Vector3f col1LocalPoint; // world space
-		Vector3f col2LocalPoint; // world space
-		float penDepth;
-		Vector3f worldNormal;
-		Matrix3f contactToWorld;
-		float desiredDeltaVelocity;
-		Vector3f closingVelocity; // in contact coords
-
 		ContactPoint(Manifold *parentMani, const Vector3f &c1Point, const Vector3f &c2Point, float penetrationDepth, const Vector3f &normal);
 		void SwapBodies();
-		void Prepare();
+		float GetPenDepth() const;
+		Vector3f GetWorldNormal() const;
+		Vector3f GetCol1LocalPoint() const;
+		Vector3f GetCol2LocalPoint() const;
 
 	private:
-		void CalculateContactBasis();
-		void CalcRelativeVelocity();
-		void CalcDesiredDeltaVel();
+		Manifold *m_parentManifold;
+		Vector3f m_col1LocalPoint; // world space
+		Vector3f m_col2LocalPoint; // world space
+		float m_penDepth;
+		Vector3f m_worldNormal;
 	};
 	std::vector<ContactPoint> contactPoints;
 	CCollider *col1;
