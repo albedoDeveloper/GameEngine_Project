@@ -55,7 +55,7 @@ void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 		CRigidBody *rb1 = manifolds[pair].col1->GetParentObject()->GetComponent<CRigidBody>();
 		CRigidBody *rb2 = manifolds[pair].col2->GetParentObject()->GetComponent<CRigidBody>();
 		assert(rb1); // double check if col1 has a rigidbody, this should always be the case since the collision manager will make sure of this
-		if (rb1 && rb2)
+		if (rb1 && rb2) // if both colliders have a rigidbody then seperate them proportional to their masses
 		{
 			float totalInverseMass = rb1->GetInverseMass() + rb2->GetInverseMass();
 			Vector3f movePerIMass = contactPoint.worldNormal * maxPen / totalInverseMass;
@@ -64,7 +64,7 @@ void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 			manifolds[pair].col1->UpdateCollider();
 			manifolds[pair].col2->UpdateCollider();
 		}
-		else if (rb1 && !rb2)
+		else if (rb1 && !rb2) // if only col1 has a rigidbody then move it by the full interpenetration amount
 		{
 			Vector3f move = contactPoint.worldNormal * maxPen;
 			rb1->GetParentObject()->GetTransform()->TranslateV(move * -1
@@ -87,14 +87,13 @@ void PhysicsManager::IntegrateBodies()
 
 void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 {
-	//resolve impulses
 	unsigned numManifolds = manifolds.size();
-	for (int pair = 0; pair < numManifolds; pair++)
+	for (int m = 0; m < numManifolds; m++)
 	{
-		Manifold &manifold = manifolds[pair];
-		CRigidBody *rb1 = manifolds[pair].col1->GetParentObject()->GetComponent<CRigidBody>();
-		CRigidBody *rb2 = manifolds[pair].col2->GetParentObject()->GetComponent<CRigidBody>();
-		assert(rb1);
+		Manifold &manifold = manifolds[m];
+		CRigidBody *rb1 = manifolds[m].col1->GetParentObject()->GetComponent<CRigidBody>();
+		CRigidBody *rb2 = manifolds[m].col2->GetParentObject()->GetComponent<CRigidBody>();
+		assert(rb1); // double check if col1 has a rigidbody, this should always be true because the collision manager will make sure of this
 		const float invMass1 = rb1->GetInverseMass();
 		float invMass2{};
 		if (rb2)
@@ -120,10 +119,10 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 			bodiesRelVel -= rb2->GetVelocity();
 		}
 
-		unsigned numContactPoints = manifolds[pair].contactPoints.size();
+		unsigned numContactPoints = manifolds[m].contactPoints.size();
 		for (unsigned contact = 0; contact < numContactPoints; contact++)
 		{
-			Manifold::ContactPoint &thisContact = manifolds[pair].contactPoints[contact];
+			Manifold::ContactPoint &thisContact = manifolds[m].contactPoints[contact];
 			const Vector3f normal = thisContact.worldNormal;
 			const Vector3f r1 = thisContact.col1LocalPoint;
 			Vector3f r2;
@@ -132,23 +131,24 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 				r2 = thisContact.col2LocalPoint;
 			}
 
-			// angular impulse momentum equation - See book "Introduction to Game Development - by Rabin"
 			float impulse = 0.f;
 			if (rb2)
 			{
+				// angular impulse momentum equation - See book "Introduction to Game Development - by Rabin"
 				impulse =
 					((-1 * (1 + manifold.restitution) * (normal.dotProduct(bodiesRelVel) + angVel1.dotProduct(r1.crossProduct(normal)) - angVel2.dotProduct(r2.crossProduct(normal)))) /
 					(invMass1 + invMass2 + ((r1.crossProduct(normal) * J1invWorld).dotProduct(r1.crossProduct(normal)) + ((r2.crossProduct(normal) * J2invWorld).dotProduct(r2.crossProduct(normal))))));
 			}
 			else
 			{
+				// simplified angular impulse equation which only takes into account one rigidbody, colliding against an immovable object
 				impulse =
 					(-1 * (1 + manifold.restitution) * (rb1->GetVelocity()).dotProduct(normal)) /
-					(invMass1 + (J1invWorld * (r1.crossProduct(normal)).crossProduct(r1)).dotProduct(normal)); // not 100% sure about this one
+					(invMass1 + (J1invWorld * (r1.crossProduct(normal)).crossProduct(r1)).dotProduct(normal));
 			}
 			impulse /= numContactPoints;
 
-			// linear impulse - seperating velocity
+			// linear impulse
 			Vector3f rb1NewVel = rb1->GetVelocity() + (impulse * normal) * rb1->GetInverseMass();
 			rb1->SetVelocity(rb1NewVel);
 			if (rb2)

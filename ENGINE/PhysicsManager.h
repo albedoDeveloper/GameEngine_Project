@@ -56,6 +56,7 @@ private:
 		 * Calculate restitution for current copntact, based on both bodies.
 		 *
 		 * \param manifolds
+		 * \pre col1 of each manifold should always have a rigidbody
 		 */
 	void PrepareContacts(std::vector<Manifold> &manifolds);
 
@@ -63,6 +64,7 @@ private:
 		 * calculate impulses on each contact.
 		 *
 		 * \param manifolds
+		 * \pre col1 of each manifold should always have a rigidbody
 		 */
 	void ResolveImpulses(std::vector<Manifold> &manifolds);
 
@@ -70,6 +72,7 @@ private:
 		 * apply linear projection on deepest penetrating contact per manifold.
 		 *
 		 * \param manifolds
+		 * \pre col1 of each manifold should always have a rigidbody
 		 */
 	void ResolveInterpenetration(std::vector<Manifold> &manifolds);
 };
