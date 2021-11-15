@@ -27,7 +27,6 @@ void PhysicsManager::RegisterRigidBody(CRigidBody *body)
 
 void PhysicsManager::PrepareContacts(std::vector<Manifold> &manifolds)
 {
-	// prepare contacts
 	for (unsigned pair = 0; pair < manifolds.size(); pair++)
 	{
 		manifolds[pair].Prepare();
@@ -36,9 +35,9 @@ void PhysicsManager::PrepareContacts(std::vector<Manifold> &manifolds)
 
 void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 {
-	//resolves interpenetrations
 	for (unsigned pair = 0; pair < manifolds.size(); pair++) // loop through each manifold apply linear projection to biggest penetrating contact point
 	{
+		// find deepest interpenetrating contact
 		float maxPenPointIndex = 0;
 		float maxPen = manifolds[pair].contactPoints[maxPenPointIndex].penDepth;
 		for (unsigned point = 0; point < manifolds[pair].contactPoints.size(); point++)
@@ -50,11 +49,12 @@ void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 				maxPenPointIndex = point;
 			}
 		}
+
 		Manifold::ContactPoint &contactPoint = manifolds[pair].contactPoints[maxPenPointIndex];
 		Vector3f normal = contactPoint.worldNormal;
 		CRigidBody *rb1 = manifolds[pair].col1->GetParentObject()->GetComponent<CRigidBody>();
 		CRigidBody *rb2 = manifolds[pair].col2->GetParentObject()->GetComponent<CRigidBody>();
-		assert(rb1);
+		assert(rb1); // double check if col1 has a rigidbody, this should always be the case since the collision manager will make sure of this
 		if (rb1 && rb2)
 		{
 			float totalInverseMass = rb1->GetInverseMass() + rb2->GetInverseMass();
