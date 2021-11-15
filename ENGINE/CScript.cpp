@@ -34,6 +34,7 @@ void CScript::Save(nlohmann::json &j)
 void CScript::Load(nlohmann::json &j)
 {
 	GameObject *g = GetParentObject();
+	AssignScriptByKey(j.at(g->GetFactoryKey()).at("Components").at("ScriptComponent").at("Script"));
 }
 
 void CScript::DrawToImGui()
