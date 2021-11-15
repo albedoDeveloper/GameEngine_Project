@@ -285,18 +285,21 @@ void CAgent::AiAction()
 		//Applies the affordances effects on each emotion
 		for (auto &emotionEffect : currentAffordance->EmotionEffectors)
 		{
-			// adds the emotion effect of the affordance to the coresponding emotion of the AI, which is multiplied by the AI's trait and finally a random amount
-			// The random amount simulates real life, where every time you participate in an activity, what emotion you get out of it is slightly ranfom
-			emotions.at(emotionEffect.first).emotion += emotionEffect.second * emotions.at(lowestName).multipler * (static_cast<float>(std::rand() % 140 + 70) / 100);
+			if (emotions.count(emotionEffect.first) > 0)
+			{
+				// adds the emotion effect of the affordance to the coresponding emotion of the AI, which is multiplied by the AI's trait and finally a random amount
+				// The random amount simulates real life, where every time you participate in an activity, what emotion you get out of it is slightly random
+				emotions.at(emotionEffect.first).emotion += emotionEffect.second * emotions.at(lowestName).multipler * (static_cast<float>(std::rand() % 140 + 70) / 100);
 
-			// Prevents emotion overall (an agent can go beyond very high arousal for example)
-			if (emotions.at(emotionEffect.first).emotion > 1)
-				emotions.at(emotionEffect.first).emotion = 1;
+				// Prevents emotion overall (an agent can go beyond very high arousal for example)
+				if (emotions.at(emotionEffect.first).emotion > 1)
+					emotions.at(emotionEffect.first).emotion = 1;
 
-			else if (emotions.at(emotionEffect.first).emotion < 0)
-				emotions.at(emotionEffect.first).emotion = 0;
+				else if (emotions.at(emotionEffect.first).emotion < 0)
+					emotions.at(emotionEffect.first).emotion = 0;
 
-			std::cout << "Emotion: " << emotionEffect.first << " = " << emotions.at(emotionEffect.first).emotion << std::endl;
+				std::cout << "Emotion: " << emotionEffect.first << " = " << emotions.at(emotionEffect.first).emotion << std::endl;
+			}
 		}
 
 		//Changes agent to think about a new affordance
