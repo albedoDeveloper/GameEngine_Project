@@ -147,6 +147,7 @@ const Matrix3f &CRigidBody::GetInertiaTensor() const
 
 const Matrix3f &CRigidBody::GetInverseWorldInertiaTensor() const
 {
+	// Section 14.2.5 in 'Mathematics for 3D Game Programming and Computer Graphics by Eric Lengyel'
 	return (m_parent->GetTransform()->GetRelativeOrientation().Inverse().Mat3Cast() * m_inertiaTensor * m_parent->GetTransform()->GetRelativeOrientation().Inverse().Mat3Cast().Transpose()).Inverse();
 }
 
