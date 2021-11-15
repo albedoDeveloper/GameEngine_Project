@@ -34,12 +34,19 @@ public:
 		float m_penDepth;
 		Vector3f m_worldNormal;
 	};
-	std::vector<ContactPoint> contactPoints;
-	CCollider *col1;
-	CCollider *col2;
-	float restitution;
+
 	Manifold(CCollider *newCol1, CCollider *newCol2);
 	void Prepare();
+	std::vector<ContactPoint> &GetContactPoints();
+	CCollider *GetCol1();
+	CCollider *GetCol2();
+	float GetRestitution() const;
+
+private:
+	std::vector<ContactPoint> m_contactPoints;
+	CCollider *m_col1;
+	CCollider *m_col2;
+	float m_restitution;
 };
 
 /**

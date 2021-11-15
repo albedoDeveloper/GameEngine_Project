@@ -138,7 +138,7 @@ void CollisionManager::FillManifoldAB(unsigned manifoldIndex)
 	));
 	for (unsigned j = 0; j < m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(manifoldIndex)->getNumContacts(); j++)
 	{
-		m_contactCache.back().contactPoints.push_back(
+		m_contactCache.back().GetContactPoints().push_back(
 			Manifold::ContactPoint(
 				&(m_contactCache.back()),
 				Vector3f(
@@ -170,7 +170,7 @@ void CollisionManager::FillManifoldBA(unsigned manifoldIndex)
 	));
 	for (unsigned j = 0; j < m_collisionWorld.getDispatcher()->getManifoldByIndexInternal(manifoldIndex)->getNumContacts(); j++)
 	{
-		m_contactCache.back().contactPoints.push_back(
+		m_contactCache.back().GetContactPoints().push_back(
 			Manifold::ContactPoint(
 				&(m_contactCache.back()),
 				Vector3f(
@@ -195,7 +195,7 @@ void CollisionManager::FillManifoldBA(unsigned manifoldIndex)
 }
 
 Manifold::ContactPoint::ContactPoint(Manifold *parentMani, const Vector3f &c1Point, const Vector3f &c2Point, float penetrationDepth, const Vector3f &normal)
-	: m_parentManifold{ parentMani }, m_col1LocalPoint{ c1Point }, m_col2LocalPoint{ c2Point }, m_penDepth{ penetrationDepth }, m_worldNormal{ normal }, m_desiredDeltaVelocity{}
+	: m_parentManifold{ parentMani }, m_col1LocalPoint{ c1Point }, m_col2LocalPoint{ c2Point }, m_penDepth{ penetrationDepth }, m_worldNormal{ normal }
 {}
 
 void Manifold::ContactPoint::SwapBodies()
@@ -204,7 +204,6 @@ void Manifold::ContactPoint::SwapBodies()
 	Vector3f tempvec = m_col1LocalPoint;
 	m_col1LocalPoint = m_col2LocalPoint;
 	m_col2LocalPoint = tempvec;
-	m_closingVelocity = m_closingVelocity * -1;
 }
 
 float Manifold::ContactPoint::GetPenDepth() const
@@ -229,22 +228,42 @@ Vector3f Manifold::ContactPoint::GetCol2LocalPoint() const
 
 
 Manifold::Manifold(CCollider *newCol1, CCollider *newCol2)
-	:col1{ newCol1 }, col2{ newCol2 }, restitution{ 0.4f }, contactPoints{}
+	:m_col1{ newCol1 }, m_col2{ newCol2 }, m_restitution{ 0.4f }, m_contactPoints{}
 {}
 
 void Manifold::Prepare()
 {
-	CRigidBody *rb1 = col1->GetParentObject()->GetCRigidBody();
-	CRigidBody *rb2 = col2->GetParentObject()->GetCRigidBody();
+	CRigidBody *rb1 = m_col1->GetParentObject()->GetCRigidBody();
+	CRigidBody *rb2 = m_col2->GetParentObject()->GetCRigidBody();
 	assert(rb1 || rb2);
 	assert(rb1);
 
-	if (col2->GetParentObject()->GetCRigidBody())
+	if (m_col2->GetParentObject()->GetCRigidBody())
 	{
-		restitution = std::fminf(col1->GetParentObject()->GetCRigidBody()->GetRestitution(), col2->GetParentObject()->GetCRigidBody()->GetRestitution());
+		m_restitution = std::fminf(m_col1->GetParentObject()->GetCRigidBody()->GetRestitution(), m_col2->GetParentObject()->GetCRigidBody()->GetRestitution());
 	}
 	else
 	{
-		restitution = col1->GetParentObject()->GetCRigidBody()->GetRestitution();
+		m_restitution = m_col1->GetParentObject()->GetCRigidBody()->GetRestitution();
 	}
+}
+
+std::vector<Manifold::ContactPoint> &Manifold::GetContactPoints()
+{
+	return m_contactPoints;
+}
+
+CCollider *Manifold::GetCol1()
+{
+	return m_col1;
+}
+
+CCollider *Manifold::GetCol2()
+{
+	return m_col2;
+}
+
+float Manifold::GetRestitution() const
+{
+	return m_restitution;
 }
