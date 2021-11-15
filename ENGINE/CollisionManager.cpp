@@ -8,7 +8,9 @@ CollisionManager::CollisionManager()
 	m_broadphase{},
 	m_config{},
 	m_dispatcher{ &m_config },
-	m_collisionWorld{ &m_dispatcher, &m_broadphase, &m_config }
+	m_collisionWorld{ &m_dispatcher, &m_broadphase, &m_config },
+	m_colObjCache{}
+
 {
 	m_collisionWorld.setDebugDrawer(GRAPHICS);
 }
