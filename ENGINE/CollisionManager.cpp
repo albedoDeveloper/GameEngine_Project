@@ -5,7 +5,6 @@ CollisionManager::CollisionManager()
 	:m_colliderArray{},
 	m_collision{},
 	m_fill{ 0 },
-	m_waitTime{ 0 },
 	m_broadphase{},
 	m_config{},
 	m_dispatcher{ &m_config },
@@ -13,9 +12,6 @@ CollisionManager::CollisionManager()
 {
 	m_collisionWorld.setDebugDrawer(GRAPHICS);
 }
-
-void CollisionManager::Init()
-{}
 
 CollisionManager *CollisionManager::Instance()
 {
