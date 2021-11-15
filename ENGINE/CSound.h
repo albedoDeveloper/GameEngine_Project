@@ -41,6 +41,8 @@ public:
 		*/
 	void PlaySound(std::string soundName, int length, bool positional);
 
+	/// @brief Stop a sound from playing
+	/// @param soundName 
 	void StopPlaying(std::string soundName);
 
 		/**
@@ -48,6 +50,9 @@ public:
 		*/
 	virtual void Update();
 
+	/// @brief Change the volume of a sound
+	/// @param soundName 
+	/// @param volume 
 	void ChangeVolume(std::string soundName, int volume);
 
 private:
@@ -67,5 +72,7 @@ private:
 	};
 
 		/** @brief sound information */
-	std::map<std::string, SoundInfo> soundinfo;
+	std::unordered_map<std::string,SoundInfo> soundinfo;
+
+
 };
