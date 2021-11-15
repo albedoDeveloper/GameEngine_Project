@@ -376,6 +376,22 @@ void GameObject::Load(nlohmann::json &j)
 			}
 		}
 
+		if (it.key() == "AgentComponent")
+		{
+			if (GetComponent<CAgent>())
+			{
+				//GetComponent<CAgent>()->AssignModelByKey(j.at(GetFactoryKey()).at("Components").at("StaticMeshComponent").at("AModel"));
+				GetComponent<CAgent>()->Load(j);
+
+			}
+			else
+			{
+				AddCAgent();
+				//GetComponent<CAgent>()->Load(j);
+
+			}
+		}
+
 		//if (it.key() == "AABBComponent")
 		//{
 		//	//TODO Fix the collision loading

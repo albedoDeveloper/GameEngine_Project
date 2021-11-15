@@ -109,6 +109,8 @@ class CAgent : public CComponent
 		NavNode *navNode;
 		NavNode *destinationNode;
 
+		std::string currentCircumplex;
+
 		std::vector<NavNode * > path;
 
 		int pathIndex = 0;
@@ -134,5 +136,20 @@ class CAgent : public CComponent
 
 		/// @brief Update the AI every frame
 		virtual void Update();
+
+		/**
+		 * @brief saves the component
+		*/
+		virtual void Save(nlohmann::json &j);
+
+			/**
+			 * @brief loads the component from saved state
+			*/
+		virtual void Load(nlohmann::json &j);
+
+			/**
+			 * @brief Draws to imgui
+			*/
+		virtual void DrawToImGui();
 };
 
