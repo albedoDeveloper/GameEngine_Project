@@ -21,10 +21,6 @@ class SoundManager
 		/// @return 
 		Mix_Chunk* GetSound(std::string soundName);
 
-	static SoundManager *Instance();
-	void LoadSound(std::string soundName);
-	Mix_Chunk *GetSound(std::string soundName);
-
 	private:
 		/// @brief Contains all the sounds loaded into the engine
 		std::unordered_map<std::string, Mix_Chunk*> soundList;

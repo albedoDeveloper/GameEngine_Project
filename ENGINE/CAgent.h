@@ -60,10 +60,8 @@ class CAgent : public CComponent
 		/// @brief The state of the AI when its performing an affordance
 		void AiAction();
 
-
 		//Does the AI change the emotion over time
 		float emotionNativeChange;
-	};
 
 		/// @brief the current affordance the AI wishes to perform
 		Affordance *currentAffordance = nullptr;
@@ -86,60 +84,39 @@ class CAgent : public CComponent
 		/// @brief Map containing all of the AI's traits
 		std::unordered_map<std::string, float> traits;
 
+		float time = 0;
+		float lerpTime = 0;
+		int waitTime = 0;
+
 	public:
 		CAgent(Transform *parent, GameObject *parentObj);
 		
 		~CAgent(){
 			delete currentAffordance;
 			currentAffordance = nullptr;
+		}
+		void FollowPath();
 
-	void AiThink();
-	void AiMove();
-	void AiAction();
+		NavNode *FindNavLocation();
+		NavNode *FindDestinationLocation(Vector3f position);
 
-	void FollowPath();
+		/**
+		* @brief renders the navmesh
+		*/
+		virtual void Render();
 
-	NavNode *FindNavLocation();
-	NavNode *FindDestinationLocation(Vector3f position);
+		CNavMesh *navMesh;
+		NavNode *navNode;
+		NavNode *destinationNode;
 
-public:
-	CAgent(Transform *parent, GameObject *parentObj);
+		std::vector<NavNode * > path;
 
-	~CAgent()
-	{
-		delete currentAffordance;
-		currentAffordance = nullptr;
+		int pathIndex = 0;
+		std::unordered_map<NavNode *, NavNode *> came_from;
+		std::unordered_map<NavNode *, double> cost_so_far;
 
-	}
-
-	/**
-	 * @brief renders the navmesh
-	*/
-	virtual void Render();
-
-	CNavMesh *navMesh;
-	NavNode *navNode;
-	NavNode *destinationNode;
-
-	std::vector<NavNode * > path;
-
-	int pathIndex = 0;
-	std::unordered_map<NavNode *, NavNode *> came_from;
-	std::unordered_map<NavNode *, double> cost_so_far;
-
-	Vector3f startLocation;
-	Vector3f endLocation;
-
-	Affordance *currentAffordance = nullptr;
-
-	std::unordered_map<std::string, std::map<std::string, Affordance> *> allAffordances;
-
-		
-		
-		//std::string currentCircumplex;
-
-
-	void AddEmotion(std::string name, float level, float multiplier, float emotionNativeChange);
+		Vector3f startLocation;
+		Vector3f endLocation;
 
 		/// @brief Add a new emotion to the AI agent
 		/// @param name 
