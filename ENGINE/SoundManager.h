@@ -6,16 +6,16 @@
 
 class SoundManager
 {
-	public:
-		SoundManager();
-		
-		static SoundManager *Instance();
-		void LoadSound(std::string soundName);
-		Mix_Chunk* GetSound(std::string soundName);
+public:
+	SoundManager();
+
+	static SoundManager *Instance();
+	void LoadSound(std::string soundName);
+	Mix_Chunk *GetSound(std::string soundName);
 
 
-	private:
-		std::unordered_map<std::string, Mix_Chunk*> soundList;
+private:
+	std::unordered_map<std::string, Mix_Chunk *> soundList;
 
 
 };

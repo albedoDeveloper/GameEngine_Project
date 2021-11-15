@@ -96,7 +96,6 @@ void CCharacter::Start()
 		obj->AddComponent<CCollider>()->AddBoxCollider(0, 0, 0, 0, 0, 0, true, 0, true, 31);
 		obj->AddComponent<CRigidBody>()->SetMass(2);
 		obj->GetComponent<CRigidBody>()->SetGravityEnabled(true);
-		obj->GetComponent<CRigidBody>()->SetGravity(Vector3f(0, -4, 0));
 		obj->GetComponent<CRigidBody>()->SetRestitution(0.0f);
 		obj->GetComponent<CRigidBody>()->SetDamping(0.4f);
 		obj->SetActive(false);

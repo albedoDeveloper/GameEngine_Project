@@ -67,7 +67,5 @@ private:
 	};
 
 		/** @brief sound information */
-	std::map<std::string,SoundInfo> soundinfo;
-
-
+	std::map<std::string, SoundInfo> soundinfo;
 };

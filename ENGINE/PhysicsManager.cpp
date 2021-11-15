@@ -31,12 +31,6 @@ void PhysicsManager::PrepareContacts(std::vector<Manifold> &manifolds)
 	for (unsigned pair = 0; pair < manifolds.size(); pair++)
 	{
 		manifolds[pair].Prepare();
-		//for (unsigned contact = 0; contact < manifolds[pair].contactPoints.size(); contact++)
-		//{
-		//	Manifold &contactPair = manifolds[pair];
-		//	assert(contactPair.col1->GetParentObject()->GetCRigidBody() || contactPair.col2->GetParentObject()->GetCRigidBody());
-		//	manifolds[pair].contactPoints[contact].Prepare();
-		//}
 	}
 }
 
@@ -73,7 +67,8 @@ void PhysicsManager::ResolveInterpenetration(std::vector<Manifold> &manifolds)
 		else if (rb1 && !rb2)
 		{
 			Vector3f move = contactPoint.worldNormal * maxPen;
-			rb1->GetParentObject()->GetTransform()->TranslateV(move * -1);
+			rb1->GetParentObject()->GetTransform()->TranslateV(move * -1
+			);
 			manifolds[pair].col1->UpdateCollider();
 		}
 	}

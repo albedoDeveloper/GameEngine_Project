@@ -20,21 +20,12 @@
 struct Graph
 {
 	double cost;
-	std::unordered_map<NavNode*, std::vector<NavNode*> > edges;
+	std::unordered_map<NavNode *, std::vector<NavNode *> > edges;
 
-	std::vector<NavNode*> neighbors(NavNode* id)
+	std::vector<NavNode *> neighbors(NavNode *id)
 	{
 		return edges[id];
 	}
-
-	/*std::unordered_set<GridLocation> forests;
-
-	double cost(GridLocation from_node, GridLocation to_node) const
-	{
-		return forests.find(to_node) != forests.end() ? 5 : 1;
-	}*/
-
-	
 };
 
 	/**
@@ -70,17 +61,17 @@ struct PriorityQueue
 	*/
 class CNavMesh : public CComponent
 {
-	public:
-	/**
-	 * @brief Constructor based on parent GameObject
-	 * @param parent the parent transform for this component
-	 * @param parentObj the parent object of this component
-	*/
-		CNavMesh(Transform *parent, GameObject *parentObj);
+public:
+/**
+ * @brief Constructor based on parent GameObject
+ * @param parent the parent transform for this component
+ * @param parentObj the parent object of this component
+*/
+	CNavMesh(Transform *parent, GameObject *parentObj);
 
-		/**
-		 * @brief Initiates the script at program start
-		*/
+	/**
+	 * @brief Initiates the script at program start
+	*/
 	virtual void Start();
 
 		/**
@@ -127,7 +118,7 @@ class CNavMesh : public CComponent
 		 * @brief Retrieves the Navigation Nodes vector
 		 * @return the vector of navigation nodes
 		*/
-	std::vector<NavNode*> GetNavNodes();
+	std::vector<NavNode *> GetNavNodes();
 
 		/**
 		 * @brief Retrieves the NodeGraph (list of nodes & their connected neighbour nodes)
@@ -144,7 +135,7 @@ class CNavMesh : public CComponent
 		 * @param the z position of the node
 		 * @return the NavNode at position x & y
 		*/
-	NavNode* FetchNode(int x, int z);
+	NavNode *FetchNode(int x, int z);
 
 		/**
 		 * @brief Retrieves the nearest navNode 
