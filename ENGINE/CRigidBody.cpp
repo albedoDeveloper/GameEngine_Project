@@ -22,14 +22,22 @@ CRigidBody::CRigidBody(Transform *parentTrans, GameObject *parentObject)
 	m_freezeXRot{ false },
 	m_freezeYRot{ false },
 	m_freezeZRot{ false },
-	m_gravity{ 0,-4,0 },
+	m_gravity{ 0,-9,0 },
 	m_restitution{ 0.7f },
 	m_damping{ 0.9f }
 {
 	CCollider *col = m_parent->GetComponent<CCollider>(); // TODO get all collider components
 	CStaticMesh *sm = m_parent->GetComponent<CStaticMesh>();
 
-	sm->GetTransform().SetRelativePositionV(col->GetTransform().GetRelativePosition() * -1.f);
+	if (!col)
+	{
+		throw "CRigidBody added to GameObject which has not CCollider";
+	}
+
+	if (sm)
+	{
+		sm->GetTransform().SetRelativePositionV(col->GetTransform().GetRelativePosition() * -1.f);
+	}
 
 	PHYSICS->RegisterRigidBody(this);
 }
