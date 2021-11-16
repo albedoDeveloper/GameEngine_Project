@@ -166,7 +166,7 @@ void Engine::Render()
 
 		m_saveState = ImGui::Button("Save", ImVec2(100, 30));
 		m_loadState = ImGui::Button("Load", ImVec2(100, 30));
-
+		GRAPHICS->m_drawDebug = m_drawColliders;
 		ImGui::End();
 	}
 
