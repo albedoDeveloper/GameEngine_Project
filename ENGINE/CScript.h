@@ -49,6 +49,9 @@ public:
 		*/
 	virtual void DrawToImGui();
 
+		/**
+		 * Assign script asset to this component.
+		 */
 	void AssignScript(AScript &script);
 
 		/**

@@ -23,11 +23,6 @@ void Quaternion::Rotate(float degrees, const Vector3f &axis)
 	Normalize();
 }
 
-float Quaternion::GetMagnitude() const
-{
-	return glm::length(m_quat);
-}
-
 Vector3f Quaternion::GetAxis() const
 {
 	glm::vec3 axis = glm::axis(m_quat);
@@ -161,6 +156,10 @@ Quaternion Quaternion::operator+(const Quaternion &rhs)
 {
 	return m_quat + rhs.m_quat;
 }
+
+Quaternion::Quaternion(glm::quat q)
+	:m_quat(q)
+{}
 
 Matrix3f Quaternion::Mat3Cast() const
 {

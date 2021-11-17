@@ -12,13 +12,11 @@ Matrix4f &Matrix4f::operator*=(Matrix4f other)
 
 Matrix4f::Matrix4f(glm::mat4 m)
 	:m_mat{ m }
-{
-}
+{}
 
 Matrix4f::Matrix4f()
 	: m_mat{ 1.0f }
-{
-}
+{}
 
 void Matrix4f::Translate(const Vector3f &v)
 {
@@ -61,11 +59,6 @@ void Matrix4f::RemoveTranslation()
 	m_mat = glm::mat4(glm::mat3(m_mat));
 }
 
-float &Matrix4f::SetMatrixElement(unsigned int row, unsigned int column)
-{
-	return m_mat[row][column];
-}
-
 Matrix4f Matrix4f::operator*(const Matrix4f &other)
 {
 	return m_mat * other.m_mat;
@@ -83,7 +76,7 @@ Quaternion Matrix4f::ToQuat()
 }
 
 
-Matrix4f Matrix4f::Inverse() 
+Matrix4f Matrix4f::Inverse()
 {
 	return glm::inverse(m_mat);
 }

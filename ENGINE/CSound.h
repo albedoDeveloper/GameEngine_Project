@@ -26,13 +26,6 @@ public:
 	CSound(Transform *parent, GameObject *parentObj);
 
 		/**
-		* @brief Loads sound
-		*
-		* \param soundName name of the sound
-		*/
-	void LoadSound(std::string soundName);
-
-		/**
 		* @brief Play Sound
 		*
 		* \param soundName name of the sound
@@ -72,7 +65,7 @@ private:
 	};
 
 		/** @brief sound information */
-	std::unordered_map<std::string,SoundInfo> soundinfo;
+	std::unordered_map<std::string, SoundInfo> soundinfo;
 
 
 };

@@ -31,8 +31,20 @@ public:
 		 */
 	void Translate(const Vector3f &v);
 
+		/**
+		 * extract the translation from this matrix.
+		 *
+		 * \param v
+		 * \return
+		 */
 	Matrix4f GetTranslate(const Vector3f &v) const;
 
+		/**
+		 * extract the rotation from this matrix.
+		 *
+		 * \param q
+		 * \return
+		 */
 	Matrix4f GetRotate(const Quaternion &q) const;
 
 		/**
@@ -42,10 +54,25 @@ public:
 		 */
 	void Scale(Vector3f v);
 
+		/**
+		 * apply rotation to this matrix.
+		 *
+		 * \param q
+		 */
 	void Rotate(const Quaternion &q);
 
+
+		/**
+		 * Get inverse of this matrix.
+		 */
 	Matrix4f Inverse();
 
+		/**
+		 * Extract scale from matrix.
+		 *
+		 * \param v
+		 * \return
+		 */
 	Matrix4f GetScale(const Vector3f &v) const;
 
 		/**
@@ -55,10 +82,15 @@ public:
 		 */
 	float *ValuePtr();
 
+		/**
+		 * Remove translation from this matrix.
+		 *
+		 */
 	void RemoveTranslation();
 
-	float &SetMatrixElement(unsigned int row, unsigned int column);
-
+		/**
+		 * Convert orientation aprt of matrix to quaternion.
+		 */
 	Quaternion ToQuat();
 
 		/**
@@ -69,6 +101,12 @@ public:
 		 */
 	Matrix4f operator*(const Matrix4f &other);
 
+		/**
+		 * multiply 2 matrix4f's together
+		 *
+		 * \param other right hand side matrix
+		 * \return value of result matrix
+		 */
 	Matrix4f operator*(const Matrix4f &other) const;
 
 		/**
@@ -79,19 +117,21 @@ public:
 		 */
 	Matrix4f &operator*=(Matrix4f other);
 
-
-	glm::mat4 GetMatrix()
-	{
-		return m_mat;
-	}
+		/**
+		 * construct diagonal matrix.
+		 *
+		 * \param m diagonal values
+		 */
 	Matrix4f(glm::mat4 m);
-	/// @brief Converts matrix from an assimp matrix to our facaded matrix
-	/// @param from 
-	/// @return 
+
+		/// @brief Converts matrix from an assimp matrix to our facaded matrix
+		/// @param from 
+		/// @return 
 	Matrix4f ConvertAiMatrixToMatrix4f(const aiMatrix4x4 &from);
 private:
-
+		/// @brief wrapped data structure
 	glm::mat4 m_mat;
+
 	friend void Decompose(const Matrix4f &m, Vector3f &scaleOut, Quaternion &rotationOut, Vector3f &positionOut);
 	friend Matrix4f Perspective(float fovyDegrees, float aspect, float near, float far);
 	friend Matrix4f LookAt(const Vector3f &eye, const Vector3f &centre, const Vector3f &up);

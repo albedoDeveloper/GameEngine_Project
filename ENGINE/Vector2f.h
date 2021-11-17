@@ -71,12 +71,12 @@ public:
 		 */
 	Vector2f operator*(const Vector2f &oVec);
 
-	/**
-	 * subtract another vector from this one and get the result value.
-	 *
-	 * \param oVec other vector
-	 * \return result value of subtraction
-	 */
+		/**
+		 * subtract another vector from this one and get the result value.
+		 *
+		 * \param oVec other vector
+		 * \return result value of subtraction
+		 */
 	Vector2f operator-(const Vector2f &oVec);
 
 private:

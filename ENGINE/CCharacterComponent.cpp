@@ -88,7 +88,7 @@ void CCharacter::Start()
 	}
 
 	// book pool
-	for (int i = 0; i < BOOK_POOL_SIZE; i++)
+	for (int i = 0; i < BOX_POOL_SIZE; i++)
 	{
 		std::string name = BOOK_NAME_PREFIX + std::to_string(i);
 		GameObject *obj = GAMEOBJECT->SpawnGameObject(name);
@@ -99,7 +99,7 @@ void CCharacter::Start()
 		obj->GetComponent<CRigidBody>()->SetRestitution(0.0f);
 		obj->GetComponent<CRigidBody>()->SetDamping(0.4f);
 		obj->SetActive(false);
-		m_bookPool[i] = obj;
+		m_boxPool[i] = obj;
 	}
 }
 
@@ -248,20 +248,20 @@ void CCharacter::Update()
 			if (INPUT->GetMouseButtonDown(1))
 			{
 				static unsigned bookPoolIndex = 0;
-				m_bookPool[bookPoolIndex]->SetActive(true);
-				m_bookPool[bookPoolIndex]->GetComponent<CRigidBody>()->RemoveMomentum();
-				m_bookPool[bookPoolIndex]->GetTransform()->SetRelativeOrientation(
+				m_boxPool[bookPoolIndex]->SetActive(true);
+				m_boxPool[bookPoolIndex]->GetComponent<CRigidBody>()->RemoveMomentum();
+				m_boxPool[bookPoolIndex]->GetTransform()->SetRelativeOrientation(
 					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeOrientation()
 				);
-				m_bookPool[bookPoolIndex]->GetTransform()->SetRelativePositionV(
+				m_boxPool[bookPoolIndex]->GetTransform()->SetRelativePositionV(
 					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() +
 					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 1.4f
 				);
-				m_bookPool[bookPoolIndex]->GetComponent<CRigidBody>()->SetVelocity(
+				m_boxPool[bookPoolIndex]->GetComponent<CRigidBody>()->SetVelocity(
 					m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 1.5f
 				);
 				bookPoolIndex++;
-				if (bookPoolIndex >= BOOK_POOL_SIZE)
+				if (bookPoolIndex >= BOX_POOL_SIZE)
 				{
 					bookPoolIndex = 0;
 				}
@@ -272,9 +272,9 @@ void CCharacter::Update()
 				{
 					m_projectilePool[i]->SetActive(false);
 				}
-				for (int i = 0; i < BOOK_POOL_SIZE; i++)
+				for (int i = 0; i < BOX_POOL_SIZE; i++)
 				{
-					m_bookPool[i]->SetActive(false);
+					m_boxPool[i]->SetActive(false);
 				}
 			}
 		}
@@ -338,9 +338,6 @@ void CCharacter::Update()
 		m_collider->UpdateCollider();
 	}
 }
-
-void CCharacter::Render()
-{}
 
 void CCharacter::Save(nlohmann::json &j)
 {
