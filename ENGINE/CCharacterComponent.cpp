@@ -340,13 +340,7 @@ void CCharacter::Update()
 }
 
 void CCharacter::Render()
-{
-	//GRAPHICS->DrawLine(
-	//	m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() + m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() ,
-	//	m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativePosition() + (m_parent->GetComponent<CCamera>()->GetTransform().GetWorldTransform().GetRelativeForward() * 2),
-	//	Vector3f(0, 1, 0)
-	//);
-}
+{}
 
 void CCharacter::Save(nlohmann::json &j)
 {
