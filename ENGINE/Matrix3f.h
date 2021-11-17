@@ -25,6 +25,11 @@ public:
 		 */
 	Matrix3f();
 
+		/**
+		 * const.
+		 *
+		 * \param n
+		 */
 	Matrix3f(float n);
 
 		/**

@@ -54,6 +54,11 @@ public:
 		*/
 	void SetHitpoints(int hp);
 
+		/**
+		 * Declare if this is controlled by the user of the application, otherwise can be used by AI.
+		 *
+		 * \param playerControlled
+		 */
 	void SetPlayerControlled(bool playerControlled);
 
 		/**
@@ -65,8 +70,6 @@ public:
 		 * @brief updates ongoing behaviour for the component
 		*/
 	void Update();
-
-	void Render();
 
 		/**
 		 * @brief saves the component
@@ -91,11 +94,19 @@ public:
 	void SetMouseEnabled(bool isEnabled);
 
 private:
+		/// @brief max pool size for projectiles/balls
 	static const unsigned PROJECTILE_POOL_SIZE = 300;
-	static const unsigned BOOK_POOL_SIZE = 100;
-	GameObject *m_projectilePool[PROJECTILE_POOL_SIZE];
-	GameObject *m_bookPool[BOOK_POOL_SIZE];
 
+		/// @brief max box pool size
+	static const unsigned BOX_POOL_SIZE = 100;
+
+		/// @brief projectile pool
+	GameObject *m_projectilePool[PROJECTILE_POOL_SIZE];
+
+		/// @brief box pool
+	GameObject *m_boxPool[BOX_POOL_SIZE];
+
+		/// @brief currently held rigid body game object
 	GameObject *m_heldItem;
 
 		/**

@@ -52,6 +52,10 @@ public:
 		 */
 	void Draw(const Shader *shader) const;
 
+		/**
+		 * Draw model with no texture.
+		 *
+		 */
 	void DrawNoTexture() const;
 
 		/**
@@ -73,21 +77,20 @@ public:
 		 */
 	std::vector<Mesh> &GetMeshes();
 
-	std::map<std::string, BoneInfo> m_BoneInfoMap; //
+	std::map<std::string, BoneInfo> m_BoneInfoMap;
 	int m_BoneCounter = 0;
 
 	std::map<std::string, BoneInfo> &GetBoneInfoMap()
 	{
 		return m_BoneInfoMap;
 	}
+
 	int &GetBoneCount()
 	{
 		return m_BoneCounter;
 	}
 
-
 	const aiScene *scene;
-
 private:
 
 		/// <summary>

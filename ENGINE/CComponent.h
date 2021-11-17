@@ -43,7 +43,13 @@ public:
 	virtual void Render()
 	{};
 
-	virtual void Render(Shader &shaderOverid, bool noTexture)
+		/**
+		 * Render with a overriden shader.
+		 *
+		 * \param shaderOveride
+		 * \param noTexture
+		 */
+	virtual void Render(Shader &shaderOveride, bool noTexture)
 	{};
 
 		/**
@@ -86,8 +92,12 @@ public:
 		*/
 	GameObject *GetParentObject();
 
+	/**
+	 * Set if active or not.
+	 *
+	 * \param isActive
+	 */
 	virtual void SetIsActive(bool isActive);
-
 
 protected:
 		/**
@@ -99,5 +109,6 @@ protected:
 		*/
 	GameObject *m_parent;
 
+	   /// @brief active in scene
 	bool m_isActive;
 };
