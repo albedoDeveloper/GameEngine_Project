@@ -28,13 +28,17 @@ void CSound::PlaySound(std::string soundName, int length, bool positional)
 
 void CSound::ChangeVolume(std::string soundName, int volume)
 {
-	Mix_Volume(soundinfo[soundName].channel, volume);
+	if (soundinfo.count(soundName) > 0)
+		Mix_Volume(soundinfo[soundName].channel, volume);
 }
 
 void CSound::StopPlaying(std::string soundName)
 {
-	Mix_HaltChannel(soundinfo[soundName].channel);
-	soundinfo.erase(soundName);
+	if (soundinfo.count(soundName) > 0)
+	{
+		Mix_HaltChannel(soundinfo[soundName].channel);
+		soundinfo.erase(soundName);
+	}
 }
 
 
