@@ -26,7 +26,7 @@ public:
 	/// @brief Calculate the transforms of the bones based upon the bone transformations applied in the animation class
 	/// @param node 
 	/// @param parentTransform 
-	void CalculateBoneTransform(const Animation::AssimpNodeData *node, Matrix4f parentTransform);
+	void CalculateBoneTransform(const Animation::NodeData *node, Matrix4f parentTransform);
 	
 	/// @brief Play a new animation
 	/// @param animationName 

@@ -57,7 +57,7 @@ void Animation::ReadMissingBones(const aiAnimation* animation, AModel& model)
 }
 
 
-void Animation::ReadHeirarchyData(AssimpNodeData& dest, const aiNode* src)
+void Animation::ReadHeirarchyData(NodeData& dest, const aiNode* src)
 {
 	if (src != nullptr)
 	{
@@ -67,7 +67,7 @@ void Animation::ReadHeirarchyData(AssimpNodeData& dest, const aiNode* src)
 
 		for (int i = 0; i < src->mNumChildren; i++)
 		{
-			AssimpNodeData newData;
+			NodeData newData;
 			ReadHeirarchyData(newData, src->mChildren[i]);
 			dest.children.push_back(newData);
 		}

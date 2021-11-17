@@ -11,12 +11,12 @@ class Animation
 {
 	public:
 		/// @brief Contains all the animation that has been extracted from a file via assimp
-		struct AssimpNodeData
+		struct NodeData
 		{
 			Matrix4f transformation;
 			std::string name;
 			int childrenCount;
-			std::vector<AssimpNodeData> children;
+			std::vector<NodeData> children;
 		};
 
 		/// @brief Create a new animation based upon an already preloaded model
@@ -39,7 +39,7 @@ class Animation
 		
 		/// @brief Get the root animation data (ie the information of the first frame of animation)
 		/// @return 
-		AssimpNodeData& GetRootNode() { return m_RootNode; }
+		NodeData& GetRootNode() { return m_RootNode; }
 		
 		/// @brief Contains all the different bones that are used in the animation
 		/// @return 
@@ -55,7 +55,7 @@ class Animation
 		/// @brief Goes through each piece of animation data for each child of the model (for example from arm -> hand)
 		/// @param dest 
 		/// @param src 
-		void ReadHeirarchyData(AssimpNodeData& dest, const aiNode* src);
+		void ReadHeirarchyData(NodeData& dest, const aiNode* src);
 		
 		/// @brief How the long the animation goes for in seconds
 		float m_Duration;
@@ -65,7 +65,7 @@ class Animation
 		/// @brief Vector of all the bones that are in the animation
 		std::vector<Bone> m_Bones;
 		/// @brief The starting animation node (ie the information about the first frame of the animation)
-		AssimpNodeData m_RootNode;
+		NodeData m_RootNode;
 		
 		/// @brief Map of all the different bones that are used at what time
 		std::map<std::string, AModel::BoneInfo> m_BoneInfoMap;

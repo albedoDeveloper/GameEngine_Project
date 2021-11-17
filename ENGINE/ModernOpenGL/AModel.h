@@ -77,14 +77,15 @@ public:
 		 */
 	std::vector<Mesh> &GetMeshes();
 
-	std::map<std::string, BoneInfo> m_BoneInfoMap;
-	int m_BoneCounter = 0;
-
+	/// @brief Return the entire bone map
+	/// @return map
 	std::map<std::string, BoneInfo> &GetBoneInfoMap()
 	{
 		return m_BoneInfoMap;
 	}
 
+	/// @brief 
+	/// @return the amount of bones
 	int &GetBoneCount()
 	{
 		return m_BoneCounter;
@@ -188,7 +189,21 @@ private:
 		/// <returns></returns>
 	unsigned int TextureFromFile(const char *path, const std::string &directory);
 
-	void SetVertexBoneDataToDefault(Vertex &vertex);
-	void ExtractBoneWeightForVertices(std::vector<Vertex> &vertices, aiMesh *mesh, const aiScene *scene);
-	void SetVertexBoneData(Vertex &vertex, int boneID, float weight);
+	/// @brief Contains all the different bones based up their IDs
+	std::map<std::string, BoneInfo> m_BoneInfoMap;
+
+	/// @brief The amount of bones the model has
+	int m_BoneCounter = 0;
+
+	/// @brief  Get the bone weights for each vertice
+	/// @param vertices 
+	/// @param mesh 
+	/// @param scene 
+	void ExtractBone(std::vector<Vertex> &vertices, aiMesh *mesh, const aiScene *scene);
+	
+	/// @brief Set the bone data that is applied to each vertex
+	/// @param vertex 
+	/// @param boneID 
+	/// @param weight 
+	void AddVertexBoneData(Vertex &vertex, int boneID, float weight);
 };

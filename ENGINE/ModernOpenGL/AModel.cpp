@@ -104,7 +104,11 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		Vertex vertex;
 		Vector3f vector;
 
-		SetVertexBoneDataToDefault(vertex);
+		for (int i = 0; i < 4; i++)
+		{
+			vertex.m_BoneIDs[i] = -1;
+			vertex.m_Weights[i] = 0.0f;
+		}
 		
 		// positions
 		vector.SetX((mesh->mVertices[i].x * m_info.size) + m_info.translation.GetX());
@@ -170,7 +174,7 @@ void AModel::ProcessMesh(aiMesh *mesh, const aiScene *scene)
 		vertices.push_back(vertex);
 	}
 	
-	ExtractBoneWeightForVertices(vertices, mesh, scene);
+	ExtractBone(vertices, mesh, scene);
 
 	m_numberOfFaces = mesh->mNumFaces;
 
@@ -267,16 +271,8 @@ unsigned int AModel::TextureFromFile(const char *path, const std::string &direct
 	return textureID;
 }
 
-void AModel::SetVertexBoneDataToDefault(Vertex& vertex)
-{
-	for (int i = 0; i < 4 ; i++)
-	{
-		vertex.m_BoneIDs[i] = -1;
-		vertex.m_Weights[i] = 0.0f;
-	}
-}
 
-void AModel::ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh* mesh, const aiScene* scene)
+void AModel::ExtractBone(std::vector<Vertex>& vertices, aiMesh* mesh, const aiScene* scene)
 {
 	auto& boneInfoMap = m_BoneInfoMap;
 	int& boneCount = m_BoneCounter;
@@ -313,12 +309,12 @@ void AModel::ExtractBoneWeightForVertices(std::vector<Vertex>& vertices, aiMesh*
 			
 			assert(vertexId <= vertices.size());
 			
-			SetVertexBoneData(vertices[vertexId], boneID, weight);
+			AddVertexBoneData(vertices[vertexId], boneID, weight);
 		}
 	}
 }
 
-void AModel::SetVertexBoneData(Vertex& vertex, int boneID, float weight)
+void AModel::AddVertexBoneData(Vertex& vertex, int boneID, float weight)
 {
 	for (int i = 0; i < 100; ++i)
 	{
