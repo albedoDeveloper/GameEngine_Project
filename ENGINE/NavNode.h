@@ -106,21 +106,41 @@ class NavNode
 
 		//Grid location helpers
 
+	/**
+	 * @brief comparator override
+	 * @param first nav Node
+	 * @param second nav Node
+	*/
 	friend bool operator == (NavNode a, NavNode b)
 	{
 		return a.nodeLocation.x == b.nodeLocation.x && a.nodeLocation.z == b.nodeLocation.z;
 	}
 
+	/**
+	 * @brief not override
+	 * @param first nav Node
+	 * @param second nav Node
+	*/
 	friend bool operator != (NavNode a, NavNode b)
 	{
 		return !(a == b);
 	}
 
+	/**
+	 * @brief less than override
+	 * @param first nav Node
+	 * @param second nav Node
+	*/
 	friend bool operator < (NavNode a, NavNode b)
 	{
 		return std::tie(a.nodeLocation.x, a.nodeLocation.z) < std::tie(b.nodeLocation.x, b.nodeLocation.z);
 	}
 
+	/**
+	 * @brief output override
+	 * @param first nav Node
+	 * @param second nav Node
+	*/
 	friend std::basic_iostream<char>::basic_ostream &operator<<(std::basic_iostream<char>::basic_ostream &out, const NavNode &loc)
 	{
 		out << '(' << loc.nodeLocation.x << ',' << loc.nodeLocation.z << ')';
@@ -129,21 +149,37 @@ class NavNode
 
 	private:
 
+		/**
+		 * @brief pointer to the parentMesh
+		*/
 		CNavMesh *parentMesh;
 
+		/**
+		 * @brief the node's location in the grid
+		*/
 		GridLocation nodeLocation;
 
-		//int xPos;
-		//int zPos;
+		/**
+		 * @brief the nodes transform
+		*/
 		Transform transform;
 
+		/**
+		 * @brief active state of the node
+		*/
 		bool active;
 
+		/**
+		 * @brief barrier state of the node
+		*/
 		bool barrier;
 
 		//float dirs[4][2] = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 		//GridLocation dirs[4] = { {1, 0}, {0, 1}, {-1, 0}, {0, -1} };
 
+		/**
+		 * @brief vector of neighbouring nodes
+		*/
 		std::vector<NavNode*> m_neighbourNodes;
 
 };

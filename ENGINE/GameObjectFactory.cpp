@@ -197,7 +197,7 @@ void GameObjectFactory::ClearCurrentLevel()
 	// functionality for animations and rigibody loading is limited so we simply change their position rather than reconstruct the object
 	for (auto it = m_objects.cbegin(); it != m_objects.cend();)
 	{
-		if (it->second->GetFactoryKey() == "player" || it->second->GetFactoryKey() == "NavMesh" || it->second->GetComponent<CAgent>() != NULL || it->second->GetComponent<CRigidBody>() != NULL)
+		if (it->second->GetFactoryKey() == "player" || it->second->GetFactoryKey() == "NavMesh" || it->second->GetComponent<CAgent>() != NULL || it->second->GetComponent<CRigidBody>() != NULL || it->second->GetComponent<CPointLight>() != NULL)
 		{
 			
 			//std::cout << "Don't delete this Obj" << it->second->GetFactoryKey() << std::endl;

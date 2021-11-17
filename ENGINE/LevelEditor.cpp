@@ -29,7 +29,6 @@ void LevelEditor::ObjectList()
 
 	std::map<std::string, GameObject *> *filteredObjectList = objectList;
 
-	/// @brief ////////
 	std::map<std::string, GameObject *>::iterator filterIt;
 	for (filterIt = objectList->begin(); filterIt != objectList->end(); filterIt++)
 	{
@@ -38,10 +37,7 @@ void LevelEditor::ObjectList()
 		{
 			filteredObjectList->emplace(filterIt->first, filterIt->second);
 		}
-		//
-		//{
-		//	//objectList->erase(filterIt);
-		//}
+		
 	}
 
 

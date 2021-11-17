@@ -68,7 +68,6 @@ void LevelLoader::LoadLevel()
 		std::cout << "Loading level" << std::endl;
 
 		//Step 3
-		//This is the more robust method
 		//We test for how many objects there are 
 		int numOfObjects = j.size();
 		std::cout << "NUM OF OBJECT == " << numOfObjects << std::endl;
@@ -82,6 +81,7 @@ void LevelLoader::LoadLevel()
 			}
 		}
 
+		//Step 4
 		//now that we have all objects in factory we load
 		for (it = m_objects->begin(); it != m_objects->end(); it++)
 		{
