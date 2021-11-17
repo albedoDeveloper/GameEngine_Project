@@ -95,9 +95,21 @@ class CAgent : public CComponent
 			delete currentAffordance;
 			currentAffordance = nullptr;
 		}
+
+		/**
+		 * @brief make the Agent follow a precalculated path
+		 */
 		void FollowPath();
 
+		/**
+		 * @brief make the Agent follow a precalculated path
+		 */
 		NavNode *FindNavLocation();
+
+		/**
+		 * @brief make the Agent follow a precalculated path
+		 * @param The world position of the destination
+		 */
 		NavNode *FindDestinationLocation(Vector3f position);
 
 		/**
@@ -105,19 +117,29 @@ class CAgent : public CComponent
 		*/
 		virtual void Render();
 
+		/// @brief reference to the navMesh
 		CNavMesh *navMesh;
+		/// @brief a reference to the current navNode
 		NavNode *navNode;
+		/// @brief a reference to the destination NavNode
 		NavNode *destinationNode;
 
+		/// @brief the circumplex agent is currently feeling
 		std::string currentCircumplex;
 
+		/// @brief calculated node path
 		std::vector<NavNode * > path;
 
+		/// @brief the index position of the current node in the path overall
 		int pathIndex = 0;
+		/// @brief the navNode we just came from
 		std::unordered_map<NavNode *, NavNode *> came_from;
+		/// @brief the cost of the path so far
 		std::unordered_map<NavNode *, double> cost_so_far;
 
+		/// @brief the world position to start from
 		Vector3f startLocation;
+		/// @brief the world position of the endLocation
 		Vector3f endLocation;
 
 		/// @brief Add a new emotion to the AI agent

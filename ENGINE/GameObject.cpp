@@ -308,10 +308,12 @@ void GameObject::Save(nlohmann::json &j)
 	j[GetFactoryKey()]["active"] = m_isActive;
 
 	// iterate through all component lists
-	for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin(); mapIterator != m_components.end(); ++mapIterator)
+	for (std::unordered_map<std::type_index, std::list<CComponent *> *>::iterator mapIterator = m_components.begin();
+			mapIterator != m_components.end(); ++mapIterator)
 	{
 		// iterate through all components in list
-		for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin(); listIterator != (*mapIterator).second->end(); ++listIterator)
+		for (std::list<CComponent *>::iterator listIterator = (*mapIterator).second->begin();
+				listIterator != (*mapIterator).second->end(); ++listIterator)
 		{
 			(*listIterator)->Save(j);
 		}
@@ -339,15 +341,11 @@ void GameObject::Load(nlohmann::json &j)
 
 
 
-	//we get the number of components
-	//std::cout << j.at(GetFactoryKey()).at("Components").size() << std::endl;
-
+	//we get the components
 	for (auto it : j.at(GetFactoryKey()).at("Components").items())
 	{
-		//std::cout << "GO TEST" << it.key() << " | " << it.value() << std::endl;
 
 		//Best to do this here, Not the most ideal solution but it's better to know which component we are dealing with before diving in
-		//also we need to 
 
 		if (it.key() == "ScriptComponent")
 		{

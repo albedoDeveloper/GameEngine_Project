@@ -126,11 +126,13 @@ void CAgent::Load(nlohmann::json &j)
 	if (stateString == "MOVE")
 	{
 		currentState = AiState::MOVE;
+		GetParentObject()->GetCAnimator()->PlayAnimation("agent_walk");
 	}
 
 	if (stateString == "ACTION")
 	{
 		currentState = AiState::ACTION;
+		GetParentObject()->GetCAnimator()->PlayAnimation(currentAffordance->animation);
 	}
 
 	//set valence & arousal

@@ -52,6 +52,7 @@ GameObject *Transform::GetGameObject()
 	/**
 	 * @brief Saves the transform to JSON
 	*/
+
 void Transform::ToJson(nlohmann::json &j, std::string key)
 {
 	j[key]["Transform"]["Position"] =
