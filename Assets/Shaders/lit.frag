@@ -82,7 +82,6 @@ void main()
 
     // properties
     vec3 norm =  normalize(vs_in.Normal);
-    //vec3 norm =  bumpNormal;
     
     if (animate == 0)
     {
@@ -133,19 +132,17 @@ float PointShadowCalculation(vec3 fragPos, PointLight light)
     float viewDistance = length(viewPos - fragPos);
     float diskRadius = 0.01;
 
-
     vec3 fragToLight = fragPos - light.position; 
     float closestDepth = texture(light.depthCubeMap, fragToLight).r;
     closestDepth *= light.farPlane;  
     float currentDepth = length(fragToLight); 
     float shadowSum = currentDepth -  bias > closestDepth ? 1.0 : 0.0; 
 
-    // PCF
-//    diskRadius = (1.0f + (viewDistance / light.farPlane)) / 25.0f;  
+    // PCF soft shadows
     for(int i = 0; i < samples; ++i)
     {
         float closestDepth = texture(light.depthCubeMap, fragToLight + sampleOffsetDirections[i] * diskRadius).r;
-        closestDepth *= light.farPlane;   // undo mapping [0;1]
+        closestDepth *= light.farPlane;
         if(currentDepth - bias > closestDepth)
         {
             shadowSum += 1.0f;
@@ -162,8 +159,9 @@ float DirShadowCalculation(vec4 fragPosLightSpace, vec3 normal, vec3 lightDir)
     float biasMultiplier = 0.5f; // more bias the more offset the shadows will be, keep this number as small as possible, just enough to prevent shadow acne
     float bias = max((0.005 * biasMultiplier) * (1.0 - dot(normal, lightDir)), (0.0005 * biasMultiplier));  
 
+    // perspective divide
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
-
+    // transform to [0,1] range
     projCoords = projCoords * 0.5 + 0.5; 
     float closestDepth = texture(dirLight.dirShadowMap, projCoords.xy).r;   
     float currentDepth = projCoords.z;
@@ -207,7 +205,6 @@ vec3 CalcDirectionaLight(DirectionalLight light, vec3 normal, vec3 fragPos, vec3
     return (ambient + (diffuse + specular) * (1.0 - shadow));
 }
 
-
 vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, vec2 texCoords, float shadow)
 {
     // ambient
@@ -220,7 +217,7 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, v
     vec3 reflectDir = reflect(-lightDir, normal);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0f), material.shininess);
     // attenuation
-    float distance    = length(light.position - fragPos);
+    float distance = length(light.position - fragPos);
     float attenuation = 1.0f / (light.constant + light.linear * distance + 
   			     light.quadratic * (distance * distance));    
     // combine results
@@ -231,6 +228,7 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir, v
     ambient  *= attenuation;
     diffuse  *= attenuation;
     specular *= attenuation;
+
     return (ambient + (diffuse + specular) * (1.0 - shadow));
 } 
 

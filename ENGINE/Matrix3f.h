@@ -25,6 +25,11 @@ public:
 		 */
 	Matrix3f();
 
+		/**
+		 * constructs diagonal matrix.
+		 *
+		 * \param n all diagonal values
+		 */
 	Matrix3f(float n);
 
 		/**
@@ -34,8 +39,18 @@ public:
 		 */
 	float *ValuePtr();
 
+		/**
+		 * get inverse of matrix.
+		 *
+		 * \return
+		 */
 	Matrix3f Inverse() const;
 
+		/**
+		 * get transposed matrix.
+		 *
+		 * \return
+		 */
 	Matrix3f Transpose() const;
 
 		/**
@@ -46,6 +61,12 @@ public:
 		 */
 	Matrix3f operator*(const Matrix3f &other);
 
+		/**
+		 * multiply 2 matrix4f's together
+		 *
+		 * \param other right hand side matrix
+		 * \return value of result matrix
+		 */
 	Matrix3f operator*(const Matrix3f &other) const;
 
 		/**
@@ -57,8 +78,16 @@ public:
 	Matrix3f &operator*=(Matrix3f other);
 
 private:
+	/**
+	 * constructs based on glm mat3x3.
+	 *
+	 * \param m
+	 */
 	Matrix3f(glm::mat3x3 m);
 
+	/**
+	 * wrapped matrix data scructure.
+	 */
 	glm::mat3x3 m_mat;
 
 	friend class Quaternion;

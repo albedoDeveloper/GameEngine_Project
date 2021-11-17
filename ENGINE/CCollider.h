@@ -15,6 +15,9 @@
 class CCollider : public CComponent
 {
 public:
+		/**
+		 * Tag for what shape this collider is.
+		 */
 	enum class Shape
 	{
 		Box, Sphere, None
@@ -26,8 +29,18 @@ public:
 		 * @param parentObj pointer to parent object of this component
 		*/
 	CCollider(Transform *parent, GameObject *parentObj);
+
+		/**
+		 * Destructor.
+		 *
+		 */
 	~CCollider();
 
+		/**
+		 * Check what shape tag this collider is.
+		 *
+		 * \return
+		 */
 	Shape GetShape() const;
 
 		/**
@@ -68,9 +81,9 @@ public:
 		*/
 	void EnableDisable(bool activeStatus);
 
-	/**
-	 * The offset the colliders have off the model.
-	 */
+		/**
+		 * The offset the colliders have off the model.
+		 */
 	glm::vec3 m_offset;
 
 		/** @brief whether the collider is registered with the collider manager */
@@ -92,51 +105,74 @@ public:
 		 */
 	std::vector<float> concaveVertices;
 
-	/**
-	 * list of indices of the concave collider, if in use.
-	 */
+		/**
+		 * list of indices of the concave collider, if in use.
+		 */
 	std::vector<int> concaveIndices;
 
-	/**
-	 * @brief Updates the colliders with any transformations changes based on the colliders model
-	 *
-	 */
+		/**
+		 * @brief Updates the colliders with any transformations changes based on the colliders model
+		 *
+		 */
 	void UpdateCollider();
 
-	/**
-	 * @brief Creates a box collider around the object. Can either be automatically resized to fit the object, manually sized and placed, or statically placed.
-	 *
-	 * \param x
-	 * \param y
-	 * \param z
-	 * \param offsetX
-	 * \param offsetY
-	 * \param offsetZ
-	 * \param autoSize
-	 * \param layer
-	 * \param allowRotation
-	 */
+		/**
+		 * @brief Creates a box collider around the object. Can either be automatically resized to fit the object, manually sized and placed, or statically placed.
+		 *
+		 * \param x
+		 * \param y
+		 * \param z
+		 * \param offsetX
+		 * \param offsetY
+		 * \param offsetZ
+		 * \param autoSize
+		 * \param layer
+		 * \param allowRotation
+		 */
 	void AddBoxCollider(float x = 0.2, float y = 0.2, float z = 0.2, float offsetX = 0, float offsetY = 0, float offsetZ = 0, bool autoSize = true, int layer = 0, bool allowRotation = true, int colMask = 31);
 
+		/**
+		 * Attach sphere collider.
+		 */
 	void AddSphereCollider();
 
-	/**
-	 * @brief Creates a convex/polygon collider around the object. Currently is not working.
-	 *
-	 */
+		/**
+		 * @brief Creates a convex/polygon collider around the object. Currently is not working.
+		 *
+		 */
 	void AddConvexCollider();
 
+		/**
+		 * Get half size of mesh in X direction.
+		 */
 	float GetXHalfSize() const;
+
+		/**
+		 * Get half size of mesh in Y direction.
+		 */
 	float GetYHalfSize() const;
+
+		/**
+		 * Get half size of mesh in Z direction.
+		 */
 	float GetZHalfSize() const;
 
+		/**
+		 * Remove or add this collider to collision world.
+		 */
 	virtual void SetIsActive(bool isActive);
 
 private:
+		/// @brief mesh x half size
 	float m_XHalfSize;
+
+		/// @brief mesh y half size
 	float m_YHalfSize;
+
+		/// @brief mesh z half size
 	float m_ZHalfSize;
 
+		/// @brief shape tag of collider
 	Shape m_shape;
 
 	friend class CollisionManager;

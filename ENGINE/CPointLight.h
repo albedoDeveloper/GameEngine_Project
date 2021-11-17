@@ -14,16 +14,36 @@
 class CPointLight : public CComponent
 {
 public:
+		/**
+		 * Constructor.
+		 */
 	CPointLight(Transform *parentTrans, GameObject *parentObject);
 
+		/**
+		 * Update shader with light position.
+		 */
 	void Update();
 
+		/**
+		 * set light colour, values from 0 to 1.
+		 */
 	void AssignColour(float r, float g, float b);
 
+		/**
+		 * Assign ambient strength multiplier.
+		 *
+		 * \param strength
+		 */
 	void AssignAmbientStrength(float strength);
 
+		/**
+		 * Get light colour.
+		 */
 	const Vector3f &GetColour() const;
 
+		/**
+		 * get ambient strength multiplier.
+		 */
 	float GetAmbientStrength() const;
 
 		/**
@@ -42,10 +62,21 @@ public:
 	float GetQuadraticAttenuation() const;
 
 private:
+		/// @brief light colour
 	Vector3f m_colour;
+
+		/// @brief ambient strength multiplier
 	float m_ambientStrength;
+
+		/// @brief attenuation constant
 	float m_attenConstant;
+
+		/// @brief linear attenuation value
 	float m_attenLinear;
+
+		/// @brief quadratic attenuation value
 	float m_attenQuad;
+
+		/// @brief lit shader index
 	int m_litShaderIndex;
 };

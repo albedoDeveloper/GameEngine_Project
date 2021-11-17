@@ -28,8 +28,19 @@ public:
 		 */
 	int AddPointLight(CPointLight *light);
 
+	/**
+	 * get number of point lights in scene.
+	 *
+	 * \return
+	 */
 	unsigned NumPointLights() const;
 
+	/**
+	 * get point light by index.
+	 *
+	 * \param index
+	 * \return
+	 */
 	CPointLight &GetPointLight(unsigned index);
 
 private:

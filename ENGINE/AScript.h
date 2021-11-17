@@ -42,9 +42,16 @@ public:
 	void SetSource(const std::string &source);
 
 private:
+		/// @brief unique identifier
 	std::string m_key;
 
+		/// @brief lua source code
 	std::string m_sourceCode;
 
+		/**
+		 * load a lua file and store its source code.
+		 *
+		 * \param filePath
+		 */
 	void LoadLua(const std::string &filePath);
 };

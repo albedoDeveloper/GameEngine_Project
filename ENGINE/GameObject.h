@@ -60,6 +60,11 @@ public:
 		 */
 	CAnimator *AddCAnimator();
 
+		/**
+		 * Add rigidbody component.
+		 *
+		 * \return
+		 */
 	CRigidBody *AddCRigidBody();
 
 
@@ -77,6 +82,11 @@ public:
 		 */
 	CStaticMesh *GetCStaticMesh();
 
+		/**
+		 * get rigidbody component.
+		 *
+		 * \return
+		 */
 	CRigidBody *GetCRigidBody();
 
 		/**
@@ -100,6 +110,11 @@ public:
 		 */
 	CPointLight *AddCPointLight();
 
+		/**
+		 * add directional light component.
+		 *
+		 * \return
+		 */
 	CDirectionalLight *AddCDirectionalLight();
 
 		/**
@@ -109,6 +124,11 @@ public:
 		 */
 	CPointLight *GetCPointLight();
 
+		/**
+		 * get direcitonal light component.
+		 *
+		 * \return
+		 */
 	CDirectionalLight *GetCDirectionalLight();
 
 		/**
@@ -169,17 +189,37 @@ public:
 		 */
 	CCollider *GetCCollider();
 
-	/**
-	 * .
-	 */
+		/**
+		 * .
+		 */
 	CAnimator *GetCAnimator();
 
-	CAffordanceManager* AddCAffordanceManager();
+		/**
+		 * add affordance manager.
+		 *
+		 * \return
+		 */
+	CAffordanceManager *AddCAffordanceManager();
 
-	CAffordanceManager* GetCAffordanceManager();
+		/**
+		 * get affordance manager.
+		 *
+		 * \return
+		 */
+	CAffordanceManager *GetCAffordanceManager();
 
+		/**
+		 * add agent component.
+		 *
+		 * \return
+		 */
 	CAgent *AddCAgent();
 
+		/**
+		 * get agent component.
+		 *
+		 * \return
+		 */
 	CAgent *GetCAgent();
 		/**
 	/**
@@ -187,9 +227,9 @@ public:
 	 */
 	CNavMesh *AddCNavMesh();
 
-	/**
-	 * Retrieves the attached navmesh
-	 */
+		/**
+		 * Retrieves the attached navmesh
+		 */
 	CNavMesh *GetCNavMesh();
 
 		/**
