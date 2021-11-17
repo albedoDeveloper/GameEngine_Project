@@ -23,14 +23,15 @@ public:
 		 */
 	Quaternion();
 
-	/**
-	 * constructs an identity quaternion using individual w,x,y,z values
-	 */
+		/**
+		 * constructs an identity quaternion using individual w,x,y,z values
+		 */
 	Quaternion(float x, float y, float z, float w);
 
+		/**
+		 * Get inverse of quaternion.
+		 */
 	Quaternion Inverse() const;
-
-	float GetMagnitude() const;
 
 		/**
 		 * Rotates around a given axis
@@ -132,6 +133,9 @@ public:
 		 */
 	Matrix4f Mat4Cast() const;
 
+		/**
+		 * cast to matrix 3x3.
+		 */
 	Matrix3f Mat3Cast() const;
 
 
@@ -145,18 +149,44 @@ public:
 	 */
 	Quaternion Slerp(const Quaternion &two, float scaleFactor);
 
+		/**
+		 * get normalised quaternion.
+		 */
 	Quaternion Normalized() const;
 
+		/**
+		 * normalize this quaternion.
+		 *
+		 */
 	void Normalize();
 
+		/**
+		 * integrate angular velocity into quaternion.
+		 */
 	void IntegrateAngVel(const Vector3f &v, float scale);
 
+		/**
+		 * add and assign another quaternion
+		 */
 	Quaternion &operator+=(const Quaternion &other);
 
+		/**
+		 * mulitply quat by a scalar.
+		 * \return a new quat
+		 */
 	Quaternion operator*(float scalar);
 
+		/**
+		 * multiply two quats.
+		 */
 	Quaternion operator*(const Quaternion &rhs);
 
+		/**
+		 * .
+		 *
+		 * \param rhs
+		 * \return
+		 */
 	Quaternion operator+(const Quaternion &rhs);
 
 private:
@@ -172,7 +202,5 @@ private:
 	 *
 	 * \param q quaternion to copy from
 	 */
-	Quaternion(glm::quat q)
-		:m_quat(q)
-	{}
+	Quaternion(glm::quat q);
 };
