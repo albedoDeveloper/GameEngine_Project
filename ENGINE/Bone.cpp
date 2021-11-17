@@ -86,9 +86,9 @@ int  Bone::GetScaleIndex(float animationTime)
 
 float Bone::GetScaleFactor(float lastTimeStamp, float nextTimeStamp, float animationTime)
 {
-	float scaleFactor = 0.0f;
-	float midWayLength = animationTime - lastTimeStamp;
-	float framesDiff = nextTimeStamp - lastTimeStamp;
+	auto scaleFactor = 0.0f;
+	auto midWayLength = animationTime - lastTimeStamp;
+	auto framesDiff = nextTimeStamp - lastTimeStamp;
 	scaleFactor = midWayLength / framesDiff;
 	return scaleFactor;
 }

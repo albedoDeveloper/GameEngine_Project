@@ -34,7 +34,7 @@ void CAnimator::UpdateBone()
 
 }
 
-void  CAnimator::CalculateBoneTransform(const Animation::AssimpNodeData* node, Matrix4f parentTransform)
+void  CAnimator::CalculateBoneTransform(const Animation::NodeData* node, Matrix4f parentTransform)
 {
 	std::string nodeName = node->name;
 	Matrix4f nodeTransform = node->transformation;	
