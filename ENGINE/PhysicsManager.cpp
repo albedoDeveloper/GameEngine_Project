@@ -143,8 +143,8 @@ void PhysicsManager::ResolveImpulses(std::vector<Manifold> &manifolds)
 			{
 				// simplified angular impulse equation which only takes into account one rigidbody, colliding against an immovable object
 				impulse =
-					(-1 * (1 + manifold.GetRestitution()) * (rb1->GetVelocity()).dotProduct(normal)) /
-					(invMass1 + (J1invWorld * (r1.crossProduct(normal)).crossProduct(r1)).dotProduct(normal));
+					((-1 * (1 + manifold.GetRestitution()) * (normal.dotProduct(bodiesRelVel) + angVel1.dotProduct(r1.crossProduct(normal)) - angVel2.dotProduct(r2.crossProduct(normal)))) /
+										(invMass1 + ((r1.crossProduct(normal) * J1invWorld).dotProduct(r1.crossProduct(normal)))));
 			}
 			impulse /= numContactPoints;
 
