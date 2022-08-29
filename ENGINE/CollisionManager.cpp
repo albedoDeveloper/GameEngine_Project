@@ -84,7 +84,7 @@ void CollisionManager::GenerateContactData()
 		{
 			FillManifoldBA(i);
 		}
-		assert(m_contactCache.back().col1->GetParentObject()->GetCRigidBody());
+		assert(m_contactCache.back().GetCol1()->GetParentObject()->GetCRigidBody());
 
 	}
 }

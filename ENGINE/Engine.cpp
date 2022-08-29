@@ -92,7 +92,7 @@ bool Engine::CheckSaveState()
 
 bool Engine::OnInit(GraphicsLibrary renderer, int windowWidth, int windowHeight)
 {
-	srand(std::time(NULL));
+	srand(time(NULL));
 
 	if (!GRAPHICS->Init(renderer, windowWidth, windowHeight))
 	{
