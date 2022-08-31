@@ -167,6 +167,78 @@
     <ClCompile Include="CAnimator.cpp">
       <Filter>Source\ComponentClasses\Source</Filter>
     </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_audiosource.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_bus.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_core_3d.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_core_basicops.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_core_faderops.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_core_filterops.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_core_getters.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_core_setters.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_core_voicegroup.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_core_voiceops.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_fader.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_fft.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_fft_lut.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_file.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_filter.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_misc.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_queue.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\core\soloud_thread.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\sdl2_static\soloud_sdl2_static.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\wav\dr_impl.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\wav\soloud_wav.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\wav\soloud_wavstream.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\wav\stb_vorbis.c">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">
@@ -347,6 +419,123 @@
     </ClInclude>
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="AnimationManager.h" />
+    <ClInclude Include="ThirdParty\soLoud\include\soloud.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_audiosource.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_bassboostfilter.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_biquadresonantfilter.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_bus.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_c.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_dcremovalfilter.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_echofilter.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_error.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_fader.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_fft.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_fftfilter.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_file.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_file_hack_off.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_file_hack_on.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_filter.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_flangerfilter.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_freeverbfilter.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_internal.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_lofifilter.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_misc.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_monotone.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_noise.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_openmpt.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_queue.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_robotizefilter.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_sfxr.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_speech.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_tedsid.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_thread.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_vic.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_vizsn.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_wav.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_waveshaperfilter.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\include\soloud_wavstream.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\wav\dr_flac.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\wav\dr_mp3.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\wav\dr_wav.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\soLoud\wav\stb_vorbis.h">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\init.lua">
@@ -480,6 +669,9 @@
     </Filter>
     <Filter Include="Shaders\skybox">
       <UniqueIdentifier>{8f9ea584-b9ac-4f30-b2b7-5208489ed979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThirdParty\soLoud">
+      <UniqueIdentifier>{928253f5-7684-4126-b2b8-f770b25f87e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

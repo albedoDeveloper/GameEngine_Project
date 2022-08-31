@@ -1,5 +1,7 @@
 #include "SoundManager.h"
 #include <SDL2/SDL.h>
+#include "../ENGINE/ThirdParty/soLoud/include/soloud.h"
+#include "../ENGINE/ThirdParty/soLoud/include/soloud_wav.h"
 SoundManager::SoundManager()
 {
 	int flags = MIX_INIT_MP3;
@@ -30,6 +32,9 @@ SoundManager *SoundManager::Instance()
 
 void SoundManager::LoadSound(std::string soundName)
 {
+	SoLoud::Soloud gSoloud; // SoLoud engine
+	SoLoud::Wav gWave;      // One wave file
+	
 	auto soundNameFull = "../Assets/Sounds/" + soundName;
 
 	Mix_Chunk* sound = Mix_LoadWAV(soundNameFull.data());
