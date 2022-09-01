@@ -8,7 +8,7 @@
 #include "GameObjectFactory.h"
 #include "Vector3f.h"
 #include "MiscMath.h"
-
+#include "SoundManager.h"
 CCharacter::CCharacter(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj },
 	m_parentTransform{ m_parent->GetTransform() },
@@ -73,6 +73,7 @@ void CCharacter::Start()
 		exit(34);
 	}
 
+
 	// create projectile pool
 	for (int i = 0; i < PROJECTILE_POOL_SIZE; i++)
 	{
@@ -111,6 +112,8 @@ void CCharacter::Update()
 
 	if (m_playerControlled)
 	{
+		SOUND->gSoloud.update3dAudio();
+		
 		if (m_moveEnabled)
 		{
 			if (INPUT->GetKey('s'))

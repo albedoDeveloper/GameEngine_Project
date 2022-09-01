@@ -5,14 +5,12 @@
  * \date   September 2021
  *********************************************************************/
 #pragma once
-#include <SDL2/SDL_mixer.h>
+
 #include <iostream>
-#include <SDL2/SDL_audio.h>
-#include <unordered_map>
 #include <memory>
 #include <vector>
 #include "CComponent.h"
-
+#include "SoundManager.h"
 /** @brief Sound Component Class */
 class CSound : public CComponent
 {
@@ -61,7 +59,7 @@ private:
 		bool isPositional = false;
 
 			/** @brief sound channel */
-		int channel = -1;
+		SoLoud::handle handler;
 	};
 
 		/** @brief sound information */

@@ -1,8 +1,7 @@
 #pragma once
 #include <unordered_map>
-#include <SDL2/SDL_mixer.h>
-#include <iostream>
-#include <SDL2/SDL_audio.h>
+#include "../ENGINE/ThirdParty/soLoud/include/soloud.h"
+#include "../ENGINE/ThirdParty/soLoud/include/soloud_wav.h"
 
 class SoundManager
 {
@@ -12,6 +11,9 @@ class SoundManager
 		/// @return 
 		static SoundManager *Instance();
 		
+
+		//~SoundManager();
+
 		/// @brief Load a sound into the engine
 		/// @param soundName 
 		void LoadSound(std::string soundName);
@@ -19,11 +21,17 @@ class SoundManager
 		/// @brief Return a sound that is saved in the manager
 		/// @param soundName 
 		/// @return 
-		Mix_Chunk* GetSound(std::string soundName);
+		SoLoud::Wav* GetSound(std::string soundName);
+
+
+		/// @brief Return a sound that is saved in the manager
+		/// @param soundName 
+		/// @return 
+		SoLoud::Soloud gSoloud;
 
 	private:
 		/// @brief Contains all the sounds loaded into the engine
-		std::unordered_map<std::string, Mix_Chunk*> soundList;
+		std::unordered_map<std::string, SoLoud::Wav*> soundList;
 
 
 };

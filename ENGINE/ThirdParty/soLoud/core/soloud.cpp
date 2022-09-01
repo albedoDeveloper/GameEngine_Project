@@ -189,7 +189,7 @@ namespace SoLoud
 
 	void Soloud::deinit()
 	{
-		SOLOUD_ASSERT(!mInsideAudioThreadMutex);
+		//SOLOUD_ASSERT(!mInsideAudioThreadMutex);
 		stopAll();
 		if (mBackendCleanupFunc)
 			mBackendCleanupFunc(this);
@@ -1690,7 +1690,7 @@ namespace SoLoud
 
 	void Soloud::mapResampleBuffers_internal()
 	{
-		SOLOUD_ASSERT(mMaxActiveVoices < 256);
+		//SOLOUD_ASSERT(mMaxActiveVoices < 256);
 		char live[256];
 		memset(live, 0, mMaxActiveVoices);
 		unsigned int i, j;
@@ -1729,7 +1729,7 @@ namespace SoLoud
 						found = j;
 					}
 				}
-				SOLOUD_ASSERT(found != -1);
+				//SOLOUD_ASSERT(found != -1);
 				mResampleDataOwner[found] = mVoice[mActiveVoice[i]];
 				mResampleDataOwner[found]->mResampleData[0] = &mResampleData[found * 2 + 0];
 				mResampleDataOwner[found]->mResampleData[1] = &mResampleData[found * 2 + 1];
@@ -2187,13 +2187,13 @@ namespace SoLoud
 		{
 			Thread::lockMutex(mAudioThreadMutex);
 		}
-		SOLOUD_ASSERT(!mInsideAudioThreadMutex);
+		//SOLOUD_ASSERT(!mInsideAudioThreadMutex);
 		mInsideAudioThreadMutex = true;
 	}
 
 	void Soloud::unlockAudioMutex_internal()
 	{
-		SOLOUD_ASSERT(mInsideAudioThreadMutex);
+		//SOLOUD_ASSERT(mInsideAudioThreadMutex);
 		mInsideAudioThreadMutex = false;
 		if (mAudioThreadMutex)
 		{

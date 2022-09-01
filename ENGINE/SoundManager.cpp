@@ -1,26 +1,10 @@
 #include "SoundManager.h"
-#include <SDL2/SDL.h>
-#include "../ENGINE/ThirdParty/soLoud/include/soloud.h"
-#include "../ENGINE/ThirdParty/soLoud/include/soloud_wav.h"
+#include <iostream>
 SoundManager::SoundManager()
 {
-	int flags = MIX_INIT_MP3;
-	int initted = Mix_Init(flags);
-
-	if (initted & flags != flags)
-		std::cout << "Mix_Init: Failed to intialize mp3" << std::endl;
-
-	if (SDL_Init(SDL_INIT_AUDIO) == -1)
-	{
-		printf("SDL_Init: %s\n", SDL_GetError());
-		exit(1);
-	}
-
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
-	{
-		printf("Mix_OpenAudio: %s\n", Mix_GetError());
-		exit(2);
-	}
+	
+	gSoloud.init();
+	
 }
 
 SoundManager *SoundManager::Instance()
@@ -30,22 +14,21 @@ SoundManager *SoundManager::Instance()
 }
 
 
+
 void SoundManager::LoadSound(std::string soundName)
 {
 	SoLoud::Soloud gSoloud; // SoLoud engine
-	SoLoud::Wav gWave;      // One wave file
+	SoLoud::Wav* sound = new SoLoud::Wav();      // One wave file
 	
 	auto soundNameFull = "../Assets/Sounds/" + soundName;
 
-	Mix_Chunk* sound = Mix_LoadWAV(soundNameFull.data());
+	sound->load(soundNameFull.data());
 
-	if (!sound)
-		std::cout << "ERROR Mix_LoadWAV: " << Mix_GetError() << std::endl;
 
 	soundList.insert(std::make_pair(soundName, sound));
 }
 
-Mix_Chunk* SoundManager::GetSound(std::string soundName)
+SoLoud::Wav * SoundManager::GetSound(std::string soundName)
 {
 	if (soundList.count(soundName) != 0)
 		return soundList[soundName];
