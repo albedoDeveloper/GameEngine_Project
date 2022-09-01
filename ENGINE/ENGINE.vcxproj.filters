@@ -239,6 +239,18 @@
     <ClCompile Include="ThirdParty\soLoud\wav\stb_vorbis.c">
       <Filter>ThirdParty\soLoud</Filter>
     </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\sdl\soloud_sdl1.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\sdl\soloud_sdl1_dll.c">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\sdl\soloud_sdl2.cpp">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdParty\soLoud\sdl\soloud_sdl2_dll.c">
+      <Filter>ThirdParty\soLoud</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ThirdParty\imgui\imconfig.h">

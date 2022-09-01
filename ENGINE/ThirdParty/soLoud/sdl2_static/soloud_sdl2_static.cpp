@@ -22,9 +22,9 @@ freely, subject to the following restrictions:
    distribution.
 */
 #include <stdlib.h>
-
+#include <SDL2/SDL.h>
 #include "../ENGINE/ThirdParty/soLoud/include/soloud.h"
-
+#define WITH_SDL2_STATIC
 #if !defined(WITH_SDL2_STATIC)
 
 namespace SoLoud
@@ -37,7 +37,7 @@ namespace SoLoud
 
 #else
 
-#include "SDL.h"
+#include "../include/soloud.h"
 #include <math.h>
 
 namespace SoLoud

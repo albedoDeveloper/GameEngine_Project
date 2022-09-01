@@ -88,6 +88,10 @@
     <ClCompile Include="ThirdParty\soLoud\core\soloud_queue.cpp" />
     <ClCompile Include="ThirdParty\soLoud\core\soloud_thread.cpp" />
     <ClCompile Include="ThirdParty\soLoud\sdl2_static\soloud_sdl2_static.cpp" />
+    <ClCompile Include="ThirdParty\soLoud\sdl\soloud_sdl1.cpp" />
+    <ClCompile Include="ThirdParty\soLoud\sdl\soloud_sdl1_dll.c" />
+    <ClCompile Include="ThirdParty\soLoud\sdl\soloud_sdl2.cpp" />
+    <ClCompile Include="ThirdParty\soLoud\sdl\soloud_sdl2_dll.c" />
     <ClCompile Include="ThirdParty\soLoud\wav\dr_impl.cpp" />
     <ClCompile Include="ThirdParty\soLoud\wav\soloud_wav.cpp" />
     <ClCompile Include="ThirdParty\soLoud\wav\soloud_wavstream.cpp" />
@@ -316,7 +320,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;zlibd.lib;assimp-vc142-mtd.lib;SDL2_mixer.lib;BulletCollision_vs2010_x64_release.lib;LinearMath_vs2010_x64_release.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;zlibd.lib;assimp-vc142-mtd.lib;SDL2_mixer.lib;BulletCollision_vs2010_x64_release.lib;LinearMath_vs2010_x64_release.lib;soloud.lib;soloud_static.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
