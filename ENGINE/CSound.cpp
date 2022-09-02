@@ -11,7 +11,7 @@ CSound::CSound(Transform *parent, GameObject *parentObj)
 }
 
 
-void CSound::PlaySound(std::string soundName, int length, bool positional)
+void CSound::PlaySound(std::string soundName, int length, bool positional,float volume)
 {
 	auto sound = SOUND->GetSound(soundName);
 
@@ -21,10 +21,10 @@ void CSound::PlaySound(std::string soundName, int length, bool positional)
 		temp.soundName = soundName;
 		temp.isPositional = positional;
 		if (!temp.isPositional)
-			temp.handler = SOUND->gSoloud.play(*sound, -1.0);
+			temp.handler = SOUND->gSoloud.play(*sound, -volume);
 		else
 		{
-			temp.handler = SOUND->gSoloud.play3d(*sound, this->GetParentObject()->GetTransform()->GetRelativePosition().GetX(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetY(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetZ(),0.0f,0.0f,0.0f,1.0f);
+			temp.handler = SOUND->gSoloud.play3d(*sound, this->GetParentObject()->GetTransform()->GetRelativePosition().GetX(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetY(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetZ(),0.0f,0.0f,0.0f, volume);
 			SOUND->gSoloud.set3dSourceAttenuation(temp.handler, 1, 0.2);
 			//SOUND->gSoloud.set3dSourceMinMaxDistance(temp.handler, 1,2);
 			SOUND->gSoloud.update3dAudio();

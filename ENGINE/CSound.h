@@ -30,7 +30,7 @@ public:
 		* \param length length to play
 		* \param positional is sound positional?
 		*/
-	void PlaySound(std::string soundName, int length, bool positional);
+	void PlaySound(std::string soundName, int length, bool positional, float volume = 1.0f);
 
 	/// @brief Stop a sound from playing
 	/// @param soundName 
