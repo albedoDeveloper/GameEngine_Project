@@ -2,9 +2,9 @@
 #include <iostream>
 SoundManager::SoundManager()
 {
-	
+
 	gSoloud.init();
-	
+
 }
 
 SoundManager *SoundManager::Instance()

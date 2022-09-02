@@ -102,6 +102,14 @@ void CCharacter::Start()
 		obj->SetActive(false);
 		m_boxPool[i] = obj;
 	}
+
+	if (m_playerControlled)
+	{
+		SOUND->gSoloud.set3dListenerParameters(this->GetParentObject()->GetTransform()->GetRelativePosition().GetX(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetY(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetZ(),
+											   this->GetParentObject()->GetTransform()->GetRelativeForward().GetX(), this->GetParentObject()->GetTransform()->GetRelativeForward().GetY(), this->GetParentObject()->GetTransform()->GetRelativeForward().GetZ(),
+												0, 1, 0);
+		SOUND->gSoloud.update3dAudio();
+	}
 }
 
 void CCharacter::Update()
@@ -112,6 +120,10 @@ void CCharacter::Update()
 
 	if (m_playerControlled)
 	{
+		SOUND->gSoloud.set3dListenerParameters(this->GetParentObject()->GetTransform()->GetRelativePosition().GetX(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetY(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetZ(),
+											   this->GetParentObject()->GetTransform()->GetRelativeForward().GetX(), this->GetParentObject()->GetTransform()->GetRelativeForward().GetY(), this->GetParentObject()->GetTransform()->GetRelativeForward().GetZ(),
+											   0,1,0);
+
 		SOUND->gSoloud.update3dAudio();
 		
 		if (m_moveEnabled)

@@ -20,24 +20,29 @@ void CSound::PlaySound(std::string soundName, int length, bool positional)
 		SoundInfo temp;
 		temp.soundName = soundName;
 		temp.isPositional = positional;
-		soundinfo.emplace(std::pair<std::string, SoundInfo>(soundName, temp));
-
-		if(!temp.isPositional)
+		if (!temp.isPositional)
 			temp.handler = SOUND->gSoloud.play(*sound, -1.0);
 		else
 		{
-			temp.handler = SOUND->gSoloud.play3d(*sound, this->GetTransform().GetRelativePosition().GetX(), this->GetTransform().GetRelativePosition().GetY(), this->GetTransform().GetRelativePosition().GetZ());
+			temp.handler = SOUND->gSoloud.play3d(*sound, this->GetParentObject()->GetTransform()->GetRelativePosition().GetX(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetY(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetZ(),0.0f,0.0f,0.0f,1.0f);
+			SOUND->gSoloud.set3dSourceAttenuation(temp.handler, 1, 0.2);
+			//SOUND->gSoloud.set3dSourceMinMaxDistance(temp.handler, 1,2);
+			SOUND->gSoloud.update3dAudio();
 		}
 
+		
+		soundinfo.emplace(std::pair<std::string, SoundInfo>(soundName, temp));
+
+		
 	}
 	else
 		std::cout << soundName << "Sound is not loaded!" << std::endl;
 }
 
-void CSound::ChangeVolume(std::string soundName, int volume)
+void CSound::ChangeVolume(std::string soundName, float volume)
 {
-	//if (soundinfo.count(soundName) > 0)
-		//Mix_Volume(soundinfo[soundName].channel, volume);
+	if (soundinfo.count(soundName) > 0)
+		SOUND->gSoloud.setVolume(soundinfo[soundName].handler, volume);
 }
 
 void CSound::StopPlaying(std::string soundName)
@@ -56,7 +61,10 @@ void CSound::Update()
 	{
 		if (value.isPositional && value.handler != NULL)
 		{
-			//SOUND->gSoloud.set3dSourcePosition(value.handler, this->GetTransform().GetRelativePosition().GetX(), this->GetTransform().GetRelativePosition().GetY(), this->GetTransform().GetRelativePosition().GetZ());
+
+			SOUND->gSoloud.set3dSourceParameters(value.handler, this->GetParentObject()->GetTransform()->GetRelativePosition().GetX(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetY(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetZ(), 0.0f, 0.0f, 0.0f);
+
+
 		}
 	}
 }

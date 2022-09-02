@@ -29,6 +29,8 @@ class SoundManager
 		/// @return 
 		SoLoud::Soloud gSoloud;
 
+		SoLoud::handle PlayerListener;
+
 	private:
 		/// @brief Contains all the sounds loaded into the engine
 		std::unordered_map<std::string, SoLoud::Wav*> soundList;

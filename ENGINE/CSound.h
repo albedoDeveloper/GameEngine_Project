@@ -44,7 +44,7 @@ public:
 	/// @brief Change the volume of a sound
 	/// @param soundName 
 	/// @param volume 
-	void ChangeVolume(std::string soundName, int volume);
+	void ChangeVolume(std::string soundName, float volume);
 
 private:
 		/**
