@@ -49,8 +49,8 @@ void CSound::StopPlaying(std::string soundName)
 {
 	if (soundinfo.count(soundName) > 0)
 	{
-		//Mix_HaltChannel(soundinfo[soundName].channel);
-		//soundinfo.erase(soundName);
+		if (soundinfo.count(soundName) > 0)
+			SOUND->gSoloud.stop(soundinfo[soundName].handler);
 	}
 }
 
