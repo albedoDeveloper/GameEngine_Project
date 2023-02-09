@@ -1,0 +1,16 @@
+digraph "GraphicsEngine::AddPointLight"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node4 [label="GraphicsEngine::AddPoint\lLight",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="creates a point light"];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ShadowMapper::IsInitialised",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_shadow_mapper.html#a2db5fde2e0a720b11a31a35acdc93add",tooltip=" "];
+  Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="LightManager::NumPointLights",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_light_manager.html#ab36a34da5749813d3739467ab717f8a0",tooltip=" "];
+  Node4 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="ShadowMapper::AddPointLight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_shadow_mapper.html#a0505d82e0387495981e24d853b735a34",tooltip=" "];
+  Node4 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="LightManager::AddPointLight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4",tooltip=" "];
+}

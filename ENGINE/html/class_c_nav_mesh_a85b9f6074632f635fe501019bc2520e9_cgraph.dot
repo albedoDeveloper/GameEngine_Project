@@ -1,0 +1,10 @@
+digraph "CNavMesh::reconstruct_path"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node45 [label="CNavMesh::reconstruct_path",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Reconstructs the calculated path."];
+  Node45 -> Node46 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node46 [label="NavNode::SetActive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nav_node.html#a57466fff867f4f0912ec281a0bfdb389",tooltip="Change the active state."];
+}

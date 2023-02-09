@@ -1,0 +1,12 @@
+digraph "CScript::Save"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node29 [label="CScript::Save",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="saves the component"];
+  Node29 -> Node30 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node30 [label="CComponent::GetParentObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9",tooltip="parent object accessor"];
+  Node29 -> Node31 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node31 [label="AScript::Key",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_a_script.html#ab3b19ab32a6104508af08396a75051c9",tooltip=" "];
+}

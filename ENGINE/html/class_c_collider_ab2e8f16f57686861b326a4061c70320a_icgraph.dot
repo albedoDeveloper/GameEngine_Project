@@ -1,0 +1,12 @@
+digraph "CCollider::SetActive"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node165 [label="CCollider::SetActive",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="mutates active state"];
+  Node165 -> Node166 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node166 [label="CCollider::Load",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#ab69c5c7345b0d7da17393d5db4e10ae2",tooltip="loads the component from saved state"];
+  Node165 -> Node167 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node167 [label="CCollider::DrawToImGui",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#aafb37d9330706fa8ed0251a06ee6a7ab",tooltip="Draws to imgui."];
+}

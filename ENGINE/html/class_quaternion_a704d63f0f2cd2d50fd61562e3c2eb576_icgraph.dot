@@ -1,0 +1,14 @@
+digraph "Quaternion::Inverse"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node70 [label="Quaternion::Inverse",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node70 -> Node71 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node71 [label="CRigidBody::GetInverseWorld\lInertiaTensor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_rigid_body.html#a8c09cf7c7e649ac93f57597493ab9329",tooltip=" "];
+  Node71 -> Node72 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node72 [label="CRigidBody::Integrate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_rigid_body.html#acab9a679a73341c283e4b1a1dad6e01b",tooltip=" "];
+  Node70 -> Node73 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node73 [label="GraphicsEngine::DrawModel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_graphics_engine.html#a0c110798d390264a0a27e5faa95f1558",tooltip="Draws a model asset on the screen."];
+}

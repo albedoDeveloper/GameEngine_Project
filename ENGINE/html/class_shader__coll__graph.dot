@@ -1,0 +1,7 @@
+digraph "Shader"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Shader\n||+ Shader()\l+ Shader()\l+ Use()\l+ SetBoolUniform()\l+ SetIntUniform()\l+ SetFloatUniform()\l+ SetVec4Uniform()\l+ SetVec3Uniform()\l+ SetMat4Uniform()\l+ SetMat4UniformTrue()\l+ GetShaderName()\l+ SetShaderName()\l+ GetID()\l+ SetID()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+}

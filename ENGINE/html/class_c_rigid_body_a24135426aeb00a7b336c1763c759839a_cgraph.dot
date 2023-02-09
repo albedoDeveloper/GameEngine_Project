@@ -1,0 +1,28 @@
+digraph "CRigidBody::CalcInertiaTensor"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node15 [label="CRigidBody::CalcInertiaTensor",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node15 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="GameObject::GetComponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_object.html#a5ba3b458e6bee6ea5aedd5c8cdeabf18",tooltip="component accessor"];
+  Node15 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="CCollider::GetShape",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#a2316c5d4e3e358ceda7a9fa1a0f7ca9a",tooltip=" "];
+  Node15 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="CRigidBody::CalcBoxInertia\lTensor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_rigid_body.html#ac182cbd959cc35dccc5f138b836d58ee",tooltip=" "];
+  Node18 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="Matrix3f::ValuePtr",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix3f.html#a9964d1a13fcaad0f1216e549b3a16f1e",tooltip=" "];
+  Node18 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="CCollider::GetYHalfSize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#adc57445c09f3fbb914cd3dbde5744d92",tooltip=" "];
+  Node18 -> Node21 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node21 [label="CCollider::GetZHalfSize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#ae3bb4b5e42fe2229e683293704bf5f21",tooltip=" "];
+  Node18 -> Node22 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node22 [label="CCollider::GetXHalfSize",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#a36a5a3437c8d1b7e07228249c1a48b53",tooltip=" "];
+  Node15 -> Node23 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 [label="CRigidBody::CalcSphereInertia\lTensor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_rigid_body.html#a86f4d96fdc03ef2b8e52ad67cc7c536d",tooltip=" "];
+  Node23 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 -> Node22 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

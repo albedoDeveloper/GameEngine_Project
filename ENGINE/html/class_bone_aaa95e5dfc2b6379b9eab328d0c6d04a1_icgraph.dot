@@ -1,0 +1,14 @@
+digraph "Bone::UpdateBone"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node83 [label="Bone::UpdateBone",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Change the bones position, rotation and scaling based upon the current time of the animation."];
+  Node83 -> Node84 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node84 [label="CAnimator::CalculateBone\lTransform",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_animator.html#ad803491d7d66ee1b5dd0ead63200721b",tooltip="Calculate the transforms of the bones based upon the bone transformations applied in the animation cl..."];
+  Node84 -> Node85 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node85 [label="CAnimator::UpdateBone",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_animator.html#a3a822aa796022fe558d070d3b76a0184",tooltip="Update every bone in the animation with its new movements, and then update how that bone is drawn in ..."];
+  Node85 -> Node86 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node86 [label="CStaticMesh::Render",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_static_mesh.html#a811c339becc8cff2323cfb0af8bf558c",tooltip="displays the mesh's model on the screen"];
+}

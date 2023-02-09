@@ -1,0 +1,31 @@
+digraph "Quaternion::GetZ"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node54 [label="Quaternion::GetZ",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="z value accessor"];
+  Node54 -> Node55 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node55 [label="CCollider::UpdateCollider",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#ae82b280aee96b0a2d6e532e0a663f256",tooltip="Updates the colliders with any transformations changes based on the colliders model."];
+  Node55 -> Node56 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node56 [label="CCharacter::Update",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0",tooltip="updates ongoing behaviour for the component"];
+  Node55 -> Node57 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node57 [label="CCollider::Update",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#a858c10f0e9fb3a6e73bd00fcfcdb99f1",tooltip="updates ongoing behaviour each frame"];
+  Node55 -> Node58 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node58 [label="CCollider::Load",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#ab69c5c7345b0d7da17393d5db4e10ae2",tooltip="loads the component from saved state"];
+  Node55 -> Node59 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node59 [label="CCollider::Start",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#ab8fd6544bb2eb98523b7f27e60ac9e03",tooltip="initialises the component at start of program"];
+  Node55 -> Node60 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node60 [label="CCollider::SetActive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#ab2e8f16f57686861b326a4061c70320a",tooltip="mutates active state"];
+  Node60 -> Node58 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node60 -> Node61 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node61 [label="CCollider::DrawToImGui",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#aafb37d9330706fa8ed0251a06ee6a7ab",tooltip="Draws to imgui."];
+  Node55 -> Node62 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node62 [label="CCollider::EnableDisable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#ab8e09c57949973518dc12f35db961d5e",tooltip=" "];
+  Node54 -> Node63 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node63 [label="Quaternion::Slerp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a0d2a3daa24896d92939af615901b3695",tooltip=" "];
+  Node54 -> Node64 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node64 [label="Transform::ToJson",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#ab720c8e888790aa2a8f29ca4efc5c0cc",tooltip="Saves the transform to JSON."];
+  Node64 -> Node65 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node65 [label="GameObject::Save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_object.html#aedc9f47690b6dab433843fccb736064f",tooltip="saves the object"];
+}

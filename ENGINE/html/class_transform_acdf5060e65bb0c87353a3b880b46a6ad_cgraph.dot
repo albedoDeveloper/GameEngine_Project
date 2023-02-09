@@ -1,0 +1,40 @@
+digraph "Transform::GetDistance3f"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node38 [label="Transform::GetDistance3f",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="calculates the distance of this transform in world space to a point in the world"];
+  Node38 -> Node39 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node39 [label="Transform::Transform",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#aa08ca4266efabc768973cdeea51945ab",tooltip="default constructor, makes position 0,0,0 ; orientation identity quat ; scale 1,1,..."];
+  Node38 -> Node40 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node40 [label="Transform::SetRelativePositionV",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#abebcb7737d007d126efb7da511dc93f3",tooltip="set position relative to parent transform lua doesn't like overloaded functions so V is added"];
+  Node38 -> Node41 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node41 [label="Transform::GetDistance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#a19aaf61ebb28048705c9554de15285ef",tooltip="calculates the distance to another transform in world space"];
+  Node41 -> Node42 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node42 [label="Transform::GetWorldTransform",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#ac84077749121c7c7192d3ffa47db49c9",tooltip="Gets this transform's absolute value in world space based on all its parents."];
+  Node42 -> Node43 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node43 [label="Matrix4f::Translate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix4f.html#a7f24e90f377fa263ff85116aad8f25bb",tooltip=" "];
+  Node42 -> Node44 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node44 [label="Matrix4f::Inverse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix4f.html#aa09d69518dac4d550ad479961ec19f73",tooltip=" "];
+  Node42 -> Node45 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node45 [label="Matrix4f::Scale",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229",tooltip=" "];
+  Node42 -> Node46 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node46 [label="Decompose",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_misc_math_8cpp.html#a5333ad52717a28c5234329908023c296",tooltip=" "];
+  Node46 -> Node47 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node47 [label="Vector3f::SetX",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#aaa6791fa256647707bcf41017f498bcf",tooltip="x value mutator"];
+  Node46 -> Node48 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node48 [label="Vector3f::SetY",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b",tooltip="y value mutator"];
+  Node46 -> Node49 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node49 [label="Vector3f::SetZ",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#afb24d616af2e75cce9af632c870141ac",tooltip="z value mutator"];
+  Node46 -> Node50 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node50 [label="Quaternion::SetX",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a1bfc1782be552d9163706f772faab415",tooltip="x value mutator"];
+  Node46 -> Node51 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node51 [label="Quaternion::SetY",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a7bb167a496e76cd5dfeeff68cd22c143",tooltip="y value mutator"];
+  Node46 -> Node52 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node52 [label="Quaternion::SetZ",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a68030fa2014f3d281ac8116722954661",tooltip="z value mutator"];
+  Node46 -> Node53 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node53 [label="Quaternion::SetW",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a1ebf115669b6eea34055c9ceabbab3c7",tooltip="w value mutator"];
+  Node41 -> Node54 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node54 [label="Vector3f::Magnitude",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#afb1763cca9cabe61674bdff20efcc81f",tooltip=" "];
+}

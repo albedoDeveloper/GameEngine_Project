@@ -1,0 +1,16 @@
+digraph "LevelEditor::ScaleManipulators"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node63 [label="LevelEditor::ScaleManipulators",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="displays the scale fields in the transform editor"];
+  Node63 -> Node64 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node64 [label="LevelEditor::TransformHeader",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_level_editor.html#aac394ace767b605adef1afdfb0473046",tooltip="displays the gameobjects transform editor"];
+  Node64 -> Node65 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node65 [label="LevelEditor::ObjectHeader",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de",tooltip="Creates the objects header using the current gameobject in the iterator."];
+  Node65 -> Node66 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node66 [label="LevelEditor::ObjectList",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0",tooltip="fills in the object list"];
+  Node66 -> Node67 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node67 [label="LevelEditor::DrawEditor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048",tooltip="Draws the editor to screen."];
+}

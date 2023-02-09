@@ -1,0 +1,9 @@
+digraph "GraphicsEngine"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node0 [label="{GraphicsEngine\n|+ m_litShader\l+ m_unlitShader\l+ m_debugShader\l+ m_dirShadowMapShader\l+ m_pointShadowMapShader\l+ m_drawDebug\l|+ Init()\l+ NewFrame()\l+ UpdateCamViewPos()\l+ AddPointLight()\l+ AddDirectionalLight()\l+ WarpMouseCentreWindow()\l+ DrawPoint()\l+ RenderObjects()\l+ RenderObjects()\l+ SetViewportToWindowSize()\land 33 more...\l+ instance()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="A singleton that handles all of the engine graphics."];
+  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node1 [label="{btIDebugDraw\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

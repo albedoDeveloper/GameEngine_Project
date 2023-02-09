@@ -1,0 +1,12 @@
+digraph "ShadowMapper::IsInitialised"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node51 [label="ShadowMapper::IsInitialised",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node51 -> Node52 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node52 [label="GraphicsEngine::AddPoint\lLight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_graphics_engine.html#ac691c275727e8bd932d0145eebf0c773",tooltip="creates a point light"];
+  Node51 -> Node53 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node53 [label="GraphicsEngine::AddDirectional\lLight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_graphics_engine.html#a768da97fa2b8f37b2b2d0de9ae312ce0",tooltip=" "];
+}

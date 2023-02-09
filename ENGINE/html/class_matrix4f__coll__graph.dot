@@ -1,0 +1,7 @@
+digraph "Matrix4f"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Matrix4f\n||+ Matrix4f()\l+ Translate()\l+ GetTranslate()\l+ GetRotate()\l+ Scale()\l+ Rotate()\l+ Inverse()\l+ GetScale()\l+ ValuePtr()\l+ RemoveTranslation()\land 6 more...\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+}

@@ -1,0 +1,10 @@
+digraph "ShadowMapper::AddPointLight"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node3 [label="ShadowMapper::AddPointLight",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="GraphicsEngine::AddPoint\lLight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_graphics_engine.html#ac691c275727e8bd932d0145eebf0c773",tooltip="creates a point light"];
+}

@@ -1,0 +1,24 @@
+digraph "Bone::GetScaleFactor"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node28 [label="Bone::GetScaleFactor",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Used to determine what the scale is for lerping, slerping etc..., which is determined by how close th..."];
+  Node28 -> Node29 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node29 [label="Bone::InterpolatePosition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_bone.html#aff84dc6268c0825fd6d987a0760c968b",tooltip="Lerp between the the previous position and new position of the bone, to create a fluid translation."];
+  Node29 -> Node30 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node30 [label="Bone::UpdateBone",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_bone.html#aaa95e5dfc2b6379b9eab328d0c6d04a1",tooltip="Change the bones position, rotation and scaling based upon the current time of the animation."];
+  Node30 -> Node31 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node31 [label="CAnimator::CalculateBone\lTransform",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_animator.html#ad803491d7d66ee1b5dd0ead63200721b",tooltip="Calculate the transforms of the bones based upon the bone transformations applied in the animation cl..."];
+  Node31 -> Node32 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node32 [label="CAnimator::UpdateBone",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_animator.html#a3a822aa796022fe558d070d3b76a0184",tooltip="Update every bone in the animation with its new movements, and then update how that bone is drawn in ..."];
+  Node32 -> Node33 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node33 [label="CStaticMesh::Render",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_static_mesh.html#a811c339becc8cff2323cfb0af8bf558c",tooltip="displays the mesh's model on the screen"];
+  Node28 -> Node34 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node34 [label="Bone::InterpolateRotation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_bone.html#a41a3e9d05208ca2985c6bd7636709f0c",tooltip="slerp between the the previous rotation and new rotation of the bone, to create fluid rotation of the..."];
+  Node34 -> Node30 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node28 -> Node35 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node35 [label="Bone::InterpolateScaling",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_bone.html#a7acc26121edb7242d0a9a3bee8a1ec1f",tooltip="mix between the the previous scaling and new scaling of the bone, to create fluid scale changes of th..."];
+  Node35 -> Node30 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

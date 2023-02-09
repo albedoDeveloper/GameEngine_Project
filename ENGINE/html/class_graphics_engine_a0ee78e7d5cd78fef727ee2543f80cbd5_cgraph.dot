@@ -1,0 +1,42 @@
+digraph "GraphicsEngine::GetCameraView"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node278 [label="GraphicsEngine::GetCameraView",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="returns the current camera view position/direction"];
+  Node278 -> Node279 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node279 [label="LookAt",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_misc_math_8cpp.html#a84fdff132c6f3a334dbb0146e255b072",tooltip=" "];
+  Node278 -> Node280 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node280 [label="CComponent::GetTransform",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_component.html#a3796546e2460ee6457af80534ddff0d5",tooltip="transform accessor"];
+  Node278 -> Node281 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node281 [label="Transform::GetWorldTransform",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#ac84077749121c7c7192d3ffa47db49c9",tooltip="Gets this transform's absolute value in world space based on all its parents."];
+  Node281 -> Node282 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node282 [label="Matrix4f::Translate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix4f.html#a7f24e90f377fa263ff85116aad8f25bb",tooltip=" "];
+  Node281 -> Node283 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node283 [label="Matrix4f::Inverse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix4f.html#aa09d69518dac4d550ad479961ec19f73",tooltip=" "];
+  Node281 -> Node284 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node284 [label="Matrix4f::Scale",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_matrix4f.html#a71cb5e4de86d71bf51c079ad8acbf229",tooltip=" "];
+  Node281 -> Node285 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node285 [label="Decompose",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_misc_math_8cpp.html#a5333ad52717a28c5234329908023c296",tooltip=" "];
+  Node285 -> Node286 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node286 [label="Vector3f::SetX",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#aaa6791fa256647707bcf41017f498bcf",tooltip="x value mutator"];
+  Node285 -> Node287 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node287 [label="Vector3f::SetY",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b",tooltip="y value mutator"];
+  Node285 -> Node288 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node288 [label="Vector3f::SetZ",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#afb24d616af2e75cce9af632c870141ac",tooltip="z value mutator"];
+  Node285 -> Node289 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node289 [label="Quaternion::SetX",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a1bfc1782be552d9163706f772faab415",tooltip="x value mutator"];
+  Node285 -> Node290 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node290 [label="Quaternion::SetY",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a7bb167a496e76cd5dfeeff68cd22c143",tooltip="y value mutator"];
+  Node285 -> Node291 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node291 [label="Quaternion::SetZ",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a68030fa2014f3d281ac8116722954661",tooltip="z value mutator"];
+  Node285 -> Node292 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node292 [label="Quaternion::SetW",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a1ebf115669b6eea34055c9ceabbab3c7",tooltip="w value mutator"];
+  Node278 -> Node293 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node293 [label="Transform::GetRelativePosition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#a07df84a85998644477081fc31d53e546",tooltip="position accessor"];
+  Node278 -> Node294 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node294 [label="Transform::GetRelativeForward",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#acdae6b71a7ab33739288c07e5876bc40",tooltip="Retrieves the forward direction of this vector relative to parent transform."];
+  Node278 -> Node295 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node295 [label="Transform::GetRelativeUp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#a6b845db08255a6fa05d94bfeefc7ef9f",tooltip="Retrieves the up direction of this vector relative to parent transform."];
+}

@@ -1,0 +1,12 @@
+digraph "ShadowMapper::SetupDirLightFBO"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node55 [label="ShadowMapper::SetupDirLightFBO",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node55 -> Node56 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node56 [label="GraphicsEngine::SetupDir\lLightFBO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_graphics_engine.html#a4e7906f85aee07477e2ac5ec59816911",tooltip=" "];
+  Node55 -> Node57 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node57 [label="GraphicsEngine::DirLight\lShadowPass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_graphics_engine.html#a33255cbf364dbd5d51dea96c8d6c3b14",tooltip=" "];
+}

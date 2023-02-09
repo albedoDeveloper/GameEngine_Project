@@ -1,0 +1,14 @@
+digraph "NavNode::PopulateNeighbours"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node23 [label="NavNode::PopulateNeighbours",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Check which nodes are our neighbours."];
+  Node23 -> Node24 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node24 [label="CNavMesh::FetchNode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_nav_mesh.html#ab2b07e9cc3d5bb7c9be44c1f4bef4bba",tooltip="Retrieves a specific navNode."];
+  Node23 -> Node25 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node25 [label="CNavMesh::GetDirs",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_nav_mesh.html#a88d25aae81866633e12b3fa0b5a5b804",tooltip=" "];
+  Node23 -> Node26 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node26 [label="NavNode::UpdateNeighbours",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nav_node.html#a212bb22dcd17bd7594fd641d46f8cc34",tooltip="Update the neighbour nodes."];
+}

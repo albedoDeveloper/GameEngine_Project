@@ -1,0 +1,8 @@
+digraph "ModernOpenGL" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  dir_aba6ea1114b89b942a0166b21fbf7db8 [shape=box, label="ModernOpenGL", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_aba6ea1114b89b942a0166b21fbf7db8.html"];
+  dir_ca6cabe6faa89642a99ddef30fe3d137 [shape=box label="ThirdParty" fillcolor="white" style="filled" color="red" URL="dir_ca6cabe6faa89642a99ddef30fe3d137.html"];
+  dir_aba6ea1114b89b942a0166b21fbf7db8->dir_ca6cabe6faa89642a99ddef30fe3d137 [headlabel="3", labeldistance=1.5 headhref="dir_000000_000001.html"];
+}

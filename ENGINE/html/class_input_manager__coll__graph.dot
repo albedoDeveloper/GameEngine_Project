@@ -1,0 +1,7 @@
+digraph "InputManager"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{InputManager\n||+ CheckEvent()\l+ CheckKeyDown()\l+ CheckKeyUp()\l+ CheckMouseButtonDown()\l+ CheckMouseButtonUp()\l+ CheckMouseMovement()\l+ CalcDeltaMouse()\l+ ResetInputValues()\l+ ResetKeyValues()\l+ ResetMouseButtonValues()\land 16 more...\l+ Instance()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="singleton managing user input"];
+}

@@ -1,0 +1,12 @@
+digraph "LightManager::GetPointLight"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node6 [label="LightManager::GetPointLight",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="GraphicsEngine::PointLight\lShadowPass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_graphics_engine.html#a13a36eba901419eed2f12659576e7dce",tooltip=" "];
+  Node6 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="GraphicsEngine::GetPoint\lLight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_graphics_engine.html#a3dfa4eaa12d8b93a8d1d9c048008ab08",tooltip=" "];
+}

@@ -1,0 +1,12 @@
+digraph "GraphicsEngine::GetCameraProjection"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node265 [label="GraphicsEngine::GetCamera\lProjection",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Accessor for the projection matrix of the active camera."];
+  Node265 -> Node266 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node266 [label="Perspective",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_misc_math_8cpp.html#adab621185cf6bcd31d66155a90eb1f0e",tooltip=" "];
+  Node265 -> Node267 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node267 [label="CCamera::GetCamera",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_camera.html#a0e2ace71b0702c64078e5cf997026247",tooltip="camera accessor"];
+}

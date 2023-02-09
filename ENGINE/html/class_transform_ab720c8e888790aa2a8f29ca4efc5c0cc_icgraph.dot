@@ -1,0 +1,10 @@
+digraph "Transform::ToJson"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node301 [label="Transform::ToJson",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Saves the transform to JSON."];
+  Node301 -> Node302 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node302 [label="GameObject::Save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_object.html#aedc9f47690b6dab433843fccb736064f",tooltip="saves the object"];
+}

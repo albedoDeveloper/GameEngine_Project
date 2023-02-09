@@ -1,0 +1,40 @@
+digraph "Vector3f::SetZ"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node204 [label="Vector3f::SetZ",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="z value mutator"];
+  Node204 -> Node205 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node205 [label="CCharacter::Update",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0",tooltip="updates ongoing behaviour for the component"];
+  Node204 -> Node206 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node206 [label="CRigidBody::SetAngularVelocity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_rigid_body.html#a640b3315c50924f840286aa866261a79",tooltip=" "];
+  Node206 -> Node207 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node207 [label="ScriptingEngine::NewState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a",tooltip="Sets up the engine with initial processes and variables and exposes engine functionality to lua."];
+  Node204 -> Node208 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node208 [label="CRigidBody::Integrate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_rigid_body.html#acab9a679a73341c283e4b1a1dad6e01b",tooltip=" "];
+  Node204 -> Node209 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node209 [label="Decompose",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_misc_math_8h.html#a3ad62eba426ab23f1556705da1fb3dcb",tooltip=" "];
+  Node204 -> Node210 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node210 [label="Transform::SetRelativePosition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#a306ec5e7b5b46e6a989097dd0927d447",tooltip=" "];
+  Node210 -> Node211 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node211 [label="CCollider::AddSphereCollider",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#a91128fd433827c827bc5203ee8726566",tooltip=" "];
+  Node210 -> Node212 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node212 [label="CCollider::AddBoxCollider",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_collider.html#adca8e0e6782b9230cff2473a50c90e7d",tooltip="Creates a box collider around the object. Can either be automatically resized to fit the object,..."];
+  Node212 -> Node207 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node210 -> Node213 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node213 [label="NavNode::NavNode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nav_node.html#a29d44058fea238d49158ab823deda521",tooltip="Default constructor."];
+  Node210 -> Node214 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node214 [label="NavNode::UpdateTransform",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nav_node.html#acefbec991efd535f64c964929532c88e",tooltip="Transform Updater."];
+  Node210 -> Node207 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node210 -> Node215 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node215 [label="Transform::FromJson",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#a55390da2160d0cac9951401756e752b7",tooltip="loads the transform from JSON"];
+  Node215 -> Node216 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node216 [label="GameObject::Load",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_object.html#a45246aaee43206b87c40ef6fdc06111b",tooltip="loads the object from saved state"];
+  Node216 -> Node217 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node217 [label="LevelLoader::LoadLevel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_level_loader.html#ac733be25eccf37abb958dd8e9547599b",tooltip="Load Current Level."];
+  Node217 -> Node218 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node218 [label="Engine::LoadGame",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_engine.html#abde21e1bd9d8f467a5d8b464d8bb1ca2",tooltip="loads the game from saved state"];
+  Node204 -> Node219 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node219 [label="Vector3f::Rad2Deg",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#a663cda4e765204ed18cbf02659fad6c0",tooltip=" "];
+}

@@ -1,0 +1,7 @@
+digraph "Engine"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Engine\n||+ Execute()\l+ QuitGame()\l+ SaveGame()\l+ LoadGame()\l+ CheckSaveState()\l+ Instance()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="A game engine that handles all the backend of a video game and allows for creation of video games wit..."];
+}

@@ -1,0 +1,16 @@
+digraph "Quaternion::Slerp"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node151 [label="Quaternion::Slerp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node151 -> Node152 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node152 [label="Quaternion::GetW",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#aab6106f3b5d030da7cbc450151a88449",tooltip="w value accessor"];
+  Node151 -> Node153 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node153 [label="Quaternion::GetX",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93",tooltip="x value accessor"];
+  Node151 -> Node154 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node154 [label="Quaternion::GetY",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a",tooltip="y value accessor"];
+  Node151 -> Node155 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node155 [label="Quaternion::GetZ",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c",tooltip="z value accessor"];
+}

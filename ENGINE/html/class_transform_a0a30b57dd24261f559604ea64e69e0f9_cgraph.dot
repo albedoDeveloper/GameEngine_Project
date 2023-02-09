@@ -1,0 +1,10 @@
+digraph "Transform::Scale"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node241 [label="Transform::Scale",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Scales the transform relative to its current scale."];
+  Node241 -> Node242 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node242 [label="Vector3f::Scale",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#a619334360f4fc0c8a1e09f721a191ea9",tooltip="Scales the vector by a relative amount."];
+}

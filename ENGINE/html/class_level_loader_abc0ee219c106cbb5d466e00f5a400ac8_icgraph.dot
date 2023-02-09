@@ -1,0 +1,12 @@
+digraph "LevelLoader::JsonFilepath"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node3 [label="LevelLoader::JsonFilepath",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="test if the filepath works, if not we create a path"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="LevelLoader::SaveLevel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_level_loader.html#abf78efbfeff5bf1dd377c12a7ca45ff2",tooltip="Save Current Level."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Engine::SaveGame",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_engine.html#a38ab2010499784f54fee99a3ce2880ab",tooltip="saves the game"];
+}

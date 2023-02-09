@@ -1,0 +1,12 @@
+digraph "GraphicsEngine::AddDirectionalLight"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="GraphicsEngine::AddDirectional\lLight",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="ShadowMapper::IsInitialised",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_shadow_mapper.html#a2db5fde2e0a720b11a31a35acdc93add",tooltip=" "];
+  Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ShadowMapper::AssignDirLight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_shadow_mapper.html#a7a224f3e015e1ac4c581b50447de25bd",tooltip=" "];
+}

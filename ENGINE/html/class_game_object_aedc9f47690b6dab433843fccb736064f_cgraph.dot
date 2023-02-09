@@ -1,0 +1,38 @@
+digraph "GameObject::Save"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node171 [label="GameObject::Save",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="saves the object"];
+  Node171 -> Node172 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node172 [label="GameObject::GetFactoryKey",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_object.html#a2e136cfc0f88fb8a3334f6f6b2144358",tooltip="Factory key accessor."];
+  Node171 -> Node173 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node173 [label="GameObject::GetTransform",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_object.html#ad4de114a5ac23de244bcfbf1947e041a",tooltip="transform accessor"];
+  Node171 -> Node174 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node174 [label="Transform::ToJson",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#ab720c8e888790aa2a8f29ca4efc5c0cc",tooltip="Saves the transform to JSON."];
+  Node174 -> Node175 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node175 [label="Transform::GetRelativePosition",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#a07df84a85998644477081fc31d53e546",tooltip="position accessor"];
+  Node174 -> Node176 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node176 [label="Vector3f::GetX",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3",tooltip="x value accessor"];
+  Node174 -> Node177 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node177 [label="Vector3f::GetY",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a",tooltip="y value accessor"];
+  Node174 -> Node178 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node178 [label="Vector3f::GetZ",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599",tooltip="z value accessor"];
+  Node174 -> Node179 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node179 [label="Transform::GetRelativeOrientation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#a480af94b677d5c77a8c4cf8aeb3e2d4d",tooltip="get orientation relative to parent transform"];
+  Node174 -> Node180 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node180 [label="Quaternion::GetX",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a417c1fead36c93b56f64c8f0dc2e7b93",tooltip="x value accessor"];
+  Node174 -> Node181 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node181 [label="Quaternion::GetY",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#a6977767316533f6f29344f75f7e9ce1a",tooltip="y value accessor"];
+  Node174 -> Node182 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node182 [label="Quaternion::GetZ",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#ab3f47b7b75336eca7710db475e59da5c",tooltip="z value accessor"];
+  Node174 -> Node183 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node183 [label="Quaternion::GetW",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_quaternion.html#aab6106f3b5d030da7cbc450151a88449",tooltip="w value accessor"];
+  Node174 -> Node184 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node184 [label="Transform::GetRelativeScale",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#a4f0625e91bc27db4dc0270ab91d649e1",tooltip="get scale relative to parent transform"];
+  Node171 -> Node185 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node185 [label="Transform::GetParent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#ad2ffb861e93b6cbee6095353c72a701e",tooltip=" "];
+  Node171 -> Node186 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node186 [label="Transform::GetGameObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_transform.html#a9f9d3f4fbf3cc44b5890e63c27ec3c2f",tooltip=" "];
+}

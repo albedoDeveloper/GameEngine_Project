@@ -1,0 +1,16 @@
+digraph "PriorityQueue::get"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node7 [label="PriorityQueue::get",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="CNavMesh::DijkstraSearch",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_nav_mesh.html#a5bde3111b8138c7900b3a8d992acec5f",tooltip="Runs a Dijkstra Search, note: we dont need to pass the graph."];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="CAgent::Load",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_agent.html#a744b88d9b408c11bb3406acb6717ddb0",tooltip="loads the component from saved state"];
+  Node8 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="CNavMesh::Scan",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_nav_mesh.html#a0ed54842a6deeb8a794d2b04589a4538",tooltip="runs a dijkstra scan from the first node to the node on the current index"];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="CNavMesh::Update",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_nav_mesh.html#aede46934d651b383963f52edb090df0f",tooltip="Updates ongoing behaviour each frame."];
+}

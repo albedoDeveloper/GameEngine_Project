@@ -1,0 +1,23 @@
+digraph "NavNode::SetActive"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node29 [label="NavNode::SetActive",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Change the active state."];
+  Node29 -> Node30 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node30 [label="CAgent::FindDestinationLocation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_agent.html#a260880f82a08058f8292cc339cb9681e",tooltip="make the Agent follow a precalculated path"];
+  Node30 -> Node31 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node31 [label="CAgent::Load",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_agent.html#a744b88d9b408c11bb3406acb6717ddb0",tooltip="loads the component from saved state"];
+  Node29 -> Node32 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node32 [label="CNavMesh::breadth_first\l_search",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_nav_mesh.html#afe1ac27b6b271ea193d30c75144fd26a",tooltip="Runs a breadth first search."];
+  Node29 -> Node33 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node33 [label="CNavMesh::reconstruct_path",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_nav_mesh.html#a85b9f6074632f635fe501019bc2520e9",tooltip="Reconstructs the calculated path."];
+  Node33 -> Node34 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node34 [label="CNavMesh::DijkstraSearch",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_nav_mesh.html#a5bde3111b8138c7900b3a8d992acec5f",tooltip="Runs a Dijkstra Search, note: we dont need to pass the graph."];
+  Node34 -> Node31 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node34 -> Node35 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node35 [label="CNavMesh::Scan",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_nav_mesh.html#a0ed54842a6deeb8a794d2b04589a4538",tooltip="runs a dijkstra scan from the first node to the node on the current index"];
+  Node35 -> Node36 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node36 [label="CNavMesh::Update",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_nav_mesh.html#aede46934d651b383963f52edb090df0f",tooltip="Updates ongoing behaviour each frame."];
+}

@@ -1,0 +1,12 @@
+digraph "GameAssetFactory::CheckName"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="GameAssetFactory::CheckName",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="cheks whether a storage key already has an asset"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="GameAssetFactory::LoadModel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_asset_factory.html#a600fdd1743ea868685308fa6a3346766",tooltip="loads in a model"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="GameAssetFactory::LoadScript",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_asset_factory.html#a160a1b5e19cf5cda5cf41b5c35f0aafd",tooltip="loads in a script"];
+}

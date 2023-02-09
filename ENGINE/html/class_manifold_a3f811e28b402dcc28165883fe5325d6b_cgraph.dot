@@ -1,0 +1,14 @@
+digraph "Manifold::Prepare"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node10 [label="Manifold::Prepare",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node10 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="CComponent::GetParentObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9",tooltip="parent object accessor"];
+  Node10 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="GameObject::GetCRigidBody",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_object.html#ae62738b267aef855061432420bdc0f8e",tooltip=" "];
+  Node10 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="CRigidBody::GetRestitution",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_rigid_body.html#ac3284a700a522dd2c6bb280d6a7d0758",tooltip=" "];
+}

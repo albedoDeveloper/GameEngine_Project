@@ -1,0 +1,7 @@
+digraph "Vector3f"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Vector3f\n||+ Vector3f()\l+ Vector3f()\l+ ValuePtr()\l+ Scale()\l+ TranslationMatrix()\l+ ScaleMatrix()\l+ GetX()\l+ GetY()\l+ GetZ()\l+ SetX()\land 19 more...\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Stores information about a vector or point in three dimensions as floats."];
+}
