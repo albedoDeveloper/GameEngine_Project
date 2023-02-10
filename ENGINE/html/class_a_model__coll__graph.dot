@@ -1,7 +1,0 @@
-digraph "AModel"
-{
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{AModel\n|+ scene\l|+ AModel()\l+ Key()\l+ Draw()\l+ DrawNoTexture()\l+ NumFaces()\l+ MinMax()\l+ GetMeshes()\l+ GetBoneInfoMap()\l+ GetBoneCount()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-}

@@ -1,4 +1,0 @@
-<map id="InputManager::CheckMouseButtonDown" name="InputManager::CheckMouseButtonDown">
-<area shape="rect" id="node1" title="checks whether a mouse button is being help and stores the resulting data" alt="" coords="221,5,405,47"/>
-<area shape="rect" id="node2" href="$class_input_manager.html#a8570c6a2336f8d579b30867d9a7fa97f" title="checks whether a key is being pressed and stores the resulting data" alt="" coords="5,13,173,39"/>
-</map>

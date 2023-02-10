@@ -1,9 +1,0 @@
-<map id="GraphicsEngine::AddPointLight" name="GraphicsEngine::AddPointLight">
-<area shape="rect" id="node1" title="creates a point light" alt="" coords="5,125,180,166"/>
-<area shape="rect" id="node2" href="$class_light_manager.html#adadb7adb2b90c20291350e32ee5fb8b4" title=" " alt="" coords="228,5,417,32"/>
-<area shape="rect" id="node3" href="$class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3" title="x value accessor" alt="" coords="269,56,376,83"/>
-<area shape="rect" id="node4" href="$class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a" title="y value accessor" alt="" coords="269,107,377,133"/>
-<area shape="rect" id="node5" href="$class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599" title="z value accessor" alt="" coords="269,157,376,184"/>
-<area shape="rect" id="node6" href="$class_shader.html#ae21dc0c955edfa4bd8fdc773c1a88ea3" title="Sets a global int uniform in the shader" alt="" coords="248,208,397,235"/>
-<area shape="rect" id="node7" href="$class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1" title="Sets this shader object to the current opengl shader instance" alt="" coords="275,259,370,285"/>
-</map>

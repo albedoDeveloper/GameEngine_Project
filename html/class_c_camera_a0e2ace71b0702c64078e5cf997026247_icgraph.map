@@ -1,5 +1,0 @@
-<map id="CCamera::GetCamera" name="CCamera::GetCamera">
-<area shape="rect" id="node1" title="camera accessor" alt="" coords="505,5,656,32"/>
-<area shape="rect" id="node2" href="$class_graphics_engine.html#aff1f2550db7cf60367164cce5b289eec" title="Accessor for the projection matrix." alt="" coords="256,5,457,32"/>
-<area shape="rect" id="node3" href="$class_graphics_engine.html#ae3c7dbf362306dc1ecf0b6c4a3144fd3" title="Renders all visible objects." alt="" coords="5,5,208,32"/>
-</map>

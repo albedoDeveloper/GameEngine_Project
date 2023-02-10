@@ -1,0 +1,21 @@
+name: 'Doxygen GitHub Pages Deploy Action'
+author: 'Kye Horbury'
+description: 'Doxygen deployed to HTML and placed on GitHub Pages'
+branding:
+  color: "red"
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: DenverCoder1/doxygen-github-pages-action@v1.2.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: DoxygenChange
+          folder: ./html
+          config_file: Doxyfile

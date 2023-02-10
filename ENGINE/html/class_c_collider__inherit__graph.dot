@@ -1,9 +1,0 @@
-digraph "CCollider"
-{
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node0 [label="{CCollider\n|+ m_offset\l+ m_isRegistered\l+ m_allowRotation\l+ m_active\l+ m_colObj\l+ concaveVertices\l+ concaveIndices\l|+ CCollider()\l+ ~CCollider()\l+ GetShape()\l+ Start()\l+ Update()\l+ Save()\l+ Load()\l+ DrawToImGui()\l+ GetActive()\l+ SetActive()\land 9 more...\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Collider Component."];
-  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
-  Node1 [label="{CComponent\n|# m_transform\l# m_parent\l# m_isActive\l|+ CComponent()\l+ Start()\l+ Update()\l+ Render()\l+ Render()\l+ LateRender()\l+ Save()\l+ Load()\l+ DrawToImGui()\l+ GetTransform()\l+ GetTransformConst()\l+ GetParentObject()\l+ SetIsActive()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_c_component.html",tooltip="A component of a game object with its own assets and/or behaviour."];
-}

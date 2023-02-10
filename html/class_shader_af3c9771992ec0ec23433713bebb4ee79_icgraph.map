@@ -1,6 +1,0 @@
-<map id="Shader::SetMat4Uniform" name="Shader::SetMat4Uniform">
-<area shape="rect" id="node1" title="Sets a global matrix 4x4 uniform in the shader" alt="" coords="491,31,655,57"/>
-<area shape="rect" id="node2" href="$class_graphics_engine.html#a750597125cf08bca414df5432daffa56" title="Draws a model asset on the screen." alt="" coords="256,5,443,32"/>
-<area shape="rect" id="node3" href="$class_sky_box.html#acdb120b43fa970aaecb43c460e688f51" title=" " alt="" coords="275,56,424,83"/>
-<area shape="rect" id="node4" href="$class_graphics_engine.html#ae3c7dbf362306dc1ecf0b6c4a3144fd3" title="Renders all visible objects." alt="" coords="5,56,208,83"/>
-</map>

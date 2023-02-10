@@ -1,4 +1,0 @@
-<map id="CCharacter::SetHitpoints" name="CCharacter::SetHitpoints">
-<area shape="rect" id="node1" title="hitpoints mutator" alt="" coords="231,5,397,32"/>
-<area shape="rect" id="node2" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,5,183,32"/>
-</map>

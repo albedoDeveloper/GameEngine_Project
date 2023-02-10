@@ -1,4 +1,0 @@
-<map id="CCamera" name="CCamera">
-<area shape="rect" id="node1" title="A component holding and managing a camera." alt="" coords="5,307,171,457"/>
-<area shape="rect" id="node2" href="$class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="11,5,165,259"/>
-</map>

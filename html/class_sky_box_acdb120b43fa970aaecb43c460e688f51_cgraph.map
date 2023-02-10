@@ -1,6 +1,0 @@
-<map id="SkyBox::DrawSkybox" name="SkyBox::DrawSkybox">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,155,57"/>
-<area shape="rect" id="node2" href="$class_shader.html#af3c9771992ec0ec23433713bebb4ee79" title="Sets a global matrix 4x4 uniform in the shader" alt="" coords="203,5,367,32"/>
-<area shape="rect" id="node4" href="$class_shader.html#a11a2de17d1d077ec34acd4f7cd57f6b1" title="Sets this shader object to the current opengl shader instance" alt="" coords="237,56,332,83"/>
-<area shape="rect" id="node3" href="$class_matrix4f.html#a2e3678454ddd2063fff3f21dfac85a45" title=" " alt="" coords="415,5,541,32"/>
-</map>
