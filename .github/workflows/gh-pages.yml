@@ -6,7 +6,7 @@ branding:
 on:
   push:
     branches:
-      - main
+      - DoxygenChange
   workflow_dispatch:
 
 jobs:
