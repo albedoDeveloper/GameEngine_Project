@@ -1,5 +1,8 @@
 name: 'Doxygen GitHub Pages Deploy Action'
-
+author: 'Kye Horbury'
+description: 'Doxygen deployed to HTML and placed on GitHub Pages'
+branding:
+  color: "red"
 on:
   push:
     branches:
@@ -14,5 +17,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: DoxygenChange
-          folder: ./html
+          folder: html
           config_file: Doxyfile
