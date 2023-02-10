@@ -1,0 +1,25 @@
+var class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data =
+[
+    [ "m_damping", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#af247373764f067c69efaf9bf79031ada", null ],
+    [ "m_erp", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a52cb567ee50bd9ea96ba69dfb5d0c256", null ],
+    [ "m_erp2", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a4cb3917dd92044e8f17601af3cdb88d2", null ],
+    [ "m_friction", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a6da5d89cf0a346b14275ad3a42e676bb", null ],
+    [ "m_globalCfm", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#ab7f0ccc9d489e076b607eb832c14160d", null ],
+    [ "m_linearSlop", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a57a16173ceee917267cc972d1cb202f8", null ],
+    [ "m_maxErrorReduction", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a0056e1a6d10da19b88d5666d933003d3", null ],
+    [ "m_maxGyroscopicForce", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a4c414787003053c37b5952f96946f91d", null ],
+    [ "m_minimumSolverBatchSize", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a2a713f968b8609c9eab05dfd6999b10e", null ],
+    [ "m_numIterations", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a7734a19f232b29e6a4e5019de73c92de", null ],
+    [ "m_padding", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a14d4e9e52a19f865ec1aafa0afa817ca", null ],
+    [ "m_restingContactRestitutionThreshold", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a93624c7167c41a7709510fd9324296d2", null ],
+    [ "m_restitution", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#ad5b493719db93de78f43400da6d2b0f9", null ],
+    [ "m_singleAxisRollingFrictionThreshold", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#afb777abfd715d9a98d3ce40214b73401", null ],
+    [ "m_solverMode", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a26a88c0e6535283335e7d7cc01af813d", null ],
+    [ "m_sor", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a426311fdc88d2fa71ba72858a60bbe96", null ],
+    [ "m_splitImpulse", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a615b9363c5e28da319c869e956f8ec00", null ],
+    [ "m_splitImpulsePenetrationThreshold", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a1d25a14e5953c6eac6c4952bba3626a6", null ],
+    [ "m_splitImpulseTurnErp", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#af6c09f08dca4f48d34976af4822b6ebc", null ],
+    [ "m_tau", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#ae1a8bad1a4eb5cc775a728d4579bb9e9", null ],
+    [ "m_timeStep", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a1b7e73772ea73c1fc2f7697373af27e2", null ],
+    [ "m_warmstartingFactor", "class_bullet3_serialize_bullet2_1_1b3_contact_solver_info_double_data.html#a3b998cf998756ac54dcca3db1852f34c", null ]
+];

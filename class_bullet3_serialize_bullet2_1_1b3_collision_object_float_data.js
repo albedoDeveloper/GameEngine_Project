@@ -1,0 +1,28 @@
+var class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data =
+[
+    [ "m_activationState1", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a2ae759a4aad524dc043573587fee7204", null ],
+    [ "m_anisotropicFriction", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a641e90c73d14433704d07bdbeac189e6", null ],
+    [ "m_broadphaseHandle", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a4070a1eec0f5a30c7be41ad6e75be9c1", null ],
+    [ "m_ccdMotionThreshold", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a5f07208e86823754e39cced9853d372b", null ],
+    [ "m_ccdSweptSphereRadius", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a2ecbcdec12c4b625f78cdd39705dc943", null ],
+    [ "m_checkCollideWith", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a72c76a6f7fbc9f02d60a83a1efbe2ec8", null ],
+    [ "m_collisionFlags", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a1cda7ef3c9900958bdd8ec9ebf3beb4d", null ],
+    [ "m_collisionShape", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#ae01c352d450ab8f3bb45bb41a7d0d0ee", null ],
+    [ "m_companionId", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#aae75cf1ad24ad9fe465954b341a3ef7f", null ],
+    [ "m_contactProcessingThreshold", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#ac52fa4f676e728b23cef082b6faeb2f7", null ],
+    [ "m_deactivationTime", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a29bcd4398ef40346eac339e5bd9fd285", null ],
+    [ "m_friction", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#ab66aeae81489133cc39269158d51ebf6", null ],
+    [ "m_hasAnisotropicFriction", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#ad4675d11494c314865c5ad2c6df49f2b", null ],
+    [ "m_hitFraction", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#acb007e8302421453572aacc9b7e59f00", null ],
+    [ "m_internalType", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a43087a4f94942669b43abe2d53a7be67", null ],
+    [ "m_interpolationAngularVelocity", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a9a8e5c8245c7c2aebdace9ce6f04a34d", null ],
+    [ "m_interpolationLinearVelocity", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a404464aea9e1a6533923b178075313f2", null ],
+    [ "m_interpolationWorldTransform", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#af66fc7e8c23d6f73cd1e31544a2b3445", null ],
+    [ "m_islandTag1", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#acc70902c4a76802ed5a810cda77801d9", null ],
+    [ "m_name", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#ae121f96dee4e7fa7d07c86dc78f93c42", null ],
+    [ "m_padding", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a011bb97da30545c36afb5691b2f57cf6", null ],
+    [ "m_restitution", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a9ef3f761b4485bb81049c80ea4cc8a54", null ],
+    [ "m_rollingFriction", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a079423b223c5e85d518bf6645cf106e2", null ],
+    [ "m_rootCollisionShape", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#a140bebb13519129737412339b174d25c", null ],
+    [ "m_worldTransform", "class_bullet3_serialize_bullet2_1_1b3_collision_object_float_data.html#aa1b7c935e5dd1c3eb666590308202083", null ]
+];

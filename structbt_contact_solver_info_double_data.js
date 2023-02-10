@@ -1,0 +1,26 @@
+var structbt_contact_solver_info_double_data =
+[
+    [ "m_articulatedWarmstartingFactor", "structbt_contact_solver_info_double_data.html#a2edc13452d9a867ea64f41689380508d", null ],
+    [ "m_damping", "structbt_contact_solver_info_double_data.html#a6ed597b9b8af72e509c5d6cf5860bf65", null ],
+    [ "m_erp", "structbt_contact_solver_info_double_data.html#a56538c0b77d93fe21997e8ec7cd935a3", null ],
+    [ "m_erp2", "structbt_contact_solver_info_double_data.html#adc8749c40071ddbc29de8ac020cd8713", null ],
+    [ "m_friction", "structbt_contact_solver_info_double_data.html#a0b7d502a1b555abb341e1752e73cce34", null ],
+    [ "m_globalCfm", "structbt_contact_solver_info_double_data.html#a4cbdca65113765cec9283b63e8c7a5f1", null ],
+    [ "m_linearSlop", "structbt_contact_solver_info_double_data.html#a3966edb22f0045d3c0550c398320dda3", null ],
+    [ "m_maxErrorReduction", "structbt_contact_solver_info_double_data.html#a23dc04fbd3800dc4d64ef020460b4a1b", null ],
+    [ "m_maxGyroscopicForce", "structbt_contact_solver_info_double_data.html#aec3cf0155a4102b110dfc46c49461e68", null ],
+    [ "m_minimumSolverBatchSize", "structbt_contact_solver_info_double_data.html#a54f15f63e54d1f2cd0122b3aa9332124", null ],
+    [ "m_numIterations", "structbt_contact_solver_info_double_data.html#a350686daa003741a86d9faed164abe79", null ],
+    [ "m_padding", "structbt_contact_solver_info_double_data.html#ae9f2b5749146b575a49f61e4bc1b041a", null ],
+    [ "m_restingContactRestitutionThreshold", "structbt_contact_solver_info_double_data.html#a8ac9a7b5204a42dbf5d4769b495ccb1c", null ],
+    [ "m_restitution", "structbt_contact_solver_info_double_data.html#ad6e0264dd604a1f1949abadd058e3cdb", null ],
+    [ "m_singleAxisRollingFrictionThreshold", "structbt_contact_solver_info_double_data.html#a9fb9abe1a4fa5c342f93fe3867093d31", null ],
+    [ "m_solverMode", "structbt_contact_solver_info_double_data.html#ae10f1e5ad502340f383aeb2ec8fefba0", null ],
+    [ "m_sor", "structbt_contact_solver_info_double_data.html#aa67d7fa4d3175d2d144150aba3113811", null ],
+    [ "m_splitImpulse", "structbt_contact_solver_info_double_data.html#a5a08dd464049154fff27a9710c4bb925", null ],
+    [ "m_splitImpulsePenetrationThreshold", "structbt_contact_solver_info_double_data.html#a6adad6a8e70e9582b7d5081b292d0b3b", null ],
+    [ "m_splitImpulseTurnErp", "structbt_contact_solver_info_double_data.html#ad2188e25b921ded91e75283cb02b0046", null ],
+    [ "m_tau", "structbt_contact_solver_info_double_data.html#a8a86b3321b8f074d33606a9d94d346f2", null ],
+    [ "m_timeStep", "structbt_contact_solver_info_double_data.html#a503db70d9c9806d69a33d095dfb64670", null ],
+    [ "m_warmstartingFactor", "structbt_contact_solver_info_double_data.html#a9b8cacf8407eed0f493bc491dea135be", null ]
+];

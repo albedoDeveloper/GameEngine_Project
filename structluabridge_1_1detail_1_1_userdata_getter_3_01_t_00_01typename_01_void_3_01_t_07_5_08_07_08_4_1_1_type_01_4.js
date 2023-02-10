@@ -1,0 +1,4 @@
+var structluabridge_1_1detail_1_1_userdata_getter_3_01_t_00_01typename_01_void_3_01_t_07_5_08_07_08_4_1_1_type_01_4 =
+[
+    [ "ReturnType", "structluabridge_1_1detail_1_1_userdata_getter_3_01_t_00_01typename_01_void_3_01_t_07_5_08_07_08_4_1_1_type_01_4.html#a5a4460d00f703a5dfd735f1b27b19b3f", null ]
+];

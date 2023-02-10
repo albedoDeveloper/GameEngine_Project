@@ -1,0 +1,25 @@
+var class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data =
+[
+    [ "m_additionalAngularDampingFactor", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#ac5ad08b1c4e604be3ad672320f3a0266", null ],
+    [ "m_additionalAngularDampingThresholdSqr", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#ab46ac1f66b874adbb6fe2d60d55e4945", null ],
+    [ "m_additionalDamping", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a7a7f8198ad83c8b2addddd77d26cb130", null ],
+    [ "m_additionalDampingFactor", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a16e4a9fdd8a1918d48937102c1f668fb", null ],
+    [ "m_additionalLinearDampingThresholdSqr", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a1081db90aedbe23b8f3923501a513539", null ],
+    [ "m_angularDamping", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#ad585498cba1b5a1f3d61e2a6d7ef4bd3", null ],
+    [ "m_angularFactor", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a19e693ba467cc4718dfdb86c7d3ecd22", null ],
+    [ "m_angularSleepingThreshold", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a162a227ade404ed6a4c786f5a4b4edb0", null ],
+    [ "m_angularVelocity", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#abb435db980c7c762e12b59a6a19f3539", null ],
+    [ "m_collisionObjectData", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#ab40333b0a19fff4f5237ca12bcf2bf62", null ],
+    [ "m_gravity", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#af90b14131e7ef268812ac7ecabff60c0", null ],
+    [ "m_gravity_acceleration", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a5c53742c77001d3dc8f94acd2ae23d6d", null ],
+    [ "m_inverseMass", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a2bd5eedbc573a45b8e31d75ae2d1dcc7", null ],
+    [ "m_invInertiaLocal", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a49c17140142085295783c78e10d1b1fc", null ],
+    [ "m_invInertiaTensorWorld", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a26ede57166572519efe8000225aac5a3", null ],
+    [ "m_linearDamping", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#ae943acb126e8b4c1db4abef21b9ed226", null ],
+    [ "m_linearFactor", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a14b641e0baafd906aa2a70d22f88f622", null ],
+    [ "m_linearSleepingThreshold", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a987aa0785402ebe86cc197b0cf7a7300", null ],
+    [ "m_linearVelocity", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a0eaa9b2c7b72ade3203e8c84425cba80", null ],
+    [ "m_padding", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a6819d683411fb1de83aac4651ecd3781", null ],
+    [ "m_totalForce", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#aee60fcdbc29effad52a13cdcec75b18b", null ],
+    [ "m_totalTorque", "class_bullet3_serialize_bullet2_1_1b3_rigid_body_double_data.html#a8655ca259e1d4d1e7be21165bc5da131", null ]
+];
