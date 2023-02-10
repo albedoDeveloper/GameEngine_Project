@@ -1,5 +1,0 @@
-<map id="Engine::SaveGame" name="Engine::SaveGame">
-<area shape="rect" id="node1" title="saves the game" alt="" coords="5,5,139,32"/>
-<area shape="rect" id="node2" href="$class_level_loader.html#abf78efbfeff5bf1dd377c12a7ca45ff2" title="Save Current Level." alt="" coords="187,5,341,32"/>
-<area shape="rect" id="node3" href="$class_level_loader.html#abc0ee219c106cbb5d466e00f5a400ac8" title="test if the filepath works, if not we create a path" alt="" coords="389,5,560,32"/>
-</map>

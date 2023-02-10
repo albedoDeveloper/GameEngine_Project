@@ -1,7 +1,0 @@
-<map id="Vector3f::Magnitude" name="Vector3f::Magnitude">
-<area shape="rect" id="node1" title=" " alt="" coords="655,56,793,83"/>
-<area shape="rect" id="node2" href="$class_transform.html#a19aaf61ebb28048705c9554de15285ef" title="calculates the distance to another transform in world space" alt="" coords="448,31,607,57"/>
-<area shape="rect" id="node5" href="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="459,81,595,108"/>
-<area shape="rect" id="node3" href="$class_transform.html#acdf5060e65bb0c87353a3b880b46a6ad" title="calculates the distance of this transform in world space to a point in the world" alt="" coords="231,5,400,32"/>
-<area shape="rect" id="node4" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,31,183,57"/>
-</map>

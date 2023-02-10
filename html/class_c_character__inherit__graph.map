@@ -1,4 +1,0 @@
-<map id="CCharacter" name="CCharacter">
-<area shape="rect" id="node1" title="A component representing a character capable of moving." alt="" coords="5,307,163,560"/>
-<area shape="rect" id="node2" href="$class_c_component.html" title="A component of a game object with its own assets and/or behaviour." alt="" coords="7,5,161,259"/>
-</map>

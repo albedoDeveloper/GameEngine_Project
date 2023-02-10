@@ -1,5 +1,0 @@
-<map id="Transform::RotateLocalX" name="Transform::RotateLocalX">
-<area shape="rect" id="node1" title="Rotates the transform around the X axis." alt="" coords="231,31,393,57"/>
-<area shape="rect" id="node2" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,5,183,32"/>
-<area shape="rect" id="node3" href="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="26,56,162,83"/>
-</map>

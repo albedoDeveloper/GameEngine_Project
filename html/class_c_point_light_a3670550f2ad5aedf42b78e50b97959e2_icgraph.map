@@ -1,4 +1,0 @@
-<map id="CPointLight::AssignAmbientStrength" name="CPointLight::AssignAmbientStrength">
-<area shape="rect" id="node1" title="Changes light strength 0&#45;1." alt="" coords="231,5,416,47"/>
-<area shape="rect" id="node2" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="5,13,183,39"/>
-</map>

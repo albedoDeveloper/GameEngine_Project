@@ -1,9 +1,0 @@
-<map id="CComponent::GetTransform" name="CComponent::GetTransform">
-<area shape="rect" id="node1" title="transform accessor" alt="" coords="519,107,701,133"/>
-<area shape="rect" id="node2" href="$class_c_collider.html#a74c40f1839119643222abcbf23ce5e4e" title="constructor taking parent as argument" alt="" coords="296,5,431,32"/>
-<area shape="rect" id="node3" href="$class_graphics_engine.html#abb8d1a007f93f4fd57ec2fc981fbf06a" title="returns the current camera view position/direction" alt="" coords="278,56,449,83"/>
-<area shape="rect" id="node5" href="$class_scripting_engine.html#a125a0c206da8e74b8f6664c4e523606a" title="Sets up the engine with initial processes and variables and exposes engine functionality to lua." alt="" coords="275,107,452,133"/>
-<area shape="rect" id="node6" href="$class_c_character.html#adc476a488c7157c7fc2b32381760b4e0" title="updates ongoing behaviour for the component" alt="" coords="295,157,431,184"/>
-<area shape="rect" id="node7" href="$class_graphics_engine.html#a54e3edb4d2869a986afba9598e16cc86" title="Updates view based on camera transform." alt="" coords="256,208,471,235"/>
-<area shape="rect" id="node4" href="$class_graphics_engine.html#ae3c7dbf362306dc1ecf0b6c4a3144fd3" title="Renders all visible objects." alt="" coords="5,56,208,83"/>
-</map>

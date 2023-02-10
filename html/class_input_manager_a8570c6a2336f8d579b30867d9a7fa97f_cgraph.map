@@ -1,8 +1,0 @@
-<map id="InputManager::CheckKey" name="InputManager::CheckKey">
-<area shape="rect" id="node1" title="checks whether a key is being pressed and stores the resulting data" alt="" coords="5,115,173,141"/>
-<area shape="rect" id="node2" href="$class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e" title="checks whether a key is moving down and stores the resulting data" alt="" coords="221,5,421,32"/>
-<area shape="rect" id="node3" href="$class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169" title="checks whether a key is being released and stores the resulting data" alt="" coords="229,56,413,83"/>
-<area shape="rect" id="node4" href="$class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2" title="checks whether a mouse button is being help and stores the resulting data" alt="" coords="229,107,413,149"/>
-<area shape="rect" id="node5" href="$class_input_manager.html#ac55a8954de6d05dc08141c58783239fe" title="checks whether a mouse button is being released and stores the resulting data" alt="" coords="229,173,413,214"/>
-<area shape="rect" id="node6" href="$class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864" title="checks whether the mouse is being moved and stores the resulting data" alt="" coords="229,238,413,279"/>
-</map>
