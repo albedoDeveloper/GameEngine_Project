@@ -110,37 +110,37 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">return</span> &amp;inputMngr;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_input_manager.html#a7b85b4ef377b6d9c8b02d5497abb2c3d">   21</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a7b85b4ef377b6d9c8b02d5497abb2c3d">InputManager::CheckEvent</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>)</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_input_manager.html#a7b85b4ef377b6d9c8b02d5497abb2c3d">   21</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a7b85b4ef377b6d9c8b02d5497abb2c3d">InputManager::CheckEvent</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    m_Event = <a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    m_Event = e;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;type)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">switch</span> (e-&gt;type)</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">case</span>(<a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaacaf8cfd53c985cdbf6a90c811d51a1fc">SDL_KEYDOWN</a>):</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">CheckKeyDown</a>(<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">case</span>(SDL_KEYDOWN):</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">CheckKeyDown</a>(e);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">case</span>(<a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaadefb8866b9d28be21c2c33c35cc66c4b">SDL_KEYUP</a>):</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">CheckKeyUp</a>(<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">case</span>(SDL_KEYUP):</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">CheckKeyUp</a>(e);</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">case</span>(<a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa9267166e1536dfa8b0daa98c0afa9052">SDL_MOUSEBUTTONDOWN</a>):</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">CheckMouseButtonDown</a>(<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">case</span>(SDL_MOUSEBUTTONDOWN):</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">CheckMouseButtonDown</a>(e);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">case</span>(<a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa4ab85278398d29b9e50f500aad2b952b">SDL_MOUSEBUTTONUP</a>):</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">CheckMouseButtonUp</a>(<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">case</span>(SDL_MOUSEBUTTONUP):</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">CheckMouseButtonUp</a>(e);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">case</span>(<a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa04c436ef80fef38fb77a89e0e9124c30">SDL_MOUSEMOTION</a>):</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">CheckMouseMovement</a>(<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">case</span>(SDL_MOUSEMOTION):</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">CheckMouseMovement</a>(e);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">   45</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">InputManager::CheckKeyDown</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">   45</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">InputManager::CheckKeyDown</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.keysym.sym)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">switch</span> (e-&gt;key.keysym.sym)</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">case</span> SDLK_e:</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        e_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            e_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            e_Key.down = <span class="keyword">true</span>;</div>
@@ -148,7 +148,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">case</span> SDLK_w:</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        w_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            w_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            w_Key.down = <span class="keyword">true</span>;</div>
@@ -156,7 +156,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">case</span> SDLK_s:</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        s_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            s_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            s_Key.down = <span class="keyword">true</span>;</div>
@@ -164,7 +164,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">case</span> SDLK_a:</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        a_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            a_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            a_Key.down = <span class="keyword">true</span>;</div>
@@ -172,7 +172,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">case</span> SDLK_d:</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        d_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            d_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            d_Key.down = <span class="keyword">true</span>;</div>
@@ -180,7 +180,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">case</span> SDLK_z:</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        z_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            z_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            z_Key.down = <span class="keyword">true</span>;</div>
@@ -188,7 +188,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">case</span> SDLK_x:</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        x_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            x_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            x_Key.down = <span class="keyword">true</span>;</div>
@@ -196,7 +196,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">case</span> SDLK_t:</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        t_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            t_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            t_Key.down = <span class="keyword">true</span>;</div>
@@ -204,7 +204,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">case</span> SDLK_m:</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        m_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        {</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            m_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            m_Key.down = <span class="keyword">true</span>;</div>
@@ -214,7 +214,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">case</span> SDLK_c:</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        c_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        {</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            c_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            c_Key.down = <span class="keyword">true</span>;</div>
@@ -222,7 +222,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">case</span> SDLK_k:</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        k_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            k_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            k_Key.down = <span class="keyword">true</span>;</div>
@@ -230,7 +230,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">case</span> SDLK_SPACE:</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        space_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        {</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            space_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            space_Key.down = <span class="keyword">true</span>;</div>
@@ -238,7 +238,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">case</span> SDLK_BACKQUOTE:</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        tilde_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        {</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            tilde_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            tilde_Key.down = <span class="keyword">true</span>;</div>
@@ -246,7 +246,7 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordflow">case</span> SDLK_ESCAPE:</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        esc_Key.held = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.repeat)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">if</span> (!e-&gt;key.repeat)</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        {</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            esc_Key.held = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            esc_Key.down = <span class="keyword">true</span>;</div>
@@ -257,9 +257,9 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">  168</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">InputManager::CheckKeyUp</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>)</div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">  168</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">InputManager::CheckKeyUp</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;{</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;key.keysym.sym)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">switch</span> (e-&gt;key.keysym.sym)</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    {</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">case</span> SDLK_e:</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        e_Key.up = <span class="keyword">true</span>;</div>
@@ -346,10 +346,10 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
-<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">  257</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">InputManager::CheckMouseButtonDown</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>)</div>
+<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">  257</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">InputManager::CheckMouseButtonDown</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;{</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;button.button)</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">switch</span> (e-&gt;button.button)</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    {</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">case</span> SDL_BUTTON_LEFT:</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        leftMouseButton.held = <span class="keyword">true</span>;</div>
@@ -378,9 +378,9 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    }</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;}</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
-<div class="line"><a name="l00289"></a><span class="lineno"><a class="line" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">  289</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">InputManager::CheckMouseButtonUp</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>)</div>
+<div class="line"><a name="l00289"></a><span class="lineno"><a class="line" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">  289</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">InputManager::CheckMouseButtonUp</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;{</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;button.button)</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">switch</span> (e-&gt;button.button)</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    {</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">case</span> SDL_BUTTON_LEFT:</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        leftMouseButton.up = <span class="keyword">true</span>;</div>
@@ -409,10 +409,10 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    }</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;}</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
-<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">  320</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">InputManager::CheckMouseMovement</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>)</div>
+<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">  320</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">InputManager::CheckMouseMovement</a>(SDL_Event *e)</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;{</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    mouseXAbsolute = <a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;motion.x;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    mouseYAbsolute = <a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>-&gt;motion.y;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    mouseXAbsolute = e-&gt;motion.x;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    mouseYAbsolute = e-&gt;motion.y;</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;}</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="keywordtype">void</span> InputManager::CalcDeltaMouse()</div>
@@ -881,8 +881,8 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;{</div>
 <div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    <span class="keywordflow">if</span> (state)</div>
 <div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    {</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;        <a class="code" href="_s_d_l__mouse_8h.html#a8829359c04d0d7835b4330dd21fdd051">SDL_CaptureMouse</a>(SDL_TRUE);</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;        <a class="code" href="_s_d_l__mouse_8h.html#a00286ec15cd56dee1fd71ed4e6e7a585">SDL_ShowCursor</a>(SDL_FALSE);</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;        SDL_CaptureMouse(SDL_TRUE);</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;        SDL_ShowCursor(SDL_FALSE);</div>
 <div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;        m_cursorLocked = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;        GRAPHICS-&gt;WarpMouseCentreWindow();</div>
 <div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;        <span class="keywordtype">int</span> w, h;</div>
@@ -892,8 +892,8 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;    }</div>
 <div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;    {</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;        <a class="code" href="_s_d_l__mouse_8h.html#a8829359c04d0d7835b4330dd21fdd051">SDL_CaptureMouse</a>(SDL_FALSE);</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;        <a class="code" href="_s_d_l__mouse_8h.html#a00286ec15cd56dee1fd71ed4e6e7a585">SDL_ShowCursor</a>(SDL_TRUE);</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;        SDL_CaptureMouse(SDL_FALSE);</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;        SDL_ShowCursor(SDL_TRUE);</div>
 <div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;        m_cursorLocked = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;    }</div>
 <div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;}</div>
@@ -920,13 +920,6 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="ttc" id="a_engine_8h_html"><div class="ttname"><a href="_engine_8h.html">Engine.h</a></div><div class="ttdoc">brief the Engine backend</div></div>
 <div class="ttc" id="a_input_manager_8h_html"><div class="ttname"><a href="_input_manager_8h.html">InputManager.h</a></div><div class="ttdoc">Handles Various Inputs.</div></div>
 <div class="ttc" id="a_input_manager_8h_html_a7885f47644a0388f981f416fa20389b2"><div class="ttname"><a href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2">KeyCode</a></div><div class="ttdeci">KeyCode</div><div class="ttdoc">the letter represented by a key</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00036">InputManager.h:37</a></div></div>
-<div class="ttc" id="a_s_d_l__events_8h_html_a3b589e89be6b35c02e0dd34a55f3fccaa04c436ef80fef38fb77a89e0e9124c30"><div class="ttname"><a href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa04c436ef80fef38fb77a89e0e9124c30">SDL_MOUSEMOTION</a></div><div class="ttdeci">@ SDL_MOUSEMOTION</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00107">SDL_events.h:107</a></div></div>
-<div class="ttc" id="a_s_d_l__events_8h_html_a3b589e89be6b35c02e0dd34a55f3fccaa4ab85278398d29b9e50f500aad2b952b"><div class="ttname"><a href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa4ab85278398d29b9e50f500aad2b952b">SDL_MOUSEBUTTONUP</a></div><div class="ttdeci">@ SDL_MOUSEBUTTONUP</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00109">SDL_events.h:109</a></div></div>
-<div class="ttc" id="a_s_d_l__events_8h_html_a3b589e89be6b35c02e0dd34a55f3fccaa9267166e1536dfa8b0daa98c0afa9052"><div class="ttname"><a href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa9267166e1536dfa8b0daa98c0afa9052">SDL_MOUSEBUTTONDOWN</a></div><div class="ttdeci">@ SDL_MOUSEBUTTONDOWN</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00108">SDL_events.h:108</a></div></div>
-<div class="ttc" id="a_s_d_l__events_8h_html_a3b589e89be6b35c02e0dd34a55f3fccaacaf8cfd53c985cdbf6a90c811d51a1fc"><div class="ttname"><a href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaacaf8cfd53c985cdbf6a90c811d51a1fc">SDL_KEYDOWN</a></div><div class="ttdeci">@ SDL_KEYDOWN</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00098">SDL_events.h:98</a></div></div>
-<div class="ttc" id="a_s_d_l__events_8h_html_a3b589e89be6b35c02e0dd34a55f3fccaadefb8866b9d28be21c2c33c35cc66c4b"><div class="ttname"><a href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaadefb8866b9d28be21c2c33c35cc66c4b">SDL_KEYUP</a></div><div class="ttdeci">@ SDL_KEYUP</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00099">SDL_events.h:99</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a00286ec15cd56dee1fd71ed4e6e7a585"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a00286ec15cd56dee1fd71ed4e6e7a585">SDL_ShowCursor</a></div><div class="ttdeci">DECLSPEC int SDLCALL SDL_ShowCursor(int toggle)</div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a8829359c04d0d7835b4330dd21fdd051"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a8829359c04d0d7835b4330dd21fdd051">SDL_CaptureMouse</a></div><div class="ttdeci">DECLSPEC int SDLCALL SDL_CaptureMouse(SDL_bool enabled)</div></div>
 <div class="ttc" id="aclass_input_manager_html"><div class="ttname"><a href="class_input_manager.html">InputManager</a></div><div class="ttdoc">singleton managing user input</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00055">InputManager.h:56</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a0d794230d5c5652089ea6cee4cd8e2ea"><div class="ttname"><a href="class_input_manager.html#a0d794230d5c5652089ea6cee4cd8e2ea">InputManager::ResetKeyValues</a></div><div class="ttdeci">void ResetKeyValues()</div><div class="ttdoc">resets key values to their original data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00345">InputManager.cpp:345</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a0e837ebe01574849b44a56765e43ad71"><div class="ttname"><a href="class_input_manager.html#a0e837ebe01574849b44a56765e43ad71">InputManager::GetMouseButton</a></div><div class="ttdeci">bool GetMouseButton(int mouseButton)</div><div class="ttdoc">checks whether a mouse button is being held</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00716">InputManager.cpp:716</a></div></div>
@@ -954,8 +947,6 @@ $(document).ready(function(){initNavTree('_input_manager_8cpp_source.html',''); 
 <div class="ttc" id="aclass_input_manager_html_aeca1a04077d915d094064cc38e5837d8"><div class="ttname"><a href="class_input_manager.html#aeca1a04077d915d094064cc38e5837d8">InputManager::QuitGame</a></div><div class="ttdeci">void QuitGame()</div><div class="ttdoc">quits the game</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00824">InputManager.cpp:824</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_af2a750407afe72b3a07f6cb30afa1e2e"><div class="ttname"><a href="class_input_manager.html#af2a750407afe72b3a07f6cb30afa1e2e">InputManager::GetMouseYPos</a></div><div class="ttdeci">int GetMouseYPos() const</div><div class="ttdoc">Access current Mouse Y position.</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00819">InputManager.cpp:819</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_afb4a9546b6025c9e059692bbe5815ea2"><div class="ttname"><a href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">InputManager::CheckMouseButtonDown</a></div><div class="ttdeci">void CheckMouseButtonDown(SDL_Event *e)</div><div class="ttdoc">checks whether a mouse button is being help and stores the resulting data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00257">InputManager.cpp:257</a></div></div>
-<div class="ttc" id="agroup__gtc__constants_html_ga4b7956eb6e2fbedfc7cf2e46e85c5139"><div class="ttname"><a href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">glm::e</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR genType e()</div><div class="ttdef"><b>Definition:</b> <a href="constants_8inl_source.html#l00102">constants.inl:102</a></div></div>
-<div class="ttc" id="aunion_s_d_l___event_html"><div class="ttname"><a href="union_s_d_l___event.html">SDL_Event</a></div><div class="ttdoc">General event structure.</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00591">SDL_events.h:592</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

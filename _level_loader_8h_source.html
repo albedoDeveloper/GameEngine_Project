@@ -97,26 +97,29 @@ $(document).ready(function(){initNavTree('_level_loader_8h_source.html',''); ini
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_game_object_8h.html">GameObject.h</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;nlohmann/json.hpp&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using</span> <a class="code" href="classnlohmann_1_1basic__json.html">json</a> = <a class="code" href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using</span> json = nlohmann::json;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">class </span>LevelLoader</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_level_loader.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_level_loader.html">LevelLoader</a></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    LevelLoader();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_level_loader.html#a2aa6f1f2116e8ded74f8f88cf26dbc20">LevelLoader</a>();</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> JsonFilepath();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_level_loader.html#abc0ee219c106cbb5d466e00f5a400ac8">JsonFilepath</a>();</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> LoadLevel();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_level_loader.html#ac733be25eccf37abb958dd8e9547599b">LoadLevel</a>();</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> SaveLevel();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_level_loader.html#abf78efbfeff5bf1dd377c12a7ca45ff2">SaveLevel</a>();</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::map&lt;std::string, GameObject *&gt; *m_objects;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
 <div class="ttc" id="a_game_object_8h_html"><div class="ttname"><a href="_game_object_8h.html">GameObject.h</a></div></div>
-<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> <a href="json_8hpp_source.html#l17577">json.hpp:17578</a></div></div>
-<div class="ttc" id="anamespacenlohmann_html_a2bfd99e845a2e5cd90aeaf1b1431f474"><div class="ttname"><a href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a></div><div class="ttdeci">basic_json&lt;&gt; json</div><div class="ttdoc">default JSON class</div><div class="ttdef"><b>Definition:</b> <a href="json_8hpp_source.html#l03404">json.hpp:3404</a></div></div>
+<div class="ttc" id="aclass_level_loader_html"><div class="ttname"><a href="class_level_loader.html">LevelLoader</a></div><div class="ttdef"><b>Definition:</b> <a href="_level_loader_8h_source.html#l00016">LevelLoader.h:17</a></div></div>
+<div class="ttc" id="aclass_level_loader_html_a2aa6f1f2116e8ded74f8f88cf26dbc20"><div class="ttname"><a href="class_level_loader.html#a2aa6f1f2116e8ded74f8f88cf26dbc20">LevelLoader::LevelLoader</a></div><div class="ttdeci">LevelLoader()</div><div class="ttdoc">default constructor</div><div class="ttdef"><b>Definition:</b> <a href="_level_loader_8cpp_source.html#l00014">LevelLoader.cpp:14</a></div></div>
+<div class="ttc" id="aclass_level_loader_html_abc0ee219c106cbb5d466e00f5a400ac8"><div class="ttname"><a href="class_level_loader.html#abc0ee219c106cbb5d466e00f5a400ac8">LevelLoader::JsonFilepath</a></div><div class="ttdeci">void JsonFilepath()</div><div class="ttdoc">test if the filepath works, if not we create a path</div><div class="ttdef"><b>Definition:</b> <a href="_level_loader_8cpp_source.html#l00019">LevelLoader.cpp:19</a></div></div>
+<div class="ttc" id="aclass_level_loader_html_abf78efbfeff5bf1dd377c12a7ca45ff2"><div class="ttname"><a href="class_level_loader.html#abf78efbfeff5bf1dd377c12a7ca45ff2">LevelLoader::SaveLevel</a></div><div class="ttdeci">void SaveLevel()</div><div class="ttdoc">Save Current Level.</div><div class="ttdef"><b>Definition:</b> <a href="_level_loader_8cpp_source.html#l00096">LevelLoader.cpp:96</a></div></div>
+<div class="ttc" id="aclass_level_loader_html_ac733be25eccf37abb958dd8e9547599b"><div class="ttname"><a href="class_level_loader.html#ac733be25eccf37abb958dd8e9547599b">LevelLoader::LoadLevel</a></div><div class="ttdeci">void LoadLevel()</div><div class="ttdoc">Load Current Level.</div><div class="ttdef"><b>Definition:</b> <a href="_level_loader_8cpp_source.html#l00042">LevelLoader.cpp:42</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

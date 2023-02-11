@@ -248,7 +248,7 @@ $(document).ready(function(){initNavTree('glad_8c_source.html',''); initResizabl
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">return</span> status;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword">struct </span>gladGLversionStruct GLVersion = { 0, 0 };</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword">struct </span><a class="code" href="structglad_g_lversion_struct.html">gladGLversionStruct</a> GLVersion = { 0, 0 };</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">#if defined(GL_ES_VERSION_3_0) || defined(GL_VERSION_3_0)</span></div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#define _GLAD_IS_SOME_NEW_VERSION 1</span></div>
@@ -336,9 +336,9 @@ $(document).ready(function(){initNavTree('glad_8c_source.html',''); initResizabl
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordtype">int</span> index;</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="keywordflow">if</span>(exts_i == NULL) <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">for</span>(index = 0; index &lt; num_exts_i; index++) {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a> = exts_i[index];</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">char</span> *e = exts_i[index];</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">if</span>(exts_i[index] != NULL &amp;&amp; strcmp(<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>, ext) == 0) {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">if</span>(exts_i[index] != NULL &amp;&amp; strcmp(e, ext) == 0) {</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        }</div>
@@ -1875,7 +1875,7 @@ $(document).ready(function(){initNavTree('glad_8c_source.html',''); initResizabl
 <div class="line"><a name="l01783"></a><span class="lineno"> 1783</span>&#160;    <span class="keywordflow">for</span> (i = 0;  prefixes[i];  i++) {</div>
 <div class="line"><a name="l01784"></a><span class="lineno"> 1784</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> length = strlen(prefixes[i]);</div>
 <div class="line"><a name="l01785"></a><span class="lineno"> 1785</span>&#160;        <span class="keywordflow">if</span> (strncmp(version, prefixes[i], length) == 0) {</div>
-<div class="line"><a name="l01786"></a><span class="lineno"> 1786</span>&#160;            version += <a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>;</div>
+<div class="line"><a name="l01786"></a><span class="lineno"> 1786</span>&#160;            version += length;</div>
 <div class="line"><a name="l01787"></a><span class="lineno"> 1787</span>&#160;            <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l01788"></a><span class="lineno"> 1788</span>&#160;        }</div>
 <div class="line"><a name="l01789"></a><span class="lineno"> 1789</span>&#160;    }</div>
@@ -1930,8 +1930,7 @@ $(document).ready(function(){initNavTree('glad_8c_source.html',''); initResizabl
 <div class="line"><a name="l01838"></a><span class="lineno"> 1838</span>&#160;    <span class="keywordflow">return</span> GLVersion.major != 0 || GLVersion.minor != 0;</div>
 <div class="line"><a name="l01839"></a><span class="lineno"> 1839</span>&#160;}</div>
 <div class="line"><a name="l01840"></a><span class="lineno"> 1840</span>&#160; </div>
-<div class="ttc" id="agroup__core__func__geometric_html_ga0cdabbb000834d994a1d6dc56f8f5263"><div class="ttname"><a href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">glm::length</a></div><div class="ttdeci">GLM_FUNC_QUALIFIER T length(vec&lt; L, T, Q &gt; const &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="func__geometric_8inl_source.html#l00136">func_geometric.inl:136</a></div></div>
-<div class="ttc" id="agroup__gtc__constants_html_ga4b7956eb6e2fbedfc7cf2e46e85c5139"><div class="ttname"><a href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">glm::e</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR genType e()</div><div class="ttdef"><b>Definition:</b> <a href="constants_8inl_source.html#l00102">constants.inl:102</a></div></div>
+<div class="ttc" id="astructglad_g_lversion_struct_html"><div class="ttname"><a href="structglad_g_lversion_struct.html">gladGLversionStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="glad_8h_source.html#l00050">glad.h:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

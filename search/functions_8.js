@@ -1,14 +1,5 @@
 var searchData=
 [
-  ['half_5fpi_8766',['half_pi',['../group__gtc__constants.html#ga0c36b41d462e45641faf7d7938948bac',1,'glm::half_pi()'],['../group__gtc__constants.html#ga0c36b41d462e45641faf7d7938948bac',1,'glm::half_pi()']]],
-  ['has_5fsubtype_8767',['has_subtype',['../classnlohmann_1_1byte__container__with__subtype.html#a9fc42fb07003bf7048c2f1fc79478e02',1,'nlohmann::byte_container_with_subtype']]],
-  ['hasattribute_8768',['hasAttribute',['../class_assimp_1_1_t_xml_parser.html#a1f879e56c3e8d8da38b53fd7a27c5f7b',1,'Assimp::TXmlParser']]],
-  ['hasboxset_8769',['hasBoxSet',['../classbt_g_impact_shape_interface.html#af8cc682e76969583dc5636079081e63c',1,'btGImpactShapeInterface']]],
-  ['hash_8770',['hash',['../namespacenlohmann_1_1detail.html#a679e5e522ac6afa5d5923292fab450b8',1,'nlohmann::detail']]],
-  ['hashierarchy_8771',['hasHierarchy',['../classbt_g_impact_quantized_bvh.html#a8468aba36949815e4d1e81f0fa51d5bb',1,'btGImpactQuantizedBvh::hasHierarchy()'],['../class_g_i_m___b_o_x___t_r_e_e___t_e_m_p_l_a_t_e___s_e_t.html#a24686e0ae5cdde9e7e5eb8bce74e597e',1,'GIM_BOX_TREE_TEMPLATE_SET::hasHierarchy()'],['../classbt_g_impact_bvh.html#a5844f79786deaa7ae7dc488b01783d43',1,'btGImpactBvh::hasHierarchy()']]],
-  ['hasnode_8772',['hasNode',['../class_assimp_1_1_t_xml_parser.html#aed2fce5401880ca824eb9a4530ec7c9a',1,'Assimp::TXmlParser::hasNode(const std::string &amp;name)'],['../class_assimp_1_1_t_xml_parser.html#af091b7f88836b555ff6f63adda6d0eeb',1,'Assimp::TXmlParser::hasNode(XmlNode &amp;node, const char *name)']]],
-  ['hasroot_8773',['hasRoot',['../class_assimp_1_1_t_xml_parser.html#a2526e06cd264068515dcb39213a8bafb',1,'Assimp::TXmlParser']]],
-  ['hermite_8774',['hermite',['../group__gtx__spline.html#gaa69e143f6374d32f934a8edeaa50bac9',1,'glm::hermite(genType const &amp;v1, genType const &amp;t1, genType const &amp;v2, genType const &amp;t2, typename genType::value_type const &amp;s)'],['../group__gtx__spline.html#gaa69e143f6374d32f934a8edeaa50bac9',1,'glm::hermite(genType const &amp;v1, genType const &amp;t1, genType const &amp;v2, genType const &amp;t2, typename genType::value_type const &amp;s)']]],
-  ['highestbitvalue_8775',['highestBitValue',['../group__gtx__bit.html#ga0dcc8fe7c3d3ad60dea409281efa3d05',1,'glm::highestBitValue(genIUType Value)'],['../group__gtx__bit.html#ga898ef075ccf809a1e480faab48fe96bf',1,'glm::highestBitValue(vec&lt; L, T, Q &gt; const &amp;value)'],['../group__gtx__bit.html#ga0dcc8fe7c3d3ad60dea409281efa3d05',1,'glm::highestBitValue(genIUType Value)'],['../group__gtx__bit.html#ga898ef075ccf809a1e480faab48fe96bf',1,'glm::highestBitValue(vec&lt; L, T, Q &gt; const &amp;v)']]],
-  ['hsvcolor_8776',['hsvColor',['../group__gtx__color__space.html#ga789802bec2d4fe0f9741c731b4a8a7d8',1,'glm::hsvColor(vec&lt; 3, T, Q &gt; const &amp;rgbValue)'],['../group__gtx__color__space.html#ga789802bec2d4fe0f9741c731b4a8a7d8',1,'glm::hsvColor(const vec&lt; 3, T, Q &gt; &amp;rgbColor)']]]
+  ['jsonfilepath_1165',['JsonFilepath',['../class_level_loader.html#abc0ee219c106cbb5d466e00f5a400ac8',1,'LevelLoader']]],
+  ['jump_1166',['Jump',['../class_c_character.html#a39fbd8b3797741e2ced648e4274947bf',1,'CCharacter']]]
 ];

@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('_shader_8cpp_source.html',''); initRes
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">catch</span> (std::ifstream::failure <a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">catch</span> (std::ifstream::failure e)</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
@@ -199,7 +199,7 @@ $(document).ready(function(){initNavTree('_shader_8cpp_source.html',''); initRes
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        ShaderLinking(vertexShader, geomShader, fragmentShader);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">catch</span> (std::ifstream::failure <a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">catch</span> (std::ifstream::failure e)</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    {</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
@@ -239,7 +239,7 @@ $(document).ready(function(){initNavTree('_shader_8cpp_source.html',''); initRes
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    glUniform1f(uniformLoc, value); CHECK_GL_ERROR();</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="class_shader.html#a30a6937913a5b713c56719196dad219d">  150</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_shader.html#a30a6937913a5b713c56719196dad219d">Shader::SetVec4Uniform</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> <a class="code" href="group__core__vector.html#ga233f0e8f1aecf686e67c5c39316c4da8">glm::vec4</a> &amp;value)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="class_shader.html#a30a6937913a5b713c56719196dad219d">  150</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_shader.html#a30a6937913a5b713c56719196dad219d">Shader::SetVec4Uniform</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> glm::vec4 &amp;value)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    glUseProgram(m_ID); CHECK_GL_ERROR();</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordtype">int</span> uniformLoc = glGetUniformLocation(m_ID, name.c_str()); CHECK_GL_ERROR();</div>
@@ -287,7 +287,7 @@ $(document).ready(function(){initNavTree('_shader_8cpp_source.html',''); initRes
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="keywordtype">void</span> Shader::CreateShaders(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;shadername, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> *actualShader, <span class="keywordtype">int</span> typeOfShader)</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;{</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordtype">int</span>  success;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordtype">char</span> <a class="code" href="group__core__func__exponential.html#ga918c9f3fd086ce20e6760c903bd30fa9">log</a>[512];</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordtype">char</span> log[512];</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="comment">//Determine the type of shader</span></div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">if</span> (typeOfShader == 0)</div>
@@ -310,8 +310,8 @@ $(document).ready(function(){initNavTree('_shader_8cpp_source.html',''); initRes
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    glShaderSource(shadername, 1, actualShader, NULL); CHECK_GL_ERROR();</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    glCompileShader(shadername); CHECK_GL_ERROR();</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    glGetShaderiv(shadername, GL_COMPILE_STATUS, &amp;success); CHECK_GL_ERROR();</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    glGetShaderInfoLog(shadername, 511, NULL, <a class="code" href="group__core__func__exponential.html#ga918c9f3fd086ce20e6760c903bd30fa9">log</a>);</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    std::cout &lt;&lt; <a class="code" href="group__core__func__exponential.html#ga918c9f3fd086ce20e6760c903bd30fa9">log</a>;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    glGetShaderInfoLog(shadername, 511, NULL, log);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    std::cout &lt;&lt; log;</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">if</span> (!success)</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    {</div>
@@ -395,9 +395,6 @@ $(document).ready(function(){initNavTree('_shader_8cpp_source.html',''); initRes
 <div class="ttc" id="aclass_shader_html_ae21dc0c955edfa4bd8fdc773c1a88ea3"><div class="ttname"><a href="class_shader.html#ae21dc0c955edfa4bd8fdc773c1a88ea3">Shader::SetIntUniform</a></div><div class="ttdeci">void SetIntUniform(const std::string &amp;name, int value) const</div><div class="ttdoc">Sets a global int uniform in the shader</div><div class="ttdef"><b>Definition:</b> <a href="_shader_8cpp_source.html#l00127">Shader.cpp:127</a></div></div>
 <div class="ttc" id="aclass_shader_html_af3c9771992ec0ec23433713bebb4ee79"><div class="ttname"><a href="class_shader.html#af3c9771992ec0ec23433713bebb4ee79">Shader::SetMat4Uniform</a></div><div class="ttdeci">void SetMat4Uniform(const std::string &amp;name, Matrix4f mat) const</div><div class="ttdoc">Sets a global matrix 4x4 uniform in the shader</div><div class="ttdef"><b>Definition:</b> <a href="_shader_8cpp_source.html#l00172">Shader.cpp:172</a></div></div>
 <div class="ttc" id="aclass_vector3f_html"><div class="ttname"><a href="class_vector3f.html">Vector3f</a></div><div class="ttdoc">Stores information about a vector or point in three dimensions as floats.</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8h_source.html#l00013">Vector3f.h:14</a></div></div>
-<div class="ttc" id="agroup__core__func__exponential_html_ga918c9f3fd086ce20e6760c903bd30fa9"><div class="ttname"><a href="group__core__func__exponential.html#ga918c9f3fd086ce20e6760c903bd30fa9">glm::log</a></div><div class="ttdeci">GLM_FUNC_QUALIFIER vec&lt; L, T, Q &gt; log(vec&lt; L, T, Q &gt; const &amp;x)</div><div class="ttdef"><b>Definition:</b> <a href="func__exponential_8inl_source.html#l00088">func_exponential.inl:88</a></div></div>
-<div class="ttc" id="agroup__core__vector_html_ga233f0e8f1aecf686e67c5c39316c4da8"><div class="ttname"><a href="group__core__vector.html#ga233f0e8f1aecf686e67c5c39316c4da8">glm::vec4</a></div><div class="ttdeci">vec&lt; 4, float, defaultp &gt; vec4</div><div class="ttdef"><b>Definition:</b> <a href="vector__float4_8hpp_source.html#l00015">vector_float4.hpp:15</a></div></div>
-<div class="ttc" id="agroup__gtc__constants_html_ga4b7956eb6e2fbedfc7cf2e46e85c5139"><div class="ttname"><a href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">glm::e</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR genType e()</div><div class="ttdef"><b>Definition:</b> <a href="constants_8inl_source.html#l00102">constants.inl:102</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -146,8 +146,8 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#include &quot;imgui_impl_sdl.h&quot;</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// SDL</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_s_d_l_8h.html">SDL2/SDL.h</a>&gt;</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_s_d_l__syswm_8h.html">SDL2/SDL_syswm.h</a>&gt;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL_syswm.h&gt;</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#if defined(__APPLE__)</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#include &quot;TargetConditionals.h&quot;</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -161,16 +161,16 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define SDL_HAS_VULKAN                      SDL_VERSION_ATLEAST(2,0,6)</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">// SDL Data</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">struct </span>ImGui_ImplSDL2_Data</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="struct_im_gui___impl_s_d_l2___data.html">   72</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="_s_d_l__video_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a> *Window;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    SDL_Window *Window;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    Uint64      Time;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">bool</span>        MousePressed[3];</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="_s_d_l__mouse_8h.html#a63b6e9cd23bbe26b8fa00dc8fba7623d">SDL_Cursor</a> *MouseCursors[ImGuiMouseCursor_COUNT];</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    SDL_Cursor *MouseCursors[ImGuiMouseCursor_COUNT];</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">char</span> *ClipboardTextData;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">bool</span>        MouseCanUseGlobalState;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    ImGui_ImplSDL2_Data()</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a>()</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        memset(<span class="keyword">this</span>, 0, <span class="keyword">sizeof</span>(*<span class="keyword">this</span>));</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
@@ -180,24 +180,24 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">// It is STRONGLY preferred that you use docking branch with multi-viewports (== single Dear ImGui context + multiple windows) instead of multiple Dear ImGui contexts.</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">// FIXME: multi-context support is not well tested and probably dysfunctional in this backend.</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">// FIXME: some shared resources (mouse cursor shape, gamepad) are mishandled when using multi-context.</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">static</span> ImGui_ImplSDL2_Data *ImGui_ImplSDL2_GetBackendData()</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">static</span> <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *ImGui_ImplSDL2_GetBackendData()</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> ImGui::GetCurrentContext() ? (ImGui_ImplSDL2_Data *)ImGui::GetIO().BackendPlatformUserData : NULL;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> ImGui::GetCurrentContext() ? (<a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *)ImGui::GetIO().BackendPlatformUserData : NULL;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">// Functions</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *ImGui_ImplSDL2_GetClipboardText(<span class="keywordtype">void</span> *)</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span> (bd-&gt;ClipboardTextData)</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        SDL_free(bd-&gt;ClipboardTextData);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    bd-&gt;ClipboardTextData = <a class="code" href="_s_d_l__clipboard_8h.html#abbe260fcf16ab844d6626e0bd83587d1">SDL_GetClipboardText</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    bd-&gt;ClipboardTextData = SDL_GetClipboardText();</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> bd-&gt;ClipboardTextData;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> ImGui_ImplSDL2_SetClipboardText(<span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *text)</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="_s_d_l__clipboard_8h.html#a36d97ed867cc1a6a4f015aaa5972ed46">SDL_SetClipboardText</a>(text);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    SDL_SetClipboardText(text);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">// You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.</span></div>
@@ -205,14 +205,14 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">// - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application.</span></div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">// Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.</span></div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">// If you have multiple SDL events and some of them are not meant to be used by dear imgui, you may need to filter events based on their windowID field.</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplSDL2_ProcessEvent(<span class="keyword">const</span> <a class="code" href="union_s_d_l___event.html">SDL_Event</a> *event)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplSDL2_ProcessEvent(<span class="keyword">const</span> SDL_Event *event)</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">switch</span> (event-&gt;type)</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa63135c2e0aea2286f05066f3c0bc5c4e">SDL_MOUSEWHEEL</a>:</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">case</span> SDL_MOUSEWHEEL:</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    {</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> (event-&gt;wheel.x &gt; 0) io.MouseWheelH += 1;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span> (event-&gt;wheel.x &lt; 0) io.MouseWheelH -= 1;</div>
@@ -220,7 +220,7 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">if</span> (event-&gt;wheel.y &lt; 0) io.MouseWheel -= 1;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa9267166e1536dfa8b0daa98c0afa9052">SDL_MOUSEBUTTONDOWN</a>:</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">case</span> SDL_MOUSEBUTTONDOWN:</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    {</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">if</span> (event-&gt;button.button == SDL_BUTTON_LEFT)</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
@@ -236,32 +236,32 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        }</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    }</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa4fa2570088f6b9cbd109ae91b511368f">SDL_TEXTINPUT</a>:</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">case</span> SDL_TEXTINPUT:</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    {</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        io.AddInputCharactersUTF8(event-&gt;text.text);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    }</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaacaf8cfd53c985cdbf6a90c811d51a1fc">SDL_KEYDOWN</a>:</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaadefb8866b9d28be21c2c33c35cc66c4b">SDL_KEYUP</a>:</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">case</span> SDL_KEYDOWN:</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">case</span> SDL_KEYUP:</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="namespacenlohmann_1_1detail.html#a59e696b1dad6d0d99c172ac4518c2042a3c6e0b8a9c15224a8228b9a98ca1531d">key</a> = <span class="keyword">event</span>-&gt;key.keysym.scancode;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordtype">int</span> key = <span class="keyword">event</span>-&gt;key.keysym.scancode;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        IM_ASSERT(key &gt;= 0 &amp;&amp; key &lt; IM_ARRAYSIZE(io.KeysDown));</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        io.KeysDown[<a class="code" href="namespacenlohmann_1_1detail.html#a59e696b1dad6d0d99c172ac4518c2042a3c6e0b8a9c15224a8228b9a98ca1531d">key</a>] = (<span class="keyword">event</span>-&gt;type == <a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaacaf8cfd53c985cdbf6a90c811d51a1fc">SDL_KEYDOWN</a>);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        io.KeyShift = ((<a class="code" href="_s_d_l__keyboard_8h.html#a7b2ee63de74c442ac456cac9db5f8ed0">SDL_GetModState</a>() &amp; KMOD_SHIFT) != 0);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        io.KeyCtrl = ((<a class="code" href="_s_d_l__keyboard_8h.html#a7b2ee63de74c442ac456cac9db5f8ed0">SDL_GetModState</a>() &amp; KMOD_CTRL) != 0);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        io.KeyAlt = ((<a class="code" href="_s_d_l__keyboard_8h.html#a7b2ee63de74c442ac456cac9db5f8ed0">SDL_GetModState</a>() &amp; KMOD_ALT) != 0);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        io.KeysDown[key] = (<span class="keyword">event</span>-&gt;type == SDL_KEYDOWN);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        io.KeyShift = ((SDL_GetModState() &amp; KMOD_SHIFT) != 0);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        io.KeyCtrl = ((SDL_GetModState() &amp; KMOD_CTRL) != 0);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        io.KeyAlt = ((SDL_GetModState() &amp; KMOD_ALT) != 0);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">#ifdef _WIN32</span></div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        io.KeySuper = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        io.KeySuper = ((<a class="code" href="_s_d_l__keyboard_8h.html#a7b2ee63de74c442ac456cac9db5f8ed0">SDL_GetModState</a>() &amp; KMOD_GUI) != 0);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        io.KeySuper = ((SDL_GetModState() &amp; KMOD_GUI) != 0);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa5ff4e41f0d8b5def11cfe6a69ec0b698">SDL_WINDOWEVENT</a>:</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">case</span> SDL_WINDOWEVENT:</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    {</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">if</span> (event-&gt;window.event == <a class="code" href="_s_d_l__video_8h.html#ac486b40a4860d980dbc74d0b4adf3baba529d1b574e559ee46892024e1c2e6c92">SDL_WINDOWEVENT_FOCUS_GAINED</a>)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">if</span> (event-&gt;window.event == SDL_WINDOWEVENT_FOCUS_GAINED)</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            io.AddFocusEvent(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (event-&gt;window.event == <a class="code" href="_s_d_l__video_8h.html#ac486b40a4860d980dbc74d0b4adf3baba239e734c6ba478fb2f694fc7cde30c31">SDL_WINDOWEVENT_FOCUS_LOST</a>)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (event-&gt;window.event == SDL_WINDOWEVENT_FOCUS_LOST)</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            io.AddFocusEvent(<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
@@ -269,16 +269,16 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> ImGui_ImplSDL2_Init(<a class="code" href="_s_d_l__video_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a> *window)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> ImGui_ImplSDL2_Init(SDL_Window *window)</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;{</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    IM_ASSERT(io.BackendPlatformUserData == NULL &amp;&amp; <span class="stringliteral">&quot;Already initialized a platform backend!&quot;</span>);</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// Check and store if we are on a SDL backend that supports global mouse position</span></div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="comment">// (&quot;wayland&quot; and &quot;rpi&quot; don&#39;t support it, but we chose to use a white-list instead of a black-list)</span></div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">bool</span> mouse_can_use_global_state = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#if SDL_HAS_CAPTURE_AND_GLOBAL_MOUSE</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *sdl_backend = <a class="code" href="_s_d_l__video_8h.html#a5d53f49e6db21468228a675056a80bc8">SDL_GetCurrentVideoDriver</a>();</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *sdl_backend = SDL_GetCurrentVideoDriver();</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *global_mouse_whitelist[] = { <span class="stringliteral">&quot;windows&quot;</span>, <span class="stringliteral">&quot;cocoa&quot;</span>, <span class="stringliteral">&quot;x11&quot;</span>, <span class="stringliteral">&quot;DIVE&quot;</span>, <span class="stringliteral">&quot;VMAN&quot;</span> };</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; IM_ARRAYSIZE(global_mouse_whitelist); n++)</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordflow">if</span> (strncmp(sdl_backend, global_mouse_whitelist[n], strlen(global_mouse_whitelist[n])) == 0)</div>
@@ -286,7 +286,7 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="comment">// Setup backend capabilities flags</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    ImGui_ImplSDL2_Data *bd = IM_NEW(ImGui_ImplSDL2_Data)();</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = IM_NEW(<a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a>)();</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    io.BackendPlatformUserData = (<span class="keywordtype">void</span> *)bd;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    io.BackendPlatformName = <span class="stringliteral">&quot;imgui_impl_sdl&quot;</span>;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;       <span class="comment">// We can honor GetMouseCursor() values (optional)</span></div>
@@ -305,7 +305,7 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    io.KeyMap[ImGuiKey_PageDown] = SDL_SCANCODE_PAGEDOWN;</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    io.KeyMap[ImGuiKey_Home] = SDL_SCANCODE_HOME;</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    io.KeyMap[ImGuiKey_End] = SDL_SCANCODE_END;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    io.KeyMap[ImGuiKey_Insert] = <a class="code" href="_s_d_l__scancode_8h.html#a82ab7cff701034fb40a47b5b3a02777bafadcacdcd29fa5cf74598a6c61796287">SDL_SCANCODE_INSERT</a>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    io.KeyMap[ImGuiKey_Insert] = SDL_SCANCODE_INSERT;</div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    io.KeyMap[ImGuiKey_Delete] = SDL_SCANCODE_DELETE;</div>
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    io.KeyMap[ImGuiKey_Backspace] = SDL_SCANCODE_BACKSPACE;</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    io.KeyMap[ImGuiKey_Space] = SDL_SCANCODE_SPACE;</div>
@@ -324,20 +324,20 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    io.ClipboardUserData = NULL;</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="comment">// Load mouse cursors</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_Arrow] = <a class="code" href="_s_d_l__mouse_8h.html#a217c89743b3da84b9656304f8e4ca51e">SDL_CreateSystemCursor</a>(<a class="code" href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a0ea5055b7ef96598a39570abf365b9f9">SDL_SYSTEM_CURSOR_ARROW</a>);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_TextInput] = <a class="code" href="_s_d_l__mouse_8h.html#a217c89743b3da84b9656304f8e4ca51e">SDL_CreateSystemCursor</a>(<a class="code" href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a5f3b85170a85ffb62aa477f9c31987fb">SDL_SYSTEM_CURSOR_IBEAM</a>);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_ResizeAll] = <a class="code" href="_s_d_l__mouse_8h.html#a217c89743b3da84b9656304f8e4ca51e">SDL_CreateSystemCursor</a>(<a class="code" href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a88849f7320ea2bf629e05a06c6ff8e20">SDL_SYSTEM_CURSOR_SIZEALL</a>);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_ResizeNS] = <a class="code" href="_s_d_l__mouse_8h.html#a217c89743b3da84b9656304f8e4ca51e">SDL_CreateSystemCursor</a>(<a class="code" href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a04d6abe3f01b1c4b8d77af1b2ef5e4e9">SDL_SYSTEM_CURSOR_SIZENS</a>);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_ResizeEW] = <a class="code" href="_s_d_l__mouse_8h.html#a217c89743b3da84b9656304f8e4ca51e">SDL_CreateSystemCursor</a>(<a class="code" href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732aa2f663333ca851ce0f40f8f8d2c2a731">SDL_SYSTEM_CURSOR_SIZEWE</a>);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_ResizeNESW] = <a class="code" href="_s_d_l__mouse_8h.html#a217c89743b3da84b9656304f8e4ca51e">SDL_CreateSystemCursor</a>(<a class="code" href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a5b70e5fee565ccf9a6a99f92c571b4ed">SDL_SYSTEM_CURSOR_SIZENESW</a>);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_ResizeNWSE] = <a class="code" href="_s_d_l__mouse_8h.html#a217c89743b3da84b9656304f8e4ca51e">SDL_CreateSystemCursor</a>(<a class="code" href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a0eb8a498162417265c0ec79c1eacb30e">SDL_SYSTEM_CURSOR_SIZENWSE</a>);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_Hand] = <a class="code" href="_s_d_l__mouse_8h.html#a217c89743b3da84b9656304f8e4ca51e">SDL_CreateSystemCursor</a>(<a class="code" href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a09cd11742bffaafbd1073afeea03f7bc">SDL_SYSTEM_CURSOR_HAND</a>);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_NotAllowed] = <a class="code" href="_s_d_l__mouse_8h.html#a217c89743b3da84b9656304f8e4ca51e">SDL_CreateSystemCursor</a>(<a class="code" href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a70a8b0dec44a0f63d7af72e649de3b62">SDL_SYSTEM_CURSOR_NO</a>);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_Arrow] = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_ARROW);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_TextInput] = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_IBEAM);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_ResizeAll] = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_SIZEALL);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_ResizeNS] = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_SIZENS);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_ResizeEW] = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_SIZEWE);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_ResizeNESW] = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_SIZENESW);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_ResizeNWSE] = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_SIZENWSE);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_Hand] = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_HAND);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    bd-&gt;MouseCursors[ImGuiMouseCursor_NotAllowed] = SDL_CreateSystemCursor(SDL_SYSTEM_CURSOR_NO);</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <a class="code" href="struct_s_d_l___sys_w_minfo.html">SDL_SysWMinfo</a> info;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="_s_d_l__version_8h.html#a7154bc5c2a95a644b5187e4225cdcbd0">SDL_VERSION</a>(&amp;info.version);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="_s_d_l__syswm_8h.html#ad6e40121a96c88af20d9469a04706fef">SDL_GetWindowWMInfo</a>(window, &amp;info))</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    SDL_SysWMinfo info;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    SDL_VERSION(&amp;info.version);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">if</span> (SDL_GetWindowWMInfo(window, &amp;info))</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        io.ImeWindowHandle = info.info.win.window;</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    (void)window;</div>
@@ -349,19 +349,19 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="comment">// It is unlikely to make a difference, but if your app absolutely needs to ignore the initial on-focus click:</span></div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="comment">// you can ignore SDL_MOUSEBUTTONDOWN events coming right after a SDL_WINDOWEVENT_FOCUS_GAINED)</span></div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">#if SDL_HAS_MOUSE_FOCUS_CLICKTHROUGH</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="_s_d_l__hints_8h.html#a9b47f5aa3911644f0a5a3f0cfa9198a4">SDL_SetHint</a>(<a class="code" href="_s_d_l__hints_8h.html#a59083735a2377046c2fc72eb0a3e855f">SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH</a>, <span class="stringliteral">&quot;1&quot;</span>);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    SDL_SetHint(SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH, <span class="stringliteral">&quot;1&quot;</span>);</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplSDL2_InitForOpenGL(<a class="code" href="_s_d_l__video_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a> *window, <span class="keywordtype">void</span> *sdl_gl_context)</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplSDL2_InitForOpenGL(SDL_Window *window, <span class="keywordtype">void</span> *sdl_gl_context)</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;{</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    IM_UNUSED(sdl_gl_context); <span class="comment">// Viewport branch will need this.</span></div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keywordflow">return</span> ImGui_ImplSDL2_Init(window);</div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;}</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplSDL2_InitForVulkan(<a class="code" href="_s_d_l__video_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a> *window)</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplSDL2_InitForVulkan(SDL_Window *window)</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;{</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor">#if !SDL_HAS_VULKAN</span></div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    IM_ASSERT(0 &amp;&amp; <span class="stringliteral">&quot;Unsupported&quot;</span>);</div>
@@ -369,7 +369,7 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordflow">return</span> ImGui_ImplSDL2_Init(window);</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplSDL2_InitForD3D(<a class="code" href="_s_d_l__video_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a> *window)</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplSDL2_InitForD3D(SDL_Window *window)</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;{</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#if !defined(_WIN32)</span></div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    IM_ASSERT(0 &amp;&amp; <span class="stringliteral">&quot;Unsupported&quot;</span>);</div>
@@ -377,20 +377,20 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordflow">return</span> ImGui_ImplSDL2_Init(window);</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplSDL2_InitForMetal(<a class="code" href="_s_d_l__video_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a> *window)</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplSDL2_InitForMetal(SDL_Window *window)</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;{</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordflow">return</span> ImGui_ImplSDL2_Init(window);</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;}</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="keywordtype">void</span> ImGui_ImplSDL2_Shutdown()</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;{</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">if</span> (bd-&gt;ClipboardTextData)</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        SDL_free(bd-&gt;ClipboardTextData);</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">for</span> (ImGuiMouseCursor cursor_n = 0; cursor_n &lt; ImGuiMouseCursor_COUNT; cursor_n++)</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <a class="code" href="_s_d_l__mouse_8h.html#ac17a8282f93d9d31e8e087236f0ecdd8">SDL_FreeCursor</a>(bd-&gt;MouseCursors[cursor_n]);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        SDL_FreeCursor(bd-&gt;MouseCursors[cursor_n]);</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    io.BackendPlatformName = NULL;</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    io.BackendPlatformUserData = NULL;</div>
@@ -399,35 +399,35 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> ImGui_ImplSDL2_UpdateMousePosAndButtons()</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;{</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    ImVec2 mouse_pos_prev = io.MousePos;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    io.MousePos = ImVec2(-FLT_MAX, -FLT_MAX);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <a class="code" href="struct_im_vec2.html">ImVec2</a> mouse_pos_prev = io.MousePos;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    io.MousePos = <a class="code" href="struct_im_vec2.html">ImVec2</a>(-FLT_MAX, -FLT_MAX);</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="comment">// Update mouse buttons</span></div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordtype">int</span> mouse_x_local, mouse_y_local;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    Uint32 mouse_buttons = <a class="code" href="_s_d_l__mouse_8h.html#a1561f413546c0e4f5f44a8f094926575">SDL_GetMouseState</a>(&amp;mouse_x_local, &amp;mouse_y_local);</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    io.MouseDown[0] = bd-&gt;MousePressed[0] || (mouse_buttons &amp; <a class="code" href="_s_d_l__mouse_8h.html#af1bb0dead027146b766e4e319e22ea7b">SDL_BUTTON</a>(SDL_BUTTON_LEFT)) != 0;  <span class="comment">// If a mouse press event came, always pass it as &quot;mouse held this frame&quot;, so we don&#39;t miss click-release events that are shorter than 1 frame.</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    io.MouseDown[1] = bd-&gt;MousePressed[1] || (mouse_buttons &amp; <a class="code" href="_s_d_l__mouse_8h.html#af1bb0dead027146b766e4e319e22ea7b">SDL_BUTTON</a>(SDL_BUTTON_RIGHT)) != 0;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    io.MouseDown[2] = bd-&gt;MousePressed[2] || (mouse_buttons &amp; <a class="code" href="_s_d_l__mouse_8h.html#af1bb0dead027146b766e4e319e22ea7b">SDL_BUTTON</a>(SDL_BUTTON_MIDDLE)) != 0;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    Uint32 mouse_buttons = SDL_GetMouseState(&amp;mouse_x_local, &amp;mouse_y_local);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    io.MouseDown[0] = bd-&gt;MousePressed[0] || (mouse_buttons &amp; SDL_BUTTON(SDL_BUTTON_LEFT)) != 0;  <span class="comment">// If a mouse press event came, always pass it as &quot;mouse held this frame&quot;, so we don&#39;t miss click-release events that are shorter than 1 frame.</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    io.MouseDown[1] = bd-&gt;MousePressed[1] || (mouse_buttons &amp; SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    io.MouseDown[2] = bd-&gt;MousePressed[2] || (mouse_buttons &amp; SDL_BUTTON(SDL_BUTTON_MIDDLE)) != 0;</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    bd-&gt;MousePressed[0] = bd-&gt;MousePressed[1] = bd-&gt;MousePressed[2] = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="comment">// Obtain focused and hovered window. We forward mouse input when focused or when hovered (and no other window is capturing)</span></div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">#if SDL_HAS_CAPTURE_AND_GLOBAL_MOUSE</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="_s_d_l__video_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a> *focused_window = <a class="code" href="_s_d_l__keyboard_8h.html#a20cb9d78980660f2f97f83e9080a9791">SDL_GetKeyboardFocus</a>();</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <a class="code" href="_s_d_l__video_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a> *hovered_window = SDL_HAS_MOUSE_FOCUS_CLICKTHROUGH ? <a class="code" href="_s_d_l__mouse_8h.html#af30def76b002152366831b21e3d95066">SDL_GetMouseFocus</a>() : NULL; <span class="comment">// This is better but is only reliably useful with SDL 2.0.5+ and SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH.</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <a class="code" href="_s_d_l__video_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a> *mouse_window = NULL;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    SDL_Window *focused_window = SDL_GetKeyboardFocus();</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    SDL_Window *hovered_window = SDL_HAS_MOUSE_FOCUS_CLICKTHROUGH ? SDL_GetMouseFocus() : NULL; <span class="comment">// This is better but is only reliably useful with SDL 2.0.5+ and SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH.</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    SDL_Window *mouse_window = NULL;</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordflow">if</span> (hovered_window &amp;&amp; bd-&gt;Window == hovered_window)</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        mouse_window = hovered_window;</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (focused_window &amp;&amp; bd-&gt;Window == focused_window)</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        mouse_window = focused_window;</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="comment">// SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn&#39;t e.g. trigger other operations outside</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <a class="code" href="_s_d_l__mouse_8h.html#a8829359c04d0d7835b4330dd21fdd051">SDL_CaptureMouse</a>(ImGui::IsAnyMouseDown() ? SDL_TRUE : SDL_FALSE);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    SDL_CaptureMouse(ImGui::IsAnyMouseDown() ? SDL_TRUE : SDL_FALSE);</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="preprocessor">#else</span></div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="comment">// SDL 2.0.3 and non-windowed systems: single-viewport only</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <a class="code" href="_s_d_l__video_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a> *mouse_window = (<a class="code" href="_s_d_l__video_8h.html#a4445733f04a1a9dd0e063cd4738f285f">SDL_GetWindowFlags</a>(bd-&gt;Window) &amp; <a class="code" href="_s_d_l__video_8h.html#ab10f4fd6a082ef06fcae96860c95fb18afcbb682c0942bc106af1474c1d34bb53">SDL_WINDOW_INPUT_FOCUS</a>) ? bd-&gt;Window : NULL;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    SDL_Window *mouse_window = (SDL_GetWindowFlags(bd-&gt;Window) &amp; SDL_WINDOW_INPUT_FOCUS) ? bd-&gt;Window : NULL;</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;#endif</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    if (mouse_window == NULL)</div>
@@ -435,7 +435,7 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;     <span class="comment">// Set OS mouse position from Dear ImGui if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)</span></div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keywordflow">if</span> (io.WantSetMousePos)</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <a class="code" href="_s_d_l__mouse_8h.html#a2f2259cdf30272b3c4cc1e3236cb8071">SDL_WarpMouseInWindow</a>(bd-&gt;Window, (<span class="keywordtype">int</span>)mouse_pos_prev.x, (<span class="keywordtype">int</span>)mouse_pos_prev.y);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        SDL_WarpMouseInWindow(bd-&gt;Window, (<span class="keywordtype">int</span>)mouse_pos_prev.x, (<span class="keywordtype">int</span>)mouse_pos_prev.y);</div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="comment">// Set Dear ImGui mouse position from OS position + get buttons. (this is the common behavior)</span></div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">if</span> (bd-&gt;MouseCanUseGlobalState)</div>
@@ -443,47 +443,47 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        <span class="comment">// Single-viewport mode: mouse position in client window coordinates (io.MousePos is (0,0) when the mouse is on the upper-left corner of the app window)</span></div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        <span class="comment">// Unlike local position obtained earlier this will be valid when straying out of bounds.</span></div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <span class="keywordtype">int</span> mouse_x_global, mouse_y_global;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <a class="code" href="_s_d_l__mouse_8h.html#ab0f5adcf42e5074315b8a01f325d8f53">SDL_GetGlobalMouseState</a>(&amp;mouse_x_global, &amp;mouse_y_global);</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        SDL_GetGlobalMouseState(&amp;mouse_x_global, &amp;mouse_y_global);</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        <span class="keywordtype">int</span> window_x, window_y;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        <a class="code" href="_s_d_l__video_8h.html#a03adfc1ed4aaf57da4af00bd247ac99c">SDL_GetWindowPosition</a>(mouse_window, &amp;window_x, &amp;window_y);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        io.MousePos = ImVec2((<span class="keywordtype">float</span>)(mouse_x_global - window_x), (<span class="keywordtype">float</span>)(mouse_y_global - window_y));</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        SDL_GetWindowPosition(mouse_window, &amp;window_x, &amp;window_y);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        io.MousePos = <a class="code" href="struct_im_vec2.html">ImVec2</a>((<span class="keywordtype">float</span>)(mouse_x_global - window_x), (<span class="keywordtype">float</span>)(mouse_y_global - window_y));</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    }</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    {</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        io.MousePos = ImVec2((<span class="keywordtype">float</span>)mouse_x_local, (<span class="keywordtype">float</span>)mouse_y_local);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        io.MousePos = <a class="code" href="struct_im_vec2.html">ImVec2</a>((<span class="keywordtype">float</span>)mouse_x_local, (<span class="keywordtype">float</span>)mouse_y_local);</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    }</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;}</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> ImGui_ImplSDL2_UpdateMouseCursor()</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;{</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordflow">if</span> (io.ConfigFlags &amp; ImGuiConfigFlags_NoMouseCursorChange)</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    ImGuiMouseCursor imgui_cursor = ImGui::GetMouseCursor();</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordflow">if</span> (io.MouseDrawCursor || imgui_cursor == ImGuiMouseCursor_None)</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    {</div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="comment">// Hide OS mouse cursor if imgui is drawing it or if it wants no cursor</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <a class="code" href="_s_d_l__mouse_8h.html#a00286ec15cd56dee1fd71ed4e6e7a585">SDL_ShowCursor</a>(SDL_FALSE);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        SDL_ShowCursor(SDL_FALSE);</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    }</div>
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    {</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="comment">// Show OS mouse cursor</span></div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <a class="code" href="_s_d_l__mouse_8h.html#a7c2971901f9a772be22152420aee275c">SDL_SetCursor</a>(bd-&gt;MouseCursors[imgui_cursor] ? bd-&gt;MouseCursors[imgui_cursor] : bd-&gt;MouseCursors[ImGuiMouseCursor_Arrow]);</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <a class="code" href="_s_d_l__mouse_8h.html#a00286ec15cd56dee1fd71ed4e6e7a585">SDL_ShowCursor</a>(SDL_TRUE);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        SDL_SetCursor(bd-&gt;MouseCursors[imgui_cursor] ? bd-&gt;MouseCursors[imgui_cursor] : bd-&gt;MouseCursors[ImGuiMouseCursor_Arrow]);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        SDL_ShowCursor(SDL_TRUE);</div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    }</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;}</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> ImGui_ImplSDL2_UpdateGamepads()</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;{</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    memset(io.NavInputs, 0, <span class="keyword">sizeof</span>(io.NavInputs));</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">if</span> ((io.ConfigFlags &amp; ImGuiConfigFlags_NavEnableGamepad) == 0)</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="comment">// Get gamepad</span></div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    SDL_GameController *game_controller = <a class="code" href="_s_d_l__gamecontroller_8h.html#ac7725e08ac17961bd7d5f8d4eb0c4033">SDL_GameControllerOpen</a>(0);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    SDL_GameController *game_controller = SDL_GameControllerOpen(0);</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">if</span> (!game_controller)</div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    {</div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        io.BackendFlags &amp;= ~ImGuiBackendFlags_HasGamepad;</div>
@@ -518,24 +518,24 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="keywordtype">void</span> ImGui_ImplSDL2_NewFrame()</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;{</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    IM_ASSERT(bd != NULL &amp;&amp; <span class="stringliteral">&quot;Did you call ImGui_ImplSDL2_Init()?&quot;</span>);</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="comment">// Setup display size (every frame to accommodate for window resizing)</span></div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keywordtype">int</span> w, h;</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordtype">int</span> display_w, display_h;</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <a class="code" href="_s_d_l__video_8h.html#a5cbfffcfec91c22a7ca95fd1d5163db5">SDL_GetWindowSize</a>(bd-&gt;Window, &amp;w, &amp;h);</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="_s_d_l__video_8h.html#a4445733f04a1a9dd0e063cd4738f285f">SDL_GetWindowFlags</a>(bd-&gt;Window) &amp; <a class="code" href="_s_d_l__video_8h.html#ab10f4fd6a082ef06fcae96860c95fb18a7f08ee26b5773412a212233ddc168c5a">SDL_WINDOW_MINIMIZED</a>)</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    SDL_GetWindowSize(bd-&gt;Window, &amp;w, &amp;h);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">if</span> (SDL_GetWindowFlags(bd-&gt;Window) &amp; SDL_WINDOW_MINIMIZED)</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        w = h = 0;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <a class="code" href="_s_d_l__video_8h.html#ac21851bbd91760c5bab92594a58edba3">SDL_GL_GetDrawableSize</a>(bd-&gt;Window, &amp;display_w, &amp;display_h);</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    io.DisplaySize = ImVec2((<span class="keywordtype">float</span>)w, (<span class="keywordtype">float</span>)h);</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    SDL_GL_GetDrawableSize(bd-&gt;Window, &amp;display_w, &amp;display_h);</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    io.DisplaySize = <a class="code" href="struct_im_vec2.html">ImVec2</a>((<span class="keywordtype">float</span>)w, (<span class="keywordtype">float</span>)h);</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="keywordflow">if</span> (w &gt; 0 &amp;&amp; h &gt; 0)</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        io.DisplayFramebufferScale = ImVec2((<span class="keywordtype">float</span>)display_w / w, (<span class="keywordtype">float</span>)display_h / h);</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        io.DisplayFramebufferScale = <a class="code" href="struct_im_vec2.html">ImVec2</a>((<span class="keywordtype">float</span>)display_w / w, (<span class="keywordtype">float</span>)display_h / h);</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="comment">// Setup time step (we don&#39;t use SDL_GetTicks() because it is using millisecond resolution)</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="keyword">static</span> Uint64 frequency = <a class="code" href="_s_d_l__timer_8h.html#a507ebea12e31dacc9f85f7d9febe0efb">SDL_GetPerformanceFrequency</a>();</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    Uint64 current_time = <a class="code" href="_s_d_l__timer_8h.html#a2dbeb63c4f0564811a4adf3938808977">SDL_GetPerformanceCounter</a>();</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="keyword">static</span> Uint64 frequency = SDL_GetPerformanceFrequency();</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    Uint64 current_time = SDL_GetPerformanceCounter();</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    io.Time = bd-&gt;Time &gt; 0 ? (float)((<span class="keywordtype">double</span>)(current_time - bd-&gt;Time) / frequency) : (float)(1.0f / 60.0f);</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    bd-&gt;Time = current_time;</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160; </div>
@@ -545,59 +545,9 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <span class="comment">// Update game controllers (if enabled and available)</span></div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    ImGui_ImplSDL2_UpdateGamepads();</div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;}</div>
-<div class="ttc" id="a_s_d_l_8h_html"><div class="ttname"><a href="_s_d_l_8h.html">SDL.h</a></div></div>
-<div class="ttc" id="a_s_d_l__clipboard_8h_html_a36d97ed867cc1a6a4f015aaa5972ed46"><div class="ttname"><a href="_s_d_l__clipboard_8h.html#a36d97ed867cc1a6a4f015aaa5972ed46">SDL_SetClipboardText</a></div><div class="ttdeci">DECLSPEC int SDLCALL SDL_SetClipboardText(const char *text)</div></div>
-<div class="ttc" id="a_s_d_l__clipboard_8h_html_abbe260fcf16ab844d6626e0bd83587d1"><div class="ttname"><a href="_s_d_l__clipboard_8h.html#abbe260fcf16ab844d6626e0bd83587d1">SDL_GetClipboardText</a></div><div class="ttdeci">DECLSPEC char *SDLCALL SDL_GetClipboardText(void)</div></div>
-<div class="ttc" id="a_s_d_l__events_8h_html_a3b589e89be6b35c02e0dd34a55f3fccaa4fa2570088f6b9cbd109ae91b511368f"><div class="ttname"><a href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa4fa2570088f6b9cbd109ae91b511368f">SDL_TEXTINPUT</a></div><div class="ttdeci">@ SDL_TEXTINPUT</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00101">SDL_events.h:101</a></div></div>
-<div class="ttc" id="a_s_d_l__events_8h_html_a3b589e89be6b35c02e0dd34a55f3fccaa5ff4e41f0d8b5def11cfe6a69ec0b698"><div class="ttname"><a href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa5ff4e41f0d8b5def11cfe6a69ec0b698">SDL_WINDOWEVENT</a></div><div class="ttdeci">@ SDL_WINDOWEVENT</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00094">SDL_events.h:94</a></div></div>
-<div class="ttc" id="a_s_d_l__events_8h_html_a3b589e89be6b35c02e0dd34a55f3fccaa63135c2e0aea2286f05066f3c0bc5c4e"><div class="ttname"><a href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa63135c2e0aea2286f05066f3c0bc5c4e">SDL_MOUSEWHEEL</a></div><div class="ttdeci">@ SDL_MOUSEWHEEL</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00110">SDL_events.h:110</a></div></div>
-<div class="ttc" id="a_s_d_l__events_8h_html_a3b589e89be6b35c02e0dd34a55f3fccaa9267166e1536dfa8b0daa98c0afa9052"><div class="ttname"><a href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaa9267166e1536dfa8b0daa98c0afa9052">SDL_MOUSEBUTTONDOWN</a></div><div class="ttdeci">@ SDL_MOUSEBUTTONDOWN</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00108">SDL_events.h:108</a></div></div>
-<div class="ttc" id="a_s_d_l__events_8h_html_a3b589e89be6b35c02e0dd34a55f3fccaacaf8cfd53c985cdbf6a90c811d51a1fc"><div class="ttname"><a href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaacaf8cfd53c985cdbf6a90c811d51a1fc">SDL_KEYDOWN</a></div><div class="ttdeci">@ SDL_KEYDOWN</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00098">SDL_events.h:98</a></div></div>
-<div class="ttc" id="a_s_d_l__events_8h_html_a3b589e89be6b35c02e0dd34a55f3fccaadefb8866b9d28be21c2c33c35cc66c4b"><div class="ttname"><a href="_s_d_l__events_8h.html#a3b589e89be6b35c02e0dd34a55f3fccaadefb8866b9d28be21c2c33c35cc66c4b">SDL_KEYUP</a></div><div class="ttdeci">@ SDL_KEYUP</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00099">SDL_events.h:99</a></div></div>
-<div class="ttc" id="a_s_d_l__gamecontroller_8h_html_ac7725e08ac17961bd7d5f8d4eb0c4033"><div class="ttname"><a href="_s_d_l__gamecontroller_8h.html#ac7725e08ac17961bd7d5f8d4eb0c4033">SDL_GameControllerOpen</a></div><div class="ttdeci">DECLSPEC SDL_GameController *SDLCALL SDL_GameControllerOpen(int joystick_index)</div></div>
-<div class="ttc" id="a_s_d_l__hints_8h_html_a59083735a2377046c2fc72eb0a3e855f"><div class="ttname"><a href="_s_d_l__hints_8h.html#a59083735a2377046c2fc72eb0a3e855f">SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH</a></div><div class="ttdeci">#define SDL_HINT_MOUSE_FOCUS_CLICKTHROUGH</div><div class="ttdoc">Allow mouse click events when clicking to focus an SDL window.</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__hints_8h_source.html#l00831">SDL_hints.h:831</a></div></div>
-<div class="ttc" id="a_s_d_l__hints_8h_html_a9b47f5aa3911644f0a5a3f0cfa9198a4"><div class="ttname"><a href="_s_d_l__hints_8h.html#a9b47f5aa3911644f0a5a3f0cfa9198a4">SDL_SetHint</a></div><div class="ttdeci">DECLSPEC SDL_bool SDLCALL SDL_SetHint(const char *name, const char *value)</div></div>
-<div class="ttc" id="a_s_d_l__keyboard_8h_html_a20cb9d78980660f2f97f83e9080a9791"><div class="ttname"><a href="_s_d_l__keyboard_8h.html#a20cb9d78980660f2f97f83e9080a9791">SDL_GetKeyboardFocus</a></div><div class="ttdeci">DECLSPEC SDL_Window *SDLCALL SDL_GetKeyboardFocus(void)</div></div>
-<div class="ttc" id="a_s_d_l__keyboard_8h_html_a7b2ee63de74c442ac456cac9db5f8ed0"><div class="ttname"><a href="_s_d_l__keyboard_8h.html#a7b2ee63de74c442ac456cac9db5f8ed0">SDL_GetModState</a></div><div class="ttdeci">DECLSPEC SDL_Keymod SDLCALL SDL_GetModState(void)</div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a00286ec15cd56dee1fd71ed4e6e7a585"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a00286ec15cd56dee1fd71ed4e6e7a585">SDL_ShowCursor</a></div><div class="ttdeci">DECLSPEC int SDLCALL SDL_ShowCursor(int toggle)</div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a1561f413546c0e4f5f44a8f094926575"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a1561f413546c0e4f5f44a8f094926575">SDL_GetMouseState</a></div><div class="ttdeci">DECLSPEC Uint32 SDLCALL SDL_GetMouseState(int *x, int *y)</div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a217c89743b3da84b9656304f8e4ca51e"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a217c89743b3da84b9656304f8e4ca51e">SDL_CreateSystemCursor</a></div><div class="ttdeci">DECLSPEC SDL_Cursor *SDLCALL SDL_CreateSystemCursor(SDL_SystemCursor id)</div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a2f2259cdf30272b3c4cc1e3236cb8071"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a2f2259cdf30272b3c4cc1e3236cb8071">SDL_WarpMouseInWindow</a></div><div class="ttdeci">DECLSPEC void SDLCALL SDL_WarpMouseInWindow(SDL_Window *window, int x, int y)</div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a3e8083d1d8ce4c5a1ba76bfc2be8e732a04d6abe3f01b1c4b8d77af1b2ef5e4e9"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a04d6abe3f01b1c4b8d77af1b2ef5e4e9">SDL_SYSTEM_CURSOR_SIZENS</a></div><div class="ttdeci">@ SDL_SYSTEM_CURSOR_SIZENS</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__mouse_8h_source.html#l00056">SDL_mouse.h:56</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a3e8083d1d8ce4c5a1ba76bfc2be8e732a09cd11742bffaafbd1073afeea03f7bc"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a09cd11742bffaafbd1073afeea03f7bc">SDL_SYSTEM_CURSOR_HAND</a></div><div class="ttdeci">@ SDL_SYSTEM_CURSOR_HAND</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__mouse_8h_source.html#l00059">SDL_mouse.h:59</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a3e8083d1d8ce4c5a1ba76bfc2be8e732a0ea5055b7ef96598a39570abf365b9f9"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a0ea5055b7ef96598a39570abf365b9f9">SDL_SYSTEM_CURSOR_ARROW</a></div><div class="ttdeci">@ SDL_SYSTEM_CURSOR_ARROW</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__mouse_8h_source.html#l00048">SDL_mouse.h:48</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a3e8083d1d8ce4c5a1ba76bfc2be8e732a0eb8a498162417265c0ec79c1eacb30e"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a0eb8a498162417265c0ec79c1eacb30e">SDL_SYSTEM_CURSOR_SIZENWSE</a></div><div class="ttdeci">@ SDL_SYSTEM_CURSOR_SIZENWSE</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__mouse_8h_source.html#l00053">SDL_mouse.h:53</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a3e8083d1d8ce4c5a1ba76bfc2be8e732a5b70e5fee565ccf9a6a99f92c571b4ed"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a5b70e5fee565ccf9a6a99f92c571b4ed">SDL_SYSTEM_CURSOR_SIZENESW</a></div><div class="ttdeci">@ SDL_SYSTEM_CURSOR_SIZENESW</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__mouse_8h_source.html#l00054">SDL_mouse.h:54</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a3e8083d1d8ce4c5a1ba76bfc2be8e732a5f3b85170a85ffb62aa477f9c31987fb"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a5f3b85170a85ffb62aa477f9c31987fb">SDL_SYSTEM_CURSOR_IBEAM</a></div><div class="ttdeci">@ SDL_SYSTEM_CURSOR_IBEAM</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__mouse_8h_source.html#l00049">SDL_mouse.h:49</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a3e8083d1d8ce4c5a1ba76bfc2be8e732a70a8b0dec44a0f63d7af72e649de3b62"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a70a8b0dec44a0f63d7af72e649de3b62">SDL_SYSTEM_CURSOR_NO</a></div><div class="ttdeci">@ SDL_SYSTEM_CURSOR_NO</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__mouse_8h_source.html#l00058">SDL_mouse.h:58</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a3e8083d1d8ce4c5a1ba76bfc2be8e732a88849f7320ea2bf629e05a06c6ff8e20"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732a88849f7320ea2bf629e05a06c6ff8e20">SDL_SYSTEM_CURSOR_SIZEALL</a></div><div class="ttdeci">@ SDL_SYSTEM_CURSOR_SIZEALL</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__mouse_8h_source.html#l00057">SDL_mouse.h:57</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a3e8083d1d8ce4c5a1ba76bfc2be8e732aa2f663333ca851ce0f40f8f8d2c2a731"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a3e8083d1d8ce4c5a1ba76bfc2be8e732aa2f663333ca851ce0f40f8f8d2c2a731">SDL_SYSTEM_CURSOR_SIZEWE</a></div><div class="ttdeci">@ SDL_SYSTEM_CURSOR_SIZEWE</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__mouse_8h_source.html#l00055">SDL_mouse.h:55</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a63b6e9cd23bbe26b8fa00dc8fba7623d"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a63b6e9cd23bbe26b8fa00dc8fba7623d">SDL_Cursor</a></div><div class="ttdeci">struct SDL_Cursor SDL_Cursor</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__mouse_8h_source.html#l00001">SDL_mouse.h:41</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a7c2971901f9a772be22152420aee275c"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a7c2971901f9a772be22152420aee275c">SDL_SetCursor</a></div><div class="ttdeci">DECLSPEC void SDLCALL SDL_SetCursor(SDL_Cursor *cursor)</div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_a8829359c04d0d7835b4330dd21fdd051"><div class="ttname"><a href="_s_d_l__mouse_8h.html#a8829359c04d0d7835b4330dd21fdd051">SDL_CaptureMouse</a></div><div class="ttdeci">DECLSPEC int SDLCALL SDL_CaptureMouse(SDL_bool enabled)</div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_ab0f5adcf42e5074315b8a01f325d8f53"><div class="ttname"><a href="_s_d_l__mouse_8h.html#ab0f5adcf42e5074315b8a01f325d8f53">SDL_GetGlobalMouseState</a></div><div class="ttdeci">DECLSPEC Uint32 SDLCALL SDL_GetGlobalMouseState(int *x, int *y)</div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_ac17a8282f93d9d31e8e087236f0ecdd8"><div class="ttname"><a href="_s_d_l__mouse_8h.html#ac17a8282f93d9d31e8e087236f0ecdd8">SDL_FreeCursor</a></div><div class="ttdeci">DECLSPEC void SDLCALL SDL_FreeCursor(SDL_Cursor *cursor)</div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_af1bb0dead027146b766e4e319e22ea7b"><div class="ttname"><a href="_s_d_l__mouse_8h.html#af1bb0dead027146b766e4e319e22ea7b">SDL_BUTTON</a></div><div class="ttdeci">#define SDL_BUTTON(X)</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__mouse_8h_source.html#l00412">SDL_mouse.h:412</a></div></div>
-<div class="ttc" id="a_s_d_l__mouse_8h_html_af30def76b002152366831b21e3d95066"><div class="ttname"><a href="_s_d_l__mouse_8h.html#af30def76b002152366831b21e3d95066">SDL_GetMouseFocus</a></div><div class="ttdeci">DECLSPEC SDL_Window *SDLCALL SDL_GetMouseFocus(void)</div></div>
-<div class="ttc" id="a_s_d_l__scancode_8h_html_a82ab7cff701034fb40a47b5b3a02777bafadcacdcd29fa5cf74598a6c61796287"><div class="ttname"><a href="_s_d_l__scancode_8h.html#a82ab7cff701034fb40a47b5b3a02777bafadcacdcd29fa5cf74598a6c61796287">SDL_SCANCODE_INSERT</a></div><div class="ttdeci">@ SDL_SCANCODE_INSERT</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__scancode_8h_source.html#l00170">SDL_scancode.h:169</a></div></div>
-<div class="ttc" id="a_s_d_l__syswm_8h_html"><div class="ttname"><a href="_s_d_l__syswm_8h.html">SDL_syswm.h</a></div></div>
-<div class="ttc" id="a_s_d_l__syswm_8h_html_ad6e40121a96c88af20d9469a04706fef"><div class="ttname"><a href="_s_d_l__syswm_8h.html#ad6e40121a96c88af20d9469a04706fef">SDL_GetWindowWMInfo</a></div><div class="ttdeci">DECLSPEC SDL_bool SDLCALL SDL_GetWindowWMInfo(SDL_Window *window, SDL_SysWMinfo *info)</div></div>
-<div class="ttc" id="a_s_d_l__timer_8h_html_a2dbeb63c4f0564811a4adf3938808977"><div class="ttname"><a href="_s_d_l__timer_8h.html#a2dbeb63c4f0564811a4adf3938808977">SDL_GetPerformanceCounter</a></div><div class="ttdeci">DECLSPEC Uint64 SDLCALL SDL_GetPerformanceCounter(void)</div></div>
-<div class="ttc" id="a_s_d_l__timer_8h_html_a507ebea12e31dacc9f85f7d9febe0efb"><div class="ttname"><a href="_s_d_l__timer_8h.html#a507ebea12e31dacc9f85f7d9febe0efb">SDL_GetPerformanceFrequency</a></div><div class="ttdeci">DECLSPEC Uint64 SDLCALL SDL_GetPerformanceFrequency(void)</div></div>
-<div class="ttc" id="a_s_d_l__version_8h_html_a7154bc5c2a95a644b5187e4225cdcbd0"><div class="ttname"><a href="_s_d_l__version_8h.html#a7154bc5c2a95a644b5187e4225cdcbd0">SDL_VERSION</a></div><div class="ttdeci">#define SDL_VERSION(x)</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__version_8h_source.html#l00079">SDL_version.h:79</a></div></div>
-<div class="ttc" id="a_s_d_l__video_8h_html_a03adfc1ed4aaf57da4af00bd247ac99c"><div class="ttname"><a href="_s_d_l__video_8h.html#a03adfc1ed4aaf57da4af00bd247ac99c">SDL_GetWindowPosition</a></div><div class="ttdeci">DECLSPEC void SDLCALL SDL_GetWindowPosition(SDL_Window *window, int *x, int *y)</div></div>
-<div class="ttc" id="a_s_d_l__video_8h_html_a4445733f04a1a9dd0e063cd4738f285f"><div class="ttname"><a href="_s_d_l__video_8h.html#a4445733f04a1a9dd0e063cd4738f285f">SDL_GetWindowFlags</a></div><div class="ttdeci">DECLSPEC Uint32 SDLCALL SDL_GetWindowFlags(SDL_Window *window)</div></div>
-<div class="ttc" id="a_s_d_l__video_8h_html_a55a196c7d3b8497538632c79ae1e6392"><div class="ttname"><a href="_s_d_l__video_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a></div><div class="ttdeci">struct SDL_Window SDL_Window</div><div class="ttdoc">The type used to identify a window.</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__video_8h_source.html#l00001">SDL_video.h:95</a></div></div>
-<div class="ttc" id="a_s_d_l__video_8h_html_a5cbfffcfec91c22a7ca95fd1d5163db5"><div class="ttname"><a href="_s_d_l__video_8h.html#a5cbfffcfec91c22a7ca95fd1d5163db5">SDL_GetWindowSize</a></div><div class="ttdeci">DECLSPEC void SDLCALL SDL_GetWindowSize(SDL_Window *window, int *w, int *h)</div></div>
-<div class="ttc" id="a_s_d_l__video_8h_html_a5d53f49e6db21468228a675056a80bc8"><div class="ttname"><a href="_s_d_l__video_8h.html#a5d53f49e6db21468228a675056a80bc8">SDL_GetCurrentVideoDriver</a></div><div class="ttdeci">DECLSPEC const char *SDLCALL SDL_GetCurrentVideoDriver(void)</div></div>
-<div class="ttc" id="a_s_d_l__video_8h_html_ab10f4fd6a082ef06fcae96860c95fb18a7f08ee26b5773412a212233ddc168c5a"><div class="ttname"><a href="_s_d_l__video_8h.html#ab10f4fd6a082ef06fcae96860c95fb18a7f08ee26b5773412a212233ddc168c5a">SDL_WINDOW_MINIMIZED</a></div><div class="ttdeci">@ SDL_WINDOW_MINIMIZED</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__video_8h_source.html#l00110">SDL_video.h:110</a></div></div>
-<div class="ttc" id="a_s_d_l__video_8h_html_ab10f4fd6a082ef06fcae96860c95fb18afcbb682c0942bc106af1474c1d34bb53"><div class="ttname"><a href="_s_d_l__video_8h.html#ab10f4fd6a082ef06fcae96860c95fb18afcbb682c0942bc106af1474c1d34bb53">SDL_WINDOW_INPUT_FOCUS</a></div><div class="ttdeci">@ SDL_WINDOW_INPUT_FOCUS</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__video_8h_source.html#l00113">SDL_video.h:113</a></div></div>
-<div class="ttc" id="a_s_d_l__video_8h_html_ac21851bbd91760c5bab92594a58edba3"><div class="ttname"><a href="_s_d_l__video_8h.html#ac21851bbd91760c5bab92594a58edba3">SDL_GL_GetDrawableSize</a></div><div class="ttdeci">DECLSPEC void SDLCALL SDL_GL_GetDrawableSize(SDL_Window *window, int *w, int *h)</div></div>
-<div class="ttc" id="a_s_d_l__video_8h_html_ac486b40a4860d980dbc74d0b4adf3baba239e734c6ba478fb2f694fc7cde30c31"><div class="ttname"><a href="_s_d_l__video_8h.html#ac486b40a4860d980dbc74d0b4adf3baba239e734c6ba478fb2f694fc7cde30c31">SDL_WINDOWEVENT_FOCUS_LOST</a></div><div class="ttdeci">@ SDL_WINDOWEVENT_FOCUS_LOST</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__video_8h_source.html#l00174">SDL_video.h:174</a></div></div>
-<div class="ttc" id="a_s_d_l__video_8h_html_ac486b40a4860d980dbc74d0b4adf3baba529d1b574e559ee46892024e1c2e6c92"><div class="ttname"><a href="_s_d_l__video_8h.html#ac486b40a4860d980dbc74d0b4adf3baba529d1b574e559ee46892024e1c2e6c92">SDL_WINDOWEVENT_FOCUS_GAINED</a></div><div class="ttdeci">@ SDL_WINDOWEVENT_FOCUS_GAINED</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__video_8h_source.html#l00173">SDL_video.h:173</a></div></div>
-<div class="ttc" id="anamespacenlohmann_1_1detail_html_a59e696b1dad6d0d99c172ac4518c2042a3c6e0b8a9c15224a8228b9a98ca1531d"><div class="ttname"><a href="namespacenlohmann_1_1detail.html#a59e696b1dad6d0d99c172ac4518c2042a3c6e0b8a9c15224a8228b9a98ca1531d">nlohmann::detail::parse_event_t::key</a></div><div class="ttdeci">@ key</div><div class="ttdoc">the parser read a key of a value in an object</div></div>
-<div class="ttc" id="astruct_s_d_l___sys_w_minfo_html"><div class="ttname"><a href="struct_s_d_l___sys_w_minfo.html">SDL_SysWMinfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__syswm_8h_source.html#l00221">SDL_syswm.h:222</a></div></div>
-<div class="ttc" id="aunion_s_d_l___event_html"><div class="ttname"><a href="union_s_d_l___event.html">SDL_Event</a></div><div class="ttdoc">General event structure.</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00591">SDL_events.h:592</a></div></div>
+<div class="ttc" id="astruct_im_gui___impl_s_d_l2___data_html"><div class="ttname"><a href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui__impl__sdl_8cpp_source.html#l00072">imgui_impl_sdl.cpp:73</a></div></div>
+<div class="ttc" id="astruct_im_gui_i_o_html"><div class="ttname"><a href="struct_im_gui_i_o.html">ImGuiIO</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l01976">imgui.h:1977</a></div></div>
+<div class="ttc" id="astruct_im_vec2_html"><div class="ttname"><a href="struct_im_vec2.html">ImVec2</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l00256">imgui.h:257</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

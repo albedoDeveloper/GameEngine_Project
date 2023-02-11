@@ -1,5 +1,6 @@
 var class_a_model =
 [
+    [ "BoneInfo", "struct_a_model_1_1_bone_info.html", "struct_a_model_1_1_bone_info" ],
     [ "AModel", "class_a_model.html#aa8badaafdfc5cdeda4b53e078c7f7014", null ],
     [ "Draw", "class_a_model.html#a35a199fe4b840142649f26b1d4b3ff72", null ],
     [ "DrawNoTexture", "class_a_model.html#a4d208435b58c45891ff60736ffedcbc3", null ],
