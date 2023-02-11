@@ -21,6 +21,6 @@ Left click - Create a physics ball, shot out in the direction of the cursor
 
 Right click - Create a physics box
 
-Middle mouse button: despawn all rigid bodies
+Middle mouse button: despawn all rigid bodies 
 
 
