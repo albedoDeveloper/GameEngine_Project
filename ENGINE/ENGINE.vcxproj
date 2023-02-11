@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseWithDebugInfo|x64">
+      <Configuration>ReleaseWithDebugInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationManager.cpp" />
+    <ClCompile Include="AScript.cpp" />
+    <ClCompile Include="Bone.cpp" />
+    <ClCompile Include="CAffordanceManager.cpp" />
+    <ClCompile Include="CAgent.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CAnimator.cpp" />
+    <ClCompile Include="CCollider.cpp" />
+    <ClCompile Include="CCamera.cpp" />
+    <ClCompile Include="CCharacterComponent.cpp" />
+    <ClCompile Include="CDirectionalLight.cpp" />
+    <ClCompile Include="CNavMesh.cpp" />
+    <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Color.cpp" />
+    <ClCompile Include="CComponent.cpp" />
+    <ClCompile Include="CPointLight.cpp" />
+    <ClCompile Include="CRigidBody.cpp" />
+    <ClCompile Include="CScript.cpp" />
+    <ClCompile Include="CSound.cpp" />
+    <ClCompile Include="CStaticMesh.cpp" />
+    <ClCompile Include="NavNode.cpp" />
+    <ClCompile Include="Matrix3f.cpp" />
+    <ClCompile Include="PhysicsManager.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="ThirdParty\glad\src\glad.c" />
+    <ClCompile Include="MyTime.cpp" />
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="GameAssetFactory.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectFactory.cpp" />
+    <ClCompile Include="GraphicsEngine.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="LevelEditor.cpp" />
+    <ClCompile Include="LevelLoader.cpp" />
+    <ClCompile Include="LightManager.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MiscMath.cpp" />
+    <ClCompile Include="Matrix4f.cpp" />
+    <ClCompile Include="ModernOpenGL\Mesh.cpp" />
+    <ClCompile Include="ModernOpenGL\AModel.cpp" />
+    <ClCompile Include="ModernOpenGL\Shader.cpp" />
+    <ClCompile Include="Quaternion.cpp" />
+    <ClCompile Include="ScriptingEngine.cpp" />
+    <ClCompile Include="ShadowMapper.cpp" />
+    <ClCompile Include="SkyBox.cpp" />
+    <ClCompile Include="ThirdParty\imgui\imgui.cpp" />
+    <ClCompile Include="ThirdParty\imgui\imgui_demo.cpp" />
+    <ClCompile Include="ThirdParty\imgui\imgui_draw.cpp" />
+    <ClCompile Include="ThirdParty\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="ThirdParty\imgui\imgui_impl_sdl.cpp" />
+    <ClCompile Include="ThirdParty\imgui\imgui_tables.cpp" />
+    <ClCompile Include="ThirdParty\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Vector2f.cpp" />
+    <ClCompile Include="Vector3f.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationManager.h" />
+    <ClInclude Include="AScript.h" />
+    <ClInclude Include="Bone.h" />
+    <ClInclude Include="CAffordanceManager.h" />
+    <ClInclude Include="CAgent.h" />
+    <ClInclude Include="CAnimator.h" />
+    <ClInclude Include="CCollider.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CCamera.h" />
+    <ClInclude Include="CCharacterComponent.h" />
+    <ClInclude Include="CDirectionalLight.h" />
+    <ClInclude Include="CNavMesh.h" />
+    <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="CComponent.h" />
+    <ClInclude Include="CPointLight.h" />
+    <ClInclude Include="CRigidBody.h" />
+    <ClInclude Include="CScript.h" />
+    <ClInclude Include="CSound.h" />
+    <ClInclude Include="CStaticMesh.h" />
+    <ClInclude Include="NavNode.h" />
+    <ClInclude Include="Matrix3f.h" />
+    <ClInclude Include="PhysicsManager.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="ThirdParty\glad\include\glad\glad.h" />
+    <ClInclude Include="ThirdParty\glad\include\KHR\khrplatform.h" />
+    <ClInclude Include="MyTime.h" />
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="GameAssetFactory.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectFactory.h" />
+    <ClInclude Include="GraphicsEngine.h" />
+    <ClInclude Include="GraphicsLibraryEnum.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="LevelEditor.h" />
+    <ClInclude Include="LevelLoader.h" />
+    <ClInclude Include="LightManager.h" />
+    <ClInclude Include="MiscMath.h" />
+    <ClInclude Include="Matrix4f.h" />
+    <ClInclude Include="ModernOpenGL\Mesh.h" />
+    <ClInclude Include="ModernOpenGL\AModel.h" />
+    <ClInclude Include="ModernOpenGL\Shader.h" />
+    <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="ScriptingEngine.h" />
+    <ClInclude Include="ShadowMapper.h" />
+    <ClInclude Include="SkyBox.h" />
+    <ClInclude Include="ThirdParty\imgui\imconfig.h" />
+    <ClInclude Include="ThirdParty\imgui\imgui.h" />
+    <ClInclude Include="ThirdParty\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="ThirdParty\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="ThirdParty\imgui\imgui_impl_sdl.h" />
+    <ClInclude Include="ThirdParty\imgui\imgui_internal.h" />
+    <ClInclude Include="ThirdParty\imgui\imstb_rectpack.h" />
+    <ClInclude Include="ThirdParty\imgui\imstb_textedit.h" />
+    <ClInclude Include="ThirdParty\imgui\imstb_truetype.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Utility.h" />
+    <ClInclude Include="Vector2f.h" />
+    <ClInclude Include="Vector3f.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Assets\init.lua" />
+    <None Include="..\Assets\Scripts\playerShoot.lua" />
+    <None Include="..\Assets\Scripts\rotate.lua" />
+    <None Include="..\Assets\Shaders\debug.frag" />
+    <None Include="..\Assets\Shaders\dirShadowMap.vert" />
+    <None Include="..\Assets\Shaders\lit.frag" />
+    <None Include="..\Assets\Shaders\lit.vert" />
+    <None Include="..\Assets\Shaders\pointShadowMap.frag" />
+    <None Include="..\Assets\Shaders\pointShadowMap.geom" />
+    <None Include="..\Assets\Shaders\pointShadowMap.vert" />
+    <None Include="..\Assets\Shaders\dirShadowMap.frag" />
+    <None Include="..\Assets\Shaders\skybox.frag" />
+    <None Include="..\Assets\Shaders\debug.vert" />
+    <None Include="..\Assets\Shaders\skybox.vert" />
+    <None Include="..\Assets\Shaders\unlit.frag" />
+    <None Include="..\Assets\Shaders\unlit.vert" />
+    <None Include="..\codestyle_config\.editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ENGINE.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\frankengine.ico" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{ae72bb04-4060-4381-9ed9-3b79389b10d1}</ProjectGuid>
+    <RootNamespace>ENGINE</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../include</IncludePath>
+    <LibraryPath>../lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);../lib</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../include</IncludePath>
+    <LibraryPath>../lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);../lib</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../include</IncludePath>
+    <LibraryPath>../lib;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);../lib</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;BT_THREADSAFE=1;BT_USE_DOUBLE_PRECISION;_DEBUG=1</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\ThirdParty\glad\include;../include;../include/bulletphysics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <ShowIncludes>false</ShowIncludes>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <CompileAsManaged>false</CompileAsManaged>
+      <OpenMPSupport>true</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;assimp-vc142-mtd.lib;zlibd.lib;SDL2_mixer.lib;BulletCollision_vs2010_x64_debug.lib;LinearMath_vs2010_x64_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;BT_THREADSAFE=1;BT_USE_DOUBLE_PRECISION</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>.\ThirdParty\glad\include;</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;zlibd.lib;assimp-vc142-mtd.lib;SDL2_mixer.lib;BulletCollision_vs2010_x64_release.lib;LinearMath_vs2010_x64_release.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithDebugInfo|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>.\ThirdParty\glad\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;liblua54.a;SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;zlibd.lib;assimp-vc142-mtd.lib;reactphysics3d.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
