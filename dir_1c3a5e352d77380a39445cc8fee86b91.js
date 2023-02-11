@@ -85,9 +85,7 @@ var dir_1c3a5e352d77380a39445cc8fee86b91 =
     [ "InputManager.cpp", "_input_manager_8cpp_source.html", null ],
     [ "InputManager.h", "_input_manager_8h.html", "_input_manager_8h" ],
     [ "LevelEditor.cpp", "_level_editor_8cpp_source.html", null ],
-    [ "LevelEditor.h", "_level_editor_8h.html", [
-      [ "LevelEditor", "class_level_editor.html", "class_level_editor" ]
-    ] ],
+    [ "LevelEditor.h", "_level_editor_8h.html", null ],
     [ "LevelLoader.cpp", "_level_loader_8cpp_source.html", null ],
     [ "LevelLoader.h", "_level_loader_8h.html", "_level_loader_8h" ],
     [ "LightManager.cpp", "_light_manager_8cpp_source.html", null ],
@@ -111,8 +109,7 @@ var dir_1c3a5e352d77380a39445cc8fee86b91 =
     ] ],
     [ "NavNode.cpp", "_nav_node_8cpp_source.html", null ],
     [ "NavNode.h", "_nav_node_8h.html", [
-      [ "GridLocation", "struct_grid_location.html", "struct_grid_location" ],
-      [ "NavNode", "class_nav_node.html", "class_nav_node" ]
+      [ "GridLocation", "struct_grid_location.html", "struct_grid_location" ]
     ] ],
     [ "PhysicsManager.cpp", "_physics_manager_8cpp_source.html", null ],
     [ "PhysicsManager.h", "_physics_manager_8h_source.html", null ],

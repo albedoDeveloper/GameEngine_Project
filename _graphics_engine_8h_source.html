@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('_graphics_engine_8h_source.html',''); 
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_graphics_engine.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_graphics_engine.html">GraphicsEngine</a> : <span class="keyword">public</span> btIDebugDraw</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_mesh.html">Mesh</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span>Mesh;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_graphics_engine.html">GraphicsEngine</a> *<a class="code" href="class_graphics_engine.html#a4bf36eed1a7be314dc967ace533aff62">instance</a>();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
@@ -245,9 +245,9 @@ $(document).ready(function(){initNavTree('_graphics_engine_8h_source.html',''); 
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordtype">int</span> m_windowHeight;</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> m_imgui_io;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    ImGuiIO m_imgui_io;</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <a class="code" href="struct_im_vec4.html">ImVec4</a> m_clear_color;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    ImVec4 m_clear_color;</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> VAODebug = 0;</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
@@ -272,7 +272,7 @@ $(document).ready(function(){initNavTree('_graphics_engine_8h_source.html',''); 
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <a class="code" href="class_light_manager.html">LightManager</a> m_lightManager;</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <a class="code" href="class_shadow_mapper.html">ShadowMapper</a> m_shadowMapper;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    ShadowMapper m_shadowMapper;</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;};</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="preprocessor">#define GRAPHICS GraphicsEngine::instance()</span></div>
@@ -314,14 +314,10 @@ $(document).ready(function(){initNavTree('_graphics_engine_8h_source.html',''); 
 <div class="ttc" id="aclass_graphics_engine_html_afcba01c8c9adccb6e5e23f258f455ef8"><div class="ttname"><a href="class_graphics_engine.html#afcba01c8c9adccb6e5e23f258f455ef8">GraphicsEngine::GoFullscreen</a></div><div class="ttdeci">void GoFullscreen() const</div><div class="ttdef"><b>Definition:</b> <a href="_graphics_engine_8cpp_source.html#l00583">GraphicsEngine.cpp:583</a></div></div>
 <div class="ttc" id="aclass_light_manager_html"><div class="ttname"><a href="class_light_manager.html">LightManager</a></div><div class="ttdef"><b>Definition:</b> <a href="_light_manager_8h_source.html#l00015">LightManager.h:16</a></div></div>
 <div class="ttc" id="aclass_matrix4f_html"><div class="ttname"><a href="class_matrix4f.html">Matrix4f</a></div><div class="ttdef"><b>Definition:</b> <a href="_matrix4f_8h_source.html#l00018">Matrix4f.h:19</a></div></div>
-<div class="ttc" id="aclass_mesh_html"><div class="ttname"><a href="class_mesh.html">Mesh</a></div><div class="ttdef"><b>Definition:</b> <a href="_mesh_8h_source.html#l00074">Mesh.h:75</a></div></div>
 <div class="ttc" id="aclass_shader_html"><div class="ttname"><a href="class_shader.html">Shader</a></div><div class="ttdef"><b>Definition:</b> <a href="_shader_8h_source.html#l00021">Shader.h:22</a></div></div>
-<div class="ttc" id="aclass_shadow_mapper_html"><div class="ttname"><a href="class_shadow_mapper.html">ShadowMapper</a></div><div class="ttdef"><b>Definition:</b> <a href="_shadow_mapper_8h_source.html#l00008">ShadowMapper.h:9</a></div></div>
 <div class="ttc" id="aclass_sky_box_html"><div class="ttname"><a href="class_sky_box.html">SkyBox</a></div><div class="ttdef"><b>Definition:</b> <a href="_sky_box_8h_source.html#l00015">SkyBox.h:16</a></div></div>
 <div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdoc">Stores data about an object or componet's location in space.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8h_source.html#l00021">Transform.h:22</a></div></div>
 <div class="ttc" id="aclass_vector3f_html"><div class="ttname"><a href="class_vector3f.html">Vector3f</a></div><div class="ttdoc">Stores information about a vector or point in three dimensions as floats.</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8h_source.html#l00013">Vector3f.h:14</a></div></div>
-<div class="ttc" id="astruct_im_gui_i_o_html"><div class="ttname"><a href="struct_im_gui_i_o.html">ImGuiIO</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l01976">imgui.h:1977</a></div></div>
-<div class="ttc" id="astruct_im_vec4_html"><div class="ttname"><a href="struct_im_vec4.html">ImVec4</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l00281">imgui.h:282</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

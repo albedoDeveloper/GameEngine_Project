@@ -161,7 +161,7 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define SDL_HAS_VULKAN                      SDL_VERSION_ATLEAST(2,0,6)</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">// SDL Data</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="struct_im_gui___impl_s_d_l2___data.html">   72</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">struct </span>ImGui_ImplSDL2_Data</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    SDL_Window *Window;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    Uint64      Time;</div>
@@ -170,7 +170,7 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">char</span> *ClipboardTextData;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">bool</span>        MouseCanUseGlobalState;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a>()</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    ImGui_ImplSDL2_Data()</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        memset(<span class="keyword">this</span>, 0, <span class="keyword">sizeof</span>(*<span class="keyword">this</span>));</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
@@ -180,15 +180,15 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">// It is STRONGLY preferred that you use docking branch with multi-viewports (== single Dear ImGui context + multiple windows) instead of multiple Dear ImGui contexts.</span></div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">// FIXME: multi-context support is not well tested and probably dysfunctional in this backend.</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">// FIXME: some shared resources (mouse cursor shape, gamepad) are mishandled when using multi-context.</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">static</span> <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *ImGui_ImplSDL2_GetBackendData()</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">static</span> ImGui_ImplSDL2_Data *ImGui_ImplSDL2_GetBackendData()</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;{</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> ImGui::GetCurrentContext() ? (<a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *)ImGui::GetIO().BackendPlatformUserData : NULL;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> ImGui::GetCurrentContext() ? (ImGui_ImplSDL2_Data *)ImGui::GetIO().BackendPlatformUserData : NULL;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">// Functions</span></div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *ImGui_ImplSDL2_GetClipboardText(<span class="keywordtype">void</span> *)</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span> (bd-&gt;ClipboardTextData)</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        SDL_free(bd-&gt;ClipboardTextData);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    bd-&gt;ClipboardTextData = SDL_GetClipboardText();</div>
@@ -207,8 +207,8 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">// If you have multiple SDL events and some of them are not meant to be used by dear imgui, you may need to filter events based on their windowID field.</span></div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplSDL2_ProcessEvent(<span class="keyword">const</span> SDL_Event *event)</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">switch</span> (event-&gt;type)</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    {</div>
@@ -271,7 +271,7 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> ImGui_ImplSDL2_Init(SDL_Window *window)</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;{</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    IM_ASSERT(io.BackendPlatformUserData == NULL &amp;&amp; <span class="stringliteral">&quot;Already initialized a platform backend!&quot;</span>);</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// Check and store if we are on a SDL backend that supports global mouse position</span></div>
@@ -286,7 +286,7 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="comment">// Setup backend capabilities flags</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = IM_NEW(<a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a>)();</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    ImGui_ImplSDL2_Data *bd = IM_NEW(ImGui_ImplSDL2_Data)();</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    io.BackendPlatformUserData = (<span class="keywordtype">void</span> *)bd;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    io.BackendPlatformName = <span class="stringliteral">&quot;imgui_impl_sdl&quot;</span>;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;       <span class="comment">// We can honor GetMouseCursor() values (optional)</span></div>
@@ -384,8 +384,8 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="keywordtype">void</span> ImGui_ImplSDL2_Shutdown()</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;{</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">if</span> (bd-&gt;ClipboardTextData)</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        SDL_free(bd-&gt;ClipboardTextData);</div>
@@ -399,11 +399,11 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> ImGui_ImplSDL2_UpdateMousePosAndButtons()</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;{</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <a class="code" href="struct_im_vec2.html">ImVec2</a> mouse_pos_prev = io.MousePos;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    io.MousePos = <a class="code" href="struct_im_vec2.html">ImVec2</a>(-FLT_MAX, -FLT_MAX);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    ImVec2 mouse_pos_prev = io.MousePos;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    io.MousePos = ImVec2(-FLT_MAX, -FLT_MAX);</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="comment">// Update mouse buttons</span></div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordtype">int</span> mouse_x_local, mouse_y_local;</div>
@@ -446,20 +446,20 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        SDL_GetGlobalMouseState(&amp;mouse_x_global, &amp;mouse_y_global);</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        <span class="keywordtype">int</span> window_x, window_y;</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        SDL_GetWindowPosition(mouse_window, &amp;window_x, &amp;window_y);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        io.MousePos = <a class="code" href="struct_im_vec2.html">ImVec2</a>((<span class="keywordtype">float</span>)(mouse_x_global - window_x), (<span class="keywordtype">float</span>)(mouse_y_global - window_y));</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        io.MousePos = ImVec2((<span class="keywordtype">float</span>)(mouse_x_global - window_x), (<span class="keywordtype">float</span>)(mouse_y_global - window_y));</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    }</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    {</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        io.MousePos = <a class="code" href="struct_im_vec2.html">ImVec2</a>((<span class="keywordtype">float</span>)mouse_x_local, (<span class="keywordtype">float</span>)mouse_y_local);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        io.MousePos = ImVec2((<span class="keywordtype">float</span>)mouse_x_local, (<span class="keywordtype">float</span>)mouse_y_local);</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    }</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;}</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> ImGui_ImplSDL2_UpdateMouseCursor()</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;{</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordflow">if</span> (io.ConfigFlags &amp; ImGuiConfigFlags_NoMouseCursorChange)</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    ImGuiMouseCursor imgui_cursor = ImGui::GetMouseCursor();</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordflow">if</span> (io.MouseDrawCursor || imgui_cursor == ImGuiMouseCursor_None)</div>
@@ -477,7 +477,7 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> ImGui_ImplSDL2_UpdateGamepads()</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;{</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    memset(io.NavInputs, 0, <span class="keyword">sizeof</span>(io.NavInputs));</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">if</span> ((io.ConfigFlags &amp; ImGuiConfigFlags_NavEnableGamepad) == 0)</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="keywordflow">return</span>;</div>
@@ -518,9 +518,9 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="keywordtype">void</span> ImGui_ImplSDL2_NewFrame()</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;{</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <a class="code" href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a> *bd = ImGui_ImplSDL2_GetBackendData();</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    ImGui_ImplSDL2_Data *bd = ImGui_ImplSDL2_GetBackendData();</div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    IM_ASSERT(bd != NULL &amp;&amp; <span class="stringliteral">&quot;Did you call ImGui_ImplSDL2_Init()?&quot;</span>);</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a> &amp;io = ImGui::GetIO();</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    ImGuiIO &amp;io = ImGui::GetIO();</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="comment">// Setup display size (every frame to accommodate for window resizing)</span></div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keywordtype">int</span> w, h;</div>
@@ -529,9 +529,9 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">if</span> (SDL_GetWindowFlags(bd-&gt;Window) &amp; SDL_WINDOW_MINIMIZED)</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        w = h = 0;</div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    SDL_GL_GetDrawableSize(bd-&gt;Window, &amp;display_w, &amp;display_h);</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    io.DisplaySize = <a class="code" href="struct_im_vec2.html">ImVec2</a>((<span class="keywordtype">float</span>)w, (<span class="keywordtype">float</span>)h);</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    io.DisplaySize = ImVec2((<span class="keywordtype">float</span>)w, (<span class="keywordtype">float</span>)h);</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="keywordflow">if</span> (w &gt; 0 &amp;&amp; h &gt; 0)</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        io.DisplayFramebufferScale = <a class="code" href="struct_im_vec2.html">ImVec2</a>((<span class="keywordtype">float</span>)display_w / w, (<span class="keywordtype">float</span>)display_h / h);</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        io.DisplayFramebufferScale = ImVec2((<span class="keywordtype">float</span>)display_w / w, (<span class="keywordtype">float</span>)display_h / h);</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="comment">// Setup time step (we don&#39;t use SDL_GetTicks() because it is using millisecond resolution)</span></div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="keyword">static</span> Uint64 frequency = SDL_GetPerformanceFrequency();</div>
@@ -545,9 +545,6 @@ $(document).ready(function(){initNavTree('imgui__impl__sdl_8cpp_source.html','')
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <span class="comment">// Update game controllers (if enabled and available)</span></div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    ImGui_ImplSDL2_UpdateGamepads();</div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;}</div>
-<div class="ttc" id="astruct_im_gui___impl_s_d_l2___data_html"><div class="ttname"><a href="struct_im_gui___impl_s_d_l2___data.html">ImGui_ImplSDL2_Data</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui__impl__sdl_8cpp_source.html#l00072">imgui_impl_sdl.cpp:73</a></div></div>
-<div class="ttc" id="astruct_im_gui_i_o_html"><div class="ttname"><a href="struct_im_gui_i_o.html">ImGuiIO</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l01976">imgui.h:1977</a></div></div>
-<div class="ttc" id="astruct_im_vec2_html"><div class="ttname"><a href="struct_im_vec2.html">ImVec2</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l00256">imgui.h:257</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

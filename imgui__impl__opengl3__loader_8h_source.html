@@ -507,7 +507,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;GL3W_API GL3WglProc imgl3wGetProcAddress(<span class="keyword">const</span> <span class="keywordtype">char</span> *proc);</div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="comment">/* gl3w internal state */</span></div>
-<div class="line"><a name="l00418"></a><span class="lineno"><a class="line" href="union_g_l3_w_procs.html">  418</a></span>&#160;<span class="keyword">union </span><a class="code" href="union_g_l3_w_procs.html">GL3WProcs</a> {</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="keyword">union </span>GL3WProcs {</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    GL3WglProc ptr[52];</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="keyword">struct </span>{</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        PFNGLACTIVETEXTUREPROC           ActiveTexture;</div>
@@ -565,7 +565,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    } gl;</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;};</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160; </div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;GL3W_API <span class="keyword">extern</span> <span class="keyword">union </span><a class="code" href="union_g_l3_w_procs.html">GL3WProcs</a> gl3wProcs;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;GL3W_API <span class="keyword">extern</span> <span class="keyword">union </span>GL3WProcs gl3wProcs;</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="comment">/* OpenGL functions */</span></div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="preprocessor">#define glActiveTexture                  gl3wProcs.gl.ActiveTexture</span></div>
@@ -807,7 +807,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    <span class="stringliteral">&quot;glViewport&quot;</span>,</div>
 <div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;};</div>
 <div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160; </div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;GL3W_API <span class="keyword">union </span><a class="code" href="union_g_l3_w_procs.html">GL3WProcs</a> gl3wProcs;</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;GL3W_API <span class="keyword">union </span>GL3WProcs gl3wProcs;</div>
 <div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160; </div>
 <div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> load_procs(GL3WGetProcAddressProc proc)</div>
 <div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;{</div>
@@ -820,7 +820,6 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;}</div>
 <div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aunion_g_l3_w_procs_html"><div class="ttname"><a href="union_g_l3_w_procs.html">GL3WProcs</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui__impl__opengl3__loader_8h_source.html#l00418">imgui_impl_opengl3_loader.h:418</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

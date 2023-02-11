@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['texture_886',['Texture',['../struct_texture.html',1,'']]],
-  ['transform_887',['Transform',['../class_transform.html',1,'']]]
+  ['vector2f_472',['Vector2f',['../class_vector2f.html',1,'']]],
+  ['vector3f_473',['Vector3f',['../class_vector3f.html',1,'']]],
+  ['vertex_474',['Vertex',['../struct_vertex.html',1,'']]]
 ];

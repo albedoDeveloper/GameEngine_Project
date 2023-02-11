@@ -1,5 +1,21 @@
 var searchData=
 [
-  ['emotioneffectors_1324',['EmotionEffectors',['../struct_affordance.html#a17d24a150957cafed14bd7cb77daf259',1,'Affordance']]],
-  ['endlocation_1325',['endLocation',['../class_c_agent.html#aa97f00809ed8a787e3955d3773b942cf',1,'CAgent']]]
+  ['m_5factive_851',['m_active',['../class_c_collider.html#a85fb04dcca77d23798125ccab60f1d16',1,'CCollider']]],
+  ['m_5fallowrotation_852',['m_allowRotation',['../class_c_collider.html#aed4eb91bc8a6b10c460f72e8d6894df8',1,'CCollider']]],
+  ['m_5fcolobj_853',['m_colObj',['../class_c_collider.html#a83ee4536509028bfd2cc594264995030',1,'CCollider']]],
+  ['m_5fdebugshader_854',['m_debugShader',['../class_graphics_engine.html#ae137c8f93832b17febf12e7cbbad3f07',1,'GraphicsEngine']]],
+  ['m_5fdrawdebug_855',['m_drawDebug',['../class_graphics_engine.html#a3c1f6693fb6adcfc281b5efd800fbb86',1,'GraphicsEngine']]],
+  ['m_5fisactive_856',['m_isActive',['../class_c_component.html#a1e4f3217b7e3357bbfff21dc7ff62389',1,'CComponent']]],
+  ['m_5fisregistered_857',['m_isRegistered',['../class_c_collider.html#a14e94623cf3dccc1117760b547e22a45',1,'CCollider']]],
+  ['m_5fl_858',['m_L',['../class_c_script.html#a3871d95971cdcc7dfaf3e07f43cef611',1,'CScript']]],
+  ['m_5flitshader_859',['m_litShader',['../class_graphics_engine.html#aa289ef6552313763ef8237ad0a29bf72',1,'GraphicsEngine']]],
+  ['m_5fmodel_860',['m_model',['../class_c_static_mesh.html#a8e78af174540d64ccc65d96b9af23a89',1,'CStaticMesh']]],
+  ['m_5foffset_861',['m_offset',['../class_c_collider.html#aab61685026901f57ea82253d46b7b8aa',1,'CCollider']]],
+  ['m_5fparent_862',['m_parent',['../class_c_component.html#ab7c47531297d9f1b2f039f848591dd67',1,'CComponent']]],
+  ['m_5fscript_863',['m_script',['../class_c_script.html#ab8f3a2c8e079926c8b74d5aecac296e4',1,'CScript']]],
+  ['m_5fselectedshader_864',['m_selectedShader',['../class_c_static_mesh.html#a970ebd882bb80ce3e996b357483f4510',1,'CStaticMesh']]],
+  ['m_5fshader_865',['m_shader',['../class_c_static_mesh.html#a9e2d104cc89d51655bf6482ce1e2865d',1,'CStaticMesh']]],
+  ['m_5fshaderselect_866',['m_shaderSelect',['../class_c_static_mesh.html#a8ea2c3d9bdd7d38132ff75bf4103f6ce',1,'CStaticMesh']]],
+  ['m_5ftransform_867',['m_transform',['../class_c_component.html#a3a65e4856c24eba721958e2366acd8a8',1,'CComponent']]],
+  ['m_5funlitshader_868',['m_unlitShader',['../class_graphics_engine.html#a2275a37da6728d79db7cd50f47c75c5b',1,'GraphicsEngine']]]
 ];

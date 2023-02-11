@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('_animation_8cpp_source.html',''); init
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;Animation.h&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="class_animation.html#af3c7b2252d01888cbe6e81295b301c0b">    3</a></span>&#160;<a class="code" href="class_animation.html#af3c7b2252d01888cbe6e81295b301c0b">Animation::Animation</a>(<span class="keyword">const</span> std::string&amp; animationPath, <a class="code" href="class_a_model.html">AModel</a>* model)</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;Animation::Animation(<span class="keyword">const</span> std::string&amp; animationPath, <a class="code" href="class_a_model.html">AModel</a>* model)</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    Assimp::Importer importer;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    importer.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, <span class="keyword">false</span>);</div>
@@ -110,10 +110,10 @@ $(document).ready(function(){initNavTree('_animation_8cpp_source.html',''); init
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_animation.html#a6fd9b7cd9f89be8c7ab76cbb0b8836de">   21</a></span>&#160;<a class="code" href="class_bone.html">Bone</a>* <a class="code" href="class_animation.html#a6fd9b7cd9f89be8c7ab76cbb0b8836de">Animation::FindBone</a>(<span class="keyword">const</span> std::string&amp; name)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;Bone* Animation::FindBone(<span class="keyword">const</span> std::string&amp; name)</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">//FIX</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">auto</span> iter = std::find_if(m_Bones.begin(), m_Bones.end(),[&amp;](<a class="code" href="class_bone.html">Bone</a>&amp; <a class="code" href="class_bone.html">Bone</a>)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">auto</span> iter = std::find_if(m_Bones.begin(), m_Bones.end(),[&amp;](Bone&amp; Bone)</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        return Bone.GetBoneName() == name;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('_animation_8cpp_source.html',''); init
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            boneInfoMap[boneName].id = boneCount;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            boneCount++;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        m_Bones.push_back(<a class="code" href="class_bone.html">Bone</a>(channel-&gt;mNodeName.data,boneInfoMap[channel-&gt;mNodeName.data].id, channel));</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        m_Bones.push_back(Bone(channel-&gt;mNodeName.data,boneInfoMap[channel-&gt;mNodeName.data].id, channel));</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    m_BoneInfoMap = boneInfoMap;</div>
@@ -169,9 +169,6 @@ $(document).ready(function(){initNavTree('_animation_8cpp_source.html',''); init
 <div class="ttc" id="aclass_a_model_html"><div class="ttname"><a href="class_a_model.html">AModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_model_8h_source.html#l00020">AModel.h:21</a></div></div>
 <div class="ttc" id="aclass_a_model_html_a7e926efd3412d45a2d04576ef56c3751"><div class="ttname"><a href="class_a_model.html#a7e926efd3412d45a2d04576ef56c3751">AModel::GetBoneInfoMap</a></div><div class="ttdeci">std::map&lt; std::string, BoneInfo &gt; &amp; GetBoneInfoMap()</div><div class="ttdoc">Return the entire bone map.</div><div class="ttdef"><b>Definition:</b> <a href="_a_model_8h_source.html#l00082">AModel.h:82</a></div></div>
 <div class="ttc" id="aclass_a_model_html_a941febcd0d3012a4d1b32f0f64ed024a"><div class="ttname"><a href="class_a_model.html#a941febcd0d3012a4d1b32f0f64ed024a">AModel::GetBoneCount</a></div><div class="ttdeci">int &amp; GetBoneCount()</div><div class="ttdef"><b>Definition:</b> <a href="_a_model_8h_source.html#l00089">AModel.h:89</a></div></div>
-<div class="ttc" id="aclass_animation_html_a6fd9b7cd9f89be8c7ab76cbb0b8836de"><div class="ttname"><a href="class_animation.html#a6fd9b7cd9f89be8c7ab76cbb0b8836de">Animation::FindBone</a></div><div class="ttdeci">Bone * FindBone(const std::string &amp;name)</div><div class="ttdoc">Find a bone using the id from the aninmation data that needs to move at a particular time.</div><div class="ttdef"><b>Definition:</b> <a href="_animation_8cpp_source.html#l00021">Animation.cpp:21</a></div></div>
-<div class="ttc" id="aclass_animation_html_af3c7b2252d01888cbe6e81295b301c0b"><div class="ttname"><a href="class_animation.html#af3c7b2252d01888cbe6e81295b301c0b">Animation::Animation</a></div><div class="ttdeci">Animation(const std::string &amp;animationPath, AModel *model)</div><div class="ttdoc">Create a new animation based upon an already preloaded model.</div><div class="ttdef"><b>Definition:</b> <a href="_animation_8cpp_source.html#l00003">Animation.cpp:3</a></div></div>
-<div class="ttc" id="aclass_bone_html"><div class="ttname"><a href="class_bone.html">Bone</a></div><div class="ttdef"><b>Definition:</b> <a href="_bone_8h_source.html#l00030">Bone.h:31</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
