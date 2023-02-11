@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/ThirdParty/imgui/imgui_impl_opengl3.cpp Source File</title>
+<title>FrankEngine: ENGINE/ThirdParty/imgui/imgui_impl_opengl3.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -251,7 +251,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">// OpenGL Data</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="struct_im_gui___impl_open_g_l3___data.html">  162</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">struct </span>ImGui_ImplOpenGL3_Data</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;{</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    GLuint          GlVersion;               <span class="comment">// Extracted at runtime using GL_MAJOR_VERSION, GL_MINOR_VERSION queries (e.g. 320 for GL 3.2)</span></div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordtype">char</span>            GlslVersionString[32];   <span class="comment">// Specified by user or detected based on compile time GL settings.</span></div>
@@ -265,20 +265,20 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    VboHandle, ElementsHandle;</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordtype">bool</span>            HasClipOrigin;</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>() { memset(<span class="keyword">this</span>, 0, <span class="keyword">sizeof</span>(*<span class="keyword">this</span>)); }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    ImGui_ImplOpenGL3_Data() { memset(<span class="keyword">this</span>, 0, <span class="keyword">sizeof</span>(*<span class="keyword">this</span>)); }</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;};</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">// Backend data stored in io.BackendRendererUserData to allow support for multiple Dear ImGui contexts</span></div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">// It is STRONGLY preferred that you use docking branch with multi-viewports (== single Dear ImGui context + multiple windows) instead of multiple Dear ImGui contexts.</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keyword">static</span> <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* ImGui_ImplOpenGL3_GetBackendData()</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keyword">static</span> ImGui_ImplOpenGL3_Data* ImGui_ImplOpenGL3_GetBackendData()</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;{</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">return</span> ImGui::GetCurrentContext() ? (<a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>*)ImGui::GetIO().BackendRendererUserData : NULL;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">return</span> ImGui::GetCurrentContext() ? (ImGui_ImplOpenGL3_Data*)ImGui::GetIO().BackendRendererUserData : NULL;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">// Functions</span></div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="keywordtype">bool</span>    ImGui_ImplOpenGL3_Init(<span class="keyword">const</span> <span class="keywordtype">char</span>* glsl_version)</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;{</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a>&amp; io = ImGui::GetIO();</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    ImGuiIO&amp; io = ImGui::GetIO();</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    IM_ASSERT(io.BackendRendererUserData == NULL &amp;&amp; <span class="stringliteral">&quot;Already initialized a renderer backend!&quot;</span>);</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="comment">// Initialize our loader</span></div>
@@ -291,7 +291,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="comment">// Setup backend capabilities flags</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* bd = IM_NEW(<a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>)();</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    ImGui_ImplOpenGL3_Data* bd = IM_NEW(ImGui_ImplOpenGL3_Data)();</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    io.BackendRendererUserData = (<span class="keywordtype">void</span>*)bd;</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    io.BackendRendererName = <span class="stringliteral">&quot;imgui_impl_opengl3&quot;</span>;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
@@ -358,8 +358,8 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="keywordtype">void</span>    ImGui_ImplOpenGL3_Shutdown()</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;{</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a>&amp; io = ImGui::GetIO();</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    ImGuiIO&amp; io = ImGui::GetIO();</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    ImGui_ImplOpenGL3_Data* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    ImGui_ImplOpenGL3_DestroyDeviceObjects();</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    io.BackendRendererName = NULL;</div>
@@ -369,16 +369,16 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="keywordtype">void</span>    ImGui_ImplOpenGL3_NewFrame()</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;{</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    ImGui_ImplOpenGL3_Data* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    IM_ASSERT(bd != NULL &amp;&amp; <span class="stringliteral">&quot;Did you call ImGui_ImplOpenGL3_Init()?&quot;</span>);</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordflow">if</span> (!bd-&gt;ShaderHandle)</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        ImGui_ImplOpenGL3_CreateDeviceObjects();</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> ImGui_ImplOpenGL3_SetupRenderState(<a class="code" href="struct_im_draw_data.html">ImDrawData</a>* draw_data, <span class="keywordtype">int</span> fb_width, <span class="keywordtype">int</span> fb_height, GLuint vertex_array_object)</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> ImGui_ImplOpenGL3_SetupRenderState(ImDrawData* draw_data, <span class="keywordtype">int</span> fb_width, <span class="keywordtype">int</span> fb_height, GLuint vertex_array_object)</div>
 <div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;{</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    ImGui_ImplOpenGL3_Data* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="comment">// Setup render state: alpha-blending enabled, no face culling, no depth testing, scissor enabled, polygon fill</span></div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    glEnable(GL_BLEND);</div>
@@ -444,15 +444,15 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    glEnableVertexAttribArray(bd-&gt;AttribLocationVtxPos);</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    glEnableVertexAttribArray(bd-&gt;AttribLocationVtxUV);</div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    glEnableVertexAttribArray(bd-&gt;AttribLocationVtxColor);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    glVertexAttribPointer(bd-&gt;AttribLocationVtxPos,   2, GL_FLOAT,         GL_FALSE, <span class="keyword">sizeof</span>(<a class="code" href="struct_im_draw_vert.html">ImDrawVert</a>), (GLvoid*)IM_OFFSETOF(<a class="code" href="struct_im_draw_vert.html">ImDrawVert</a>, pos));</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    glVertexAttribPointer(bd-&gt;AttribLocationVtxUV,    2, GL_FLOAT,         GL_FALSE, <span class="keyword">sizeof</span>(<a class="code" href="struct_im_draw_vert.html">ImDrawVert</a>), (GLvoid*)IM_OFFSETOF(<a class="code" href="struct_im_draw_vert.html">ImDrawVert</a>, uv));</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    glVertexAttribPointer(bd-&gt;AttribLocationVtxColor, 4, GL_UNSIGNED_BYTE, GL_TRUE,  <span class="keyword">sizeof</span>(<a class="code" href="struct_im_draw_vert.html">ImDrawVert</a>), (GLvoid*)IM_OFFSETOF(<a class="code" href="struct_im_draw_vert.html">ImDrawVert</a>, col));</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    glVertexAttribPointer(bd-&gt;AttribLocationVtxPos,   2, GL_FLOAT,         GL_FALSE, <span class="keyword">sizeof</span>(ImDrawVert), (GLvoid*)IM_OFFSETOF(ImDrawVert, pos));</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    glVertexAttribPointer(bd-&gt;AttribLocationVtxUV,    2, GL_FLOAT,         GL_FALSE, <span class="keyword">sizeof</span>(ImDrawVert), (GLvoid*)IM_OFFSETOF(ImDrawVert, uv));</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    glVertexAttribPointer(bd-&gt;AttribLocationVtxColor, 4, GL_UNSIGNED_BYTE, GL_TRUE,  <span class="keyword">sizeof</span>(ImDrawVert), (GLvoid*)IM_OFFSETOF(ImDrawVert, col));</div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;}</div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="comment">// OpenGL3 Render function.</span></div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment">// Note that this implementation is little overcomplicated because we are saving/setting up/restoring every OpenGL state explicitly.</span></div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment">// This is in order to be able to run within an OpenGL engine that doesn&#39;t do so.</span></div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="keywordtype">void</span>    ImGui_ImplOpenGL3_RenderDrawData(<a class="code" href="struct_im_draw_data.html">ImDrawData</a>* draw_data)</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="keywordtype">void</span>    ImGui_ImplOpenGL3_RenderDrawData(ImDrawData* draw_data)</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;{</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="comment">// Avoid rendering when minimized, scale coordinates for retina displays (screen coordinates != framebuffer coordinates)</span></div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keywordtype">int</span> fb_width = (int)(draw_data-&gt;DisplaySize.x * draw_data-&gt;FramebufferScale.x);</div>
@@ -460,7 +460,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordflow">if</span> (fb_width &lt;= 0 || fb_height &lt;= 0)</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    ImGui_ImplOpenGL3_Data* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="comment">// Backup GL state</span></div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    GLenum last_active_texture; glGetIntegerv(GL_ACTIVE_TEXTURE, (GLint*)&amp;last_active_texture);</div>
@@ -504,21 +504,21 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    ImGui_ImplOpenGL3_SetupRenderState(draw_data, fb_width, fb_height, vertex_array_object);</div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    <span class="comment">// Will project scissor/clipping rectangles into framebuffer space</span></div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    <a class="code" href="struct_im_vec2.html">ImVec2</a> clip_off = draw_data-&gt;DisplayPos;         <span class="comment">// (0,0) unless using multi-viewports</span></div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <a class="code" href="struct_im_vec2.html">ImVec2</a> clip_scale = draw_data-&gt;FramebufferScale; <span class="comment">// (1,1) unless using retina display which are often (2,2)</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    ImVec2 clip_off = draw_data-&gt;DisplayPos;         <span class="comment">// (0,0) unless using multi-viewports</span></div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    ImVec2 clip_scale = draw_data-&gt;FramebufferScale; <span class="comment">// (1,1) unless using retina display which are often (2,2)</span></div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="comment">// Render command lists</span></div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; draw_data-&gt;CmdListsCount; n++)</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    {</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="keyword">const</span> <a class="code" href="struct_im_draw_list.html">ImDrawList</a>* cmd_list = draw_data-&gt;CmdLists[n];</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="keyword">const</span> ImDrawList* cmd_list = draw_data-&gt;CmdLists[n];</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160; </div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        <span class="comment">// Upload vertex/index buffers</span></div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)cmd_list-&gt;VtxBuffer.Size * (<span class="keywordtype">int</span>)<span class="keyword">sizeof</span>(<a class="code" href="struct_im_draw_vert.html">ImDrawVert</a>), (<span class="keyword">const</span> GLvoid*)cmd_list-&gt;VtxBuffer.Data, GL_STREAM_DRAW);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        glBufferData(GL_ARRAY_BUFFER, (GLsizeiptr)cmd_list-&gt;VtxBuffer.Size * (<span class="keywordtype">int</span>)<span class="keyword">sizeof</span>(ImDrawVert), (<span class="keyword">const</span> GLvoid*)cmd_list-&gt;VtxBuffer.Data, GL_STREAM_DRAW);</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        glBufferData(GL_ELEMENT_ARRAY_BUFFER, (GLsizeiptr)cmd_list-&gt;IdxBuffer.Size * (<span class="keywordtype">int</span>)<span class="keyword">sizeof</span>(ImDrawIdx), (<span class="keyword">const</span> GLvoid*)cmd_list-&gt;IdxBuffer.Data, GL_STREAM_DRAW);</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> cmd_i = 0; cmd_i &lt; cmd_list-&gt;CmdBuffer.Size; cmd_i++)</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        {</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keyword">const</span> <a class="code" href="struct_im_draw_cmd.html">ImDrawCmd</a>* pcmd = &amp;cmd_list-&gt;CmdBuffer[cmd_i];</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keyword">const</span> ImDrawCmd* pcmd = &amp;cmd_list-&gt;CmdBuffer[cmd_i];</div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            <span class="keywordflow">if</span> (pcmd-&gt;UserCallback != NULL)</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            {</div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                <span class="comment">// User callback, registered via ImDrawList::AddCallback()</span></div>
@@ -531,7 +531,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            {</div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                <span class="comment">// Project scissor/clipping rectangles into framebuffer space</span></div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                <a class="code" href="struct_im_vec4.html">ImVec4</a> clip_rect;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                ImVec4 clip_rect;</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                clip_rect.x = (pcmd-&gt;ClipRect.x - clip_off.x) * clip_scale.x;</div>
 <div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                clip_rect.y = (pcmd-&gt;ClipRect.y - clip_off.y) * clip_scale.y;</div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                clip_rect.z = (pcmd-&gt;ClipRect.z - clip_off.x) * clip_scale.x;</div>
@@ -593,8 +593,8 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160; </div>
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;<span class="keywordtype">bool</span> ImGui_ImplOpenGL3_CreateFontsTexture()</div>
 <div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;{</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a>&amp; io = ImGui::GetIO();</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    ImGuiIO&amp; io = ImGui::GetIO();</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    ImGui_ImplOpenGL3_Data* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160; </div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <span class="comment">// Build texture atlas</span></div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* pixels;</div>
@@ -624,8 +624,8 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
 <div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;<span class="keywordtype">void</span> ImGui_ImplOpenGL3_DestroyFontsTexture()</div>
 <div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;{</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    <a class="code" href="struct_im_gui_i_o.html">ImGuiIO</a>&amp; io = ImGui::GetIO();</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    ImGuiIO&amp; io = ImGui::GetIO();</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    ImGui_ImplOpenGL3_Data* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
 <div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    <span class="keywordflow">if</span> (bd-&gt;FontTexture)</div>
 <div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    {</div>
 <div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        glDeleteTextures(1, &amp;bd-&gt;FontTexture);</div>
@@ -637,7 +637,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;<span class="comment">// If you get an error please report on github. You may try different GL context version or GLSL version. See GL&lt;&gt;GLSL version table at the top of this file.</span></div>
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> CheckShader(GLuint handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* desc)</div>
 <div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;{</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    ImGui_ImplOpenGL3_Data* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
 <div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    GLint status = 0, log_length = 0;</div>
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    glGetShaderiv(handle, GL_COMPILE_STATUS, &amp;status);</div>
 <div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    glGetShaderiv(handle, GL_INFO_LOG_LENGTH, &amp;log_length);</div>
@@ -645,7 +645,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;ERROR: ImGui_ImplOpenGL3_CreateDeviceObjects: failed to compile %s! With GLSL: %s\n&quot;</span>, desc, bd-&gt;GlslVersionString);</div>
 <div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;    <span class="keywordflow">if</span> (log_length &gt; 1)</div>
 <div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;    {</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        <a class="code" href="struct_im_vector.html">ImVector&lt;char&gt;</a> buf;</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        ImVector&lt;char&gt; buf;</div>
 <div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        buf.resize((<span class="keywordtype">int</span>)(log_length + 1));</div>
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        glGetShaderInfoLog(handle, log_length, NULL, (GLchar*)buf.begin());</div>
 <div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;%s\n&quot;</span>, buf.begin());</div>
@@ -656,7 +656,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;<span class="comment">// If you get an error please report on GitHub. You may try different GL context version or GLSL version.</span></div>
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> CheckProgram(GLuint handle, <span class="keyword">const</span> <span class="keywordtype">char</span>* desc)</div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;{</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    ImGui_ImplOpenGL3_Data* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
 <div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    GLint status = 0, log_length = 0;</div>
 <div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    glGetProgramiv(handle, GL_LINK_STATUS, &amp;status);</div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    glGetProgramiv(handle, GL_INFO_LOG_LENGTH, &amp;log_length);</div>
@@ -664,7 +664,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;ERROR: ImGui_ImplOpenGL3_CreateDeviceObjects: failed to link %s! With GLSL %s\n&quot;</span>, desc, bd-&gt;GlslVersionString);</div>
 <div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    <span class="keywordflow">if</span> (log_length &gt; 1)</div>
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    {</div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        <a class="code" href="struct_im_vector.html">ImVector&lt;char&gt;</a> buf;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        ImVector&lt;char&gt; buf;</div>
 <div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        buf.resize((<span class="keywordtype">int</span>)(log_length + 1));</div>
 <div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        glGetProgramInfoLog(handle, log_length, NULL, (GLchar*)buf.begin());</div>
 <div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;%s\n&quot;</span>, buf.begin());</div>
@@ -674,7 +674,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160; </div>
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;<span class="keywordtype">bool</span>    ImGui_ImplOpenGL3_CreateDeviceObjects()</div>
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;{</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    ImGui_ImplOpenGL3_Data* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
 <div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160; </div>
 <div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    <span class="comment">// Backup GL state</span></div>
 <div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    GLint last_texture, last_array_buffer;</div>
@@ -862,21 +862,12 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3_8cpp_source.html'
 <div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160; </div>
 <div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;<span class="keywordtype">void</span>    ImGui_ImplOpenGL3_DestroyDeviceObjects()</div>
 <div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;{</div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    <a class="code" href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a>* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    ImGui_ImplOpenGL3_Data* bd = ImGui_ImplOpenGL3_GetBackendData();</div>
 <div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;    <span class="keywordflow">if</span> (bd-&gt;VboHandle)      { glDeleteBuffers(1, &amp;bd-&gt;VboHandle); bd-&gt;VboHandle = 0; }</div>
 <div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;    <span class="keywordflow">if</span> (bd-&gt;ElementsHandle) { glDeleteBuffers(1, &amp;bd-&gt;ElementsHandle); bd-&gt;ElementsHandle = 0; }</div>
 <div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;    <span class="keywordflow">if</span> (bd-&gt;ShaderHandle)   { glDeleteProgram(bd-&gt;ShaderHandle); bd-&gt;ShaderHandle = 0; }</div>
 <div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;    ImGui_ImplOpenGL3_DestroyFontsTexture();</div>
 <div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;}</div>
-<div class="ttc" id="astruct_im_draw_cmd_html"><div class="ttname"><a href="struct_im_draw_cmd.html">ImDrawCmd</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l02560">imgui.h:2561</a></div></div>
-<div class="ttc" id="astruct_im_draw_data_html"><div class="ttname"><a href="struct_im_draw_data.html">ImDrawData</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l02857">imgui.h:2858</a></div></div>
-<div class="ttc" id="astruct_im_draw_list_html"><div class="ttname"><a href="struct_im_draw_list.html">ImDrawList</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l02680">imgui.h:2681</a></div></div>
-<div class="ttc" id="astruct_im_draw_vert_html"><div class="ttname"><a href="struct_im_draw_vert.html">ImDrawVert</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l02584">imgui.h:2585</a></div></div>
-<div class="ttc" id="astruct_im_gui___impl_open_g_l3___data_html"><div class="ttname"><a href="struct_im_gui___impl_open_g_l3___data.html">ImGui_ImplOpenGL3_Data</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui__impl__opengl3_8cpp_source.html#l00162">imgui_impl_opengl3.cpp:163</a></div></div>
-<div class="ttc" id="astruct_im_gui_i_o_html"><div class="ttname"><a href="struct_im_gui_i_o.html">ImGuiIO</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l01976">imgui.h:1977</a></div></div>
-<div class="ttc" id="astruct_im_vec2_html"><div class="ttname"><a href="struct_im_vec2.html">ImVec2</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l00256">imgui.h:257</a></div></div>
-<div class="ttc" id="astruct_im_vec4_html"><div class="ttname"><a href="struct_im_vec4.html">ImVec4</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l00281">imgui.h:282</a></div></div>
-<div class="ttc" id="astruct_im_vector_html"><div class="ttname"><a href="struct_im_vector.html">ImVector&lt; char &gt;</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

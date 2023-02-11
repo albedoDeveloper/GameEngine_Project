@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/ThirdParty/imgui/imgui_impl_opengl3_loader.h Source File</title>
+<title>FrankEngine: ENGINE/ThirdParty/imgui/imgui_impl_opengl3_loader.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -248,7 +248,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSCISSORPROC) (GLint x, GLint y, GLsizei width, GLsizei height);</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLTEXPARAMETERIPROC) (GLenum target, GLenum pname, GLint param);</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLTEXIMAGE2DPROC) (GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, <span class="keyword">const</span> <span class="keywordtype">void</span> *pixels);</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLCLEARPROC) (GLbitfield mask);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLCLEARPROC) (GLbitfield <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLCLEARCOLORPROC) (GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLDISABLEPROC) (GLenum cap);</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLENABLEPROC) (GLenum cap);</div>
@@ -263,7 +263,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;GLAPI <span class="keywordtype">void</span> APIENTRY glScissor (GLint x, GLint y, GLsizei width, GLsizei height);</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;GLAPI <span class="keywordtype">void</span> APIENTRY glTexParameteri (GLenum target, GLenum pname, GLint param);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;GLAPI <span class="keywordtype">void</span> APIENTRY glTexImage2D (GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, <span class="keyword">const</span> <span class="keywordtype">void</span> *pixels);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;GLAPI <span class="keywordtype">void</span> APIENTRY glClear (GLbitfield mask);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;GLAPI <span class="keywordtype">void</span> APIENTRY glClear (GLbitfield <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;GLAPI <span class="keywordtype">void</span> APIENTRY glClearColor (GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;GLAPI <span class="keywordtype">void</span> APIENTRY glDisable (GLenum cap);</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;GLAPI <span class="keywordtype">void</span> APIENTRY glEnable (GLenum cap);</div>
@@ -354,15 +354,15 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLENABLEVERTEXATTRIBARRAYPROC) (GLuint index);</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keyword">typedef</span> GLint (APIENTRYP PFNGLGETATTRIBLOCATIONPROC) (GLuint program, <span class="keyword">const</span> GLchar *name);</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETPROGRAMIVPROC) (GLuint program, GLenum pname, GLint *params);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETPROGRAMINFOLOGPROC) (GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETPROGRAMINFOLOGPROC) (GLuint program, GLsizei bufSize, GLsizei *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>, GLchar *infoLog);</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETSHADERIVPROC) (GLuint shader, GLenum pname, GLint *params);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETSHADERINFOLOGPROC) (GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETSHADERINFOLOGPROC) (GLuint shader, GLsizei bufSize, GLsizei *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>, GLchar *infoLog);</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="keyword">typedef</span> GLint (APIENTRYP PFNGLGETUNIFORMLOCATIONPROC) (GLuint program, <span class="keyword">const</span> GLchar *name);</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLLINKPROGRAMPROC) (GLuint program);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSHADERSOURCEPROC) (GLuint shader, GLsizei count, <span class="keyword">const</span> GLchar *<span class="keyword">const</span>*string, <span class="keyword">const</span> GLint *length);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSHADERSOURCEPROC) (GLuint shader, GLsizei count, <span class="keyword">const</span> GLchar *<span class="keyword">const</span>*string, <span class="keyword">const</span> GLint *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>);</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUSEPROGRAMPROC) (GLuint program);</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORM1IPROC) (GLint location, GLint v0);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX4FVPROC) (GLint location, GLsizei count, GLboolean transpose, <span class="keyword">const</span> GLfloat *value);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX4FVPROC) (GLint location, GLsizei count, GLboolean <a class="code" href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">transpose</a>, <span class="keyword">const</span> GLfloat *value);</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLVERTEXATTRIBPOINTERPROC) (GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, <span class="keyword">const</span> <span class="keywordtype">void</span> *pointer);</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor">#ifdef GL_GLEXT_PROTOTYPES</span></div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;GLAPI <span class="keywordtype">void</span> APIENTRY glBlendEquationSeparate (GLenum modeRGB, GLenum modeAlpha);</div>
@@ -436,7 +436,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETDOUBLEI_VPROC) (GLenum target, GLuint index, GLdouble *data);</div>
 <div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* GL_VERSION_4_1 */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="preprocessor">#ifndef GL_VERSION_4_3</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="keyword">typedef</span> void (APIENTRY  *GLDEBUGPROC)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,<span class="keyword">const</span> GLchar *message,<span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="keyword">typedef</span> void (APIENTRY  *GLDEBUGPROC)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei <a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>,<span class="keyword">const</span> GLchar *message,<span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* GL_VERSION_4_3 */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="preprocessor">#ifndef GL_VERSION_4_5</span></div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor">#define GL_CLIP_ORIGIN                    0x935C</span></div>
@@ -454,7 +454,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor">#define GL_ARB_clip_control 1</span></div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* GL_ARB_clip_control */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="preprocessor">#ifndef GL_ARB_debug_output</span></div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="keyword">typedef</span> void (APIENTRY  *GLDEBUGPROCARB)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,<span class="keyword">const</span> GLchar *message,<span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="keyword">typedef</span> void (APIENTRY  *GLDEBUGPROCARB)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei <a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>,<span class="keyword">const</span> GLchar *message,<span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* GL_ARB_debug_output */</span><span class="preprocessor"></span></div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="preprocessor">#ifndef GL_EXT_EGL_image_storage</span></div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span> *GLeglImageOES;</div>
@@ -507,7 +507,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;GL3W_API GL3WglProc imgl3wGetProcAddress(<span class="keyword">const</span> <span class="keywordtype">char</span> *proc);</div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="comment">/* gl3w internal state */</span></div>
-<div class="line"><a name="l00418"></a><span class="lineno"><a class="line" href="union_g_l3_w_procs.html">  418</a></span>&#160;<span class="keyword">union </span><a class="code" href="union_g_l3_w_procs.html">GL3WProcs</a> {</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="keyword">union </span>GL3WProcs {</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    GL3WglProc ptr[52];</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="keyword">struct </span>{</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        PFNGLACTIVETEXTUREPROC           ActiveTexture;</div>
@@ -565,7 +565,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    } gl;</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;};</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160; </div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;GL3W_API <span class="keyword">extern</span> <span class="keyword">union </span><a class="code" href="union_g_l3_w_procs.html">GL3WProcs</a> gl3wProcs;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;GL3W_API <span class="keyword">extern</span> <span class="keyword">union </span>GL3WProcs gl3wProcs;</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="comment">/* OpenGL functions */</span></div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="preprocessor">#define glActiveTexture                  gl3wProcs.gl.ActiveTexture</span></div>
@@ -807,7 +807,7 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;    <span class="stringliteral">&quot;glViewport&quot;</span>,</div>
 <div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;};</div>
 <div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160; </div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;GL3W_API <span class="keyword">union </span><a class="code" href="union_g_l3_w_procs.html">GL3WProcs</a> gl3wProcs;</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;GL3W_API <span class="keyword">union </span>GL3WProcs gl3wProcs;</div>
 <div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160; </div>
 <div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> load_procs(GL3WGetProcAddressProc proc)</div>
 <div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;{</div>
@@ -820,7 +820,9 @@ $(document).ready(function(){initNavTree('imgui__impl__opengl3__loader_8h_source
 <div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;}</div>
 <div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aunion_g_l3_w_procs_html"><div class="ttname"><a href="union_g_l3_w_procs.html">GL3WProcs</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui__impl__opengl3__loader_8h_source.html#l00418">imgui_impl_opengl3_loader.h:418</a></div></div>
+<div class="ttc" id="agroup__core__func__geometric_html_ga0cdabbb000834d994a1d6dc56f8f5263"><div class="ttname"><a href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">glm::length</a></div><div class="ttdeci">GLM_FUNC_QUALIFIER T length(vec&lt; L, T, Q &gt; const &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="func__geometric_8inl_source.html#l00136">func_geometric.inl:136</a></div></div>
+<div class="ttc" id="agroup__core__func__matrix_html_gae679d841da8ce9dbcc6c2d454f15bc35"><div class="ttname"><a href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">glm::transpose</a></div><div class="ttdeci">GLM_FUNC_QUALIFIER mat&lt; C, R, T, Q &gt;::transpose_type transpose(mat&lt; C, R, T, Q &gt; const &amp;m)</div><div class="ttdef"><b>Definition:</b> <a href="func__matrix_8inl_source.html#l00374">func_matrix.inl:374</a></div></div>
+<div class="ttc" id="agroup__gtc__bitfield_html_gad7eba518a0b71662114571ee76939f8a"><div class="ttname"><a href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">glm::mask</a></div><div class="ttdeci">GLM_FUNC_DECL genIUType mask(genIUType Bits)</div><div class="ttdef"><b>Definition:</b> <a href="bitfield_8inl_source.html#l00225">bitfield.inl:225</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

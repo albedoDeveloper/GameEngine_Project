@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/Bone.h Source File</title>
+<title>FrankEngine: ENGINE/Bone.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -94,8 +94,8 @@ $(document).ready(function(){initNavTree('_bone_8h_source.html',''); initResizab
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_transform_8h.html">Transform.h</a>&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_matrix4f_8h.html">Matrix4f.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;assimp/anim.h&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;glm/glm/glm.hpp&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="anim_8h.html">assimp/anim.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="glm_8hpp.html">glm/glm/glm.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="struct_key_position.html">   10</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_key_position.html">KeyPosition</a></div>
@@ -116,7 +116,7 @@ $(document).ready(function(){initNavTree('_bone_8h_source.html',''); initResizab
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">float</span> timeStamp;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_bone.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_bone.html">Bone</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">class </span>Bone</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
@@ -141,51 +141,42 @@ $(document).ready(function(){initNavTree('_bone_8h_source.html',''); initResizab
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="class_bone.html#a7ecdb36ab5c200ab5df03997e659391c">Bone</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keywordtype">int</span> ID, <span class="keyword">const</span> aiNodeAnim* channel);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        Bone(<span class="keyword">const</span> std::string&amp; name, <span class="keywordtype">int</span> ID, <span class="keyword">const</span> <a class="code" href="structai_node_anim.html">aiNodeAnim</a>* channel);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_bone.html#aaa95e5dfc2b6379b9eab328d0c6d04a1">UpdateBone</a>(<span class="keywordtype">float</span> animationTime);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span> UpdateBone(<span class="keywordtype">float</span> animationTime);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_bone.html#ac1074cb17e04d4bdc1d4ad1e37dbd9fa">GetPosIndex</a>(<span class="keywordtype">float</span> animationTime);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">int</span> GetPosIndex(<span class="keywordtype">float</span> animationTime);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_bone.html#ad6e48dbd379c50a5d379bdcbed2fc6d9">GetRotIndex</a>(<span class="keywordtype">float</span> animationTime);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">int</span> GetRotIndex(<span class="keywordtype">float</span> animationTime);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_bone.html#a1e0e67e8024cc53d2b5b690cb8f1aff1">GetScaleIndex</a>(<span class="keywordtype">float</span> animationTime);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">int</span> GetScaleIndex(<span class="keywordtype">float</span> animationTime);</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">float</span> <a class="code" href="class_bone.html#a5d2f31e852c172b450e6ae77819bc516">GetScaleFactor</a>(<span class="keywordtype">float</span> lastTimeStamp, <span class="keywordtype">float</span> nextTimeStamp, <span class="keywordtype">float</span> animationTime);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">float</span> GetScaleFactor(<span class="keywordtype">float</span> lastTimeStamp, <span class="keywordtype">float</span> nextTimeStamp, <span class="keywordtype">float</span> animationTime);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <a class="code" href="class_matrix4f.html">Matrix4f</a> <a class="code" href="class_bone.html#aff84dc6268c0825fd6d987a0760c968b">InterpolatePosition</a>(<span class="keywordtype">float</span> animationTime);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <a class="code" href="class_matrix4f.html">Matrix4f</a> InterpolatePosition(<span class="keywordtype">float</span> animationTime);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <a class="code" href="class_matrix4f.html">Matrix4f</a> <a class="code" href="class_bone.html#a41a3e9d05208ca2985c6bd7636709f0c">InterpolateRotation</a>(<span class="keywordtype">float</span> animationTime);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <a class="code" href="class_matrix4f.html">Matrix4f</a> InterpolateRotation(<span class="keywordtype">float</span> animationTime);</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="class_matrix4f.html">Matrix4f</a> <a class="code" href="class_bone.html#a7acc26121edb7242d0a9a3bee8a1ec1f">InterpolateScaling</a>(<span class="keywordtype">float</span> animationTime);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="class_matrix4f.html">Matrix4f</a> InterpolateScaling(<span class="keywordtype">float</span> animationTime);</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        </div>
-<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="class_bone.html#a5048777e9fe8a4f76a25905eecfb0e4e">  114</a></span>&#160;        std::string <a class="code" href="class_bone.html#a5048777e9fe8a4f76a25905eecfb0e4e">GetBoneName</a>() { <span class="keywordflow">return</span> m_Name; }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        std::string GetBoneName() { <span class="keywordflow">return</span> m_Name; }</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        </div>
-<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="class_bone.html#a981faade5a2d24364f1f4dacff8284e9">  118</a></span>&#160;        <a class="code" href="class_matrix4f.html">Matrix4f</a> <a class="code" href="class_bone.html#a981faade5a2d24364f1f4dacff8284e9">GetLocalTransform</a>() { <span class="keywordflow">return</span> m_LocalTransform; }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <a class="code" href="class_matrix4f.html">Matrix4f</a> GetLocalTransform() { <span class="keywordflow">return</span> m_LocalTransform; }</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;};</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
 <div class="ttc" id="a_matrix4f_8h_html"><div class="ttname"><a href="_matrix4f_8h.html">Matrix4f.h</a></div></div>
 <div class="ttc" id="a_transform_8h_html"><div class="ttname"><a href="_transform_8h.html">Transform.h</a></div></div>
-<div class="ttc" id="aclass_bone_html"><div class="ttname"><a href="class_bone.html">Bone</a></div><div class="ttdef"><b>Definition:</b> <a href="_bone_8h_source.html#l00030">Bone.h:31</a></div></div>
-<div class="ttc" id="aclass_bone_html_a1e0e67e8024cc53d2b5b690cb8f1aff1"><div class="ttname"><a href="class_bone.html#a1e0e67e8024cc53d2b5b690cb8f1aff1">Bone::GetScaleIndex</a></div><div class="ttdeci">int GetScaleIndex(float animationTime)</div><div class="ttdoc">Go through all the rotations to find the one that is needed for the current time of the animation.</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8cpp_source.html#l00077">Bone.cpp:77</a></div></div>
-<div class="ttc" id="aclass_bone_html_a41a3e9d05208ca2985c6bd7636709f0c"><div class="ttname"><a href="class_bone.html#a41a3e9d05208ca2985c6bd7636709f0c">Bone::InterpolateRotation</a></div><div class="ttdeci">Matrix4f InterpolateRotation(float animationTime)</div><div class="ttdoc">slerp between the the previous rotation and new rotation of the bone, to create fluid rotation of the...</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8cpp_source.html#l00117">Bone.cpp:117</a></div></div>
-<div class="ttc" id="aclass_bone_html_a5048777e9fe8a4f76a25905eecfb0e4e"><div class="ttname"><a href="class_bone.html#a5048777e9fe8a4f76a25905eecfb0e4e">Bone::GetBoneName</a></div><div class="ttdeci">std::string GetBoneName()</div><div class="ttdoc">Returns the name of the bone.</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8h_source.html#l00114">Bone.h:114</a></div></div>
-<div class="ttc" id="aclass_bone_html_a5d2f31e852c172b450e6ae77819bc516"><div class="ttname"><a href="class_bone.html#a5d2f31e852c172b450e6ae77819bc516">Bone::GetScaleFactor</a></div><div class="ttdeci">float GetScaleFactor(float lastTimeStamp, float nextTimeStamp, float animationTime)</div><div class="ttdoc">Used to determine what the scale is for lerping, slerping etc..., which is determined by how close th...</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8cpp_source.html#l00087">Bone.cpp:87</a></div></div>
-<div class="ttc" id="aclass_bone_html_a7acc26121edb7242d0a9a3bee8a1ec1f"><div class="ttname"><a href="class_bone.html#a7acc26121edb7242d0a9a3bee8a1ec1f">Bone::InterpolateScaling</a></div><div class="ttdeci">Matrix4f InterpolateScaling(float animationTime)</div><div class="ttdoc">mix between the the previous scaling and new scaling of the bone, to create fluid scale changes of th...</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8cpp_source.html#l00138">Bone.cpp:138</a></div></div>
-<div class="ttc" id="aclass_bone_html_a7ecdb36ab5c200ab5df03997e659391c"><div class="ttname"><a href="class_bone.html#a7ecdb36ab5c200ab5df03997e659391c">Bone::Bone</a></div><div class="ttdeci">Bone(const std::string &amp;name, int ID, const aiNodeAnim *channel)</div><div class="ttdoc">Constructor for the bone that sets its parameters, including the assimp animation data containing all...</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8cpp_source.html#l00003">Bone.cpp:3</a></div></div>
-<div class="ttc" id="aclass_bone_html_a981faade5a2d24364f1f4dacff8284e9"><div class="ttname"><a href="class_bone.html#a981faade5a2d24364f1f4dacff8284e9">Bone::GetLocalTransform</a></div><div class="ttdeci">Matrix4f GetLocalTransform()</div><div class="ttdoc">Returns the transform of the bone.</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8h_source.html#l00118">Bone.h:118</a></div></div>
-<div class="ttc" id="aclass_bone_html_aaa95e5dfc2b6379b9eab328d0c6d04a1"><div class="ttname"><a href="class_bone.html#aaa95e5dfc2b6379b9eab328d0c6d04a1">Bone::UpdateBone</a></div><div class="ttdeci">void UpdateBone(float animationTime)</div><div class="ttdoc">Change the bones position, rotation and scaling based upon the current time of the animation.</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8cpp_source.html#l00046">Bone.cpp:46</a></div></div>
-<div class="ttc" id="aclass_bone_html_ac1074cb17e04d4bdc1d4ad1e37dbd9fa"><div class="ttname"><a href="class_bone.html#ac1074cb17e04d4bdc1d4ad1e37dbd9fa">Bone::GetPosIndex</a></div><div class="ttdeci">int GetPosIndex(float animationTime)</div><div class="ttdoc">Go through all the positions to find the one that is needed for the current time of the animation.</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8cpp_source.html#l00057">Bone.cpp:57</a></div></div>
-<div class="ttc" id="aclass_bone_html_ad6e48dbd379c50a5d379bdcbed2fc6d9"><div class="ttname"><a href="class_bone.html#ad6e48dbd379c50a5d379bdcbed2fc6d9">Bone::GetRotIndex</a></div><div class="ttdeci">int GetRotIndex(float animationTime)</div><div class="ttdoc">Go through all the rotations to find the one that is needed for the current time of the animation.</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8cpp_source.html#l00067">Bone.cpp:67</a></div></div>
-<div class="ttc" id="aclass_bone_html_aff84dc6268c0825fd6d987a0760c968b"><div class="ttname"><a href="class_bone.html#aff84dc6268c0825fd6d987a0760c968b">Bone::InterpolatePosition</a></div><div class="ttdeci">Matrix4f InterpolatePosition(float animationTime)</div><div class="ttdoc">Lerp between the the previous position and new position of the bone, to create a fluid translation.</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8cpp_source.html#l00096">Bone.cpp:96</a></div></div>
+<div class="ttc" id="aanim_8h_html"><div class="ttname"><a href="anim_8h.html">anim.h</a></div><div class="ttdoc">Defines the data structures in which the imported animations are returned.</div></div>
 <div class="ttc" id="aclass_matrix4f_html"><div class="ttname"><a href="class_matrix4f.html">Matrix4f</a></div><div class="ttdef"><b>Definition:</b> <a href="_matrix4f_8h_source.html#l00018">Matrix4f.h:19</a></div></div>
-<div class="ttc" id="aclass_quaternion_html"><div class="ttname"><a href="class_quaternion.html">Quaternion</a></div><div class="ttdef"><b>Definition:</b> <a href="_quaternion_8h_source.html#l00018">Quaternion.h:19</a></div></div>
+<div class="ttc" id="aclass_quaternion_html"><div class="ttname"><a href="class_quaternion.html">Quaternion</a></div><div class="ttdef"><b>Definition:</b> <a href="_e_n_g_i_n_e_2_quaternion_8h_source.html#l00018">Quaternion.h:19</a></div></div>
 <div class="ttc" id="aclass_vector3f_html"><div class="ttname"><a href="class_vector3f.html">Vector3f</a></div><div class="ttdoc">Stores information about a vector or point in three dimensions as floats.</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8h_source.html#l00013">Vector3f.h:14</a></div></div>
+<div class="ttc" id="aglm_8hpp_html"><div class="ttname"><a href="glm_8hpp.html">glm.hpp</a></div></div>
 <div class="ttc" id="astruct_key_position_html"><div class="ttname"><a href="struct_key_position.html">KeyPosition</a></div><div class="ttdoc">Contains the current translation of the bone at a particular time.</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8h_source.html#l00010">Bone.h:11</a></div></div>
 <div class="ttc" id="astruct_key_rotation_html"><div class="ttname"><a href="struct_key_rotation.html">KeyRotation</a></div><div class="ttdoc">Contains the current rotation of the bone at a particular time.</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8h_source.html#l00017">Bone.h:18</a></div></div>
 <div class="ttc" id="astruct_key_scale_html"><div class="ttname"><a href="struct_key_scale.html">KeyScale</a></div><div class="ttdoc">Contains the current scale of the bone at a particular time.</div><div class="ttdef"><b>Definition:</b> <a href="_bone_8h_source.html#l00024">Bone.h:25</a></div></div>
+<div class="ttc" id="astructai_node_anim_html"><div class="ttname"><a href="structai_node_anim.html">aiNodeAnim</a></div><div class="ttdef"><b>Definition:</b> <a href="anim_8h_source.html#l00264">anim.h:264</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

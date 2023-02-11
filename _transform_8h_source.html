@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/Transform.h Source File</title>
+<title>FrankEngine: ENGINE/Transform.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('_transform_8h_source.html',''); initRe
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;stack&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;nlohmann/json.hpp&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;Vector3f.h&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_quaternion_8h.html">Quaternion.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="include_2assimp_2_quaternion_8h.html">Quaternion.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//forward declaration of gameobject</span></div>
@@ -121,9 +121,9 @@ $(document).ready(function(){initNavTree('_transform_8h_source.html',''); initRe
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="class_game_object.html">GameObject</a> *<a class="code" href="class_transform.html#a9f9d3f4fbf3cc44b5890e63c27ec3c2f">GetGameObject</a>();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#ab720c8e888790aa2a8f29ca4efc5c0cc">ToJson</a>(nlohmann::json &amp;j, std::string key); <span class="comment">// TODO take this out of transform. Transform is lower level and shouldnt know about json. should be other way around</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#ab720c8e888790aa2a8f29ca4efc5c0cc">ToJson</a>(<a class="code" href="classnlohmann_1_1basic__json.html">nlohmann::json</a> &amp;j, std::string key); <span class="comment">// TODO take this out of transform. Transform is lower level and shouldnt know about json. should be other way around</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a55390da2160d0cac9951401756e752b7">FromJson</a>(nlohmann::json &amp;j, std::string key); <span class="comment">// TODO take this out of transform. Transform is lower level and shouldnt know about json. should be other way around</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a55390da2160d0cac9951401756e752b7">FromJson</a>(<a class="code" href="classnlohmann_1_1basic__json.html">nlohmann::json</a> &amp;j, std::string key); <span class="comment">// TODO take this out of transform. Transform is lower level and shouldnt know about json. should be other way around</span></div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="class_transform.html">Transform</a> <a class="code" href="class_transform.html#ac84077749121c7c7192d3ffa47db49c9">GetWorldTransform</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
@@ -131,15 +131,15 @@ $(document).ready(function(){initNavTree('_transform_8h_source.html',''); initRe
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a8d4bc99e8363101097544e21ed942811">Translate</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z);</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a2ceadfddba05f90272f50c9f602821ad">RotateLocalV</a>(<span class="keywordtype">float</span> degrees, <span class="keyword">const</span> <a class="code" href="class_vector3f.html">Vector3f</a> &amp;axis);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a2ceadfddba05f90272f50c9f602821ad">RotateLocalV</a>(<span class="keywordtype">float</span> <a class="code" href="group__core__func__trigonometric.html#ga8faec9e303538065911ba8b3caf7326b">degrees</a>, <span class="keyword">const</span> <a class="code" href="class_vector3f.html">Vector3f</a> &amp;<a class="code" href="group__ext__quaternion__trigonometric.html#ga764254f10248b505e936e5309a88c23d">axis</a>);</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#aed7e13d408957e7b6d7dbaf7b79202be">RotateLocal</a>(<span class="keywordtype">float</span> degrees, <span class="keywordtype">float</span> axisX, <span class="keywordtype">float</span> axisY, <span class="keywordtype">float</span> axisZ);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#aed7e13d408957e7b6d7dbaf7b79202be">RotateLocal</a>(<span class="keywordtype">float</span> <a class="code" href="group__core__func__trigonometric.html#ga8faec9e303538065911ba8b3caf7326b">degrees</a>, <span class="keywordtype">float</span> axisX, <span class="keywordtype">float</span> axisY, <span class="keywordtype">float</span> axisZ);</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a44d3d4b98ed8a41d3830fee378d8b1a5">RotateLocalX</a>(<span class="keywordtype">float</span> degrees);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a44d3d4b98ed8a41d3830fee378d8b1a5">RotateLocalX</a>(<span class="keywordtype">float</span> <a class="code" href="group__core__func__trigonometric.html#ga8faec9e303538065911ba8b3caf7326b">degrees</a>);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a68a301d51019841dc93ca2f69836c424">RotateLocalY</a>(<span class="keywordtype">float</span> degrees);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a68a301d51019841dc93ca2f69836c424">RotateLocalY</a>(<span class="keywordtype">float</span> <a class="code" href="group__core__func__trigonometric.html#ga8faec9e303538065911ba8b3caf7326b">degrees</a>);</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a092f25418954cdba793f6d78fa3c14e3">RotateLocalZ</a>(<span class="keywordtype">float</span> degrees);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a092f25418954cdba793f6d78fa3c14e3">RotateLocalZ</a>(<span class="keywordtype">float</span> <a class="code" href="group__core__func__trigonometric.html#ga8faec9e303538065911ba8b3caf7326b">degrees</a>);</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a0a30b57dd24261f559604ea64e69e0f9">Scale</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z);</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
@@ -153,7 +153,7 @@ $(document).ready(function(){initNavTree('_transform_8h_source.html',''); initRe
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <a class="code" href="class_vector3f.html">Vector3f</a> <a class="code" href="class_transform.html#a4f0625e91bc27db4dc0270ab91d649e1">GetRelativeScale</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a4121c99f3f30ed799595d48d4b5927d8">SetRelativeOrientation</a>(<a class="code" href="class_quaternion.html">Quaternion</a> orientation);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_transform.html#a4121c99f3f30ed799595d48d4b5927d8">SetRelativeOrientation</a>(<a class="code" href="class_quaternion.html">Quaternion</a> <a class="code" href="group__gtx__rotate__vector.html#ga1a32fceb71962e6160e8af295c91930a">orientation</a>);</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="class_quaternion.html">Quaternion</a> &amp;<a class="code" href="class_transform.html#a480af94b677d5c77a8c4cf8aeb3e2d4d">GetRelativeOrientation</a>();</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
@@ -180,9 +180,8 @@ $(document).ready(function(){initNavTree('_transform_8h_source.html',''); initRe
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <a class="code" href="class_game_object.html">GameObject</a> *m_gameObject;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;};</div>
-<div class="ttc" id="a_quaternion_8h_html"><div class="ttname"><a href="_quaternion_8h.html">Quaternion.h</a></div></div>
 <div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdoc">An object as represented in the game world containing all information on the object itself and its co...</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00032">GameObject.h:33</a></div></div>
-<div class="ttc" id="aclass_quaternion_html"><div class="ttname"><a href="class_quaternion.html">Quaternion</a></div><div class="ttdef"><b>Definition:</b> <a href="_quaternion_8h_source.html#l00018">Quaternion.h:19</a></div></div>
+<div class="ttc" id="aclass_quaternion_html"><div class="ttname"><a href="class_quaternion.html">Quaternion</a></div><div class="ttdef"><b>Definition:</b> <a href="_e_n_g_i_n_e_2_quaternion_8h_source.html#l00018">Quaternion.h:19</a></div></div>
 <div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdoc">Stores data about an object or componet's location in space.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8h_source.html#l00021">Transform.h:22</a></div></div>
 <div class="ttc" id="aclass_transform_html_a07df84a85998644477081fc31d53e546"><div class="ttname"><a href="class_transform.html#a07df84a85998644477081fc31d53e546">Transform::GetRelativePosition</a></div><div class="ttdeci">Vector3f GetRelativePosition() const</div><div class="ttdoc">position accessor</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8cpp_source.html#l00136">Transform.cpp:136</a></div></div>
 <div class="ttc" id="aclass_transform_html_a092f25418954cdba793f6d78fa3c14e3"><div class="ttname"><a href="class_transform.html#a092f25418954cdba793f6d78fa3c14e3">Transform::RotateLocalZ</a></div><div class="ttdeci">void RotateLocalZ(float degrees)</div><div class="ttdoc">Rotates the transform around the Z axis.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8cpp_source.html#l00221">Transform.cpp:221</a></div></div>
@@ -213,6 +212,11 @@ $(document).ready(function(){initNavTree('_transform_8h_source.html',''); initRe
 <div class="ttc" id="aclass_transform_html_ae35917b7e99a724fc985d34bc7f74ffa"><div class="ttname"><a href="class_transform.html#ae35917b7e99a724fc985d34bc7f74ffa">Transform::TranslateV</a></div><div class="ttdeci">void TranslateV(const Vector3f &amp;v)</div><div class="ttdoc">Changes the transform's position by a relative amount lua can't handle overloaded function so V is ad...</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8cpp_source.html#l00191">Transform.cpp:191</a></div></div>
 <div class="ttc" id="aclass_transform_html_aed7e13d408957e7b6d7dbaf7b79202be"><div class="ttname"><a href="class_transform.html#aed7e13d408957e7b6d7dbaf7b79202be">Transform::RotateLocal</a></div><div class="ttdeci">void RotateLocal(float degrees, float axisX, float axisY, float axisZ)</div><div class="ttdoc">Rotates the transform around a given axis.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8cpp_source.html#l00206">Transform.cpp:206</a></div></div>
 <div class="ttc" id="aclass_vector3f_html"><div class="ttname"><a href="class_vector3f.html">Vector3f</a></div><div class="ttdoc">Stores information about a vector or point in three dimensions as floats.</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8h_source.html#l00013">Vector3f.h:14</a></div></div>
+<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> <a href="json_8hpp_source.html#l17577">json.hpp:17578</a></div></div>
+<div class="ttc" id="agroup__core__func__trigonometric_html_ga8faec9e303538065911ba8b3caf7326b"><div class="ttname"><a href="group__core__func__trigonometric.html#ga8faec9e303538065911ba8b3caf7326b">glm::degrees</a></div><div class="ttdeci">GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec&lt; L, T, Q &gt; degrees(vec&lt; L, T, Q &gt; const &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="func__trigonometric_8inl_source.html#l00032">func_trigonometric.inl:32</a></div></div>
+<div class="ttc" id="agroup__ext__quaternion__trigonometric_html_ga764254f10248b505e936e5309a88c23d"><div class="ttname"><a href="group__ext__quaternion__trigonometric.html#ga764254f10248b505e936e5309a88c23d">glm::axis</a></div><div class="ttdeci">GLM_FUNC_DECL vec&lt; 3, T, Q &gt; axis(qua&lt; T, Q &gt; const &amp;x)</div><div class="ttdef"><b>Definition:</b> <a href="quaternion__trigonometric_8inl_source.html#l00017">quaternion_trigonometric.inl:17</a></div></div>
+<div class="ttc" id="agroup__gtx__rotate__vector_html_ga1a32fceb71962e6160e8af295c91930a"><div class="ttname"><a href="group__gtx__rotate__vector.html#ga1a32fceb71962e6160e8af295c91930a">glm::orientation</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt; orientation(vec&lt; 3, T, Q &gt; const &amp;Normal, vec&lt; 3, T, Q &gt; const &amp;Up)</div><div class="ttdef"><b>Definition:</b> <a href="rotate__vector_8inl_source.html#l00173">rotate_vector.inl:174</a></div></div>
+<div class="ttc" id="ainclude_2assimp_2_quaternion_8h_html"><div class="ttname"><a href="include_2assimp_2_quaternion_8h.html">quaternion.h</a></div><div class="ttdoc">Quaternion structure, including operators when compiling in C++.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

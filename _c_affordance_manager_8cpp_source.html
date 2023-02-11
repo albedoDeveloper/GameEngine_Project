@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/CAffordanceManager.cpp Source File</title>
+<title>FrankEngine: ENGINE/CAffordanceManager.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -93,31 +93,25 @@ $(document).ready(function(){initNavTree('_c_affordance_manager_8cpp_source.html
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;CAffordanceManager.h&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_game_object_8h.html">GameObject.h</a>&quot;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_c_affordance_manager.html#ae5fe9879860e065a2d2138a3152699e5">    4</a></span>&#160;<a class="code" href="class_c_affordance_manager.html#ae5fe9879860e065a2d2138a3152699e5">CAffordanceManager::CAffordanceManager</a>(<a class="code" href="class_transform.html">Transform</a> *parent, <a class="code" href="class_game_object.html">GameObject</a> *parentObj) : <a class="code" href="class_c_component.html">CComponent</a>{ parent, parentObj }</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;CAffordanceManager::CAffordanceManager(<a class="code" href="class_transform.html">Transform</a> *parent, <a class="code" href="class_game_object.html">GameObject</a> *parentObj) : <a class="code" href="class_c_component.html">CComponent</a>{ parent, parentObj }</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;}</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_c_affordance_manager.html#ab3882c28cf7de7b2aac55544b060a43c">   10</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_affordance_manager.html#ab3882c28cf7de7b2aac55544b060a43c">CAffordanceManager::AddAffordance</a>(std::string name, std::string animation, std::string sound)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> CAffordanceManager::AddAffordance(std::string name, std::string animation, std::string sound)</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="class_c_affordance_manager.html#a8e221e400000efac8101b197a1fa9d56">listOfAffordances</a>.insert(std::pair&lt;std::string, Affordance&gt;(name, <a class="code" href="struct_affordance.html">Affordance</a>(name, <a class="code" href="class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9">GetParentObject</a>(), animation, sound)));</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    listOfAffordances.insert(std::pair&lt;std::string, Affordance&gt;(name, Affordance(name, GetParentObject(), animation, sound)));</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_c_affordance_manager.html#a96b789c33f4e4bdbcecb4e69a04c59a3">   15</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_affordance_manager.html#a96b789c33f4e4bdbcecb4e69a04c59a3">CAffordanceManager::AddEmotion</a>(std::string affordanceName, std::string name, <span class="keywordtype">float</span> level)</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> CAffordanceManager::AddEmotion(std::string affordanceName, std::string name, <span class="keywordtype">float</span> level)</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="class_c_affordance_manager.html#a8e221e400000efac8101b197a1fa9d56">listOfAffordances</a>.at(affordanceName).EmotionEffectors.insert(std::pair&lt;std::string, float&gt;(name, level));</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    listOfAffordances.at(affordanceName).EmotionEffectors.insert(std::pair&lt;std::string, float&gt;(name, level));</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
 <div class="ttc" id="a_game_object_8h_html"><div class="ttname"><a href="_game_object_8h.html">GameObject.h</a></div></div>
-<div class="ttc" id="aclass_c_affordance_manager_html_a8e221e400000efac8101b197a1fa9d56"><div class="ttname"><a href="class_c_affordance_manager.html#a8e221e400000efac8101b197a1fa9d56">CAffordanceManager::listOfAffordances</a></div><div class="ttdeci">std::map&lt; std::string, Affordance &gt; listOfAffordances</div><div class="ttdoc">contains all the affordances an object has</div><div class="ttdef"><b>Definition:</b> <a href="_c_affordance_manager_8h_source.html#l00061">CAffordanceManager.h:61</a></div></div>
-<div class="ttc" id="aclass_c_affordance_manager_html_a96b789c33f4e4bdbcecb4e69a04c59a3"><div class="ttname"><a href="class_c_affordance_manager.html#a96b789c33f4e4bdbcecb4e69a04c59a3">CAffordanceManager::AddEmotion</a></div><div class="ttdeci">void AddEmotion(std::string affordanceName, std::string name, float level)</div><div class="ttdoc">Adds an emotion that an affordance on the object will effect (for example, in general,...</div><div class="ttdef"><b>Definition:</b> <a href="_c_affordance_manager_8cpp_source.html#l00015">CAffordanceManager.cpp:15</a></div></div>
-<div class="ttc" id="aclass_c_affordance_manager_html_ab3882c28cf7de7b2aac55544b060a43c"><div class="ttname"><a href="class_c_affordance_manager.html#ab3882c28cf7de7b2aac55544b060a43c">CAffordanceManager::AddAffordance</a></div><div class="ttdeci">void AddAffordance(std::string name, std::string animation, std::string sound)</div><div class="ttdoc">Adds an affordance to the object so that an agent can interact with it.</div><div class="ttdef"><b>Definition:</b> <a href="_c_affordance_manager_8cpp_source.html#l00010">CAffordanceManager.cpp:10</a></div></div>
-<div class="ttc" id="aclass_c_affordance_manager_html_ae5fe9879860e065a2d2138a3152699e5"><div class="ttname"><a href="class_c_affordance_manager.html#ae5fe9879860e065a2d2138a3152699e5">CAffordanceManager::CAffordanceManager</a></div><div class="ttdeci">CAffordanceManager(Transform *parent, GameObject *parentObj)</div><div class="ttdoc">Basic constructor for a component.</div><div class="ttdef"><b>Definition:</b> <a href="_c_affordance_manager_8cpp_source.html#l00004">CAffordanceManager.cpp:4</a></div></div>
 <div class="ttc" id="aclass_c_component_html"><div class="ttname"><a href="class_c_component.html">CComponent</a></div><div class="ttdoc">A component of a game object with its own assets and/or behaviour.</div><div class="ttdef"><b>Definition:</b> <a href="_c_component_8h_source.html#l00018">CComponent.h:19</a></div></div>
-<div class="ttc" id="aclass_c_component_html_a460c951a4f15f3d4af3cb7216ab838d9"><div class="ttname"><a href="class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9">CComponent::GetParentObject</a></div><div class="ttdeci">GameObject * GetParentObject()</div><div class="ttdoc">parent object accessor</div><div class="ttdef"><b>Definition:</b> <a href="_c_component_8cpp_source.html#l00022">CComponent.cpp:22</a></div></div>
 <div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdoc">An object as represented in the game world containing all information on the object itself and its co...</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00032">GameObject.h:33</a></div></div>
 <div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdoc">Stores data about an object or componet's location in space.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8h_source.html#l00021">Transform.h:22</a></div></div>
-<div class="ttc" id="astruct_affordance_html"><div class="ttname"><a href="struct_affordance.html">Affordance</a></div><div class="ttdef"><b>Definition:</b> <a href="_c_affordance_manager_8h_source.html#l00009">CAffordanceManager.h:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

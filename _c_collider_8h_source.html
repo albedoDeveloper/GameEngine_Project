@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/CCollider.h Source File</title>
+<title>FrankEngine: ENGINE/CCollider.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -118,8 +118,8 @@ $(document).ready(function(){initNavTree('_c_collider_8h_source.html',''); initR
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_collider.html#ab8fd6544bb2eb98523b7f27e60ac9e03">Start</a>();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_collider.html#a858c10f0e9fb3a6e73bd00fcfcdb99f1">Update</a>();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_collider.html#ae4524c7cc0069673c49d73ff16a1b68f">Save</a>(nlohmann::json &amp;j);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_collider.html#ab69c5c7345b0d7da17393d5db4e10ae2">Load</a>(nlohmann::json &amp;j);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_collider.html#ae4524c7cc0069673c49d73ff16a1b68f">Save</a>(<a class="code" href="classnlohmann_1_1basic__json.html">nlohmann::json</a> &amp;j);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_collider.html#ab69c5c7345b0d7da17393d5db4e10ae2">Load</a>(<a class="code" href="classnlohmann_1_1basic__json.html">nlohmann::json</a> &amp;j);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_c_collider.html#aafb37d9330706fa8ed0251a06ee6a7ab">DrawToImGui</a>();</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('_c_collider_8h_source.html',''); initR
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_c_collider.html#ab8e09c57949973518dc12f35db961d5e">EnableDisable</a>(<span class="keywordtype">bool</span> activeStatus);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_c_collider.html#aab61685026901f57ea82253d46b7b8aa">   87</a></span>&#160;    glm::vec3 <a class="code" href="class_c_collider.html#aab61685026901f57ea82253d46b7b8aa">m_offset</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_c_collider.html#aab61685026901f57ea82253d46b7b8aa">   87</a></span>&#160;    <a class="code" href="group__core__vector.html#ga4320b87e41013b7e875f845f439fc498">glm::vec3</a> <a class="code" href="class_c_collider.html#aab61685026901f57ea82253d46b7b8aa">m_offset</a>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
 <div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_c_collider.html#a14e94623cf3dccc1117760b547e22a45">   90</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_c_collider.html#a14e94623cf3dccc1117760b547e22a45">m_isRegistered</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
@@ -203,6 +203,8 @@ $(document).ready(function(){initNavTree('_c_collider_8h_source.html',''); initR
 <div class="ttc" id="aclass_collision_manager_html"><div class="ttname"><a href="class_collision_manager.html">CollisionManager</a></div><div class="ttdoc">A singleton that manages collisions between objects.</div><div class="ttdef"><b>Definition:</b> <a href="_collision_manager_8h_source.html#l00150">CollisionManager.h:151</a></div></div>
 <div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdoc">An object as represented in the game world containing all information on the object itself and its co...</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00032">GameObject.h:33</a></div></div>
 <div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdoc">Stores data about an object or componet's location in space.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8h_source.html#l00021">Transform.h:22</a></div></div>
+<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> <a href="json_8hpp_source.html#l17577">json.hpp:17578</a></div></div>
+<div class="ttc" id="agroup__core__vector_html_ga4320b87e41013b7e875f845f439fc498"><div class="ttname"><a href="group__core__vector.html#ga4320b87e41013b7e875f845f439fc498">glm::vec3</a></div><div class="ttdeci">vec&lt; 3, float, defaultp &gt; vec3</div><div class="ttdef"><b>Definition:</b> <a href="vector__float3_8hpp_source.html#l00015">vector_float3.hpp:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

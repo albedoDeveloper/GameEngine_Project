@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/CComponent.cpp Source File</title>
+<title>FrankEngine: ENGINE/CComponent.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -121,13 +121,13 @@ $(document).ready(function(){initNavTree('_c_component_8cpp_source.html',''); in
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_c_component.html#a1e4f3217b7e3357bbfff21dc7ff62389">m_isActive</a> = isActive;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_c_component.html#acd3219b90aa85de5d026d7d12bff7981">   32</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_component.html#acd3219b90aa85de5d026d7d12bff7981">CComponent::Save</a>(nlohmann::json &amp;j)</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_c_component.html#acd3219b90aa85de5d026d7d12bff7981">   32</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_component.html#acd3219b90aa85de5d026d7d12bff7981">CComponent::Save</a>(<a class="code" href="classnlohmann_1_1basic__json.html">nlohmann::json</a> &amp;j)</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_game_object.html">GameObject</a> *g = <a class="code" href="class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9">GetParentObject</a>();</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    j[g-&gt;GetFactoryKey()][<span class="stringliteral">&quot;Components&quot;</span>][<span class="stringliteral">&quot;CComponent&quot;</span>] = <span class="stringliteral">&quot;CComponent&quot;</span>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_c_component.html#a11335298284532e2684a6a73a45f7c3f">   38</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_component.html#a11335298284532e2684a6a73a45f7c3f">CComponent::Load</a>(nlohmann::json &amp;j)</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_c_component.html#a11335298284532e2684a6a73a45f7c3f">   38</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_c_component.html#a11335298284532e2684a6a73a45f7c3f">CComponent::Load</a>(<a class="code" href="classnlohmann_1_1basic__json.html">nlohmann::json</a> &amp;j)</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_game_object.html">GameObject</a> *g = <a class="code" href="class_c_component.html#a460c951a4f15f3d4af3cb7216ab838d9">GetParentObject</a>();</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
@@ -152,6 +152,7 @@ $(document).ready(function(){initNavTree('_c_component_8cpp_source.html',''); in
 <div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdoc">An object as represented in the game world containing all information on the object itself and its co...</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00032">GameObject.h:33</a></div></div>
 <div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdoc">Stores data about an object or componet's location in space.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8h_source.html#l00021">Transform.h:22</a></div></div>
 <div class="ttc" id="aclass_transform_html_ae2359e0cb6cd59e621cd50f0cef37e36"><div class="ttname"><a href="class_transform.html#ae2359e0cb6cd59e621cd50f0cef37e36">Transform::SetGameObject</a></div><div class="ttdeci">void SetGameObject(GameObject *newGameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8cpp_source.html#l00041">Transform.cpp:41</a></div></div>
+<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> <a href="json_8hpp_source.html#l17577">json.hpp:17578</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

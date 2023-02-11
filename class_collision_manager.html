@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: CollisionManager Class Reference</title>
+<title>FrankEngine: CollisionManager Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -103,8 +103,12 @@ $(document).ready(function(){initNavTree('class_collision_manager.html',''); ini
 Inheritance diagram for CollisionManager:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="class_collision_manager.png" alt=""/>
- </div></div>
+  <img src="class_collision_manager.png" usemap="#CollisionManager_map" alt=""/>
+  <map id="CollisionManager_map" name="CollisionManager_map">
+<area href="structbt_collision_world_1_1_contact_result_callback.html" title="ContactResultCallback is used to report contact points." alt="btCollisionWorld::ContactResultCallback" shape="rect" coords="0,0,235,24"/>
+<area href="structbt_collision_world_1_1_ray_result_callback.html" title="RayResultCallback is used to report new raycast results." alt="btCollisionWorld::RayResultCallback" shape="rect" coords="245,0,480,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -120,9 +124,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a5514fadfab109b6a181a5fffafcb3e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b39f3c858ed583f0f06dae719b0b56e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_collider.html">CCollider</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collision_manager.html#a9b39f3c858ed583f0f06dae719b0b56e">GetCColliderRegistration</a> (const btCollisionObject *body)</td></tr>
 <tr class="separator:a9b39f3c858ed583f0f06dae719b0b56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd92cb9a252410ea7c6ef3e7fee30bae"><td class="memItemLeft" align="right" valign="top">btCollisionWorld &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collision_manager.html#abd92cb9a252410ea7c6ef3e7fee30bae">GetCollisionWorld</a> ()</td></tr>
+<tr class="memitem:abd92cb9a252410ea7c6ef3e7fee30bae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbt_collision_world.html">btCollisionWorld</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collision_manager.html#abd92cb9a252410ea7c6ef3e7fee30bae">GetCollisionWorld</a> ()</td></tr>
 <tr class="separator:abd92cb9a252410ea7c6ef3e7fee30bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4845e066a91189c28fcfc072840bd1d6"><td class="memItemLeft" align="right" valign="top">virtual btScalar&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collision_manager.html#a4845e066a91189c28fcfc072840bd1d6">addSingleResult</a> (btManifoldPoint &amp;cp, const btCollisionObjectWrapper *colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper *colObj1Wrap, int partId1, int index1)</td></tr>
+<tr class="memitem:a4845e066a91189c28fcfc072840bd1d6"><td class="memItemLeft" align="right" valign="top">virtual btScalar&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collision_manager.html#a4845e066a91189c28fcfc072840bd1d6">addSingleResult</a> (<a class="el" href="classbt_manifold_point.html">btManifoldPoint</a> &amp;cp, const btCollisionObjectWrapper *colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper *colObj1Wrap, int partId1, int index1)</td></tr>
 <tr class="separator:a4845e066a91189c28fcfc072840bd1d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acec73e8b21bed4ec13c00ca12dfcdfb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collision_manager.html#acec73e8b21bed4ec13c00ca12dfcdfb6">DrawDebug</a> ()</td></tr>
 <tr class="separator:acec73e8b21bed4ec13c00ca12dfcdfb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,6 +224,8 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
+<p>Implements <a class="el" href="structbt_collision_world_1_1_ray_result_callback.html">btCollisionWorld::RayResultCallback</a>.</p>
+
 <p class="definition">Definition at line <a class="el" href="_collision_manager_8cpp_source.html#l00125">125</a> of file <a class="el" href="_collision_manager_8cpp_source.html">CollisionManager.cpp</a>.</p>
 
 </div>
@@ -236,7 +242,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">btScalar CollisionManager::addSingleResult </td>
           <td>(</td>
-          <td class="paramtype">btManifoldPoint &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classbt_manifold_point.html">btManifoldPoint</a> &amp;&#160;</td>
           <td class="paramname"><em>cp</em>, </td>
         </tr>
         <tr>
@@ -288,6 +294,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Overidden callback from bullet physics. Simply sets collision flag to true for this frame. </p>
+
+<p>Implements <a class="el" href="structbt_collision_world_1_1_contact_result_callback.html">btCollisionWorld::ContactResultCallback</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_collision_manager_8cpp_source.html#l00049">49</a> of file <a class="el" href="_collision_manager_8cpp_source.html">CollisionManager.cpp</a>.</p>
 
@@ -368,7 +376,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">btCollisionWorld &amp; CollisionManager::GetCollisionWorld </td>
+          <td class="memname"><a class="el" href="classbt_collision_world.html">btCollisionWorld</a> &amp; CollisionManager::GetCollisionWorld </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

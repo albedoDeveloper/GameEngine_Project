@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: Main Page</title>
+<title>FrankEngine: Bullet Documentation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -85,11 +85,40 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">ICT398 - FrankEngine Documentation</div>  </div>
+<div class="title">Bullet Documentation </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
+Introduction</h1>
+<p>Bullet is a Collision Detection and Rigid Body Dynamics Library. The Library is Open Source and free for commercial use, under the ZLib license ( <a href="http://opensource.org/licenses/zlib-license.php">http://opensource.org/licenses/zlib-license.php</a> ).</p>
+<p>The main documentation is Bullet_User_Manual.pdf, included in the source code distribution. There is the Physics Forum for feedback and general Collision Detection and Physics discussions. Please visit <a href="http://www.bulletphysics.org">http://www.bulletphysics.org</a></p>
+<h1><a class="anchor" id="install_sec"></a>
+Installation</h1>
+<h2><a class="anchor" id="step1"></a>
+Step 1: Download</h2>
+<p>You can download the Bullet Physics Library from the github repository: <a href="https://github.com/bulletphysics/bullet3/releases">https://github.com/bulletphysics/bullet3/releases</a></p>
+<h2><a class="anchor" id="step2"></a>
+Step 2: Building</h2>
+<p>Bullet has multiple build systems, including premake, cmake and autotools. Premake and cmake support all platforms. Premake is included in the Bullet/build folder for Windows, Mac OSX and Linux. Under Windows you can click on Bullet/build/vs2010.bat to create Microsoft Visual Studio projects. On Mac OSX and Linux you can open a terminal and generate Makefile, codeblocks or Xcode4 projects: cd Bullet/build ./premake4_osx gmake or ./premake4_linux gmake or ./premake4_linux64 gmake or (for Mac) ./premake4_osx xcode4 cd Bullet/build/gmake make</p>
+<p>An alternative to premake is cmake. You can download cmake from <a href="http://www.cmake.org">http://www.cmake.org</a> cmake can autogenerate projectfiles for Microsoft Visual Studio, Apple Xcode, KDevelop and Unix Makefiles. The easiest is to run the CMake cmake-gui graphical user interface and choose the options and generate projectfiles. You can also use cmake in the command-line. Here are some examples for various platforms: cmake . -G "Visual Studio 9 2008" cmake . -G Xcode cmake . -G "Unix Makefiles" Although cmake is recommended, you can also use autotools for UNIX: ./autogen.sh ./configure to create a Makefile and then run make.</p>
+<h2><a class="anchor" id="step3"></a>
+Step 3: Testing demos</h2>
+<p>Try to run and experiment with BasicDemo executable as a starting point. Bullet can be used in several ways, as Full Rigid Body simulation, as Collision Detector Library or Low Level / Snippets like the GJK Closest Point calculation. The Dependencies can be seen in this documentation under Directories</p>
+<h2><a class="anchor" id="step4"></a>
+Step 4: Integrating in your application, full Rigid Body and Soft Body simulation</h2>
+<p>Check out BasicDemo how to create a <a class="el" href="classbt_dynamics_world.html" title="The btDynamicsWorld is the interface class for several dynamics implementation, basic,...">btDynamicsWorld</a>, <a class="el" href="classbt_rigid_body.html">btRigidBody</a> and btCollisionShape, Stepping the simulation and synchronizing your graphics object transform. Check out SoftDemo how to use soft body dynamics, using btSoftRigidDynamicsWorld. </p>
+<h2><a class="anchor" id="step5"></a>
+Step 5 : Integrate the Collision Detection Library (without Dynamics and other Extras)</h2>
+<p>Bullet Collision Detection can also be used without the Dynamics/Extras. Check out <a class="el" href="classbt_collision_world.html" title="CollisionWorld is interface and container for the collision detection.">btCollisionWorld</a> and btCollisionObject, and the CollisionInterfaceDemo. </p>
+<h2><a class="anchor" id="step6"></a>
+Step 6 : Use Snippets like the GJK Closest Point calculation.</h2>
+<p>Bullet has been designed in a modular way keeping dependencies to a minimum. The ConvexHullDistance demo demonstrates direct use of <a class="el" href="classbt_gjk_pair_detector.html" title="btGjkPairDetector uses GJK to implement the btDiscreteCollisionDetectorInterface">btGjkPairDetector</a>.</p>
+<h1><a class="anchor" id="copyright"></a>
+Copyright</h1>
+<p>For up-to-data information and copyright and contributors list check out the Bullet_User_Manual.pdf </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

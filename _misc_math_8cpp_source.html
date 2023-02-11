@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/MiscMath.cpp Source File</title>
+<title>FrankEngine: ENGINE/MiscMath.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -95,14 +95,14 @@ $(document).ready(function(){initNavTree('_misc_math_8cpp_source.html',''); init
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="class_matrix4f.html#a5333ad52717a28c5234329908023c296">    4</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="_misc_math_8h.html#a3ad62eba426ab23f1556705da1fb3dcb">Decompose</a>(<span class="keyword">const</span> <a class="code" href="class_matrix4f.html">Matrix4f</a> &amp;m, <a class="code" href="class_vector3f.html">Vector3f</a> &amp;scaleOut, <a class="code" href="class_quaternion.html">Quaternion</a> &amp;rotationOut, <a class="code" href="class_vector3f.html">Vector3f</a> &amp;positionOut)</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    glm::mat4 mat(m.m_mat);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    glm::vec3 scale(1.f, 1.f, 1.f);</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    glm::quat rot(1.f, 0.f, 0.f, 0.f);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    glm::vec3 pos(0.f, 0.f, 0.f);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    glm::fvec3 temp1(0.f, 0.f, 0.f);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    glm::vec4 temp2(0.f, 0.f, 0.f, 0.f);</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <a class="code" href="group__core__matrix.html#gac54cbc572f1349a255fe476ca6a42a7b">glm::mat4</a> mat(m.m_mat);</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="group__core__vector.html#ga4320b87e41013b7e875f845f439fc498">glm::vec3</a> <a class="code" href="group__ext__matrix__transform.html#ga05051adbee603fb3c5095d8cf5cc229b">scale</a>(1.f, 1.f, 1.f);</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="group__ext__quaternion__float.html#ga8f3c5f30982cc471ce0ac3eb737113b5">glm::quat</a> rot(1.f, 0.f, 0.f, 0.f);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="group__core__vector.html#ga4320b87e41013b7e875f845f439fc498">glm::vec3</a> pos(0.f, 0.f, 0.f);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="group__gtc__type__precision.html#gaf7cdc93898ec0c11f1cff54bd72d022b">glm::fvec3</a> temp1(0.f, 0.f, 0.f);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="group__core__vector.html#ga233f0e8f1aecf686e67c5c39316c4da8">glm::vec4</a> temp2(0.f, 0.f, 0.f, 0.f);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    glm::decompose(</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="group__gtx__matrix__decompose.html#gac0e342656ba09a9bc97c57182ba73124">glm::decompose</a>(</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        mat,</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        scale,</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        rot,</div>
@@ -140,24 +140,24 @@ $(document).ready(function(){initNavTree('_misc_math_8cpp_source.html',''); init
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> glm::degrees(rads);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="_misc_math_8h.html#adf3ccb2c3892dd542a3ba8d45614434f">   51</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="_misc_math_8h.html#adf3ccb2c3892dd542a3ba8d45614434f">DegreesToRad</a>(<span class="keywordtype">float</span> degrees)</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="_misc_math_8h.html#adf3ccb2c3892dd542a3ba8d45614434f">   51</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="_misc_math_8h.html#adf3ccb2c3892dd542a3ba8d45614434f">DegreesToRad</a>(<span class="keywordtype">float</span> <a class="code" href="group__core__func__trigonometric.html#ga8faec9e303538065911ba8b3caf7326b">degrees</a>)</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> glm::radians(degrees);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> glm::radians(<a class="code" href="group__core__func__trigonometric.html#ga8faec9e303538065911ba8b3caf7326b">degrees</a>);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_matrix4f.html#adab621185cf6bcd31d66155a90eb1f0e">   56</a></span>&#160;<a class="code" href="class_matrix4f.html">Matrix4f</a> <a class="code" href="_misc_math_8h.html#adab621185cf6bcd31d66155a90eb1f0e">Perspective</a>(<span class="keywordtype">float</span> fovyDegrees, <span class="keywordtype">float</span> aspect, <span class="keywordtype">float</span> near, <span class="keywordtype">float</span> far)</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> glm::perspective(glm::radians(fovyDegrees), aspect, near, far);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="group__ext__matrix__clip__space.html#ga747c8cf99458663dd7ad1bb3a2f07787">glm::perspective</a>(glm::radians(fovyDegrees), aspect, near, far);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_matrix4f.html#a84fdff132c6f3a334dbb0146e255b072">   61</a></span>&#160;<a class="code" href="class_matrix4f.html">Matrix4f</a> <a class="code" href="_misc_math_8h.html#a7b04fcc017df83112016476205d97654">LookAt</a>(<span class="keyword">const</span> <a class="code" href="class_vector3f.html">Vector3f</a> &amp;eye, <span class="keyword">const</span> <a class="code" href="class_vector3f.html">Vector3f</a> &amp;centre, <span class="keyword">const</span> <a class="code" href="class_vector3f.html">Vector3f</a> &amp;up)</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> glm::lookAt(eye.m_vec, centre.m_vec, up.m_vec);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="group__ext__matrix__transform.html#gaa64aa951a0e99136bba9008d2b59c78e">glm::lookAt</a>(eye.m_vec, centre.m_vec, up.m_vec);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<a class="code" href="class_matrix4f.html">Matrix4f</a> Ortho(<span class="keywordtype">float</span> left, <span class="keywordtype">float</span> right, <span class="keywordtype">float</span> bottom, <span class="keywordtype">float</span> top, <span class="keywordtype">float</span> near, <span class="keywordtype">float</span> far)</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> glm::ortho(left, right, bottom, top, near, far);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="group__ext__matrix__clip__space.html#gae5b6b40ed882cd56cd7cb97701909c06">glm::ortho</a>(left, right, bottom, top, near, far);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<a class="code" href="class_vector3f.html">Vector3f</a> operator/(<span class="keyword">const</span> <a class="code" href="class_vector3f.html">Vector3f</a> &amp;lhs, <span class="keyword">const</span> <a class="code" href="class_matrix3f.html">Matrix3f</a> &amp;rhs)</div>
@@ -177,7 +177,7 @@ $(document).ready(function(){initNavTree('_misc_math_8cpp_source.html',''); init
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<a class="code" href="class_vector3f.html">Vector3f</a> operator*(<span class="keyword">const</span> <a class="code" href="class_vector3f.html">Vector3f</a> &amp;lhs, <span class="keyword">const</span> <a class="code" href="class_vector3f.html">Vector3f</a> &amp;rhs)</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> glm::cross(lhs.m_vec, rhs.m_vec);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="group__core__func__geometric.html#gaeeec0794212fe84fc9d261de067c9587">glm::cross</a>(lhs.m_vec, rhs.m_vec);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<a class="code" href="class_vector3f.html">Vector3f</a> operator/(<span class="keyword">const</span> <a class="code" href="class_vector3f.html">Vector3f</a> &amp;lhs, <span class="keywordtype">float</span> rhs)</div>
@@ -225,7 +225,7 @@ $(document).ready(function(){initNavTree('_misc_math_8cpp_source.html',''); init
 <div class="ttc" id="a_misc_math_8h_html_afdb05475222acdb4ac106d48dbac2db5"><div class="ttname"><a href="_misc_math_8h.html#afdb05475222acdb4ac106d48dbac2db5">Lerp</a></div><div class="ttdeci">float Lerp(float start, float end, float interpolant)</div><div class="ttdef"><b>Definition:</b> <a href="_misc_math_8cpp_source.html#l00034">MiscMath.cpp:34</a></div></div>
 <div class="ttc" id="aclass_matrix3f_html"><div class="ttname"><a href="class_matrix3f.html">Matrix3f</a></div><div class="ttdef"><b>Definition:</b> <a href="_matrix3f_8h_source.html#l00019">Matrix3f.h:20</a></div></div>
 <div class="ttc" id="aclass_matrix4f_html"><div class="ttname"><a href="class_matrix4f.html">Matrix4f</a></div><div class="ttdef"><b>Definition:</b> <a href="_matrix4f_8h_source.html#l00018">Matrix4f.h:19</a></div></div>
-<div class="ttc" id="aclass_quaternion_html"><div class="ttname"><a href="class_quaternion.html">Quaternion</a></div><div class="ttdef"><b>Definition:</b> <a href="_quaternion_8h_source.html#l00018">Quaternion.h:19</a></div></div>
+<div class="ttc" id="aclass_quaternion_html"><div class="ttname"><a href="class_quaternion.html">Quaternion</a></div><div class="ttdef"><b>Definition:</b> <a href="_e_n_g_i_n_e_2_quaternion_8h_source.html#l00018">Quaternion.h:19</a></div></div>
 <div class="ttc" id="aclass_quaternion_html_a1bfc1782be552d9163706f772faab415"><div class="ttname"><a href="class_quaternion.html#a1bfc1782be552d9163706f772faab415">Quaternion::SetX</a></div><div class="ttdeci">void SetX(float x)</div><div class="ttdoc">x value mutator</div><div class="ttdef"><b>Definition:</b> <a href="_quaternion_8cpp_source.html#l00080">Quaternion.cpp:80</a></div></div>
 <div class="ttc" id="aclass_quaternion_html_a1ebf115669b6eea34055c9ceabbab3c7"><div class="ttname"><a href="class_quaternion.html#a1ebf115669b6eea34055c9ceabbab3c7">Quaternion::SetW</a></div><div class="ttdeci">void SetW(float w)</div><div class="ttdoc">w value mutator</div><div class="ttdef"><b>Definition:</b> <a href="_quaternion_8cpp_source.html#l00095">Quaternion.cpp:95</a></div></div>
 <div class="ttc" id="aclass_quaternion_html_a68030fa2014f3d281ac8116722954661"><div class="ttname"><a href="class_quaternion.html#a68030fa2014f3d281ac8116722954661">Quaternion::SetZ</a></div><div class="ttdeci">void SetZ(float z)</div><div class="ttdoc">z value mutator</div><div class="ttdef"><b>Definition:</b> <a href="_quaternion_8cpp_source.html#l00090">Quaternion.cpp:90</a></div></div>
@@ -234,6 +234,18 @@ $(document).ready(function(){initNavTree('_misc_math_8cpp_source.html',''); init
 <div class="ttc" id="aclass_vector3f_html_a260bcd7eb6bebb43f79a29421d254f2b"><div class="ttname"><a href="class_vector3f.html#a260bcd7eb6bebb43f79a29421d254f2b">Vector3f::SetY</a></div><div class="ttdeci">void SetY(float y)</div><div class="ttdoc">y value mutator</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8cpp_source.html#l00051">Vector3f.cpp:51</a></div></div>
 <div class="ttc" id="aclass_vector3f_html_aaa6791fa256647707bcf41017f498bcf"><div class="ttname"><a href="class_vector3f.html#aaa6791fa256647707bcf41017f498bcf">Vector3f::SetX</a></div><div class="ttdeci">void SetX(float x)</div><div class="ttdoc">x value mutator</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8cpp_source.html#l00046">Vector3f.cpp:46</a></div></div>
 <div class="ttc" id="aclass_vector3f_html_afb24d616af2e75cce9af632c870141ac"><div class="ttname"><a href="class_vector3f.html#afb24d616af2e75cce9af632c870141ac">Vector3f::SetZ</a></div><div class="ttdeci">void SetZ(float z)</div><div class="ttdoc">z value mutator</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8cpp_source.html#l00056">Vector3f.cpp:56</a></div></div>
+<div class="ttc" id="agroup__core__func__geometric_html_gaeeec0794212fe84fc9d261de067c9587"><div class="ttname"><a href="group__core__func__geometric.html#gaeeec0794212fe84fc9d261de067c9587">glm::cross</a></div><div class="ttdeci">GLM_FUNC_QUALIFIER vec&lt; 3, T, Q &gt; cross(vec&lt; 3, T, Q &gt; const &amp;x, vec&lt; 3, T, Q &gt; const &amp;y)</div><div class="ttdef"><b>Definition:</b> <a href="func__geometric_8inl_source.html#l00175">func_geometric.inl:175</a></div></div>
+<div class="ttc" id="agroup__core__func__trigonometric_html_ga8faec9e303538065911ba8b3caf7326b"><div class="ttname"><a href="group__core__func__trigonometric.html#ga8faec9e303538065911ba8b3caf7326b">glm::degrees</a></div><div class="ttdeci">GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec&lt; L, T, Q &gt; degrees(vec&lt; L, T, Q &gt; const &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="func__trigonometric_8inl_source.html#l00032">func_trigonometric.inl:32</a></div></div>
+<div class="ttc" id="agroup__core__matrix_html_gac54cbc572f1349a255fe476ca6a42a7b"><div class="ttname"><a href="group__core__matrix.html#gac54cbc572f1349a255fe476ca6a42a7b">glm::mat4</a></div><div class="ttdeci">mat&lt; 4, 4, float, defaultp &gt; mat4</div><div class="ttdef"><b>Definition:</b> <a href="matrix__float4x4_8hpp_source.html#l00020">matrix_float4x4.hpp:20</a></div></div>
+<div class="ttc" id="agroup__core__vector_html_ga233f0e8f1aecf686e67c5c39316c4da8"><div class="ttname"><a href="group__core__vector.html#ga233f0e8f1aecf686e67c5c39316c4da8">glm::vec4</a></div><div class="ttdeci">vec&lt; 4, float, defaultp &gt; vec4</div><div class="ttdef"><b>Definition:</b> <a href="vector__float4_8hpp_source.html#l00015">vector_float4.hpp:15</a></div></div>
+<div class="ttc" id="agroup__core__vector_html_ga4320b87e41013b7e875f845f439fc498"><div class="ttname"><a href="group__core__vector.html#ga4320b87e41013b7e875f845f439fc498">glm::vec3</a></div><div class="ttdeci">vec&lt; 3, float, defaultp &gt; vec3</div><div class="ttdef"><b>Definition:</b> <a href="vector__float3_8hpp_source.html#l00015">vector_float3.hpp:15</a></div></div>
+<div class="ttc" id="agroup__ext__matrix__clip__space_html_ga747c8cf99458663dd7ad1bb3a2f07787"><div class="ttname"><a href="group__ext__matrix__clip__space.html#ga747c8cf99458663dd7ad1bb3a2f07787">glm::perspective</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, defaultp &gt; perspective(T fovy, T aspect, T near, T far)</div><div class="ttdef"><b>Definition:</b> <a href="matrix__clip__space_8inl_source.html#l00338">matrix_clip_space.inl:338</a></div></div>
+<div class="ttc" id="agroup__ext__matrix__clip__space_html_gae5b6b40ed882cd56cd7cb97701909c06"><div class="ttname"><a href="group__ext__matrix__clip__space.html#gae5b6b40ed882cd56cd7cb97701909c06">glm::ortho</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, defaultp &gt; ortho(T left, T right, T bottom, T top)</div><div class="ttdef"><b>Definition:</b> <a href="matrix__clip__space_8inl_source.html#l00004">matrix_clip_space.inl:4</a></div></div>
+<div class="ttc" id="agroup__ext__matrix__transform_html_ga05051adbee603fb3c5095d8cf5cc229b"><div class="ttname"><a href="group__ext__matrix__transform.html#ga05051adbee603fb3c5095d8cf5cc229b">glm::scale</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt; scale(mat&lt; 4, 4, T, Q &gt; const &amp;m, vec&lt; 3, T, Q &gt; const &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="ext_2matrix__transform_8inl_source.html#l00078">matrix_transform.inl:78</a></div></div>
+<div class="ttc" id="agroup__ext__matrix__transform_html_gaa64aa951a0e99136bba9008d2b59c78e"><div class="ttname"><a href="group__ext__matrix__transform.html#gaa64aa951a0e99136bba9008d2b59c78e">glm::lookAt</a></div><div class="ttdeci">GLM_FUNC_DECL mat&lt; 4, 4, T, Q &gt; lookAt(vec&lt; 3, T, Q &gt; const &amp;eye, vec&lt; 3, T, Q &gt; const &amp;center, vec&lt; 3, T, Q &gt; const &amp;up)</div><div class="ttdef"><b>Definition:</b> <a href="ext_2matrix__transform_8inl_source.html#l00145">matrix_transform.inl:145</a></div></div>
+<div class="ttc" id="agroup__ext__quaternion__float_html_ga8f3c5f30982cc471ce0ac3eb737113b5"><div class="ttname"><a href="group__ext__quaternion__float.html#ga8f3c5f30982cc471ce0ac3eb737113b5">glm::quat</a></div><div class="ttdeci">qua&lt; float, defaultp &gt; quat</div><div class="ttdoc">Quaternion of single-precision floating-point numbers.</div><div class="ttdef"><b>Definition:</b> <a href="quaternion__float_8hpp_source.html#l00035">quaternion_float.hpp:35</a></div></div>
+<div class="ttc" id="agroup__gtc__type__precision_html_gaf7cdc93898ec0c11f1cff54bd72d022b"><div class="ttname"><a href="group__gtc__type__precision.html#gaf7cdc93898ec0c11f1cff54bd72d022b">glm::fvec3</a></div><div class="ttdeci">vec&lt; 3, f32, defaultp &gt; fvec3</div><div class="ttdef"><b>Definition:</b> <a href="fwd_8hpp_source.html#l00445">fwd.hpp:445</a></div></div>
+<div class="ttc" id="agroup__gtx__matrix__decompose_html_gac0e342656ba09a9bc97c57182ba73124"><div class="ttname"><a href="group__gtx__matrix__decompose.html#gac0e342656ba09a9bc97c57182ba73124">glm::decompose</a></div><div class="ttdeci">GLM_FUNC_DECL bool decompose(mat&lt; 4, 4, T, Q &gt; const &amp;modelMatrix, vec&lt; 3, T, Q &gt; &amp;scale, qua&lt; T, Q &gt; &amp;orientation, vec&lt; 3, T, Q &gt; &amp;translation, vec&lt; 3, T, Q &gt; &amp;skew, vec&lt; 4, T, Q &gt; &amp;perspective)</div><div class="ttdef"><b>Definition:</b> <a href="matrix__decompose_8inl_source.html#l00032">matrix_decompose.inl:32</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/ThirdParty/glad/include/glad/glad.h Source File</title>
+<title>FrankEngine: ENGINE/ThirdParty/glad/include/glad/glad.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structglad_g_lversion_struct.html">   50</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structglad_g_lversion_struct.html">gladGLversionStruct</a> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">struct </span>gladGLversionStruct {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> major;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> minor;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
@@ -172,7 +172,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor"># endif</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;GLAPI <span class="keyword">struct </span><a class="code" href="structglad_g_lversion_struct.html">gladGLversionStruct</a> GLVersion;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;GLAPI <span class="keyword">struct </span>gladGLversionStruct GLVersion;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;GLAPI <span class="keywordtype">int</span> gladLoadGL(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
@@ -218,10 +218,10 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>__GLsync *GLsync;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">struct </span>_cl_context;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">struct </span>_cl_event;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">typedef</span> void (APIENTRY *GLDEBUGPROC)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,<span class="keyword">const</span> GLchar *message,<span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">typedef</span> void (APIENTRY *GLDEBUGPROCARB)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,<span class="keyword">const</span> GLchar *message,<span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">typedef</span> void (APIENTRY *GLDEBUGPROCKHR)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,<span class="keyword">const</span> GLchar *message,<span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">typedef</span> void (APIENTRY *GLDEBUGPROCAMD)(GLuint id,GLenum category,GLenum severity,GLsizei length,<span class="keyword">const</span> GLchar *message,<span class="keywordtype">void</span> *userParam);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">typedef</span> void (APIENTRY *GLDEBUGPROC)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei <a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>,<span class="keyword">const</span> GLchar *message,<span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">typedef</span> void (APIENTRY *GLDEBUGPROCARB)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei <a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>,<span class="keyword">const</span> GLchar *message,<span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">typedef</span> void (APIENTRY *GLDEBUGPROCKHR)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei <a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>,<span class="keyword">const</span> GLchar *message,<span class="keyword">const</span> <span class="keywordtype">void</span> *userParam);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">typedef</span> void (APIENTRY *GLDEBUGPROCAMD)(GLuint id,GLenum category,GLenum severity,GLsizei <a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>,<span class="keyword">const</span> GLchar *message,<span class="keywordtype">void</span> *userParam);</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> GLhalfNV;</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">typedef</span> GLintptr GLvdpauSurfaceNV;</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">typedef</span> void (APIENTRY *GLVULKANPROCNV)(void);</div>
@@ -1520,7 +1520,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l01428"></a><span class="lineno"> 1428</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLDRAWBUFFERPROC)(GLenum buf);</div>
 <div class="line"><a name="l01429"></a><span class="lineno"> 1429</span>&#160;GLAPI PFNGLDRAWBUFFERPROC glad_glDrawBuffer;</div>
 <div class="line"><a name="l01430"></a><span class="lineno"> 1430</span>&#160;<span class="preprocessor">#define glDrawBuffer glad_glDrawBuffer</span></div>
-<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLCLEARPROC)(GLbitfield mask);</div>
+<div class="line"><a name="l01431"></a><span class="lineno"> 1431</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLCLEARPROC)(GLbitfield <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l01432"></a><span class="lineno"> 1432</span>&#160;GLAPI PFNGLCLEARPROC glad_glClear;</div>
 <div class="line"><a name="l01433"></a><span class="lineno"> 1433</span>&#160;<span class="preprocessor">#define glClear glad_glClear</span></div>
 <div class="line"><a name="l01434"></a><span class="lineno"> 1434</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLCLEARCOLORPROC)(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);</div>
@@ -1532,7 +1532,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l01440"></a><span class="lineno"> 1440</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLCLEARDEPTHPROC)(GLdouble depth);</div>
 <div class="line"><a name="l01441"></a><span class="lineno"> 1441</span>&#160;GLAPI PFNGLCLEARDEPTHPROC glad_glClearDepth;</div>
 <div class="line"><a name="l01442"></a><span class="lineno"> 1442</span>&#160;<span class="preprocessor">#define glClearDepth glad_glClearDepth</span></div>
-<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSTENCILMASKPROC)(GLuint mask);</div>
+<div class="line"><a name="l01443"></a><span class="lineno"> 1443</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSTENCILMASKPROC)(GLuint <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l01444"></a><span class="lineno"> 1444</span>&#160;GLAPI PFNGLSTENCILMASKPROC glad_glStencilMask;</div>
 <div class="line"><a name="l01445"></a><span class="lineno"> 1445</span>&#160;<span class="preprocessor">#define glStencilMask glad_glStencilMask</span></div>
 <div class="line"><a name="l01446"></a><span class="lineno"> 1446</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLCOLORMASKPROC)(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);</div>
@@ -1559,7 +1559,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l01467"></a><span class="lineno"> 1467</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLLOGICOPPROC)(GLenum opcode);</div>
 <div class="line"><a name="l01468"></a><span class="lineno"> 1468</span>&#160;GLAPI PFNGLLOGICOPPROC glad_glLogicOp;</div>
 <div class="line"><a name="l01469"></a><span class="lineno"> 1469</span>&#160;<span class="preprocessor">#define glLogicOp glad_glLogicOp</span></div>
-<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSTENCILFUNCPROC)(GLenum func, GLint ref, GLuint mask);</div>
+<div class="line"><a name="l01470"></a><span class="lineno"> 1470</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSTENCILFUNCPROC)(GLenum func, GLint ref, GLuint <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l01471"></a><span class="lineno"> 1471</span>&#160;GLAPI PFNGLSTENCILFUNCPROC glad_glStencilFunc;</div>
 <div class="line"><a name="l01472"></a><span class="lineno"> 1472</span>&#160;<span class="preprocessor">#define glStencilFunc glad_glStencilFunc</span></div>
 <div class="line"><a name="l01473"></a><span class="lineno"> 1473</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSTENCILOPPROC)(GLenum fail, GLenum zfail, GLenum zpass);</div>
@@ -2129,7 +2129,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l02037"></a><span class="lineno"> 2037</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLMATERIALIVPROC)(GLenum face, GLenum pname, <span class="keyword">const</span> GLint *params);</div>
 <div class="line"><a name="l02038"></a><span class="lineno"> 2038</span>&#160;GLAPI PFNGLMATERIALIVPROC glad_glMaterialiv;</div>
 <div class="line"><a name="l02039"></a><span class="lineno"> 2039</span>&#160;<span class="preprocessor">#define glMaterialiv glad_glMaterialiv</span></div>
-<div class="line"><a name="l02040"></a><span class="lineno"> 2040</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLPOLYGONSTIPPLEPROC)(<span class="keyword">const</span> GLubyte *mask);</div>
+<div class="line"><a name="l02040"></a><span class="lineno"> 2040</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLPOLYGONSTIPPLEPROC)(<span class="keyword">const</span> GLubyte *<a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l02041"></a><span class="lineno"> 2041</span>&#160;GLAPI PFNGLPOLYGONSTIPPLEPROC glad_glPolygonStipple;</div>
 <div class="line"><a name="l02042"></a><span class="lineno"> 2042</span>&#160;<span class="preprocessor">#define glPolygonStipple glad_glPolygonStipple</span></div>
 <div class="line"><a name="l02043"></a><span class="lineno"> 2043</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSHADEMODELPROC)(GLenum mode);</div>
@@ -2195,7 +2195,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l02103"></a><span class="lineno"> 2103</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLCLEARINDEXPROC)(GLfloat c);</div>
 <div class="line"><a name="l02104"></a><span class="lineno"> 2104</span>&#160;GLAPI PFNGLCLEARINDEXPROC glad_glClearIndex;</div>
 <div class="line"><a name="l02105"></a><span class="lineno"> 2105</span>&#160;<span class="preprocessor">#define glClearIndex glad_glClearIndex</span></div>
-<div class="line"><a name="l02106"></a><span class="lineno"> 2106</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLINDEXMASKPROC)(GLuint mask);</div>
+<div class="line"><a name="l02106"></a><span class="lineno"> 2106</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLINDEXMASKPROC)(GLuint <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l02107"></a><span class="lineno"> 2107</span>&#160;GLAPI PFNGLINDEXMASKPROC glad_glIndexMask;</div>
 <div class="line"><a name="l02108"></a><span class="lineno"> 2108</span>&#160;<span class="preprocessor">#define glIndexMask glad_glIndexMask</span></div>
 <div class="line"><a name="l02109"></a><span class="lineno"> 2109</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLACCUMPROC)(GLenum op, GLfloat value);</div>
@@ -2204,7 +2204,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l02112"></a><span class="lineno"> 2112</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLPOPATTRIBPROC)(void);</div>
 <div class="line"><a name="l02113"></a><span class="lineno"> 2113</span>&#160;GLAPI PFNGLPOPATTRIBPROC glad_glPopAttrib;</div>
 <div class="line"><a name="l02114"></a><span class="lineno"> 2114</span>&#160;<span class="preprocessor">#define glPopAttrib glad_glPopAttrib</span></div>
-<div class="line"><a name="l02115"></a><span class="lineno"> 2115</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLPUSHATTRIBPROC)(GLbitfield mask);</div>
+<div class="line"><a name="l02115"></a><span class="lineno"> 2115</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLPUSHATTRIBPROC)(GLbitfield <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l02116"></a><span class="lineno"> 2116</span>&#160;GLAPI PFNGLPUSHATTRIBPROC glad_glPushAttrib;</div>
 <div class="line"><a name="l02117"></a><span class="lineno"> 2117</span>&#160;<span class="preprocessor">#define glPushAttrib glad_glPushAttrib</span></div>
 <div class="line"><a name="l02118"></a><span class="lineno"> 2118</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLMAP1DPROC)(GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, <span class="keyword">const</span> GLdouble *points);</div>
@@ -2327,7 +2327,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l02235"></a><span class="lineno"> 2235</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETPIXELMAPUSVPROC)(GLenum map, GLushort *values);</div>
 <div class="line"><a name="l02236"></a><span class="lineno"> 2236</span>&#160;GLAPI PFNGLGETPIXELMAPUSVPROC glad_glGetPixelMapusv;</div>
 <div class="line"><a name="l02237"></a><span class="lineno"> 2237</span>&#160;<span class="preprocessor">#define glGetPixelMapusv glad_glGetPixelMapusv</span></div>
-<div class="line"><a name="l02238"></a><span class="lineno"> 2238</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETPOLYGONSTIPPLEPROC)(GLubyte *mask);</div>
+<div class="line"><a name="l02238"></a><span class="lineno"> 2238</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETPOLYGONSTIPPLEPROC)(GLubyte *<a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l02239"></a><span class="lineno"> 2239</span>&#160;GLAPI PFNGLGETPOLYGONSTIPPLEPROC glad_glGetPolygonStipple;</div>
 <div class="line"><a name="l02240"></a><span class="lineno"> 2240</span>&#160;<span class="preprocessor">#define glGetPolygonStipple glad_glGetPolygonStipple</span></div>
 <div class="line"><a name="l02241"></a><span class="lineno"> 2241</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETTEXENVFVPROC)(GLenum target, GLenum pname, GLfloat *params);</div>
@@ -2378,10 +2378,10 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l02286"></a><span class="lineno"> 2286</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLPUSHMATRIXPROC)(void);</div>
 <div class="line"><a name="l02287"></a><span class="lineno"> 2287</span>&#160;GLAPI PFNGLPUSHMATRIXPROC glad_glPushMatrix;</div>
 <div class="line"><a name="l02288"></a><span class="lineno"> 2288</span>&#160;<span class="preprocessor">#define glPushMatrix glad_glPushMatrix</span></div>
-<div class="line"><a name="l02289"></a><span class="lineno"> 2289</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLROTATEDPROC)(GLdouble angle, GLdouble x, GLdouble y, GLdouble z);</div>
+<div class="line"><a name="l02289"></a><span class="lineno"> 2289</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLROTATEDPROC)(GLdouble <a class="code" href="group__ext__quaternion__trigonometric.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>, GLdouble x, GLdouble y, GLdouble z);</div>
 <div class="line"><a name="l02290"></a><span class="lineno"> 2290</span>&#160;GLAPI PFNGLROTATEDPROC glad_glRotated;</div>
 <div class="line"><a name="l02291"></a><span class="lineno"> 2291</span>&#160;<span class="preprocessor">#define glRotated glad_glRotated</span></div>
-<div class="line"><a name="l02292"></a><span class="lineno"> 2292</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLROTATEFPROC)(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);</div>
+<div class="line"><a name="l02292"></a><span class="lineno"> 2292</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLROTATEFPROC)(GLfloat <a class="code" href="group__ext__quaternion__trigonometric.html#ga8aa248b31d5ade470c87304df5eb7bd8">angle</a>, GLfloat x, GLfloat y, GLfloat z);</div>
 <div class="line"><a name="l02293"></a><span class="lineno"> 2293</span>&#160;GLAPI PFNGLROTATEFPROC glad_glRotatef;</div>
 <div class="line"><a name="l02294"></a><span class="lineno"> 2294</span>&#160;<span class="preprocessor">#define glRotatef glad_glRotatef</span></div>
 <div class="line"><a name="l02295"></a><span class="lineno"> 2295</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSCALEDPROC)(GLdouble x, GLdouble y, GLdouble z);</div>
@@ -2487,7 +2487,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l02395"></a><span class="lineno"> 2395</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLPOPCLIENTATTRIBPROC)(void);</div>
 <div class="line"><a name="l02396"></a><span class="lineno"> 2396</span>&#160;GLAPI PFNGLPOPCLIENTATTRIBPROC glad_glPopClientAttrib;</div>
 <div class="line"><a name="l02397"></a><span class="lineno"> 2397</span>&#160;<span class="preprocessor">#define glPopClientAttrib glad_glPopClientAttrib</span></div>
-<div class="line"><a name="l02398"></a><span class="lineno"> 2398</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLPUSHCLIENTATTRIBPROC)(GLbitfield mask);</div>
+<div class="line"><a name="l02398"></a><span class="lineno"> 2398</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLPUSHCLIENTATTRIBPROC)(GLbitfield <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l02399"></a><span class="lineno"> 2399</span>&#160;GLAPI PFNGLPUSHCLIENTATTRIBPROC glad_glPushClientAttrib;</div>
 <div class="line"><a name="l02400"></a><span class="lineno"> 2400</span>&#160;<span class="preprocessor">#define glPushClientAttrib glad_glPushClientAttrib</span></div>
 <div class="line"><a name="l02401"></a><span class="lineno"> 2401</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -2867,10 +2867,10 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l02775"></a><span class="lineno"> 2775</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSTENCILOPSEPARATEPROC)(GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass);</div>
 <div class="line"><a name="l02776"></a><span class="lineno"> 2776</span>&#160;GLAPI PFNGLSTENCILOPSEPARATEPROC glad_glStencilOpSeparate;</div>
 <div class="line"><a name="l02777"></a><span class="lineno"> 2777</span>&#160;<span class="preprocessor">#define glStencilOpSeparate glad_glStencilOpSeparate</span></div>
-<div class="line"><a name="l02778"></a><span class="lineno"> 2778</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSTENCILFUNCSEPARATEPROC)(GLenum face, GLenum func, GLint ref, GLuint mask);</div>
+<div class="line"><a name="l02778"></a><span class="lineno"> 2778</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSTENCILFUNCSEPARATEPROC)(GLenum face, GLenum func, GLint ref, GLuint <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l02779"></a><span class="lineno"> 2779</span>&#160;GLAPI PFNGLSTENCILFUNCSEPARATEPROC glad_glStencilFuncSeparate;</div>
 <div class="line"><a name="l02780"></a><span class="lineno"> 2780</span>&#160;<span class="preprocessor">#define glStencilFuncSeparate glad_glStencilFuncSeparate</span></div>
-<div class="line"><a name="l02781"></a><span class="lineno"> 2781</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSTENCILMASKSEPARATEPROC)(GLenum face, GLuint mask);</div>
+<div class="line"><a name="l02781"></a><span class="lineno"> 2781</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSTENCILMASKSEPARATEPROC)(GLenum face, GLuint <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l02782"></a><span class="lineno"> 2782</span>&#160;GLAPI PFNGLSTENCILMASKSEPARATEPROC glad_glStencilMaskSeparate;</div>
 <div class="line"><a name="l02783"></a><span class="lineno"> 2783</span>&#160;<span class="preprocessor">#define glStencilMaskSeparate glad_glStencilMaskSeparate</span></div>
 <div class="line"><a name="l02784"></a><span class="lineno"> 2784</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLATTACHSHADERPROC)(GLuint program, GLuint shader);</div>
@@ -2903,10 +2903,10 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l02811"></a><span class="lineno"> 2811</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLENABLEVERTEXATTRIBARRAYPROC)(GLuint index);</div>
 <div class="line"><a name="l02812"></a><span class="lineno"> 2812</span>&#160;GLAPI PFNGLENABLEVERTEXATTRIBARRAYPROC glad_glEnableVertexAttribArray;</div>
 <div class="line"><a name="l02813"></a><span class="lineno"> 2813</span>&#160;<span class="preprocessor">#define glEnableVertexAttribArray glad_glEnableVertexAttribArray</span></div>
-<div class="line"><a name="l02814"></a><span class="lineno"> 2814</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETACTIVEATTRIBPROC)(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);</div>
+<div class="line"><a name="l02814"></a><span class="lineno"> 2814</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETACTIVEATTRIBPROC)(GLuint program, GLuint index, GLsizei bufSize, GLsizei *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>, GLint *size, GLenum *type, GLchar *name);</div>
 <div class="line"><a name="l02815"></a><span class="lineno"> 2815</span>&#160;GLAPI PFNGLGETACTIVEATTRIBPROC glad_glGetActiveAttrib;</div>
 <div class="line"><a name="l02816"></a><span class="lineno"> 2816</span>&#160;<span class="preprocessor">#define glGetActiveAttrib glad_glGetActiveAttrib</span></div>
-<div class="line"><a name="l02817"></a><span class="lineno"> 2817</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETACTIVEUNIFORMPROC)(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);</div>
+<div class="line"><a name="l02817"></a><span class="lineno"> 2817</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETACTIVEUNIFORMPROC)(GLuint program, GLuint index, GLsizei bufSize, GLsizei *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>, GLint *size, GLenum *type, GLchar *name);</div>
 <div class="line"><a name="l02818"></a><span class="lineno"> 2818</span>&#160;GLAPI PFNGLGETACTIVEUNIFORMPROC glad_glGetActiveUniform;</div>
 <div class="line"><a name="l02819"></a><span class="lineno"> 2819</span>&#160;<span class="preprocessor">#define glGetActiveUniform glad_glGetActiveUniform</span></div>
 <div class="line"><a name="l02820"></a><span class="lineno"> 2820</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETATTACHEDSHADERSPROC)(GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders);</div>
@@ -2918,16 +2918,16 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l02826"></a><span class="lineno"> 2826</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETPROGRAMIVPROC)(GLuint program, GLenum pname, GLint *params);</div>
 <div class="line"><a name="l02827"></a><span class="lineno"> 2827</span>&#160;GLAPI PFNGLGETPROGRAMIVPROC glad_glGetProgramiv;</div>
 <div class="line"><a name="l02828"></a><span class="lineno"> 2828</span>&#160;<span class="preprocessor">#define glGetProgramiv glad_glGetProgramiv</span></div>
-<div class="line"><a name="l02829"></a><span class="lineno"> 2829</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETPROGRAMINFOLOGPROC)(GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog);</div>
+<div class="line"><a name="l02829"></a><span class="lineno"> 2829</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETPROGRAMINFOLOGPROC)(GLuint program, GLsizei bufSize, GLsizei *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>, GLchar *infoLog);</div>
 <div class="line"><a name="l02830"></a><span class="lineno"> 2830</span>&#160;GLAPI PFNGLGETPROGRAMINFOLOGPROC glad_glGetProgramInfoLog;</div>
 <div class="line"><a name="l02831"></a><span class="lineno"> 2831</span>&#160;<span class="preprocessor">#define glGetProgramInfoLog glad_glGetProgramInfoLog</span></div>
 <div class="line"><a name="l02832"></a><span class="lineno"> 2832</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETSHADERIVPROC)(GLuint shader, GLenum pname, GLint *params);</div>
 <div class="line"><a name="l02833"></a><span class="lineno"> 2833</span>&#160;GLAPI PFNGLGETSHADERIVPROC glad_glGetShaderiv;</div>
 <div class="line"><a name="l02834"></a><span class="lineno"> 2834</span>&#160;<span class="preprocessor">#define glGetShaderiv glad_glGetShaderiv</span></div>
-<div class="line"><a name="l02835"></a><span class="lineno"> 2835</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETSHADERINFOLOGPROC)(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog);</div>
+<div class="line"><a name="l02835"></a><span class="lineno"> 2835</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETSHADERINFOLOGPROC)(GLuint shader, GLsizei bufSize, GLsizei *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>, GLchar *infoLog);</div>
 <div class="line"><a name="l02836"></a><span class="lineno"> 2836</span>&#160;GLAPI PFNGLGETSHADERINFOLOGPROC glad_glGetShaderInfoLog;</div>
 <div class="line"><a name="l02837"></a><span class="lineno"> 2837</span>&#160;<span class="preprocessor">#define glGetShaderInfoLog glad_glGetShaderInfoLog</span></div>
-<div class="line"><a name="l02838"></a><span class="lineno"> 2838</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETSHADERSOURCEPROC)(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source);</div>
+<div class="line"><a name="l02838"></a><span class="lineno"> 2838</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETSHADERSOURCEPROC)(GLuint shader, GLsizei bufSize, GLsizei *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>, GLchar *source);</div>
 <div class="line"><a name="l02839"></a><span class="lineno"> 2839</span>&#160;GLAPI PFNGLGETSHADERSOURCEPROC glad_glGetShaderSource;</div>
 <div class="line"><a name="l02840"></a><span class="lineno"> 2840</span>&#160;<span class="preprocessor">#define glGetShaderSource glad_glGetShaderSource</span></div>
 <div class="line"><a name="l02841"></a><span class="lineno"> 2841</span>&#160;<span class="keyword">typedef</span> GLint (APIENTRYP PFNGLGETUNIFORMLOCATIONPROC)(GLuint program, <span class="keyword">const</span> GLchar *name);</div>
@@ -2960,7 +2960,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l02868"></a><span class="lineno"> 2868</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLLINKPROGRAMPROC)(GLuint program);</div>
 <div class="line"><a name="l02869"></a><span class="lineno"> 2869</span>&#160;GLAPI PFNGLLINKPROGRAMPROC glad_glLinkProgram;</div>
 <div class="line"><a name="l02870"></a><span class="lineno"> 2870</span>&#160;<span class="preprocessor">#define glLinkProgram glad_glLinkProgram</span></div>
-<div class="line"><a name="l02871"></a><span class="lineno"> 2871</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSHADERSOURCEPROC)(GLuint shader, GLsizei count, <span class="keyword">const</span> GLchar *<span class="keyword">const</span>*string, <span class="keyword">const</span> GLint *length);</div>
+<div class="line"><a name="l02871"></a><span class="lineno"> 2871</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSHADERSOURCEPROC)(GLuint shader, GLsizei count, <span class="keyword">const</span> GLchar *<span class="keyword">const</span>*string, <span class="keyword">const</span> GLint *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>);</div>
 <div class="line"><a name="l02872"></a><span class="lineno"> 2872</span>&#160;GLAPI PFNGLSHADERSOURCEPROC glad_glShaderSource;</div>
 <div class="line"><a name="l02873"></a><span class="lineno"> 2873</span>&#160;<span class="preprocessor">#define glShaderSource glad_glShaderSource</span></div>
 <div class="line"><a name="l02874"></a><span class="lineno"> 2874</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUSEPROGRAMPROC)(GLuint program);</div>
@@ -3014,13 +3014,13 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l02922"></a><span class="lineno"> 2922</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORM4IVPROC)(GLint location, GLsizei count, <span class="keyword">const</span> GLint *value);</div>
 <div class="line"><a name="l02923"></a><span class="lineno"> 2923</span>&#160;GLAPI PFNGLUNIFORM4IVPROC glad_glUniform4iv;</div>
 <div class="line"><a name="l02924"></a><span class="lineno"> 2924</span>&#160;<span class="preprocessor">#define glUniform4iv glad_glUniform4iv</span></div>
-<div class="line"><a name="l02925"></a><span class="lineno"> 2925</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX2FVPROC)(GLint location, GLsizei count, GLboolean transpose, <span class="keyword">const</span> GLfloat *value);</div>
+<div class="line"><a name="l02925"></a><span class="lineno"> 2925</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX2FVPROC)(GLint location, GLsizei count, GLboolean <a class="code" href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">transpose</a>, <span class="keyword">const</span> GLfloat *value);</div>
 <div class="line"><a name="l02926"></a><span class="lineno"> 2926</span>&#160;GLAPI PFNGLUNIFORMMATRIX2FVPROC glad_glUniformMatrix2fv;</div>
 <div class="line"><a name="l02927"></a><span class="lineno"> 2927</span>&#160;<span class="preprocessor">#define glUniformMatrix2fv glad_glUniformMatrix2fv</span></div>
-<div class="line"><a name="l02928"></a><span class="lineno"> 2928</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX3FVPROC)(GLint location, GLsizei count, GLboolean transpose, <span class="keyword">const</span> GLfloat *value);</div>
+<div class="line"><a name="l02928"></a><span class="lineno"> 2928</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX3FVPROC)(GLint location, GLsizei count, GLboolean <a class="code" href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">transpose</a>, <span class="keyword">const</span> GLfloat *value);</div>
 <div class="line"><a name="l02929"></a><span class="lineno"> 2929</span>&#160;GLAPI PFNGLUNIFORMMATRIX3FVPROC glad_glUniformMatrix3fv;</div>
 <div class="line"><a name="l02930"></a><span class="lineno"> 2930</span>&#160;<span class="preprocessor">#define glUniformMatrix3fv glad_glUniformMatrix3fv</span></div>
-<div class="line"><a name="l02931"></a><span class="lineno"> 2931</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX4FVPROC)(GLint location, GLsizei count, GLboolean transpose, <span class="keyword">const</span> GLfloat *value);</div>
+<div class="line"><a name="l02931"></a><span class="lineno"> 2931</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX4FVPROC)(GLint location, GLsizei count, GLboolean <a class="code" href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">transpose</a>, <span class="keyword">const</span> GLfloat *value);</div>
 <div class="line"><a name="l02932"></a><span class="lineno"> 2932</span>&#160;GLAPI PFNGLUNIFORMMATRIX4FVPROC glad_glUniformMatrix4fv;</div>
 <div class="line"><a name="l02933"></a><span class="lineno"> 2933</span>&#160;<span class="preprocessor">#define glUniformMatrix4fv glad_glUniformMatrix4fv</span></div>
 <div class="line"><a name="l02934"></a><span class="lineno"> 2934</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLVALIDATEPROGRAMPROC)(GLuint program);</div>
@@ -3141,22 +3141,22 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l03049"></a><span class="lineno"> 3049</span>&#160;<span class="preprocessor">#ifndef GL_VERSION_2_1</span></div>
 <div class="line"><a name="l03050"></a><span class="lineno"> 3050</span>&#160;<span class="preprocessor">#define GL_VERSION_2_1 1</span></div>
 <div class="line"><a name="l03051"></a><span class="lineno"> 3051</span>&#160;GLAPI <span class="keywordtype">int</span> GLAD_GL_VERSION_2_1;</div>
-<div class="line"><a name="l03052"></a><span class="lineno"> 3052</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX2X3FVPROC)(GLint location, GLsizei count, GLboolean transpose, <span class="keyword">const</span> GLfloat *value);</div>
+<div class="line"><a name="l03052"></a><span class="lineno"> 3052</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX2X3FVPROC)(GLint location, GLsizei count, GLboolean <a class="code" href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">transpose</a>, <span class="keyword">const</span> GLfloat *value);</div>
 <div class="line"><a name="l03053"></a><span class="lineno"> 3053</span>&#160;GLAPI PFNGLUNIFORMMATRIX2X3FVPROC glad_glUniformMatrix2x3fv;</div>
 <div class="line"><a name="l03054"></a><span class="lineno"> 3054</span>&#160;<span class="preprocessor">#define glUniformMatrix2x3fv glad_glUniformMatrix2x3fv</span></div>
-<div class="line"><a name="l03055"></a><span class="lineno"> 3055</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX3X2FVPROC)(GLint location, GLsizei count, GLboolean transpose, <span class="keyword">const</span> GLfloat *value);</div>
+<div class="line"><a name="l03055"></a><span class="lineno"> 3055</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX3X2FVPROC)(GLint location, GLsizei count, GLboolean <a class="code" href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">transpose</a>, <span class="keyword">const</span> GLfloat *value);</div>
 <div class="line"><a name="l03056"></a><span class="lineno"> 3056</span>&#160;GLAPI PFNGLUNIFORMMATRIX3X2FVPROC glad_glUniformMatrix3x2fv;</div>
 <div class="line"><a name="l03057"></a><span class="lineno"> 3057</span>&#160;<span class="preprocessor">#define glUniformMatrix3x2fv glad_glUniformMatrix3x2fv</span></div>
-<div class="line"><a name="l03058"></a><span class="lineno"> 3058</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX2X4FVPROC)(GLint location, GLsizei count, GLboolean transpose, <span class="keyword">const</span> GLfloat *value);</div>
+<div class="line"><a name="l03058"></a><span class="lineno"> 3058</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX2X4FVPROC)(GLint location, GLsizei count, GLboolean <a class="code" href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">transpose</a>, <span class="keyword">const</span> GLfloat *value);</div>
 <div class="line"><a name="l03059"></a><span class="lineno"> 3059</span>&#160;GLAPI PFNGLUNIFORMMATRIX2X4FVPROC glad_glUniformMatrix2x4fv;</div>
 <div class="line"><a name="l03060"></a><span class="lineno"> 3060</span>&#160;<span class="preprocessor">#define glUniformMatrix2x4fv glad_glUniformMatrix2x4fv</span></div>
-<div class="line"><a name="l03061"></a><span class="lineno"> 3061</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX4X2FVPROC)(GLint location, GLsizei count, GLboolean transpose, <span class="keyword">const</span> GLfloat *value);</div>
+<div class="line"><a name="l03061"></a><span class="lineno"> 3061</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX4X2FVPROC)(GLint location, GLsizei count, GLboolean <a class="code" href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">transpose</a>, <span class="keyword">const</span> GLfloat *value);</div>
 <div class="line"><a name="l03062"></a><span class="lineno"> 3062</span>&#160;GLAPI PFNGLUNIFORMMATRIX4X2FVPROC glad_glUniformMatrix4x2fv;</div>
 <div class="line"><a name="l03063"></a><span class="lineno"> 3063</span>&#160;<span class="preprocessor">#define glUniformMatrix4x2fv glad_glUniformMatrix4x2fv</span></div>
-<div class="line"><a name="l03064"></a><span class="lineno"> 3064</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX3X4FVPROC)(GLint location, GLsizei count, GLboolean transpose, <span class="keyword">const</span> GLfloat *value);</div>
+<div class="line"><a name="l03064"></a><span class="lineno"> 3064</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX3X4FVPROC)(GLint location, GLsizei count, GLboolean <a class="code" href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">transpose</a>, <span class="keyword">const</span> GLfloat *value);</div>
 <div class="line"><a name="l03065"></a><span class="lineno"> 3065</span>&#160;GLAPI PFNGLUNIFORMMATRIX3X4FVPROC glad_glUniformMatrix3x4fv;</div>
 <div class="line"><a name="l03066"></a><span class="lineno"> 3066</span>&#160;<span class="preprocessor">#define glUniformMatrix3x4fv glad_glUniformMatrix3x4fv</span></div>
-<div class="line"><a name="l03067"></a><span class="lineno"> 3067</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX4X3FVPROC)(GLint location, GLsizei count, GLboolean transpose, <span class="keyword">const</span> GLfloat *value);</div>
+<div class="line"><a name="l03067"></a><span class="lineno"> 3067</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMMATRIX4X3FVPROC)(GLint location, GLsizei count, GLboolean <a class="code" href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">transpose</a>, <span class="keyword">const</span> GLfloat *value);</div>
 <div class="line"><a name="l03068"></a><span class="lineno"> 3068</span>&#160;GLAPI PFNGLUNIFORMMATRIX4X3FVPROC glad_glUniformMatrix4x3fv;</div>
 <div class="line"><a name="l03069"></a><span class="lineno"> 3069</span>&#160;<span class="preprocessor">#define glUniformMatrix4x3fv glad_glUniformMatrix4x3fv</span></div>
 <div class="line"><a name="l03070"></a><span class="lineno"> 3070</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -3196,10 +3196,10 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l03104"></a><span class="lineno"> 3104</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLTRANSFORMFEEDBACKVARYINGSPROC)(GLuint program, GLsizei count, <span class="keyword">const</span> GLchar *<span class="keyword">const</span>*varyings, GLenum bufferMode);</div>
 <div class="line"><a name="l03105"></a><span class="lineno"> 3105</span>&#160;GLAPI PFNGLTRANSFORMFEEDBACKVARYINGSPROC glad_glTransformFeedbackVaryings;</div>
 <div class="line"><a name="l03106"></a><span class="lineno"> 3106</span>&#160;<span class="preprocessor">#define glTransformFeedbackVaryings glad_glTransformFeedbackVaryings</span></div>
-<div class="line"><a name="l03107"></a><span class="lineno"> 3107</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETTRANSFORMFEEDBACKVARYINGPROC)(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);</div>
+<div class="line"><a name="l03107"></a><span class="lineno"> 3107</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETTRANSFORMFEEDBACKVARYINGPROC)(GLuint program, GLuint index, GLsizei bufSize, GLsizei *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>, GLsizei *size, GLenum *type, GLchar *name);</div>
 <div class="line"><a name="l03108"></a><span class="lineno"> 3108</span>&#160;GLAPI PFNGLGETTRANSFORMFEEDBACKVARYINGPROC glad_glGetTransformFeedbackVarying;</div>
 <div class="line"><a name="l03109"></a><span class="lineno"> 3109</span>&#160;<span class="preprocessor">#define glGetTransformFeedbackVarying glad_glGetTransformFeedbackVarying</span></div>
-<div class="line"><a name="l03110"></a><span class="lineno"> 3110</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLCLAMPCOLORPROC)(GLenum target, GLenum clamp);</div>
+<div class="line"><a name="l03110"></a><span class="lineno"> 3110</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLCLAMPCOLORPROC)(GLenum target, GLenum <a class="code" href="group__core__func__common.html#ga7cd77683da6361e297c56443fc70806d">clamp</a>);</div>
 <div class="line"><a name="l03111"></a><span class="lineno"> 3111</span>&#160;GLAPI PFNGLCLAMPCOLORPROC glad_glClampColor;</div>
 <div class="line"><a name="l03112"></a><span class="lineno"> 3112</span>&#160;<span class="preprocessor">#define glClampColor glad_glClampColor</span></div>
 <div class="line"><a name="l03113"></a><span class="lineno"> 3113</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLBEGINCONDITIONALRENDERPROC)(GLuint id, GLenum mode);</div>
@@ -3388,7 +3388,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l03296"></a><span class="lineno"> 3296</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGENERATEMIPMAPPROC)(GLenum target);</div>
 <div class="line"><a name="l03297"></a><span class="lineno"> 3297</span>&#160;GLAPI PFNGLGENERATEMIPMAPPROC glad_glGenerateMipmap;</div>
 <div class="line"><a name="l03298"></a><span class="lineno"> 3298</span>&#160;<span class="preprocessor">#define glGenerateMipmap glad_glGenerateMipmap</span></div>
-<div class="line"><a name="l03299"></a><span class="lineno"> 3299</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLBLITFRAMEBUFFERPROC)(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);</div>
+<div class="line"><a name="l03299"></a><span class="lineno"> 3299</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLBLITFRAMEBUFFERPROC)(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>, GLenum filter);</div>
 <div class="line"><a name="l03300"></a><span class="lineno"> 3300</span>&#160;GLAPI PFNGLBLITFRAMEBUFFERPROC glad_glBlitFramebuffer;</div>
 <div class="line"><a name="l03301"></a><span class="lineno"> 3301</span>&#160;<span class="preprocessor">#define glBlitFramebuffer glad_glBlitFramebuffer</span></div>
 <div class="line"><a name="l03302"></a><span class="lineno"> 3302</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC)(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);</div>
@@ -3400,7 +3400,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l03308"></a><span class="lineno"> 3308</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span> * (APIENTRYP PFNGLMAPBUFFERRANGEPROC)(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);</div>
 <div class="line"><a name="l03309"></a><span class="lineno"> 3309</span>&#160;GLAPI PFNGLMAPBUFFERRANGEPROC glad_glMapBufferRange;</div>
 <div class="line"><a name="l03310"></a><span class="lineno"> 3310</span>&#160;<span class="preprocessor">#define glMapBufferRange glad_glMapBufferRange</span></div>
-<div class="line"><a name="l03311"></a><span class="lineno"> 3311</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLFLUSHMAPPEDBUFFERRANGEPROC)(GLenum target, GLintptr offset, GLsizeiptr length);</div>
+<div class="line"><a name="l03311"></a><span class="lineno"> 3311</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLFLUSHMAPPEDBUFFERRANGEPROC)(GLenum target, GLintptr offset, GLsizeiptr <a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>);</div>
 <div class="line"><a name="l03312"></a><span class="lineno"> 3312</span>&#160;GLAPI PFNGLFLUSHMAPPEDBUFFERRANGEPROC glad_glFlushMappedBufferRange;</div>
 <div class="line"><a name="l03313"></a><span class="lineno"> 3313</span>&#160;<span class="preprocessor">#define glFlushMappedBufferRange glad_glFlushMappedBufferRange</span></div>
 <div class="line"><a name="l03314"></a><span class="lineno"> 3314</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLBINDVERTEXARRAYPROC)(GLuint array);</div>
@@ -3440,7 +3440,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l03348"></a><span class="lineno"> 3348</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETACTIVEUNIFORMSIVPROC)(GLuint program, GLsizei uniformCount, <span class="keyword">const</span> GLuint *uniformIndices, GLenum pname, GLint *params);</div>
 <div class="line"><a name="l03349"></a><span class="lineno"> 3349</span>&#160;GLAPI PFNGLGETACTIVEUNIFORMSIVPROC glad_glGetActiveUniformsiv;</div>
 <div class="line"><a name="l03350"></a><span class="lineno"> 3350</span>&#160;<span class="preprocessor">#define glGetActiveUniformsiv glad_glGetActiveUniformsiv</span></div>
-<div class="line"><a name="l03351"></a><span class="lineno"> 3351</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETACTIVEUNIFORMNAMEPROC)(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformName);</div>
+<div class="line"><a name="l03351"></a><span class="lineno"> 3351</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETACTIVEUNIFORMNAMEPROC)(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>, GLchar *uniformName);</div>
 <div class="line"><a name="l03352"></a><span class="lineno"> 3352</span>&#160;GLAPI PFNGLGETACTIVEUNIFORMNAMEPROC glad_glGetActiveUniformName;</div>
 <div class="line"><a name="l03353"></a><span class="lineno"> 3353</span>&#160;<span class="preprocessor">#define glGetActiveUniformName glad_glGetActiveUniformName</span></div>
 <div class="line"><a name="l03354"></a><span class="lineno"> 3354</span>&#160;<span class="keyword">typedef</span> GLuint (APIENTRYP PFNGLGETUNIFORMBLOCKINDEXPROC)(GLuint program, <span class="keyword">const</span> GLchar *uniformBlockName);</div>
@@ -3449,7 +3449,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l03357"></a><span class="lineno"> 3357</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETACTIVEUNIFORMBLOCKIVPROC)(GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint *params);</div>
 <div class="line"><a name="l03358"></a><span class="lineno"> 3358</span>&#160;GLAPI PFNGLGETACTIVEUNIFORMBLOCKIVPROC glad_glGetActiveUniformBlockiv;</div>
 <div class="line"><a name="l03359"></a><span class="lineno"> 3359</span>&#160;<span class="preprocessor">#define glGetActiveUniformBlockiv glad_glGetActiveUniformBlockiv</span></div>
-<div class="line"><a name="l03360"></a><span class="lineno"> 3360</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETACTIVEUNIFORMBLOCKNAMEPROC)(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformBlockName);</div>
+<div class="line"><a name="l03360"></a><span class="lineno"> 3360</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETACTIVEUNIFORMBLOCKNAMEPROC)(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>, GLchar *uniformBlockName);</div>
 <div class="line"><a name="l03361"></a><span class="lineno"> 3361</span>&#160;GLAPI PFNGLGETACTIVEUNIFORMBLOCKNAMEPROC glad_glGetActiveUniformBlockName;</div>
 <div class="line"><a name="l03362"></a><span class="lineno"> 3362</span>&#160;<span class="preprocessor">#define glGetActiveUniformBlockName glad_glGetActiveUniformBlockName</span></div>
 <div class="line"><a name="l03363"></a><span class="lineno"> 3363</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLUNIFORMBLOCKBINDINGPROC)(GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);</div>
@@ -3492,7 +3492,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l03400"></a><span class="lineno"> 3400</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETINTEGER64VPROC)(GLenum pname, GLint64 *data);</div>
 <div class="line"><a name="l03401"></a><span class="lineno"> 3401</span>&#160;GLAPI PFNGLGETINTEGER64VPROC glad_glGetInteger64v;</div>
 <div class="line"><a name="l03402"></a><span class="lineno"> 3402</span>&#160;<span class="preprocessor">#define glGetInteger64v glad_glGetInteger64v</span></div>
-<div class="line"><a name="l03403"></a><span class="lineno"> 3403</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETSYNCIVPROC)(GLsync sync, GLenum pname, GLsizei count, GLsizei *length, GLint *values);</div>
+<div class="line"><a name="l03403"></a><span class="lineno"> 3403</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETSYNCIVPROC)(GLsync sync, GLenum pname, GLsizei count, GLsizei *<a class="code" href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">length</a>, GLint *values);</div>
 <div class="line"><a name="l03404"></a><span class="lineno"> 3404</span>&#160;GLAPI PFNGLGETSYNCIVPROC glad_glGetSynciv;</div>
 <div class="line"><a name="l03405"></a><span class="lineno"> 3405</span>&#160;<span class="preprocessor">#define glGetSynciv glad_glGetSynciv</span></div>
 <div class="line"><a name="l03406"></a><span class="lineno"> 3406</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETINTEGER64I_VPROC)(GLenum target, GLuint index, GLint64 *data);</div>
@@ -3513,7 +3513,7 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l03421"></a><span class="lineno"> 3421</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLGETMULTISAMPLEFVPROC)(GLenum pname, GLuint index, GLfloat *val);</div>
 <div class="line"><a name="l03422"></a><span class="lineno"> 3422</span>&#160;GLAPI PFNGLGETMULTISAMPLEFVPROC glad_glGetMultisamplefv;</div>
 <div class="line"><a name="l03423"></a><span class="lineno"> 3423</span>&#160;<span class="preprocessor">#define glGetMultisamplefv glad_glGetMultisamplefv</span></div>
-<div class="line"><a name="l03424"></a><span class="lineno"> 3424</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSAMPLEMASKIPROC)(GLuint maskNumber, GLbitfield mask);</div>
+<div class="line"><a name="l03424"></a><span class="lineno"> 3424</span>&#160;<span class="keyword">typedef</span> void (APIENTRYP PFNGLSAMPLEMASKIPROC)(GLuint maskNumber, GLbitfield <a class="code" href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">mask</a>);</div>
 <div class="line"><a name="l03425"></a><span class="lineno"> 3425</span>&#160;GLAPI PFNGLSAMPLEMASKIPROC glad_glSampleMaski;</div>
 <div class="line"><a name="l03426"></a><span class="lineno"> 3426</span>&#160;<span class="preprocessor">#define glSampleMaski glad_glSampleMaski</span></div>
 <div class="line"><a name="l03427"></a><span class="lineno"> 3427</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -3701,7 +3701,11 @@ $(document).ready(function(){initNavTree('glad_8h_source.html',''); initResizabl
 <div class="line"><a name="l03609"></a><span class="lineno"> 3609</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l03610"></a><span class="lineno"> 3610</span>&#160; </div>
 <div class="line"><a name="l03611"></a><span class="lineno"> 3611</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructglad_g_lversion_struct_html"><div class="ttname"><a href="structglad_g_lversion_struct.html">gladGLversionStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="glad_8h_source.html#l00050">glad.h:50</a></div></div>
+<div class="ttc" id="agroup__core__func__common_html_ga7cd77683da6361e297c56443fc70806d"><div class="ttname"><a href="group__core__func__common.html#ga7cd77683da6361e297c56443fc70806d">glm::clamp</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR genType clamp(genType x, genType minVal, genType maxVal)</div><div class="ttdef"><b>Definition:</b> <a href="func__common_8inl_source.html#l00505">func_common.inl:505</a></div></div>
+<div class="ttc" id="agroup__core__func__geometric_html_ga0cdabbb000834d994a1d6dc56f8f5263"><div class="ttname"><a href="group__core__func__geometric.html#ga0cdabbb000834d994a1d6dc56f8f5263">glm::length</a></div><div class="ttdeci">GLM_FUNC_QUALIFIER T length(vec&lt; L, T, Q &gt; const &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="func__geometric_8inl_source.html#l00136">func_geometric.inl:136</a></div></div>
+<div class="ttc" id="agroup__core__func__matrix_html_gae679d841da8ce9dbcc6c2d454f15bc35"><div class="ttname"><a href="group__core__func__matrix.html#gae679d841da8ce9dbcc6c2d454f15bc35">glm::transpose</a></div><div class="ttdeci">GLM_FUNC_QUALIFIER mat&lt; C, R, T, Q &gt;::transpose_type transpose(mat&lt; C, R, T, Q &gt; const &amp;m)</div><div class="ttdef"><b>Definition:</b> <a href="func__matrix_8inl_source.html#l00374">func_matrix.inl:374</a></div></div>
+<div class="ttc" id="agroup__ext__quaternion__trigonometric_html_ga8aa248b31d5ade470c87304df5eb7bd8"><div class="ttname"><a href="group__ext__quaternion__trigonometric.html#ga8aa248b31d5ade470c87304df5eb7bd8">glm::angle</a></div><div class="ttdeci">GLM_FUNC_DECL T angle(qua&lt; T, Q &gt; const &amp;x)</div><div class="ttdef"><b>Definition:</b> <a href="quaternion__trigonometric_8inl_source.html#l00006">quaternion_trigonometric.inl:6</a></div></div>
+<div class="ttc" id="agroup__gtc__bitfield_html_gad7eba518a0b71662114571ee76939f8a"><div class="ttname"><a href="group__gtc__bitfield.html#gad7eba518a0b71662114571ee76939f8a">glm::mask</a></div><div class="ttdeci">GLM_FUNC_DECL genIUType mask(genIUType Bits)</div><div class="ttdef"><b>Definition:</b> <a href="bitfield_8inl_source.html#l00225">bitfield.inl:225</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

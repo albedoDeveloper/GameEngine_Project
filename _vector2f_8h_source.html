@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/Vector2f.h Source File</title>
+<title>FrankEngine: ENGINE/Vector2f.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('_vector2f_8h_source.html',''); initRes
 <a href="_vector2f_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************/</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;glm/glm/vec2.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="vec2_8hpp.html">glm/glm/vec2.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_vector2f.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_vector2f.html">Vector2f</a></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
@@ -117,9 +117,9 @@ $(document).ready(function(){initNavTree('_vector2f_8h_source.html',''); initRes
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="class_vector2f.html">Vector2f</a> <a class="code" href="class_vector2f.html#a974423f55f6421bdcf01b6ff701dbf26">operator-</a>(<span class="keyword">const</span> <a class="code" href="class_vector2f.html">Vector2f</a> &amp;oVec);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    glm::vec2 m_vec;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="group__core__vector.html#ga6ebf1ff1f152ff34c800b6997d5f311f">glm::vec2</a> m_vec;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="class_vector2f.html#a3db9a868c58bc809e5e09a88d65a77ec">Vector2f</a>(glm::vec2 v);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="class_vector2f.html#a3db9a868c58bc809e5e09a88d65a77ec">Vector2f</a>(<a class="code" href="group__core__vector.html#ga6ebf1ff1f152ff34c800b6997d5f311f">glm::vec2</a> v);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
 <div class="ttc" id="aclass_vector2f_html"><div class="ttname"><a href="class_vector2f.html">Vector2f</a></div><div class="ttdoc">A point or vector in 2d space, stored with float data.</div><div class="ttdef"><b>Definition:</b> <a href="_vector2f_8h_source.html#l00014">Vector2f.h:15</a></div></div>
 <div class="ttc" id="aclass_vector2f_html_a38049e03ed5928ad48c1b8035c67695c"><div class="ttname"><a href="class_vector2f.html#a38049e03ed5928ad48c1b8035c67695c">Vector2f::SetY</a></div><div class="ttdeci">void SetY(float y)</div><div class="ttdef"><b>Definition:</b> <a href="_vector2f_8cpp_source.html#l00026">Vector2f.cpp:26</a></div></div>
@@ -130,6 +130,8 @@ $(document).ready(function(){initNavTree('_vector2f_8h_source.html',''); initRes
 <div class="ttc" id="aclass_vector2f_html_ab0cf71f9188cc7ebed505ad1062d51f4"><div class="ttname"><a href="class_vector2f.html#ab0cf71f9188cc7ebed505ad1062d51f4">Vector2f::operator*</a></div><div class="ttdeci">Vector2f operator*(const Vector2f &amp;oVec)</div><div class="ttdef"><b>Definition:</b> <a href="_vector2f_8cpp_source.html#l00038">Vector2f.cpp:38</a></div></div>
 <div class="ttc" id="aclass_vector2f_html_ab420ce1318427d74156d216742f30b4c"><div class="ttname"><a href="class_vector2f.html#ab420ce1318427d74156d216742f30b4c">Vector2f::GetX</a></div><div class="ttdeci">float GetX() const</div><div class="ttdef"><b>Definition:</b> <a href="_vector2f_8cpp_source.html#l00011">Vector2f.cpp:11</a></div></div>
 <div class="ttc" id="aclass_vector2f_html_ac67d4952f2219a2644ce15d51207513d"><div class="ttname"><a href="class_vector2f.html#ac67d4952f2219a2644ce15d51207513d">Vector2f::operator+</a></div><div class="ttdeci">Vector2f operator+(const Vector2f &amp;oVec)</div><div class="ttdef"><b>Definition:</b> <a href="_vector2f_8cpp_source.html#l00031">Vector2f.cpp:31</a></div></div>
+<div class="ttc" id="agroup__core__vector_html_ga6ebf1ff1f152ff34c800b6997d5f311f"><div class="ttname"><a href="group__core__vector.html#ga6ebf1ff1f152ff34c800b6997d5f311f">glm::vec2</a></div><div class="ttdeci">vec&lt; 2, float, defaultp &gt; vec2</div><div class="ttdef"><b>Definition:</b> <a href="vector__float2_8hpp_source.html#l00015">vector_float2.hpp:15</a></div></div>
+<div class="ttc" id="avec2_8hpp_html"><div class="ttname"><a href="vec2_8hpp.html">vec2.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

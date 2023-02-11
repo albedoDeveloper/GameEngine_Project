@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/GameObjectFactory.cpp Source File</title>
+<title>FrankEngine: ENGINE/GameObjectFactory.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -188,7 +188,7 @@ $(document).ready(function(){initNavTree('_game_object_factory_8cpp_source.html'
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            key[place]++;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        key[place] = <span class="charliteral">&#39;A&#39;</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <a class="code" href="namespacenlohmann_1_1detail.html#a59e696b1dad6d0d99c172ac4518c2042a3c6e0b8a9c15224a8228b9a98ca1531d">key</a>[place] = <span class="charliteral">&#39;A&#39;</span>;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ran out of space in object factory&quot;</span>;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
@@ -257,7 +257,7 @@ $(document).ready(function(){initNavTree('_game_object_factory_8cpp_source.html'
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="class_game_object_factory.html#a1b58aaaa41905bd9d4ef47acc4a55d59">  168</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_game_object_factory.html#a1b58aaaa41905bd9d4ef47acc4a55d59">GameObjectFactory::Save</a>(nlohmann::json &amp;j)</div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="class_game_object_factory.html#a1b58aaaa41905bd9d4ef47acc4a55d59">  168</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_game_object_factory.html#a1b58aaaa41905bd9d4ef47acc4a55d59">GameObjectFactory::Save</a>(<a class="code" href="classnlohmann_1_1basic__json.html">nlohmann::json</a> &amp;j)</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;{</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    std::map&lt;std::string, GameObject *&gt;::iterator it;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">for</span> (it = m_objects.begin(); it != m_objects.end(); it++)</div>
@@ -266,7 +266,7 @@ $(document).ready(function(){initNavTree('_game_object_factory_8cpp_source.html'
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="class_game_object_factory.html#a28d822eb067f09bc0d2b9e3241da6c31">  177</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_game_object_factory.html#a28d822eb067f09bc0d2b9e3241da6c31">GameObjectFactory::Load</a>(nlohmann::json &amp;j)</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="class_game_object_factory.html#a28d822eb067f09bc0d2b9e3241da6c31">  177</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_game_object_factory.html#a28d822eb067f09bc0d2b9e3241da6c31">GameObjectFactory::Load</a>(<a class="code" href="classnlohmann_1_1basic__json.html">nlohmann::json</a> &amp;j)</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;{</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    std::map&lt;std::string, GameObject *&gt;::iterator it;</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">for</span> (it = m_objects.begin(); it != m_objects.end(); it++)</div>
@@ -289,7 +289,7 @@ $(document).ready(function(){initNavTree('_game_object_factory_8cpp_source.html'
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="comment">// functionality for animations and rigibody loading is limited so we simply change their position rather than reconstruct the object</span></div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = m_objects.cbegin(); it != m_objects.cend();)</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">if</span> (it-&gt;second-&gt;GetFactoryKey() == <span class="stringliteral">&quot;player&quot;</span> || it-&gt;second-&gt;GetFactoryKey() == <span class="stringliteral">&quot;NavMesh&quot;</span> || it-&gt;second-&gt;GetComponent&lt;<a class="code" href="class_c_agent.html">CAgent</a>&gt;() != NULL || it-&gt;second-&gt;GetComponent&lt;<a class="code" href="class_c_rigid_body.html">CRigidBody</a>&gt;() != NULL || it-&gt;second-&gt;GetComponent&lt;<a class="code" href="class_c_point_light.html">CPointLight</a>&gt;() != NULL)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">if</span> (it-&gt;second-&gt;GetFactoryKey() == <span class="stringliteral">&quot;player&quot;</span> || it-&gt;second-&gt;GetFactoryKey() == <span class="stringliteral">&quot;NavMesh&quot;</span> || it-&gt;second-&gt;GetComponent&lt;CAgent&gt;() != NULL || it-&gt;second-&gt;GetComponent&lt;<a class="code" href="class_c_rigid_body.html">CRigidBody</a>&gt;() != NULL || it-&gt;second-&gt;GetComponent&lt;<a class="code" href="class_c_point_light.html">CPointLight</a>&gt;() != NULL)</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        {</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            </div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="comment">//std::cout &lt;&lt; &quot;Don&#39;t delete this Obj&quot; &lt;&lt; it-&gt;second-&gt;GetFactoryKey() &lt;&lt; std::endl;</span></div>
@@ -314,7 +314,6 @@ $(document).ready(function(){initNavTree('_game_object_factory_8cpp_source.html'
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
 <div class="ttc" id="a_game_object_factory_8h_html"><div class="ttname"><a href="_game_object_factory_8h.html">GameObjectFactory.h</a></div><div class="ttdoc">A singleton factory class to produce all GameObjects, store them in memory, and allow access to them.</div></div>
-<div class="ttc" id="aclass_c_agent_html"><div class="ttname"><a href="class_c_agent.html">CAgent</a></div><div class="ttdef"><b>Definition:</b> <a href="_c_agent_8h_source.html#l00010">CAgent.h:11</a></div></div>
 <div class="ttc" id="aclass_c_point_light_html"><div class="ttname"><a href="class_c_point_light.html">CPointLight</a></div><div class="ttdoc">Point light component class.</div><div class="ttdef"><b>Definition:</b> <a href="_c_point_light_8h_source.html#l00014">CPointLight.h:15</a></div></div>
 <div class="ttc" id="aclass_c_rigid_body_html"><div class="ttname"><a href="class_c_rigid_body.html">CRigidBody</a></div><div class="ttdef"><b>Definition:</b> <a href="_c_rigid_body_8h_source.html#l00016">CRigidBody.h:17</a></div></div>
 <div class="ttc" id="aclass_game_object_factory_html"><div class="ttname"><a href="class_game_object_factory.html">GameObjectFactory</a></div><div class="ttdoc">A singleton factory class to produce all GameObjects, store them in memory, and allow access to them.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_factory_8h_source.html#l00016">GameObjectFactory.h:17</a></div></div>
@@ -333,6 +332,8 @@ $(document).ready(function(){initNavTree('_game_object_factory_8cpp_source.html'
 <div class="ttc" id="aclass_game_object_factory_html_addabc3d0422e81d4a529d2957903ec2d"><div class="ttname"><a href="class_game_object_factory.html#addabc3d0422e81d4a529d2957903ec2d">GameObjectFactory::GetGameObject</a></div><div class="ttdeci">GameObject * GetGameObject(std::string key)</div><div class="ttdoc">Accessor for objects created by the factory.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_factory_8cpp_source.html#l00017">GameObjectFactory.cpp:17</a></div></div>
 <div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdoc">An object as represented in the game world containing all information on the object itself and its co...</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00032">GameObject.h:33</a></div></div>
 <div class="ttc" id="aclass_shader_html"><div class="ttname"><a href="class_shader.html">Shader</a></div><div class="ttdef"><b>Definition:</b> <a href="_shader_8h_source.html#l00021">Shader.h:22</a></div></div>
+<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> <a href="json_8hpp_source.html#l17577">json.hpp:17578</a></div></div>
+<div class="ttc" id="anamespacenlohmann_1_1detail_html_a59e696b1dad6d0d99c172ac4518c2042a3c6e0b8a9c15224a8228b9a98ca1531d"><div class="ttname"><a href="namespacenlohmann_1_1detail.html#a59e696b1dad6d0d99c172ac4518c2042a3c6e0b8a9c15224a8228b9a98ca1531d">nlohmann::detail::parse_event_t::key</a></div><div class="ttdeci">@ key</div><div class="ttdoc">the parser read a key of a value in an object</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

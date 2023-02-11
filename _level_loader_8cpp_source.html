@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/LevelLoader.cpp Source File</title>
+<title>FrankEngine: ENGINE/LevelLoader.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -99,16 +99,16 @@ $(document).ready(function(){initNavTree('_level_loader_8cpp_source.html',''); i
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_transform_8h.html">Transform.h</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> json = nlohmann::json;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="classnlohmann_1_1basic__json.html">json</a> = <a class="code" href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a>;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>fs = std::filesystem;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_level_loader.html#a2aa6f1f2116e8ded74f8f88cf26dbc20">   14</a></span>&#160;<a class="code" href="class_level_loader.html#a2aa6f1f2116e8ded74f8f88cf26dbc20">LevelLoader::LevelLoader</a>()</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;LevelLoader::LevelLoader()</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    m_objects = GAMEOBJECT-&gt;GetObjectMap();</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_level_loader.html#abc0ee219c106cbb5d466e00f5a400ac8">   19</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_level_loader.html#abc0ee219c106cbb5d466e00f5a400ac8">LevelLoader::JsonFilepath</a>()</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> LevelLoader::JsonFilepath()</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    fs::path myPath = fs::current_path();</div>
@@ -130,7 +130,7 @@ $(document).ready(function(){initNavTree('_level_loader_8cpp_source.html',''); i
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_level_loader.html#ac733be25eccf37abb958dd8e9547599b">   42</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_level_loader.html#ac733be25eccf37abb958dd8e9547599b">LevelLoader::LoadLevel</a>()</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> LevelLoader::LoadLevel()</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">//Step 1 read filestream into json object</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">//first we check if files exists</span></div>
@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('_level_loader_8cpp_source.html',''); i
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        std::ifstream ifs(<span class="stringliteral">&quot;../Assets/SaveFiles/tavern.json&quot;</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        json j = json::parse(ifs);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="classnlohmann_1_1basic__json.html">json</a> j = <a class="code" href="classnlohmann_1_1basic__json.html#a15018ade392a844ea32d5188d1a0b9c6">json::parse</a>(ifs);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">//std::cout &lt;&lt; j &lt;&lt; std::endl;</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
@@ -184,12 +184,12 @@ $(document).ready(function(){initNavTree('_level_loader_8cpp_source.html',''); i
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_level_loader.html#abf78efbfeff5bf1dd377c12a7ca45ff2">   96</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_level_loader.html#abf78efbfeff5bf1dd377c12a7ca45ff2">LevelLoader::SaveLevel</a>()</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> LevelLoader::SaveLevel()</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Step 1 make json</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    json j;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="classnlohmann_1_1basic__json.html">json</a> j;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="class_level_loader.html#abc0ee219c106cbb5d466e00f5a400ac8">JsonFilepath</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    JsonFilepath();</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">//we need to make this universally accessible</span></div>
@@ -211,10 +211,9 @@ $(document).ready(function(){initNavTree('_level_loader_8cpp_source.html',''); i
 <div class="ttc" id="a_transform_8h_html"><div class="ttname"><a href="_transform_8h.html">Transform.h</a></div></div>
 <div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdoc">An object as represented in the game world containing all information on the object itself and its co...</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00032">GameObject.h:33</a></div></div>
 <div class="ttc" id="aclass_game_object_html_a45246aaee43206b87c40ef6fdc06111b"><div class="ttname"><a href="class_game_object.html#a45246aaee43206b87c40ef6fdc06111b">GameObject::Load</a></div><div class="ttdeci">void Load(nlohmann::json &amp;j)</div><div class="ttdoc">loads the object from saved state</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cpp_source.html#l00335">GameObject.cpp:335</a></div></div>
-<div class="ttc" id="aclass_level_loader_html_a2aa6f1f2116e8ded74f8f88cf26dbc20"><div class="ttname"><a href="class_level_loader.html#a2aa6f1f2116e8ded74f8f88cf26dbc20">LevelLoader::LevelLoader</a></div><div class="ttdeci">LevelLoader()</div><div class="ttdoc">default constructor</div><div class="ttdef"><b>Definition:</b> <a href="_level_loader_8cpp_source.html#l00014">LevelLoader.cpp:14</a></div></div>
-<div class="ttc" id="aclass_level_loader_html_abc0ee219c106cbb5d466e00f5a400ac8"><div class="ttname"><a href="class_level_loader.html#abc0ee219c106cbb5d466e00f5a400ac8">LevelLoader::JsonFilepath</a></div><div class="ttdeci">void JsonFilepath()</div><div class="ttdoc">test if the filepath works, if not we create a path</div><div class="ttdef"><b>Definition:</b> <a href="_level_loader_8cpp_source.html#l00019">LevelLoader.cpp:19</a></div></div>
-<div class="ttc" id="aclass_level_loader_html_abf78efbfeff5bf1dd377c12a7ca45ff2"><div class="ttname"><a href="class_level_loader.html#abf78efbfeff5bf1dd377c12a7ca45ff2">LevelLoader::SaveLevel</a></div><div class="ttdeci">void SaveLevel()</div><div class="ttdoc">Save Current Level.</div><div class="ttdef"><b>Definition:</b> <a href="_level_loader_8cpp_source.html#l00096">LevelLoader.cpp:96</a></div></div>
-<div class="ttc" id="aclass_level_loader_html_ac733be25eccf37abb958dd8e9547599b"><div class="ttname"><a href="class_level_loader.html#ac733be25eccf37abb958dd8e9547599b">LevelLoader::LoadLevel</a></div><div class="ttdeci">void LoadLevel()</div><div class="ttdoc">Load Current Level.</div><div class="ttdef"><b>Definition:</b> <a href="_level_loader_8cpp_source.html#l00042">LevelLoader.cpp:42</a></div></div>
+<div class="ttc" id="aclassnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values</div><div class="ttdef"><b>Definition:</b> <a href="json_8hpp_source.html#l17577">json.hpp:17578</a></div></div>
+<div class="ttc" id="aclassnlohmann_1_1basic__json_html_a15018ade392a844ea32d5188d1a0b9c6"><div class="ttname"><a href="classnlohmann_1_1basic__json.html#a15018ade392a844ea32d5188d1a0b9c6">nlohmann::basic_json::parse</a></div><div class="ttdeci">static JSON_HEDLEY_WARN_UNUSED_RESULT basic_json parse(InputType &amp;&amp;i, const parser_callback_t cb=nullptr, const bool allow_exceptions=true, const bool ignore_comments=false)</div><div class="ttdoc">deserialize from a compatible input</div><div class="ttdef"><b>Definition:</b> <a href="json_8hpp_source.html#l24282">json.hpp:24282</a></div></div>
+<div class="ttc" id="anamespacenlohmann_html_a2bfd99e845a2e5cd90aeaf1b1431f474"><div class="ttname"><a href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a></div><div class="ttdeci">basic_json&lt;&gt; json</div><div class="ttdoc">default JSON class</div><div class="ttdef"><b>Definition:</b> <a href="json_8hpp_source.html#l03404">json.hpp:3404</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

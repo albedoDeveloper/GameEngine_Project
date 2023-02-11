@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/LevelEditor.cpp Source File</title>
+<title>FrankEngine: ENGINE/LevelEditor.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -92,27 +92,27 @@ $(document).ready(function(){initNavTree('_level_editor_8cpp_source.html',''); i
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_level_editor_8h.html">LevelEditor.h</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_game_object_factory_8h.html">GameObjectFactory.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_quaternion_8h.html">Quaternion.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="include_2assimp_2_quaternion_8h.html">Quaternion.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="class_level_editor.html#a6810fe926bdb4d23c947b39ebfc0f84c">    5</a></span>&#160;<a class="code" href="class_level_editor.html#a6810fe926bdb4d23c947b39ebfc0f84c">LevelEditor::LevelEditor</a>()</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;LevelEditor::LevelEditor()</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;}</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048">   10</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048">LevelEditor::DrawEditor</a>()</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> LevelEditor::DrawEditor()</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="comment">//ImGui::Begin(&quot;Level Editor&quot;);</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="comment">//ImGui::SetWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    ImGui::SetNextWindowSize(<a class="code" href="struct_im_vec2.html">ImVec2</a>(520, 600), ImGuiCond_FirstUseEver);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    ImGui::SetNextWindowSize(ImVec2(520, 600), ImGuiCond_FirstUseEver);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span> (ImGui::CollapsingHeader(<span class="stringliteral">&quot;GameObjects&quot;</span>))</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0">ObjectList</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        ObjectList();</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">//ImGui::End();</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0">   23</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0">LevelEditor::ObjectList</a>()</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> LevelEditor::ObjectList()</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">//retrieval</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::map&lt;std::string, GameObject *&gt; *objectList;</div>
@@ -142,11 +142,11 @@ $(document).ready(function(){initNavTree('_level_editor_8cpp_source.html',''); i
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">//population</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de">ObjectHeader</a>(it-&gt;second);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        ObjectHeader(it-&gt;second);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de">   58</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de">LevelEditor::ObjectHeader</a>(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> LevelEditor::ObjectHeader(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    ImGui::AlignTextToFramePadding();</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
@@ -163,15 +163,15 @@ $(document).ready(function(){initNavTree('_level_editor_8cpp_source.html',''); i
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        g-&gt;SetActive(isActive);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <a class="code" href="class_level_editor.html#aac394ace767b605adef1afdfb0473046">TransformHeader</a>(g);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        TransformHeader(g);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="class_level_editor.html#ab1e226e2c9be2a33e3d73cfcc6dc9358">ComponentTree</a>(g);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        ComponentTree(g);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        ImGui::TreePop();</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_level_editor.html#aac394ace767b605adef1afdfb0473046">   83</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_level_editor.html#aac394ace767b605adef1afdfb0473046">LevelEditor::TransformHeader</a>(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> LevelEditor::TransformHeader(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (ImGui::CollapsingHeader(<span class="stringliteral">&quot;Transform&quot;</span>))</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    {</div>
@@ -182,20 +182,20 @@ $(document).ready(function(){initNavTree('_level_editor_8cpp_source.html',''); i
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">//&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;POSITION&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;//</span></div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="class_level_editor.html#a656a24e68242e1f8b24baa8ea5a5e2a9">PositionManipulators</a>(g);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        PositionManipulators(g);</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="comment">//&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;ROTATION&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;//</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="class_level_editor.html#aa0a47b3d01e4374a4060ac8d1db30b91">RotationManipulators</a>(g);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        RotationManipulators(g);</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">//&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;SCALE&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;//</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="class_level_editor.html#a07d3584976205e962c0dffcb1e9d3ad0">ScaleManipulators</a>(g);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        ScaleManipulators(g);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="class_level_editor.html#a656a24e68242e1f8b24baa8ea5a5e2a9">  107</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_level_editor.html#a656a24e68242e1f8b24baa8ea5a5e2a9">LevelEditor::PositionManipulators</a>(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">void</span> LevelEditor::PositionManipulators(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    ImGuiSliderFlags flagPosX = ImGuiSliderFlags_None;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    ImGuiSliderFlags flagPosY = ImGuiSliderFlags_None;</div>
@@ -219,7 +219,7 @@ $(document).ready(function(){initNavTree('_level_editor_8cpp_source.html',''); i
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    g-&gt;GetTransform()-&gt;SetRelativePosition(drag_x_pos, drag_y_pos, drag_z_pos);</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="class_level_editor.html#aa0a47b3d01e4374a4060ac8d1db30b91">  131</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_level_editor.html#aa0a47b3d01e4374a4060ac8d1db30b91">LevelEditor::RotationManipulators</a>(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keywordtype">void</span> LevelEditor::RotationManipulators(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;{</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    ImGuiSliderFlags flagRotX = ImGuiSliderFlags_None;</div>
@@ -246,7 +246,7 @@ $(document).ready(function(){initNavTree('_level_editor_8cpp_source.html',''); i
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    g-&gt;GetTransform()-&gt;SetRelativeOrientation(newQuat);</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="class_level_editor.html#a07d3584976205e962c0dffcb1e9d3ad0">  158</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_level_editor.html#a07d3584976205e962c0dffcb1e9d3ad0">LevelEditor::ScaleManipulators</a>(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keywordtype">void</span> LevelEditor::ScaleManipulators(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;{</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    ImGuiSliderFlags flagScaleX = ImGuiSliderFlags_None;</div>
@@ -272,7 +272,7 @@ $(document).ready(function(){initNavTree('_level_editor_8cpp_source.html',''); i
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
-<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="class_level_editor.html#ab1e226e2c9be2a33e3d73cfcc6dc9358">  184</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_level_editor.html#ab1e226e2c9be2a33e3d73cfcc6dc9358">LevelEditor::ComponentTree</a>(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keywordtype">void</span> LevelEditor::ComponentTree(<a class="code" href="class_game_object.html">GameObject</a> *g)</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;{</div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">if</span> (ImGui::CollapsingHeader(<span class="stringliteral">&quot;Components&quot;</span>))</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    {</div>
@@ -291,24 +291,14 @@ $(document).ready(function(){initNavTree('_level_editor_8cpp_source.html',''); i
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div>
 <div class="ttc" id="a_game_object_factory_8h_html"><div class="ttname"><a href="_game_object_factory_8h.html">GameObjectFactory.h</a></div><div class="ttdoc">A singleton factory class to produce all GameObjects, store them in memory, and allow access to them.</div></div>
 <div class="ttc" id="a_level_editor_8h_html"><div class="ttname"><a href="_level_editor_8h.html">LevelEditor.h</a></div><div class="ttdoc">Displays Ediotr Gui, Allows Player to Edit Gameobject variables.</div></div>
-<div class="ttc" id="a_quaternion_8h_html"><div class="ttname"><a href="_quaternion_8h.html">Quaternion.h</a></div></div>
 <div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdoc">An object as represented in the game world containing all information on the object itself and its co...</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8h_source.html#l00032">GameObject.h:33</a></div></div>
-<div class="ttc" id="aclass_level_editor_html_a07d3584976205e962c0dffcb1e9d3ad0"><div class="ttname"><a href="class_level_editor.html#a07d3584976205e962c0dffcb1e9d3ad0">LevelEditor::ScaleManipulators</a></div><div class="ttdeci">void ScaleManipulators(GameObject *g)</div><div class="ttdoc">displays the scale fields in the transform editor</div><div class="ttdef"><b>Definition:</b> <a href="_level_editor_8cpp_source.html#l00158">LevelEditor.cpp:158</a></div></div>
-<div class="ttc" id="aclass_level_editor_html_a4582620d8c322b6cb1d68dd32dcf5048"><div class="ttname"><a href="class_level_editor.html#a4582620d8c322b6cb1d68dd32dcf5048">LevelEditor::DrawEditor</a></div><div class="ttdeci">void DrawEditor()</div><div class="ttdoc">Draws the editor to screen.</div><div class="ttdef"><b>Definition:</b> <a href="_level_editor_8cpp_source.html#l00010">LevelEditor.cpp:10</a></div></div>
-<div class="ttc" id="aclass_level_editor_html_a5ce65e32e9be38dc053d25a18e0018de"><div class="ttname"><a href="class_level_editor.html#a5ce65e32e9be38dc053d25a18e0018de">LevelEditor::ObjectHeader</a></div><div class="ttdeci">void ObjectHeader(GameObject *g)</div><div class="ttdoc">Creates the objects header using the current gameobject in the iterator.</div><div class="ttdef"><b>Definition:</b> <a href="_level_editor_8cpp_source.html#l00058">LevelEditor.cpp:58</a></div></div>
-<div class="ttc" id="aclass_level_editor_html_a5d2e208fa4bc8f4fd463c8bc09e209f0"><div class="ttname"><a href="class_level_editor.html#a5d2e208fa4bc8f4fd463c8bc09e209f0">LevelEditor::ObjectList</a></div><div class="ttdeci">void ObjectList()</div><div class="ttdoc">fills in the object list</div><div class="ttdef"><b>Definition:</b> <a href="_level_editor_8cpp_source.html#l00023">LevelEditor.cpp:23</a></div></div>
-<div class="ttc" id="aclass_level_editor_html_a656a24e68242e1f8b24baa8ea5a5e2a9"><div class="ttname"><a href="class_level_editor.html#a656a24e68242e1f8b24baa8ea5a5e2a9">LevelEditor::PositionManipulators</a></div><div class="ttdeci">void PositionManipulators(GameObject *g)</div><div class="ttdoc">displays the position fields in the transform editor</div><div class="ttdef"><b>Definition:</b> <a href="_level_editor_8cpp_source.html#l00107">LevelEditor.cpp:107</a></div></div>
-<div class="ttc" id="aclass_level_editor_html_a6810fe926bdb4d23c947b39ebfc0f84c"><div class="ttname"><a href="class_level_editor.html#a6810fe926bdb4d23c947b39ebfc0f84c">LevelEditor::LevelEditor</a></div><div class="ttdeci">LevelEditor()</div><div class="ttdoc">default constructor</div><div class="ttdef"><b>Definition:</b> <a href="_level_editor_8cpp_source.html#l00005">LevelEditor.cpp:5</a></div></div>
-<div class="ttc" id="aclass_level_editor_html_aa0a47b3d01e4374a4060ac8d1db30b91"><div class="ttname"><a href="class_level_editor.html#aa0a47b3d01e4374a4060ac8d1db30b91">LevelEditor::RotationManipulators</a></div><div class="ttdeci">void RotationManipulators(GameObject *g)</div><div class="ttdoc">displays the (Euler) rotation fields in the transform editor</div><div class="ttdef"><b>Definition:</b> <a href="_level_editor_8cpp_source.html#l00131">LevelEditor.cpp:131</a></div></div>
-<div class="ttc" id="aclass_level_editor_html_aac394ace767b605adef1afdfb0473046"><div class="ttname"><a href="class_level_editor.html#aac394ace767b605adef1afdfb0473046">LevelEditor::TransformHeader</a></div><div class="ttdeci">void TransformHeader(GameObject *g)</div><div class="ttdoc">displays the gameobjects transform editor</div><div class="ttdef"><b>Definition:</b> <a href="_level_editor_8cpp_source.html#l00083">LevelEditor.cpp:83</a></div></div>
-<div class="ttc" id="aclass_level_editor_html_ab1e226e2c9be2a33e3d73cfcc6dc9358"><div class="ttname"><a href="class_level_editor.html#ab1e226e2c9be2a33e3d73cfcc6dc9358">LevelEditor::ComponentTree</a></div><div class="ttdeci">void ComponentTree(GameObject *g)</div><div class="ttdoc">displays the components of the gameobject</div><div class="ttdef"><b>Definition:</b> <a href="_level_editor_8cpp_source.html#l00184">LevelEditor.cpp:184</a></div></div>
-<div class="ttc" id="aclass_quaternion_html"><div class="ttname"><a href="class_quaternion.html">Quaternion</a></div><div class="ttdef"><b>Definition:</b> <a href="_quaternion_8h_source.html#l00018">Quaternion.h:19</a></div></div>
+<div class="ttc" id="aclass_quaternion_html"><div class="ttname"><a href="class_quaternion.html">Quaternion</a></div><div class="ttdef"><b>Definition:</b> <a href="_e_n_g_i_n_e_2_quaternion_8h_source.html#l00018">Quaternion.h:19</a></div></div>
 <div class="ttc" id="aclass_quaternion_html_a5dea869799c66c79befa336461df8882"><div class="ttname"><a href="class_quaternion.html#a5dea869799c66c79befa336461df8882">Quaternion::SetEulerAnglesDegrees</a></div><div class="ttdeci">void SetEulerAnglesDegrees(float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> <a href="_quaternion_8cpp_source.html#l00051">Quaternion.cpp:51</a></div></div>
 <div class="ttc" id="aclass_vector3f_html"><div class="ttname"><a href="class_vector3f.html">Vector3f</a></div><div class="ttdoc">Stores information about a vector or point in three dimensions as floats.</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8h_source.html#l00013">Vector3f.h:14</a></div></div>
 <div class="ttc" id="aclass_vector3f_html_a874fc93c81a47a0455afb9cdd542c599"><div class="ttname"><a href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599">Vector3f::GetZ</a></div><div class="ttdeci">float GetZ() const</div><div class="ttdoc">z value accessor</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8cpp_source.html#l00041">Vector3f.cpp:41</a></div></div>
 <div class="ttc" id="aclass_vector3f_html_a9a1317e3ba2ef2c5e661d340a74a825a"><div class="ttname"><a href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a">Vector3f::GetY</a></div><div class="ttdeci">float GetY() const</div><div class="ttdoc">y value accessor</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8cpp_source.html#l00036">Vector3f.cpp:36</a></div></div>
 <div class="ttc" id="aclass_vector3f_html_abb50ca8baf8111e9bae60e4f7c144db3"><div class="ttname"><a href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3">Vector3f::GetX</a></div><div class="ttdeci">float GetX() const</div><div class="ttdoc">x value accessor</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8cpp_source.html#l00031">Vector3f.cpp:31</a></div></div>
-<div class="ttc" id="astruct_im_vec2_html"><div class="ttname"><a href="struct_im_vec2.html">ImVec2</a></div><div class="ttdef"><b>Definition:</b> <a href="imgui_8h_source.html#l00256">imgui.h:257</a></div></div>
+<div class="ttc" id="ainclude_2assimp_2_quaternion_8h_html"><div class="ttname"><a href="include_2assimp_2_quaternion_8h.html">quaternion.h</a></div><div class="ttdoc">Quaternion structure, including operators when compiling in C++.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

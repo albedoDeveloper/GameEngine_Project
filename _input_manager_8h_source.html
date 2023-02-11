@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/InputManager.h Source File</title>
+<title>FrankEngine: ENGINE/InputManager.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('_input_manager_8h_source.html',''); in
 </div><!--header-->
 <div class="contents">
 <a href="_input_manager_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************/</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL_events.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_s_d_l__events_8h.html">SDL2/SDL_events.h</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_graphics_engine_8h.html">GraphicsEngine.h</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
@@ -132,17 +132,17 @@ $(document).ready(function(){initNavTree('_input_manager_8h_source.html',''); in
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_input_manager.html">InputManager</a> *<a class="code" href="class_input_manager.html#a53a27e2e25bec96173a4c7532515d10e">Instance</a>();</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a7b85b4ef377b6d9c8b02d5497abb2c3d">CheckEvent</a>(SDL_Event *e);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a7b85b4ef377b6d9c8b02d5497abb2c3d">CheckEvent</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">CheckKeyDown</a>(SDL_Event *e);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a55f1f3383601cc430cb80665ce7c637e">CheckKeyDown</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">CheckKeyUp</a>(SDL_Event *e);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#a2fbfd1561d9a33a27628dedeb0a53169">CheckKeyUp</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">CheckMouseButtonDown</a>(SDL_Event *e);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">CheckMouseButtonDown</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">CheckMouseButtonUp</a>(SDL_Event *e);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#ac55a8954de6d05dc08141c58783239fe">CheckMouseButtonUp</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">CheckMouseMovement</a>(SDL_Event *e);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_input_manager.html#aa0463d9ab75246d2ce93ba5273011864">CheckMouseMovement</a>(<a class="code" href="union_s_d_l___event.html">SDL_Event</a> *<a class="code" href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">e</a>);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">void</span> CalcDeltaMouse();</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
@@ -189,7 +189,7 @@ $(document).ready(function(){initNavTree('_input_manager_8h_source.html',''); in
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordtype">bool</span> m_cursorLocked;</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    SDL_Event *m_Event;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <a class="code" href="union_s_d_l___event.html">SDL_Event</a> *m_Event;</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordtype">int</span> mouseX = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
@@ -249,6 +249,7 @@ $(document).ready(function(){initNavTree('_input_manager_8h_source.html',''); in
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="preprocessor">#define INPUT InputManager::Instance()</span></div>
 <div class="ttc" id="a_graphics_engine_8h_html"><div class="ttname"><a href="_graphics_engine_8h.html">GraphicsEngine.h</a></div><div class="ttdoc">Graphics and Rendering.</div></div>
 <div class="ttc" id="a_input_manager_8h_html_a7885f47644a0388f981f416fa20389b2"><div class="ttname"><a href="_input_manager_8h.html#a7885f47644a0388f981f416fa20389b2">KeyCode</a></div><div class="ttdeci">KeyCode</div><div class="ttdoc">the letter represented by a key</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00036">InputManager.h:37</a></div></div>
+<div class="ttc" id="a_s_d_l__events_8h_html"><div class="ttname"><a href="_s_d_l__events_8h.html">SDL_events.h</a></div></div>
 <div class="ttc" id="aclass_engine_html"><div class="ttname"><a href="class_engine.html">Engine</a></div><div class="ttdoc">A game engine that handles all the backend of a video game and allows for creation of video games wit...</div><div class="ttdef"><b>Definition:</b> <a href="_engine_8h_source.html#l00017">Engine.h:18</a></div></div>
 <div class="ttc" id="aclass_input_manager_html"><div class="ttname"><a href="class_input_manager.html">InputManager</a></div><div class="ttdoc">singleton managing user input</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00055">InputManager.h:56</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_a0d794230d5c5652089ea6cee4cd8e2ea"><div class="ttname"><a href="class_input_manager.html#a0d794230d5c5652089ea6cee4cd8e2ea">InputManager::ResetKeyValues</a></div><div class="ttdeci">void ResetKeyValues()</div><div class="ttdoc">resets key values to their original data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00345">InputManager.cpp:345</a></div></div>
@@ -277,8 +278,10 @@ $(document).ready(function(){initNavTree('_input_manager_8h_source.html',''); in
 <div class="ttc" id="aclass_input_manager_html_aeca1a04077d915d094064cc38e5837d8"><div class="ttname"><a href="class_input_manager.html#aeca1a04077d915d094064cc38e5837d8">InputManager::QuitGame</a></div><div class="ttdeci">void QuitGame()</div><div class="ttdoc">quits the game</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00824">InputManager.cpp:824</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_af2a750407afe72b3a07f6cb30afa1e2e"><div class="ttname"><a href="class_input_manager.html#af2a750407afe72b3a07f6cb30afa1e2e">InputManager::GetMouseYPos</a></div><div class="ttdeci">int GetMouseYPos() const</div><div class="ttdoc">Access current Mouse Y position.</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00819">InputManager.cpp:819</a></div></div>
 <div class="ttc" id="aclass_input_manager_html_afb4a9546b6025c9e059692bbe5815ea2"><div class="ttname"><a href="class_input_manager.html#afb4a9546b6025c9e059692bbe5815ea2">InputManager::CheckMouseButtonDown</a></div><div class="ttdeci">void CheckMouseButtonDown(SDL_Event *e)</div><div class="ttdoc">checks whether a mouse button is being help and stores the resulting data</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8cpp_source.html#l00257">InputManager.cpp:257</a></div></div>
+<div class="ttc" id="agroup__gtc__constants_html_ga4b7956eb6e2fbedfc7cf2e46e85c5139"><div class="ttname"><a href="group__gtc__constants.html#ga4b7956eb6e2fbedfc7cf2e46e85c5139">glm::e</a></div><div class="ttdeci">GLM_FUNC_DECL GLM_CONSTEXPR genType e()</div><div class="ttdef"><b>Definition:</b> <a href="constants_8inl_source.html#l00102">constants.inl:102</a></div></div>
 <div class="ttc" id="astruct_key_html"><div class="ttname"><a href="struct_key.html">Key</a></div><div class="ttdoc">represents a key on the keyboard</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00016">InputManager.h:17</a></div></div>
 <div class="ttc" id="astruct_mouse_button_html"><div class="ttname"><a href="struct_mouse_button.html">MouseButton</a></div><div class="ttdoc">represents a button on the mouse</div><div class="ttdef"><b>Definition:</b> <a href="_input_manager_8h_source.html#l00026">InputManager.h:27</a></div></div>
+<div class="ttc" id="aunion_s_d_l___event_html"><div class="ttname"><a href="union_s_d_l___event.html">SDL_Event</a></div><div class="ttdoc">General event structure.</div><div class="ttdef"><b>Definition:</b> <a href="_s_d_l__events_8h_source.html#l00591">SDL_events.h:592</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

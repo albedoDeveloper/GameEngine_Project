@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ICT398 - FrankEngine: ENGINE/CollisionManager.cpp Source File</title>
+<title>FrankEngine: ENGINE/CollisionManager.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,10 +28,10 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="frankengine.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">ICT398 - FrankEngine
-   &#160;<span id="projectnumber">Milestone 1</span>
+   <div id="projectname">FrankEngine
+   &#160;<span id="projectnumber">V.1</span>
    </div>
-   <div id="projectbrief">Custom Game Engine</div>
+   <div id="projectbrief">Custom Game Engine Project</div>
   </td>
  </tr>
  </tbody>
@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('_collision_manager_8cpp_source.html','
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    m_collision = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    m_collisionWorld.contactTest(myCollider.<a class="code" href="class_c_collider.html#a83ee4536509028bfd2cc594264995030">m_colObj</a>, *COLLISION);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    m_collisionWorld.<a class="code" href="classbt_collision_world.html#ae1d167b53de82d4f97a47118f8480999">contactTest</a>(myCollider.<a class="code" href="class_c_collider.html#a83ee4536509028bfd2cc594264995030">m_colObj</a>, *COLLISION);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> m_collision;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
@@ -133,12 +133,12 @@ $(document).ready(function(){initNavTree('_collision_manager_8cpp_source.html','
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> m_collisionBodyMap.at(body);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_collision_manager.html#abd92cb9a252410ea7c6ef3e7fee30bae">   44</a></span>&#160;btCollisionWorld &amp;<a class="code" href="class_collision_manager.html#abd92cb9a252410ea7c6ef3e7fee30bae">CollisionManager::GetCollisionWorld</a>()</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_collision_manager.html#abd92cb9a252410ea7c6ef3e7fee30bae">   44</a></span>&#160;<a class="code" href="classbt_collision_world.html">btCollisionWorld</a> &amp;<a class="code" href="class_collision_manager.html#abd92cb9a252410ea7c6ef3e7fee30bae">CollisionManager::GetCollisionWorld</a>()</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> m_collisionWorld;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_collision_manager.html#a4845e066a91189c28fcfc072840bd1d6">   49</a></span>&#160;btScalar <a class="code" href="class_collision_manager.html#a4845e066a91189c28fcfc072840bd1d6">CollisionManager::addSingleResult</a>(btManifoldPoint &amp;cp, <span class="keyword">const</span> btCollisionObjectWrapper *colObj0Wrap, <span class="keywordtype">int</span> partId0, <span class="keywordtype">int</span> index0, <span class="keyword">const</span> btCollisionObjectWrapper *colObj1Wrap, <span class="keywordtype">int</span> partId1, <span class="keywordtype">int</span> index1)</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_collision_manager.html#a4845e066a91189c28fcfc072840bd1d6">   49</a></span>&#160;btScalar <a class="code" href="class_collision_manager.html#a4845e066a91189c28fcfc072840bd1d6">CollisionManager::addSingleResult</a>(<a class="code" href="classbt_manifold_point.html">btManifoldPoint</a> &amp;cp, <span class="keyword">const</span> btCollisionObjectWrapper *colObj0Wrap, <span class="keywordtype">int</span> partId0, <span class="keywordtype">int</span> index0, <span class="keyword">const</span> btCollisionObjectWrapper *colObj1Wrap, <span class="keywordtype">int</span> partId1, <span class="keywordtype">int</span> index1)</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    m_collision = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> 0.0;</div>
@@ -188,18 +188,18 @@ $(document).ready(function(){initNavTree('_collision_manager_8cpp_source.html','
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_collision_manager.html#a610fdc5c9b545ab01b4b57d112aeb364">   97</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_collision_manager.html#a610fdc5c9b545ab01b4b57d112aeb364">CollisionManager::AddColliderToWorld</a>(<a class="code" href="class_c_collider.html">CCollider</a> &amp;c)</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    m_collisionWorld.addCollisionObject(c.<a class="code" href="class_c_collider.html#a83ee4536509028bfd2cc594264995030">m_colObj</a>);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    m_collisionWorld.addCollisionObject(c.m_colObj);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
 <div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_collision_manager.html#aa4407b2d5a5a2e098c5a236df9c4c663">  102</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_collision_manager.html#aa4407b2d5a5a2e098c5a236df9c4c663">CollisionManager::RemoveColliderToWorld</a>(<a class="code" href="class_c_collider.html">CCollider</a> &amp;c)</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;{</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    m_collisionWorld.removeCollisionObject(c.<a class="code" href="class_c_collider.html#a83ee4536509028bfd2cc594264995030">m_colObj</a>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    m_collisionWorld.removeCollisionObject(c.m_colObj);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
 <div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="class_collision_manager.html#aa93a9569dd7256a19bb26f40ae70f0e5">  107</a></span>&#160;<a class="code" href="class_c_collider.html">CCollider</a> *<a class="code" href="class_collision_manager.html#aa93a9569dd7256a19bb26f40ae70f0e5">CollisionManager::Raycast</a>(<span class="keyword">const</span> <a class="code" href="class_vector3f.html">Vector3f</a> &amp;from, <span class="keyword">const</span> <a class="code" href="class_vector3f.html">Vector3f</a> &amp;to)</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    m_colObjCache = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    m_collisionWorld.rayTest(</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    m_collisionWorld.<a class="code" href="classbt_collision_world.html#aad7854427ebb72ec77d32a6a2d458504">rayTest</a>(</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        btVector3(from.<a class="code" href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3">GetX</a>(), from.<a class="code" href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a">GetY</a>(), from.<a class="code" href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599">GetZ</a>()),</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        btVector3(to.<a class="code" href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3">GetX</a>(), to.<a class="code" href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a">GetY</a>(), to.<a class="code" href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599">GetZ</a>()),</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        *COLLISION</div>
@@ -400,6 +400,10 @@ $(document).ready(function(){initNavTree('_collision_manager_8cpp_source.html','
 <div class="ttc" id="aclass_vector3f_html_a874fc93c81a47a0455afb9cdd542c599"><div class="ttname"><a href="class_vector3f.html#a874fc93c81a47a0455afb9cdd542c599">Vector3f::GetZ</a></div><div class="ttdeci">float GetZ() const</div><div class="ttdoc">z value accessor</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8cpp_source.html#l00041">Vector3f.cpp:41</a></div></div>
 <div class="ttc" id="aclass_vector3f_html_a9a1317e3ba2ef2c5e661d340a74a825a"><div class="ttname"><a href="class_vector3f.html#a9a1317e3ba2ef2c5e661d340a74a825a">Vector3f::GetY</a></div><div class="ttdeci">float GetY() const</div><div class="ttdoc">y value accessor</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8cpp_source.html#l00036">Vector3f.cpp:36</a></div></div>
 <div class="ttc" id="aclass_vector3f_html_abb50ca8baf8111e9bae60e4f7c144db3"><div class="ttname"><a href="class_vector3f.html#abb50ca8baf8111e9bae60e4f7c144db3">Vector3f::GetX</a></div><div class="ttdeci">float GetX() const</div><div class="ttdoc">x value accessor</div><div class="ttdef"><b>Definition:</b> <a href="_vector3f_8cpp_source.html#l00031">Vector3f.cpp:31</a></div></div>
+<div class="ttc" id="aclassbt_collision_world_html"><div class="ttname"><a href="classbt_collision_world.html">btCollisionWorld</a></div><div class="ttdoc">CollisionWorld is interface and container for the collision detection.</div><div class="ttdef"><b>Definition:</b> <a href="bt_collision_world_8h_source.html#l00085">btCollisionWorld.h:86</a></div></div>
+<div class="ttc" id="aclassbt_collision_world_html_aad7854427ebb72ec77d32a6a2d458504"><div class="ttname"><a href="classbt_collision_world.html#aad7854427ebb72ec77d32a6a2d458504">btCollisionWorld::rayTest</a></div><div class="ttdeci">virtual void rayTest(const btVector3 &amp;rayFromWorld, const btVector3 &amp;rayToWorld, RayResultCallback &amp;resultCallback) const</div></div>
+<div class="ttc" id="aclassbt_collision_world_html_ae1d167b53de82d4f97a47118f8480999"><div class="ttname"><a href="classbt_collision_world.html#ae1d167b53de82d4f97a47118f8480999">btCollisionWorld::contactTest</a></div><div class="ttdeci">void contactTest(btCollisionObject *colObj, ContactResultCallback &amp;resultCallback)</div></div>
+<div class="ttc" id="aclassbt_manifold_point_html"><div class="ttname"><a href="classbt_manifold_point.html">btManifoldPoint</a></div><div class="ttdef"><b>Definition:</b> <a href="bt_manifold_point_8h_source.html#l00051">btManifoldPoint.h:52</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
