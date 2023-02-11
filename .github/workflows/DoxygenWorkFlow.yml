@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - AddBetterDoxygen
+      - Main
   workflow_dispatch:
 
 jobs:
