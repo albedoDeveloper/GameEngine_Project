@@ -16,7 +16,7 @@ var searchData=
   ['ccomponent_2eh_51',['CComponent.h',['../_c_component_8h.html',1,'']]],
   ['cdirectionallight_52',['CDirectionalLight',['../class_c_directional_light.html',1,'CDirectionalLight'],['../class_c_directional_light.html#a9fcdb906c67cf242eb65768798312b9f',1,'CDirectionalLight::CDirectionalLight()']]],
   ['cdirectionallight_2eh_53',['CDirectionalLight.h',['../_c_directional_light_8h.html',1,'']]],
-  ['changevolume_54',['ChangeVolume',['../class_c_sound.html#a307faa9d34176be901197f991ca5eb8b',1,'CSound']]],
+  ['changevolume_54',['ChangeVolume',['../class_c_sound.html#a684eff13984e48b0d1d37a032a277bca',1,'CSound']]],
   ['checkcollision_55',['CheckCollision',['../class_collision_manager.html#a2c3f7c98835978fb8753a18d972d2f5b',1,'CollisionManager']]],
   ['checkcursorlock_56',['CheckCursorLock',['../class_input_manager.html#a5f06ef1be775796f805d360071d1aaab',1,'InputManager']]],
   ['checkevent_57',['CheckEvent',['../class_input_manager.html#a7b85b4ef377b6d9c8b02d5497abb2c3d',1,'InputManager']]],
