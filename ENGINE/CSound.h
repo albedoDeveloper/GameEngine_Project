@@ -5,14 +5,12 @@
  * \date   September 2021
  *********************************************************************/
 #pragma once
-#include <SDL2/SDL_mixer.h>
+
 #include <iostream>
-#include <SDL2/SDL_audio.h>
-#include <unordered_map>
 #include <memory>
 #include <vector>
 #include "CComponent.h"
-
+#include "SoundManager.h"
 /** @brief Sound Component Class */
 class CSound : public CComponent
 {
@@ -32,7 +30,7 @@ public:
 		* \param length length to play
 		* \param positional is sound positional?
 		*/
-	void PlaySound(std::string soundName, int length, bool positional);
+	void PlaySound(std::string soundName, int length, bool positional, float volume = 1.0f);
 
 	/// @brief Stop a sound from playing
 	/// @param soundName 
@@ -46,7 +44,7 @@ public:
 	/// @brief Change the volume of a sound
 	/// @param soundName 
 	/// @param volume 
-	void ChangeVolume(std::string soundName, int volume);
+	void ChangeVolume(std::string soundName, float volume);
 
 private:
 		/**
@@ -61,7 +59,7 @@ private:
 		bool isPositional = false;
 
 			/** @brief sound channel */
-		int channel = -1;
+		SoLoud::handle handler;
 	};
 
 		/** @brief sound information */
