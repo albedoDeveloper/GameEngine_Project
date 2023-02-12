@@ -12,7 +12,7 @@ function Update(gameObject, deltaTime, inputManager)
 
     if timeKeep == 1000 then
         gameObject:GetCAnimator():PlayAnimation("girlTalking")
-        gameObject:GetCSound():PlaySound("girlTextSpeechTwo.wav", 0, true)
+        gameObject:GetCSound():PlaySound("girlTextSpeechTwo.wav", 0, true,0.9)
     end
 
     if timeKeep == 1700 then

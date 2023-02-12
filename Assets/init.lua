@@ -374,4 +374,4 @@ GetGameObject("endscreen"):GetTransform():SetParent(
 GetGameObject("endscreen"):GetTransform():Translate(0,0,-0.2)
 GetGameObject("endscreen"):GetTransform():Scale(5,5,5)
 
-GetGameObject("jukebox"):GetCSound():PlaySound("milkyway.wav",-1,true,0.5)
+GetGameObject("jukebox"):GetCSound():PlaySound("milkyway.wav",1,true,0.6)

@@ -14,17 +14,20 @@ CSound::CSound(Transform *parent, GameObject *parentObj)
 void CSound::PlaySound(std::string soundName, int length, bool positional,float volume)
 {
 	auto sound = SOUND->GetSound(soundName);
-
+	sound->setLooping(length);
+	
 	if (sound != nullptr)
 	{
 		SoundInfo temp;
 		temp.soundName = soundName;
 		temp.isPositional = positional;
+		
 		if (!temp.isPositional)
 			temp.handler = SOUND->gSoloud.play(*sound, -volume);
 		else
 		{
-			temp.handler = SOUND->gSoloud.play3d(*sound, this->GetParentObject()->GetTransform()->GetRelativePosition().GetX(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetY(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetZ(),0.0f,0.0f,0.0f, volume);
+			auto soundPos = this->GetParentObject()->GetTransform()->GetRelativePosition();
+			temp.handler = SOUND->gSoloud.play3d(*sound, soundPos.GetX(), soundPos.GetY(), soundPos.GetZ(),0.0f,0.0f,0.0f, volume);
 			SOUND->gSoloud.set3dSourceAttenuation(temp.handler, 1, 0.2);
 			//SOUND->gSoloud.set3dSourceMinMaxDistance(temp.handler, 1,2);
 			SOUND->gSoloud.update3dAudio();
@@ -61,8 +64,8 @@ void CSound::Update()
 	{
 		if (value.isPositional && value.handler != NULL)
 		{
-
-			SOUND->gSoloud.set3dSourceParameters(value.handler, this->GetParentObject()->GetTransform()->GetRelativePosition().GetX(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetY(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetZ(), 0.0f, 0.0f, 0.0f);
+			auto soundPos = this->GetParentObject()->GetTransform()->GetRelativePosition();
+			SOUND->gSoloud.set3dSourceParameters(value.handler, soundPos.GetX(), soundPos.GetY(), soundPos.GetZ(), 0.0f, 0.0f, 0.0f);
 
 
 		}

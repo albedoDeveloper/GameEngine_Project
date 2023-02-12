@@ -309,7 +309,7 @@ void CAgent::AiMove()
 
 			// plays the sound for that affordance
 			if (!currentAffordance->sound._Equal(""))
-				GetParentObject()->GetCSound()->PlaySound(currentAffordance->sound, 0, true);
+				GetParentObject()->GetCSound()->PlaySound(currentAffordance->sound, 0, true,0.9f);
 		}
 	}
 }
