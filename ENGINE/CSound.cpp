@@ -2,7 +2,8 @@
 #include "GameObjectFactory.h"
 #include "GraphicsEngine.h"
 #include <glm/glm/gtx/vector_angle.hpp>
-#include "SoundManager.h"
+
+
 CSound::CSound(Transform *parent, GameObject *parentObj)
 	:CComponent{ parent, parentObj }
 {
@@ -10,34 +11,46 @@ CSound::CSound(Transform *parent, GameObject *parentObj)
 }
 
 
-void CSound::PlaySound(std::string soundName, int length, bool positional)
+void CSound::PlaySound(std::string soundName, int length, bool positional,float volume)
 {
 	auto sound = SOUND->GetSound(soundName);
 
 	if (sound != nullptr)
 	{
 		SoundInfo temp;
-		temp.channel = Mix_PlayChannel(-1, sound, length);
 		temp.soundName = soundName;
 		temp.isPositional = positional;
+		if (!temp.isPositional)
+			temp.handler = SOUND->gSoloud.play(*sound, -volume);
+		else
+		{
+			temp.handler = SOUND->gSoloud.play3d(*sound, this->GetParentObject()->GetTransform()->GetRelativePosition().GetX(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetY(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetZ(),0.0f,0.0f,0.0f, volume);
+			SOUND->gSoloud.set3dSourceAttenuation(temp.handler, 1, 0.2);
+			//SOUND->gSoloud.set3dSourceMinMaxDistance(temp.handler, 1,2);
+			SOUND->gSoloud.update3dAudio();
+		}
+
+		
 		soundinfo.emplace(std::pair<std::string, SoundInfo>(soundName, temp));
+
+		
 	}
 	else
 		std::cout << soundName << "Sound is not loaded!" << std::endl;
 }
 
-void CSound::ChangeVolume(std::string soundName, int volume)
+void CSound::ChangeVolume(std::string soundName, float volume)
 {
 	if (soundinfo.count(soundName) > 0)
-		Mix_Volume(soundinfo[soundName].channel, volume);
+		SOUND->gSoloud.setVolume(soundinfo[soundName].handler, volume);
 }
 
 void CSound::StopPlaying(std::string soundName)
 {
 	if (soundinfo.count(soundName) > 0)
 	{
-		Mix_HaltChannel(soundinfo[soundName].channel);
-		soundinfo.erase(soundName);
+		if (soundinfo.count(soundName) > 0)
+			SOUND->gSoloud.stop(soundinfo[soundName].handler);
 	}
 }
 
@@ -46,27 +59,12 @@ void CSound::Update()
 {
 	for (auto &[key, value] : soundinfo)
 	{
-		if (value.isPositional && value.channel != -1)
+		if (value.isPositional && value.handler != NULL)
 		{
-			auto playerTransform = GAMEOBJECT->GetGameObject("player")->GetTransform();
-			auto thisTransform = this->GetParentObject()->GetTransform();
 
-			float distanceF = glm::abs((glm::abs(thisTransform->GetRelativePosition().GetZ()) - glm::abs(playerTransform->GetRelativePosition().GetZ()))) + glm::abs(glm::abs((thisTransform->GetRelativePosition().GetX()) - glm::abs(playerTransform->GetRelativePosition().GetX()))) / 2 * 60;
+			SOUND->gSoloud.set3dSourceParameters(value.handler, this->GetParentObject()->GetTransform()->GetRelativePosition().GetX(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetY(), this->GetParentObject()->GetTransform()->GetRelativePosition().GetZ(), 0.0f, 0.0f, 0.0f);
 
-			int distance = (int)distanceF;
 
-			if (distance < 1)
-				distance = 1;
-			else if (distance > 255)
-				distance = 255;
-
-			if (!Mix_SetPosition(value.channel, 0, distance))
-			{
-				std::cout << "ERROR Mix_SetPosition: " << Mix_GetError() << std::endl;
-			}
 		}
-
-		else
-			Mix_SetPosition(value.channel, 0, 0);
 	}
 }
