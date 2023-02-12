@@ -1,7 +1,11 @@
 # FrankEngine - A Game Engine Project
 Create an automated branch via issues by adding a comment with "/cib" when the issue is created (excluding quotation marks)
 
-### Controls
+## ⚡️ Quick start
+Download the release exe and play, no other setup required!
+
+
+### In GameMode Controls (Temporary)
 
 ~ (Tilde) key - Editor menu
 
