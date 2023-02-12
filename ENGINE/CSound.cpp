@@ -23,7 +23,7 @@ void CSound::PlaySound(std::string soundName, int length, bool positional,float 
 		temp.isPositional = positional;
 		
 		if (!temp.isPositional)
-			temp.handler = SOUND->gSoloud.play(*sound, -volume);
+			temp.handler = SOUND->gSoloud.play(*sound, volume);
 		else
 		{
 			auto soundPos = this->GetParentObject()->GetTransform()->GetRelativePosition();
