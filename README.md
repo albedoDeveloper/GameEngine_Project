@@ -1,30 +1,21 @@
-# FrankEngine - A Game Engine Project
+# ![Frankengine](/Resources/frankengine.png) FrankEngine - A Game Engine Project 
 Create an automated branch via issues by adding a comment with "/cib" when the issue is created (excluding quotation marks)
 
 ## ⚡️ Quick start
 Download the release exe and play, no other setup required!
 
 
-### In GameMode Controls (Temporary)
-
-~ (Tilde) key - Editor menu
-
-Esc - Quit
-
-WASD - Move Around
-
-C - Move Down Vertically
-
-SpaceBar - Move Up Vertically
-
-K - Toggle brightness of ligthts
-
-T - Toggle all Lighting on and off
-
-Left click - Create a physics ball, shot out in the direction of the cursor
-
-Right click - Create a physics box
-
-Middle mouse button: despawn all rigid bodies 
-
+## 🎮 Game Controls (Temporary for demo)
+| Button | Description                                              | 
+|--------|----------------------------------------------------------|
+| ~ (Tilde) | Game Editor Menu|
+| Esc | Quit the game |
+| W-A-S-D | Move Camera around scene|
+| C | Move Down Vertically|
+| SpaceBar | Move Up Vertically |
+| K | Toggle brightness of lights|
+| T | Toggle all Lighting on and off|
+| Left click | Create a physics ball, shot out in the direction of the cursor|
+| Right click | Create a physics box|
+| Middle click | Despawn all rigid bodies |
 
